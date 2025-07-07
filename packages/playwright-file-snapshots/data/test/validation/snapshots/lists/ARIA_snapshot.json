@@ -1,0 +1,45 @@
+{
+  "main": [
+    "heading 'Lists' [level=1]",
+    "heading 'Unordered List' [level=2]",
+    {
+      "list": [
+        {
+          "listitem": "Item 1"
+        },
+        {
+          "listitem": "Item 2"
+        }
+      ]
+    },
+    "heading 'Ordered List' [level=2]",
+    {
+      "list": [
+        {
+          "listitem": "Item 1"
+        },
+        {
+          "listitem": "Item 2"
+        }
+      ]
+    },
+    "heading 'Nested List' [level=2]",
+    {
+      "list": [
+        {
+          "listitem": "Item 1"
+        },
+        {
+          "listitem": [
+            "text 'Nested Item'",
+            {
+              "list": {
+                "listitem": "Item 2"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

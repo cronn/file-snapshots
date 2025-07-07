@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Input Types</title>
+  </head>
+  <body>
+    <main>
+      <h1>Input Types</h1>
+      <form>
+        <!-- text -->
+        <div>
+          <label for="textInput">Text Input</label>
+          <input type="text" id="textInput" name="textInput" value="Value" />
+        </div>
+
+        <!-- email -->
+        <div>
+          <label for="emailInput">Email Input</label>
+          <input type="email" id="emailInput" name="emailInput" />
+        </div>
+
+        <!-- password -->
+        <div>
+          <label for="passwordInput">Password Input</label>
+          <input type="password" id="passwordInput" name="passwordInput" />
+        </div>
+
+        <!-- number -->
+        <div>
+          <label for="numberInput">Number Input</label>
+          <input
+            type="number"
+            id="numberInput"
+            name="numberInput"
+            value="1"
+            min="1"
+            max="10"
+            step="1"
+          />
+        </div>
+
+        <!-- range -->
+        <div>
+          <label for="rangeInput">Range Input</label>
+          <input
+            type="range"
+            id="rangeInput"
+            name="rangeInput"
+            value="0"
+            min="0"
+            max="100"
+          />
+        </div>
+
+        <!-- date -->
+        <div>
+          <label for="dateInput">Date Input</label>
+          <input type="date" id="dateInput" name="dateInput" />
+        </div>
+
+        <!-- time -->
+        <div>
+          <label for="timeInput">Time Input</label>
+          <input type="time" id="timeInput" name="timeInput" />
+        </div>
+
+        <!-- checkbox -->
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              id="checkboxInput"
+              name="checkboxInput"
+              checked
+            />
+            Checkbox Input
+          </label>
+        </div>
+
+        <!-- radio group -->
+        <div>
+          <label>
+            <input type="radio" name="radioInput" value="Option 1" checked />
+            Radio Button 1
+          </label>
+          <label>
+            <input type="radio" name="radioInput" value="Option 2" />
+            Radio Button 2
+          </label>
+        </div>
+
+        <!-- file -->
+        <div>
+          <label for="fileInput">File Input</label>
+          <input type="file" id="fileInput" name="fileInput" />
+        </div>
+
+        <!-- textarea -->
+        <div>
+          <label for="textareaInput">Textarea</label>
+          <textarea id="textareaInput" name="textareaInput" rows="4">
+Value</textarea
+          >
+        </div>
+
+        <!-- select -->
+        <div>
+          <label for="select">Select</label>
+          <select id="select">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+          </select>
+        </div>
+
+        <!-- button -->
+        <button>Button</button>
+      </form>
+    </main>
+  </body>
+</html>

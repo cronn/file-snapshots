@@ -1,0 +1,42 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Input States",
+        "level": 1
+      }
+    },
+    {
+      "form": [
+        "Readonly Input",
+        {
+          "textbox": {
+            "name": "Readonly Input",
+            "readonly": true
+          }
+        },
+        "Disabled Input",
+        {
+          "textbox": {
+            "name": "Disabled Input",
+            "disabled": true
+          }
+        },
+        "Required Input",
+        {
+          "textbox": {
+            "name": "Required Input",
+            "required": true
+          }
+        },
+        "Invalid Input",
+        {
+          "textbox": {
+            "name": "Invalid Input",
+            "invalid": true
+          }
+        }
+      ]
+    }
+  ]
+}

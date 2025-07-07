@@ -251,6 +251,20 @@ test("matches combined ARIA snapshots", async ({ page }) => {
 });
 ```
 
+## DOM Snapshots (experimental)
+
+DOM Snapshots are a custom snapshot implementation inspired by Playwright's ARIA Snapshots and the [Accessibility Object Model](https://wicg.github.io/aom/explainer.html). They cover additional properties, e.g. validation attributes like `required` or `invalid` on form inputs, and are optimized to be serialized as JSON.
+
+```ts
+import { snapshotDom } from "@cronn/playwright-file-snapshots";
+
+test("matches DOM snapshot", async ({ page }) => {
+  await expect(snapshotDom(page.getByRole("main"))).toMatchJsonFile();
+});
+```
+
+Note that DOM Snapshots are currently an experimental feature. Not all elements and roles are covered, and the serialization format might change.
+
 ## Configuration
 
 ### Matcher Options

@@ -1,0 +1,102 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Input Types",
+        "level": 1
+      }
+    },
+    {
+      "form": [
+        "Text Input",
+        {
+          "textbox": {
+            "name": "Text Input",
+            "value": "Value"
+          }
+        },
+        "Email Input",
+        {
+          "textbox": "Email Input"
+        },
+        "Password Input",
+        {
+          "textbox": "Password Input"
+        },
+        "Number Input",
+        {
+          "spinbutton": {
+            "name": "Number Input",
+            "value": "1"
+          }
+        },
+        "Range Input",
+        {
+          "slider": {
+            "name": "Range Input",
+            "value": "0"
+          }
+        },
+        "Date Input",
+        {
+          "textbox": "Date Input"
+        },
+        "Time Input",
+        {
+          "textbox": "Time Input"
+        },
+        {
+          "checkbox": {
+            "name": "Checkbox Input",
+            "checked": true
+          }
+        },
+        "Checkbox Input",
+        {
+          "radio": {
+            "name": "Radio Button 1",
+            "value": "Option 1",
+            "checked": true
+          }
+        },
+        "Radio Button 1",
+        {
+          "radio": {
+            "name": "Radio Button 2",
+            "value": "Option 2"
+          }
+        },
+        "Radio Button 2",
+        "File Input",
+        {
+          "textbox": "File Input"
+        },
+        "Textarea",
+        {
+          "textbox": {
+            "name": "Textarea",
+            "value": "Value"
+          }
+        },
+        "Select",
+        {
+          "combobox": {
+            "name": "Select",
+            "value": "Option 1",
+            "children": [
+              {
+                "option": "Option 1"
+              },
+              {
+                "option": "Option 2"
+              }
+            ]
+          }
+        },
+        {
+          "button": "Button"
+        }
+      ]
+    }
+  ]
+}

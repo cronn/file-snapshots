@@ -29,6 +29,7 @@
     "test:integration": "playwright test && playwright test --grep @snapshot-update --update-snapshots",
     "playwright:install": "playwright install chromium",
     "compile": "tsc",
+    "copy:browser-lib": "node ./scripts/copy-browser-lib.ts",
     "build": "tsup",
     "start": "serve static/"
   },
@@ -47,6 +48,7 @@
     "@cronn/lib-file-snapshots": "workspace:*"
   },
   "devDependencies": {
+    "@cronn/dom-snapshot": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@changesets/cli": "catalog:",
     "@playwright/test": "catalog:",
