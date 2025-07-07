@@ -1,0 +1,12 @@
+{
+  "main": [
+    "heading 'Label Types' [level=1]",
+    "checkbox 'Implicit Label'",
+    "text 'Implicit Label Explicit Label'",
+    "textbox 'Explicit Label'",
+    "textbox 'aria-label'",
+    "text 'aria-labelledby'",
+    "textbox 'aria-labelledby'",
+    "button 'Text content'"
+  ]
+}

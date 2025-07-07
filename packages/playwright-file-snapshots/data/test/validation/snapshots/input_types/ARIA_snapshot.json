@@ -1,0 +1,44 @@
+{
+  "main": [
+    "heading 'Input Types' [level=1]",
+    "text 'Text Input'",
+    {
+      "textbox 'Text Input'": "Value"
+    },
+    "text 'Email Input'",
+    "textbox 'Email Input'",
+    "text 'Password Input'",
+    "textbox 'Password Input'",
+    "text 'Number Input'",
+    {
+      "spinbutton 'Number Input'": "1"
+    },
+    "text 'Range Input'",
+    {
+      "slider 'Range Input'": "0"
+    },
+    "text 'Date Input'",
+    "textbox 'Date Input'",
+    "text 'Time Input'",
+    "textbox 'Time Input'",
+    "checkbox 'Checkbox Input' [checked]",
+    "text 'Checkbox Input'",
+    "radio 'Radio Button 1' [checked]",
+    "text 'Radio Button 1'",
+    "radio 'Radio Button 2'",
+    "text 'Radio Button 2 File Input'",
+    "button 'File Input'",
+    "text 'Textarea'",
+    {
+      "textbox 'Textarea'": "Value"
+    },
+    "text 'Select'",
+    {
+      "combobox 'Select'": [
+        "option 'Option 1' [selected]",
+        "option 'Option 2'"
+      ]
+    },
+    "button 'Button'"
+  ]
+}

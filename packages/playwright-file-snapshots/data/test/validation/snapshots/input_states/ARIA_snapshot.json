@@ -1,0 +1,13 @@
+{
+  "main": [
+    "heading 'Input States' [level=1]",
+    "text 'Readonly Input'",
+    "textbox 'Readonly Input'",
+    "text 'Disabled Input'",
+    "textbox 'Disabled Input' [disabled]",
+    "text 'Required Input'",
+    "textbox 'Required Input'",
+    "text 'Invalid Input'",
+    "textbox 'Invalid Input'"
+  ]
+}

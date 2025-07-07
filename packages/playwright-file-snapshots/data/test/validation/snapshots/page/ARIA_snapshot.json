@@ -1,0 +1,69 @@
+[
+  {
+    "banner": "heading 'HTML Test Document' [level=1]"
+  },
+  {
+    "navigation": {
+      "list": [
+        {
+          "listitem": {
+            "link 'Home'": {
+              "/url": "/"
+            }
+          }
+        },
+        {
+          "listitem": [
+            "text 'Forms'",
+            {
+              "list": [
+                {
+                  "listitem": {
+                    "link 'Input Types'": {
+                      "/url": "/input-types"
+                    }
+                  }
+                },
+                {
+                  "listitem": {
+                    "link 'Input State'": {
+                      "/url": "/input-states"
+                    }
+                  }
+                },
+                {
+                  "listitem": {
+                    "link 'Label Types'": {
+                      "/url": "/label-types"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "listitem": {
+            "link 'Headings'": {
+              "/url": "/headings"
+            }
+          }
+        },
+        {
+          "listitem": {
+            "link 'Lists'": {
+              "/url": "/lists"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "main": [
+      "heading 'Texts' [level=2]",
+      "paragraph 'Paragraph'",
+      "text 'Text'"
+    ]
+  }
+]

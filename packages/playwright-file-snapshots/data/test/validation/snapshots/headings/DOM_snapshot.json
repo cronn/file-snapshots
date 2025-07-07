@@ -1,0 +1,40 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "h1 Heading",
+        "level": 1
+      }
+    },
+    {
+      "heading": {
+        "name": "h2 Heading",
+        "level": 2
+      }
+    },
+    {
+      "heading": {
+        "name": "h3 Heading",
+        "level": 3
+      }
+    },
+    {
+      "heading": {
+        "name": "h4 Heading",
+        "level": 4
+      }
+    },
+    {
+      "heading": {
+        "name": "h5 Heading",
+        "level": 5
+      }
+    },
+    {
+      "heading": {
+        "name": "h6 Heading",
+        "level": 6
+      }
+    }
+  ]
+}

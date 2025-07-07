@@ -1,0 +1,65 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Lists",
+        "level": 1
+      }
+    },
+    {
+      "heading": {
+        "name": "Unordered List",
+        "level": 2
+      }
+    },
+    {
+      "list": [
+        {
+          "listitem": "Item 1"
+        },
+        {
+          "listitem": "Item 2"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "name": "Ordered List",
+        "level": 2
+      }
+    },
+    {
+      "list": [
+        {
+          "listitem": "Item 1"
+        },
+        {
+          "listitem": "Item 2"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "name": "Nested List",
+        "level": 2
+      }
+    },
+    {
+      "list": [
+        {
+          "listitem": "Item 1"
+        },
+        {
+          "listitem": [
+            "Nested Item",
+            {
+              "list": {
+                "listitem": "Item 2"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

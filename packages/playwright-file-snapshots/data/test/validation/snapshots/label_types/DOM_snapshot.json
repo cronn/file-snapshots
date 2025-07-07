@@ -1,0 +1,32 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Label Types",
+        "level": 1
+      }
+    },
+    {
+      "form": [
+        {
+          "checkbox": "Implicit Label"
+        },
+        "Implicit Label",
+        "Explicit Label",
+        {
+          "textbox": "Explicit Label"
+        },
+        {
+          "textbox": "aria-label"
+        },
+        "aria-labelledby",
+        {
+          "textbox": "aria-labelledby"
+        },
+        {
+          "button": "Text content"
+        }
+      ]
+    }
+  ]
+}

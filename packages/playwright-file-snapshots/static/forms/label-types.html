@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Label Types</title>
+  </head>
+  <body>
+    <main>
+      <h1>Label Types</h1>
+      <form>
+        <!-- implicit label -->
+        <label><input type="checkbox" /> Implicit Label</label>
+
+        <!-- explicit label -->
+        <label for="inputId">Explicit Label</label>
+        <input type="text" id="inputId" />
+
+        <!-- aria-label -->
+        <input type="text" aria-label="aria-label" />
+
+        <!-- aria-labelledby -->
+        <label id="labelId">aria-labelledby</label>
+        <input type="text" aria-labelledby="labelId" />
+
+        <!-- text content -->
+        <button>Text content</button>
+      </form>
+    </main>
+  </body>
+</html>

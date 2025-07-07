@@ -11,7 +11,12 @@
       "outputs": ["coverage/**"]
     },
     "test:integration": {
-      "dependsOn": ["^build", "compile", "playwright:install"],
+      "dependsOn": [
+        "^build",
+        "compile",
+        "playwright:install",
+        "copy:browser-lib"
+      ],
       "outputs": ["playwright-report/**", "test-results/**"]
     },
     "check": {
@@ -22,6 +27,9 @@
         "test:integration",
         "//#format:check"
       ]
+    },
+    "copy:browser-lib": {
+      "dependsOn": ["^build", "build"]
     }
   }
 }
