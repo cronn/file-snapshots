@@ -1,5 +1,10 @@
 import { describe, expect, test } from "vitest";
-import { parseTestInfo, parseTestPath, parseTestSteps } from "./utils";
+import {
+  type RawTestInfo,
+  parseTestInfo,
+  parseTestPath,
+  parseTestSteps,
+} from "./utils";
 
 describe("parseTestInfo", () => {
   test("when titlePath is empty, throws error", () => {
@@ -10,6 +15,39 @@ describe("parseTestInfo", () => {
     expect(() =>
       parseTestInfo({ titlePath: ["tests/feature.spec.ts", "test title"] }),
     ).toThrowError();
+  });
+
+  test("filters steps using custom filter", () => {
+    expect(
+      parseTestInfo(
+        {
+          titlePath: ["tests/feature.spec.ts", "test title"],
+          _steps: [
+            {
+              title: "included step 1",
+              category: "test.step",
+              steps: [
+                {
+                  title: "excluded step",
+                  category: "test.step",
+                  steps: [
+                    {
+                      title: "included step 2",
+                      category: "test.step",
+                      steps: [],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        } as RawTestInfo,
+        (stepTitle): boolean => stepTitle !== "excluded step",
+      ),
+    ).toStrictEqual({
+      testPath: "tests/feature",
+      titlePath: ["test title", "included step 1", "included step 2"],
+    });
   });
 });
 

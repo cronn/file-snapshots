@@ -210,10 +210,11 @@ const expect = defineValidationFileExpect({
 });
 ```
 
-| Option          | Default Value          | Description                                                  |
-|-----------------|------------------------|--------------------------------------------------------------|
-| `validationDir` | `data/test/validation` | Directory in which golden masters are stored.                |
-| `outputDir`     | `data/test/output`     | Directory in which file snapshots from test runs are stored. |
+| Option          | Default Value          | Description                                                           |
+|-----------------|------------------------|-----------------------------------------------------------------------|
+| `validationDir` | `data/test/validation` | Directory in which golden masters are stored.                         |
+| `outputDir`     | `data/test/output`     | Directory in which file snapshots from test runs are stored.          |
+| `filterSteps`   | `() => true`           | Filter test steps which should not be part of the snapshot file path. |
 
 ### File Snapshot Options
 

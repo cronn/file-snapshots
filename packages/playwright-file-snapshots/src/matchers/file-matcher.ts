@@ -33,19 +33,19 @@ export function matchValidationFile(
     throw new Error("Matcher negation is not supported");
   }
 
-  const { titlePath, testPath } = parseTestInfo(test.info());
+  const { filterSteps, ...matcherConfig } = config;
+  const { titlePath, testPath } = parseTestInfo(test.info(), filterSteps);
   let pass: boolean;
 
   const { name } = options;
-  const matcherResult = new ValidationFileMatcher(config).matchFileSnapshot(
-    actual,
-    {
-      testPath,
-      titlePath,
-      name,
-      serializer,
-    },
-  );
+  const matcherResult = new ValidationFileMatcher(
+    matcherConfig,
+  ).matchFileSnapshot(actual, {
+    testPath,
+    titlePath,
+    name,
+    serializer,
+  });
 
   try {
     baseExpect.soft(matcherResult.actual).toBe(matcherResult.expected);
