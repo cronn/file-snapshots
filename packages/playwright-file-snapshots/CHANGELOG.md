@@ -1,5 +1,15 @@
 # @cronn/playwright-file-snapshots
 
+## 0.5.0
+
+### Minor Changes
+
+- 9c1f044: Enable filtering test steps which should not be part the snapshot file path
+
+### Patch Changes
+
+- 1275d95: Re-export normalizer types from lib-file-snapshots to avoid importing from implicit dependency
+
 ## 0.4.0
 
 ### Minor Changes
