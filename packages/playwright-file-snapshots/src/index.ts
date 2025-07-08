@@ -4,3 +4,9 @@ export type {
   PlaywrightMatchTextFileOptions,
   PlaywrightMatchJsonFileOptions,
 } from "./matchers/types";
+
+export type {
+  JsonNormalizer,
+  JsonNormalizerContext,
+  TextNormalizer,
+} from "@cronn/lib-file-snapshots";
