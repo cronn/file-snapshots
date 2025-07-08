@@ -9,3 +9,15 @@ test("stores snapshots in custom directories", () => {
 
   expect("value").toMatchTextFile();
 });
+
+test("filters steps from snapshot file path", () => {
+  const expect = defineValidationFileExpect({
+    filterSteps: (stepTitle): boolean => stepTitle !== "Excluded step",
+  });
+
+  test.step("Included step", () => {
+    test.step("Excluded step", () => {
+      expect("value").toMatchTextFile();
+    });
+  });
+});

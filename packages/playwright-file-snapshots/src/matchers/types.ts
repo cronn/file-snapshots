@@ -15,7 +15,14 @@ export interface PlaywrightValidationFileMatcherConfig {
    * @default "data/test/output"
    */
   outputDir?: string;
+
+  /**
+   * Filter test steps which should not be part of the snapshot file path
+   */
+  filterSteps?: StepFilter;
 }
+
+export type StepFilter = (stepTitle: string) => boolean;
 
 export interface PlaywrightValidationFileMatchers {
   toMatchJsonFile: (
