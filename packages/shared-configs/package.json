@@ -16,11 +16,13 @@
     "pnpm": ">=10"
   },
   "scripts": {
-    "check": "biome check .",
-    "check:fix": "biome check --write .",
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "check": "pnpm run compile && pnpm run lint:check",
+    "fix": "pnpm run lint:fix",
     "compile": "tsc",
     "build": "tsup",
-    "ci": "biome ci . && pnpm run compile && pnpm run build"
+    "ci": "pnpm run check && pnpm run build"
   },
   "type": "module",
   "exports": {
@@ -31,12 +33,22 @@
     "./vitest": {
       "types": "./dist/vitest.d.ts",
       "default": "./dist/vitest.js"
+    },
+    "./eslint": {
+      "types": "./dist/eslint.d.ts",
+      "default": "./dist/eslint.js"
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
+    "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-unused-imports": "catalog:",
+    "jiti": "catalog:",
+    "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
+    "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   }
 }

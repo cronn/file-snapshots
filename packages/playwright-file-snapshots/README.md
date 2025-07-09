@@ -48,8 +48,9 @@ export const expect = defineValidationFileExpect();
 Then import your custom expect instead of Playwright's base `expect` in your
 tests:
 
- ```ts
+```ts
 import { test } from "@playwright/test";
+
 import { expect } from "./fixtures";
 
 test("matches JSON file", () => {
@@ -62,13 +63,11 @@ If you are already using other custom matchers, you can merge them with the
 validation file matchers:
 
 ```ts
-import { mergeTests, mergeExpects } from "@playwright/test";
+import { mergeExpects, mergeTests } from "@playwright/test";
+
 import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 
-const expect = mergeExpects(
-  defineValidationFileExpect(),
-  otherExpect,
-);
+const expect = mergeExpects(defineValidationFileExpect(), otherExpect);
 ```
 
 ### Adding output files to `.gitignore`
@@ -190,7 +189,7 @@ import { snapshotAria } from "@cronn/playwright-file-snapshots";
 test("matches combined ARIA snapshots", async ({ page }) => {
   expect({
     nav: await snapshotAria(page.getByRole("navigation")),
-    main: await snapshotAria(page.getByRole("main"))
+    main: await snapshotAria(page.getByRole("main")),
   }).toMatchJsonFile();
 });
 ```
@@ -201,17 +200,17 @@ test("matches combined ARIA snapshots", async ({ page }) => {
 
 Matcher options can be passed when defining the matcher:
 
- ```ts
+```ts
 import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 
 const expect = defineValidationFileExpect({
   validationDir: "custom-validation",
-  outputDir: "custom-output"
+  outputDir: "custom-output",
 });
 ```
 
 | Option          | Default Value          | Description                                                           |
-|-----------------|------------------------|-----------------------------------------------------------------------|
+| --------------- | ---------------------- | --------------------------------------------------------------------- |
 | `validationDir` | `data/test/validation` | Directory in which golden masters are stored.                         |
 | `outputDir`     | `data/test/output`     | Directory in which file snapshots from test runs are stored.          |
 | `filterSteps`   | `() => true`           | Filter test steps which should not be part of the snapshot file path. |
@@ -220,19 +219,19 @@ const expect = defineValidationFileExpect({
 
 Snapshot options can be passed whenever calling the validation file matcher:
 
- ```ts
+```ts
 expect(value).toMatchTextFile({
-  name: "snapshot"
+  name: "snapshot",
 });
 ```
 
 | Option        | Default Value | Description                                                                                             |
-|---------------|---------------|---------------------------------------------------------------------------------------------------------|
+| ------------- | ------------- | ------------------------------------------------------------------------------------------------------- |
 | `name`        | `undefined`   | Unique `name` of the file snapshot. Used to distinguish multiple file snapshots within the same `test`. |
 | `normalizers` | `[]`          | Custom normalizers to apply before serialization.                                                       |
 
 #### JSON Snapshot Options
 
 | Option                             | Default Value | Description                                                                 |
-|------------------------------------|---------------|-----------------------------------------------------------------------------|
+| ---------------------------------- | ------------- | --------------------------------------------------------------------------- |
 | `includeUndefinedObjectProperties` | `false`       | Serializes `undefined` properties in objects. By default, they are omitted. |

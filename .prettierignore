@@ -1,0 +1,10 @@
+# IDEs
+.idea
+
+# pnpm
+pnpm-lock.yaml
+
+# tests
+**/data/test/
+**/custom-data/test/
+__snapshots__

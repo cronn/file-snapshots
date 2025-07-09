@@ -1,4 +1,5 @@
 import assert from "node:assert";
+
 import type { PlainObject } from "@cronn/lib-file-snapshots";
 
 export function isNonNullish(value: unknown): value is NonNullable<unknown> {
@@ -13,9 +14,9 @@ export function unwrapSingleItemArray(value: [unknown]): unknown {
   return value[0];
 }
 
-interface ParsedSinglePropertyObject {
+export interface ParsedSinglePropertyObject<TValue = unknown> {
   key: string;
-  value: unknown;
+  value: TValue;
 }
 
 export function parseSinglePropertyObject(

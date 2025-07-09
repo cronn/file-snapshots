@@ -1,5 +1,7 @@
 import { test } from "vitest";
+
 import { type SerializerTestFn, testSerializer } from "../utils/test";
+
 import {
   type JsonNormalizerContext,
   JsonSerializer,

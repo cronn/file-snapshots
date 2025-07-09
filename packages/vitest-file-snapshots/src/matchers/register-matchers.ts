@@ -1,7 +1,8 @@
 import type { ExpectationResult, MatcherState } from "@vitest/expect";
+import { expect } from "vitest";
 
 import { JsonSerializer, TextSerializer } from "@cronn/lib-file-snapshots";
-import { expect } from "vitest";
+
 import { matchValidationFile } from "./file-matcher";
 import type {
   VitestMatchJsonFileOptions,

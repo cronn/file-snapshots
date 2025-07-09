@@ -1,7 +1,8 @@
 import path from "node:path";
+
 import { TEST_PATH_SEPARATOR } from "./config";
 
-export function parseTestName(currentTestName: string): string[] {
+export function parseTestName(currentTestName: string): Array<string> {
   return currentTestName.split(TEST_PATH_SEPARATOR);
 }
 

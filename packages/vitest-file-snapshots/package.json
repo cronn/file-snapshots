@@ -2,7 +2,10 @@
   "name": "@cronn/vitest-file-snapshots",
   "version": "0.8.2",
   "description": "Write tests with Vitest using file snapshots",
-  "keywords": ["vitest", "file snapshots"],
+  "keywords": [
+    "vitest",
+    "file snapshots"
+  ],
   "bugs": {
     "url": "https://github.com/cronn/file-snapshots/issues"
   },
@@ -19,13 +22,15 @@
     "pnpm": ">=10"
   },
   "scripts": {
-    "check": "biome check .",
-    "check:fix": "biome check --write .",
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "check": "pnpm run compile && pnpm run lint:check",
+    "fix": "pnpm run lint:fix",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "compile": "tsc",
     "build": "tsup && node scripts/fix-declaration-file.js",
-    "ci": "biome ci . && pnpm run compile && pnpm run test:coverage && pnpm run build"
+    "ci": "pnpm run check && pnpm run test:coverage && pnpm run build"
   },
   "type": "module",
   "exports": {
@@ -35,19 +40,27 @@
       "default": "./dist/register.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@cronn/lib-file-snapshots": "workspace:*"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@changesets/cli": "catalog:",
+    "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-istanbul": "catalog:",
     "@vitest/expect": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-unused-imports": "catalog:",
+    "jiti": "catalog:",
+    "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
+    "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   },
   "peerDependencies": {

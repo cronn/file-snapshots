@@ -19,7 +19,7 @@ export interface VitestMatchTextFileOptions
   /**
    * Custom normalizers to apply before serialization
    */
-  normalizers?: TextNormalizer[];
+  normalizers?: Array<TextNormalizer>;
 }
 
 export interface VitestMatchJsonFileOptions
@@ -34,7 +34,7 @@ export interface VitestMatchJsonFileOptions
   /**
    * Custom normalizers to apply before serialization
    */
-  normalizers?: JsonNormalizer[];
+  normalizers?: Array<JsonNormalizer>;
 }
 
 export interface VitestValidationFileMatcherConfig {

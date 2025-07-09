@@ -1,15 +1,17 @@
 import type { TestInfo } from "@playwright/test";
+
 import type {
   TestInfoInternal,
   TestStepInternal,
 } from "../types/playwright-internals";
+
 import type { StepFilter } from "./types";
 
 export type RawTestInfo = Pick<TestInfo, "titlePath">;
 
 interface ParsedTestInfo {
   testPath: string;
-  titlePath: string[];
+  titlePath: Array<string>;
 }
 
 export function parseTestInfo(
@@ -37,7 +39,7 @@ export function parseTestInfo(
 
 export function parseTestSteps(
   steps: ReadonlyArray<TestStepInternal>,
-): string[] {
+): Array<string> {
   const lastStep = steps.at(-1);
   if (lastStep === undefined || lastStep.category !== "test.step") {
     return [];
