@@ -8,13 +8,13 @@ export interface TextSerializerOptions {
   /**
    * Custom normalizers to apply before serialization
    */
-  normalizers?: TextNormalizer[];
+  normalizers?: Array<TextNormalizer>;
 }
 
 export type TextNormalizer = (value: string) => string;
 
 export class TextSerializer implements SnapshotSerializer {
-  private readonly normalizers: TextNormalizer[];
+  private readonly normalizers: Array<TextNormalizer>;
 
   public constructor(options: TextSerializerOptions = {}) {
     this.normalizers = options.normalizers ?? [];

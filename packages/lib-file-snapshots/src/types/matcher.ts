@@ -29,7 +29,7 @@ export interface MatchValidationFileOptions {
    *
    * @example ["test A", "when x, then y"]
    */
-  titlePath: string[];
+  titlePath: Array<string>;
 
   /**
    * Unique name of the file snapshot
@@ -46,7 +46,7 @@ export interface MatchValidationFileOptions {
 
 export interface ValidationFileMeta {
   testPath: string;
-  titlePath: string[];
+  titlePath: Array<string>;
   name?: string;
   fileExtension: string;
 }

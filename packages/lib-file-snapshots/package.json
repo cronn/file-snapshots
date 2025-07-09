@@ -2,7 +2,9 @@
   "name": "@cronn/lib-file-snapshots",
   "version": "0.7.0",
   "description": "The library agnostic core for testing file snapshots",
-  "keywords": ["file snapshots"],
+  "keywords": [
+    "file snapshots"
+  ],
   "bugs": {
     "url": "https://github.com/cronn/file-snapshots/issues"
   },
@@ -19,13 +21,15 @@
     "pnpm": ">=10"
   },
   "scripts": {
-    "check": "biome check .",
-    "check:fix": "biome check --write .",
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "check": "pnpm run compile && pnpm run lint:check",
+    "fix": "pnpm run lint:fix",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "compile": "tsc",
     "build": "tsup",
-    "ci": "biome ci . && pnpm run compile && pnpm run test:coverage && pnpm run build"
+    "ci": "pnpm run check && pnpm run test:coverage && pnpm run build"
   },
   "type": "module",
   "exports": {
@@ -35,14 +39,22 @@
       "default": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
     "@cronn/shared-configs": "workspace:*",
+    "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-istanbul": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-unused-imports": "catalog:",
+    "jiti": "catalog:",
+    "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
+    "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   }
 }

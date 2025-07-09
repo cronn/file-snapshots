@@ -1,4 +1,5 @@
 import { test } from "@playwright/test";
+
 import { defineValidationFileExpect } from "../src";
 
 test("stores snapshots in custom directories", () => {

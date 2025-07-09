@@ -2,7 +2,10 @@
   "name": "@cronn/playwright-file-snapshots",
   "version": "0.6.0",
   "description": "Write tests with Playwright using file snapshots",
-  "keywords": ["playwright", "file snapshots"],
+  "keywords": [
+    "playwright",
+    "file snapshots"
+  ],
   "bugs": {
     "url": "https://github.com/cronn/file-snapshots/issues"
   },
@@ -19,8 +22,10 @@
     "pnpm": ">=10"
   },
   "scripts": {
-    "check": "biome check .",
-    "check:fix": "biome check --write .",
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "check": "pnpm run compile && pnpm run lint:check",
+    "fix": "pnpm run lint:fix",
     "test:unit": "vitest run",
     "test:unit:coverage": "vitest run --coverage",
     "test:integration": "playwright test",
@@ -28,7 +33,7 @@
     "compile": "tsc",
     "build": "tsup",
     "start": "serve static/",
-    "ci": "biome ci . && pnpm run compile && pnpm run test:unit:coverage && pnpm run test:integration && pnpm run build"
+    "ci": "pnpm run check && pnpm run test:unit:coverage && pnpm run test:integration && pnpm run build"
   },
   "type": "module",
   "exports": {
@@ -38,20 +43,28 @@
       "default": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@cronn/lib-file-snapshots": "workspace:*"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@changesets/cli": "catalog:",
     "@playwright/test": "catalog:",
+    "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-istanbul": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-unused-imports": "catalog:",
+    "jiti": "catalog:",
+    "prettier": "catalog:",
     "serve": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
+    "typescript-eslint": "catalog:",
     "vitest": "catalog:",
     "yaml": "catalog:"
   },

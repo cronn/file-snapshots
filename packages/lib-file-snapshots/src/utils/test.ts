@@ -1,10 +1,12 @@
 import { rmSync } from "node:fs";
 import path from "node:path";
 import { type TestContext, expect } from "vitest";
+
 import type {
   SnapshotSerializer,
   SnapshotSerializerResult,
 } from "../types/serializer";
+
 import { normalizeFileName } from "./file";
 
 export const TMP_DIR = "./.tmp";
@@ -45,11 +47,11 @@ export function testSerializerThrows(
 }
 
 export class FailingSerializer implements SnapshotSerializer {
-  public canSerialize(value: unknown): boolean {
+  public canSerialize(_value: unknown): boolean {
     return false;
   }
 
-  public serialize(value: unknown): SnapshotSerializerResult {
+  public serialize(_value: unknown): SnapshotSerializerResult {
     throw new Error("Not implemented");
   }
 }

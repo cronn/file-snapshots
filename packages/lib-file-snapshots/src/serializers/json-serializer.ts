@@ -6,7 +6,7 @@ import { isArray, isPlainObject, isString } from "../utils/guards";
 
 type JsonValue =
   | Record<string, unknown>
-  | unknown[]
+  | Array<unknown>
   | string
   | number
   | boolean
@@ -23,7 +23,7 @@ export interface JsonSerializerOptions {
   /**
    * Custom normalizers to apply before serialization
    */
-  normalizers?: JsonNormalizer[];
+  normalizers?: Array<JsonNormalizer>;
 }
 
 export type JsonNormalizer = (
@@ -37,7 +37,7 @@ export interface JsonNormalizerContext {
 
 export class JsonSerializer implements SnapshotSerializer {
   private readonly includeUndefinedObjectProperties: boolean;
-  private readonly normalizers: JsonNormalizer[];
+  private readonly normalizers: Array<JsonNormalizer>;
 
   public constructor(options: JsonSerializerOptions = {}) {
     this.includeUndefinedObjectProperties =
@@ -45,7 +45,7 @@ export class JsonSerializer implements SnapshotSerializer {
     this.normalizers = options.normalizers ?? [];
   }
 
-  public canSerialize(value: unknown): boolean {
+  public canSerialize(_value: unknown): boolean {
     return true;
   }
 
@@ -142,7 +142,7 @@ export class JsonSerializer implements SnapshotSerializer {
     }
   }
 
-  private normalizeArray(value: unknown[]): JsonValue {
+  private normalizeArray(value: Array<unknown>): JsonValue {
     return value.map((item, index) =>
       this.normalizeValueRecursive(item, { key: index.toString() }),
     );

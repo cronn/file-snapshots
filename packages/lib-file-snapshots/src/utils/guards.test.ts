@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+
 import { isArray, isPlainObject } from "./guards";
 
 describe("is array", () => {

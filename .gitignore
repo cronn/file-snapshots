@@ -1,12 +1,18 @@
 # IntelliJ
-/.idea
+.idea
 *.iml
 
 # dependencies
 node_modules
 
-# output
+# builds
 dist
 
-# unit tests
+# tests
 coverage
+test-results
+playwright-report
+.tmp
+__snapshots__
+**/data/test/output
+**/custom-data/output

@@ -7,15 +7,18 @@
   },
   "type": "module",
   "scripts": {
-    "check": "biome check .",
-    "check:fix": "biome check --write .",
-    "ci": "biome ci .",
+    "format:check": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "check": "pnpm run format:check",
+    "fix": "pnpm run format:fix",
+    "ci": "pnpm run check",
     "prepublishOnly": "pnpm run --recursive ci",
-    "version": "pnpm changeset version && pnpm biome format --write packages/*/package.json",
+    "version": "pnpm changeset version && pnpm run format:fix",
     "release": "pnpm run --recursive build && pnpm changeset publish"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
-    "@changesets/cli": "catalog:"
+    "@changesets/cli": "catalog:",
+    "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "prettier": "catalog:"
   }
 }

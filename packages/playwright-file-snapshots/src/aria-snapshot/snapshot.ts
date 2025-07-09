@@ -7,6 +7,8 @@ import {
   isPlainObject,
   isString,
 } from "@cronn/lib-file-snapshots";
+
+import type { ParsedSinglePropertyObject } from "./utils";
 import {
   isNonNullish,
   isSingleItemArray,
@@ -43,7 +45,7 @@ class AriaSnapshot {
     return value;
   }
 
-  private normalizeArray(array: unknown[]): unknown {
+  private normalizeArray(array: Array<unknown>): unknown {
     const normalizedArray = array
       .map((item) => this.normalizeJsonRecursive(item))
       .filter(isNonNullish);
@@ -63,15 +65,17 @@ class AriaSnapshot {
         this.normalizeJsonRecursive(value);
     }
 
-    if (this.isAtomicTextNode(normalizedObject)) {
-      return this.unwrapAtomicTextNode(value);
+    const parsedNode = parseSinglePropertyObject(value);
+    if (this.isAtomicTextNode(parsedNode)) {
+      return this.unwrapAtomicTextNode(parsedNode);
     }
 
     return normalizedObject;
   }
 
-  private isAtomicTextNode(value: PlainObject): boolean {
-    const node = parseSinglePropertyObject(value);
+  private isAtomicTextNode(
+    node: ParsedSinglePropertyObject,
+  ): node is ParsedSinglePropertyObject<string> {
     return (
       this.textNodeTypes.some(
         (textObjectType) => node.key === textObjectType,
@@ -79,8 +83,9 @@ class AriaSnapshot {
     );
   }
 
-  private unwrapAtomicTextNode(value: PlainObject): string {
-    const node = parseSinglePropertyObject(value);
+  private unwrapAtomicTextNode(
+    node: ParsedSinglePropertyObject<string>,
+  ): string {
     return `${node.key} '${node.value}'`;
   }
 

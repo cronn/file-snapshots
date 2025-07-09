@@ -1,5 +1,6 @@
-import type { JsonNormalizer, TextNormalizer } from "@cronn/lib-file-snapshots";
 import type { MatcherReturnType } from "@playwright/test";
+
+import type { JsonNormalizer, TextNormalizer } from "@cronn/lib-file-snapshots";
 
 export interface PlaywrightValidationFileMatcherConfig {
   /**
@@ -49,7 +50,7 @@ export interface PlaywrightMatchTextFileOptions
   /**
    * Custom normalizers to apply before serialization
    */
-  normalizers?: TextNormalizer[];
+  normalizers?: Array<TextNormalizer>;
 }
 
 export interface PlaywrightMatchJsonFileOptions
@@ -64,5 +65,5 @@ export interface PlaywrightMatchJsonFileOptions
   /**
    * Custom normalizers to apply before serialization
    */
-  normalizers?: JsonNormalizer[];
+  normalizers?: Array<JsonNormalizer>;
 }

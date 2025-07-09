@@ -1,13 +1,15 @@
 import {
-  type SnapshotSerializer,
-  ValidationFileMatcher,
-} from "@cronn/lib-file-snapshots";
-import {
   type ExpectMatcherState,
   type MatcherReturnType,
   expect as baseExpect,
   test,
 } from "@playwright/test";
+
+import {
+  type SnapshotSerializer,
+  ValidationFileMatcher,
+} from "@cronn/lib-file-snapshots";
+
 import type {
   PlaywrightMatchValidationFileOptions,
   PlaywrightValidationFileMatcherConfig,
@@ -50,7 +52,7 @@ export function matchValidationFile(
   try {
     baseExpect.soft(matcherResult.actual).toBe(matcherResult.expected);
     pass = true;
-  } catch (e: unknown) {
+  } catch {
     pass = false;
   }
 
