@@ -1,5 +1,12 @@
 # @cronn/vitest-file-snapshots
 
+## 0.8.2
+
+### Patch Changes
+
+- Updated dependencies [21adc17]
+  - @cronn/lib-file-snapshots@0.7.0
+
 ## 0.8.1
 
 ### Patch Changes
