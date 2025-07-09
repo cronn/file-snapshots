@@ -7,7 +7,7 @@ describe("normalize file name", () => {
     expect(normalizeFileName(value)).toBe("_");
   });
 
-  test.each([","])("removes '%s' from test name", (value) => {
+  test.each([",", "$"])("removes '%s' from test name", (value) => {
     expect(normalizeFileName(value)).toBe("");
   });
 

@@ -7,7 +7,7 @@ export function normalizeFileName(testName: string): string {
     .replaceAll(/\+0/g, "0")
     .replaceAll(/'([\w ]+)'/g, "$1")
     .replaceAll(/[ .:']/g, "_")
-    .replaceAll(/,/g, "");
+    .replaceAll(/[,$]/g, "");
 }
 
 export function mkdirRecursive(path: string): void {
