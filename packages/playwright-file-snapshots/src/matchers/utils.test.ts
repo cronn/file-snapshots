@@ -86,6 +86,19 @@ describe("parseTestSteps", () => {
       ]),
     ).toHaveLength(0);
   });
+
+  test("when last step is no user defined step, returns empty array", () => {
+    expect(
+      parseTestSteps([
+        {
+          title: "step",
+          category: "test.step",
+          steps: [],
+        },
+        { title: "expect", category: "expect", steps: [] },
+      ]),
+    ).toHaveLength(0);
+  });
 });
 
 describe("parseTestPath", () => {

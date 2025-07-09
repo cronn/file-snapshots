@@ -38,12 +38,8 @@ export function parseTestInfo(
 export function parseTestSteps(
   steps: ReadonlyArray<TestStepInternal>,
 ): string[] {
-  const userDefinedSteps = steps.filter(
-    (step) => step.category === "test.step",
-  );
-  const lastStep = userDefinedSteps.at(-1);
-
-  if (lastStep === undefined) {
+  const lastStep = steps.at(-1);
+  if (lastStep === undefined || lastStep.category !== "test.step") {
     return [];
   }
 

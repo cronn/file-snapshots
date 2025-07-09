@@ -19,5 +19,7 @@ test.describe("describe title", () => {
         expect("value").toMatchTextFile();
       });
     });
+
+    expect("value").toMatchTextFile();
   });
 });
