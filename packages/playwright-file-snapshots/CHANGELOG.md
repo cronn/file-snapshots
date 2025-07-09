@@ -1,5 +1,16 @@
 # @cronn/playwright-file-snapshots
 
+## 0.6.0
+
+### Minor Changes
+
+- 7a612c3: Fix: Sibling test steps are included in snapshot file path
+
+### Patch Changes
+
+- Updated dependencies [21adc17]
+  - @cronn/lib-file-snapshots@0.7.0
+
 ## 0.5.0
 
 ### Minor Changes

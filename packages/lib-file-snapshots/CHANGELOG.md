@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.7.0
+
+### Minor Changes
+
+- 21adc17: Remove $ from snapshot file names
+
 ## 0.6.0
 
 ### Minor Changes
