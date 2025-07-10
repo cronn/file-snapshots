@@ -4,10 +4,9 @@ const NEW_LINE_SEPARATOR = "\n";
 
 export function normalizeFileName(testName: string): string {
   return testName
-    .replaceAll(/\+0/g, "0") // TODO: extract Vitest-specific replacer to vitest-file-snapshots
-    .replaceAll(/'([\w ]+)'/g, "$1") // TODO: extract Vitest-specific replacer to vitest-file-snapshots
-    .replaceAll(/[ .:']/g, "_")
-    .replaceAll(/[,$]/g, "");
+    .replaceAll(/[+*%~<>?!$#'"`|\\/()[\]{}]/g, "")
+    .replaceAll(/[\s.:,;]+/g, "_")
+    .replaceAll(/_{2,}/g, "_");
 }
 
 export function mkdirRecursive(path: string): void {
