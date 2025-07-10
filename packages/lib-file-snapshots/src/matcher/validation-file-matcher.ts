@@ -3,6 +3,7 @@ import * as path from "node:path";
 
 import type {
   MatchValidationFileOptions,
+  SnapshotNamingStrategy,
   ValidationFileMatcherConfig,
   ValidationFileMatcherResult,
   ValidationFileMeta,
@@ -27,7 +28,7 @@ export class ValidationFileMatcher {
     actual: unknown,
     options: MatchValidationFileOptions,
   ): ValidationFileMatcherResult {
-    const { testPath, titlePath, name, serializer } = options;
+    const { testPath, titlePath, name, namingStrategy, serializer } = options;
 
     if (!serializer.canSerialize(actual)) {
       throw new Error(`Cannot serialize value of type ${typeof actual}`);
@@ -39,6 +40,7 @@ export class ValidationFileMatcher {
       titlePath,
       testPath,
       name,
+      namingStrategy,
       fileExtension: serializerResult.fileExtension,
     });
 
@@ -49,16 +51,35 @@ export class ValidationFileMatcher {
   }
 
   private buildValidationFilePath(options: ValidationFileMeta): string {
-    const { testPath, titlePath, name, fileExtension } = options;
+    const { testPath, titlePath, name, namingStrategy, fileExtension } =
+      options;
 
     const normalizedTitlePath = titlePath.map(normalizeFileName);
-    const normalizedFileName =
-      name !== undefined ? `_${normalizeFileName(name)}` : "";
+    const filePath = path.join(testPath, ...normalizedTitlePath);
+    const fullFilePath = this.applyNamingStrategy(
+      filePath,
+      name,
+      namingStrategy,
+    );
+    return `${fullFilePath}.${fileExtension}`;
+  }
 
-    const normalizedTestName = normalizedTitlePath.pop();
-    const validationFilePath = path.join(testPath, ...normalizedTitlePath);
-    const validationFileName = `${normalizedTestName}${normalizedFileName}.${fileExtension}`;
-    return path.join(validationFilePath, validationFileName);
+  private applyNamingStrategy(
+    filePath: string,
+    snapshotName: string | undefined,
+    namingStrategy: SnapshotNamingStrategy | undefined,
+  ): string {
+    if (snapshotName === undefined) {
+      return filePath;
+    }
+
+    const normalizedSnapshotName = normalizeFileName(snapshotName);
+
+    if (namingStrategy === "fileSuffix") {
+      return `${filePath}_${normalizedSnapshotName}`;
+    }
+
+    return path.join(filePath, normalizedSnapshotName);
   }
 
   private writeFileSnapshots(

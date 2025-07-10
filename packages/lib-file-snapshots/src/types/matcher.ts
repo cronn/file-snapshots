@@ -39,15 +39,25 @@ export interface MatchValidationFileOptions {
   name?: string;
 
   /**
+   * The naming strategy to use for storing the file snapshot
+   *
+   * @default "file"
+   */
+  namingStrategy?: SnapshotNamingStrategy;
+
+  /**
    * The serializer to use for the snapshot
    */
   serializer: SnapshotSerializer;
 }
 
+export type SnapshotNamingStrategy = "file" | "fileSuffix";
+
 export interface ValidationFileMeta {
   testPath: string;
   titlePath: Array<string>;
   name?: string;
+  namingStrategy?: SnapshotNamingStrategy;
   fileExtension: string;
 }
 

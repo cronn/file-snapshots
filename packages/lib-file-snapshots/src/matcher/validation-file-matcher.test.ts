@@ -75,7 +75,7 @@ test("when validation file exists, does not recreate validation file", async (co
   );
 });
 
-test("appends name to validation file name", async (context) => {
+test("uses naming strategy file by default", async (context) => {
   cleanTmpDir();
 
   await snapshotMatcherResult(
@@ -87,6 +87,42 @@ test("appends name to validation file name", async (context) => {
       testPath: "./src/tests/feature.test.ts",
       titlePath: ["file"],
       name: "name",
+      serializer: new TextSerializer(),
+    }),
+  );
+});
+
+test("when naming strategy is file, appends name to validation file path", async (context) => {
+  cleanTmpDir();
+
+  await snapshotMatcherResult(
+    context,
+    new ValidationFileMatcher({
+      validationDir: path.join(TMP_DIR, "validation"),
+      outputDir: path.join(TMP_DIR, "output"),
+    }).matchFileSnapshot("value", {
+      testPath: "./src/tests/feature.test.ts",
+      titlePath: ["file"],
+      name: "name",
+      namingStrategy: "file",
+      serializer: new TextSerializer(),
+    }),
+  );
+});
+
+test("when naming strategy is fileSuffix, appends name to validation file name", async (context) => {
+  cleanTmpDir();
+
+  await snapshotMatcherResult(
+    context,
+    new ValidationFileMatcher({
+      validationDir: path.join(TMP_DIR, "validation"),
+      outputDir: path.join(TMP_DIR, "output"),
+    }).matchFileSnapshot("value", {
+      testPath: "./src/tests/feature.test.ts",
+      titlePath: ["file"],
+      name: "name",
+      namingStrategy: "fileSuffix",
       serializer: new TextSerializer(),
     }),
   );
