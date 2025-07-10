@@ -39,13 +39,14 @@ export function matchValidationFile(
   const { titlePath, testPath } = parseTestInfo(test.info(), filterSteps);
   let pass: boolean;
 
-  const { name } = options;
+  const { name, namingStrategy } = options;
   const matcherResult = new ValidationFileMatcher(
     matcherConfig,
   ).matchFileSnapshot(actual, {
     testPath,
     titlePath,
     name,
+    namingStrategy,
     serializer,
   });
 

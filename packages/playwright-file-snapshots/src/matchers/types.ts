@@ -1,6 +1,10 @@
 import type { MatcherReturnType } from "@playwright/test";
 
-import type { JsonNormalizer, TextNormalizer } from "@cronn/lib-file-snapshots";
+import type {
+  JsonNormalizer,
+  SnapshotNamingStrategy,
+  TextNormalizer,
+} from "@cronn/lib-file-snapshots";
 
 export interface PlaywrightValidationFileMatcherConfig {
   /**
@@ -43,6 +47,13 @@ export interface PlaywrightMatchValidationFileOptions {
    * Used to distinguish multiple file snapshots within the same `test` or `test.step`.
    */
   name?: string;
+
+  /**
+   * The naming strategy to use for storing the file snapshot
+   *
+   * @default "file"
+   */
+  namingStrategy?: SnapshotNamingStrategy;
 }
 
 export interface PlaywrightMatchTextFileOptions
