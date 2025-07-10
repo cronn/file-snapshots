@@ -1,4 +1,8 @@
-import type { JsonNormalizer, TextNormalizer } from "@cronn/lib-file-snapshots";
+import type {
+  JsonNormalizer,
+  SnapshotNamingStrategy,
+  TextNormalizer,
+} from "@cronn/lib-file-snapshots";
 
 export interface VitestValidationFileMatchers<R = unknown> {
   toMatchTextFile: (options?: VitestMatchTextFileOptions) => R;
@@ -12,6 +16,13 @@ export interface VitestMatchValidationFileOptions {
    * Used to distinguish multiple file snapshots within the same `test`.
    */
   name?: string;
+
+  /**
+   * The naming strategy to use for storing the file snapshot
+   *
+   * @default "file"
+   */
+  namingStrategy?: SnapshotNamingStrategy;
 }
 
 export interface VitestMatchTextFileOptions
