@@ -38,13 +38,14 @@ export function matchValidationFile(
   }
 
   const { testDir = ".", ...matcherConfig } = config;
-  const { name } = options;
+  const { name, namingStrategy } = options;
   const matcherResult = new ValidationFileMatcher(
     matcherConfig,
   ).matchFileSnapshot(received, {
     testPath: parseTestPath(testPath, testDir),
     titlePath: parseTestName(currentTestName),
     name,
+    namingStrategy,
     serializer,
   });
 

@@ -160,6 +160,38 @@ test("date is masked", () => {
 // }
 ```
 
+### Named snapshots
+
+By default, the name of a file snapshot is automatically derived from the hierarchy of test titles, including `describe` and `test`. When using multiple file snapshot matchers in the same test context, it's necessary to define a unique `name` for the snapshot.
+
+```ts
+test("named snapshots", () => {
+  // named_snapshots/snapshot_1.txt
+  expect("value 1").toMatchTextFile({ name: "snapshot 1" });
+  // named_snapshots/snapshot_2.txt
+  expect("value 2").toMatchTextFile({ name: "snapshot 2" });
+});
+```
+
+By default, the naming strategy `file` is used, which stores all file snapshots within a test context in the same directory, using `name` as filename.
+
+The naming strategy `fileSuffix` uses `name` as suffix of the filename. This can be used to reduce the nesting of snapshot directories:
+
+```ts
+test("named snapshots", () => {
+  // named_snapshots_snapshot_1.txt
+  expect("value 1").toMatchTextFile({
+    name: "snapshot 1",
+    namingStrategy: "fileSuffix",
+  });
+  // named_snapshots_snapshot_2.txt
+  expect("value 2").toMatchTextFile({
+    name: "snapshot 2",
+    namingStrategy: "fileSuffix",
+  });
+});
+```
+
 ### Using Soft Assertions
 
 ```ts
@@ -212,10 +244,11 @@ expect(value).toMatchJsonFile({
 });
 ```
 
-| Option        | Default Value | Description                                                                                             |
-| ------------- | ------------- | ------------------------------------------------------------------------------------------------------- |
-| `name`        | `undefined`   | Unique `name` of the file snapshot. Used to distinguish multiple file snapshots within the same `test`. |
-| `normalizers` | `[]`          | Custom normalizers to apply before serialization.                                                       |
+| Option           | Default Value | Description                                                                                             |
+| ---------------- | ------------- | ------------------------------------------------------------------------------------------------------- |
+| `name`           | `undefined`   | Unique `name` of the file snapshot. Used to distinguish multiple file snapshots within the same `test`. |
+| `namingStrategy` | `file`        | The naming strategy to use for storing the file snapshot. Available strategies: `file`, `fileSuffix`.   |
+| `normalizers`    | `[]`          | Custom normalizers to apply before serialization.                                                       |
 
 #### JSON Snapshot Options
 
