@@ -1,5 +1,13 @@
 # @cronn/lib-file-snapshots
 
+## 0.8.0
+
+### Minor Changes
+
+- d33e703: Remove more special characters from file names, including quotes and brackets
+- 0695b55: Introduce `namingStrategy` to `ValidationFileMatcher`, defaulting to `file`
+- d33e703: Normalize all whitespace characters in file names
+
 ## 0.7.0
 
 ### Minor Changes

@@ -1,5 +1,19 @@
 # @cronn/vitest-file-snapshots
 
+## 0.9.0
+
+### Minor Changes
+
+- 3c96aa6: Introduce option `namingStrategy` for file matchers
+- 3c96aa6: Breaking change: Use `file` as default `namingStrategy`
+
+### Patch Changes
+
+- Updated dependencies [d33e703]
+- Updated dependencies [0695b55]
+- Updated dependencies [d33e703]
+  - @cronn/lib-file-snapshots@0.8.0
+
 ## 0.8.2
 
 ### Patch Changes
