@@ -1,5 +1,19 @@
 # @cronn/playwright-file-snapshots
 
+## 0.7.0
+
+### Minor Changes
+
+- 8eb76f5: Introduce option `namingStrategy` for file matchers
+- 8eb76f5: Breaking change: Use `file` as default `namingStrategy`
+
+### Patch Changes
+
+- Updated dependencies [d33e703]
+- Updated dependencies [0695b55]
+- Updated dependencies [d33e703]
+  - @cronn/lib-file-snapshots@0.8.0
+
 ## 0.6.0
 
 ### Minor Changes
