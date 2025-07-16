@@ -25,6 +25,13 @@ export interface PlaywrightValidationFileMatcherConfig {
    * Filter test steps which should not be part of the snapshot file path
    */
   filterSteps?: StepFilter;
+
+  /**
+   * Enable soft assertions
+   *
+   * @default true
+   */
+  soft?: boolean;
 }
 
 export type StepFilter = (stepTitle: string) => boolean;

@@ -246,6 +246,7 @@ const expect = defineValidationFileExpect({
 | `validationDir` | `data/test/validation` | Directory in which golden masters are stored.                         |
 | `outputDir`     | `data/test/output`     | Directory in which file snapshots from test runs are stored.          |
 | `filterSteps`   | `() => true`           | Filter test steps which should not be part of the snapshot file path. |
+| `soft`          | `true`                 | Enable soft assertions.                                               |
 
 ### File Snapshot Options
 

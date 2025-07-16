@@ -51,7 +51,7 @@ export function matchValidationFile(
   });
 
   try {
-    baseExpect.soft(matcherResult.actual).toBe(matcherResult.expected);
+    baseExpect(matcherResult.actual).toBe(matcherResult.expected);
     pass = true;
   } catch {
     pass = false;
