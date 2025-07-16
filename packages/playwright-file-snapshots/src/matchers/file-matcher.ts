@@ -30,7 +30,7 @@ export function matchValidationFile(
 ): MatcherReturnType {
   const { matcherName, actual, serializer, config, options, matcherState } =
     params;
-  const { isNot } = matcherState;
+  const { isNot, utils } = matcherState;
 
   if (isNot) {
     throw new Error("Matcher negation is not supported");
@@ -61,8 +61,23 @@ export function matchValidationFile(
   return {
     name: matcherName,
     pass,
-    message: matcherResult.message,
+    message: () =>
+      printParagraphs([
+        utils.matcherHint(matcherName, "actual", ""),
+        matcherResult.message(),
+        utils.printDiffOrStringify(
+          matcherResult.expected,
+          matcherResult.actual,
+          "Validation file",
+          "Actual file",
+          false,
+        ),
+      ]),
     expected: matcherResult.expected,
     actual: matcherResult.actual,
   };
+}
+
+function printParagraphs(lines: Array<string>): string {
+  return lines.join("\n\n");
 }
