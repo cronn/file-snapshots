@@ -160,7 +160,7 @@ test("date is masked", () => {
 // }
 ```
 
-### Named snapshots
+### Named Snapshots
 
 By default, the name of a file snapshot is automatically derived from the hierarchy of test titles, including `describe` and `test`. When using multiple file snapshot matchers in the same test context, it's necessary to define a unique `name` for the snapshot.
 
