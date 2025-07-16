@@ -32,7 +32,7 @@ export function defineValidationFileExpect(
     } = options;
     return matchValidationFile({
       actual,
-      name: "toMatchJsonFile",
+      matcherName: "toMatchJsonFile",
       serializer: new JsonSerializer({
         includeUndefinedObjectProperties,
         normalizers,
@@ -51,7 +51,7 @@ export function defineValidationFileExpect(
     const { normalizers, ...snapshotOptions } = options;
     return matchValidationFile({
       actual,
-      name: "toMatchTextFile",
+      matcherName: "toMatchTextFile",
       serializer: new TextSerializer({ normalizers }),
       config: snapshotConfig,
       options: snapshotOptions,
