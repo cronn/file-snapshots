@@ -22,3 +22,17 @@ test("filters steps from snapshot file path", () => {
     });
   });
 });
+
+test.fail("uses soft assertions by default", () => {
+  const expect = defineValidationFileExpect();
+
+  expect(() => expect("changed value").toMatchJsonFile()).toThrowError();
+});
+
+test("disables soft assertions", () => {
+  const expect = defineValidationFileExpect({
+    soft: false,
+  });
+
+  expect(() => expect("changed value").toMatchJsonFile()).toThrowError();
+});

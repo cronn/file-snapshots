@@ -18,6 +18,8 @@ import type {
 export function defineValidationFileExpect(
   config: PlaywrightValidationFileMatcherConfig = {},
 ): Expect<PlaywrightValidationFileMatchers> {
+  const { soft = true, ...snapshotConfig } = config;
+
   function toMatchJsonFile(
     this: ExpectMatcherState,
     actual: unknown,
@@ -35,7 +37,7 @@ export function defineValidationFileExpect(
         includeUndefinedObjectProperties,
         normalizers,
       }),
-      config,
+      config: snapshotConfig,
       options: snapshotOptions,
       matcherState: this,
     });
@@ -51,14 +53,18 @@ export function defineValidationFileExpect(
       actual,
       name: "toMatchTextFile",
       serializer: new TextSerializer({ normalizers }),
-      config,
+      config: snapshotConfig,
       options: snapshotOptions,
       matcherState: this,
     });
   }
 
-  return baseExpect.extend({
-    toMatchJsonFile,
-    toMatchTextFile,
-  });
+  return baseExpect
+    .configure({
+      soft,
+    })
+    .extend({
+      toMatchJsonFile,
+      toMatchTextFile,
+    });
 }
