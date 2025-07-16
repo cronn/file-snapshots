@@ -18,7 +18,7 @@ import { parseTestInfo } from "./utils";
 
 interface MatchValidationFileParams {
   actual: unknown;
-  name: string;
+  matcherName: string;
   serializer: SnapshotSerializer;
   config: PlaywrightValidationFileMatcherConfig;
   options: PlaywrightMatchValidationFileOptions;
@@ -28,7 +28,8 @@ interface MatchValidationFileParams {
 export function matchValidationFile(
   params: MatchValidationFileParams,
 ): MatcherReturnType {
-  const { actual, serializer, config, options, matcherState } = params;
+  const { matcherName, actual, serializer, config, options, matcherState } =
+    params;
   const { isNot } = matcherState;
 
   if (isNot) {
@@ -58,7 +59,7 @@ export function matchValidationFile(
   }
 
   return {
-    name,
+    name: matcherName,
     pass,
     message: matcherResult.message,
     expected: matcherResult.expected,
