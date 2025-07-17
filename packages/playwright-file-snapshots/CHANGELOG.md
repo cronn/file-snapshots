@@ -1,5 +1,17 @@
 # @cronn/playwright-file-snapshots
 
+## 0.8.0
+
+### Minor Changes
+
+- 46b2c56: Fix: Matcher error message is not visible
+- 46b2c56: Make soft assertion behavior configurable
+
+### Patch Changes
+
+- ac8d724: Improve matcher error message
+- 49bd0d7: Fix: Snapshot name is used as matcher name
+
 ## 0.7.0
 
 ### Minor Changes
