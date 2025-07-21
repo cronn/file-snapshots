@@ -24,13 +24,10 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "check": "pnpm run compile && pnpm run lint:check",
-    "fix": "pnpm run lint:fix",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "compile": "tsc",
-    "build": "tsup && node scripts/fix-declaration-file.js",
-    "ci": "pnpm run check && pnpm run test:coverage && pnpm run build"
+    "build": "tsup && node scripts/fix-declaration-file.js"
   },
   "type": "module",
   "exports": {

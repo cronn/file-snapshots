@@ -19,6 +19,7 @@ catalog:
   "prettier": 3.6.2
   "@trivago/prettier-plugin-sort-imports": 5.2.2
   "jiti": 2.4.2
+  "turbo": 2.5.5
 
 includeWorkspaceRoot: true
 

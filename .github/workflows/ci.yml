@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+
 jobs:
   check:
     name: Run CI checks
@@ -29,11 +32,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install Playwright browsers
-        run: pnpm run --filter playwright-file-snapshots playwright:install
-
       - name: Run CI script
-        run: pnpm run --recursive ci
+        run: pnpm turbo run ci
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
