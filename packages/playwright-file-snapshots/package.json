@@ -24,16 +24,13 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "check": "pnpm run compile && pnpm run lint:check",
-    "fix": "pnpm run lint:fix",
     "test:unit": "vitest run",
     "test:unit:coverage": "vitest run --coverage",
     "test:integration": "playwright test",
     "playwright:install": "playwright install chromium",
     "compile": "tsc",
     "build": "tsup",
-    "start": "serve static/",
-    "ci": "pnpm run check && pnpm run test:unit:coverage && pnpm run test:integration && pnpm run build"
+    "start": "serve static/"
   },
   "type": "module",
   "exports": {

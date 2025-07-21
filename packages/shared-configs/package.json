@@ -18,11 +18,8 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "check": "pnpm run compile && pnpm run lint:check",
-    "fix": "pnpm run lint:fix",
     "compile": "tsc",
-    "build": "tsup",
-    "ci": "pnpm run check && pnpm run build"
+    "build": "tsup"
   },
   "type": "module",
   "exports": {

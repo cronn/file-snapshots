@@ -6,19 +6,18 @@
     "url": "https://github.com/cronn/file-snapshots"
   },
   "type": "module",
+  "packageManager": "pnpm@10.11.0",
   "scripts": {
     "format:check": "prettier . --check",
     "format:fix": "prettier . --write",
-    "check": "pnpm run format:check",
-    "fix": "pnpm run format:fix",
-    "ci": "pnpm run check",
-    "prepublishOnly": "pnpm run --recursive ci",
-    "version": "pnpm changeset version && pnpm run format:fix",
-    "release": "pnpm run --recursive build && pnpm changeset publish"
+    "prepublishOnly": "pnpm turbo run ci",
+    "version": "pnpm changeset version && pnpm turbo run format:fix",
+    "release": "pnpm turbo run build && pnpm changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
-    "prettier": "catalog:"
+    "prettier": "catalog:",
+    "turbo": "catalog:"
   }
 }
