@@ -33,6 +33,7 @@ export type JsonNormalizer = (
 
 export interface JsonNormalizerContext {
   key?: string;
+  index?: number;
 }
 
 export class JsonSerializer implements SnapshotSerializer {
@@ -144,7 +145,7 @@ export class JsonSerializer implements SnapshotSerializer {
 
   private normalizeArray(value: Array<unknown>): JsonValue {
     return value.map((item, index) =>
-      this.normalizeValueRecursive(item, { key: index.toString() }),
+      this.normalizeValueRecursive(item, { index }),
     );
   }
 
