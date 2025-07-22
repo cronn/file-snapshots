@@ -1,5 +1,6 @@
 import { test } from "vitest";
 
+import { isString } from "../utils/guards";
 import { type SerializerTestFn, testSerializer } from "../utils/test";
 
 import {
@@ -112,7 +113,7 @@ test(
       comment: "comment",
     },
     {
-      normalizers: [removeCommentProperty, prefixWithKey, maskNumber],
+      normalizers: [removeCommentProperty, prefixWithContext, maskNumber],
     },
   ),
 );
@@ -133,13 +134,17 @@ function maskNumber(value: unknown): unknown {
   return value;
 }
 
-function prefixWithKey(
+function prefixWithContext(
   value: unknown,
   context: JsonNormalizerContext,
 ): unknown {
-  if (context.key === undefined || typeof value !== "string") {
-    return value;
+  if (isString(value) && context.index !== undefined) {
+    return `${context.index}:${value}`;
   }
 
-  return `${context.key}:${value}`;
+  if (isString(value) && context.key !== undefined) {
+    return `${context.key}:${value}`;
+  }
+
+  return value;
 }
