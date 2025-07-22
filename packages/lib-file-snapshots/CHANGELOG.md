@@ -1,5 +1,12 @@
 # @cronn/lib-file-snapshots
 
+## 0.9.0
+
+### Minor Changes
+
+- 8bdd71a: Breaking change: Array items now use `index` instead of `key` in `JsonNormalizerContext`
+- 8bdd71a: Add index of array item as explicit property to `JsonNormalizerContext`
+
 ## 0.8.0
 
 ### Minor Changes
