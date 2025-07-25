@@ -1,2 +1,1 @@
-Actual file '.tmp/output/src/tests/feature.test.ts/file/name.txt'
-does not match validation file '.tmp/validation/src/tests/feature.test.ts/file/name.txt'
+Missing validation file '.tmp/validation/src/tests/feature.test.ts/file/name.txt'
