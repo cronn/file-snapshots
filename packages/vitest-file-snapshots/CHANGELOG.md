@@ -1,5 +1,12 @@
 # @cronn/vitest-file-snapshots
 
+## 0.9.2
+
+### Patch Changes
+
+- Updated dependencies [3437498]
+  - @cronn/lib-file-snapshots@0.10.0
+
 ## 0.9.1
 
 ### Patch Changes
