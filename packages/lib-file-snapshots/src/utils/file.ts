@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import path from "node:path";
 
 const NEW_LINE_SEPARATOR = "\n";
 
@@ -14,10 +15,6 @@ export function normalizeFileName(testName: string): string {
     .replaceAll(/_{2,}/g, "_");
 }
 
-export function mkdirRecursive(path: string): void {
-  fs.mkdirSync(path, { recursive: true });
-}
-
 export function readSnapshotFile(path: string): string {
   return fs.readFileSync(path, { encoding: "utf8" });
 }
@@ -27,12 +24,18 @@ export function writeSnapshotFile(
   data: string,
   markAsMissing = false,
 ): void {
+  mkdirRecursive(path.dirname(file));
+
   let finalizedData = addTrailingNewLine(data);
   if (markAsMissing) {
     finalizedData = addMissingFileMarker(finalizedData);
   }
 
   fs.writeFileSync(file, finalizedData, { encoding: "utf8" });
+}
+
+function mkdirRecursive(path: string): void {
+  fs.mkdirSync(path, { recursive: true });
 }
 
 function addTrailingNewLine(data: string): string {

@@ -9,7 +9,6 @@ import type {
   ValidationFileMeta,
 } from "../types/matcher";
 import {
-  mkdirRecursive,
   normalizeFileName,
   readSnapshotFile,
   writeSnapshotFile,
@@ -83,15 +82,8 @@ export class ValidationFileMatcher {
     actual: string,
     validationFilePath: string,
   ): ValidationFileMatcherResult {
-    const validationFileDir = path.dirname(validationFilePath);
-    const testOutputDir = `${this.outputDir}/${validationFileDir}`;
     const actualFile = `${this.outputDir}/${validationFilePath}`;
-
-    const testValidationDir = `${this.validationDir}/${validationFileDir}`;
     const validationFile = `${this.validationDir}/${validationFilePath}`;
-
-    mkdirRecursive(testOutputDir);
-    mkdirRecursive(testValidationDir);
 
     if (!fs.existsSync(validationFile)) {
       writeSnapshotFile(validationFile, actual, true);
