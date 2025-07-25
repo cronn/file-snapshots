@@ -2,10 +2,7 @@ import { rmSync } from "node:fs";
 import path from "node:path";
 import { type TestContext, expect } from "vitest";
 
-import type {
-  SnapshotSerializer,
-  SnapshotSerializerResult,
-} from "../types/serializer";
+import type { SnapshotSerializer } from "../types/serializer";
 
 import { normalizeFileName } from "./file";
 
@@ -21,7 +18,7 @@ export function testSerializer(
 ): SerializerTestFn {
   return async (context): Promise<void> => {
     const { testFileName, testName } = resolveTestContext(context);
-    const { serializedValue, fileExtension } = serializer.serialize(value);
+    const serializedValue = serializer.serialize(value);
     const normalizedTestName = normalizeFileName(testName);
 
     expect(serializer.canSerialize(value)).toBe(true);
@@ -30,7 +27,7 @@ export function testSerializer(
         ".",
         SNAPSHOTS_DIR,
         testFileName,
-        `${normalizedTestName}.${fileExtension}`,
+        `${normalizedTestName}.${serializer.fileExtension}`,
       ),
     );
   };
@@ -47,11 +44,13 @@ export function testSerializerThrows(
 }
 
 export class FailingSerializer implements SnapshotSerializer {
+  public readonly fileExtension = "error";
+
   public canSerialize(_value: unknown): boolean {
     return false;
   }
 
-  public serialize(_value: unknown): SnapshotSerializerResult {
+  public serialize(_value: unknown): string {
     throw new Error("Not implemented");
   }
 }

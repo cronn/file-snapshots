@@ -8,7 +8,10 @@ export {
   type TextNormalizer,
 } from "./serializers/text-serializer";
 export { ValidationFileMatcher } from "./matcher/validation-file-matcher";
-export type { SnapshotNamingStrategy } from "./types/matcher";
+export type {
+  SnapshotNamingStrategy,
+  ValidationFileMatcherResult,
+} from "./types/matcher";
 export type { SnapshotSerializer } from "./types/serializer";
 export {
   isArray,

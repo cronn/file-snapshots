@@ -1,7 +1,4 @@
-import type {
-  SnapshotSerializer,
-  SnapshotSerializerResult,
-} from "../types/serializer";
+import type { SnapshotSerializer } from "../types/serializer";
 import { isArray, isPlainObject, isString } from "../utils/guards";
 
 type JsonValue =
@@ -37,6 +34,8 @@ export interface JsonNormalizerContext {
 }
 
 export class JsonSerializer implements SnapshotSerializer {
+  public readonly fileExtension = "json";
+
   private readonly includeUndefinedObjectProperties: boolean;
   private readonly normalizers: Array<JsonNormalizer>;
 
@@ -50,14 +49,9 @@ export class JsonSerializer implements SnapshotSerializer {
     return true;
   }
 
-  public serialize(value: unknown): SnapshotSerializerResult {
+  public serialize(value: unknown): string {
     const jsonValue = this.normalizeValueRecursive(value);
-    const serializedValue = JSON.stringify(jsonValue, undefined, 2);
-
-    return {
-      serializedValue: serializedValue,
-      fileExtension: "json",
-    };
+    return JSON.stringify(jsonValue, undefined, 2);
   }
 
   private normalizeValueRecursive(
