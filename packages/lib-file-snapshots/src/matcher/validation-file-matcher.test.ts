@@ -19,8 +19,14 @@ async function snapshotMatcherResult(
   context: TestContext,
   matcherResult: ValidationFileMatcherResult,
 ): Promise<void> {
-  const { actual, expected, actualFile, validationFile, message } =
-    matcherResult;
+  const {
+    actual,
+    expected,
+    actualFile,
+    validationFile,
+    message,
+    isValidationFileMissing,
+  } = matcherResult;
   const { testFileName, testName } = resolveTestContext(context);
   const normalizedTestName = normalizeFileName(testName);
 
@@ -45,6 +51,9 @@ async function snapshotMatcherResult(
   );
   await expect(message()).toMatchFileSnapshot(
     path.join(snapshotDir, "message.txt"),
+  );
+  await expect(isValidationFileMissing).toMatchFileSnapshot(
+    path.join(snapshotDir, "isValidationFileMissing.txt"),
   );
 }
 
