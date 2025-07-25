@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.10.0
+
+### Minor Changes
+
+- 3437498: Remove Emojis from filenames
+
 ## 0.9.0
 
 ### Minor Changes
