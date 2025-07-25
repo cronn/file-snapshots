@@ -41,6 +41,7 @@ export class ValidationFileMatcher {
       return this.createMatcherResult({
         message: () =>
           `Actual file '${actualFile}'\ndoes not match validation file '${validationFile}'`,
+        isValidationFileMissing: true,
       });
     }
 
@@ -48,6 +49,7 @@ export class ValidationFileMatcher {
 
     return this.createMatcherResult({
       message: () => `Missing validation file '${validationFile}'`,
+      isValidationFileMissing: false,
     });
   }
 
@@ -94,7 +96,10 @@ export class ValidationFileMatcher {
   }
 
   private createMatcherResult(
-    params: Pick<ValidationFileMatcherResult, "message">,
+    params: Pick<
+      ValidationFileMatcherResult,
+      "message" | "isValidationFileMissing"
+    >,
   ): ValidationFileMatcherResult {
     const { actualFile, validationFile } = this.filePaths;
 
