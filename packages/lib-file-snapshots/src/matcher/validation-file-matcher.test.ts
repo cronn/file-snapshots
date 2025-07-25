@@ -56,22 +56,21 @@ test("when validation file is missing, creates validation file with marker", asy
     new ValidationFileMatcher({
       validationDir: path.join(TMP_DIR, "validation"),
       outputDir: path.join(TMP_DIR, "output"),
-    }).matchFileSnapshot("value", {
       testPath: "./src/tests/feature.test.ts",
       titlePath: ["validation file", "missing"],
       serializer: new TextSerializer(),
-    }),
+    }).matchFileSnapshot("value"),
   );
 });
 
 test("when validation file exists, does not recreate validation file", async (context) => {
   await snapshotMatcherResult(
     context,
-    new ValidationFileMatcher().matchFileSnapshot(["value"], {
+    new ValidationFileMatcher({
       testPath: "./src/tests/feature.test.ts",
       titlePath: ["validation file", "existing"],
       serializer: new JsonSerializer(),
-    }),
+    }).matchFileSnapshot(["value"]),
   );
 });
 
@@ -83,12 +82,11 @@ test("uses naming strategy file by default", async (context) => {
     new ValidationFileMatcher({
       validationDir: path.join(TMP_DIR, "validation"),
       outputDir: path.join(TMP_DIR, "output"),
-    }).matchFileSnapshot("value", {
       testPath: "./src/tests/feature.test.ts",
       titlePath: ["file"],
       name: "name",
       serializer: new TextSerializer(),
-    }),
+    }).matchFileSnapshot("value"),
   );
 });
 
@@ -100,13 +98,12 @@ test("when naming strategy is file, appends name to validation file path", async
     new ValidationFileMatcher({
       validationDir: path.join(TMP_DIR, "validation"),
       outputDir: path.join(TMP_DIR, "output"),
-    }).matchFileSnapshot("value", {
       testPath: "./src/tests/feature.test.ts",
       titlePath: ["file"],
       name: "name",
       namingStrategy: "file",
       serializer: new TextSerializer(),
-    }),
+    }).matchFileSnapshot("value"),
   );
 });
 
@@ -118,22 +115,21 @@ test("when naming strategy is fileSuffix, appends name to validation file name",
     new ValidationFileMatcher({
       validationDir: path.join(TMP_DIR, "validation"),
       outputDir: path.join(TMP_DIR, "output"),
-    }).matchFileSnapshot("value", {
       testPath: "./src/tests/feature.test.ts",
       titlePath: ["file"],
       name: "name",
       namingStrategy: "fileSuffix",
       serializer: new TextSerializer(),
-    }),
+    }).matchFileSnapshot("value"),
   );
 });
 
 test("when serializer does not support value, throws error", () => {
   expect(() =>
-    new ValidationFileMatcher().matchFileSnapshot(["value"], {
+    new ValidationFileMatcher({
       testPath: "./src/tests/feature.test.ts",
       titlePath: ["error"],
       serializer: new FailingSerializer(),
-    }),
+    }).matchFileSnapshot(["value"]),
   ).toThrowError();
 });

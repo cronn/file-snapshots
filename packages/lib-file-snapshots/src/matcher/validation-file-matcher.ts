@@ -2,62 +2,73 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 import type {
-  MatchValidationFileOptions,
   SnapshotNamingStrategy,
   ValidationFileMatcherConfig,
   ValidationFileMatcherResult,
-  ValidationFileMeta,
 } from "../types/matcher";
+import type { SnapshotSerializer } from "../types/serializer";
 import {
   normalizeFileName,
   readSnapshotFile,
   writeSnapshotFile,
 } from "../utils/file";
 
-export class ValidationFileMatcher {
-  private readonly validationDir: string;
-  private readonly outputDir: string;
+interface MatcherFilePaths {
+  actualFile: string;
+  validationFile: string;
+}
 
-  public constructor(config: ValidationFileMatcherConfig = {}) {
-    this.validationDir = config.validationDir ?? "data/test/validation";
-    this.outputDir = config.outputDir ?? "data/test/output";
+export class ValidationFileMatcher {
+  private readonly serializer: SnapshotSerializer;
+  private readonly filePaths: MatcherFilePaths;
+
+  public constructor(config: ValidationFileMatcherConfig) {
+    this.serializer = config.serializer;
+    this.filePaths = this.buildFilePaths(config);
   }
 
-  public matchFileSnapshot(
-    actual: unknown,
-    options: MatchValidationFileOptions,
-  ): ValidationFileMatcherResult {
-    const { testPath, titlePath, name, namingStrategy, serializer } = options;
-
-    if (!serializer.canSerialize(actual)) {
+  public matchFileSnapshot(actual: unknown): ValidationFileMatcherResult {
+    if (!this.serializer.canSerialize(actual)) {
       throw new Error(`Cannot serialize value of type ${typeof actual}`);
     }
 
-    const serializedValue = serializer.serialize(actual);
+    const { actualFile, validationFile } = this.filePaths;
+    const serializedActual = this.serializer.serialize(actual);
 
-    const validationFilePath = this.buildValidationFilePath({
-      titlePath,
-      testPath,
-      name,
-      namingStrategy,
-      fileExtension: options.serializer.fileExtension,
-    });
+    writeSnapshotFile(actualFile, serializedActual);
 
-    return this.writeFileSnapshots(serializedValue, validationFilePath);
+    if (!this.existsValidationFile()) {
+      writeSnapshotFile(validationFile, serializedActual, true);
+    }
+
+    return {
+      actual: readSnapshotFile(actualFile),
+      expected: readSnapshotFile(validationFile),
+      actualFile,
+      validationFile,
+      message: () =>
+        `Actual file '${actualFile}'\ndoes not match validation file '${validationFile}'`,
+    };
   }
 
-  private buildValidationFilePath(options: ValidationFileMeta): string {
-    const { testPath, titlePath, name, namingStrategy, fileExtension } =
-      options;
-
-    const normalizedTitlePath = titlePath.map(normalizeFileName);
-    const filePath = path.join(testPath, ...normalizedTitlePath);
-    const fullFilePath = this.applyNamingStrategy(
-      filePath,
-      name,
-      namingStrategy,
+  private buildFilePaths(
+    config: ValidationFileMatcherConfig,
+  ): MatcherFilePaths {
+    const validationDir = config.validationDir ?? "data/test/validation";
+    const outputDir = config.outputDir ?? "data/test/output";
+    const normalizedTitlePath = config.titlePath.map(normalizeFileName);
+    const relativeFilePath = path.join(config.testPath, ...normalizedTitlePath);
+    const relativeFilePathWithName = this.applyNamingStrategy(
+      relativeFilePath,
+      config.name,
+      config.namingStrategy,
     );
-    return `${fullFilePath}.${fileExtension}`;
+    const relativeFilePathWithExtension = `${relativeFilePathWithName}.${this.serializer.fileExtension}`;
+
+    return {
+      actualFile: path.join(outputDir, relativeFilePathWithExtension),
+      validationFile: path.join(validationDir, relativeFilePathWithExtension),
+    };
   }
 
   private applyNamingStrategy(
@@ -78,25 +89,7 @@ export class ValidationFileMatcher {
     return path.join(filePath, normalizedSnapshotName);
   }
 
-  private writeFileSnapshots(
-    actual: string,
-    validationFilePath: string,
-  ): ValidationFileMatcherResult {
-    const actualFile = `${this.outputDir}/${validationFilePath}`;
-    const validationFile = `${this.validationDir}/${validationFilePath}`;
-
-    if (!fs.existsSync(validationFile)) {
-      writeSnapshotFile(validationFile, actual, true);
-    }
-    writeSnapshotFile(actualFile, actual);
-
-    return {
-      actual: readSnapshotFile(actualFile),
-      expected: readSnapshotFile(validationFile),
-      actualFile,
-      validationFile,
-      message: (): string =>
-        `Actual file '${actualFile}'\ndoes not match validation file '${validationFile}'`,
-    };
+  private existsValidationFile(): boolean {
+    return fs.existsSync(this.filePaths.validationFile);
   }
 }

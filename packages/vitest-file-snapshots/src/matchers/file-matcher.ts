@@ -37,17 +37,17 @@ export function matchValidationFile(
     throw new Error("Matcher negation is not supported");
   }
 
-  const { testDir = ".", ...matcherConfig } = config;
+  const { validationDir, outputDir, testDir = "." } = config;
   const { name, namingStrategy } = options;
-  const matcherResult = new ValidationFileMatcher(
-    matcherConfig,
-  ).matchFileSnapshot(received, {
+  const matcherResult = new ValidationFileMatcher({
+    validationDir,
+    outputDir,
     testPath: parseTestPath(testPath, testDir),
     titlePath: parseTestName(currentTestName),
     name,
     namingStrategy,
     serializer,
-  });
+  }).matchFileSnapshot(received);
 
   return {
     pass: equals(matcherResult.actual, matcherResult.expected, [], true),

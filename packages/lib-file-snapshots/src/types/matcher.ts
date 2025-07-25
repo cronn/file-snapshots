@@ -14,9 +14,7 @@ export interface ValidationFileMatcherConfig {
    * @default "data/test/output"
    */
   outputDir?: string;
-}
 
-export interface MatchValidationFileOptions {
   /**
    * The full path to the current test file
    *
@@ -52,14 +50,6 @@ export interface MatchValidationFileOptions {
 }
 
 export type SnapshotNamingStrategy = "file" | "fileSuffix";
-
-export interface ValidationFileMeta {
-  testPath: string;
-  titlePath: Array<string>;
-  name?: string;
-  namingStrategy?: SnapshotNamingStrategy;
-  fileExtension: string;
-}
 
 export interface ValidationFileMatcherResult {
   actual: string;
