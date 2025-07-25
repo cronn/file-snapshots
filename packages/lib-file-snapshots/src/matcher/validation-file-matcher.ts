@@ -67,7 +67,7 @@ export class ValidationFileMatcher {
   private applyNamingStrategy(
     filePath: string,
     snapshotName: string | undefined,
-    namingStrategy: SnapshotNamingStrategy | undefined,
+    namingStrategy: SnapshotNamingStrategy = "file",
   ): string {
     if (snapshotName === undefined) {
       return filePath;
