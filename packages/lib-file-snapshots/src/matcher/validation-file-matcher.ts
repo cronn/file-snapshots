@@ -34,20 +34,17 @@ export class ValidationFileMatcher {
       throw new Error(`Cannot serialize value of type ${typeof actual}`);
     }
 
-    const serializerResult = serializer.serialize(actual);
+    const serializedValue = serializer.serialize(actual);
 
     const validationFilePath = this.buildValidationFilePath({
       titlePath,
       testPath,
       name,
       namingStrategy,
-      fileExtension: serializerResult.fileExtension,
+      fileExtension: options.serializer.fileExtension,
     });
 
-    return this.writeFileSnapshots(
-      serializerResult.serializedValue,
-      validationFilePath,
-    );
+    return this.writeFileSnapshots(serializedValue, validationFilePath);
   }
 
   private buildValidationFilePath(options: ValidationFileMeta): string {
