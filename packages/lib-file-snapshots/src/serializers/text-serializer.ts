@@ -1,7 +1,4 @@
-import type {
-  SnapshotSerializer,
-  SnapshotSerializerResult,
-} from "../types/serializer";
+import type { SnapshotSerializer } from "../types/serializer";
 import { isString } from "../utils/guards";
 
 export interface TextSerializerOptions {
@@ -14,6 +11,8 @@ export interface TextSerializerOptions {
 export type TextNormalizer = (value: string) => string;
 
 export class TextSerializer implements SnapshotSerializer {
+  public readonly fileExtension = "txt";
+
   private readonly normalizers: Array<TextNormalizer>;
 
   public constructor(options: TextSerializerOptions = {}) {
@@ -24,17 +23,14 @@ export class TextSerializer implements SnapshotSerializer {
     return isString(value);
   }
 
-  public serialize(value: unknown): SnapshotSerializerResult {
+  public serialize(value: unknown): string {
     if (!this.canSerialize(value)) {
       throw new Error(
         `Missing text serialization for value of type ${typeof value}.`,
       );
     }
 
-    return {
-      serializedValue: this.normalizeValue(value),
-      fileExtension: "txt",
-    };
+    return this.normalizeValue(value);
   }
 
   private normalizeValue(value: string): string {
