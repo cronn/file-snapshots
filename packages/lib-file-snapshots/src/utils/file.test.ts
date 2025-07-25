@@ -45,6 +45,15 @@ describe("normalize file name", () => {
     expect(normalizeFileName(value)).toBe("");
   });
 
+  test.each([
+    "*️⃣#️⃣0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟",
+    "😀😃😄😁😆😅😂🤣😊😇🙂🙃😉😌😍🥰😘",
+    "⌚⌛⏩⏬⏰⏳◽◾☔☕♈♓♿",
+    "👨‍❤️‍👨👨‍❤️‍💋‍👨👨‍👦👨‍👦‍👦👨‍👧👨‍👧‍👦👨‍👧‍👧👨‍👨‍👦👨‍👨‍👦‍👦👨‍👨‍👨🏻‍❤️‍👨🏾",
+  ])("removes emojis %s from test name", (value) => {
+    expect(normalizeFileName(value)).toBe("");
+  });
+
   test("collapses sequential word delimiters to single underscore", () => {
     expect(normalizeFileName(" \t_")).toBe("_");
   });
