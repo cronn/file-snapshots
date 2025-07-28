@@ -40,11 +40,11 @@ export interface PlaywrightValidationFileMatchers {
   toMatchJsonFile: (
     actual: unknown,
     options?: PlaywrightMatchJsonFileOptions,
-  ) => MatcherReturnType;
+  ) => Promise<MatcherReturnType>;
   toMatchTextFile: (
     actual: string,
     options?: PlaywrightMatchTextFileOptions,
-  ) => MatcherReturnType;
+  ) => Promise<MatcherReturnType>;
 }
 
 export interface PlaywrightMatchValidationFileOptions {
@@ -61,6 +61,13 @@ export interface PlaywrightMatchValidationFileOptions {
    * @default "file"
    */
   namingStrategy?: SnapshotNamingStrategy;
+
+  /**
+   * Retries the snapshot until it passes or the timeout value is reached.
+   *
+   * Defaults to Playwright's expect timeout.
+   */
+  timeout?: number;
 }
 
 export interface PlaywrightMatchTextFileOptions

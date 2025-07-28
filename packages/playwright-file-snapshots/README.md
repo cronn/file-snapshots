@@ -53,9 +53,9 @@ import { test } from "@playwright/test";
 
 import { expect } from "./fixtures";
 
-test("matches JSON file", () => {
+test("matches JSON file", async () => {
   const snapshot = "…";
-  expect(snapshot).toMatchJsonFile();
+  await expect(snapshot).toMatchJsonFile();
 });
 ```
 
@@ -92,8 +92,8 @@ File snapshot assertions use one of the custom matchers:
 ### JSON File Snapshot
 
 ```ts
-test("value is expected value", () => {
-  expect({ value: "expected value" }).toMatchJsonFile();
+test("value is expected value", async () => {
+  await expect({ value: "expected value" }).toMatchJsonFile();
 });
 
 // value_is_expected_value.json
@@ -105,8 +105,8 @@ test("value is expected value", () => {
 ### Text File Snapshot
 
 ```ts
-test("value is expected value", () => {
-  expect("expected value").toMatchTextFile();
+test("value is expected value", async () => {
+  await expect("expected value").toMatchTextFile();
 });
 
 // value_is_expected_value.txt
@@ -128,8 +128,10 @@ function maskDate(value: unknown): unknown {
   return value;
 }
 
-test("date is masked", () => {
-  expect({ date: new Date() }).toMatchJsonFile({ normalizers: [maskDate] });
+test("date is masked", async () => {
+  await expect({ date: new Date() }).toMatchJsonFile({
+    normalizers: [maskDate],
+  });
 });
 
 // date_is_masked.json
@@ -143,11 +145,11 @@ test("date is masked", () => {
 By default, the name of a file snapshot is automatically derived from the hierarchy of test titles, including `test.describe`, `test` and `test.step`. When using multiple file snapshot matchers in the same test context, it's necessary to define a unique `name` for the snapshot.
 
 ```ts
-test("named snapshots", () => {
+test("named snapshots", async () => {
   // named_snapshots/snapshot_1.txt
-  expect("value 1").toMatchTextFile({ name: "snapshot 1" });
+  await expect("value 1").toMatchTextFile({ name: "snapshot 1" });
   // named_snapshots/snapshot_2.txt
-  expect("value 2").toMatchTextFile({ name: "snapshot 2" });
+  await expect("value 2").toMatchTextFile({ name: "snapshot 2" });
 });
 ```
 
@@ -156,19 +158,43 @@ By default, the naming strategy `file` is used, which stores all file snapshots 
 The naming strategy `fileSuffix` uses `name` as suffix of the filename. This can be used to reduce the nesting of snapshot directories:
 
 ```ts
-test("named snapshots", () => {
+test("named snapshots", async () => {
   // named_snapshots_snapshot_1.txt
-  expect("value 1").toMatchTextFile({
+  await expect("value 1").toMatchTextFile({
     name: "snapshot 1",
     namingStrategy: "fileSuffix",
   });
   // named_snapshots_snapshot_2.txt
-  expect("value 2").toMatchTextFile({
+  await expect("value 2").toMatchTextFile({
     name: "snapshot 2",
     namingStrategy: "fileSuffix",
   });
 });
 ```
+
+### Snapshot Retries
+
+All file snapshot assertions support retries, inspired by Playwright's existing retry mechanism. In order to enable snapshot retries, pass a callback as actual value:
+
+```ts
+test("retry snapshot", async ({ page }) => {
+  await expect(() => page.getByRole("main").textContent()).toMatchTextFile();
+});
+```
+
+By default, Playwright's Expect timeout (5 s) is used. To define a custom timeout, pass the `timeout` option to the matcher:
+
+```ts
+test("retry snapshot", async ({ page }) => {
+  await expect(() => page.getByRole("main").textContent()).toMatchTextFile({
+    timeout: 500,
+  });
+});
+```
+
+When creating missing file snapshots, instead of retrying a delay of 250 ms (or `timeout` when lower) is added before performing the snapshot. This avoids flaky snapshots and long running tests.
+
+The same behavior can be enforced to update snapshots: simply pass the `--update-snapshots` flag to the Playwright CLI. Note that in contrast to Playwright, this only creates updated output files. The corresponding validation files need to be updated in a separate step.
 
 ### Using Soft Assertions
 
@@ -179,13 +205,13 @@ all snapshots within a test in single run:
 test("perform login", async () => {
   await test.step("initial page", async () => {
     const snapshot = await myPage.snapshot();
-    expect(snapshot).toMatchJsonFile();
+    await expect(snapshot).toMatchJsonFile();
   });
 
   await test.step("login page", async () => {
     await myPage.login("user", "password");
     const snapshot = await myPage.snapshot();
-    expect(snapshot).toMatchJsonFile();
+    await expect(snapshot).toMatchJsonFile();
   });
 });
 ```
@@ -208,7 +234,7 @@ import { snapshotAria } from "@cronn/playwright-file-snapshots";
 
 test("matches ARIA snapshots", async ({ page }) => {
   const ariaSnapshot = await snapshotAria(page.getByRole("main"));
-  expect(ariaSnapshot).toMatchJsonFile();
+  await expect(ariaSnapshot).toMatchJsonFile();
 });
 ```
 
@@ -219,7 +245,7 @@ object:
 import { snapshotAria } from "@cronn/playwright-file-snapshots";
 
 test("matches combined ARIA snapshots", async ({ page }) => {
-  expect({
+  await expect({
     nav: await snapshotAria(page.getByRole("navigation")),
     main: await snapshotAria(page.getByRole("main")),
   }).toMatchJsonFile();
@@ -253,16 +279,17 @@ const expect = defineValidationFileExpect({
 Snapshot options can be passed whenever calling the validation file matcher:
 
 ```ts
-expect(value).toMatchTextFile({
+await expect(value).toMatchTextFile({
   name: "snapshot",
 });
 ```
 
-| Option           | Default Value | Description                                                                                             |
-| ---------------- | ------------- | ------------------------------------------------------------------------------------------------------- |
-| `name`           | `undefined`   | Unique `name` of the file snapshot. Used to distinguish multiple file snapshots within the same `test`. |
-| `namingStrategy` | `file`        | The naming strategy to use for storing the file snapshot. Available strategies: `file`, `fileSuffix`.   |
-| `normalizers`    | `[]`          | Custom normalizers to apply before serialization.                                                       |
+| Option           | Default Value  | Description                                                                                             |
+| ---------------- | -------------- | ------------------------------------------------------------------------------------------------------- |
+| `name`           | `undefined`    | Unique `name` of the file snapshot. Used to distinguish multiple file snapshots within the same `test`. |
+| `namingStrategy` | `file`         | The naming strategy to use for storing the file snapshot. Available strategies: `file`, `fileSuffix`.   |
+| `normalizers`    | `[]`           | Custom normalizers to apply before serialization.                                                       |
+| `timeout`        | expect timeout | Retries the snapshot until it passes or the timeout value is reached.                                   |
 
 #### JSON Snapshot Options
 
