@@ -1,3 +1,4 @@
+import type { FullConfig } from "@playwright/test";
 import { describe, expect, test } from "vitest";
 
 import {
@@ -7,14 +8,49 @@ import {
   parseTestSteps,
 } from "./utils";
 
+function createConfig(values: Partial<FullConfig> = {}): FullConfig {
+  return {
+    projects: [],
+    reporter: [],
+    webServer: null,
+    forbidOnly: false,
+    fullyParallel: false,
+    globalSetup: null,
+    globalTeardown: null,
+    globalTimeout: 0,
+    grep: [],
+    grepInvert: null,
+    maxFailures: 0,
+    metadata: {},
+    preserveOutput: "never",
+    quiet: false,
+    reportSlowTests: null,
+    rootDir: "",
+    shard: null,
+    updateSnapshots: "none",
+    updateSourceMethod: "overwrite",
+    version: "",
+    workers: 0,
+    ...values,
+  };
+}
+
 describe("parseTestInfo", () => {
   test("when titlePath is empty, throws error", () => {
-    expect(() => parseTestInfo({ titlePath: [] })).toThrowError();
+    expect(() =>
+      parseTestInfo({
+        titlePath: [],
+        config: createConfig(),
+      }),
+    ).toThrowError();
   });
 
   test("when _steps is missing, throws error", () => {
     expect(() =>
-      parseTestInfo({ titlePath: ["tests/feature.spec.ts", "test title"] }),
+      parseTestInfo({
+        titlePath: ["tests/feature.spec.ts", "test title"],
+        config: createConfig(),
+      }),
     ).toThrowError();
   });
 
@@ -42,14 +78,47 @@ describe("parseTestInfo", () => {
               ],
             },
           ],
+          config: createConfig(),
         } as RawTestInfo,
         (stepTitle): boolean => stepTitle !== "excluded step",
       ),
     ).toStrictEqual({
       testPath: "tests/feature",
       titlePath: ["test title", "included step 1", "included step 2"],
+      updateSnapshots: false,
     });
   });
+
+  test("when config.updateSnapshots is 'missing', resolves updateSnapshots to true", () => {
+    expect(
+      parseTestInfo({
+        titlePath: ["tests/feature.spec.ts"],
+        _steps: [],
+        config: createConfig({ updateSnapshots: "changed" }),
+      } as RawTestInfo),
+    ).toStrictEqual({
+      testPath: "tests/feature",
+      titlePath: [],
+      updateSnapshots: true,
+    });
+  });
+
+  test.each(["none", "missing", "all"] as const)(
+    "when config.updateSnapshots is '%s', resolves updateSnapshots to false",
+    (value) => {
+      expect(
+        parseTestInfo({
+          titlePath: ["tests/feature.spec.ts"],
+          _steps: [],
+          config: createConfig({ updateSnapshots: value }),
+        } as RawTestInfo),
+      ).toStrictEqual({
+        testPath: "tests/feature",
+        titlePath: [],
+        updateSnapshots: false,
+      });
+    },
+  );
 });
 
 describe("parseTestSteps", () => {

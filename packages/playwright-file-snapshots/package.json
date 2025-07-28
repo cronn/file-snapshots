@@ -26,7 +26,7 @@
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "test:unit": "vitest run",
     "test:unit:coverage": "vitest run --coverage",
-    "test:integration": "playwright test",
+    "test:integration": "playwright test && playwright test --grep @snapshot-update --update-snapshots",
     "playwright:install": "playwright install chromium",
     "compile": "tsc",
     "build": "tsup",
