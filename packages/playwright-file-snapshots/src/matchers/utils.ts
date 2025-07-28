@@ -7,18 +7,20 @@ import type {
 
 import type { StepFilter } from "./types";
 
-export type RawTestInfo = Pick<TestInfo, "titlePath">;
+export type RawTestInfo = Pick<TestInfo, "titlePath" | "config">;
 
 interface ParsedTestInfo {
   testPath: string;
   titlePath: Array<string>;
+  updateSnapshots: boolean;
 }
 
 export function parseTestInfo(
   testInfo: RawTestInfo,
   filterSteps: StepFilter = () => true,
 ): ParsedTestInfo {
-  const [testPath, ...testTitles] = testInfo.titlePath;
+  const { config, titlePath } = testInfo;
+  const [testPath, ...testTitles] = titlePath;
 
   if (testPath === undefined) {
     throw new Error("titlePath is empty");
@@ -34,6 +36,7 @@ export function parseTestInfo(
   return {
     testPath: parseTestPath(testPath),
     titlePath: [...testTitles, ...stepTitles],
+    updateSnapshots: config.updateSnapshots === "changed",
   };
 }
 
