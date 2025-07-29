@@ -14,8 +14,8 @@ import {
 } from "../utils/file";
 
 interface MatcherFilePaths {
-  actualFile: string;
-  validationFile: string;
+  outputFilePath: string;
+  validationFilePath: string;
 }
 
 export class ValidationFileMatcher {
@@ -34,13 +34,13 @@ export class ValidationFileMatcher {
       throw new Error(`Cannot serialize value of type ${typeof actual}`);
     }
 
-    const { actualFile, validationFile } = this.filePaths;
+    const { outputFilePath, validationFilePath } = this.filePaths;
     const serializedActual = this.serializer.serialize(actual);
 
-    writeSnapshotFile(actualFile, serializedActual);
+    writeSnapshotFile(outputFilePath, serializedActual);
 
     if (this.validationFile === undefined) {
-      writeSnapshotFile(validationFile, serializedActual, true);
+      writeSnapshotFile(validationFilePath, serializedActual, true);
 
       return this.createMatcherResult({
         isValidationFileMissing: true,
@@ -67,8 +67,11 @@ export class ValidationFileMatcher {
     const relativeFilePathWithExtension = `${relativeFilePathWithName}.${this.serializer.fileExtension}`;
 
     return {
-      actualFile: path.join(outputDir, relativeFilePathWithExtension),
-      validationFile: path.join(validationDir, relativeFilePathWithExtension),
+      outputFilePath: path.join(outputDir, relativeFilePathWithExtension),
+      validationFilePath: path.join(
+        validationDir,
+        relativeFilePathWithExtension,
+      ),
     };
   }
 
@@ -91,30 +94,30 @@ export class ValidationFileMatcher {
   }
 
   private readValidationFile(): string | undefined {
-    const { validationFile } = this.filePaths;
+    const { validationFilePath } = this.filePaths;
 
-    if (!fs.existsSync(validationFile)) {
+    if (!fs.existsSync(validationFilePath)) {
       return undefined;
     }
 
-    return readSnapshotFile(validationFile);
+    return readSnapshotFile(validationFilePath);
   }
 
   private createMatcherResult(
     params: Pick<ValidationFileMatcherResult, "isValidationFileMissing">,
   ): ValidationFileMatcherResult {
-    const { actualFile, validationFile } = this.filePaths;
+    const { outputFilePath, validationFilePath } = this.filePaths;
 
     return {
       ...params,
-      actual: readSnapshotFile(actualFile),
-      expected: readSnapshotFile(validationFile),
-      actualFile,
-      validationFile,
+      actual: readSnapshotFile(outputFilePath),
+      expected: readSnapshotFile(validationFilePath),
+      outputFilePath,
+      validationFilePath,
       message: () =>
         params.isValidationFileMissing
-          ? `Missing validation file '${validationFile}'`
-          : `Actual file '${actualFile}'\ndoes not match validation file '${validationFile}'`,
+          ? `Missing validation file '${validationFilePath}'`
+          : `Output file '${outputFilePath}'\ndoes not match validation file '${validationFilePath}'`,
     };
   }
 }
