@@ -39,8 +39,6 @@ export class ValidationFileMatcher {
 
     if (this.existsValidationFile()) {
       return this.createMatcherResult({
-        message: () =>
-          `Actual file '${actualFile}'\ndoes not match validation file '${validationFile}'`,
         isValidationFileMissing: false,
       });
     }
@@ -48,7 +46,6 @@ export class ValidationFileMatcher {
     writeSnapshotFile(validationFile, serializedActual, true);
 
     return this.createMatcherResult({
-      message: () => `Missing validation file '${validationFile}'`,
       isValidationFileMissing: true,
     });
   }
@@ -96,10 +93,7 @@ export class ValidationFileMatcher {
   }
 
   private createMatcherResult(
-    params: Pick<
-      ValidationFileMatcherResult,
-      "message" | "isValidationFileMissing"
-    >,
+    params: Pick<ValidationFileMatcherResult, "isValidationFileMissing">,
   ): ValidationFileMatcherResult {
     const { actualFile, validationFile } = this.filePaths;
 
@@ -109,6 +103,10 @@ export class ValidationFileMatcher {
       expected: readSnapshotFile(validationFile),
       actualFile,
       validationFile,
+      message: () =>
+        params.isValidationFileMissing
+          ? `Missing validation file '${validationFile}'`
+          : `Actual file '${actualFile}'\ndoes not match validation file '${validationFile}'`,
     };
   }
 }
