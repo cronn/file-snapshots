@@ -12,6 +12,7 @@ export interface TestInfoInternal extends TestInfo {
 export interface TestStepInternal {
   readonly title: string;
   readonly category: TestStepCategory;
+  readonly apiName?: string;
   readonly steps: ReadonlyArray<TestStepInternal>;
 }
 

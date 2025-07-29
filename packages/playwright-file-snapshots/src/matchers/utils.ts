@@ -45,7 +45,17 @@ export function parseTestSteps(
     return [];
   }
 
-  return [lastStep.title, ...parseTestSteps(lastStep.steps)];
+  const nestedStepTitles = parseTestSteps(lastStep.steps);
+
+  if (isExpectStep(lastStep)) {
+    return nestedStepTitles;
+  }
+
+  return [lastStep.title, ...nestedStepTitles];
+}
+
+function isExpectStep(step: TestStepInternal): boolean {
+  return step.apiName?.startsWith("expect") ?? false;
 }
 
 export function parseTestPath(testPath: string): string {
