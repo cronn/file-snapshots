@@ -22,15 +22,15 @@ async function snapshotMatcherResult(
   const {
     actual,
     expected,
-    actualFile,
-    validationFile,
+    outputFilePath,
+    validationFilePath,
     message,
     isValidationFileMissing,
   } = matcherResult;
   const { testFileName, testName } = resolveTestContext(context);
   const normalizedTestName = normalizeFileName(testName);
 
-  const fileExtension = path.extname(validationFile);
+  const fileExtension = path.extname(validationFilePath);
   const snapshotDir = path.join(
     ".",
     SNAPSHOTS_DIR,
@@ -43,11 +43,11 @@ async function snapshotMatcherResult(
   await expect(expected).toMatchFileSnapshot(
     path.join(snapshotDir, `expected${fileExtension}`),
   );
-  await expect(actualFile).toMatchFileSnapshot(
-    path.join(snapshotDir, "actual_file.txt"),
+  await expect(outputFilePath).toMatchFileSnapshot(
+    path.join(snapshotDir, "output_file_path.txt"),
   );
-  await expect(validationFile).toMatchFileSnapshot(
-    path.join(snapshotDir, "validation_file.txt"),
+  await expect(validationFilePath).toMatchFileSnapshot(
+    path.join(snapshotDir, "validation_file_path.txt"),
   );
   await expect(message()).toMatchFileSnapshot(
     path.join(snapshotDir, "message.txt"),

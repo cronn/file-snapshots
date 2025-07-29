@@ -55,7 +55,7 @@ export interface ValidationFileMatcherResult {
   isValidationFileMissing: boolean;
   actual: string;
   expected: string;
-  actualFile: string;
-  validationFile: string;
+  outputFilePath: string;
+  validationFilePath: string;
   message: () => string;
 }

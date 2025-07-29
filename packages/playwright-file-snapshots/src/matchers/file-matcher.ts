@@ -69,7 +69,7 @@ export function matchValidationFile(
           matcherResult.expected,
           matcherResult.actual,
           "Validation file",
-          "Actual file",
+          "Output file",
           false,
         ),
       ]),

@@ -1,2 +1,2 @@
-Actual file 'data/test/output/src/tests/feature.test.ts/validation_file/existing.json'
+Output file 'data/test/output/src/tests/feature.test.ts/validation_file/existing.json'
 does not match validation file 'data/test/validation/src/tests/feature.test.ts/validation_file/existing.json'
