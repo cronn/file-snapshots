@@ -14,6 +14,5 @@ coverage
 test-results
 playwright-report
 .tmp
-__snapshots__
 **/data/test/output
 **/custom-data/output
