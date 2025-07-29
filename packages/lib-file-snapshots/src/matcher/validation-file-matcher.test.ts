@@ -4,7 +4,7 @@ import { type TestContext, expect, test } from "vitest";
 import { JsonSerializer } from "../serializers/json-serializer";
 import { TextSerializer } from "../serializers/text-serializer";
 import type { ValidationFileMatcherResult } from "../types/matcher";
-import { normalizeFileName } from "../utils/file";
+import { normalizeFileName, readSnapshotFile } from "../utils/file";
 import {
   FailingSerializer,
   SNAPSHOTS_DIR,
@@ -60,77 +60,70 @@ async function snapshotMatcherResult(
 test("when validation file is missing, creates validation file with marker", async (context) => {
   cleanTmpDir();
 
-  await snapshotMatcherResult(
-    context,
-    new ValidationFileMatcher({
-      validationDir: path.join(TMP_DIR, "validation"),
-      outputDir: path.join(TMP_DIR, "output"),
-      testPath: "./src/tests/feature.test.ts",
-      titlePath: ["validation file", "missing"],
-      serializer: new TextSerializer(),
-    }).matchFileSnapshot("value"),
+  const matcherResult = new ValidationFileMatcher({
+    validationDir: path.join(TMP_DIR, "validation"),
+    outputDir: path.join(TMP_DIR, "output"),
+    testPath: "./src/tests/feature.test.ts",
+    titlePath: ["validation file", "missing"],
+    serializer: new TextSerializer(),
+  }).matchFileSnapshot("value");
+  await snapshotMatcherResult(context, matcherResult);
+
+  matcherResult.writeFileSnapshots();
+  expect(readSnapshotFile(matcherResult.validationFilePath)).toBe(
+    matcherResult.expected,
+  );
+  expect(readSnapshotFile(matcherResult.outputFilePath)).toBe(
+    matcherResult.actual,
   );
 });
 
 test("when validation file exists, does not recreate validation file", async (context) => {
-  await snapshotMatcherResult(
-    context,
-    new ValidationFileMatcher({
-      testPath: "./src/tests/feature.test.ts",
-      titlePath: ["validation file", "existing"],
-      serializer: new JsonSerializer(),
-    }).matchFileSnapshot(["value"]),
+  const matcherResult = new ValidationFileMatcher({
+    testPath: "./src/tests/feature.test.ts",
+    titlePath: ["validation file", "existing"],
+    serializer: new JsonSerializer(),
+  }).matchFileSnapshot(["value"]);
+  await snapshotMatcherResult(context, matcherResult);
+
+  matcherResult.writeFileSnapshots();
+  expect(readSnapshotFile(matcherResult.outputFilePath)).toBe(
+    matcherResult.actual,
   );
 });
 
 test("uses naming strategy file by default", async (context) => {
-  cleanTmpDir();
-
-  await snapshotMatcherResult(
-    context,
-    new ValidationFileMatcher({
-      validationDir: path.join(TMP_DIR, "validation"),
-      outputDir: path.join(TMP_DIR, "output"),
-      testPath: "./src/tests/feature.test.ts",
-      titlePath: ["file"],
-      name: "name",
-      serializer: new TextSerializer(),
-    }).matchFileSnapshot("value"),
-  );
+  const matcherResult = new ValidationFileMatcher({
+    validationDir: path.join("custom-validation"),
+    outputDir: path.join("custom-output"),
+    testPath: "./src/tests/feature.test.ts",
+    titlePath: ["file"],
+    name: "name",
+    serializer: new TextSerializer(),
+  }).matchFileSnapshot("value");
+  await snapshotMatcherResult(context, matcherResult);
 });
 
 test("when naming strategy is file, appends name to validation file path", async (context) => {
-  cleanTmpDir();
-
-  await snapshotMatcherResult(
-    context,
-    new ValidationFileMatcher({
-      validationDir: path.join(TMP_DIR, "validation"),
-      outputDir: path.join(TMP_DIR, "output"),
-      testPath: "./src/tests/feature.test.ts",
-      titlePath: ["file"],
-      name: "name",
-      namingStrategy: "file",
-      serializer: new TextSerializer(),
-    }).matchFileSnapshot("value"),
-  );
+  const matcherResult = new ValidationFileMatcher({
+    testPath: "./src/tests/feature.test.ts",
+    titlePath: ["file"],
+    name: "name",
+    namingStrategy: "file",
+    serializer: new TextSerializer(),
+  }).matchFileSnapshot("value");
+  await snapshotMatcherResult(context, matcherResult);
 });
 
 test("when naming strategy is fileSuffix, appends name to validation file name", async (context) => {
-  cleanTmpDir();
-
-  await snapshotMatcherResult(
-    context,
-    new ValidationFileMatcher({
-      validationDir: path.join(TMP_DIR, "validation"),
-      outputDir: path.join(TMP_DIR, "output"),
-      testPath: "./src/tests/feature.test.ts",
-      titlePath: ["file"],
-      name: "name",
-      namingStrategy: "fileSuffix",
-      serializer: new TextSerializer(),
-    }).matchFileSnapshot("value"),
-  );
+  const matcherResult = new ValidationFileMatcher({
+    testPath: "./src/tests/feature.test.ts",
+    titlePath: ["file"],
+    name: "name",
+    namingStrategy: "fileSuffix",
+    serializer: new TextSerializer(),
+  }).matchFileSnapshot("value");
+  await snapshotMatcherResult(context, matcherResult);
 });
 
 test("when serializer does not support value, throws error", () => {

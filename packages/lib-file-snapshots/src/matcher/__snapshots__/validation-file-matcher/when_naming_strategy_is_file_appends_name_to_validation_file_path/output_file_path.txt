@@ -1,1 +1,1 @@
-.tmp/output/src/tests/feature.test.ts/file/name.txt
+data/test/output/src/tests/feature.test.ts/file/name.txt

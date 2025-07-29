@@ -19,29 +19,19 @@ export function readSnapshotFile(path: string): string {
   return fs.readFileSync(path, { encoding: "utf8" });
 }
 
-export function writeSnapshotFile(
-  file: string,
-  data: string,
-  markAsMissing = false,
-): void {
+export function writeSnapshotFile(file: string, data: string): void {
   mkdirRecursive(path.dirname(file));
-
-  let finalizedData = addTrailingNewLine(data);
-  if (markAsMissing) {
-    finalizedData = addMissingFileMarker(finalizedData);
-  }
-
-  fs.writeFileSync(file, finalizedData, { encoding: "utf8" });
+  fs.writeFileSync(file, data, { encoding: "utf8" });
 }
 
 function mkdirRecursive(path: string): void {
   fs.mkdirSync(path, { recursive: true });
 }
 
-function addTrailingNewLine(data: string): string {
+export function addTrailingNewLine(data: string): string {
   return `${data}${NEW_LINE_SEPARATOR}`;
 }
 
-function addMissingFileMarker(data: string): string {
+export function addMissingFileMarker(data: string): string {
   return `===== missing file =====${NEW_LINE_SEPARATOR}${data}`;
 }

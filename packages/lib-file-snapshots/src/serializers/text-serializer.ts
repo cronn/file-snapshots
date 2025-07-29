@@ -1,4 +1,5 @@
 import type { SnapshotSerializer } from "../types/serializer";
+import { addTrailingNewLine } from "../utils/file";
 import { isString } from "../utils/guards";
 
 export interface TextSerializerOptions {
@@ -30,7 +31,8 @@ export class TextSerializer implements SnapshotSerializer {
       );
     }
 
-    return this.normalizeValue(value);
+    const normalizedValue = this.normalizeValue(value);
+    return addTrailingNewLine(normalizedValue);
   }
 
   private normalizeValue(value: string): string {
