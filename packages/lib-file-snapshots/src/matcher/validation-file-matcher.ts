@@ -21,10 +21,12 @@ interface MatcherFilePaths {
 export class ValidationFileMatcher {
   private readonly serializer: SnapshotSerializer;
   private readonly filePaths: MatcherFilePaths;
+  private readonly validationFile: string | undefined;
 
   public constructor(config: ValidationFileMatcherConfig) {
     this.serializer = config.serializer;
     this.filePaths = this.buildFilePaths(config);
+    this.validationFile = this.readValidationFile();
   }
 
   public matchFileSnapshot(actual: unknown): ValidationFileMatcherResult {
@@ -37,16 +39,16 @@ export class ValidationFileMatcher {
 
     writeSnapshotFile(actualFile, serializedActual);
 
-    if (this.existsValidationFile()) {
+    if (this.validationFile === undefined) {
+      writeSnapshotFile(validationFile, serializedActual, true);
+
       return this.createMatcherResult({
-        isValidationFileMissing: false,
+        isValidationFileMissing: true,
       });
     }
 
-    writeSnapshotFile(validationFile, serializedActual, true);
-
     return this.createMatcherResult({
-      isValidationFileMissing: true,
+      isValidationFileMissing: false,
     });
   }
 
@@ -88,8 +90,14 @@ export class ValidationFileMatcher {
     return path.join(filePath, normalizedSnapshotName);
   }
 
-  private existsValidationFile(): boolean {
-    return fs.existsSync(this.filePaths.validationFile);
+  private readValidationFile(): string | undefined {
+    const { validationFile } = this.filePaths;
+
+    if (!fs.existsSync(validationFile)) {
+      return undefined;
+    }
+
+    return readSnapshotFile(validationFile);
   }
 
   private createMatcherResult(
