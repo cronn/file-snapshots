@@ -58,4 +58,5 @@ export interface ValidationFileMatcherResult {
   outputFilePath: string;
   validationFilePath: string;
   message: () => string;
+  writeFileSnapshots: () => void;
 }

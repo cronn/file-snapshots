@@ -1,4 +1,5 @@
 import type { SnapshotSerializer } from "../types/serializer";
+import { addTrailingNewLine } from "../utils/file";
 import { isArray, isPlainObject, isString } from "../utils/guards";
 
 type JsonValue =
@@ -51,7 +52,8 @@ export class JsonSerializer implements SnapshotSerializer {
 
   public serialize(value: unknown): string {
     const jsonValue = this.normalizeValueRecursive(value);
-    return JSON.stringify(jsonValue, undefined, 2);
+    const jsonString = JSON.stringify(jsonValue, undefined, 2);
+    return addTrailingNewLine(jsonString);
   }
 
   private normalizeValueRecursive(

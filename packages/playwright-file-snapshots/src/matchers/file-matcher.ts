@@ -50,6 +50,7 @@ export function matchValidationFile(
     namingStrategy,
     serializer,
   }).matchFileSnapshot(actual);
+  matcherResult.writeFileSnapshots();
 
   try {
     baseExpect(matcherResult.actual).toBe(matcherResult.expected);

@@ -1,6 +1,10 @@
 import { describe, expect, test } from "vitest";
 
-import { normalizeFileName } from "./file";
+import {
+  addMissingFileMarker,
+  addTrailingNewLine,
+  normalizeFileName,
+} from "./file";
 
 describe("normalize file name", () => {
   test.each([
@@ -57,4 +61,12 @@ describe("normalize file name", () => {
   test("collapses sequential word delimiters to single underscore", () => {
     expect(normalizeFileName(" \t_")).toBe("_");
   });
+});
+
+test("adds trailing new line", () => {
+  expect(addTrailingNewLine("line")).toBe("line\n");
+});
+
+test("adds missing file marker", () => {
+  expect(addMissingFileMarker("line")).toBe("===== missing file =====\nline");
 });

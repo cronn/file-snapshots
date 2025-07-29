@@ -48,6 +48,7 @@ export function matchValidationFile(
     namingStrategy,
     serializer,
   }).matchFileSnapshot(received);
+  matcherResult.writeFileSnapshots();
 
   return {
     pass: equals(matcherResult.actual, matcherResult.expected, [], true),
