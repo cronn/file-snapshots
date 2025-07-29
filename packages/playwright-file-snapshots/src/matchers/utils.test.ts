@@ -84,6 +84,18 @@ describe("parseTestSteps", () => {
         { title: "hook", category: "hook", steps: [] },
         { title: "fixture", category: "fixture", steps: [] },
         { title: "attach", category: "test.attach", steps: [] },
+        {
+          title: "expect",
+          category: "test.step",
+          apiName: "expect.toPass",
+          steps: [],
+        },
+        {
+          title: "expect",
+          category: "test.step",
+          apiName: "expect.not.toPass",
+          steps: [],
+        },
       ]),
     ).toHaveLength(0);
   });
