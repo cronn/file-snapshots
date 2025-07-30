@@ -52,7 +52,6 @@ export interface ValidationFileMatcherConfig {
 export type SnapshotNamingStrategy = "file" | "fileSuffix";
 
 export interface ValidationFileMatcherResult {
-  isValidationFileMissing: boolean;
   actual: string;
   expected: string;
   outputFilePath: string;

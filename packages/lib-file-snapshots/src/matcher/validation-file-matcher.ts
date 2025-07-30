@@ -30,6 +30,10 @@ export class ValidationFileMatcher {
     this.validationFile = this.readValidationFile();
   }
 
+  public get isValidationFileMissing(): boolean {
+    return this.validationFile === undefined;
+  }
+
   public matchFileSnapshot(actual: unknown): ValidationFileMatcherResult {
     if (!this.serializer.canSerialize(actual)) {
       throw new Error(`Cannot serialize value of type ${typeof actual}`);
@@ -39,14 +43,12 @@ export class ValidationFileMatcher {
 
     if (this.validationFile === undefined) {
       return this.createMatcherResult({
-        isValidationFileMissing: true,
         actual: serializedActual,
         expected: addMissingFileMarker(serializedActual),
       });
     }
 
     return this.createMatcherResult({
-      isValidationFileMissing: false,
       actual: serializedActual,
       expected: this.validationFile,
     });
@@ -104,22 +106,18 @@ export class ValidationFileMatcher {
   }
 
   private createMatcherResult(
-    params: Pick<
-      ValidationFileMatcherResult,
-      "isValidationFileMissing" | "actual" | "expected"
-    >,
+    params: Pick<ValidationFileMatcherResult, "actual" | "expected">,
   ): ValidationFileMatcherResult {
-    const { isValidationFileMissing, actual, expected } = params;
+    const { actual, expected } = params;
     const { outputFilePath, validationFilePath } = this.filePaths;
 
     return {
-      isValidationFileMissing,
       actual,
       expected,
       outputFilePath,
       validationFilePath,
       message: () =>
-        isValidationFileMissing
+        this.isValidationFileMissing
           ? `Missing validation file '${validationFilePath}'`
           : `Output file '${outputFilePath}'\ndoes not match validation file '${validationFilePath}'`,
       writeFileSnapshots: () => this.writeFileSnapshots(params),
@@ -127,17 +125,14 @@ export class ValidationFileMatcher {
   }
 
   private writeFileSnapshots(
-    matcherResult: Pick<
-      ValidationFileMatcherResult,
-      "isValidationFileMissing" | "actual" | "expected"
-    >,
+    matcherResult: Pick<ValidationFileMatcherResult, "actual" | "expected">,
   ): void {
     const { actual, expected } = matcherResult;
     const { outputFilePath, validationFilePath } = this.filePaths;
 
     writeSnapshotFile(outputFilePath, actual);
 
-    if (matcherResult.isValidationFileMissing) {
+    if (this.isValidationFileMissing) {
       writeSnapshotFile(validationFilePath, expected);
     }
   }
