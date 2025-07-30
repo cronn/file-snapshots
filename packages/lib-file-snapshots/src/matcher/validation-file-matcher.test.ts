@@ -19,14 +19,8 @@ async function snapshotMatcherResult(
   context: TestContext,
   matcherResult: ValidationFileMatcherResult,
 ): Promise<void> {
-  const {
-    actual,
-    expected,
-    outputFilePath,
-    validationFilePath,
-    message,
-    isValidationFileMissing,
-  } = matcherResult;
+  const { actual, expected, outputFilePath, validationFilePath, message } =
+    matcherResult;
   const { testFileName, testName } = resolveTestContext(context);
   const normalizedTestName = normalizeFileName(testName);
 
@@ -52,21 +46,21 @@ async function snapshotMatcherResult(
   await expect(message()).toMatchFileSnapshot(
     path.join(snapshotDir, "message.txt"),
   );
-  await expect(isValidationFileMissing).toMatchFileSnapshot(
-    path.join(snapshotDir, "isValidationFileMissing.txt"),
-  );
 }
 
 test("when validation file is missing, creates validation file with marker", async (context) => {
   cleanTmpDir();
 
-  const matcherResult = new ValidationFileMatcher({
+  const matcher = new ValidationFileMatcher({
     validationDir: path.join(TMP_DIR, "validation"),
     outputDir: path.join(TMP_DIR, "output"),
     testPath: "./src/tests/feature.test.ts",
     titlePath: ["validation file", "missing"],
     serializer: new TextSerializer(),
-  }).matchFileSnapshot("value");
+  });
+  expect(matcher.isValidationFileMissing).toBe(true);
+
+  const matcherResult = matcher.matchFileSnapshot("value");
   await snapshotMatcherResult(context, matcherResult);
 
   matcherResult.writeFileSnapshots();
@@ -79,11 +73,14 @@ test("when validation file is missing, creates validation file with marker", asy
 });
 
 test("when validation file exists, does not recreate validation file", async (context) => {
-  const matcherResult = new ValidationFileMatcher({
+  const matcher = new ValidationFileMatcher({
     testPath: "./src/tests/feature.test.ts",
     titlePath: ["validation file", "existing"],
     serializer: new JsonSerializer(),
-  }).matchFileSnapshot(["value"]);
+  });
+  expect(matcher.isValidationFileMissing).toBe(false);
+
+  const matcherResult = matcher.matchFileSnapshot(["value"]);
   await snapshotMatcherResult(context, matcherResult);
 
   matcherResult.writeFileSnapshots();
