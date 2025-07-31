@@ -1,5 +1,23 @@
 # @cronn/playwright-file-snapshots
 
+## 0.9.0
+
+### Minor Changes
+
+- 5685183: Fix: expect.toPass steps appear in title path
+
+### Patch Changes
+
+- 26fe3b4: Simplify `ValidationFileMatcher` interface
+- 554c6aa: Rename actual file to output file for consistency
+- Updated dependencies [26fe3b4]
+- Updated dependencies [0e0681b]
+- Updated dependencies [2a35553]
+- Updated dependencies [eff0212]
+- Updated dependencies [923b9c2]
+- Updated dependencies [77e864a]
+  - @cronn/lib-file-snapshots@0.11.0
+
 ## 0.8.2
 
 ### Patch Changes

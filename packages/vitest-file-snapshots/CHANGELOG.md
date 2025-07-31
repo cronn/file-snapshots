@@ -1,5 +1,22 @@
 # @cronn/vitest-file-snapshots
 
+## 0.10.0
+
+### Minor Changes
+
+- 7cb48e9: Migrate module augmentation to `Matchers` interface
+
+### Patch Changes
+
+- 26fe3b4: Simplify `ValidationFileMatcher` interface
+- Updated dependencies [26fe3b4]
+- Updated dependencies [0e0681b]
+- Updated dependencies [2a35553]
+- Updated dependencies [eff0212]
+- Updated dependencies [923b9c2]
+- Updated dependencies [77e864a]
+  - @cronn/lib-file-snapshots@0.11.0
+
 ## 0.9.2
 
 ### Patch Changes
