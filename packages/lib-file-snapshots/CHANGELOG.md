@@ -1,5 +1,19 @@
 # @cronn/lib-file-snapshots
 
+## 0.11.0
+
+### Minor Changes
+
+- 26fe3b4: Simplify `ValidationFileMatcher` interface
+- 0e0681b: Provide `isValidationFileMissing` in `ValidationFileMatcherResult`
+- eff0212: Add distinct error message for missing validation file
+- 923b9c2: Simplify serializer interface
+- 77e864a: Write snapshot files explicitly instead of implicitly
+
+### Patch Changes
+
+- 2a35553: Simplify creation of snapshot directories
+
 ## 0.10.0
 
 ### Minor Changes
