@@ -8,8 +8,8 @@ import { normalizeFileName, readSnapshotFile } from "../utils/file";
 import {
   FailingSerializer,
   SNAPSHOTS_DIR,
-  TMP_DIR,
-  cleanTmpDir,
+  createTmpDir,
+  maskTmpDir,
   resolveTestContext,
 } from "../utils/test";
 
@@ -37,23 +37,23 @@ async function snapshotMatcherResult(
   await expect(expected).toMatchFileSnapshot(
     path.join(snapshotDir, `expected${fileExtension}`),
   );
-  await expect(outputFilePath).toMatchFileSnapshot(
+  await expect(maskTmpDir(outputFilePath)).toMatchFileSnapshot(
     path.join(snapshotDir, "output_file_path.txt"),
   );
-  await expect(validationFilePath).toMatchFileSnapshot(
+  await expect(maskTmpDir(validationFilePath)).toMatchFileSnapshot(
     path.join(snapshotDir, "validation_file_path.txt"),
   );
-  await expect(message()).toMatchFileSnapshot(
+  await expect(maskTmpDir(message())).toMatchFileSnapshot(
     path.join(snapshotDir, "message.txt"),
   );
 }
 
 test("when validation file is missing, creates validation file with marker", async (context) => {
-  cleanTmpDir();
+  const tmpDir = createTmpDir();
 
   const matcher = new ValidationFileMatcher({
-    validationDir: path.join(TMP_DIR, "validation"),
-    outputDir: path.join(TMP_DIR, "output"),
+    validationDir: path.join(tmpDir, "validation"),
+    outputDir: path.join(tmpDir, "output"),
     testPath: "./src/tests/feature.test.ts",
     titlePath: ["validation file", "missing"],
     serializer: new TextSerializer(),
