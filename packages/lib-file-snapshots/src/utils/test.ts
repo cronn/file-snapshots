@@ -1,12 +1,11 @@
-import { rmSync } from "node:fs";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import { type TestContext, expect } from "vitest";
 
 import type { SnapshotSerializer } from "../types/serializer";
 
 import { normalizeFileName } from "./file";
-
-export const TMP_DIR = "./.tmp";
 
 export const SNAPSHOTS_DIR = "__snapshots__";
 
@@ -69,6 +68,13 @@ export function resolveTestContext(context: TestContext): ResolvedTestContext {
   };
 }
 
-export function cleanTmpDir(): void {
-  rmSync(TMP_DIR, { recursive: true, force: true });
+export function createTmpDir(): string {
+  return mkdtempSync(path.join(tmpdir(), "test-"));
+}
+
+export function maskTmpDir(filePath: string): string {
+  return filePath.replaceAll(
+    new RegExp(`(${tmpdir()}/test-[^/]+)`, "g"),
+    "[TMP_DIR]",
+  );
 }

@@ -20,17 +20,17 @@ export function defineValidationFileExpect(
 ): Expect<PlaywrightValidationFileMatchers> {
   const { soft = true, ...snapshotConfig } = config;
 
-  function toMatchJsonFile(
+  async function toMatchJsonFile(
     this: ExpectMatcherState,
     actual: unknown,
     options: PlaywrightMatchJsonFileOptions = {},
-  ): MatcherReturnType {
+  ): Promise<MatcherReturnType> {
     const {
       includeUndefinedObjectProperties,
       normalizers,
       ...snapshotOptions
     } = options;
-    return matchValidationFile({
+    return await matchValidationFile({
       actual,
       matcherName: "toMatchJsonFile",
       serializer: new JsonSerializer({
@@ -43,13 +43,13 @@ export function defineValidationFileExpect(
     });
   }
 
-  function toMatchTextFile(
+  async function toMatchTextFile(
     this: ExpectMatcherState,
     actual: unknown,
     options: PlaywrightMatchTextFileOptions = {},
-  ): MatcherReturnType {
+  ): Promise<MatcherReturnType> {
     const { normalizers, ...snapshotOptions } = options;
-    return matchValidationFile({
+    return await matchValidationFile({
       actual,
       matcherName: "toMatchTextFile",
       serializer: new TextSerializer({ normalizers }),
