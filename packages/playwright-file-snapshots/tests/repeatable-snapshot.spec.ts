@@ -1,11 +1,8 @@
 import { expect, test } from "@playwright/test";
+import path from "node:path";
 
 import { defineValidationFileExpect } from "../src";
-import {
-  TMP_OUTPUT_DIR,
-  TMP_VALIDATION_DIR,
-  cleanTmpDir,
-} from "../src/utils/test";
+import { createTmpDir } from "../src/utils/test";
 
 class SnapshotInstrumentation {
   public readonly snapshotIntervals: number[] = [];
@@ -37,11 +34,11 @@ function assertSnapshotIntervals(
 }
 
 test("when validation file is missing, waits for delay before creating snapshot", async () => {
-  cleanTmpDir();
+  const tmpDir = createTmpDir();
 
   const testExpect = defineValidationFileExpect({
-    validationDir: TMP_VALIDATION_DIR,
-    outputDir: TMP_OUTPUT_DIR,
+    validationDir: path.join(tmpDir, "validation"),
+    outputDir: path.join(tmpDir, "output"),
     soft: false,
   });
 
@@ -98,8 +95,6 @@ test("when validation file exists, repeats failing snapshot until it matches", a
 });
 
 test("when validation file exists, repeats failing snapshot until timeout", async () => {
-  cleanTmpDir();
-
   const testExpect = defineValidationFileExpect({
     soft: false,
   }).configure({ timeout: 2_000 });
