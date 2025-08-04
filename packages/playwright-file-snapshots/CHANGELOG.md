@@ -1,5 +1,18 @@
 # @cronn/playwright-file-snapshots
 
+## 0.10.0
+
+### Minor Changes
+
+- 78c9704: Breaking change: All file matchers are now asynchronous and must be awaited
+- 78c9704: Breaking change: Promise values passed to file matchers are now automatically awaited
+- 78c9704: Introduce snapshot retries
+
+### Patch Changes
+
+- Updated dependencies [77a885b]
+  - @cronn/lib-file-snapshots@0.12.0
+
 ## 0.9.0
 
 ### Minor Changes

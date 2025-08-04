@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.12.0
+
+### Minor Changes
+
+- 77a885b: Expose `isValidationFileMissing` on `ValidationFileMatcher` to enable checks before matching
+
 ## 0.11.0
 
 ### Minor Changes
