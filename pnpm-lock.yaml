@@ -33,9 +33,6 @@ catalogs:
     eslint-plugin-unused-imports:
       specifier: 4.1.4
       version: 4.1.4
-    jiti:
-      specifier: 2.5.1
-      version: 2.5.1
     prettier:
       specifier: 3.6.2
       version: 3.6.2
@@ -101,9 +98,6 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.1.4(@typescript-eslint/eslint-plugin@8.38.0(@typescript-eslint/parser@8.38.0(eslint@9.32.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.32.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.32.0(jiti@2.5.1))
-      jiti:
-        specifier: 'catalog:'
-        version: 2.5.1
       prettier:
         specifier: 'catalog:'
         version: 3.6.2
@@ -153,9 +147,6 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.1.4(@typescript-eslint/eslint-plugin@8.38.0(@typescript-eslint/parser@8.38.0(eslint@9.32.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.32.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.32.0(jiti@2.5.1))
-      jiti:
-        specifier: 'catalog:'
-        version: 2.5.1
       prettier:
         specifier: 'catalog:'
         version: 3.6.2
@@ -192,9 +183,6 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.1.4(@typescript-eslint/eslint-plugin@8.38.0(@typescript-eslint/parser@8.38.0(eslint@9.32.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.32.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.32.0(jiti@2.5.1))
-      jiti:
-        specifier: 'catalog:'
-        version: 2.5.1
       prettier:
         specifier: 'catalog:'
         version: 3.6.2
@@ -244,9 +232,6 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.1.4(@typescript-eslint/eslint-plugin@8.38.0(@typescript-eslint/parser@8.38.0(eslint@9.32.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.32.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.32.0(jiti@2.5.1))
-      jiti:
-        specifier: 'catalog:'
-        version: 2.5.1
       prettier:
         specifier: 'catalog:'
         version: 3.6.2
@@ -3487,7 +3472,8 @@ snapshots:
 
   javascript-natural-sort@0.7.1: {}
 
-  jiti@2.5.1: {}
+  jiti@2.5.1:
+    optional: true
 
   joycon@3.1.1: {}
 

@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/cronn/file-snapshots",
   "engines": {
-    "node": ">=22",
+    "node": ">=22.18",
     "pnpm": ">=10"
   },
   "scripts": {
@@ -47,7 +47,6 @@
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "jiti": "catalog:",
     "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
