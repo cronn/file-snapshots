@@ -232,7 +232,7 @@ snapshot into a JSON-compatible snapshot ready to be passed to
 ```ts
 import { snapshotAria } from "@cronn/playwright-file-snapshots";
 
-test("matches ARIA snapshots", async ({ page }) => {
+test("matches ARIA snapshot", async ({ page }) => {
   const ariaSnapshot = await snapshotAria(page.getByRole("main"));
   await expect(ariaSnapshot).toMatchJsonFile();
 });
