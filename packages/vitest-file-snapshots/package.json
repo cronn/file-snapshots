@@ -27,7 +27,7 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "compile": "tsc",
-    "build": "tsup && node scripts/fix-declaration-file.js"
+    "build": "tsup && node scripts/fix-declaration-file.ts"
   },
   "type": "module",
   "exports": {
