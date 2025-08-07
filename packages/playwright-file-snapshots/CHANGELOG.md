@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.11.0
+
+### Minor Changes
+
+- 84ad807: Introduce DOM Snapshots (experimental)
+
 ## 0.10.0
 
 ### Minor Changes
