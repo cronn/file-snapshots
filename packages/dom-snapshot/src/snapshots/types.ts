@@ -1,4 +1,5 @@
 import type { ButtonSnapshot } from "./button";
+import type { ComboboxSnapshot, OptionSnapshot } from "./combobox";
 import type { ContainerRole, ContainerSnapshot } from "./container";
 import type { HeadingSnapshot } from "./heading";
 import type { InputRole, InputSnapshot } from "./input";
@@ -26,7 +27,9 @@ export type ElementSnapshot =
   | HeadingSnapshot
   | LinkSnapshot
   | ButtonSnapshot
-  | InputSnapshot;
+  | InputSnapshot
+  | ComboboxSnapshot
+  | OptionSnapshot;
 
 export interface GenericElementSnapshot<
   TRole extends NodeRole = NodeRole,

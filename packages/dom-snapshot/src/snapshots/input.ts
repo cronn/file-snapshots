@@ -1,5 +1,4 @@
 import { booleanAttribute, stringAttribute } from "./attribute";
-import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import { resolveInputRole } from "./role";
 import { snapshotTextContent } from "./text";
@@ -8,11 +7,10 @@ import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 export interface InputSnapshot
   extends GenericElementSnapshot<CommonInputRole, InputAttributes> {}
 
-export type InputRole = "button" | CommonInputRole;
+export type InputRole = "button" | "combobox" | CommonInputRole;
 
 export type CommonInputRole =
   | "checkbox"
-  | "combobox"
   | "radio"
   | "searchbox"
   | "slider"
@@ -24,7 +22,7 @@ interface InputAttributes extends InputStateAttributes {
   checked?: boolean;
 }
 
-interface InputStateAttributes {
+export interface InputStateAttributes {
   readonly?: boolean;
   disabled?: boolean;
   required?: boolean;
@@ -38,10 +36,6 @@ export function snapshotInput(
     return snapshotInputElement(element);
   }
 
-  if (element instanceof HTMLSelectElement) {
-    return snapshotSelectElement(element);
-  }
-
   if (element instanceof HTMLTextAreaElement) {
     return snapshotTextareaElement(element);
   }
@@ -52,7 +46,11 @@ export function snapshotInput(
 function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
   const inputRole = resolveInputRole(element);
 
-  if (inputRole === undefined || inputRole === "button") {
+  if (
+    inputRole === undefined ||
+    inputRole === "button" ||
+    inputRole === "combobox"
+  ) {
     return null;
   }
 
@@ -62,21 +60,8 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
     attributes: {
       value: resolveValue(element),
       checked: resolveChecked(element),
-      ...snapshotStateAttributes(element),
+      ...snapshotInputStateAttributes(element),
     },
-    children: snapshotChildren(element),
-  };
-}
-
-function snapshotSelectElement(element: HTMLSelectElement): InputSnapshot {
-  return {
-    role: "combobox",
-    name: resolveInputLabel(element),
-    attributes: {
-      value: resolveSelectValue(element),
-      ...snapshotStateAttributes(element),
-    },
-    children: snapshotChildren(element),
   };
 }
 
@@ -86,14 +71,14 @@ function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
     name: resolveInputLabel(element),
     attributes: {
       value: resolveValue(element),
-      ...snapshotStateAttributes(element),
+      ...snapshotInputStateAttributes(element),
     },
   };
 }
 
-function snapshotStateAttributes(
+export function snapshotInputStateAttributes(
   element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
-) {
+): InputStateAttributes {
   return {
     readonly: resolveBooleanAttribute(element, "readonly"),
     disabled: resolveBooleanAttribute(element, "disabled"),
@@ -110,18 +95,6 @@ function resolveValue(
   }
 
   return stringAttribute(element.value);
-}
-
-function resolveSelectValue(element: HTMLSelectElement): string | undefined {
-  const selectedOption = element.querySelector(
-    `option[value='${element.value}']`,
-  );
-
-  if (selectedOption === null) {
-    return undefined;
-  }
-
-  return snapshotTextContent(selectedOption);
 }
 
 function resolveChecked(
@@ -145,7 +118,9 @@ function resolveBooleanAttribute(
   );
 }
 
-function resolveInputLabel(element: SnapshotTargetElement): string | undefined {
+export function resolveInputLabel(
+  element: SnapshotTargetElement,
+): string | undefined {
   if (element.id !== null) {
     const referencedElement = element.ownerDocument.querySelector(
       `[for='${element.id}']`,
