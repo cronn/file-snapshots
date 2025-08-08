@@ -13,7 +13,7 @@ interface LinkAttributes {
 export function snapshotLink(element: SnapshotTargetElement): LinkSnapshot {
   return {
     role: "link",
-    name: resolveAccessibleName(element, true),
+    name: resolveAccessibleName(element),
     attributes: { url: stringAttribute(element.getAttribute("href")) },
     children: snapshotChildren(element),
   };
