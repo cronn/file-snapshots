@@ -1,30 +1,37 @@
 import { snapshotChildren } from "./children";
-import type {
-  GenericElementSnapshot,
-  NodeSnapshot,
-  SnapshotTargetElement,
-} from "./types";
+import { resolveAccessibleName } from "./name";
+import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 export interface ContainerSnapshot
   extends GenericElementSnapshot<ContainerRole> {}
 
 export type ContainerRole =
-  | "main"
   | "paragraph"
-  | "form"
-  | "navigation"
   | "list"
   | "listitem"
-  | "listbox";
+  | "listbox"
+  | LandmarkRole;
+
+type LandmarkRole =
+  | "article"
+  | "banner"
+  | "complementary"
+  | "contentinfo"
+  | "form"
+  | "main"
+  | "navigation"
+  | "region"
+  | "search";
 
 export function snapshotContainer(
   role: ContainerRole,
   element: SnapshotTargetElement,
-): ContainerSnapshot | Array<NodeSnapshot> | null {
+): ContainerSnapshot {
   const children = snapshotChildren(element);
 
   return {
     role,
+    name: resolveAccessibleName(element, false),
     children,
   };
 }

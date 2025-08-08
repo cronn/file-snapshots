@@ -7,6 +7,7 @@ import {
   snapshotInputStateAttributes,
 } from "./input";
 import { resolveAccessibleName } from "./name";
+import { roleSelector, selectorList } from "./selector";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 export interface ComboboxSnapshot
@@ -97,9 +98,8 @@ function resolveOptions(element: ComboboxElement): Array<HTMLElement> {
     return [];
   }
 
-  return Array.from(
-    controlledElement.querySelectorAll("option, [role='option']"),
-  );
+  const optionSelector = selectorList("option", roleSelector("option"));
+  return Array.from(controlledElement.querySelectorAll(optionSelector));
 }
 
 export interface OptionSnapshot

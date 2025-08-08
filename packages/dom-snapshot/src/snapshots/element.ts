@@ -20,9 +20,9 @@ type ElementSnapshotFn = (
   node: SnapshotTargetElement,
 ) => ElementSnapshot | null;
 
-type NonContainerElementType = Exclude<ElementRole, ContainerRole>;
+type NonContainerElementRole = Exclude<ElementRole, ContainerRole>;
 
-const ELEMENT_SNAPSHOTS: Record<NonContainerElementType, ElementSnapshotFn> = {
+const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   button: snapshotButton,
   checkbox: snapshotInput,
   combobox: snapshotCombobox,
@@ -69,22 +69,22 @@ function snapshotNodeByType(
     return null;
   }
 
-  const elementType = resolveElementRole(node);
+  const elementRole = resolveElementRole(node);
 
-  if (elementType === undefined) {
+  if (elementRole === undefined) {
     return snapshotChildren(node) ?? null;
   }
 
-  if (isNonContainerElement(elementType)) {
-    const snapshotByType = ELEMENT_SNAPSHOTS[elementType];
-    return snapshotByType(node);
+  if (isNonContainerElement(elementRole)) {
+    const snapshotByRole = ROLE_SNAPSHOTS[elementRole];
+    return snapshotByRole(node);
   }
 
-  return snapshotContainer(elementType, node);
+  return snapshotContainer(elementRole, node);
 }
 
 function isNonContainerElement(
-  type: ElementRole,
-): type is NonContainerElementType {
-  return type in ELEMENT_SNAPSHOTS;
+  role: ElementRole,
+): role is NonContainerElementRole {
+  return role in ROLE_SNAPSHOTS;
 }

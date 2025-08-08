@@ -1,93 +1,142 @@
 [
   {
-    "heading": {
-      "name": "HTML Test Document",
-      "level": 1
+    "banner": {
+      "heading": {
+        "name": "HTML Test Document",
+        "level": 1
+      }
     }
   },
   {
-    "navigation": {
-      "list": [
-        {
-          "listitem": {
-            "link": {
-              "name": "Home",
-              "url": "/"
+    "navigation": [
+      {
+        "list": [
+          {
+            "listitem": {
+              "link": {
+                "name": "Home",
+                "url": "/"
+              }
+            }
+          },
+          {
+            "listitem": [
+              "Forms",
+              {
+                "list": [
+                  {
+                    "listitem": {
+                      "link": {
+                        "name": "Input Types",
+                        "url": "/input-types"
+                      }
+                    }
+                  },
+                  {
+                    "listitem": {
+                      "link": {
+                        "name": "Input State",
+                        "url": "/input-states"
+                      }
+                    }
+                  },
+                  {
+                    "listitem": {
+                      "link": {
+                        "name": "Label Types",
+                        "url": "/label-types"
+                      }
+                    }
+                  },
+                  {
+                    "listitem": {
+                      "link": {
+                        "name": "Comboboxes",
+                        "url": "/comboboxes"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Headings",
+                "url": "/headings"
+              }
+            }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Lists",
+                "url": "/lists"
+              }
             }
           }
-        },
-        {
-          "listitem": [
-            "Forms",
+        ]
+      },
+      {
+        "search": {
+          "form": [
+            "Search page",
             {
-              "list": [
-                {
-                  "listitem": {
-                    "link": {
-                      "name": "Input Types",
-                      "url": "/input-types"
-                    }
-                  }
-                },
-                {
-                  "listitem": {
-                    "link": {
-                      "name": "Input State",
-                      "url": "/input-states"
-                    }
-                  }
-                },
-                {
-                  "listitem": {
-                    "link": {
-                      "name": "Label Types",
-                      "url": "/label-types"
-                    }
-                  }
-                },
-                {
-                  "listitem": {
-                    "link": {
-                      "name": "Comboboxes",
-                      "url": "/comboboxes"
-                    }
-                  }
-                }
-              ]
+              "searchbox": "Search page"
+            },
+            {
+              "button": "Search"
             }
           ]
-        },
-        {
-          "listitem": {
-            "link": {
-              "name": "Headings",
-              "url": "/headings"
-            }
-          }
-        },
-        {
-          "listitem": {
-            "link": {
-              "name": "Lists",
-              "url": "/lists"
-            }
-          }
         }
-      ]
-    }
+      }
+    ]
   },
   {
     "main": [
       {
         "heading": {
-          "name": "Texts",
+          "name": "Unnamed Section",
           "level": 2
         }
       },
       {
-        "paragraph": "Paragraph"
+        "article": [
+          {
+            "heading": {
+              "name": "Article",
+              "level": 3
+            }
+          },
+          {
+            "paragraph": "Paragraph"
+          },
+          "Text"
+        ]
       },
-      "Text"
+      {
+        "region": {
+          "name": "Named Section",
+          "children": [
+            "Named section content"
+          ]
+        }
+      },
+      {
+        "complementary": [
+          {
+            "heading": {
+              "name": "Aside",
+              "level": 2
+            }
+          },
+          "Aside content"
+        ]
+      }
     ]
+  },
+  {
+    "contentinfo": "Footer content"
   }
 ]
