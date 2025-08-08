@@ -9,7 +9,7 @@ export function snapshotButton(
 ): ButtonSnapshot | null {
   return {
     role: "button",
-    name: resolveAccessibleName(element, true),
+    name: resolveAccessibleName(element),
     children: snapshotChildren(element),
   };
 }
