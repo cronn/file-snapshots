@@ -37,5 +37,3 @@ export interface GenericElementSnapshot<
   attributes?: TAttributes;
   children?: Array<NodeSnapshot>;
 }
-
-export type ElementAttributes = Record<string, unknown>;
