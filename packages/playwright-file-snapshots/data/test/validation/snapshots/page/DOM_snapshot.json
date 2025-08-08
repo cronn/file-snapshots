@@ -44,6 +44,14 @@
                       "url": "/label-types"
                     }
                   }
+                },
+                {
+                  "listitem": {
+                    "link": {
+                      "name": "Comboboxes",
+                      "url": "/comboboxes"
+                    }
+                  }
                 }
               ]
             }

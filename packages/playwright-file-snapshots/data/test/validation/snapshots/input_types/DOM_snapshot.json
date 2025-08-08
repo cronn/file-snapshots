@@ -78,20 +78,42 @@
             "value": "Value"
           }
         },
-        "Select",
+        "Single Select",
         {
           "combobox": {
-            "name": "Select",
-            "value": "Option 1",
-            "children": [
-              {
-                "option": "Option 1"
-              },
-              {
-                "option": "Option 2"
-              }
+            "name": "Single Select",
+            "value": "Option 1"
+          }
+        },
+        "Multi Select",
+        {
+          "combobox": {
+            "name": "Multi Select",
+            "value": [
+              "Option 1",
+              "Option 2"
             ]
           }
+        },
+        "Autocomplete",
+        {
+          "combobox": {
+            "name": "Autocomplete",
+            "value": "Option 1"
+          }
+        },
+        {
+          "listbox": [
+            {
+              "option": {
+                "name": "Option 1",
+                "selected": true
+              }
+            },
+            {
+              "option": "Option 2"
+            }
+          ]
         },
         {
           "button": "Button"

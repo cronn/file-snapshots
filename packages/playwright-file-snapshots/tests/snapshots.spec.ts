@@ -39,3 +39,29 @@ test("label types", async ({ page }) => {
   await page.goto("/forms/label-types");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("comboboxes", async ({ page }) => {
+  await page.goto("/forms/comboboxes");
+  await testSnapshots(page.getByRole("main"));
+});
+
+test("include combobox options", async ({ page }) => {
+  await page.goto("/forms/input-types");
+  await expect(
+    snapshotDom(page.getByLabel("Multi Select"), {
+      includeComboboxOptions: true,
+    }),
+  ).toMatchJsonFile({ name: "select" });
+
+  await page.goto("/forms/comboboxes");
+  await expect(
+    snapshotDom(page.getByLabel("Expanded Combobox"), {
+      includeComboboxOptions: true,
+    }),
+  ).toMatchJsonFile({ name: "expanded combobox" });
+  await expect(
+    snapshotDom(page.getByLabel("Collapsed Combobox"), {
+      includeComboboxOptions: true,
+    }),
+  ).toMatchJsonFile({ name: "collapsed combobox" });
+});

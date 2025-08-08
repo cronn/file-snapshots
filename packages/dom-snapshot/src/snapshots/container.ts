@@ -13,9 +13,9 @@ export type ContainerRole =
   | "paragraph"
   | "form"
   | "navigation"
-  | "option"
   | "list"
-  | "listitem";
+  | "listitem"
+  | "listbox";
 
 export function snapshotContainer(
   role: ContainerRole,

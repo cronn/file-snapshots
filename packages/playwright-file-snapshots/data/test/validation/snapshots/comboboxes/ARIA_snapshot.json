@@ -1,0 +1,15 @@
+{
+  "main": [
+    "heading 'Comboboxes' [level=1]",
+    "text 'Expanded Combobox'",
+    "combobox 'Expanded Combobox' [expanded]",
+    {
+      "listbox": [
+        "option 'Option 1' [selected]",
+        "option 'Option 2'"
+      ]
+    },
+    "text 'Collapsed Combobox'",
+    "combobox 'Collapsed Combobox'"
+  ]
+}
