@@ -13,7 +13,6 @@ export type ContainerRole =
   | "paragraph"
   | "form"
   | "navigation"
-  | "option"
   | "list"
   | "listitem";
 

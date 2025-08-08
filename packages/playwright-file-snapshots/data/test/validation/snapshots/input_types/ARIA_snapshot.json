@@ -32,11 +32,19 @@
     {
       "textbox 'Textarea'": "Value"
     },
-    "text 'Select'",
+    "text 'Single Select'",
     {
-      "combobox 'Select'": [
+      "combobox 'Single Select'": [
         "option 'Option 1' [selected]",
         "option 'Option 2'"
+      ]
+    },
+    "text 'Multi Select'",
+    {
+      "listbox 'Multi Select'": [
+        "option 'Option 1' [selected]",
+        "option 'Option 2'",
+        "option 'Option 2' [selected]"
       ]
     },
     "button 'Button'"

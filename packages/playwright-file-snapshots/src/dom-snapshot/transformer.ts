@@ -33,6 +33,10 @@ export class DomSnapshotTransformer {
   }
 
   private simplifyElementSnapshot(snapshot: ElementSnapshot): unknown {
+    if (snapshot.role === "combobox") {
+      return this.simplifyComboboxSnapshot(snapshot);
+    }
+
     const normalizedSnapshot = this.normalizeElementSnapshot(snapshot);
 
     if (this.hasOnlyName(normalizedSnapshot)) {
@@ -77,6 +81,20 @@ export class DomSnapshotTransformer {
       attributes: sparseAttributes,
       children: nameEqualsChildren ? undefined : transformedChildren,
     };
+  }
+
+  private simplifyComboboxSnapshot(snapshot: ComboboxSnapshot): unknown {
+    const { role, name, attributes } = this.normalizeElementSnapshot(snapshot);
+    const options = snapshot.options ?? [];
+    const transformedOptions = options.map((optionSnapshot) =>
+      this.simplifyElementSnapshot(optionSnapshot),
+    );
+
+    return this.transformedSnapshot(role, {
+      name,
+      ...attributes,
+      options: transformedOptions.length > 0 ? transformedOptions : undefined,
+    });
   }
 
   private hasOnlyName(
