@@ -82,18 +82,7 @@
         {
           "combobox": {
             "name": "Single Select",
-            "value": "Option 1",
-            "options": [
-              {
-                "option": {
-                  "name": "Option 1",
-                  "selected": true
-                }
-              },
-              {
-                "option": "Option 2"
-              }
-            ]
+            "value": "Option 1"
           }
         },
         "Multi Select",
@@ -103,23 +92,6 @@
             "value": [
               "Option 1",
               "Option 2"
-            ],
-            "options": [
-              {
-                "option": {
-                  "name": "Option 1",
-                  "selected": true
-                }
-              },
-              {
-                "option": "Option 2"
-              },
-              {
-                "option": {
-                  "name": "Option 2",
-                  "selected": true
-                }
-              }
             ]
           }
         },

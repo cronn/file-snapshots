@@ -39,3 +39,12 @@ test("label types", async ({ page }) => {
   await page.goto("/forms/label-types");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("includes combobox options in DOM snapshot", async ({ page }) => {
+  await page.goto("/forms/input-types");
+  await expect(
+    snapshotDom(page.getByLabel("Multi Select"), {
+      includeComboboxOptions: true,
+    }),
+  ).toMatchJsonFile();
+});
