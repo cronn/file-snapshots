@@ -95,6 +95,26 @@
             ]
           }
         },
+        "Autocomplete",
+        {
+          "combobox": {
+            "name": "Autocomplete",
+            "value": "Option 1"
+          }
+        },
+        {
+          "listbox": [
+            {
+              "option": {
+                "name": "Option 1",
+                "selected": true
+              }
+            },
+            {
+              "option": "Option 2"
+            }
+          ]
+        },
         {
           "button": "Button"
         }
