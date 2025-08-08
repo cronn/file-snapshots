@@ -265,6 +265,22 @@ test("matches DOM snapshot", async ({ page }) => {
 
 Note that DOM Snapshots are currently an experimental feature. Not all elements and roles are covered, and the serialization format might change.
 
+### DOM Snapshot Options
+
+Snapshot options can be passed when calling the snapshot function:
+
+```ts
+await expect(
+  snapshotDom(page.getByLabel("My select"), { includeComboboxOptions: true }),
+).toMatchJsonFile({
+  name: "select options",
+});
+```
+
+| Option                   | Default Value | Description                               |
+| ------------------------ | ------------- | ----------------------------------------- |
+| `includeComboboxOptions` | `false`       | Include combobox options in the snapshot. |
+
 ## Configuration
 
 ### Matcher Options

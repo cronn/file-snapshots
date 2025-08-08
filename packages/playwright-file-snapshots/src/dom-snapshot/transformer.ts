@@ -7,7 +7,17 @@ interface NormalizedElementSnapshot {
   children?: Array<unknown>;
 }
 
+interface DomSnapshotTransformerOptions {
+  includeComboboxOptions?: boolean;
+}
+
 export class DomSnapshotTransformer {
+  private readonly includeComboboxOptions: boolean;
+
+  public constructor(options: DomSnapshotTransformerOptions = {}) {
+    this.includeComboboxOptions = options.includeComboboxOptions ?? false;
+  }
+
   public transform(snapshots: Array<NodeSnapshot>): unknown {
     const transformedSnapshots = snapshots.map((snapshot) =>
       this.transformSnapshotRecursive(snapshot),
@@ -93,7 +103,10 @@ export class DomSnapshotTransformer {
     return this.transformedSnapshot(role, {
       name,
       ...attributes,
-      options: transformedOptions.length > 0 ? transformedOptions : undefined,
+      options:
+        this.includeComboboxOptions && transformedOptions.length > 0
+          ? transformedOptions
+          : undefined,
     });
   }
 
