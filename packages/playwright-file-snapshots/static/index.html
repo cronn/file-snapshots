@@ -21,13 +21,29 @@
         <li><a href="/headings">Headings</a></li>
         <li><a href="/lists">Lists</a></li>
       </ul>
+      <search>
+        <form>
+          <label for="searchInput">Search page</label
+          ><input id="searchInput" type="search" />
+          <button>Search</button>
+        </form>
+      </search>
     </nav>
     <main>
       <section>
-        <h2>Texts</h2>
-        <p>Paragraph</p>
-        <span>Text</span>
+        <header><h2>Unnamed Section</h2></header>
+        <article>
+          <h3>Article</h3>
+          <p>Paragraph</p>
+          <span>Text</span>
+        </article>
       </section>
+      <section aria-label="Named Section">Named section content</section>
+      <aside>
+        <h2>Aside</h2>
+        Aside content
+      </aside>
     </main>
+    <footer>Footer content</footer>
   </body>
 </html>

@@ -3,74 +3,100 @@
     "banner": "heading 'HTML Test Document' [level=1]"
   },
   {
-    "navigation": {
-      "list": [
-        {
-          "listitem": {
-            "link 'Home'": {
-              "/url": "/"
+    "navigation": [
+      {
+        "list": [
+          {
+            "listitem": {
+              "link 'Home'": {
+                "/url": "/"
+              }
+            }
+          },
+          {
+            "listitem": [
+              "text 'Forms'",
+              {
+                "list": [
+                  {
+                    "listitem": {
+                      "link 'Input Types'": {
+                        "/url": "/input-types"
+                      }
+                    }
+                  },
+                  {
+                    "listitem": {
+                      "link 'Input State'": {
+                        "/url": "/input-states"
+                      }
+                    }
+                  },
+                  {
+                    "listitem": {
+                      "link 'Label Types'": {
+                        "/url": "/label-types"
+                      }
+                    }
+                  },
+                  {
+                    "listitem": {
+                      "link 'Comboboxes'": {
+                        "/url": "/comboboxes"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "listitem": {
+              "link 'Headings'": {
+                "/url": "/headings"
+              }
+            }
+          },
+          {
+            "listitem": {
+              "link 'Lists'": {
+                "/url": "/lists"
+              }
             }
           }
-        },
-        {
-          "listitem": [
-            "text 'Forms'",
-            {
-              "list": [
-                {
-                  "listitem": {
-                    "link 'Input Types'": {
-                      "/url": "/input-types"
-                    }
-                  }
-                },
-                {
-                  "listitem": {
-                    "link 'Input State'": {
-                      "/url": "/input-states"
-                    }
-                  }
-                },
-                {
-                  "listitem": {
-                    "link 'Label Types'": {
-                      "/url": "/label-types"
-                    }
-                  }
-                },
-                {
-                  "listitem": {
-                    "link 'Comboboxes'": {
-                      "/url": "/comboboxes"
-                    }
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "listitem": {
-            "link 'Headings'": {
-              "/url": "/headings"
-            }
-          }
-        },
-        {
-          "listitem": {
-            "link 'Lists'": {
-              "/url": "/lists"
-            }
-          }
-        }
-      ]
-    }
+        ]
+      },
+      {
+        "search": [
+          "text 'Search page'",
+          "searchbox 'Search page'",
+          "button 'Search'"
+        ]
+      }
+    ]
   },
   {
     "main": [
-      "heading 'Texts' [level=2]",
-      "paragraph 'Paragraph'",
-      "text 'Text'"
+      "heading 'Unnamed Section' [level=2]",
+      {
+        "article": [
+          "heading 'Article' [level=3]",
+          "paragraph 'Paragraph'",
+          "text 'Text'"
+        ]
+      },
+      {
+        "region 'Named Section'": "Named section content"
+      },
+      {
+        "complementary": [
+          "heading 'Aside' [level=2]",
+          "text 'Aside content'"
+        ]
+      }
     ]
+  },
+  {
+    "contentinfo": "Footer content"
   }
 ]

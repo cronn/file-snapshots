@@ -1,14 +1,24 @@
 import type { InputRole } from "./input";
+import { resolveAccessibleName } from "./name";
+import { roleSelector, selectorList } from "./selector";
 import type { ElementRole, SnapshotTargetElement } from "./types";
+
+type ElementTagName = keyof HTMLElementTagNameMap;
 
 type ElementRoleResolver<TRoles = ElementRole> =
   | TRoles
   | ((element: SnapshotTargetElement) => TRoles | undefined);
 
-const ELEMENT_ROLES: Record<string, ElementRoleResolver> = {
+const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   main: "main",
   nav: "navigation",
   form: "form",
+  header: resolveHeaderRole,
+  section: resolveSectionRole,
+  article: "article",
+  aside: "complementary",
+  search: "search",
+  footer: "contentinfo",
   p: "paragraph",
   h1: "heading",
   h2: "heading",
@@ -51,8 +61,8 @@ export function resolveElementRole(
     return elementRole as ElementRole;
   }
 
-  const nodeType = element.nodeName.toLowerCase();
-  const roleResolver = ELEMENT_ROLES[nodeType];
+  const tagName = element.tagName.toLowerCase() as ElementTagName;
+  const roleResolver = ELEMENT_ROLES[tagName];
   if (roleResolver === undefined) {
     return undefined;
   }
@@ -82,4 +92,39 @@ export function resolveInputRole(
   }
 
   return roleResolver(element);
+}
+
+const DISALLOWED_BANNER_CONTAINER_ELEMENTS = [
+  "article",
+  "aside",
+  "main",
+  "nav",
+  "section",
+] as const;
+const DISALLOWED_BANNER_CONTAINER_ROLES = [
+  "article",
+  "complementary",
+  "main",
+  "navigation",
+  "region",
+] as const;
+
+function resolveHeaderRole(
+  element: SnapshotTargetElement,
+): "banner" | undefined {
+  const disallowedContainerSelector = selectorList(
+    ...DISALLOWED_BANNER_CONTAINER_ELEMENTS,
+    ...DISALLOWED_BANNER_CONTAINER_ROLES.map(roleSelector),
+  );
+  const closestDisallowedContainer = element.closest(
+    disallowedContainerSelector,
+  );
+  return closestDisallowedContainer === null ? "banner" : undefined;
+}
+
+function resolveSectionRole(
+  element: SnapshotTargetElement,
+): "region" | undefined {
+  const accessibleName = resolveAccessibleName(element, false);
+  return accessibleName !== undefined ? "region" : undefined;
 }
