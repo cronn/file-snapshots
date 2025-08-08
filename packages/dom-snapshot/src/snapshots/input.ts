@@ -6,9 +6,11 @@ import { snapshotTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 export interface InputSnapshot
-  extends GenericElementSnapshot<InputRole, InputAttributes> {}
+  extends GenericElementSnapshot<CommonInputRole, InputAttributes> {}
 
-export type InputRole =
+export type InputRole = "button" | CommonInputRole;
+
+export type CommonInputRole =
   | "checkbox"
   | "combobox"
   | "radio"
@@ -48,14 +50,14 @@ export function snapshotInput(
 }
 
 function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
-  const inputType = resolveInputRole(element);
+  const inputRole = resolveInputRole(element);
 
-  if (inputType === "button") {
+  if (inputRole === undefined || inputRole === "button") {
     return null;
   }
 
   return {
-    role: inputType,
+    role: inputRole,
     name: resolveInputLabel(element),
     attributes: {
       value: resolveValue(element),
