@@ -47,6 +47,14 @@
         "option 'Option 2' [selected]"
       ]
     },
+    "text 'Autocomplete'",
+    "combobox 'Autocomplete' [expanded]",
+    {
+      "listbox": [
+        "option 'Option 1' [selected]",
+        "option 'Option 2'"
+      ]
+    },
     "button 'Button'"
   ]
 }

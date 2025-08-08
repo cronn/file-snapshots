@@ -58,7 +58,7 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
     role: inputRole,
     name: resolveInputLabel(element),
     attributes: {
-      value: resolveValue(element),
+      value: resolveInputValue(element),
       checked: resolveChecked(element),
       ...snapshotInputStateAttributes(element),
     },
@@ -70,7 +70,7 @@ function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
     role: "textbox",
     name: resolveInputLabel(element),
     attributes: {
-      value: resolveValue(element),
+      value: resolveInputValue(element),
       ...snapshotInputStateAttributes(element),
     },
   };
@@ -79,16 +79,20 @@ function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
 export function snapshotInputStateAttributes(
   element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
 ): InputStateAttributes {
+  const readonlyValue = element.getAttribute("readonly");
+
   return {
-    readonly: resolveBooleanAttribute(element, "readonly"),
-    disabled: resolveBooleanAttribute(element, "disabled"),
-    required: resolveBooleanAttribute(element, "required"),
+    readonly: booleanAttribute(
+      readonlyValue === "" || readonlyValue === "readonly",
+    ),
+    disabled: booleanAttribute(element.disabled),
+    required: booleanAttribute(element.required),
     invalid: booleanAttribute(element.ariaInvalid),
   };
 }
 
-function resolveValue(
-  element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
+export function resolveInputValue(
+  element: HTMLInputElement | HTMLTextAreaElement,
 ): string | undefined {
   if (element instanceof HTMLInputElement && element.type === "checkbox") {
     return undefined;
@@ -105,17 +109,6 @@ function resolveChecked(
   }
 
   return element.checked ? true : undefined;
-}
-
-function resolveBooleanAttribute(
-  element: SnapshotTargetElement,
-  attributeNameAndValue: string,
-): true | undefined {
-  const attributeValue = element.getAttribute(attributeNameAndValue);
-  return (
-    booleanAttribute(attributeValue, "") ??
-    booleanAttribute(attributeValue, attributeNameAndValue)
-  );
 }
 
 export function resolveInputLabel(

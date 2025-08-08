@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Comboboxes</title>
+  </head>
+  <body>
+    <main>
+      <h1>Comboboxes</h1>
+      <form>
+        <!-- expanded combobox -->
+        <div>
+          <label for="expandedCombobox">Expanded Combobox</label>
+          <input
+            id="expandedCombobox"
+            type="text"
+            role="combobox"
+            aria-controls="expandedOptions"
+            aria-expanded="true"
+          />
+          <ul id="expandedOptions" role="listbox">
+            <li role="option" aria-selected="true">Option 1</li>
+            <li role="option" aria-selected="false">Option 2</li>
+          </ul>
+        </div>
+
+        <!-- collapsed combobox -->
+        <div>
+          <label for="collapsedCombobox">Collapsed Combobox</label>
+          <input
+            id="collapsedCombobox"
+            type="text"
+            role="combobox"
+            aria-expanded="false"
+          />
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

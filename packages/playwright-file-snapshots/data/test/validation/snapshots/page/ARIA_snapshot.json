@@ -37,6 +37,13 @@
                       "/url": "/label-types"
                     }
                   }
+                },
+                {
+                  "listitem": {
+                    "link 'Comboboxes'": {
+                      "/url": "/comboboxes"
+                    }
+                  }
                 }
               ]
             }

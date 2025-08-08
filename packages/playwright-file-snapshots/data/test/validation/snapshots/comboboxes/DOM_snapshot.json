@@ -1,0 +1,40 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Comboboxes",
+        "level": 1
+      }
+    },
+    {
+      "form": [
+        "Expanded Combobox",
+        {
+          "combobox": {
+            "name": "Expanded Combobox",
+            "value": "Option 1"
+          }
+        },
+        {
+          "listbox": [
+            {
+              "option": {
+                "name": "Option 1",
+                "selected": true
+              }
+            },
+            {
+              "option": "Option 2"
+            }
+          ]
+        },
+        "Collapsed Combobox",
+        {
+          "combobox": {
+            "name": "Collapsed Combobox"
+          }
+        }
+      ]
+    }
+  ]
+}
