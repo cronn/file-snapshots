@@ -78,17 +78,47 @@
             "value": "Value"
           }
         },
-        "Select",
+        "Single Select",
         {
           "combobox": {
-            "name": "Select",
+            "name": "Single Select",
             "value": "Option 1",
-            "children": [
+            "options": [
               {
-                "option": "Option 1"
+                "option": {
+                  "name": "Option 1",
+                  "selected": true
+                }
               },
               {
                 "option": "Option 2"
+              }
+            ]
+          }
+        },
+        "Multi Select",
+        {
+          "combobox": {
+            "name": "Multi Select",
+            "value": [
+              "Option 1",
+              "Option 2"
+            ],
+            "options": [
+              {
+                "option": {
+                  "name": "Option 1",
+                  "selected": true
+                }
+              },
+              {
+                "option": "Option 2"
+              },
+              {
+                "option": {
+                  "name": "Option 2",
+                  "selected": true
+                }
               }
             ]
           }

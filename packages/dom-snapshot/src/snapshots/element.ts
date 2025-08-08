@@ -1,5 +1,6 @@
 import { snapshotButton } from "./button";
 import { snapshotChildren } from "./children";
+import { snapshotCombobox, snapshotOption } from "./combobox";
 import type { ContainerRole } from "./container";
 import { snapshotContainer } from "./container";
 import { snapshotHeading } from "./heading";
@@ -24,7 +25,8 @@ type NonContainerElementType = Exclude<ElementRole, ContainerRole>;
 const ELEMENT_SNAPSHOTS: Record<NonContainerElementType, ElementSnapshotFn> = {
   button: snapshotButton,
   checkbox: snapshotInput,
-  combobox: snapshotInput,
+  combobox: snapshotCombobox,
+  option: snapshotOption,
   heading: snapshotHeading,
   link: snapshotLink,
   radio: snapshotInput,
