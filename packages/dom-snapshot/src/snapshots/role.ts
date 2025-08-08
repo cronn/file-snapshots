@@ -3,7 +3,7 @@ import type { ElementRole, SnapshotTargetElement } from "./types";
 
 type ElementRoleResolver<TRoles = ElementRole> =
   | TRoles
-  | ((element: SnapshotTargetElement) => TRoles);
+  | ((element: SnapshotTargetElement) => TRoles | undefined);
 
 const ELEMENT_ROLES: Record<string, ElementRoleResolver> = {
   main: "main",
@@ -22,8 +22,8 @@ const ELEMENT_ROLES: Record<string, ElementRoleResolver> = {
   a: "link",
   button: "button",
   input: resolveInputRole,
-  textarea: resolveInputRole,
-  select: resolveInputRole,
+  textarea: "textbox",
+  select: "combobox",
   option: "option",
 };
 
@@ -46,7 +46,7 @@ const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {
 export function resolveElementRole(
   element: SnapshotTargetElement,
 ): ElementRole | undefined {
-  const elementRole = element.getAttribute("role");
+  const elementRole = element.role;
   if (elementRole !== null) {
     return elementRole as ElementRole;
   }
@@ -66,17 +66,12 @@ export function resolveElementRole(
 
 export function resolveInputRole(
   element: SnapshotTargetElement,
-): InputRole | "button" {
-  if (element instanceof HTMLTextAreaElement) {
-    return "textbox";
+): InputRole | undefined {
+  if (!(element instanceof HTMLInputElement)) {
+    return undefined;
   }
 
-  if (element instanceof HTMLSelectElement) {
-    return "combobox";
-  }
-
-  const inputRole = element.getAttribute("type") ?? "text";
-  const roleResolver = INPUT_ROLES[inputRole];
+  const roleResolver = INPUT_ROLES[element.type];
 
   if (roleResolver === undefined) {
     return "textbox";
