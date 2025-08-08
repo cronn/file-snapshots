@@ -1,3 +1,4 @@
+import { resolveElementReference } from "./attribute";
 import { snapshotTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
@@ -9,13 +10,9 @@ export function resolveAccessibleName(
     return element.ariaLabel;
   }
 
-  const ariaLabelledBy = element.getAttribute("aria-labelledby");
-  if (ariaLabelledBy !== null) {
-    const referencedElement =
-      element.ownerDocument.getElementById(ariaLabelledBy);
-    if (referencedElement !== null) {
-      return snapshotTextContent(referencedElement);
-    }
+  const labelledByElement = resolveElementReference(element, "aria-labelledby");
+  if (labelledByElement !== null) {
+    return snapshotTextContent(labelledByElement);
   }
 
   if (includeTextContent) {
