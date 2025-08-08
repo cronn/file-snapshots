@@ -3,7 +3,7 @@ import type { SnapshotTargetElement } from "./types";
 
 export function resolveAccessibleName(
   element: SnapshotTargetElement,
-  includeTextContent = false,
+  includeTextContent = true,
 ): string | undefined {
   if (element.ariaLabel !== null) {
     return element.ariaLabel;
@@ -16,20 +16,6 @@ export function resolveAccessibleName(
     if (referencedElement !== null) {
       return snapshotTextContent(referencedElement);
     }
-  }
-
-  if (element.id !== null) {
-    const referencedElement = element.ownerDocument.querySelector(
-      `[for='${element.id}']`,
-    );
-    if (referencedElement !== null) {
-      return snapshotTextContent(referencedElement);
-    }
-  }
-
-  const closestLabel = element.closest("label");
-  if (closestLabel !== null) {
-    return snapshotTextContent(closestLabel);
   }
 
   if (includeTextContent) {

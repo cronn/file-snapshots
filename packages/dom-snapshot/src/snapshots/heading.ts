@@ -21,7 +21,7 @@ export function snapshotHeading(
 
   return {
     role: "heading",
-    name: resolveAccessibleName(element, true),
+    name: resolveAccessibleName(element),
     attributes: {
       level: resolveLevel(element),
     },

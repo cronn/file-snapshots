@@ -56,7 +56,7 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
 
   return {
     role: inputType,
-    name: resolveAccessibleName(element),
+    name: resolveInputLabel(element),
     attributes: {
       value: resolveValue(element),
       checked: resolveChecked(element),
@@ -69,7 +69,7 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
 function snapshotSelectElement(element: HTMLSelectElement): InputSnapshot {
   return {
     role: "combobox",
-    name: resolveAccessibleName(element),
+    name: resolveInputLabel(element),
     attributes: {
       value: resolveSelectValue(element),
       ...snapshotStateAttributes(element),
@@ -81,7 +81,7 @@ function snapshotSelectElement(element: HTMLSelectElement): InputSnapshot {
 function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
   return {
     role: "textbox",
-    name: resolveAccessibleName(element),
+    name: resolveInputLabel(element),
     attributes: {
       value: resolveValue(element),
       ...snapshotStateAttributes(element),
@@ -141,4 +141,22 @@ function resolveBooleanAttribute(
     booleanAttribute(attributeValue, "") ??
     booleanAttribute(attributeValue, attributeNameAndValue)
   );
+}
+
+function resolveInputLabel(element: SnapshotTargetElement): string | undefined {
+  if (element.id !== null) {
+    const referencedElement = element.ownerDocument.querySelector(
+      `[for='${element.id}']`,
+    );
+    if (referencedElement !== null) {
+      return snapshotTextContent(referencedElement);
+    }
+  }
+
+  const closestLabel = element.closest("label");
+  if (closestLabel !== null) {
+    return snapshotTextContent(closestLabel);
+  }
+
+  return resolveAccessibleName(element, false);
 }
