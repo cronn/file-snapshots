@@ -37,6 +37,11 @@ test("description lists", async ({ page }) => {
   await testSnapshots(page.getByRole("main"));
 });
 
+test("tables", async ({ page }) => {
+  await page.goto("/tables");
+  await testSnapshots(page.getByRole("main"));
+});
+
 test("input types", async ({ page }) => {
   await page.goto("/forms/input-types");
   await testSnapshots(page.getByRole("main"));

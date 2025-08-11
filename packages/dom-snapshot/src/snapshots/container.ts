@@ -18,6 +18,12 @@ const CONTAINER_ROLES = [
   "search",
   "term",
   "definition",
+  "table",
+  "rowgroup",
+  "row",
+  "columnheader",
+  "rowheader",
+  "cell",
 ] as const;
 
 export interface ContainerSnapshot
