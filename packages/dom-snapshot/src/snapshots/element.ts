@@ -75,7 +75,7 @@ function snapshotNodeByType(
     return snapshotChildren(node) ?? null;
   }
 
-  if (isNonContainerElement(elementRole)) {
+  if (hasRoleSpecificSnapshot(elementRole)) {
     const snapshotByRole = ROLE_SNAPSHOTS[elementRole];
     return snapshotByRole(node);
   }
@@ -83,8 +83,8 @@ function snapshotNodeByType(
   return snapshotContainer(elementRole, node);
 }
 
-function isNonContainerElement(
-  role: ElementRole,
+export function hasRoleSpecificSnapshot(
+  role: string,
 ): role is NonContainerElementRole {
   return role in ROLE_SNAPSHOTS;
 }

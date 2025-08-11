@@ -1,3 +1,5 @@
+import { isContainerRole } from "./container";
+import { hasRoleSpecificSnapshot } from "./element";
 import type { InputRole } from "./input";
 import { resolveAccessibleName } from "./name";
 import { roleSelector, selectorList } from "./selector";
@@ -56,9 +58,12 @@ const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {
 export function resolveElementRole(
   element: SnapshotTargetElement,
 ): ElementRole | undefined {
-  const elementRole = element.role;
-  if (elementRole !== null) {
-    return elementRole as ElementRole;
+  const explicitRole = element.role;
+  if (
+    explicitRole !== null &&
+    (hasRoleSpecificSnapshot(explicitRole) || isContainerRole(explicitRole))
+  ) {
+    return explicitRole;
   }
 
   const tagName = element.tagName.toLowerCase() as ElementTagName;

@@ -17,6 +17,11 @@ test("page", async ({ page }) => {
   await testSnapshots(page.locator("body"));
 });
 
+test("role types", async ({ page }) => {
+  await page.goto("/role-types");
+  await testSnapshots(page.getByRole("main"));
+});
+
 test("headings", async ({ page }) => {
   await page.goto("/headings");
   await testSnapshots(page.getByRole("main"));
