@@ -1,0 +1,11 @@
+{
+  "main": [
+    {
+      "paragraph": "Implicit role"
+    },
+    {
+      "paragraph": "Explicit role"
+    },
+    "Unknown role"
+  ]
+}
