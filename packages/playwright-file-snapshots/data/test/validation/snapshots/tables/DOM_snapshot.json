@@ -1,0 +1,62 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Tables",
+        "level": 1
+      }
+    },
+    {
+      "table": [
+        {
+          "rowgroup": {
+            "row": [
+              {
+                "columnheader": "Column Header 1"
+              },
+              {
+                "columnheader": "Column Header 2"
+              }
+            ]
+          }
+        },
+        {
+          "rowgroup": [
+            {
+              "row": [
+                {
+                  "rowheader": "Row Header 1"
+                },
+                {
+                  "cell": "Body Cell 1"
+                }
+              ]
+            },
+            {
+              "row": [
+                {
+                  "rowheader": "Row Header 2"
+                },
+                {
+                  "cell": "Body Cell 2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "rowgroup": {
+            "row": [
+              {
+                "cell": "Footer Cell 1"
+              },
+              {
+                "cell": "Footer Cell 2"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

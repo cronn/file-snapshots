@@ -39,6 +39,13 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   option: "option",
   dt: resolveDescriptionListItem("term"),
   dd: resolveDescriptionListItem("definition"),
+  table: "table",
+  thead: resolveTableElement("rowgroup"),
+  tbody: resolveTableElement("rowgroup"),
+  tfoot: resolveTableElement("rowgroup"),
+  tr: resolveTableElement("row"),
+  th: resolveHeaderCellRole,
+  td: resolveTableElement("cell"),
 };
 
 const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {
@@ -159,4 +166,42 @@ function resolveDescriptionListItem(
 
     return targetRole;
   };
+}
+
+type TableItemRole = "rowgroup" | "row" | "columnheader" | "rowheader" | "cell";
+
+function resolveTableElement(
+  targetRole: TableItemRole,
+): ElementRoleResolver<TableItemRole> {
+  return function resolveRole(
+    element: SnapshotTargetElement,
+  ): TableItemRole | undefined {
+    return isWithinTable(element) ? targetRole : undefined;
+  };
+}
+
+function resolveHeaderCellRole(
+  element: SnapshotTargetElement,
+): TableItemRole | undefined {
+  if (!(isWithinTable(element) && element instanceof HTMLTableCellElement)) {
+    return undefined;
+  }
+
+  const scope = element.scope;
+
+  switch (scope) {
+    case "col":
+      return "columnheader";
+    case "row":
+      return "rowheader";
+    default:
+      return undefined;
+  }
+}
+
+function isWithinTable(element: SnapshotTargetElement): boolean {
+  const closestTable = element.closest(
+    selectorList("table", roleSelector("table")),
+  );
+  return closestTable !== null;
 }
