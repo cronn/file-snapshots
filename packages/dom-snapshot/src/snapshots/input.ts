@@ -1,4 +1,5 @@
 import { booleanAttribute, stringAttribute } from "./attribute";
+import { resolveDescription } from "./description";
 import { resolveAccessibleName } from "./name";
 import { resolveInputRole } from "./role";
 import { snapshotTextContent } from "./text";
@@ -17,12 +18,13 @@ export type CommonInputRole =
   | "spinbutton"
   | "textbox";
 
-interface InputAttributes extends InputStateAttributes {
+interface InputAttributes extends CommonInputAttributes {
   value?: string;
   checked?: boolean;
 }
 
-export interface InputStateAttributes {
+export interface CommonInputAttributes {
+  description?: string;
   readonly?: boolean;
   disabled?: boolean;
   required?: boolean;
@@ -60,7 +62,7 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
     attributes: {
       value: resolveInputValue(element),
       checked: resolveChecked(element),
-      ...snapshotInputStateAttributes(element),
+      ...snapshotCommonInputAttributes(element),
     },
   };
 }
@@ -71,17 +73,18 @@ function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
     name: resolveInputLabel(element),
     attributes: {
       value: resolveInputValue(element),
-      ...snapshotInputStateAttributes(element),
+      ...snapshotCommonInputAttributes(element),
     },
   };
 }
 
-export function snapshotInputStateAttributes(
+export function snapshotCommonInputAttributes(
   element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
-): InputStateAttributes {
+): CommonInputAttributes {
   const readonlyValue = element.getAttribute("readonly");
 
   return {
+    description: resolveDescription(element),
     readonly: booleanAttribute(
       readonlyValue === "" || readonlyValue === "readonly",
     ),

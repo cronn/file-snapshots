@@ -47,6 +47,11 @@ test("label types", async ({ page }) => {
   await testSnapshots(page.getByRole("main"));
 });
 
+test("description types", async ({ page }) => {
+  await page.goto("/forms/description-types");
+  await testSnapshots(page.getByRole("main"));
+});
+
 test("comboboxes", async ({ page }) => {
   await page.goto("/forms/comboboxes");
   await testSnapshots(page.getByRole("main"));

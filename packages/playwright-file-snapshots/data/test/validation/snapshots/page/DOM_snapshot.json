@@ -51,6 +51,14 @@
                   {
                     "listitem": {
                       "link": {
+                        "name": "Description Types",
+                        "url": "/description-types"
+                      }
+                    }
+                  },
+                  {
+                    "listitem": {
+                      "link": {
                         "name": "Comboboxes",
                         "url": "/comboboxes"
                       }

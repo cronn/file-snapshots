@@ -1,10 +1,10 @@
 import { booleanAttribute, resolveElementReference } from "./attribute";
 import { snapshotChildren } from "./children";
-import type { InputStateAttributes } from "./input";
+import type { CommonInputAttributes } from "./input";
 import {
   resolveInputLabel,
   resolveInputValue,
-  snapshotInputStateAttributes,
+  snapshotCommonInputAttributes,
 } from "./input";
 import { resolveAccessibleName } from "./name";
 import { roleSelector, selectorList } from "./selector";
@@ -15,7 +15,7 @@ export interface ComboboxSnapshot
   options?: Array<OptionSnapshot>;
 }
 
-interface ComboboxAttributes extends InputStateAttributes {
+interface ComboboxAttributes extends CommonInputAttributes {
   value?: string | Array<string>;
 }
 
@@ -35,7 +35,8 @@ export function snapshotCombobox(
     name: resolveInputLabel(element),
     attributes: {
       value: resolveValue(element, options),
-      ...snapshotInputStateAttributes(element),
+      ...snapshotCommonInputAttributes(element),
+      ...snapshotCommonInputAttributes(element),
     },
     options,
   };

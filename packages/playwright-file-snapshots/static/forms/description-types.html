@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Description Types</title>
+  </head>
+  <body>
+    <main>
+      <h1>Description Types</h1>
+      <form>
+        <!-- aria-description -->
+        <div>
+          <label for="input1">Input with aria-description</label>
+          <input id="input1" type="text" aria-description="Description" />
+        </div>
+
+        <!-- aria-describedby -->
+        <div>
+          <label for="input2">Input with aria-describedby</label>
+          <input id="input2" type="text" aria-describedby="descriptionId" />
+          <p id="descriptionId">Description</p>
+        </div>
+
+        <!-- aria-describedby takes precedence over aria-description -->
+        <div>
+          <label for="input3">Input with multiple descriptions</label>
+          <input
+            id="input3"
+            type="text"
+            aria-describedby="referencedDescription"
+            aria-description="Explicit Description"
+          />
+          <p id="referencedDescription">Referenced Description</p>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

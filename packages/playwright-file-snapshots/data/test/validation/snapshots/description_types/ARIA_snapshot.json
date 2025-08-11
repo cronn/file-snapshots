@@ -1,0 +1,13 @@
+{
+  "main": [
+    "heading 'Description Types' [level=1]",
+    "text 'Input with aria-description'",
+    "textbox 'Input with aria-description'",
+    "text 'Input with aria-describedby'",
+    "textbox 'Input with aria-describedby'",
+    "paragraph 'Description'",
+    "text 'Input with multiple descriptions'",
+    "textbox 'Input with multiple descriptions'",
+    "paragraph 'Referenced Description'"
+  ]
+}

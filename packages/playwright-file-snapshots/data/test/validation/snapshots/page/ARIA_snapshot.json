@@ -41,6 +41,13 @@
                   },
                   {
                     "listitem": {
+                      "link 'Description Types'": {
+                        "/url": "/description-types"
+                      }
+                    }
+                  },
+                  {
+                    "listitem": {
                       "link 'Comboboxes'": {
                         "/url": "/comboboxes"
                       }
