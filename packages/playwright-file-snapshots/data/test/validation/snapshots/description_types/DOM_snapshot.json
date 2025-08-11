@@ -1,0 +1,41 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Description Types",
+        "level": 1
+      }
+    },
+    {
+      "form": [
+        "Input with aria-description",
+        {
+          "textbox": {
+            "name": "Input with aria-description",
+            "description": "Description"
+          }
+        },
+        "Input with aria-describedby",
+        {
+          "textbox": {
+            "name": "Input with aria-describedby",
+            "description": "Description"
+          }
+        },
+        {
+          "paragraph": "Description"
+        },
+        "Input with multiple descriptions",
+        {
+          "textbox": {
+            "name": "Input with multiple descriptions",
+            "description": "Referenced Description"
+          }
+        },
+        {
+          "paragraph": "Referenced Description"
+        }
+      ]
+    }
+  ]
+}
