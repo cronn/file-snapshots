@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tables</title>
+  </head>
+  <body>
+    <main>
+      <h1>Tables</h1>
+      <section>
+        <h2>Full Table</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Column Header 1</th>
+              <th scope="col">Column Header 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Row Header 1</th>
+              <td>Body Cell 1</td>
+            </tr>
+            <tr>
+              <th scope="row">Row Header 2</th>
+              <td>Body Cell 2</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Footer Cell 1</td>
+              <td>Footer Cell 2</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+      <section>
+        <h2>Incomplete Table</h2>
+        <thead>
+          Table Header without Table
+        </thead>
+        <tbody>
+          Table Body without Table
+        </tbody>
+        <tfoot>
+          Table Footer without Table
+        </tfoot>
+        <tr>
+          Table Row without Table
+        </tr>
+        <th>Header Cell without Table</th>
+        <td>Cell without Table</td>
+        <table>
+          <th>Header Cell without Row</th>
+          <td>Cell without Row</td>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

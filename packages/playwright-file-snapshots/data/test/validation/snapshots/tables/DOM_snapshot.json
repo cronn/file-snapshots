@@ -1,0 +1,87 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Tables",
+        "level": 1
+      }
+    },
+    {
+      "heading": {
+        "name": "Full Table",
+        "level": 2
+      }
+    },
+    {
+      "table": [
+        {
+          "rowgroup": {
+            "row": [
+              {
+                "columnheader": "Column Header 1"
+              },
+              {
+                "columnheader": "Column Header 2"
+              }
+            ]
+          }
+        },
+        {
+          "rowgroup": [
+            {
+              "row": [
+                {
+                  "rowheader": "Row Header 1"
+                },
+                {
+                  "cell": "Body Cell 1"
+                }
+              ]
+            },
+            {
+              "row": [
+                {
+                  "rowheader": "Row Header 2"
+                },
+                {
+                  "cell": "Body Cell 2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "rowgroup": {
+            "row": [
+              {
+                "cell": "Footer Cell 1"
+              },
+              {
+                "cell": "Footer Cell 2"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "heading": {
+        "name": "Incomplete Table",
+        "level": 2
+      }
+    },
+    "Table Header without Table Table Body without Table Table Footer without Table Table Row without Table Header Cell without Table Cell without Table",
+    {
+      "table": {
+        "rowgroup": {
+          "row": [
+            "Header Cell without Row",
+            {
+              "cell": "Cell without Row"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

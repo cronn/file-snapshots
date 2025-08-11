@@ -95,6 +95,14 @@
           {
             "listitem": {
               "link": {
+                "name": "Tables",
+                "url": "/tables"
+              }
+            }
+          },
+          {
+            "listitem": {
+              "link": {
                 "name": "Accessibility Tree",
                 "url": "/accessibility-tree"
               }
