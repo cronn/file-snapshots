@@ -1,3 +1,4 @@
+import { booleanAttribute } from "./attribute";
 import { snapshotButton } from "./button";
 import { snapshotChildren } from "./children";
 import { snapshotCombobox, snapshotOption } from "./combobox";
@@ -66,6 +67,11 @@ function snapshotNodeByType(
   }
 
   if (!(node instanceof HTMLElement)) {
+    return null;
+  }
+
+  const ariaHidden = booleanAttribute(node.ariaHidden);
+  if (ariaHidden === true) {
     return null;
   }
 

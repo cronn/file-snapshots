@@ -72,3 +72,8 @@ test("include combobox options", async ({ page }) => {
     }),
   ).toMatchJsonFile({ name: "collapsed combobox" });
 });
+
+test("accessibility tree", async ({ page }) => {
+  await page.goto("/accessibility-tree");
+  await testSnapshots(page.getByRole("main"));
+});

@@ -75,6 +75,14 @@
                 "url": "/lists"
               }
             }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Accessibility Tree",
+                "url": "/accessibility-tree"
+              }
+            }
           }
         ]
       },
