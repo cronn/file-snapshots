@@ -1,0 +1,20 @@
+{
+  "main": [
+    "heading 'Description Lists' [level=1]",
+    {
+      "term": "Term 1"
+    },
+    {
+      "definition": "Definition 1"
+    },
+    {
+      "term": "Term 2"
+    },
+    {
+      "definition": "Definition 2"
+    },
+    {
+      "definition": "Definition 3"
+    }
+  ]
+}

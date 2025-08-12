@@ -16,6 +16,8 @@ const CONTAINER_ROLES = [
   "navigation",
   "region",
   "search",
+  "term",
+  "definition",
 ] as const;
 
 export interface ContainerSnapshot

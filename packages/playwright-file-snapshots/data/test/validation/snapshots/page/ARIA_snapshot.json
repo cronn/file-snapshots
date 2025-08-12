@@ -73,6 +73,13 @@
           },
           {
             "listitem": {
+              "link 'Description Lists'": {
+                "/url": "/description-lists"
+              }
+            }
+          },
+          {
+            "listitem": {
               "link 'Accessibility Tree'": {
                 "/url": "/accessibility-tree"
               }
