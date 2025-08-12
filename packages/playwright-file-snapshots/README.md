@@ -16,8 +16,8 @@ custom matchers for snapshot testing with the following features:
 
 - Zero configuration: snapshot files are named based on the test name
 - Multiple snapshot formats: JSON, text
-- Automatic serialization of native JS values like `undefined`, `Number.NaN` or
-  `Date` objects in JSON
+- Snapshot retries: avoid flaky tests by retrying snapshots
+- ARIA and DOM snapshots: Achieve high test coverage by snapshotting the semantical structure and accessible contents of a page
 
 ## Getting Started
 
