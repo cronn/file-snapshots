@@ -37,6 +37,8 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   textarea: "textbox",
   select: "combobox",
   option: "option",
+  dt: resolveDescriptionListItem("term"),
+  dd: resolveDescriptionListItem("definition"),
 };
 
 const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {
@@ -140,4 +142,21 @@ function resolveSectionRole(
 ): "region" | undefined {
   const accessibleName = resolveAccessibleName(element, false);
   return accessibleName !== undefined ? "region" : undefined;
+}
+
+type DescriptionListItemRole = "term" | "definition";
+
+function resolveDescriptionListItem(
+  targetRole: DescriptionListItemRole,
+): ElementRoleResolver<DescriptionListItemRole> {
+  return function resolveRole(
+    element: SnapshotTargetElement,
+  ): DescriptionListItemRole | undefined {
+    const closestDescriptionList = element.closest("dl");
+    if (closestDescriptionList === null) {
+      return undefined;
+    }
+
+    return targetRole;
+  };
 }
