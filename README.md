@@ -63,3 +63,22 @@ Effectively working with file snapshots requires a tool which supports comparing
 ### See Also
 
 - [File Snapshots for Java](https://github.com/cronn/validation-file-assertions)
+
+## Development
+
+This monorepo uses [Turborepo](https://turborepo.com/) as build system to manage task dependencies and enable task caching.
+
+### Common Tasks
+
+| Command            | Description                                                                       |
+| ------------------ | --------------------------------------------------------------------------------- |
+| `pnpm turbo check` | Runs code checks, including TypeScript compilation, linting, formatting and tests |
+| `pnpm turbo fix`   | Applies automatic fixes, including linting and formatting                         |
+| `pnpm turbo build` | Runs the build                                                                    |
+| `pnpm turbo ci`    | Runs all tasks required for CI, including checks and builds                       |
+
+To run tasks for a specific package only, use [filters](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+
+```shell
+pnpm turbo --filter=@cronn/playwright-file-snapshots check
+```
