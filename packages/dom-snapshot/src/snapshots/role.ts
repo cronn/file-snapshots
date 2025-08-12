@@ -59,6 +59,10 @@ export function resolveElementRole(
   element: SnapshotTargetElement,
 ): ElementRole | undefined {
   const explicitRole = element.role;
+  if (isIgnoredRole(explicitRole)) {
+    return undefined;
+  }
+
   if (
     explicitRole !== null &&
     (hasRoleSpecificSnapshot(explicitRole) || isContainerRole(explicitRole))
@@ -77,6 +81,10 @@ export function resolveElementRole(
   }
 
   return roleResolver(element);
+}
+
+function isIgnoredRole(role: string | null): boolean {
+  return role === "presentation" || role === "none";
 }
 
 export function resolveInputRole(
