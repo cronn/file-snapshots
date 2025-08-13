@@ -13,7 +13,7 @@
   },
   "scripts": {
     "format:check": "prettier . --check",
-    "format:fix": "prettier . --write",
+    "format:fix": "prettier . --write --list-different",
     "prepublishOnly": "pnpm turbo run ci",
     "version": "pnpm changeset version && pnpm turbo run format:fix",
     "release": "pnpm turbo run build && pnpm changeset publish"
