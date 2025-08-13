@@ -1,5 +1,11 @@
 # @cronn/vitest-file-snapshots
 
+## 0.11.0
+
+### Minor Changes
+
+- a015e3d: Remove `__tests__` directory from snapshot file path
+
 ## 0.10.1
 
 ### Patch Changes
