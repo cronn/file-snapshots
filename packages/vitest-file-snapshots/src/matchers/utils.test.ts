@@ -32,6 +32,18 @@ describe("parseTestPath", () => {
     );
   });
 
+  test("removes __tests__ directory from test path", () => {
+    expect(parseTestPath("src/__tests__/feature.test.ts", ".")).toBe(
+      "src/feature",
+    );
+  });
+
+  test("does not remove directory partially matching __tests__ from test path", () => {
+    expect(parseTestPath("src/x__tests__/feature.test.ts", ".")).toBe(
+      "src/x__tests__/feature",
+    );
+  });
+
   test("resolves test path relative to testDir", () => {
     expect(parseTestPath("src/tests/feature.test.ts", "src/tests")).toBe(
       "feature",
