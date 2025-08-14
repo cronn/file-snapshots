@@ -10,6 +10,7 @@ async function testSnapshots(locator: Locator): Promise<void> {
   });
   await expect(snapshotDom(locator)).toMatchJsonFile({ name: "DOM snapshot" });
 }
+
 test("page", async ({ page }) => {
   await page.goto("/");
   await testSnapshots(page.locator("body"));
