@@ -1,6 +1,7 @@
 import type { SnapshotSerializer } from "../types/serializer";
 import { addTrailingNewLine } from "../utils/file";
 import { isArray, isPlainObject, isString } from "../utils/guards";
+import { isPositiveInteger } from "../utils/validators";
 
 type JsonValue =
   | Record<string, unknown>
@@ -22,6 +23,13 @@ export interface JsonSerializerOptions {
    * Custom normalizers to apply before serialization
    */
   normalizers?: Array<JsonNormalizer>;
+
+  /**
+   * Indentation size in spaces
+   *
+   * @default 2
+   */
+  indentSize?: number;
 }
 
 export type JsonNormalizer = (
@@ -39,11 +47,22 @@ export class JsonSerializer implements SnapshotSerializer {
 
   private readonly includeUndefinedObjectProperties: boolean;
   private readonly normalizers: Array<JsonNormalizer>;
+  private readonly indentSize: number;
 
   public constructor(options: JsonSerializerOptions = {}) {
+    if (
+      options.indentSize !== undefined &&
+      !isPositiveInteger(options.indentSize)
+    ) {
+      throw new Error(
+        "Invalid option indentSize: value must be a positive integer.",
+      );
+    }
+
     this.includeUndefinedObjectProperties =
       options.includeUndefinedObjectProperties ?? false;
     this.normalizers = options.normalizers ?? [];
+    this.indentSize = options.indentSize ?? 2;
   }
 
   public canSerialize(_value: unknown): boolean {
@@ -52,7 +71,7 @@ export class JsonSerializer implements SnapshotSerializer {
 
   public serialize(value: unknown): string {
     const jsonValue = this.normalizeValueRecursive(value);
-    const jsonString = JSON.stringify(jsonValue, undefined, 2);
+    const jsonString = JSON.stringify(jsonValue, undefined, this.indentSize);
     return addTrailingNewLine(jsonString);
   }
 

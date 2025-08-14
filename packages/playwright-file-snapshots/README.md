@@ -302,6 +302,7 @@ const expect = defineValidationFileExpect({
 | `outputDir`     | `data/test/output`     | Directory in which file snapshots from test runs are stored.          |
 | `filterSteps`   | `() => true`           | Filter test steps which should not be part of the snapshot file path. |
 | `soft`          | `true`                 | Enable soft assertions.                                               |
+| `indentSize`    | `2`                    | Indentation size in spaces used for serializing snapshots.            |
 
 ### File Snapshot Options
 

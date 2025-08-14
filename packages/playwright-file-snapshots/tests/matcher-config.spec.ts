@@ -40,3 +40,19 @@ test("disables soft assertions", () => {
     expect("changed value").toMatchJsonFile(),
   ).rejects.toThrowError();
 });
+
+test("applies indentSize to JSON file snapshots", () => {
+  const expect = defineValidationFileExpect({
+    indentSize: 4,
+  });
+
+  expect({ key: "value" }).toMatchJsonFile();
+});
+
+test("ignores indentSize in text file snapshots", async () => {
+  const expect = defineValidationFileExpect({
+    indentSize: 4,
+  });
+
+  await expect("value").toMatchTextFile();
+});

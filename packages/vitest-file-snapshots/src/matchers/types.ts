@@ -70,4 +70,11 @@ export interface VitestValidationFileMatcherConfig {
    * @default "data/test/output"
    */
   outputDir?: string;
+
+  /**
+   * Indentation size in spaces used for serializing snapshots
+   *
+   * @default 2
+   */
+  indentSize?: number;
 }

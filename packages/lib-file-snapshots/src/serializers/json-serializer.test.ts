@@ -1,4 +1,4 @@
-import { test } from "vitest";
+import { expect, test } from "vitest";
 
 import { isString } from "../utils/guards";
 import { type SerializerTestFn, testSerializer } from "../utils/test";
@@ -148,3 +148,12 @@ function prefixWithContext(
 
   return value;
 }
+
+test(
+  "custom indentSize",
+  jsonSerializerTest({ key: "value" }, { indentSize: 4 }),
+);
+
+test("when indentSize is no positive integer, throws error", () => {
+  expect(() => new JsonSerializer({ indentSize: 0 })).toThrowError();
+});
