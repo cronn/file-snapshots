@@ -4,17 +4,17 @@ import { defineValidationFileExpect } from "../src";
 
 const expect = defineValidationFileExpect();
 
-test("matches value with JSON file", () => {
-  expect({ key: "value" }).toMatchJsonFile();
+test("matches value with JSON file", async () => {
+  await expect({ key: "value" }).toMatchJsonFile();
 });
 
-test("when includeUndefinedObjectProperties is true, serializes undefined object properties", () => {
-  expect({ undefinedValue: undefined }).toMatchJsonFile({
+test("when includeUndefinedObjectProperties is true, serializes undefined object properties", async () => {
+  await expect({ undefinedValue: undefined }).toMatchJsonFile({
     includeUndefinedObjectProperties: true,
   });
 });
 
-test("applies normalizer", () => {
+test("applies normalizer", async () => {
   function maskNumber(value: unknown): unknown {
     if (typeof value !== "number") {
       return value;
@@ -23,15 +23,15 @@ test("applies normalizer", () => {
     return "[NUMBER]";
   }
 
-  expect({ number: 4711 }).toMatchJsonFile({ normalizers: [maskNumber] });
+  await expect({ number: 4711 }).toMatchJsonFile({ normalizers: [maskNumber] });
 });
 
-test("uses namingStrategy file by default", () => {
-  expect("value").toMatchJsonFile({ name: "name" });
+test("uses namingStrategy file by default", async () => {
+  await expect("value").toMatchJsonFile({ name: "name" });
 });
 
-test("applies naming strategy fileSuffix", () => {
-  expect("value").toMatchJsonFile({
+test("applies naming strategy fileSuffix", async () => {
+  await expect("value").toMatchJsonFile({
     name: "name",
     namingStrategy: "fileSuffix",
   });
