@@ -1,5 +1,16 @@
 # @cronn/vitest-file-snapshots
 
+## 0.12.0
+
+### Minor Changes
+
+- 62a2b52: Enable configuration of `indentSize` for JSON file snapshots
+
+### Patch Changes
+
+- Updated dependencies [62a2b52]
+  - @cronn/lib-file-snapshots@0.13.0
+
 ## 0.11.0
 
 ### Minor Changes

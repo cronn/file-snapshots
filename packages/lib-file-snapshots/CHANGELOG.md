@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.13.0
+
+### Minor Changes
+
+- 62a2b52: Enable configuration of `indentSize` on `JsonSerializer`
+
 ## 0.12.0
 
 ### Minor Changes
