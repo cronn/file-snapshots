@@ -32,6 +32,13 @@ export interface PlaywrightValidationFileMatcherConfig {
    * @default true
    */
   soft?: boolean;
+
+  /**
+   * Indentation size in spaces used for serializing snapshots
+   *
+   * @default 2
+   */
+  indentSize?: number;
 }
 
 export type StepFilter = (stepTitle: string) => boolean;

@@ -14,6 +14,8 @@ import type {
 export function registerValidationFileMatchers(
   config: VitestValidationFileMatcherConfig = {},
 ): void {
+  const { indentSize, ...snapshotConfig } = config;
+
   function toMatchJsonFile(
     this: MatcherState,
     received: unknown,
@@ -29,8 +31,9 @@ export function registerValidationFileMatchers(
       serializer: new JsonSerializer({
         includeUndefinedObjectProperties,
         normalizers,
+        indentSize,
       }),
-      config,
+      config: snapshotConfig,
       options: snapshotOptions,
       matcherState: this,
     });
@@ -45,7 +48,7 @@ export function registerValidationFileMatchers(
     return matchValidationFile({
       received,
       serializer: new TextSerializer({ normalizers }),
-      config,
+      config: snapshotConfig,
       options: snapshotOptions,
       matcherState: this,
     });

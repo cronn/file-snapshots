@@ -19,6 +19,22 @@ describe("matcher configuration", () => {
 
     expect("value").toMatchTextFile();
   });
+
+  test("applies indentSize to JSON file snapshots", () => {
+    registerValidationFileMatchers({
+      indentSize: 4,
+    });
+
+    expect({ key: "value" }).toMatchJsonFile();
+  });
+
+  test("ignores indentSize in text file snapshots", () => {
+    registerValidationFileMatchers({
+      indentSize: 4,
+    });
+
+    expect("value").toMatchTextFile();
+  });
 });
 
 describe("JSON file matcher", () => {
