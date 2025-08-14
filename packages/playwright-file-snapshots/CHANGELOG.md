@@ -1,5 +1,20 @@
 # @cronn/playwright-file-snapshots
 
+## 0.12.0
+
+### Minor Changes
+
+- 756a233: Snapshot elements with role `combobox`
+- 9fe8f39: Snapshot multi select elements
+- 2152587: Exclude combobox options from DOM Snapshots by default
+- 2152587: Add DOM Snapshot option `includeComboboxOptions`
+- 62a2b52: Enable configuration of `indentSize` for JSON file snapshots
+
+### Patch Changes
+
+- Updated dependencies [62a2b52]
+  - @cronn/lib-file-snapshots@0.13.0
+
 ## 0.11.0
 
 ### Minor Changes
