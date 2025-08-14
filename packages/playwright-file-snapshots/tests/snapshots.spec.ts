@@ -1,4 +1,5 @@
-import test, { Locator } from "@playwright/test";
+import type { Locator } from "@playwright/test";
+import test from "@playwright/test";
 
 import { defineValidationFileExpect, snapshotAria, snapshotDom } from "../src";
 

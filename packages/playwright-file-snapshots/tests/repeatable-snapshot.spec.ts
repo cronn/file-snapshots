@@ -5,7 +5,7 @@ import { defineValidationFileExpect } from "../src";
 import { createTmpDir } from "../src/utils/test";
 
 class SnapshotInstrumentation {
-  public readonly snapshotIntervals: number[] = [];
+  public readonly snapshotIntervals: Array<number> = [];
 
   private intervalStartTime = performance.now();
 
@@ -21,7 +21,7 @@ class SnapshotInstrumentation {
 }
 
 function assertSnapshotIntervals(
-  expectedIntervals: number[],
+  expectedIntervals: Array<number>,
   instrumentation: SnapshotInstrumentation,
 ): void {
   expect(instrumentation.snapshotCount).toBe(expectedIntervals.length);

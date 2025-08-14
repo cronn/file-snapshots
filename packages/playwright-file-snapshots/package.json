@@ -22,8 +22,8 @@
     "pnpm": ">=10"
   },
   "scripts": {
-    "lint:check": "eslint src/ --max-warnings=0",
-    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "lint:check": "eslint src/ tests/ --max-warnings=0",
+    "lint:fix": "eslint src/ tests/ --max-warnings=0 --fix",
     "test:unit": "vitest run",
     "test:unit:coverage": "vitest run --coverage",
     "test:integration": "playwright test && playwright test --grep @snapshot-update --update-snapshots",
