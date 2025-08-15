@@ -60,6 +60,13 @@
           ]
         }
       ]
-    }
+    },
+    {
+      "heading": {
+        "name": "Incomplete List",
+        "level": 2
+      }
+    },
+    "List Item without List"
   ]
 }

@@ -30,7 +30,7 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   h6: "heading",
   ul: "list",
   ol: "list",
-  li: "listitem",
+  li: resolveListItem,
   a: "link",
   button: "button",
   input: resolveInputRole,
@@ -219,4 +219,17 @@ function isWithinTable(element: Element): boolean {
 function isWithinRow(element: Element): boolean {
   const closestRow = element.closest(selectorList("tr", roleSelector("row")));
   return closestRow !== null && isWithinTable(closestRow);
+}
+
+function resolveListItem(
+  element: SnapshotTargetElement,
+): "listitem" | undefined {
+  const closestList = element.closest(
+    selectorList("ul", "ol", roleSelector("list")),
+  );
+  if (closestList === null) {
+    return undefined;
+  }
+
+  return "listitem";
 }
