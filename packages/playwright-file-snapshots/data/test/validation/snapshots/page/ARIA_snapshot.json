@@ -80,6 +80,13 @@
           },
           {
             "listitem": {
+              "link 'Tables'": {
+                "/url": "/tables"
+              }
+            }
+          },
+          {
+            "listitem": {
               "link 'Accessibility Tree'": {
                 "/url": "/accessibility-tree"
               }

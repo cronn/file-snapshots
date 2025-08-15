@@ -1,0 +1,41 @@
+{
+  "main": [
+    "heading 'Tables' [level=1]",
+    {
+      "table": [
+        {
+          "rowgroup": {
+            "row 'Column Header 1 Column Header 2'": [
+              "columnheader 'Column Header 1'",
+              "columnheader 'Column Header 2'"
+            ]
+          }
+        },
+        {
+          "rowgroup": [
+            {
+              "row 'Row Header 1 Body Cell 1'": [
+                "rowheader 'Row Header 1'",
+                "cell 'Body Cell 1'"
+              ]
+            },
+            {
+              "row 'Row Header 2 Body Cell 2'": [
+                "rowheader 'Row Header 2'",
+                "cell 'Body Cell 2'"
+              ]
+            }
+          ]
+        },
+        {
+          "rowgroup": {
+            "row 'Footer Cell 1 Footer Cell 2'": [
+              "cell 'Footer Cell 1'",
+              "cell 'Footer Cell 2'"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
