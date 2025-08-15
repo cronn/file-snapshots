@@ -40,6 +40,10 @@
           ]
         }
       ]
+    },
+    "heading 'Incomplete List' [level=2]",
+    {
+      "listitem": "List Item without List"
     }
   ]
 }
