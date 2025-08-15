@@ -5,8 +5,15 @@
     "text 'Implicit Label Explicit Label'",
     "textbox 'Explicit Label'",
     "textbox 'aria-label'",
-    "text 'aria-labelledby'",
+    "paragraph 'aria-labelledby'",
     "textbox 'aria-labelledby'",
+    "paragraph 'aria-labelledby takes precedence over aria-label'",
+    "textbox 'aria-labelledby takes precedence over aria-label'",
+    "paragraph 'aria-labelledby takes precedence over label'",
+    "textbox 'aria-labelledby takes precedence over label'",
+    "text 'Implicit Label'",
+    "textbox 'aria-label takes precedence over label'",
+    "text 'Implicit Label'",
     "button 'Text content'"
   ]
 }

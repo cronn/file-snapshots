@@ -117,6 +117,11 @@ function resolveChecked(
 export function resolveInputLabel(
   element: SnapshotTargetElement,
 ): string | undefined {
+  const accessibleName = resolveAccessibleName(element, false);
+  if (accessibleName !== undefined) {
+    return accessibleName;
+  }
+
   if (element.id !== null) {
     const referencedElement = element.ownerDocument.querySelector(
       `[for='${element.id}']`,
@@ -131,5 +136,5 @@ export function resolveInputLabel(
     return snapshotTextContent(closestLabel);
   }
 
-  return resolveAccessibleName(element, false);
+  return undefined;
 }
