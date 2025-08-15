@@ -19,10 +19,29 @@
         {
           "textbox": "aria-label"
         },
-        "aria-labelledby",
+        {
+          "paragraph": "aria-labelledby"
+        },
         {
           "textbox": "aria-labelledby"
         },
+        {
+          "paragraph": "aria-labelledby takes precedence over aria-label"
+        },
+        {
+          "textbox": "aria-labelledby takes precedence over aria-label"
+        },
+        {
+          "paragraph": "aria-labelledby takes precedence over label"
+        },
+        {
+          "textbox": "aria-labelledby takes precedence over label"
+        },
+        "Implicit Label",
+        {
+          "textbox": "aria-label takes precedence over label"
+        },
+        "Implicit Label",
         {
           "button": "Text content"
         }

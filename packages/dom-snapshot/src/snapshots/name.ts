@@ -6,13 +6,13 @@ export function resolveAccessibleName(
   element: SnapshotTargetElement,
   includeTextContent = true,
 ): string | undefined {
-  if (element.ariaLabel !== null) {
-    return element.ariaLabel;
-  }
-
   const labelledByElement = resolveElementReference(element, "aria-labelledby");
   if (labelledByElement !== null) {
     return snapshotTextContent(labelledByElement);
+  }
+
+  if (element.ariaLabel !== null) {
+    return element.ariaLabel;
   }
 
   if (includeTextContent) {
