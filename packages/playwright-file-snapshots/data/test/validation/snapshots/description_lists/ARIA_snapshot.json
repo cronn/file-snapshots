@@ -1,6 +1,7 @@
 {
   "main": [
     "heading 'Description Lists' [level=1]",
+    "heading 'Full Description List' [level=2]",
     {
       "term": "Term 1"
     },
@@ -15,6 +16,13 @@
     },
     {
       "definition": "Definition 3"
+    },
+    "heading 'Incomplete Description List' [level=2]",
+    {
+      "term": "Term without Description List"
+    },
+    {
+      "definition": "Definition without Description List"
     }
   ]
 }

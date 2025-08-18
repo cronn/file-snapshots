@@ -7,6 +7,12 @@
       }
     },
     {
+      "heading": {
+        "name": "Full Description List",
+        "level": 2
+      }
+    },
+    {
       "term": "Term 1"
     },
     {
@@ -20,6 +26,14 @@
     },
     {
       "definition": "Definition 3"
-    }
+    },
+    {
+      "heading": {
+        "name": "Incomplete Description List",
+        "level": 2
+      }
+    },
+    "Term without Description List",
+    "Definition without Description List"
   ]
 }
