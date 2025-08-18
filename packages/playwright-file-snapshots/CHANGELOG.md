@@ -1,5 +1,21 @@
 # @cronn/playwright-file-snapshots
 
+## 0.13.0
+
+### Minor Changes
+
+- 2000932: Snapshot landmarks
+- 5ce17e8: Exclude elements with `aria-hidden="true"` from DOM Snapshots
+- 0615e16: Snapshot description lists
+- 137bbec: Snapshot tables
+- f5c172a: Snapshot descriptions
+- 506f9cb: Ignore elements with `role="presentation"` and `role="none"` in DOM Snapshots
+
+### Patch Changes
+
+- c9f1d67: Fix: Explicit element roles of container elements are not validated
+- d37bf2a: Fix: `li` is resolved to `listitem` outside list
+
 ## 0.12.0
 
 ### Minor Changes
