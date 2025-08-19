@@ -1,8 +1,12 @@
 import type { ExpectationResult, MatcherState } from "@vitest/expect";
 
+import type {
+  FilePathResolver,
+  SnapshotSerializer,
+} from "@cronn/lib-file-snapshots";
 import {
-  type SnapshotSerializer,
   ValidationFileMatcher,
+  resolveNameAsFile,
 } from "@cronn/lib-file-snapshots";
 
 import type {
@@ -37,15 +41,24 @@ export function matchValidationFile(
     throw new Error("Matcher negation is not supported");
   }
 
-  const { validationDir, outputDir, testDir = "." } = config;
-  const { name, namingStrategy } = options;
-  const matcherResult = new ValidationFileMatcher({
+  const {
     validationDir,
     outputDir,
+    testDir = ".",
+    resolveFilePath: configuredFilePathResolver,
+  } = config;
+  const { name, resolveFilePath: localFilePathResolver } = options;
+  const resolveFilePath: FilePathResolver =
+    localFilePathResolver ?? configuredFilePathResolver ?? resolveNameAsFile;
+  const filePath = resolveFilePath({
     testPath: parseTestPath(testPath, testDir),
     titlePath: parseTestName(currentTestName),
     name,
-    namingStrategy,
+  });
+  const matcherResult = new ValidationFileMatcher({
+    validationDir,
+    outputDir,
+    filePath,
     serializer,
   }).matchFileSnapshot(received);
   matcherResult.writeFileSnapshots();

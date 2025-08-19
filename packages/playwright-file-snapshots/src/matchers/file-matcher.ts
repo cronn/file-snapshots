@@ -6,10 +6,14 @@ import {
   test,
 } from "@playwright/test";
 
+import type {
+  FilePathResolver,
+  SnapshotSerializer,
+  ValidationFileMatcherResult,
+} from "@cronn/lib-file-snapshots";
 import {
-  type SnapshotSerializer,
   ValidationFileMatcher,
-  type ValidationFileMatcherResult,
+  resolveNameAsFile,
 } from "@cronn/lib-file-snapshots";
 
 import { waitForTimer } from "../utils/timer";
@@ -47,20 +51,20 @@ export async function matchValidationFile(
     throw new Error("Matcher negation is not supported");
   }
 
-  const { validationDir, outputDir, filterSteps } = config;
-  const { titlePath, testPath, updateSnapshots } = parseTestInfo(
-    test.info(),
-    filterSteps,
-  );
-
-  const { name, namingStrategy } = options;
+  const {
+    validationDir,
+    outputDir,
+    resolveFilePath: configuredFilePathResolver,
+  } = config;
+  const { name, resolveFilePath: localFilePathResolver } = options;
+  const resolveFilePath: FilePathResolver =
+    localFilePathResolver ?? configuredFilePathResolver ?? resolveNameAsFile;
+  const { testPath, titlePath, updateSnapshots } = parseTestInfo(test.info());
+  const filePath = resolveFilePath({ testPath, titlePath, name });
   const matcher = new ValidationFileMatcher({
     validationDir,
     outputDir,
-    testPath,
-    titlePath,
-    name,
-    namingStrategy,
+    filePath,
     serializer,
   });
 

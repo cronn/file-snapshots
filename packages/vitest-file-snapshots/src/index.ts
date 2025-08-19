@@ -1,10 +1,7 @@
-export { defineValidationFileExpect } from "./matchers/define-expect";
-export { snapshotAria } from "./aria-snapshot/snapshot";
-export { snapshotDom } from "./dom-snapshot/snapshot";
 export type {
-  PlaywrightMatchValidationFileOptions,
-  PlaywrightMatchTextFileOptions,
-  PlaywrightMatchJsonFileOptions,
+  VitestMatchValidationFileOptions,
+  VitestMatchTextFileOptions,
+  VitestMatchJsonFileOptions,
 } from "./matchers/types";
 
 export {

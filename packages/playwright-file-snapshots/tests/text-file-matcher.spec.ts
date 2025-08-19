@@ -1,6 +1,7 @@
 import { test } from "@playwright/test";
 
 import { defineValidationFileExpect } from "../src";
+import { testFilePathResolver } from "../src/utils/test";
 
 const expect = defineValidationFileExpect();
 
@@ -16,13 +17,13 @@ test("applies normalizer", async () => {
   await expect("4711").toMatchTextFile({ normalizers: [maskNumber] });
 });
 
-test("uses namingStrategy file by default", async () => {
+test("applies name", async () => {
   await expect("value").toMatchTextFile({ name: "name" });
 });
 
-test("applies naming strategy fileSuffix", async () => {
+test("applies custom file path resolver", async () => {
   await expect("value").toMatchTextFile({
     name: "name",
-    namingStrategy: "fileSuffix",
+    resolveFilePath: testFilePathResolver,
   });
 });
