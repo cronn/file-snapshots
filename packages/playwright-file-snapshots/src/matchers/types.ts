@@ -1,8 +1,8 @@
 import type { MatcherReturnType } from "@playwright/test";
 
 import type {
+  FilePathResolver,
   JsonNormalizer,
-  SnapshotNamingStrategy,
   TextNormalizer,
 } from "@cronn/lib-file-snapshots";
 
@@ -22,11 +22,6 @@ export interface PlaywrightValidationFileMatcherConfig {
   outputDir?: string;
 
   /**
-   * Filter test steps which should not be part of the snapshot file path
-   */
-  filterSteps?: StepFilter;
-
-  /**
    * Enable soft assertions
    *
    * @default true
@@ -39,9 +34,16 @@ export interface PlaywrightValidationFileMatcherConfig {
    * @default 2
    */
   indentSize?: number;
-}
 
-export type StepFilter = (stepTitle: string) => boolean;
+  /**
+   * Custom resolver for the file path used to store snapshots
+   *
+   * Should be unique for each test to avoid collisions
+   *
+   * @default resolveNameAsFile
+   */
+  resolveFilePath?: FilePathResolver;
+}
 
 export interface PlaywrightValidationFileMatchers {
   toMatchJsonFile: (
@@ -63,18 +65,20 @@ export interface PlaywrightMatchValidationFileOptions {
   name?: string;
 
   /**
-   * The naming strategy to use for storing the file snapshot
-   *
-   * @default "file"
-   */
-  namingStrategy?: SnapshotNamingStrategy;
-
-  /**
    * Retries the snapshot until it passes or the timeout value is reached.
    *
    * Defaults to Playwright's expect timeout.
    */
   timeout?: number;
+
+  /**
+   * Custom resolver for the file path used to store snapshots
+   *
+   * Should be unique for each test to avoid collisions
+   *
+   * @default resolveNameAsFile
+   */
+  resolveFilePath?: FilePathResolver;
 }
 
 export interface PlaywrightMatchTextFileOptions
