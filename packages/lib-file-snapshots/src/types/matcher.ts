@@ -16,40 +16,17 @@ export interface ValidationFileMatcherConfig {
   outputDir?: string;
 
   /**
-   * The full path to the current test file
+   * The full path to the snapshot file
    *
-   * @example "src/tests/feature.test.ts"
+   * @example "src/tests/feature/test/when_x_then_y"
    */
-  testPath: string;
-
-  /**
-   * The full path of titles describing the current test, including nested blocks
-   *
-   * @example ["test A", "when x, then y"]
-   */
-  titlePath: Array<string>;
-
-  /**
-   * Unique name of the file snapshot
-   *
-   * Used to distinguish multiple file snapshots within the same `test`.
-   */
-  name?: string;
-
-  /**
-   * The naming strategy to use for storing the file snapshot
-   *
-   * @default "file"
-   */
-  namingStrategy?: SnapshotNamingStrategy;
+  filePath: string;
 
   /**
    * The serializer to use for the snapshot
    */
   serializer: SnapshotSerializer;
 }
-
-export type SnapshotNamingStrategy = "file" | "fileSuffix";
 
 export interface ValidationFileMatcherResult {
   actual: string;
@@ -58,4 +35,12 @@ export interface ValidationFileMatcherResult {
   validationFilePath: string;
   message: () => string;
   writeFileSnapshots: () => void;
+}
+
+export type FilePathResolver = (params: FilePathResolverParams) => string;
+
+export interface FilePathResolverParams {
+  testPath: string;
+  titlePath: Array<string>;
+  name?: string;
 }

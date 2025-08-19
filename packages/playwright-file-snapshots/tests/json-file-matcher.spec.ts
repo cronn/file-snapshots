@@ -1,6 +1,7 @@
 import { test } from "@playwright/test";
 
 import { defineValidationFileExpect } from "../src";
+import { testFilePathResolver } from "../src/utils/test";
 
 const expect = defineValidationFileExpect();
 
@@ -26,13 +27,13 @@ test("applies normalizer", async () => {
   await expect({ number: 4711 }).toMatchJsonFile({ normalizers: [maskNumber] });
 });
 
-test("uses namingStrategy file by default", async () => {
+test("applies name", async () => {
   await expect("value").toMatchJsonFile({ name: "name" });
 });
 
-test("applies naming strategy fileSuffix", async () => {
+test("applies custom file path resolver", async () => {
   await expect("value").toMatchJsonFile({
     name: "name",
-    namingStrategy: "fileSuffix",
+    resolveFilePath: testFilePathResolver,
   });
 });

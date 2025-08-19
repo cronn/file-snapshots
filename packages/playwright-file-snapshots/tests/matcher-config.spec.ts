@@ -1,6 +1,7 @@
 import { test } from "@playwright/test";
 
 import { defineValidationFileExpect } from "../src";
+import { testFilePathResolver } from "../src/utils/test";
 
 test("stores snapshots in custom directories", async () => {
   const expect = defineValidationFileExpect({
@@ -11,16 +12,12 @@ test("stores snapshots in custom directories", async () => {
   await expect("value").toMatchTextFile();
 });
 
-test("filters steps from snapshot file path", async () => {
+test("applies custom file path resolver", async () => {
   const expect = defineValidationFileExpect({
-    filterSteps: (stepTitle): boolean => stepTitle !== "Excluded step",
+    resolveFilePath: testFilePathResolver,
   });
 
-  await test.step("Included step", async () => {
-    await test.step("Excluded step", async () => {
-      await expect("value").toMatchTextFile();
-    });
-  });
+  await expect("value").toMatchTextFile({ name: "name" });
 });
 
 test.fail("uses soft assertions by default", async () => {

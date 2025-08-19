@@ -1,1 +1,1 @@
-data/test/validation/src/tests/feature.test.ts/validation_file/existing.json
+data/test/validation/src/tests/feature/test.json

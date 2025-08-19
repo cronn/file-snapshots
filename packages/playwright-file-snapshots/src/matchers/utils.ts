@@ -5,8 +5,6 @@ import type {
   TestStepInternal,
 } from "../types/playwright-internals";
 
-import type { StepFilter } from "./types";
-
 export type RawTestInfo = Pick<TestInfo, "titlePath" | "config">;
 
 interface ParsedTestInfo {
@@ -15,10 +13,7 @@ interface ParsedTestInfo {
   updateSnapshots: boolean;
 }
 
-export function parseTestInfo(
-  testInfo: RawTestInfo,
-  filterSteps: StepFilter = () => true,
-): ParsedTestInfo {
+export function parseTestInfo(testInfo: RawTestInfo): ParsedTestInfo {
   const { config, titlePath } = testInfo;
   const [testPath, ...testTitles] = titlePath;
 
@@ -31,7 +26,7 @@ export function parseTestInfo(
   }
 
   const { _steps } = testInfo as TestInfoInternal;
-  const stepTitles = parseTestSteps(_steps).filter(filterSteps);
+  const stepTitles = parseTestSteps(_steps);
 
   return {
     testPath: parseTestPath(testPath),
