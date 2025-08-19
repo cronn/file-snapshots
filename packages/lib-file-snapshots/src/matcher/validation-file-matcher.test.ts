@@ -54,8 +54,7 @@ test("when validation file is missing, creates validation file with marker", asy
   const matcher = new ValidationFileMatcher({
     validationDir: path.join(tmpDir, "validation"),
     outputDir: path.join(tmpDir, "output"),
-    testPath: "./src/tests/feature.test.ts",
-    titlePath: ["validation file", "missing"],
+    filePath: "./src/tests/feature/test",
     serializer: new TextSerializer(),
   });
   expect(matcher.isValidationFileMissing).toBe(true);
@@ -74,8 +73,7 @@ test("when validation file is missing, creates validation file with marker", asy
 
 test("when validation file exists, does not recreate validation file", async (context) => {
   const matcher = new ValidationFileMatcher({
-    testPath: "./src/tests/feature.test.ts",
-    titlePath: ["validation file", "existing"],
+    filePath: "./src/tests/feature/test",
     serializer: new JsonSerializer(),
   });
   expect(matcher.isValidationFileMissing).toBe(false);
@@ -89,45 +87,10 @@ test("when validation file exists, does not recreate validation file", async (co
   );
 });
 
-test("uses naming strategy file by default", async (context) => {
-  const matcherResult = new ValidationFileMatcher({
-    validationDir: path.join("custom-validation"),
-    outputDir: path.join("custom-output"),
-    testPath: "./src/tests/feature.test.ts",
-    titlePath: ["file"],
-    name: "name",
-    serializer: new TextSerializer(),
-  }).matchFileSnapshot("value");
-  await snapshotMatcherResult(context, matcherResult);
-});
-
-test("when naming strategy is file, appends name to validation file path", async (context) => {
-  const matcherResult = new ValidationFileMatcher({
-    testPath: "./src/tests/feature.test.ts",
-    titlePath: ["file"],
-    name: "name",
-    namingStrategy: "file",
-    serializer: new TextSerializer(),
-  }).matchFileSnapshot("value");
-  await snapshotMatcherResult(context, matcherResult);
-});
-
-test("when naming strategy is fileSuffix, appends name to validation file name", async (context) => {
-  const matcherResult = new ValidationFileMatcher({
-    testPath: "./src/tests/feature.test.ts",
-    titlePath: ["file"],
-    name: "name",
-    namingStrategy: "fileSuffix",
-    serializer: new TextSerializer(),
-  }).matchFileSnapshot("value");
-  await snapshotMatcherResult(context, matcherResult);
-});
-
 test("when serializer does not support value, throws error", () => {
   expect(() =>
     new ValidationFileMatcher({
-      testPath: "./src/tests/feature.test.ts",
-      titlePath: ["error"],
+      filePath: "./src/tests/feature.test.ts",
       serializer: new FailingSerializer(),
     }).matchFileSnapshot(["value"]),
   ).toThrowError();

@@ -1,6 +1,6 @@
 import type {
+  FilePathResolver,
   JsonNormalizer,
-  SnapshotNamingStrategy,
   TextNormalizer,
 } from "@cronn/lib-file-snapshots";
 
@@ -18,11 +18,13 @@ export interface VitestMatchValidationFileOptions {
   name?: string;
 
   /**
-   * The naming strategy to use for storing the file snapshot
+   * Custom resolver for the file path used to store snapshots
    *
-   * @default "file"
+   * Should be unique for each test to avoid collisions
+   *
+   * @default resolveNameAsFile
    */
-  namingStrategy?: SnapshotNamingStrategy;
+  resolveFilePath?: FilePathResolver;
 }
 
 export interface VitestMatchTextFileOptions
@@ -77,4 +79,13 @@ export interface VitestValidationFileMatcherConfig {
    * @default 2
    */
   indentSize?: number;
+
+  /**
+   * Custom resolver for the file path used to store snapshots
+   *
+   * Should be unique for each test to avoid collisions
+   *
+   * @default resolveNameAsFile
+   */
+  resolveFilePath?: FilePathResolver;
 }

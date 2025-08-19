@@ -54,41 +54,6 @@ describe("parseTestInfo", () => {
     ).toThrowError();
   });
 
-  test("filters steps using custom filter", () => {
-    expect(
-      parseTestInfo(
-        {
-          titlePath: ["tests/feature.spec.ts", "test title"],
-          _steps: [
-            {
-              title: "included step 1",
-              category: "test.step",
-              steps: [
-                {
-                  title: "excluded step",
-                  category: "test.step",
-                  steps: [
-                    {
-                      title: "included step 2",
-                      category: "test.step",
-                      steps: [],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-          config: createConfig(),
-        } as RawTestInfo,
-        (stepTitle): boolean => stepTitle !== "excluded step",
-      ),
-    ).toStrictEqual({
-      testPath: "tests/feature",
-      titlePath: ["test title", "included step 1", "included step 2"],
-      updateSnapshots: false,
-    });
-  });
-
   test("when config.updateSnapshots is 'missing', resolves updateSnapshots to true", () => {
     expect(
       parseTestInfo({

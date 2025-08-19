@@ -1,4 +1,7 @@
+import path from "node:path";
 import { beforeEach, describe, expect, test } from "vitest";
+
+import type { FilePathResolverParams } from "@cronn/lib-file-snapshots";
 
 import { registerValidationFileMatchers } from "./register-matchers";
 
@@ -35,6 +38,14 @@ describe("matcher configuration", () => {
 
     expect("value").toMatchTextFile();
   });
+
+  test("applies custom file path resolver", () => {
+    registerValidationFileMatchers({
+      resolveFilePath: testFilePathResolver,
+    });
+
+    expect("value").toMatchTextFile({ name: "name" });
+  });
 });
 
 describe("JSON file matcher", () => {
@@ -68,15 +79,15 @@ describe("JSON file matcher", () => {
     expect({ number: 4711 }).toMatchJsonFile({ normalizers: [maskNumber] });
   });
 
-  test("uses namingStrategy file by default", () => {
+  test("applies name", () => {
     expect.soft("value1").toMatchJsonFile({ name: "value 1" });
     expect.soft("value2").toMatchJsonFile({ name: "value 2" });
   });
 
-  test("applies naming strategy fileSuffix", () => {
-    expect({ key: "value" }).toMatchJsonFile({
+  test("applies custom file path resolver", () => {
+    expect("value").toMatchJsonFile({
       name: "name",
-      namingStrategy: "fileSuffix",
+      resolveFilePath: testFilePathResolver,
     });
   });
 });
@@ -96,19 +107,27 @@ describe("text file matcher", () => {
     expect("4711").toMatchTextFile({ normalizers: [maskNumber] });
   });
 
-  test("uses namingStrategy file by default", () => {
+  test("applies name", () => {
     expect.soft("value1").toMatchTextFile({ name: "value 1" });
     expect.soft("value2").toMatchTextFile({ name: "value 2" });
-  });
-
-  test("applies naming strategy fileSuffix", () => {
-    expect("value").toMatchTextFile({
-      name: "name",
-      namingStrategy: "fileSuffix",
-    });
   });
 
   test("when matcher is inverted, throws error", () => {
     expect(() => expect("value").not.toMatchTextFile()).toThrowError();
   });
+
+  test("applies custom file path resolver", () => {
+    expect("value").toMatchTextFile({
+      name: "name",
+      resolveFilePath: testFilePathResolver,
+    });
+  });
 });
+
+export function testFilePathResolver(params: FilePathResolverParams): string {
+  const { testPath, titlePath, name } = params;
+  const normalizedTitlePath = path.join(
+    ...titlePath.map((title) => title.replaceAll(" ", "-")),
+  );
+  return path.join(testPath, normalizedTitlePath, name ?? "");
+}

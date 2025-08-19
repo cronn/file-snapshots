@@ -4,7 +4,7 @@ import { tsupConfig } from "@cronn/shared-configs/tsup";
 
 export default defineConfig((options) =>
   tsupConfig({
-    entry: ["src/register.ts"],
+    entry: ["src/index.ts", "src/register.ts"],
     ...options,
   }),
 );

@@ -173,21 +173,18 @@ test("named snapshots", () => {
 });
 ```
 
-By default, the naming strategy `file` is used, which stores all file snapshots within a test context in the same directory, using `name` as filename.
+By default, all named snapshots are stored as separate files in the same directory, which is determined by the test context.
 
-The naming strategy `fileSuffix` uses `name` as suffix of the filename. This can be used to reduce the nesting of snapshot directories:
+To change this behavior, you can use a different file path resolver:
 
 ```ts
-test("named snapshots", () => {
-  // named_snapshots_snapshot_1.txt
-  expect("value 1").toMatchTextFile({
-    name: "snapshot 1",
-    namingStrategy: "fileSuffix",
-  });
-  // named_snapshots_snapshot_2.txt
-  expect("value 2").toMatchTextFile({
-    name: "snapshot 2",
-    namingStrategy: "fileSuffix",
+import { resolveNameAsFileSuffix } from "@cronn/vitest-file-snapshots";
+
+test("named snapshots", async () => {
+  // named_snapshots_snapshot_name.txt
+  await expect("value 1").toMatchTextFile({
+    name: "snapshot name",
+    resolveFilePath: resolveNameAsFileSuffix,
   });
 });
 ```
@@ -228,12 +225,13 @@ registerValidationFileMatchers({
 });
 ```
 
-| Option          | Default Value          | Description                                                                               |
-| --------------- | ---------------------- | ----------------------------------------------------------------------------------------- |
-| `testDir`       | `.`                    | Base directory for tests. The paths of snapshot files will be relative to this directory. |
-| `validationDir` | `data/test/validation` | Directory in which golden masters are stored.                                             |
-| `outputDir`     | `data/test/output`     | Directory in which file snapshots from test runs are stored.                              |
-| `indentSize`    | `2`                    | Indentation size in spaces used for serializing snapshots.                                |
+| Option            | Default Value          | Description                                                                               |
+| ----------------- | ---------------------- | ----------------------------------------------------------------------------------------- |
+| `testDir`         | `.`                    | Base directory for tests. The paths of snapshot files will be relative to this directory. |
+| `validationDir`   | `data/test/validation` | Directory in which golden masters are stored.                                             |
+| `outputDir`       | `data/test/output`     | Directory in which file snapshots from test runs are stored.                              |
+| `indentSize`      | `2`                    | Indentation size in spaces used for serializing snapshots.                                |
+| `resolveFileName` | `resolveNameAsFile`    | Custom resolver for the file path used to store snapshots.                                |
 
 ### File Snapshot Options
 
@@ -245,11 +243,11 @@ expect(value).toMatchJsonFile({
 });
 ```
 
-| Option           | Default Value | Description                                                                                             |
-| ---------------- | ------------- | ------------------------------------------------------------------------------------------------------- |
-| `name`           | `undefined`   | Unique `name` of the file snapshot. Used to distinguish multiple file snapshots within the same `test`. |
-| `namingStrategy` | `file`        | The naming strategy to use for storing the file snapshot. Available strategies: `file`, `fileSuffix`.   |
-| `normalizers`    | `[]`          | Custom normalizers to apply before serialization.                                                       |
+| Option            | Default Value       | Description                                                                                             |
+| ----------------- | ------------------- | ------------------------------------------------------------------------------------------------------- |
+| `name`            | `undefined`         | Unique `name` of the file snapshot. Used to distinguish multiple file snapshots within the same `test`. |
+| `normalizers`     | `[]`                | Custom normalizers to apply before serialization.                                                       |
+| `resolveFileName` | `resolveNameAsFile` | Custom resolver for the file path used to store snapshots.                                              |
 
 #### JSON Snapshot Options
 

@@ -2,14 +2,12 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 import type {
-  SnapshotNamingStrategy,
   ValidationFileMatcherConfig,
   ValidationFileMatcherResult,
 } from "../types/matcher";
 import type { SnapshotSerializer } from "../types/serializer";
 import {
   addMissingFileMarker,
-  normalizeFileName,
   readSnapshotFile,
   writeSnapshotFile,
 } from "../utils/file";
@@ -59,40 +57,12 @@ export class ValidationFileMatcher {
   ): MatcherFilePaths {
     const validationDir = config.validationDir ?? "data/test/validation";
     const outputDir = config.outputDir ?? "data/test/output";
-    const normalizedTitlePath = config.titlePath.map(normalizeFileName);
-    const relativeFilePath = path.join(config.testPath, ...normalizedTitlePath);
-    const relativeFilePathWithName = this.applyNamingStrategy(
-      relativeFilePath,
-      config.name,
-      config.namingStrategy,
-    );
-    const relativeFilePathWithExtension = `${relativeFilePathWithName}.${this.serializer.fileExtension}`;
+    const filePathWithExtenion = `${config.filePath}.${config.serializer.fileExtension}`;
 
     return {
-      outputFilePath: path.join(outputDir, relativeFilePathWithExtension),
-      validationFilePath: path.join(
-        validationDir,
-        relativeFilePathWithExtension,
-      ),
+      outputFilePath: path.join(outputDir, filePathWithExtenion),
+      validationFilePath: path.join(validationDir, filePathWithExtenion),
     };
-  }
-
-  private applyNamingStrategy(
-    filePath: string,
-    snapshotName: string | undefined,
-    namingStrategy: SnapshotNamingStrategy = "file",
-  ): string {
-    if (snapshotName === undefined) {
-      return filePath;
-    }
-
-    const normalizedSnapshotName = normalizeFileName(snapshotName);
-
-    if (namingStrategy === "fileSuffix") {
-      return `${filePath}_${normalizedSnapshotName}`;
-    }
-
-    return path.join(filePath, normalizedSnapshotName);
   }
 
   private readValidationFile(): string | undefined {
