@@ -3,7 +3,7 @@ packages:
 
 catalog:
   "@changesets/cli": 2.29.5
-  "@playwright/test": 1.54.2
+  "@playwright/test": 1.55.0
   "@types/node": 22.17.1
   "@vitest/coverage-istanbul": 3.2.4
   "@vitest/expect": 3.2.4
