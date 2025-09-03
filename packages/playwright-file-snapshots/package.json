@@ -67,7 +67,7 @@
     "yaml": "catalog:"
   },
   "peerDependencies": {
-    "@playwright/test": "^1.5",
+    "@playwright/test": "^1.55",
     "yaml": "^2"
   }
 }

@@ -1,61 +1,57 @@
-import type { TestInfo } from "@playwright/test";
+import type { TestInfo, TestStepInfo } from "@playwright/test";
 
-import type {
-  TestInfoInternal,
-  TestStepInternal,
-} from "../types/playwright-internals";
-
-export type RawTestInfo = Pick<TestInfo, "titlePath" | "config">;
+type RawTestInfo = Pick<TestInfo, "config">;
 
 interface ParsedTestInfo {
-  testPath: string;
-  titlePath: Array<string>;
   updateSnapshots: boolean;
 }
 
 export function parseTestInfo(testInfo: RawTestInfo): ParsedTestInfo {
-  const { config, titlePath } = testInfo;
-  const [testPath, ...testTitles] = titlePath;
+  return {
+    updateSnapshots: parseUpdateSnapshots(testInfo.config.updateSnapshots),
+  };
+}
+
+export function parseUpdateSnapshots(
+  updateSnapshots: TestInfo["config"]["updateSnapshots"],
+): boolean {
+  return updateSnapshots === "changed";
+}
+
+type RawTestStepInfo = Pick<TestStepInfo, "titlePath">;
+
+interface ParsedTestStepInfo {
+  testPath: string;
+  titlePath: Array<string>;
+}
+
+export function parseTestStepInfo(
+  testStepInfo: RawTestStepInfo,
+): ParsedTestStepInfo {
+  const [testPath, ...titlePath] = testStepInfo.titlePath;
 
   if (testPath === undefined) {
     throw new Error("titlePath is empty");
   }
 
-  if (!("_steps" in testInfo)) {
-    throw new Error("Missing _steps in testInfo");
-  }
-
-  const { _steps } = testInfo as TestInfoInternal;
-  const stepTitles = parseTestSteps(_steps);
-
   return {
     testPath: parseTestPath(testPath),
-    titlePath: [...testTitles, ...stepTitles],
-    updateSnapshots: config.updateSnapshots === "changed",
+    titlePath: parseTitlePath(titlePath),
   };
-}
-
-export function parseTestSteps(
-  steps: ReadonlyArray<TestStepInternal>,
-): Array<string> {
-  const lastStep = steps.at(-1);
-  if (lastStep === undefined || lastStep.category !== "test.step") {
-    return [];
-  }
-
-  const nestedStepTitles = parseTestSteps(lastStep.steps);
-
-  if (isExpectStep(lastStep)) {
-    return nestedStepTitles;
-  }
-
-  return [lastStep.title, ...nestedStepTitles];
-}
-
-function isExpectStep(step: TestStepInternal): boolean {
-  return step.apiName?.startsWith("expect") ?? false;
 }
 
 export function parseTestPath(testPath: string): string {
   return testPath.replace(/\.(test|spec)\.(js|ts|mjs)$/, "");
+}
+
+export const MATCHER_STEP_TITLE = "Match validation file";
+
+const EXPECT_STEP_REGEXP = /^Expect "[\w ]+"$/;
+
+export function parseTitlePath(titlePath: Array<string>): Array<string> {
+  return titlePath.filter(isUserDefinedTitle);
+}
+
+function isUserDefinedTitle(title: string): boolean {
+  return title !== MATCHER_STEP_TITLE && !EXPECT_STEP_REGEXP.test(title);
 }
