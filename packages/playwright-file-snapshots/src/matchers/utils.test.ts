@@ -54,7 +54,7 @@ describe("parseTestInfo", () => {
     ).toThrowError();
   });
 
-  test("when config.updateSnapshots is 'missing', resolves updateSnapshots to true", () => {
+  test("when config.updateSnapshots is 'changed', resolves updateSnapshots to true", () => {
     expect(
       parseTestInfo({
         titlePath: ["tests/feature.spec.ts"],
