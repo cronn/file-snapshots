@@ -27,7 +27,7 @@ import type {
   PlaywrightMatchValidationFileOptions,
   PlaywrightValidationFileMatcherConfig,
 } from "./types";
-import { parseTestInfo } from "./utils";
+import { MATCHER_STEP_TITLE, parseTestInfo, parseTestStepInfo } from "./utils";
 
 const UPDATE_DELAY = 250;
 
@@ -59,54 +59,58 @@ export async function matchValidationFile(
   const { name, resolveFilePath: localFilePathResolver } = options;
   const resolveFilePath: FilePathResolver =
     localFilePathResolver ?? configuredFilePathResolver ?? resolveNameAsFile;
-  const { testPath, titlePath, updateSnapshots } = parseTestInfo(test.info());
-  const filePath = resolveFilePath({ testPath, titlePath, name });
-  const matcher = new ValidationFileMatcher({
-    validationDir,
-    outputDir,
-    filePath,
-    serializer,
+
+  return await test.step(MATCHER_STEP_TITLE, async (stepTestInfo) => {
+    const { updateSnapshots } = parseTestInfo(test.info());
+    const { testPath, titlePath } = parseTestStepInfo(stepTestInfo);
+    const filePath = resolveFilePath({ testPath, titlePath, name });
+    const matcher = new ValidationFileMatcher({
+      validationDir,
+      outputDir,
+      filePath,
+      serializer,
+    });
+
+    const testTimeout = options.timeout ?? timeout;
+    const updateDelay = Math.min(testTimeout, UPDATE_DELAY);
+    const snapshot = createSnapshotInstance(actual);
+
+    const isUpdate = matcher.isValidationFileMissing || updateSnapshots;
+    if (isUpdate && snapshot instanceof RepeatableSnapshot) {
+      await waitForTimer(updateDelay);
+    }
+
+    while (true) {
+      const currentActual = await snapshot.getValue();
+      const matcherResult = matcher.matchFileSnapshot(currentActual);
+
+      let pass: boolean;
+
+      try {
+        baseExpect(matcherResult.actual).toBe(matcherResult.expected);
+        pass = true;
+      } catch {
+        pass = false;
+      }
+
+      const skipRetry = isUpdate || snapshot instanceof StaticSnapshot;
+      const stopRetry =
+        pass ||
+        (snapshot instanceof RepeatableSnapshot &&
+          snapshot.isTimeoutExceeded(testTimeout));
+      if (skipRetry || stopRetry) {
+        matcherResult.writeFileSnapshots();
+        return buildMatcherReturnType({
+          matcherName,
+          pass,
+          matcherResult,
+          utils,
+        });
+      }
+
+      await snapshot.waitForNextRetry();
+    }
   });
-
-  const testTimeout = options.timeout ?? timeout;
-  const updateDelay = Math.min(testTimeout, UPDATE_DELAY);
-  const snapshot = createSnapshotInstance(actual);
-
-  const isUpdate = matcher.isValidationFileMissing || updateSnapshots;
-  if (isUpdate && snapshot instanceof RepeatableSnapshot) {
-    await waitForTimer(updateDelay);
-  }
-
-  while (true) {
-    const currentActual = await snapshot.getValue();
-    const matcherResult = matcher.matchFileSnapshot(currentActual);
-
-    let pass: boolean;
-
-    try {
-      baseExpect(matcherResult.actual).toBe(matcherResult.expected);
-      pass = true;
-    } catch {
-      pass = false;
-    }
-
-    const skipRetry = isUpdate || snapshot instanceof StaticSnapshot;
-    const stopRetry =
-      pass ||
-      (snapshot instanceof RepeatableSnapshot &&
-        snapshot.isTimeoutExceeded(testTimeout));
-    if (skipRetry || stopRetry) {
-      matcherResult.writeFileSnapshots();
-      return buildMatcherReturnType({
-        matcherName,
-        pass,
-        matcherResult,
-        utils,
-      });
-    }
-
-    await snapshot.waitForNextRetry();
-  }
 }
 
 interface BuildMatcherReturnTypeParams {

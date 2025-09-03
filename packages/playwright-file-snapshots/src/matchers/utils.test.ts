@@ -2,10 +2,11 @@ import type { FullConfig } from "@playwright/test";
 import { describe, expect, test } from "vitest";
 
 import {
-  type RawTestInfo,
   parseTestInfo,
   parseTestPath,
-  parseTestSteps,
+  parseTestStepInfo,
+  parseTitlePath,
+  parseUpdateSnapshots,
 } from "./utils";
 
 function createConfig(values: Partial<FullConfig> = {}): FullConfig {
@@ -36,115 +37,42 @@ function createConfig(values: Partial<FullConfig> = {}): FullConfig {
 }
 
 describe("parseTestInfo", () => {
-  test("when titlePath is empty, throws error", () => {
-    expect(() =>
-      parseTestInfo({
-        titlePath: [],
-        config: createConfig(),
-      }),
-    ).toThrowError();
-  });
-
-  test("when _steps is missing, throws error", () => {
-    expect(() =>
-      parseTestInfo({
-        titlePath: ["tests/feature.spec.ts", "test title"],
-        config: createConfig(),
-      }),
-    ).toThrowError();
-  });
-
-  test("when config.updateSnapshots is 'changed', resolves updateSnapshots to true", () => {
+  test("returns parsed test info", () => {
     expect(
-      parseTestInfo({
-        titlePath: ["tests/feature.spec.ts"],
-        _steps: [],
-        config: createConfig({ updateSnapshots: "changed" }),
-      } as RawTestInfo),
-    ).toStrictEqual({
-      testPath: "tests/feature",
-      titlePath: [],
-      updateSnapshots: true,
-    });
+      parseTestInfo({ config: createConfig({ updateSnapshots: "changed" }) }),
+    ).toStrictEqual({ updateSnapshots: true });
+  });
+});
+
+describe("parseUpdateSnapshots", () => {
+  test("when value is 'changed', returns true", () => {
+    expect(parseUpdateSnapshots("changed")).toBe(true);
   });
 
   test.each(["none", "missing", "all"] as const)(
-    "when config.updateSnapshots is '%s', resolves updateSnapshots to false",
+    "when value is '%s', returns false",
     (value) => {
-      expect(
-        parseTestInfo({
-          titlePath: ["tests/feature.spec.ts"],
-          _steps: [],
-          config: createConfig({ updateSnapshots: value }),
-        } as RawTestInfo),
-      ).toStrictEqual({
-        testPath: "tests/feature",
-        titlePath: [],
-        updateSnapshots: false,
-      });
+      expect(parseUpdateSnapshots(value)).toBe(false);
     },
   );
 });
 
-describe("parseTestSteps", () => {
-  test("extracts titles of user defined test steps", () => {
+describe("parseTestStepInfo", () => {
+  test("returns parsed test step info", () => {
     expect(
-      parseTestSteps([
-        { title: "expect", category: "expect", steps: [] },
-        { title: "pw:api", category: "pw:api", steps: [] },
-        { title: "hook", category: "hook", steps: [] },
-        { title: "fixture", category: "fixture", steps: [] },
-        { title: "attach", category: "test.attach", steps: [] },
-        {
-          title: "root step",
-          category: "test.step",
-          steps: [
-            {
-              title: "nested step",
-              category: "test.step",
-              steps: [],
-            },
-          ],
-        },
-      ]),
-    ).toStrictEqual(["root step", "nested step"]);
+      parseTestStepInfo({
+        titlePath: [
+          "path/to/test.spec.ts",
+          "test title",
+          'Expect "soft toMatchJsonFile"',
+          "Match validation file",
+        ],
+      }),
+    ).toStrictEqual({ testPath: "path/to/test", titlePath: ["test title"] });
   });
 
-  test("when steps contain no user defined step, returns empty array", () => {
-    expect(
-      parseTestSteps([
-        { title: "expect", category: "expect", steps: [] },
-        { title: "pw:api", category: "pw:api", steps: [] },
-        { title: "hook", category: "hook", steps: [] },
-        { title: "fixture", category: "fixture", steps: [] },
-        { title: "attach", category: "test.attach", steps: [] },
-        {
-          title: "expect",
-          category: "test.step",
-          apiName: "expect.toPass",
-          steps: [],
-        },
-        {
-          title: "expect",
-          category: "test.step",
-          apiName: "expect.not.toPass",
-          steps: [],
-        },
-      ]),
-    ).toHaveLength(0);
-  });
-
-  test("when last step is no user defined step, returns empty array", () => {
-    expect(
-      parseTestSteps([
-        {
-          title: "step",
-          category: "test.step",
-          steps: [],
-        },
-        { title: "expect", category: "expect", steps: [] },
-      ]),
-    ).toHaveLength(0);
+  test("when titlePath is empty, throws errors", () => {
+    expect(() => parseTestStepInfo({ titlePath: [] })).toThrowError();
   });
 });
 
@@ -160,5 +88,41 @@ describe("parseTestPath", () => {
     expect(parseTestPath(`tests/feature${testExtension}`)).toBe(
       "tests/feature",
     );
+  });
+});
+
+describe("parseTitlePath", () => {
+  test("returns user-defined titles", () => {
+    expect(
+      parseTitlePath([
+        "test title",
+        "step title",
+        'Expect "toThrowError"',
+        'Expect "soft toMatchJsonFile"',
+        "Match validation file",
+      ]),
+    ).toStrictEqual(["test title", "step title"]);
+  });
+
+  test("when titlePath has length 2, returns empty array", () => {
+    expect(
+      parseTitlePath([
+        'Expect "soft toMatchJsonFile"',
+        "Match validation file",
+      ]),
+    ).toHaveLength(0);
+  });
+
+  test("when titlePath has length 1, returns empty array", () => {
+    expect(
+      parseTitlePath([
+        'Expect "soft toMatchJsonFile"',
+        "Match validation file",
+      ]),
+    ).toHaveLength(0);
+  });
+
+  test("when titlePath is empty, returns empty array", () => {
+    expect(parseTitlePath([])).toHaveLength(0);
   });
 });
