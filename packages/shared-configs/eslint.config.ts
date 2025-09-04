@@ -1,5 +1,5 @@
-import tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 
 import { eslintConfig } from "./src/eslint";
 
-export default tseslint.config(eslintConfig());
+export default defineConfig(eslintConfig());

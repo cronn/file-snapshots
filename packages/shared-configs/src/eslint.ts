@@ -1,12 +1,11 @@
+import type { Linter } from "eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginUnusedImports from "eslint-plugin-unused-imports";
-import type { ConfigArray } from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
 
-export function eslintConfig(): ConfigArray {
-  // ESLint's defineConfig is currently incompatible with the types from typescript-eslint
-  // see https://github.com/typescript-eslint/typescript-eslint/issues/10899
-  return tseslint.config(
+export function eslintConfig(): Array<Linter.Config> {
+  return defineConfig(
     tseslint.configs.recommendedTypeChecked,
     tseslint.configs.stylisticTypeChecked,
     eslintConfigPrettier,
