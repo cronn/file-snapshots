@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.14.0
+
+### Minor Changes
+
+- 760c65b: Resolve snapshot file path outside of `ValidationFileMatcher` to enable more flexibility
+
 ## 0.13.0
 
 ### Minor Changes
