@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.15.0
+
+### Minor Changes
+
+- 63b1fe7: Resolve `titlePath` from `TestStepInfo` (introduced in Playwright 1.55.0)
+
 ## 0.14.0
 
 ### Minor Changes
