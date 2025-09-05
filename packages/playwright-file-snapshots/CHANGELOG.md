@@ -1,5 +1,18 @@
 # @cronn/playwright-file-snapshots
 
+## 0.14.0
+
+### Minor Changes
+
+- 760c65b: Breaking change: Removed configuration option `filterSteps` in favor of `resolveFilePath`
+- 760c65b: Introduced option `resolveFilePath` on configuration and matcher level to enable custom file paths
+- 760c65b: Breaking change: Removed matcher option `namingStrategy` in favor of `resolveFilePath`
+
+### Patch Changes
+
+- Updated dependencies [760c65b]
+  - @cronn/lib-file-snapshots@0.14.0
+
 ## 0.13.0
 
 ### Minor Changes
