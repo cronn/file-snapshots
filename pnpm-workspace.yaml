@@ -4,7 +4,7 @@ packages:
 catalog:
   "@changesets/cli": 2.29.6
   "@playwright/test": 1.55.0
-  "@types/node": 22.18.0
+  "@types/node": 22.18.1
   "@vitest/coverage-istanbul": 3.2.4
   "@vitest/expect": 3.2.4
   "serve": 14.2.5
