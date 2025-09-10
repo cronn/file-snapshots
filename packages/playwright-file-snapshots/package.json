@@ -45,7 +45,8 @@
     "dist"
   ],
   "dependencies": {
-    "@cronn/lib-file-snapshots": "workspace:*"
+    "@cronn/lib-file-snapshots": "workspace:*",
+    "package-directory": "catalog:"
   },
   "devDependencies": {
     "@cronn/dom-snapshot": "workspace:*",
@@ -58,7 +59,6 @@
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "package-directory": "catalog:",
     "prettier": "catalog:",
     "serve": "catalog:",
     "tsup": "catalog:",

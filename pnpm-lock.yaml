@@ -152,6 +152,9 @@ importers:
       '@cronn/lib-file-snapshots':
         specifier: workspace:*
         version: link:../lib-file-snapshots
+      package-directory:
+        specifier: 'catalog:'
+        version: 8.1.0
     devDependencies:
       '@changesets/cli':
         specifier: 'catalog:'
@@ -183,9 +186,6 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.2.0(@typescript-eslint/eslint-plugin@8.42.0(@typescript-eslint/parser@8.42.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1))
-      package-directory:
-        specifier: 'catalog:'
-        version: 8.1.0
       prettier:
         specifier: 'catalog:'
         version: 3.6.2
