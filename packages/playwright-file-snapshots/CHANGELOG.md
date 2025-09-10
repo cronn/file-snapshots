@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.15.1
+
+### Patch Changes
+
+- 2dd2ef2: Fix: DOM Snapshot library is missing in published package
+
 ## 0.15.0
 
 ### Minor Changes
