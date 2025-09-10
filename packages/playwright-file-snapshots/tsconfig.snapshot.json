@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "noEmit": false,
-    "outDir": "dist/scripts",
-    "declaration": true
-  },
-  "include": ["src/dom-snapshot/snapshot.ts"]
-}
