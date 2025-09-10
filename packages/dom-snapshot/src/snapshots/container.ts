@@ -19,11 +19,13 @@ const CONTAINER_ROLES = [
   "term",
   "definition",
   "table",
+  "grid",
   "rowgroup",
   "row",
   "columnheader",
   "rowheader",
   "cell",
+  "gridcell",
 ] as const;
 
 export interface ContainerSnapshot

@@ -82,6 +82,50 @@
           ]
         }
       }
+    },
+    {
+      "heading": {
+        "name": "Grid",
+        "level": 2
+      }
+    },
+    {
+      "grid": [
+        {
+          "row": [
+            {
+              "columnheader": "Column Header 1"
+            },
+            {
+              "columnheader": "Column Header 2"
+            }
+          ]
+        },
+        {
+          "rowgroup": [
+            {
+              "row": [
+                {
+                  "rowheader": "Row Header 1"
+                },
+                {
+                  "gridcell": "Grid Cell 1"
+                }
+              ]
+            },
+            {
+              "row": [
+                {
+                  "rowheader": "Row Header 2"
+                },
+                {
+                  "gridcell": "Grid Cell 2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
