@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.15.2
+
+### Patch Changes
+
+- dbd5efc: Fix: Snapshot library is imported using wrong path when installed as dependency
+
 ## 0.15.1
 
 ### Patch Changes
