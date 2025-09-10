@@ -1,5 +1,7 @@
 /// <reference lib="dom" />
 import type { Locator, Page } from "@playwright/test";
+import path from "node:path";
+import { packageDirectory } from "package-directory";
 
 export class DomSnapshotProxy {
   private readonly page: Page;
@@ -25,8 +27,21 @@ export class DomSnapshotProxy {
   }
 
   private async loadLibrary(): Promise<void> {
+    const rootDir = await this.resolveRootDir();
     await this.page.addScriptTag({
-      path: "./dist/dom-snapshot.js",
+      path: path.join(rootDir, "dist", "dom-snapshot.js"),
     });
+  }
+
+  private async resolveRootDir(): Promise<string> {
+    const packageDir = await packageDirectory({
+      cwd: import.meta.dirname,
+    });
+
+    if (packageDir === undefined) {
+      throw new Error("Unable to resolve root directory of package");
+    }
+
+    return packageDir;
   }
 }
