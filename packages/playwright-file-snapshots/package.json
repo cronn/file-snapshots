@@ -30,7 +30,7 @@
     "playwright:install": "playwright install chromium",
     "compile": "tsc",
     "copy:browser-lib": "node ./scripts/copy-browser-lib.ts",
-    "build": "tsup",
+    "build": "tsup && pnpm run copy:browser-lib",
     "start": "serve static/"
   },
   "type": "module",
