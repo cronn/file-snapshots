@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.17.0
+
+### Minor Changes
+
+- c4ffc11: Breaking change: Removed config option `soft` with default value `true`. Use `defineValidationFileExpect().configure({ soft: true })` to restore the old behavior.
+
 ## 0.16.0
 
 ### Minor Changes
