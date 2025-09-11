@@ -20,7 +20,7 @@ test("applies custom file path resolver", async () => {
   await expect("value").toMatchTextFile({ name: "name" });
 });
 
-test.fail("uses soft assertions by default", async () => {
+test("when snapshot does not match, hard assertion throws error", async () => {
   const expect = defineValidationFileExpect();
 
   await expect(() =>
@@ -28,15 +28,14 @@ test.fail("uses soft assertions by default", async () => {
   ).rejects.toThrowError();
 });
 
-test("disables soft assertions", async () => {
-  const expect = defineValidationFileExpect({
-    soft: false,
-  });
+test.fail(
+  "when snapshot does not match, soft assertion fails test",
+  async () => {
+    const expect = defineValidationFileExpect();
 
-  await expect(() =>
-    expect("changed value").toMatchJsonFile(),
-  ).rejects.toThrowError();
-});
+    await expect.soft("changed value").toMatchJsonFile();
+  },
+);
 
 test("applies indentSize to JSON file snapshots", async () => {
   const expect = defineValidationFileExpect({

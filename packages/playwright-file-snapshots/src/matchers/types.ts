@@ -22,13 +22,6 @@ export interface PlaywrightValidationFileMatcherConfig {
   outputDir?: string;
 
   /**
-   * Enable soft assertions
-   *
-   * @default true
-   */
-  soft?: boolean;
-
-  /**
    * Indentation size in spaces used for serializing snapshots
    *
    * @default 2

@@ -195,23 +195,26 @@ The same behavior can be enforced to update snapshots: simply pass the `--update
 
 ### Using Soft Assertions
 
-All file snapshot matchers use soft assertions by default. This allows to check
-all snapshots within a test in single run:
+We recommend to use soft assertions for all file snapshot matchers. This prevents tests from terminating early when a file snapshot cannot be matched, making the process of reviewing failed test runs more efficient.
+
+#### Enabling Soft Assertions for Individual Assertions
 
 ```ts
-test("perform login", async () => {
-  await test.step("initial page", async () => {
-    const snapshot = await myPage.snapshot();
-    await expect(snapshot).toMatchJsonFile();
-  });
-
-  await test.step("login page", async () => {
-    await myPage.login("user", "password");
-    const snapshot = await myPage.snapshot();
-    await expect(snapshot).toMatchJsonFile();
-  });
+test("match values using soft assertions", async () => {
+  await expect.soft({ value: "value 1" }).toMatchJsonFile();
+  await expect.soft({ value: "value 2" }).toMatchJsonFile();
 });
 ```
+
+#### Enabling Soft Assertions for All Matchers
+
+```ts
+export const expect = defineValidationFileExpect().configure({
+  soft: true,
+});
+```
+
+Note: Enabling soft assertions for all matchers may have unintended side effects if you are using matchers like `expect.toPass`.
 
 ## ARIA Snapshots
 
@@ -297,7 +300,6 @@ const expect = defineValidationFileExpect({
 | ----------------- | ---------------------- | ------------------------------------------------------------ |
 | `validationDir`   | `data/test/validation` | Directory in which golden masters are stored.                |
 | `outputDir`       | `data/test/output`     | Directory in which file snapshots from test runs are stored. |
-| `soft`            | `true`                 | Enable soft assertions.                                      |
 | `indentSize`      | `2`                    | Indentation size in spaces used for serializing snapshots.   |
 | `resolveFileName` | `resolveNameAsFile`    | Custom resolver for the file path used to store snapshots.   |
 
