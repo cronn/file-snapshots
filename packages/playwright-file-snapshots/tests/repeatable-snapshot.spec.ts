@@ -39,7 +39,6 @@ test("when validation file is missing, waits for delay before creating snapshot"
   const testExpect = defineValidationFileExpect({
     validationDir: path.join(tmpDir, "validation"),
     outputDir: path.join(tmpDir, "output"),
-    soft: false,
   });
 
   const instrumentation = new SnapshotInstrumentation();
@@ -62,9 +61,7 @@ test(
       "Snapshot updates are disabled",
     );
 
-    const testExpect = defineValidationFileExpect({
-      soft: false,
-    });
+    const testExpect = defineValidationFileExpect();
 
     const instrumentation = new SnapshotInstrumentation();
     await expect(() =>
@@ -95,9 +92,7 @@ test("when validation file exists, repeats failing snapshot until it matches", a
 });
 
 test("when validation file exists, repeats failing snapshot until timeout", async () => {
-  const testExpect = defineValidationFileExpect({
-    soft: false,
-  }).configure({ timeout: 2_000 });
+  const testExpect = defineValidationFileExpect().configure({ timeout: 2_000 });
 
   const instrumentation = new SnapshotInstrumentation();
   await testExpect(() =>
@@ -111,9 +106,7 @@ test("when validation file exists, repeats failing snapshot until timeout", asyn
 });
 
 test("applies custom timeout", async () => {
-  const testExpect = defineValidationFileExpect({
-    soft: false,
-  });
+  const testExpect = defineValidationFileExpect();
 
   const instrumentation = new SnapshotInstrumentation();
   await testExpect(async () =>
@@ -127,9 +120,7 @@ test("applies custom timeout", async () => {
 });
 
 test("when trying to snapshot a function with parameters, throws error", async () => {
-  const testExpect = defineValidationFileExpect({
-    soft: false,
-  });
+  const testExpect = defineValidationFileExpect();
 
   await expect(() =>
     testExpect((value: unknown) => value).toMatchJsonFile(),

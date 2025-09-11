@@ -18,7 +18,7 @@ import type {
 export function defineValidationFileExpect(
   config: PlaywrightValidationFileMatcherConfig = {},
 ): Expect<PlaywrightValidationFileMatchers> {
-  const { soft = true, indentSize, ...snapshotConfig } = config;
+  const { indentSize, ...snapshotConfig } = config;
 
   async function toMatchJsonFile(
     this: ExpectMatcherState,
@@ -60,12 +60,8 @@ export function defineValidationFileExpect(
     });
   }
 
-  return baseExpect
-    .configure({
-      soft,
-    })
-    .extend({
-      toMatchJsonFile,
-      toMatchTextFile,
-    });
+  return baseExpect.extend({
+    toMatchJsonFile,
+    toMatchTextFile,
+  });
 }
