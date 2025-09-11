@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.18.0
+
+### Minor Changes
+
+- 70a6d51: Validate context-dependent element roles in DOM snapshots
+
 ## 0.17.0
 
 ### Minor Changes
