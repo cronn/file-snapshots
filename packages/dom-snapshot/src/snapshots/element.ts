@@ -16,6 +16,7 @@ import type {
   SnapshotTargetElement,
   SnapshotTargetNode,
 } from "./types";
+import { getElementTagName } from "./utils";
 
 type ElementSnapshotFn = (
   node: SnapshotTargetElement,
@@ -66,7 +67,7 @@ function snapshotNodeByType(
     return snapshotTextNode(node);
   }
 
-  if (!(node instanceof HTMLElement)) {
+  if (!isSupportedElement(node)) {
     return null;
   }
 
@@ -87,6 +88,27 @@ function snapshotNodeByType(
   }
 
   return snapshotContainer(elementRole, node);
+}
+
+const UNSUPPORTED_ELEMENTS = new Set([
+  "style",
+  "script",
+  "noscript",
+  "img",
+  "picture",
+  "audio",
+  "video",
+  "figure",
+  "template",
+]);
+
+function isSupportedElement(node: SnapshotTargetNode): node is HTMLElement {
+  if (!(node instanceof HTMLElement)) {
+    return false;
+  }
+
+  const tagName = getElementTagName(node);
+  return !UNSUPPORTED_ELEMENTS.has(tagName);
 }
 
 export function hasRoleSpecificSnapshot(

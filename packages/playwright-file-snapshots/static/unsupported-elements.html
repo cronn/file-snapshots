@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Unsupported Elements</title>
+  </head>
+  <body>
+    <main>
+      <h1>Unsupported Elements</h1>
+      <style>
+        * {
+          margin: 0;
+        }
+      </style>
+      <script>
+        console.log("Hello world!");
+      </script>
+      <noscript>JavaScript is disabled.</noscript>
+      <template>Template Content</template>
+      <svg
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="red"
+      >
+        <circle cx="50" cy="50" r="40" />
+      </svg>
+      <img src="/image.jpg" alt="Image" />
+      <picture>
+        <source srcset="picture2.jpg" media="(orientation: portrait)" />
+        <img src="/picture1.jpg" alt="Picture" />
+      </picture>
+      <audio controls>
+        <source src="audio.mp3" type="audio/mpeg" />
+        Download the <a href="audio.mp3">MP3</a> audio.
+      </audio>
+      <video controls width="250">
+        <source src="/video.mp4" type="video/mp4" />
+        Download the <a href="video.mp4">MP4</a> video.
+      </video>
+      <figure>
+        <img src="/image.jpg" alt="Image" />
+        <figcaption>Figure Caption</figcaption>
+      </figure>
+    </main>
+  </body>
+</html>
