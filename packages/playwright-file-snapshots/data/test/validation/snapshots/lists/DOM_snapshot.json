@@ -63,10 +63,27 @@
     },
     {
       "heading": {
+        "name": "Role-Based List",
+        "level": 2
+      }
+    },
+    {
+      "list": [
+        {
+          "listitem": "Item 1"
+        },
+        {
+          "listitem": "Item 2"
+        }
+      ]
+    },
+    {
+      "heading": {
         "name": "Incomplete List",
         "level": 2
       }
     },
-    "List Item without List"
+    "li outside list",
+    "[role=listitem] outside list"
   ]
 }

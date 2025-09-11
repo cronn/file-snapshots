@@ -11,12 +11,14 @@ type ElementRoleResolver<TRoles = ElementRole> =
   | TRoles
   | ((element: SnapshotTargetElement) => TRoles | undefined);
 
+type ElementContextValidator = (element: SnapshotTargetElement) => boolean;
+
 const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   main: "main",
   nav: "navigation",
   form: "form",
-  header: resolveHeaderRole,
-  section: resolveSectionRole,
+  header: "banner",
+  section: "region",
   article: "article",
   aside: "complementary",
   search: "search",
@@ -30,22 +32,38 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   h6: "heading",
   ul: "list",
   ol: "list",
-  li: resolveListItem,
+  li: "listitem",
   a: "link",
   button: "button",
   input: resolveInputRole,
   textarea: "textbox",
   select: "combobox",
   option: "option",
-  dt: resolveDescriptionListItem("term"),
-  dd: resolveDescriptionListItem("definition"),
+  dt: "term",
+  dd: "definition",
   table: "table",
-  thead: resolveTableElement("rowgroup"),
-  tbody: resolveTableElement("rowgroup"),
-  tfoot: resolveTableElement("rowgroup"),
-  tr: resolveTableElement("row"),
+  thead: "rowgroup",
+  tbody: "rowgroup",
+  tfoot: "rowgroup",
+  tr: "row",
   th: resolveTableHeaderCellRole,
-  td: resolveTableCell,
+  td: "cell",
+};
+
+const CONTEXT_DEPENDENT_ROLES: Partial<
+  Record<ElementRole, ElementContextValidator>
+> = {
+  banner: isTopLevelBanner,
+  region: hasAccessibleName,
+  term: isWithinDescriptionList,
+  definition: isWithinDescriptionList,
+  listitem: isWithinList,
+  rowgroup: isWithinTableOrGrid,
+  row: isWithinTableOrGrid,
+  columnheader: isWithinTableRowOrGridRow,
+  rowheader: isWithinTableRowOrGridRow,
+  cell: isWithinTableRow,
+  gridcell: isWithinGridRow,
 };
 
 const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {
@@ -64,7 +82,23 @@ const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {
   url: "textbox",
 };
 
-export function resolveElementRole(
+export function parseElementRole(
+  element: SnapshotTargetElement,
+): ElementRole | undefined {
+  const resolvedElementRole = resolveElementRole(element);
+  if (resolvedElementRole === undefined) {
+    return undefined;
+  }
+
+  const isValidInContext = CONTEXT_DEPENDENT_ROLES[resolvedElementRole];
+  if (isValidInContext !== undefined && !isValidInContext(element)) {
+    return undefined;
+  }
+
+  return resolvedElementRole;
+}
+
+function resolveElementRole(
   element: SnapshotTargetElement,
 ): ElementRole | undefined {
   const explicitRole = element.role;
@@ -131,9 +165,7 @@ const DISALLOWED_BANNER_CONTAINER_ROLES = [
   "region",
 ] as const;
 
-function resolveHeaderRole(
-  element: SnapshotTargetElement,
-): "banner" | undefined {
+function isTopLevelBanner(element: SnapshotTargetElement): boolean {
   const disallowedContainerSelector = selectorList(
     ...DISALLOWED_BANNER_CONTAINER_ELEMENTS,
     ...DISALLOWED_BANNER_CONTAINER_ROLES.map(roleSelector),
@@ -141,49 +173,23 @@ function resolveHeaderRole(
   const closestDisallowedContainer = element.closest(
     disallowedContainerSelector,
   );
-  return closestDisallowedContainer === null ? "banner" : undefined;
+  return closestDisallowedContainer === null;
 }
 
-function resolveSectionRole(
-  element: SnapshotTargetElement,
-): "region" | undefined {
+function hasAccessibleName(element: SnapshotTargetElement): boolean {
   const accessibleName = resolveAccessibleName(element, false);
-  return accessibleName !== undefined ? "region" : undefined;
+  return accessibleName !== undefined;
 }
 
-type DescriptionListItemRole = "term" | "definition";
-
-function resolveDescriptionListItem(
-  targetRole: DescriptionListItemRole,
-): ElementRoleResolver<DescriptionListItemRole> {
-  return function resolveRole(
-    element: SnapshotTargetElement,
-  ): DescriptionListItemRole | undefined {
-    const closestDescriptionList = element.closest("dl");
-    if (closestDescriptionList === null) {
-      return undefined;
-    }
-
-    return targetRole;
-  };
-}
-
-type TableItemRole = "rowgroup" | "row" | "columnheader" | "rowheader" | "cell";
-
-function resolveTableElement(
-  targetRole: TableItemRole,
-): ElementRoleResolver<TableItemRole> {
-  return function resolveRole(
-    element: SnapshotTargetElement,
-  ): TableItemRole | undefined {
-    return isWithinTable(element) ? targetRole : undefined;
-  };
+function isWithinDescriptionList(element: SnapshotTargetElement): boolean {
+  const closestDescriptionList = element.closest("dl");
+  return closestDescriptionList !== null;
 }
 
 function resolveTableHeaderCellRole(
   element: SnapshotTargetElement,
-): TableItemRole | undefined {
-  if (!(isWithinRow(element) && element instanceof HTMLTableCellElement)) {
+): "columnheader" | "rowheader" | undefined {
+  if (!(element instanceof HTMLTableCellElement)) {
     return undefined;
   }
 
@@ -199,14 +205,8 @@ function resolveTableHeaderCellRole(
   }
 }
 
-function resolveTableCell(
-  element: SnapshotTargetElement,
-): TableItemRole | undefined {
-  if (!(isWithinRow(element) && element instanceof HTMLTableCellElement)) {
-    return undefined;
-  }
-
-  return "cell";
+function isWithinTableOrGrid(element: Element): boolean {
+  return isWithinTable(element) || isWithinGrid(element);
 }
 
 function isWithinTable(element: Element): boolean {
@@ -216,20 +216,28 @@ function isWithinTable(element: Element): boolean {
   return closestTable !== null;
 }
 
-function isWithinRow(element: Element): boolean {
+function isWithinGrid(element: Element): boolean {
+  const closestGrid = element.closest(roleSelector("grid"));
+  return closestGrid !== null;
+}
+
+function isWithinTableRowOrGridRow(element: Element): boolean {
+  return isWithinTableRow(element) || isWithinGridRow(element);
+}
+
+function isWithinTableRow(element: Element): boolean {
   const closestRow = element.closest(selectorList("tr", roleSelector("row")));
   return closestRow !== null && isWithinTable(closestRow);
 }
 
-function resolveListItem(
-  element: SnapshotTargetElement,
-): "listitem" | undefined {
+function isWithinGridRow(element: Element): boolean {
+  const closestRow = element.closest(selectorList("tr", roleSelector("row")));
+  return closestRow !== null && isWithinGrid(closestRow);
+}
+
+function isWithinList(element: SnapshotTargetElement): boolean {
   const closestList = element.closest(
     selectorList("ul", "ol", roleSelector("list")),
   );
-  if (closestList === null) {
-    return undefined;
-  }
-
-  return "listitem";
+  return closestList !== null;
 }

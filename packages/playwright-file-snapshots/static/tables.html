@@ -35,25 +35,54 @@
         </table>
       </section>
       <section>
+        <h2>Role-Based Table</h2>
+        <div role="table">
+          <div role="row">
+            <div role="columnheader">Column Header 1</div>
+            <div role="columnheader">Column Header 2</div>
+          </div>
+          <div role="rowgroup">
+            <div role="row">
+              <div role="rowheader">Row Header 1</div>
+              <div role="cell">Cell 1</div>
+            </div>
+            <div role="row">
+              <div role="rowheader">Row Header 2</div>
+              <div role="cell">Cell 2</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
         <h2>Incomplete Table</h2>
         <thead>
-          Table Header without Table
+          thead outside table
         </thead>
         <tbody>
-          Table Body without Table
+          tbody outside table
         </tbody>
         <tfoot>
-          Table Footer without Table
+          tfoot outside table
         </tfoot>
         <tr>
-          Table Row without Table
+          tr outside table
         </tr>
-        <th>Header Cell without Table</th>
-        <td>Cell without Table</td>
+        <th>th outside table</th>
+        <td>td outside table</td>
         <table>
-          <th>Header Cell without Row</th>
-          <td>Cell without Row</td>
+          <th>th outside row</th>
+          <td>td outside row</td>
         </table>
+        <div role="rowgroup">[role=rowgroup] outside table</div>
+        <div role="row">[role=row] outside table</div>
+        <div role="columnheader">[role=columnheader] outside table</div>
+        <div role="rowheader">[role=rowheader] outside table</div>
+        <div role="cell">[role=cell] outside table</div>
+        <div role="table">
+          <div role="columnheader">[role=columnheader] outside row</div>
+          <div role="rowheader">[role=rowheader] outside row</div>
+          <div role="cell">[role=cell] outside row</div>
+        </div>
       </section>
       <section>
         <h2>Grid</h2>
@@ -72,6 +101,19 @@
               <div role="gridcell">Grid Cell 2</div>
             </div>
           </div>
+        </div>
+      </section>
+      <section>
+        <h2>Incomplete Grid</h2>
+        <div role="rowgroup">[role=rowgroup] outside grid</div>
+        <div role="row">[role=row] outside grid</div>
+        <div role="columnheader">[role=columnheader] outside grid</div>
+        <div role="rowheader">[role=rowheader] outside grid</div>
+        <div role="gridcell">[role=gridcell] outside grid</div>
+        <div role="grid">
+          <div role="columnheader">[role=columnheader] outside row</div>
+          <div role="rowheader">[role=rowheader] outside row</div>
+          <div role="gridcell">[role=gridcell] outside row</div>
         </div>
       </section>
     </main>

@@ -38,17 +38,58 @@
         }
       ]
     },
+    "heading 'Role-Based Table' [level=2]",
+    {
+      "table": [
+        {
+          "row 'Column Header 1 Column Header 2'": [
+            "columnheader 'Column Header 1'",
+            "columnheader 'Column Header 2'"
+          ]
+        },
+        {
+          "rowgroup": [
+            {
+              "row 'Row Header 1 Cell 1'": [
+                "rowheader 'Row Header 1'",
+                "cell 'Cell 1'"
+              ]
+            },
+            {
+              "row 'Row Header 2 Cell 2'": [
+                "rowheader 'Row Header 2'",
+                "cell 'Cell 2'"
+              ]
+            }
+          ]
+        }
+      ]
+    },
     "heading 'Incomplete Table' [level=2]",
-    "text 'Table Header without Table Table Body without Table Table Footer without Table Table Row without Table Header Cell without Table Cell without Table'",
+    "text 'thead outside table tbody outside table tfoot outside table tr outside table th outside table td outside table'",
     {
       "table": {
         "rowgroup": {
-          "row 'Header Cell without Row Cell without Row'": [
-            "cell 'Header Cell without Row'",
-            "cell 'Cell without Row'"
+          "row 'th outside row td outside row'": [
+            "cell 'th outside row'",
+            "cell 'td outside row'"
           ]
         }
       }
+    },
+    {
+      "rowgroup": "[role=rowgroup] outside table"
+    },
+    "row '[role=row] outside table'",
+    "columnheader '[role=columnheader] outside table'",
+    "rowheader '[role=rowheader] outside table'",
+    "cell '[role=cell] outside table'",
+    {
+      "table": [
+        "columnheader '[role=columnheader] outside row'",
+        "rowheader '[role=rowheader] outside row'",
+        "cell '[role=cell] outside row'"
+      ]
     },
     "heading 'Grid' [level=2]",
     {
@@ -75,6 +116,21 @@
             }
           ]
         }
+      ]
+    },
+    "heading 'Incomplete Grid' [level=2]",
+    {
+      "rowgroup": "[role=rowgroup] outside grid"
+    },
+    "row '[role=row] outside grid'",
+    "columnheader '[role=columnheader] outside grid'",
+    "rowheader '[role=rowheader] outside grid'",
+    "gridcell '[role=gridcell] outside grid'",
+    {
+      "grid": [
+        "columnheader '[role=columnheader] outside row'",
+        "rowheader '[role=rowheader] outside row'",
+        "gridcell '[role=gridcell] outside row'"
       ]
     }
   ]

@@ -17,12 +17,25 @@
     {
       "definition": "Definition 3"
     },
-    "heading 'Incomplete Description List' [level=2]",
+    "heading 'Role-Based Description List' [level=2]",
     {
-      "term": "Term without Description List"
+      "term": "Term"
     },
     {
-      "definition": "Definition without Description List"
+      "definition": "Definition"
+    },
+    "heading 'Incomplete Description List' [level=2]",
+    {
+      "term": "dt outside dl"
+    },
+    {
+      "definition": "dd outside dl"
+    },
+    {
+      "term": "[role=term] outside dl"
+    },
+    {
+      "definition": "[role=definition] outside dl"
     }
   ]
 }

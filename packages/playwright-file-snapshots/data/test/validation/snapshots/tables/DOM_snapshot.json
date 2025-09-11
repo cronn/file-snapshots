@@ -66,22 +66,78 @@
     },
     {
       "heading": {
+        "name": "Role-Based Table",
+        "level": 2
+      }
+    },
+    {
+      "table": [
+        {
+          "row": [
+            {
+              "columnheader": "Column Header 1"
+            },
+            {
+              "columnheader": "Column Header 2"
+            }
+          ]
+        },
+        {
+          "rowgroup": [
+            {
+              "row": [
+                {
+                  "rowheader": "Row Header 1"
+                },
+                {
+                  "cell": "Cell 1"
+                }
+              ]
+            },
+            {
+              "row": [
+                {
+                  "rowheader": "Row Header 2"
+                },
+                {
+                  "cell": "Cell 2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": {
         "name": "Incomplete Table",
         "level": 2
       }
     },
-    "Table Header without Table Table Body without Table Table Footer without Table Table Row without Table Header Cell without Table Cell without Table",
+    "thead outside table tbody outside table tfoot outside table tr outside table th outside table td outside table",
     {
       "table": {
         "rowgroup": {
           "row": [
-            "Header Cell without Row",
+            "th outside row",
             {
-              "cell": "Cell without Row"
+              "cell": "td outside row"
             }
           ]
         }
       }
+    },
+    "[role=rowgroup] outside table",
+    "[role=row] outside table",
+    "[role=columnheader] outside table",
+    "[role=rowheader] outside table",
+    "[role=cell] outside table",
+    {
+      "table": [
+        "[role=columnheader] outside row",
+        "[role=rowheader] outside row",
+        "[role=cell] outside row"
+      ]
     },
     {
       "heading": {
@@ -125,6 +181,24 @@
             }
           ]
         }
+      ]
+    },
+    {
+      "heading": {
+        "name": "Incomplete Grid",
+        "level": 2
+      }
+    },
+    "[role=rowgroup] outside grid",
+    "[role=row] outside grid",
+    "[role=columnheader] outside grid",
+    "[role=rowheader] outside grid",
+    "[role=gridcell] outside grid",
+    {
+      "grid": [
+        "[role=columnheader] outside row",
+        "[role=rowheader] outside row",
+        "[role=gridcell] outside row"
       ]
     }
   ]
