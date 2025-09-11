@@ -35,6 +35,12 @@
             "name": "Invalid Input",
             "invalid": true
           }
+        },
+        {
+          "button": {
+            "name": "Disabled Button",
+            "disabled": true
+          }
         }
       ]
     }

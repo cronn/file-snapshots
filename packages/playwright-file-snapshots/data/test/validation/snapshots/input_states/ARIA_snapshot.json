@@ -8,6 +8,7 @@
     "text 'Required Input'",
     "textbox 'Required Input'",
     "text 'Invalid Input'",
-    "textbox 'Invalid Input'"
+    "textbox 'Invalid Input'",
+    "button 'Disabled Button' [disabled]"
   ]
 }
