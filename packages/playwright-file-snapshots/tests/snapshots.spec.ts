@@ -6,10 +6,12 @@ import { defineValidationFileExpect, snapshotAria, snapshotDom } from "../src";
 const expect = defineValidationFileExpect();
 
 async function testSnapshots(locator: Locator): Promise<void> {
-  await expect(snapshotAria(locator)).toMatchJsonFile({
+  await expect.soft(snapshotAria(locator)).toMatchJsonFile({
     name: "ARIA snapshot",
   });
-  await expect(snapshotDom(locator)).toMatchJsonFile({ name: "DOM snapshot" });
+  await expect
+    .soft(snapshotDom(locator))
+    .toMatchJsonFile({ name: "DOM snapshot" });
 }
 
 test("page", async ({ page }) => {
