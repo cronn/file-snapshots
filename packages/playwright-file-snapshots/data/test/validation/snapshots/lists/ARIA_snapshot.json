@@ -41,9 +41,23 @@
         }
       ]
     },
+    "heading 'Role-Based List' [level=2]",
+    {
+      "list": [
+        {
+          "listitem": "Item 1"
+        },
+        {
+          "listitem": "Item 2"
+        }
+      ]
+    },
     "heading 'Incomplete List' [level=2]",
     {
-      "listitem": "List Item without List"
+      "listitem": "li outside list"
+    },
+    {
+      "listitem": "[role=listitem] outside list"
     }
   ]
 }

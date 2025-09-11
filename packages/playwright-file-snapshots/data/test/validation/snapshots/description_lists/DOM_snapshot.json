@@ -29,11 +29,25 @@
     },
     {
       "heading": {
+        "name": "Role-Based Description List",
+        "level": 2
+      }
+    },
+    {
+      "term": "Term"
+    },
+    {
+      "definition": "Definition"
+    },
+    {
+      "heading": {
         "name": "Incomplete Description List",
         "level": 2
       }
     },
-    "Term without Description List",
-    "Definition without Description List"
+    "dt outside dl",
+    "dd outside dl",
+    "[role=term] outside dl",
+    "[role=definition] outside dl"
   ]
 }

@@ -7,7 +7,7 @@ import { snapshotContainer } from "./container";
 import { snapshotHeading } from "./heading";
 import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
-import { resolveElementRole } from "./role";
+import { parseElementRole } from "./role";
 import { snapshotTextNode } from "./text";
 import type {
   ElementRole,
@@ -75,7 +75,7 @@ function snapshotNodeByType(
     return null;
   }
 
-  const elementRole = resolveElementRole(node);
+  const elementRole = parseElementRole(node);
 
   if (elementRole === undefined) {
     return snapshotChildren(node) ?? null;
