@@ -1,0 +1,15 @@
+{
+  "main": [
+    "heading 'Unsupported Elements' [level=1]",
+    "img",
+    "img 'Image'",
+    "img 'Picture'",
+    "text 'Download the audio. Download the video.'",
+    {
+      "figure 'Figure Caption'": [
+        "img 'Image'",
+        "text 'Figure Caption'"
+      ]
+    }
+  ]
+}

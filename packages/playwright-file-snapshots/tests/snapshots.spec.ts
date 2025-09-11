@@ -94,3 +94,8 @@ test("accessibility tree", async ({ page }) => {
   await page.goto("/accessibility-tree");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("unsupported elements", async ({ page }) => {
+  await page.goto("/unsupported-elements");
+  await testSnapshots(page.getByRole("main"));
+});

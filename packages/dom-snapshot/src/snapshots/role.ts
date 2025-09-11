@@ -3,9 +3,12 @@ import { hasRoleSpecificSnapshot } from "./element";
 import type { InputRole } from "./input";
 import { resolveAccessibleName } from "./name";
 import { roleSelector, selectorList } from "./selector";
-import type { ElementRole, SnapshotTargetElement } from "./types";
-
-type ElementTagName = keyof HTMLElementTagNameMap;
+import type {
+  ElementRole,
+  ElementTagName,
+  SnapshotTargetElement,
+} from "./types";
+import { getElementTagName } from "./utils";
 
 type ElementRoleResolver<TRoles = ElementRole> =
   | TRoles
@@ -113,7 +116,7 @@ function resolveElementRole(
     return explicitRole;
   }
 
-  const tagName = element.tagName.toLowerCase() as ElementTagName;
+  const tagName = getElementTagName(element);
   const roleResolver = ELEMENT_ROLES[tagName];
   if (roleResolver === undefined) {
     return undefined;
