@@ -1,5 +1,15 @@
 # @cronn/playwright-file-snapshots
 
+## 0.16.0
+
+### Minor Changes
+
+- 366ba5f: Enable DOM Snapshots for the roles `grid` and `gridcell`
+
+### Patch Changes
+
+- 1afaceb: Fix: `package-directory` is not defined as production dependency
+
 ## 0.15.2
 
 ### Patch Changes
