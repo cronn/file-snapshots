@@ -3,17 +3,13 @@ import type { SnapshotSerializer } from "./serializer";
 export interface ValidationFileMatcherConfig {
   /**
    * Directory in which golden masters are stored
-   *
-   * @default "data/test/validation"
    */
-  validationDir?: string;
+  validationDir: string;
 
   /**
    * Directory in which file snapshots from test runs are stored
-   *
-   * @default "data/test/output"
    */
-  outputDir?: string;
+  outputDir: string;
 
   /**
    * The full path to the snapshot file

@@ -54,7 +54,7 @@ test("when validation file is missing, creates validation file with marker", asy
   const matcher = new ValidationFileMatcher({
     validationDir: path.join(tmpDir, "validation"),
     outputDir: path.join(tmpDir, "output"),
-    filePath: "./src/tests/feature/test",
+    filePath: "src/tests/feature/test",
     serializer: new TextSerializer(),
   });
   expect(matcher.isValidationFileMissing).toBe(true);
@@ -73,7 +73,9 @@ test("when validation file is missing, creates validation file with marker", asy
 
 test("when validation file exists, does not recreate validation file", async (context) => {
   const matcher = new ValidationFileMatcher({
-    filePath: "./src/tests/feature/test",
+    validationDir: "data/test/validation",
+    outputDir: "data/test/output",
+    filePath: "src/tests/feature/test",
     serializer: new JsonSerializer(),
   });
   expect(matcher.isValidationFileMissing).toBe(false);
@@ -90,7 +92,9 @@ test("when validation file exists, does not recreate validation file", async (co
 test("when serializer does not support value, throws error", () => {
   expect(() =>
     new ValidationFileMatcher({
-      filePath: "./src/tests/feature.test.ts",
+      validationDir: "data/test/validation",
+      outputDir: "data/test/output",
+      filePath: "src/tests/feature.test.ts",
       serializer: new FailingSerializer(),
     }).matchFileSnapshot(["value"]),
   ).toThrowError();

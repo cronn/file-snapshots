@@ -1,6 +1,8 @@
 import type { FullConfig } from "@playwright/test";
+import path from "node:path";
 import { describe, expect, test } from "vitest";
 
+import type { ParsedTestInfo } from "./utils";
 import {
   parseTestInfo,
   parseTestPath,
@@ -37,10 +39,25 @@ function createConfig(values: Partial<FullConfig> = {}): FullConfig {
 }
 
 describe("parseTestInfo", () => {
-  test("returns parsed test info", () => {
-    expect(
-      parseTestInfo({ config: createConfig({ updateSnapshots: "changed" }) }),
-    ).toStrictEqual({ updateSnapshots: true });
+  test("returns parsed test info", async () => {
+    function normalizeRootDir(testInfo: ParsedTestInfo): ParsedTestInfo {
+      return {
+        ...testInfo,
+        rootDir: path.basename(testInfo.rootDir),
+      };
+    }
+
+    await expect(
+      parseTestInfo({
+        config: createConfig({
+          rootDir: import.meta.url,
+          updateSnapshots: "changed",
+        }),
+      }).then(normalizeRootDir),
+    ).resolves.toStrictEqual({
+      rootDir: "playwright-file-snapshots",
+      updateSnapshots: true,
+    });
   });
 });
 

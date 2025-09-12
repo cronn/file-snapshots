@@ -55,13 +55,12 @@ export class ValidationFileMatcher {
   private buildFilePaths(
     config: ValidationFileMatcherConfig,
   ): MatcherFilePaths {
-    const validationDir = config.validationDir ?? "data/test/validation";
-    const outputDir = config.outputDir ?? "data/test/output";
-    const filePathWithExtenion = `${config.filePath}.${config.serializer.fileExtension}`;
+    const { validationDir, outputDir, filePath, serializer } = config;
+    const filePathWithExtension = `${filePath}.${serializer.fileExtension}`;
 
     return {
-      outputFilePath: path.join(outputDir, filePathWithExtenion),
-      validationFilePath: path.join(validationDir, filePathWithExtenion),
+      outputFilePath: path.join(outputDir, filePathWithExtension),
+      validationFilePath: path.join(validationDir, filePathWithExtension),
     };
   }
 
