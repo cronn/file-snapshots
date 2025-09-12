@@ -1,5 +1,16 @@
 # @cronn/vitest-file-snapshots
 
+## 0.14.0
+
+### Minor Changes
+
+- 976ffb1: Enable defining default `validationDir` and `outputDir` with framework-dependent absolute path
+
+### Patch Changes
+
+- Updated dependencies [976ffb1]
+  - @cronn/lib-file-snapshots@0.15.0
+
 ## 0.13.0
 
 ### Minor Changes

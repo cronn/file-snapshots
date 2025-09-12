@@ -1,5 +1,19 @@
 # @cronn/playwright-file-snapshots
 
+## 0.19.0
+
+### Minor Changes
+
+- 976ffb1: Fix: Default `validationDir` and `outputDir` depend on CWD
+- e6701cd: Filter irrelevant and not yet supported elements from DOM snapshots
+- c0402bb: Add disabled state to DOM snapshot of button
+- 976ffb1: Enable defining default `validationDir` and `outputDir` with framework-dependent absolute path
+
+### Patch Changes
+
+- Updated dependencies [976ffb1]
+  - @cronn/lib-file-snapshots@0.15.0
+
 ## 0.18.0
 
 ### Minor Changes
