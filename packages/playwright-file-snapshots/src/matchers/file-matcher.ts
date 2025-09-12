@@ -16,6 +16,7 @@ import {
   resolveNameAsFile,
 } from "@cronn/lib-file-snapshots";
 
+import { ensureAbsolutePath } from "../utils/file";
 import { waitForTimer } from "../utils/timer";
 
 import {
@@ -52,8 +53,8 @@ export async function matchValidationFile(
   }
 
   const {
-    validationDir,
-    outputDir,
+    validationDir = "data/test/validation",
+    outputDir = "data/test/output",
     resolveFilePath: configuredFilePathResolver,
   } = config;
   const { name, resolveFilePath: localFilePathResolver } = options;
@@ -61,12 +62,12 @@ export async function matchValidationFile(
     localFilePathResolver ?? configuredFilePathResolver ?? resolveNameAsFile;
 
   return await test.step(MATCHER_STEP_TITLE, async (stepTestInfo) => {
-    const { updateSnapshots } = parseTestInfo(test.info());
+    const { rootDir, updateSnapshots } = await parseTestInfo(test.info());
     const { testPath, titlePath } = parseTestStepInfo(stepTestInfo);
     const filePath = resolveFilePath({ testPath, titlePath, name });
     const matcher = new ValidationFileMatcher({
-      validationDir,
-      outputDir,
+      validationDir: ensureAbsolutePath(validationDir, rootDir),
+      outputDir: ensureAbsolutePath(outputDir, rootDir),
       filePath,
       serializer,
     });

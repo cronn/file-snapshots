@@ -42,8 +42,8 @@ export function matchValidationFile(
   }
 
   const {
-    validationDir,
-    outputDir,
+    validationDir = "data/test/validation",
+    outputDir = "data/test/output",
     testDir = ".",
     resolveFilePath: configuredFilePathResolver,
   } = config;

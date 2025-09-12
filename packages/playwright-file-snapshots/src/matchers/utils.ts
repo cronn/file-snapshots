@@ -1,14 +1,22 @@
 import type { TestInfo, TestStepInfo } from "@playwright/test";
 
+import { resolvePackageRootDir } from "../utils/file";
+
 type RawTestInfo = Pick<TestInfo, "config">;
 
-interface ParsedTestInfo {
+export interface ParsedTestInfo {
+  rootDir: string;
   updateSnapshots: boolean;
 }
 
-export function parseTestInfo(testInfo: RawTestInfo): ParsedTestInfo {
+export async function parseTestInfo(
+  testInfo: RawTestInfo,
+): Promise<ParsedTestInfo> {
+  const { config } = testInfo;
+
   return {
-    updateSnapshots: parseUpdateSnapshots(testInfo.config.updateSnapshots),
+    rootDir: await resolvePackageRootDir(config.rootDir),
+    updateSnapshots: parseUpdateSnapshots(config.updateSnapshots),
   };
 }
 
