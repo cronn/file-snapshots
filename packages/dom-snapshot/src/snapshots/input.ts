@@ -85,9 +85,7 @@ export function snapshotCommonInputAttributes(
 
   return {
     description: resolveDescription(element),
-    readonly: booleanAttribute(
-      readonlyValue === "" || readonlyValue === "readonly",
-    ),
+    readonly: booleanAttribute(readonlyValue !== null),
     disabled: booleanAttribute(element.disabled),
     required: booleanAttribute(element.required),
     invalid: booleanAttribute(element.ariaInvalid),
