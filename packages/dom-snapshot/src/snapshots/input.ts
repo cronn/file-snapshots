@@ -81,11 +81,9 @@ function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
 export function snapshotCommonInputAttributes(
   element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
 ): CommonInputAttributes {
-  const readonlyValue = element.getAttribute("readonly");
-
   return {
     description: resolveDescription(element),
-    readonly: booleanAttribute(readonlyValue !== null),
+    readonly: booleanAttribute(element.hasAttribute("readonly")),
     disabled: booleanAttribute(element.disabled),
     required: booleanAttribute(element.required),
     invalid: booleanAttribute(element.ariaInvalid),
