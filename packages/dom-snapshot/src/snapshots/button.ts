@@ -13,13 +13,11 @@ interface ButtonAttributes {
 export function snapshotButton(
   element: SnapshotTargetElement,
 ): ButtonSnapshot | null {
-  const disabledValue = element.getAttribute("disabled");
-
   return {
     role: "button",
     name: resolveAccessibleName(element),
     attributes: {
-      disabled: booleanAttribute(disabledValue !== null),
+      disabled: booleanAttribute(element.hasAttribute("disabled")),
     },
     children: snapshotChildren(element),
   };
