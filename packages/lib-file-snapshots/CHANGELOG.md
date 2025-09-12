@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.15.0
+
+### Minor Changes
+
+- 976ffb1: Enable defining default `validationDir` and `outputDir` with framework-dependent absolute path
+
 ## 0.14.0
 
 ### Minor Changes
