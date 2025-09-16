@@ -58,6 +58,7 @@ Unused validation files are validation files from tests which no longer exist, e
 Effectively working with file snapshots requires a tool which supports comparing directories. We can recommend the following tools:
 
 - [Validation-File Comparison Plugin for IntelliJ IDEs](https://github.com/cronn/validation-files-comparison-intellij-plugin) (does not yet support frontend monorepos)
+- [Compare Folders Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=moshfeu.compare-folders)
 - [Meld](https://meldmerge.org)
 
 ### See Also
