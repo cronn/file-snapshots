@@ -6,10 +6,10 @@
     "url": "https://github.com/cronn/file-snapshots"
   },
   "type": "module",
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@10.16.1",
   "engines": {
     "node": ">=22.18",
-    "pnpm": ">=10"
+    "pnpm": ">=10.16"
   },
   "scripts": {
     "format:check": "prettier . --check",
