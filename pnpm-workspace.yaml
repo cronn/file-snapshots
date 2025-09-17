@@ -23,6 +23,8 @@ catalog:
 
 includeWorkspaceRoot: true
 
+strictDepBuilds: true
+
 ignoredBuiltDependencies:
   - esbuild
 
