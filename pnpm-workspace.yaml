@@ -25,3 +25,5 @@ includeWorkspaceRoot: true
 
 ignoredBuiltDependencies:
   - esbuild
+
+minimumReleaseAge: 1440
