@@ -41,6 +41,10 @@
         }
       ]
     },
+    "heading 'Empty List' [level=2]",
+    {
+      "list": "listitem"
+    },
     "heading 'Role-Based List' [level=2]",
     {
       "list": [

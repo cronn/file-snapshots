@@ -29,6 +29,18 @@
     },
     {
       "heading": {
+        "name": "Empty Description List",
+        "level": 2
+      }
+    },
+    {
+      "term": {}
+    },
+    {
+      "definition": {}
+    },
+    {
+      "heading": {
         "name": "Role-Based Description List",
         "level": 2
       }

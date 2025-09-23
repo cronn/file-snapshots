@@ -63,6 +63,17 @@
     },
     {
       "heading": {
+        "name": "Empty List",
+        "level": 2
+      }
+    },
+    {
+      "list": {
+        "listitem": {}
+      }
+    },
+    {
+      "heading": {
         "name": "Role-Based List",
         "level": 2
       }

@@ -2,13 +2,13 @@
   "main": [
     {
       "heading": {
-        "name": "h1 Heading",
+        "name": "Headings",
         "level": 1
       }
     },
     {
       "heading": {
-        "name": "h2 Heading",
+        "name": "Heading Levels",
         "level": 2
       }
     },
@@ -34,6 +34,17 @@
       "heading": {
         "name": "h6 Heading",
         "level": 6
+      }
+    },
+    {
+      "heading": {
+        "name": "Empty Heading",
+        "level": 2
+      }
+    },
+    {
+      "heading": {
+        "level": 3
       }
     }
   ]

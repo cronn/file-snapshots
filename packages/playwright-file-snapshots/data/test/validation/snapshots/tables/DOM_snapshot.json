@@ -66,6 +66,40 @@
     },
     {
       "heading": {
+        "name": "Empty Table",
+        "level": 2
+      }
+    },
+    {
+      "table": [
+        {
+          "rowgroup": {
+            "row": [
+              {
+                "columnheader": {}
+              },
+              {
+                "columnheader": {}
+              }
+            ]
+          }
+        },
+        {
+          "rowgroup": {
+            "row": [
+              {
+                "rowheader": {}
+              },
+              {
+                "cell": {}
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "heading": {
         "name": "Role-Based Table",
         "level": 2
       }
