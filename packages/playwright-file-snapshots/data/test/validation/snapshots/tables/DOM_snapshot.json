@@ -76,10 +76,10 @@
           "rowgroup": {
             "row": [
               {
-                "columnheader": {}
+                "columnheader": ""
               },
               {
-                "columnheader": {}
+                "columnheader": ""
               }
             ]
           }
@@ -88,10 +88,10 @@
           "rowgroup": {
             "row": [
               {
-                "rowheader": {}
+                "rowheader": ""
               },
               {
-                "cell": {}
+                "cell": ""
               }
             ]
           }

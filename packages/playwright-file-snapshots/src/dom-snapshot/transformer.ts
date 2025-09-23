@@ -49,6 +49,11 @@ export class DomSnapshotTransformer {
 
     const normalizedSnapshot = this.normalizeElementSnapshot(snapshot);
 
+    if (this.isEmpty(normalizedSnapshot)) {
+      const { role } = normalizedSnapshot;
+      return this.transformedSnapshot(role, "");
+    }
+
     if (this.hasOnlyName(normalizedSnapshot)) {
       const { role, name } = normalizedSnapshot;
       return this.transformedSnapshot(role, name);
@@ -108,6 +113,15 @@ export class DomSnapshotTransformer {
           ? transformedOptions
           : undefined,
     });
+  }
+
+  private isEmpty(snapshot: NormalizedElementSnapshot): boolean {
+    return (
+      snapshot.name === undefined &&
+      (snapshot.attributes === undefined ||
+        Object.keys(snapshot.attributes).length === 0) &&
+      (snapshot.children === undefined || snapshot.children.length === 0)
+    );
   }
 
   private hasOnlyName(
