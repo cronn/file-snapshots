@@ -110,6 +110,7 @@
         "article": [
           "heading 'Article' [level=3]",
           "paragraph 'Paragraph'",
+          "paragraph",
           "text 'Text'"
         ]
       },

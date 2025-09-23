@@ -17,6 +17,9 @@
     {
       "definition": "Definition 3"
     },
+    "heading 'Empty Description List' [level=2]",
+    "term",
+    "definition",
     "heading 'Role-Based Description List' [level=2]",
     {
       "term": "Term"

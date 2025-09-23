@@ -38,6 +38,27 @@
         }
       ]
     },
+    "heading 'Empty Table' [level=2]",
+    {
+      "table": [
+        {
+          "rowgroup": {
+            "row": [
+              "columnheader",
+              "columnheader"
+            ]
+          }
+        },
+        {
+          "rowgroup": {
+            "row": [
+              "rowheader",
+              "cell"
+            ]
+          }
+        }
+      ]
+    },
     "heading 'Role-Based Table' [level=2]",
     {
       "table": [

@@ -1,10 +1,12 @@
 {
   "main": [
-    "heading 'h1 Heading' [level=1]",
-    "heading 'h2 Heading' [level=2]",
+    "heading 'Headings' [level=1]",
+    "heading 'Heading Levels' [level=2]",
     "heading 'h3 Heading' [level=3]",
     "heading 'h4 Heading' [level=4]",
     "heading 'h5 Heading' [level=5]",
-    "heading 'h6 Heading' [level=6]"
+    "heading 'h6 Heading' [level=6]",
+    "heading 'Empty Heading' [level=2]",
+    "heading [level=3]"
   ]
 }
