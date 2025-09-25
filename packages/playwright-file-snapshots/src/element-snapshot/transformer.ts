@@ -1,4 +1,4 @@
-/// <reference types="@cronn/dom-snapshot" />
+/// <reference types="@cronn/element-snapshot" />
 
 interface NormalizedElementSnapshot {
   role: ElementRole;
@@ -11,7 +11,7 @@ interface DomSnapshotTransformerOptions {
   includeComboboxOptions?: boolean;
 }
 
-export class DomSnapshotTransformer {
+export class ElementSnapshotTransformer {
   private readonly includeComboboxOptions: boolean;
 
   public constructor(options: DomSnapshotTransformerOptions = {}) {

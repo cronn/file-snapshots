@@ -1,7 +1,8 @@
 import fs from "node:fs";
 
-const sourceFile = "./node_modules/@cronn/dom-snapshot/dist/index.global.js";
-const targetFile = "./dist/dom-snapshot.js";
+const sourceFile =
+  "./node_modules/@cronn/element-snapshot/dist/index.global.js";
+const targetFile = "./dist/element-snapshot.js";
 
 if (!fs.existsSync(sourceFile)) {
   throw new Error(`File '${sourceFile} is missing`);
