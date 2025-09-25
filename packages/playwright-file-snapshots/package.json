@@ -49,7 +49,7 @@
     "package-directory": "catalog:"
   },
   "devDependencies": {
-    "@cronn/dom-snapshot": "workspace:*",
+    "@cronn/element-snapshot": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@changesets/cli": "catalog:",
     "@playwright/test": "catalog:",

@@ -17,7 +17,7 @@ custom matchers for snapshot testing with the following features:
 - Zero configuration: snapshot files are named based on the test name
 - Multiple snapshot formats: JSON, text
 - Snapshot retries: avoid flaky tests by retrying snapshots
-- ARIA and DOM snapshots: Achieve high test coverage by snapshotting the semantical structure and accessible contents of a page
+- ARIA and element snapshots: Achieve high test coverage by snapshotting the semantical structure and accessible contents of a page
 
 ## Getting Started
 
@@ -253,27 +253,29 @@ test("matches combined ARIA snapshots", async ({ page }) => {
 
 Note: When using `snapshotAria`, a compatible version of `yaml` needs to be installed in your project.
 
-## DOM Snapshots (experimental)
+## Element Snapshots (experimental)
 
-DOM Snapshots are a custom snapshot implementation inspired by Playwright's ARIA Snapshots and the [Accessibility Object Model](https://wicg.github.io/aom/explainer.html). They cover additional properties, e.g. validation attributes like `required` or `invalid` on form inputs, and are optimized to be serialized as JSON.
+Element Snapshots are a custom snapshot implementation inspired by Playwright's ARIA Snapshots and the [Accessibility Object Model](https://wicg.github.io/aom/explainer.html). They cover additional properties, e.g. validation attributes like `required` or `invalid` on form inputs, and are optimized to be serialized as JSON.
 
 ```ts
-import { snapshotDom } from "@cronn/playwright-file-snapshots";
+import { snapshotElement } from "@cronn/playwright-file-snapshots";
 
-test("matches DOM snapshot", async ({ page }) => {
-  await expect(snapshotDom(page.getByRole("main"))).toMatchJsonFile();
+test("matches element snapshot", async ({ page }) => {
+  await expect(snapshotElement(page.getByRole("main"))).toMatchJsonFile();
 });
 ```
 
-Note that DOM Snapshots are currently an experimental feature. Not all elements and roles are covered, and the serialization format might change.
+Note that Element Snapshots are currently an experimental feature. Not all elements and roles are covered, and the serialization format might change.
 
-### DOM Snapshot Options
+### Element Snapshot Options
 
 Snapshot options can be passed when calling the snapshot function:
 
 ```ts
 await expect(
-  snapshotDom(page.getByLabel("My select"), { includeComboboxOptions: true }),
+  snapshotElement(page.getByLabel("My select"), {
+    includeComboboxOptions: true,
+  }),
 ).toMatchJsonFile({
   name: "select options",
 });

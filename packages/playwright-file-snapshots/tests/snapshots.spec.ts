@@ -1,7 +1,11 @@
 import type { Locator } from "@playwright/test";
 import test from "@playwright/test";
 
-import { defineValidationFileExpect, snapshotAria, snapshotDom } from "../src";
+import {
+  defineValidationFileExpect,
+  snapshotAria,
+  snapshotElement,
+} from "../src";
 
 const expect = defineValidationFileExpect();
 
@@ -10,8 +14,8 @@ async function testSnapshots(locator: Locator): Promise<void> {
     name: "ARIA snapshot",
   });
   await expect
-    .soft(snapshotDom(locator))
-    .toMatchJsonFile({ name: "DOM snapshot" });
+    .soft(snapshotElement(locator))
+    .toMatchJsonFile({ name: "Element snapshot" });
 }
 
 test("page", async ({ page }) => {
@@ -72,19 +76,19 @@ test("comboboxes", async ({ page }) => {
 test("include combobox options", async ({ page }) => {
   await page.goto("/forms/input-types");
   await expect(
-    snapshotDom(page.getByLabel("Multi Select"), {
+    snapshotElement(page.getByLabel("Multi Select"), {
       includeComboboxOptions: true,
     }),
   ).toMatchJsonFile({ name: "select" });
 
   await page.goto("/forms/comboboxes");
   await expect(
-    snapshotDom(page.getByLabel("Expanded Combobox"), {
+    snapshotElement(page.getByLabel("Expanded Combobox"), {
       includeComboboxOptions: true,
     }),
   ).toMatchJsonFile({ name: "expanded combobox" });
   await expect(
-    snapshotDom(page.getByLabel("Collapsed Combobox"), {
+    snapshotElement(page.getByLabel("Collapsed Combobox"), {
       includeComboboxOptions: true,
     }),
   ).toMatchJsonFile({ name: "collapsed combobox" });

@@ -78,7 +78,7 @@ importers:
         specifier: 'catalog:'
         version: 2.5.6
 
-  packages/dom-snapshot:
+  packages/element-snapshot:
     devDependencies:
       '@cronn/shared-configs':
         specifier: workspace:*
@@ -159,9 +159,9 @@ importers:
       '@changesets/cli':
         specifier: 'catalog:'
         version: 2.29.7(@types/node@22.18.6)
-      '@cronn/dom-snapshot':
+      '@cronn/element-snapshot':
         specifier: workspace:*
-        version: link:../dom-snapshot
+        version: link:../element-snapshot
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs

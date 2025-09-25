@@ -4,7 +4,7 @@ import path from "node:path";
 
 import { resolvePackageRootDir } from "../utils/file";
 
-export class DomSnapshotProxy {
+export class ElementSnapshotProxy {
   private readonly page: Page;
 
   public constructor(page: Page) {
@@ -30,7 +30,7 @@ export class DomSnapshotProxy {
   private async loadLibrary(): Promise<void> {
     const rootDir = await resolvePackageRootDir(import.meta.dirname);
     await this.page.addScriptTag({
-      path: path.join(rootDir, "dist", "dom-snapshot.js"),
+      path: path.join(rootDir, "dist", "element-snapshot.js"),
     });
   }
 }
