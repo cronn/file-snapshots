@@ -1,5 +1,13 @@
 # @cronn/playwright-file-snapshots
 
+## 0.20.0
+
+### Minor Changes
+
+- a7ab610: Rename DOM Snapshot to Element Snapshot to avoid misconception
+- a7ab610: Breaking change: Renamed `snapshotDom` to `snapshotElement`
+- d10dc7f: Render empty element snapshots as empty string in DOM snapshots
+
 ## 0.19.0
 
 ### Minor Changes
