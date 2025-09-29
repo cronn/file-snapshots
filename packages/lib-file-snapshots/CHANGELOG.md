@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.16.0
+
+### Minor Changes
+
+- f5ad3b7: Add option `fileExtension` to `TextSerializer`
+
 ## 0.15.0
 
 ### Minor Changes
