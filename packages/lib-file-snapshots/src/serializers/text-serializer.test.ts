@@ -39,3 +39,8 @@ function maskNumber(value: string): string {
 function removeComment(value: string): string {
   return value.replaceAll(/comment/g, "");
 }
+
+test(
+  "custom file extension",
+  testSerializer(new TextSerializer({ fileExtension: "md" }), "# Heading"),
+);

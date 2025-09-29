@@ -7,17 +7,25 @@ export interface TextSerializerOptions {
    * Custom normalizers to apply before serialization
    */
   normalizers?: Array<TextNormalizer>;
+
+  /**
+   * File extension used for storing the text file
+   *
+   * @default "txt"
+   */
+  fileExtension?: string;
 }
 
 export type TextNormalizer = (value: string) => string;
 
 export class TextSerializer implements SnapshotSerializer {
-  public readonly fileExtension = "txt";
+  public readonly fileExtension;
 
   private readonly normalizers: Array<TextNormalizer>;
 
   public constructor(options: TextSerializerOptions = {}) {
     this.normalizers = options.normalizers ?? [];
+    this.fileExtension = options.fileExtension ?? "txt";
   }
 
   public canSerialize(value: unknown): value is string {
