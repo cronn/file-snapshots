@@ -27,3 +27,9 @@ test("applies custom file path resolver", async () => {
     resolveFilePath: testFilePathResolver,
   });
 });
+
+test("applies custom file extension", async () => {
+  await expect("# Heading").toMatchTextFile({
+    fileExtension: "md",
+  });
+});
