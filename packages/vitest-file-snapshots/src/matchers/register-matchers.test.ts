@@ -122,6 +122,12 @@ describe("text file matcher", () => {
       resolveFilePath: testFilePathResolver,
     });
   });
+
+  test("applies custom file extension", () => {
+    expect("# Heading").toMatchTextFile({
+      fileExtension: "md",
+    });
+  });
 });
 
 export function testFilePathResolver(params: FilePathResolverParams): string {
