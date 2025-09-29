@@ -33,6 +33,13 @@ export interface VitestMatchTextFileOptions
    * Custom normalizers to apply before serialization
    */
   normalizers?: Array<TextNormalizer>;
+
+  /**
+   * File extension used for storing the snapshot file
+   *
+   * @default "txt"
+   */
+  fileExtension?: string;
 }
 
 export interface VitestMatchJsonFileOptions

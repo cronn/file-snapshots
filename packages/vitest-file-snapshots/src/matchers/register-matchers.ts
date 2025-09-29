@@ -44,10 +44,10 @@ export function registerValidationFileMatchers(
     received: unknown,
     options: VitestMatchTextFileOptions = {},
   ): ExpectationResult {
-    const { normalizers, ...snapshotOptions } = options;
+    const { normalizers, fileExtension, ...snapshotOptions } = options;
     return matchValidationFile({
       received,
-      serializer: new TextSerializer({ normalizers }),
+      serializer: new TextSerializer({ normalizers, fileExtension }),
       config: snapshotConfig,
       options: snapshotOptions,
       matcherState: this,
