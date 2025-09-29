@@ -1,5 +1,16 @@
 # @cronn/vitest-file-snapshots
 
+## 0.15.0
+
+### Minor Changes
+
+- ab708be: Add option `fileExtension` to matcher `toMatchTextFile`
+
+### Patch Changes
+
+- Updated dependencies [f5ad3b7]
+  - @cronn/lib-file-snapshots@0.16.0
+
 ## 0.14.0
 
 ### Minor Changes

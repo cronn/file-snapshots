@@ -1,5 +1,16 @@
 # @cronn/playwright-file-snapshots
 
+## 0.21.0
+
+### Minor Changes
+
+- e23b26b: Add option `fileExtension` to matcher `toMatchTextFile`
+
+### Patch Changes
+
+- Updated dependencies [f5ad3b7]
+  - @cronn/lib-file-snapshots@0.16.0
+
 ## 0.20.0
 
 ### Minor Changes
