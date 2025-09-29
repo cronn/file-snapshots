@@ -329,3 +329,9 @@ await expect(value).toMatchTextFile({
 | Option                             | Default Value | Description                                                                 |
 | ---------------------------------- | ------------- | --------------------------------------------------------------------------- |
 | `includeUndefinedObjectProperties` | `false`       | Serializes `undefined` properties in objects. By default, they are omitted. |
+
+#### Text Snapshot Options
+
+| Option          | Default Value | Description                                    |
+| --------------- | ------------- | ---------------------------------------------- |
+| `fileExtension` | `txt`         | File extension used for storing the text file. |

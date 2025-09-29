@@ -49,11 +49,11 @@ export function defineValidationFileExpect(
     actual: unknown,
     options: PlaywrightMatchTextFileOptions = {},
   ): Promise<MatcherReturnType> {
-    const { normalizers, ...snapshotOptions } = options;
+    const { normalizers, fileExtension, ...snapshotOptions } = options;
     return await matchValidationFile({
       actual,
       matcherName: "toMatchTextFile",
-      serializer: new TextSerializer({ normalizers }),
+      serializer: new TextSerializer({ normalizers, fileExtension }),
       config: snapshotConfig,
       options: snapshotOptions,
       matcherState: this,
