@@ -103,3 +103,8 @@ test("unsupported elements", async ({ page }) => {
   await page.goto("/unsupported-elements");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("dialogs", async ({ page }) => {
+  await page.goto("/dialogs");
+  await testSnapshots(page.getByRole("main"));
+});
