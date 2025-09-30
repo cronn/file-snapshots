@@ -63,6 +63,14 @@
                         "url": "/comboboxes"
                       }
                     }
+                  },
+                  {
+                    "listitem": {
+                      "link": {
+                        "name": "Placeholders",
+                        "url": "/placeholders"
+                      }
+                    }
                   }
                 ]
               }

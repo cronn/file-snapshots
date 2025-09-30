@@ -73,6 +73,11 @@ test("comboboxes", async ({ page }) => {
   await testSnapshots(page.getByRole("main"));
 });
 
+test("placeholders", async ({ page }) => {
+  await page.goto("/forms/placeholders");
+  await testSnapshots(page.getByRole("main"));
+});
+
 test("include combobox options", async ({ page }) => {
   await page.goto("/forms/input-types");
   await expect(
