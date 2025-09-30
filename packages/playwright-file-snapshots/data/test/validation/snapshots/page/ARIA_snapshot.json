@@ -52,6 +52,13 @@
                         "/url": "/comboboxes"
                       }
                     }
+                  },
+                  {
+                    "listitem": {
+                      "link 'Placeholders'": {
+                        "/url": "/placeholders"
+                      }
+                    }
                   }
                 ]
               }
