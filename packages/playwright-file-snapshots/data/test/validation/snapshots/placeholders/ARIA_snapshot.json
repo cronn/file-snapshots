@@ -1,0 +1,13 @@
+{
+  "main": [
+    "heading 'Placeholders' [level=1]",
+    "text 'Input with placeholder'",
+    "textbox 'Input with placeholder'",
+    "text 'Textarea with placeholder'",
+    "textbox 'Textarea with placeholder'",
+    "text 'Input with value and placeholder'",
+    {
+      "textbox 'Input with value and placeholder'": "Value"
+    }
+  ]
+}

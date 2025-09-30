@@ -29,14 +29,14 @@ export function snapshotCombobox(
   }
 
   const options = snapshotOptions(element);
+  const value = resolveValue(element, options);
 
   return {
     role: "combobox",
     name: resolveInputLabel(element),
     attributes: {
-      value: resolveValue(element, options),
-      ...snapshotCommonInputAttributes(element),
-      ...snapshotCommonInputAttributes(element),
+      value,
+      ...snapshotCommonInputAttributes(element, value === undefined),
     },
     options,
   };

@@ -25,6 +25,7 @@ interface InputAttributes extends CommonInputAttributes {
 
 export interface CommonInputAttributes {
   description?: string;
+  placeholder?: string;
   readonly?: boolean;
   disabled?: boolean;
   required?: boolean;
@@ -56,33 +57,39 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
     return null;
   }
 
+  const value = resolveInputValue(element);
+
   return {
     role: inputRole,
     name: resolveInputLabel(element),
     attributes: {
-      value: resolveInputValue(element),
+      value,
       checked: resolveChecked(element),
-      ...snapshotCommonInputAttributes(element),
+      ...snapshotCommonInputAttributes(element, value === undefined),
     },
   };
 }
 
 function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
+  const value = resolveInputValue(element);
+
   return {
     role: "textbox",
     name: resolveInputLabel(element),
     attributes: {
-      value: resolveInputValue(element),
-      ...snapshotCommonInputAttributes(element),
+      value,
+      ...snapshotCommonInputAttributes(element, value === undefined),
     },
   };
 }
 
 export function snapshotCommonInputAttributes(
   element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
+  isEmpty: boolean,
 ): CommonInputAttributes {
   return {
     description: resolveDescription(element),
+    placeholder: isEmpty ? resolvePlaceholder(element) : undefined,
     readonly: booleanAttribute(element.hasAttribute("readonly")),
     disabled: booleanAttribute(element.disabled),
     required: booleanAttribute(element.required),
@@ -133,4 +140,14 @@ export function resolveInputLabel(
   }
 
   return undefined;
+}
+
+function resolvePlaceholder(
+  element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
+): string | undefined {
+  if (element instanceof HTMLSelectElement) {
+    return undefined;
+  }
+
+  return stringAttribute(element.placeholder);
 }
