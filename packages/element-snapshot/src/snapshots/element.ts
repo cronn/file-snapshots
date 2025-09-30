@@ -4,6 +4,7 @@ import { snapshotChildren } from "./children";
 import { snapshotCombobox, snapshotOption } from "./combobox";
 import type { ContainerRole } from "./container";
 import { snapshotContainer } from "./container";
+import { snapshotDialog } from "./dialog";
 import { snapshotHeading } from "./heading";
 import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
@@ -36,6 +37,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   slider: snapshotInput,
   spinbutton: snapshotInput,
   textbox: snapshotInput,
+  dialog: snapshotDialog,
 };
 
 export function snapshotElement(

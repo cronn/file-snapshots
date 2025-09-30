@@ -1,0 +1,41 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Dialogs",
+        "level": 1
+      }
+    },
+    {
+      "dialog": {
+        "name": "Dialog Title",
+        "description": "Description Text",
+        "children": [
+          {
+            "heading": {
+              "name": "Dialog Title",
+              "level": 2
+            }
+          },
+          {
+            "paragraph": "Description Text"
+          }
+        ]
+      }
+    },
+    {
+      "dialog": {
+        "name": "Modal Dialog Title",
+        "modal": true,
+        "children": [
+          {
+            "heading": {
+              "name": "Modal Dialog Title",
+              "level": 2
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
