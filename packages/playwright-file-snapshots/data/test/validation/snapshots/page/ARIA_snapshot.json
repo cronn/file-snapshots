@@ -21,42 +21,42 @@
                   {
                     "listitem": {
                       "link 'Input Types'": {
-                        "/url": "/input-types"
+                        "/url": "/forms/input-types"
                       }
                     }
                   },
                   {
                     "listitem": {
                       "link 'Input State'": {
-                        "/url": "/input-states"
+                        "/url": "/forms/input-states"
                       }
                     }
                   },
                   {
                     "listitem": {
                       "link 'Label Types'": {
-                        "/url": "/label-types"
+                        "/url": "/forms/label-types"
                       }
                     }
                   },
                   {
                     "listitem": {
                       "link 'Description Types'": {
-                        "/url": "/description-types"
+                        "/url": "/forms/description-types"
                       }
                     }
                   },
                   {
                     "listitem": {
                       "link 'Comboboxes'": {
-                        "/url": "/comboboxes"
+                        "/url": "/forms/comboboxes"
                       }
                     }
                   },
                   {
                     "listitem": {
                       "link 'Placeholders'": {
-                        "/url": "/placeholders"
+                        "/url": "/forms/placeholders"
                       }
                     }
                   }

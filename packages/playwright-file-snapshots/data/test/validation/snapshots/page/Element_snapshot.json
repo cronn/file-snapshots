@@ -28,7 +28,7 @@
                     "listitem": {
                       "link": {
                         "name": "Input Types",
-                        "url": "/input-types"
+                        "url": "/forms/input-types"
                       }
                     }
                   },
@@ -36,7 +36,7 @@
                     "listitem": {
                       "link": {
                         "name": "Input State",
-                        "url": "/input-states"
+                        "url": "/forms/input-states"
                       }
                     }
                   },
@@ -44,7 +44,7 @@
                     "listitem": {
                       "link": {
                         "name": "Label Types",
-                        "url": "/label-types"
+                        "url": "/forms/label-types"
                       }
                     }
                   },
@@ -52,7 +52,7 @@
                     "listitem": {
                       "link": {
                         "name": "Description Types",
-                        "url": "/description-types"
+                        "url": "/forms/description-types"
                       }
                     }
                   },
@@ -60,7 +60,7 @@
                     "listitem": {
                       "link": {
                         "name": "Comboboxes",
-                        "url": "/comboboxes"
+                        "url": "/forms/comboboxes"
                       }
                     }
                   },
@@ -68,7 +68,7 @@
                     "listitem": {
                       "link": {
                         "name": "Placeholders",
-                        "url": "/placeholders"
+                        "url": "/forms/placeholders"
                       }
                     }
                   }
