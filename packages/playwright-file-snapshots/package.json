@@ -31,7 +31,7 @@
     "compile": "tsc",
     "copy:browser-lib": "node ./scripts/copy-browser-lib.ts",
     "build": "tsup && pnpm run copy:browser-lib",
-    "start": "serve static/"
+    "start": "serve test-pages/"
   },
   "type": "module",
   "exports": {
