@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.22.0
+
+### Minor Changes
+
+- 9704d8e: Add element snapshot for `role="dialog"`
+
 ## 0.21.0
 
 ### Minor Changes
