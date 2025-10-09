@@ -8,6 +8,7 @@ export interface ButtonSnapshot
 
 interface ButtonAttributes {
   disabled?: boolean;
+  expanded?: boolean;
 }
 
 export function snapshotButton(
@@ -18,6 +19,7 @@ export function snapshotButton(
     name: resolveAccessibleName(element),
     attributes: {
       disabled: booleanAttribute(element.hasAttribute("disabled")),
+      expanded: booleanAttribute(element.ariaExpanded),
     },
     children: snapshotChildren(element),
   };

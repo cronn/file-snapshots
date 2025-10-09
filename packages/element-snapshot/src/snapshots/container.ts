@@ -27,6 +27,8 @@ const CONTAINER_ROLES = [
   "cell",
   "gridcell",
   "alert",
+  "menu",
+  "menuitem",
 ] as const;
 
 export interface ContainerSnapshot
