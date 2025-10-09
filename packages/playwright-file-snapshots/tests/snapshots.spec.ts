@@ -113,3 +113,8 @@ test("dialogs", async ({ page }) => {
   await page.goto("/dialogs");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("live regions", async ({ page }) => {
+  await page.goto("/live-regions");
+  await testSnapshots(page.getByRole("main"));
+});

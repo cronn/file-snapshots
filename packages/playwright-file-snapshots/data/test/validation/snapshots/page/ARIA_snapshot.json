@@ -98,6 +98,13 @@
                 "/url": "/accessibility-tree"
               }
             }
+          },
+          {
+            "listitem": {
+              "link 'Live Regions'": {
+                "/url": "/live-regions"
+              }
+            }
           }
         ]
       },
