@@ -70,12 +70,7 @@ function snapshotNodeByType(
     return snapshotTextNode(node);
   }
 
-  if (!isSupportedElement(node)) {
-    return null;
-  }
-
-  const ariaHidden = booleanAttribute(node.ariaHidden);
-  if (ariaHidden === true) {
+  if (!isSupportedElement(node) || isHiddenElement(node)) {
     return null;
   }
 
@@ -118,4 +113,28 @@ export function hasRoleSpecificSnapshot(
   role: string,
 ): role is NonContainerElementRole {
   return role in ROLE_SNAPSHOTS;
+}
+
+// inspired by https://github.com/testing-library/jest-dom?tab=readme-ov-file#tobevisible
+function isHiddenElement(element: SnapshotTargetElement): boolean {
+  if (element.hasAttribute("hidden")) {
+    return true;
+  }
+
+  const ariaHidden = booleanAttribute(element.ariaHidden);
+  if (ariaHidden === true) {
+    return true;
+  }
+
+  const cssStyles = window.getComputedStyle(element);
+  if (
+    cssStyles.display === "none" ||
+    cssStyles.visibility === "hidden" ||
+    cssStyles.visibility === "collapse" ||
+    cssStyles.opacity === "0"
+  ) {
+    return true;
+  }
+
+  return false;
 }

@@ -123,6 +123,14 @@
                 "url": "/live-regions"
               }
             }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Visually Hidden Elements",
+                "url": "/visually-hidden-elements"
+              }
+            }
           }
         ]
       },

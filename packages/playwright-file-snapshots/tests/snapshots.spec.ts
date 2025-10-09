@@ -118,3 +118,8 @@ test("live regions", async ({ page }) => {
   await page.goto("/live-regions");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("visually hidden elements", async ({ page }) => {
+  await page.goto("/visually-hidden-elements");
+  await testSnapshots(page.getByRole("main"));
+});
