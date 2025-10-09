@@ -90,11 +90,37 @@
     },
     {
       "heading": {
+        "name": "Menu",
+        "level": 2
+      }
+    },
+    {
+      "button": {
+        "name": "Menu",
+        "expanded": true
+      }
+    },
+    {
+      "menu": {
+        "name": "Menu",
+        "children": [
+          {
+            "menuitem": "Menu Item 1"
+          },
+          {
+            "menuitem": "Menu Item 2"
+          }
+        ]
+      }
+    },
+    {
+      "heading": {
         "name": "Incomplete List",
         "level": 2
       }
     },
     "li outside list",
-    "[role=listitem] outside list"
+    "[role=listitem] outside list",
+    "[role=menuitem] outside menu"
   ]
 }

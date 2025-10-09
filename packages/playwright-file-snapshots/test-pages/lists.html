@@ -47,9 +47,25 @@
         </div>
       </section>
       <section>
+        <h2>Menu</h2>
+        <button
+          id="menubutton"
+          aria-haspopup="true"
+          aria-controls="menu"
+          aria-expanded="true"
+        >
+          Menu
+        </button>
+        <ul id="menu" role="menu" aria-labelledby="menubutton">
+          <li role="menuitem">Menu Item 1</li>
+          <li role="menuitem">Menu Item 2</li>
+        </ul>
+      </section>
+      <section>
         <h2>Incomplete List</h2>
         <li>li outside list</li>
         <div role="listitem">[role=listitem] outside list</div>
+        <li role="menuitem">[role=menuitem] outside menu</li>
       </section>
     </main>
   </body>

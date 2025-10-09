@@ -56,12 +56,21 @@
         }
       ]
     },
+    "heading 'Menu' [level=2]",
+    "button 'Menu' [expanded]",
+    {
+      "menu 'Menu'": [
+        "menuitem 'Menu Item 1'",
+        "menuitem 'Menu Item 2'"
+      ]
+    },
     "heading 'Incomplete List' [level=2]",
     {
       "listitem": "li outside list"
     },
     {
       "listitem": "[role=listitem] outside list"
-    }
+    },
+    "menuitem '[role=menuitem] outside menu'"
   ]
 }
