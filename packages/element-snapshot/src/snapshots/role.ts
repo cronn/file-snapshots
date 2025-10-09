@@ -61,6 +61,7 @@ const CONTEXT_DEPENDENT_ROLES: Partial<
   term: isWithinDescriptionList,
   definition: isWithinDescriptionList,
   listitem: isWithinList,
+  menuitem: isWithinMenu,
   rowgroup: isWithinTableOrGrid,
   row: isWithinTableOrGrid,
   columnheader: isWithinTableRowOrGridRow,
@@ -235,4 +236,8 @@ function isWithinList(element: SnapshotTargetElement): boolean {
     element,
     selectorList("ul", "ol", roleSelector("list")),
   );
+}
+
+function isWithinMenu(element: SnapshotTargetElement): boolean {
+  return isWithinElement(element, roleSelector("menu"));
 }
