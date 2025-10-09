@@ -8,7 +8,7 @@ import type {
   ElementTagName,
   SnapshotTargetElement,
 } from "./types";
-import { getElementTagName } from "./utils";
+import { getElementTagName, isWithinElement } from "./utils";
 
 type ElementRoleResolver<TRoles = ElementRole> =
   | TRoles
@@ -173,10 +173,7 @@ function isTopLevelBanner(element: SnapshotTargetElement): boolean {
     ...DISALLOWED_BANNER_CONTAINER_ELEMENTS,
     ...DISALLOWED_BANNER_CONTAINER_ROLES.map(roleSelector),
   );
-  const closestDisallowedContainer = element.closest(
-    disallowedContainerSelector,
-  );
-  return closestDisallowedContainer === null;
+  return !isWithinElement(element, disallowedContainerSelector);
 }
 
 function hasAccessibleName(element: SnapshotTargetElement): boolean {
@@ -185,8 +182,7 @@ function hasAccessibleName(element: SnapshotTargetElement): boolean {
 }
 
 function isWithinDescriptionList(element: SnapshotTargetElement): boolean {
-  const closestDescriptionList = element.closest("dl");
-  return closestDescriptionList !== null;
+  return isWithinElement(element, "dl");
 }
 
 function resolveTableHeaderCellRole(
@@ -213,15 +209,11 @@ function isWithinTableOrGrid(element: Element): boolean {
 }
 
 function isWithinTable(element: Element): boolean {
-  const closestTable = element.closest(
-    selectorList("table", roleSelector("table")),
-  );
-  return closestTable !== null;
+  return isWithinElement(element, selectorList("table", roleSelector("table")));
 }
 
 function isWithinGrid(element: Element): boolean {
-  const closestGrid = element.closest(roleSelector("grid"));
-  return closestGrid !== null;
+  return isWithinElement(element, roleSelector("grid"));
 }
 
 function isWithinTableRowOrGridRow(element: Element): boolean {
@@ -239,8 +231,8 @@ function isWithinGridRow(element: Element): boolean {
 }
 
 function isWithinList(element: SnapshotTargetElement): boolean {
-  const closestList = element.closest(
+  return isWithinElement(
+    element,
     selectorList("ul", "ol", roleSelector("list")),
   );
-  return closestList !== null;
 }
