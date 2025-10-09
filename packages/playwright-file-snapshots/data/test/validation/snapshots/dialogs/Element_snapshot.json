@@ -7,6 +7,12 @@
       }
     },
     {
+      "heading": {
+        "name": "Dialog",
+        "level": 2
+      }
+    },
+    {
       "dialog": {
         "name": "Dialog Title",
         "description": "Description Text",
@@ -24,6 +30,12 @@
       }
     },
     {
+      "heading": {
+        "name": "Modal Dialog",
+        "level": 2
+      }
+    },
+    {
       "dialog": {
         "name": "Modal Dialog Title",
         "modal": true,
@@ -31,6 +43,25 @@
           {
             "heading": {
               "name": "Modal Dialog Title",
+              "level": 2
+            }
+          }
+        ]
+      }
+    },
+    {
+      "heading": {
+        "name": "Alert Dialog",
+        "level": 2
+      }
+    },
+    {
+      "alertdialog": {
+        "name": "Alert Dialog Title",
+        "children": [
+          {
+            "heading": {
+              "name": "Alert Dialog Title",
               "level": 2
             }
           }

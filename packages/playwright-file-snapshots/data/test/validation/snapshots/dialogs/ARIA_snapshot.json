@@ -1,14 +1,20 @@
 {
   "main": [
     "heading 'Dialogs' [level=1]",
+    "heading 'Dialog' [level=2]",
     {
       "dialog 'Dialog Title'": [
         "heading 'Dialog Title' [level=2]",
         "paragraph 'Description Text'"
       ]
     },
+    "heading 'Modal Dialog' [level=2]",
     {
       "dialog 'Modal Dialog Title'": "heading 'Modal Dialog Title' [level=2]"
+    },
+    "heading 'Alert Dialog' [level=2]",
+    {
+      "alertdialog 'Alert Dialog Title'": "heading 'Alert Dialog Title' [level=2]"
     }
   ]
 }
