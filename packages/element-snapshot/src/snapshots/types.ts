@@ -1,7 +1,7 @@
 import type { ButtonSnapshot } from "./button";
 import type { ComboboxSnapshot, OptionSnapshot } from "./combobox";
 import type { ContainerRole, ContainerSnapshot } from "./container";
-import type { DialogSnapshot } from "./dialog";
+import type { DialogRole, DialogSnapshot } from "./dialog";
 import type { HeadingSnapshot } from "./heading";
 import type { InputRole, InputSnapshot } from "./input";
 import type { LinkSnapshot } from "./link";
@@ -20,9 +20,9 @@ export type ElementRole =
   | "link"
   | "button"
   | "option"
-  | "dialog"
   | ContainerRole
-  | InputRole;
+  | InputRole
+  | DialogRole;
 
 export type NodeSnapshot = ElementSnapshot | TextSnapshot;
 
