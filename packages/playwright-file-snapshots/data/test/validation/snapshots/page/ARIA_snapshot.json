@@ -105,6 +105,13 @@
                 "/url": "/live-regions"
               }
             }
+          },
+          {
+            "listitem": {
+              "link 'Visually Hidden Elements'": {
+                "/url": "/visually-hidden-elements"
+              }
+            }
           }
         ]
       },
