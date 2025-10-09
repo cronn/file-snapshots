@@ -1,0 +1,19 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Live Regions",
+        "level": 1
+      }
+    },
+    {
+      "heading": {
+        "name": "Alert",
+        "level": 2
+      }
+    },
+    {
+      "alert": "Alert Message"
+    }
+  ]
+}

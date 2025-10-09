@@ -1,0 +1,9 @@
+{
+  "main": [
+    "heading 'Live Regions' [level=1]",
+    "heading 'Alert' [level=2]",
+    {
+      "alert": "Alert Message"
+    }
+  ]
+}

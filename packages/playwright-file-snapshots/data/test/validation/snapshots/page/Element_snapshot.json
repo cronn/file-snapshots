@@ -115,6 +115,14 @@
                 "url": "/accessibility-tree"
               }
             }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Live Regions",
+                "url": "/live-regions"
+              }
+            }
           }
         ]
       },

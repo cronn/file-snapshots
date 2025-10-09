@@ -26,6 +26,7 @@ const CONTAINER_ROLES = [
   "rowheader",
   "cell",
   "gridcell",
+  "alert",
 ] as const;
 
 export interface ContainerSnapshot
