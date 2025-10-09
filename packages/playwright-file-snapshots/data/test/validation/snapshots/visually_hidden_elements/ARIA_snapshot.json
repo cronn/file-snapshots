@@ -1,0 +1,10 @@
+{
+  "main": [
+    "heading 'Hidden Elements' [level=1]",
+    "text 'hidden until-found element'",
+    "heading 'Elements Hidden by Inline Style' [level=2]",
+    "text 'opacity: 0 element'",
+    "heading 'Elements Hidden by Class Style' [level=2]",
+    "text 'opacity: 0 element'"
+  ]
+}
