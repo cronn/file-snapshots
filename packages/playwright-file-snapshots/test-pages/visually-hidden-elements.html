@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hidden Elements</title>
+    <style>
+      .display-none {
+        display: none;
+      }
+
+      .visibility-hidden {
+        visibility: hidden;
+      }
+
+      .visibility-collapse {
+        visibility: collapse;
+      }
+
+      .opacity-0 {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Hidden Elements</h1>
+      <div hidden>hidden element</div>
+      <div hidden="hidden">hidden hidden element</div>
+      <div hidden="hidden-with-custom-value">
+        hidden with custom value element
+      </div>
+      <div hidden="until-found">hidden until-found element</div>
+      <section>
+        <h2>Elements Hidden by Inline Style</h2>
+        <div style="display: none">display: none element</div>
+        <div style="visibility: hidden">visibility: hidden element</div>
+        <div style="visibility: collapse">visibility: collapse element</div>
+        <div style="opacity: 0">opacity: 0 element</div>
+      </section>
+      <section>
+        <h2>Elements Hidden by Class Style</h2>
+        <div class="display-none">display: none element</div>
+        <div class="visibility-hidden">visibility: hidden element</div>
+        <div class="visibility-collapse">visibility: collapse element</div>
+        <div class="opacity-0">opacity: 0 element</div>
+      </section>
+    </main>
+  </body>
+</html>
