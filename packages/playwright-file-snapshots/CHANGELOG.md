@@ -1,5 +1,15 @@
 # @cronn/playwright-file-snapshots
 
+## 0.23.0
+
+### Minor Changes
+
+- 0cf2d39: Add attribute `expanded` to element snapshot of buttons
+- 664d65a: Add element snapshot for role `alertdialog`
+- 1860c45: Filter visually hidden elements from element snapshot
+- d07feac: Add element snapshot for role `alert`
+- 0cf2d39: Add element snapshot for roles `menu` and `menuitem`
+
 ## 0.22.0
 
 ### Minor Changes
