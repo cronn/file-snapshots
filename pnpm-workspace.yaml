@@ -12,10 +12,10 @@ catalog:
   "typescript": 5.9.3
   "vitest": 3.2.4
   "yaml": 2.8.1
-  "eslint": 9.37.0
-  "typescript-eslint": 8.46.0
+  "eslint": 9.38.0
+  "typescript-eslint": 8.46.1
   "eslint-config-prettier": 10.1.8
-  "eslint-plugin-unused-imports": 4.2.0
+  "eslint-plugin-unused-imports": 4.3.0
   "prettier": 3.6.2
   "@trivago/prettier-plugin-sort-imports": 5.2.2
   "turbo": 2.5.8

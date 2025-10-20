@@ -86,8 +86,7 @@ export class ElementSnapshotTransformer {
     );
 
     const nameEqualsChildren =
-      transformedChildren !== undefined &&
-      transformedChildren.length === 1 &&
+      transformedChildren?.length === 1 &&
       snapshot.name === transformedChildren.at(0);
 
     return {
