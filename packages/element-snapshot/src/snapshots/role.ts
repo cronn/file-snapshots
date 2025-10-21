@@ -68,6 +68,7 @@ const CONTEXT_DEPENDENT_ROLES: Partial<
   rowheader: isWithinTableRowOrGridRow,
   cell: isWithinTableRow,
   gridcell: isWithinGridRow,
+  tab: isWithinTablist,
 };
 
 const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {
@@ -240,4 +241,8 @@ function isWithinList(element: SnapshotTargetElement): boolean {
 
 function isWithinMenu(element: SnapshotTargetElement): boolean {
   return isWithinElement(element, roleSelector("menu"));
+}
+
+function isWithinTablist(element: SnapshotTargetElement): boolean {
+  return isWithinElement(element, roleSelector("tablist"));
 }

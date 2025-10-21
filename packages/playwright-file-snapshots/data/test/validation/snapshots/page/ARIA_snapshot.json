@@ -112,6 +112,13 @@
                 "/url": "/visually-hidden-elements"
               }
             }
+          },
+          {
+            "listitem": {
+              "link 'Tabs'": {
+                "/url": "/tabs"
+              }
+            }
           }
         ]
       },

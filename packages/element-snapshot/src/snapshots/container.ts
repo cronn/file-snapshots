@@ -29,6 +29,8 @@ const CONTAINER_ROLES = [
   "alert",
   "menu",
   "menuitem",
+  "tablist",
+  "tabpanel",
 ] as const;
 
 export interface ContainerSnapshot

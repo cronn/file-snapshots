@@ -123,3 +123,8 @@ test("visually hidden elements", async ({ page }) => {
   await page.goto("/visually-hidden-elements");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("tabs", async ({ page }) => {
+  await page.goto("/tabs");
+  await testSnapshots(page.getByRole("main"));
+});
