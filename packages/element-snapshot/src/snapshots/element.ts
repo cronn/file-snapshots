@@ -9,6 +9,7 @@ import { snapshotHeading } from "./heading";
 import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
 import { parseElementRole } from "./role";
+import { snapshotTab } from "./tab";
 import { snapshotTextNode } from "./text";
 import type {
   ElementRole,
@@ -39,6 +40,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   textbox: snapshotInput,
   dialog: snapshotDialogWithRole("dialog"),
   alertdialog: snapshotDialogWithRole("alertdialog"),
+  tab: snapshotTab,
 };
 
 export function snapshotElement(

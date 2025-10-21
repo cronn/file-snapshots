@@ -1,0 +1,18 @@
+{
+  "main": [
+    "heading 'Tabs' [level=1]",
+    "heading 'Complete Tabs' [level=2]",
+    {
+      "tablist 'Tablist'": [
+        "tab 'Tab 1' [selected]",
+        "tab 'Tab 2'",
+        "tab 'Tab 3'"
+      ]
+    },
+    {
+      "tabpanel 'Tab 1'": "Tabpanel 1"
+    },
+    "heading 'Incomplete Tabs' [level=2]",
+    "tab 'tab outside tablist'"
+  ]
+}

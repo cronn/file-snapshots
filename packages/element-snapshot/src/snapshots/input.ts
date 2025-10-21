@@ -2,6 +2,8 @@ import { booleanAttribute, stringAttribute } from "./attribute";
 import { resolveDescription } from "./description";
 import { resolveAccessibleName } from "./name";
 import { resolveInputRole } from "./role";
+import type { DisableableAttributes } from "./state";
+import { disableableAttributes } from "./state";
 import { snapshotTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
@@ -23,11 +25,10 @@ interface InputAttributes extends CommonInputAttributes {
   checked?: boolean;
 }
 
-export interface CommonInputAttributes {
+export interface CommonInputAttributes extends DisableableAttributes {
   description?: string;
   placeholder?: string;
   readonly?: boolean;
-  disabled?: boolean;
   required?: boolean;
   invalid?: boolean;
 }
@@ -91,7 +92,7 @@ export function snapshotCommonInputAttributes(
     description: resolveDescription(element),
     placeholder: isEmpty ? resolvePlaceholder(element) : undefined,
     readonly: booleanAttribute(element.hasAttribute("readonly")),
-    disabled: booleanAttribute(element.disabled),
+    ...disableableAttributes(element),
     required: booleanAttribute(element.required),
     invalid: booleanAttribute(element.ariaInvalid),
   };

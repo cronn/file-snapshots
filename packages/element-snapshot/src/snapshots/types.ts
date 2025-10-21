@@ -5,6 +5,7 @@ import type { DialogRole, DialogSnapshot } from "./dialog";
 import type { HeadingSnapshot } from "./heading";
 import type { InputRole, InputSnapshot } from "./input";
 import type { LinkSnapshot } from "./link";
+import type { TabSnapshot } from "./tab";
 import type { TextSnapshot } from "./text";
 
 export type SnapshotTargetNode = SnapshotTargetElement | ChildNode;
@@ -20,6 +21,7 @@ export type ElementRole =
   | "link"
   | "button"
   | "option"
+  | "tab"
   | ContainerRole
   | InputRole
   | DialogRole;
@@ -34,7 +36,8 @@ export type ElementSnapshot =
   | InputSnapshot
   | ComboboxSnapshot
   | OptionSnapshot
-  | DialogSnapshot;
+  | DialogSnapshot
+  | TabSnapshot;
 
 export interface GenericElementSnapshot<
   TRole extends NodeRole = NodeRole,

@@ -131,6 +131,14 @@
                 "url": "/visually-hidden-elements"
               }
             }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Tabs",
+                "url": "/tabs"
+              }
+            }
           }
         ]
       },

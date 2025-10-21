@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tabs</title>
+  </head>
+  <body>
+    <main>
+      <h1>Tabs</h1>
+      <section>
+        <h2>Complete Tabs</h2>
+        <div role="tablist" aria-label="Tablist">
+          <button
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-1"
+            id="tab-1"
+            tabindex="0"
+          >
+            Tab 1
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-2"
+            id="tab-2"
+            tabindex="-1"
+          >
+            Tab 2
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-3"
+            id="tab-3"
+            tabindex="-1"
+          >
+            Tab 3
+          </button>
+        </div>
+        <div id="panel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+          Tabpanel 1
+        </div>
+        <div
+          id="panel-2"
+          role="tabpanel"
+          tabindex="0"
+          aria-labelledby="tab-2"
+          hidden
+        >
+          Tabpanel 2
+        </div>
+        <div
+          id="panel-3"
+          role="tabpanel"
+          tabindex="0"
+          aria-labelledby="tab-3"
+          hidden
+        >
+          Tabpanel 3
+        </div>
+      </section>
+      <section>
+        <h2>Incomplete Tabs</h2>
+        <button role="tab">tab outside tablist</button>
+      </section>
+    </main>
+  </body>
+</html>
