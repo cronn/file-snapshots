@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 
 const NEW_LINE_SEPARATOR = "\n";
@@ -16,7 +17,13 @@ export function normalizeFileName(testName: string): string {
 }
 
 export function readSnapshotFile(path: string): string {
-  return fs.readFileSync(path, { encoding: "utf8" });
+  const contents = fs.readFileSync(path, { encoding: "utf8" });
+
+  if (os.EOL === NEW_LINE_SEPARATOR) {
+    return contents;
+  }
+
+  return contents.replace(new RegExp(os.EOL, "g"), NEW_LINE_SEPARATOR);
 }
 
 export function writeSnapshotFile(file: string, data: string): void {
