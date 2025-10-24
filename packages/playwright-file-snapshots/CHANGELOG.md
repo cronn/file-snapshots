@@ -1,5 +1,15 @@
 # @cronn/playwright-file-snapshots
 
+## 0.24.0
+
+### Minor Changes
+
+- 52ec9b3: Add element snapshot for roles `tablist`, `tab` and `tabpanel`
+
+### Patch Changes
+
+- dae635a: Fix: Import `yaml` dynamically to prevent error when package is installed without optional peer dependency
+
 ## 0.23.0
 
 ### Minor Changes
