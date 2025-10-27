@@ -2,7 +2,7 @@ import path from "node:path";
 
 import { TEST_PATH_SEPARATOR } from "./config";
 
-const TESTS_DIR_REGEXP = /(^|\/)__tests__(?=\/)/;
+const TESTS_DIR_REGEXP = /(^|\/|\\)__tests__(?=\/|\\)/;
 const TEST_EXTENSION_REGEXP = /\.(test|spec)\.[cm]?[tj]sx?$/;
 
 export function parseTestName(currentTestName: string): Array<string> {
