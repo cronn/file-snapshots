@@ -1,5 +1,11 @@
 # @cronn/vitest-file-snapshots
 
+## 0.17.0
+
+### Minor Changes
+
+- a51c6f6: Allow Vitest 4 as peer dependency
+
 ## 0.16.0
 
 ### Minor Changes
