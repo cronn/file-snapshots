@@ -12,7 +12,10 @@ env:
 jobs:
   check:
     name: Run CI checks
-    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, windows-2025]
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout repository
@@ -38,13 +41,13 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: vitest-reports
+          name: vitest-reports-${{ matrix.os }}
           path: packages/*/coverage/
           retention-days: 3
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-reports
+          name: playwright-reports-${{ matrix.os }}
           path: packages/*/playwright-report/
           retention-days: 3
