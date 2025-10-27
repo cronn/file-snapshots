@@ -60,6 +60,6 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
-    "vitest": "^3.2"
+    "vitest": "^3.2 || ^4"
   }
 }
