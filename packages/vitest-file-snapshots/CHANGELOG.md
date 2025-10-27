@@ -1,5 +1,16 @@
 # @cronn/vitest-file-snapshots
 
+## 0.16.0
+
+### Minor Changes
+
+- 1fb5e7e: Fix: `__tests__` directory is not removed from test path on Windows
+
+### Patch Changes
+
+- Updated dependencies [8cdb307]
+  - @cronn/lib-file-snapshots@0.17.0
+
 ## 0.15.0
 
 ### Minor Changes
