@@ -72,9 +72,20 @@ export function createTmpDir(): string {
   return mkdtempSync(path.join(tmpdir(), "test-"));
 }
 
-export function maskTmpDir(filePath: string): string {
-  return filePath.replaceAll(
-    new RegExp(`(${tmpdir()}/test-[^/]+)`, "g"),
-    "[TMP_DIR]",
-  );
+function maskTmpDir(filePath: string, tmpDir: string): string {
+  return filePath.replaceAll(tmpDir, "[TMP_DIR]");
+}
+
+export function normalizePath(value: string, tmpDir?: string): string {
+  let normalizedValue = value;
+
+  if (tmpDir !== undefined) {
+    normalizedValue = maskTmpDir(normalizedValue, tmpDir);
+  }
+
+  if (path.sep !== "/") {
+    normalizedValue = normalizedValue.replace(/\\/g, "/");
+  }
+
+  return normalizedValue;
 }

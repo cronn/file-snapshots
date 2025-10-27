@@ -1,3 +1,4 @@
+import path from "node:path";
 import { describe, expect, test } from "vitest";
 
 import {
@@ -12,7 +13,7 @@ describe("resolveNameAsFile", () => {
         testPath: "tests/feature",
         titlePath: ["test", "when x, then y"],
       }),
-    ).toBe("tests/feature/test/when_x_then_y");
+    ).toBe(path.join("tests", "feature", "test", "when_x_then_y"));
   });
 
   test("when name is defined, returns path including testPath and titlePath with name as file", () => {
@@ -22,7 +23,7 @@ describe("resolveNameAsFile", () => {
         titlePath: ["test", "when x, then y"],
         name: "name",
       }),
-    ).toBe("tests/feature/test/when_x_then_y/name");
+    ).toBe(path.join("tests", "feature", "test", "when_x_then_y", "name"));
   });
 });
 
@@ -33,7 +34,7 @@ describe("resolveNameAsFileSuffix", () => {
         testPath: "tests/feature",
         titlePath: ["test", "when x, then y"],
       }),
-    ).toBe("tests/feature/test/when_x_then_y");
+    ).toBe(path.join("tests", "feature", "test", "when_x_then_y"));
   });
 
   test("when name is defined, returns path including testPath and titlePath with name as suffix", () => {
@@ -43,6 +44,6 @@ describe("resolveNameAsFileSuffix", () => {
         titlePath: ["test", "when x, then y"],
         name: "name",
       }),
-    ).toBe("tests/feature/test/when_x_then_y_name");
+    ).toBe(path.join("tests", "feature", "test", "when_x_then_y_name"));
   });
 });
