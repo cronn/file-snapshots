@@ -9,10 +9,9 @@ export function vitestConfig(): ViteUserConfig {
       reporters: ["default"],
       globals: true,
       coverage: {
-        provider: "istanbul",
-        all: true,
+        provider: "v8",
         reporter: ["text-summary", "html"],
-        include: ["src/**/*"],
+        include: ["src/**/*.{js,jsx,ts,tsx}"],
       },
     },
   };
