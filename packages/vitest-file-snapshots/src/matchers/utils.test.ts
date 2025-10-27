@@ -1,3 +1,4 @@
+import path from "node:path";
 import { describe, expect, test } from "vitest";
 
 import { parseTestName, parseTestPath } from "./utils";
@@ -28,19 +29,19 @@ describe("parseTestPath", () => {
     ".spec.cjs",
   ])("removes test extension %s from test path", (testExtension) => {
     expect(parseTestPath(`src/tests/feature${testExtension}`, ".")).toBe(
-      "src/tests/feature",
+      path.join("src", "tests", "feature"),
     );
   });
 
   test("removes __tests__ directory from test path", () => {
     expect(parseTestPath("src/__tests__/feature.test.ts", ".")).toBe(
-      "src/feature",
+      path.join("src", "feature"),
     );
   });
 
   test("does not remove directory partially matching __tests__ from test path", () => {
     expect(parseTestPath("src/x__tests__/feature.test.ts", ".")).toBe(
-      "src/x__tests__/feature",
+      path.join("src", "x__tests__", "feature"),
     );
   });
 

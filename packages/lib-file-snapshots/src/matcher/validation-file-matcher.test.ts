@@ -9,7 +9,7 @@ import {
   FailingSerializer,
   SNAPSHOTS_DIR,
   createTmpDir,
-  maskTmpDir,
+  normalizePath,
   resolveTestContext,
 } from "../utils/test";
 
@@ -18,6 +18,7 @@ import { ValidationFileMatcher } from "./validation-file-matcher";
 async function snapshotMatcherResult(
   context: TestContext,
   matcherResult: ValidationFileMatcherResult,
+  tmpDir?: string,
 ): Promise<void> {
   const { actual, expected, outputFilePath, validationFilePath, message } =
     matcherResult;
@@ -37,13 +38,13 @@ async function snapshotMatcherResult(
   await expect(expected).toMatchFileSnapshot(
     path.join(snapshotDir, `expected${fileExtension}`),
   );
-  await expect(maskTmpDir(outputFilePath)).toMatchFileSnapshot(
+  await expect(normalizePath(outputFilePath, tmpDir)).toMatchFileSnapshot(
     path.join(snapshotDir, "output_file_path.txt"),
   );
-  await expect(maskTmpDir(validationFilePath)).toMatchFileSnapshot(
+  await expect(normalizePath(validationFilePath, tmpDir)).toMatchFileSnapshot(
     path.join(snapshotDir, "validation_file_path.txt"),
   );
-  await expect(maskTmpDir(message())).toMatchFileSnapshot(
+  await expect(normalizePath(message(), tmpDir)).toMatchFileSnapshot(
     path.join(snapshotDir, "message.txt"),
   );
 }
@@ -60,7 +61,7 @@ test("when validation file is missing, creates validation file with marker", asy
   expect(matcher.isValidationFileMissing).toBe(true);
 
   const matcherResult = matcher.matchFileSnapshot("value");
-  await snapshotMatcherResult(context, matcherResult);
+  await snapshotMatcherResult(context, matcherResult, tmpDir);
 
   matcherResult.writeFileSnapshots();
   expect(readSnapshotFile(matcherResult.validationFilePath)).toBe(
