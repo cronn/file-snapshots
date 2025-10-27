@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.17.0
+
+### Minor Changes
+
+- 8cdb307: Fix: Read snapshot files use OS-specific linebreaks, leading to unintended matching errors
+
 ## 0.16.0
 
 ### Minor Changes
