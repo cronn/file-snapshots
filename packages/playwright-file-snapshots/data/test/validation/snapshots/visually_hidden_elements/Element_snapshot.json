@@ -12,11 +12,13 @@
         "level": 2
       }
     },
+    "opacity: 0 element",
     {
       "heading": {
         "name": "Elements Hidden by Class Style",
         "level": 2
       }
-    }
+    },
+    "opacity: 0 element"
   ]
 }
