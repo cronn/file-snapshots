@@ -130,13 +130,9 @@ function isHiddenElement(element: SnapshotTargetElement): boolean {
 
   // do not treat elements with "opacity: 0" as hidden, because they are visible to screen readers
   const cssStyles = window.getComputedStyle(element);
-  if (
+  return (
     cssStyles.display === "none" ||
     cssStyles.visibility === "hidden" ||
     cssStyles.visibility === "collapse"
-  ) {
-    return true;
-  }
-
-  return false;
+  );
 }
