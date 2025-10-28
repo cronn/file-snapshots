@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.25.0
+
+### Minor Changes
+
+- 07f6680: Include elements with `opacity: 0` in element snapshots
+
 ## 0.24.1
 
 ### Patch Changes
