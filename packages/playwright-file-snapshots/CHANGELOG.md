@@ -1,5 +1,17 @@
 # @cronn/playwright-file-snapshots
 
+## 0.26.0
+
+### Minor Changes
+
+- 433e2be: Expose `snapshotElementRaw` to enable implementing custom snapshot transformers
+- be14dd0: Publish element snapshot package separately
+
+### Patch Changes
+
+- Updated dependencies [be14dd0]
+  - @cronn/element-snapshot@0.1.0
+
 ## 0.25.0
 
 ### Minor Changes
