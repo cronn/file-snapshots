@@ -1,5 +1,16 @@
 # @cronn/playwright-file-snapshots
 
+## 0.27.0
+
+### Minor Changes
+
+- 495edc9: Fix: Package element-snapshot cannot be published
+
+### Patch Changes
+
+- Updated dependencies [495edc9]
+  - @cronn/element-snapshot@0.2.0
+
 ## 0.26.0
 
 ### Minor Changes
