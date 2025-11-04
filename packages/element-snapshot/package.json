@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "Element snapshots for Playwright",
   "author": "cronn",
-  "private": true,
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
