@@ -149,6 +149,9 @@ importers:
 
   packages/playwright-file-snapshots:
     dependencies:
+      '@cronn/element-snapshot':
+        specifier: workspace:*
+        version: link:../element-snapshot
       '@cronn/lib-file-snapshots':
         specifier: workspace:*
         version: link:../lib-file-snapshots
@@ -159,9 +162,6 @@ importers:
       '@changesets/cli':
         specifier: 'catalog:'
         version: 2.29.7(@types/node@22.18.12)
-      '@cronn/element-snapshot':
-        specifier: workspace:*
-        version: link:../element-snapshot
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs

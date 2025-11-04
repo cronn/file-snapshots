@@ -28,6 +28,9 @@
       "default": "./dist/index.global.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "catalog:",

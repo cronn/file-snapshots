@@ -1,8 +1,6 @@
 /// <reference lib="dom" />
 import type { Locator, Page } from "@playwright/test";
-import path from "node:path";
-
-import { resolvePackageRootDir } from "../utils/file";
+import { fileURLToPath } from "node:url";
 
 export class ElementSnapshotProxy {
   private readonly page: Page;
@@ -28,9 +26,11 @@ export class ElementSnapshotProxy {
   }
 
   private async loadLibrary(): Promise<void> {
-    const rootDir = await resolvePackageRootDir(import.meta.dirname);
+    const libPath = fileURLToPath(
+      import.meta.resolve("@cronn/element-snapshot"),
+    );
     await this.page.addScriptTag({
-      path: path.join(rootDir, "dist", "element-snapshot.js"),
+      path: libPath,
     });
   }
 }
