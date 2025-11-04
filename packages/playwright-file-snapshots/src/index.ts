@@ -1,11 +1,20 @@
 export { defineValidationFileExpect } from "./matchers/define-expect";
 export { snapshotAria } from "./aria-snapshot/snapshot";
-export { snapshotElement } from "./element-snapshot/snapshot";
+export {
+  snapshotElement,
+  snapshotElementRaw,
+} from "./element-snapshot/snapshot";
 export type {
   PlaywrightMatchValidationFileOptions,
   PlaywrightMatchTextFileOptions,
   PlaywrightMatchJsonFileOptions,
 } from "./matchers/types";
+
+export type {
+  NodeSnapshot,
+  ElementSnapshot,
+  TextSnapshot,
+} from "@cronn/element-snapshot/types";
 
 export {
   normalizeFileName,
