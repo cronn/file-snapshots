@@ -23,7 +23,7 @@ export async function parseTestInfo(
 export function parseUpdateSnapshots(
   updateSnapshots: TestInfo["config"]["updateSnapshots"],
 ): boolean {
-  return updateSnapshots === "changed";
+  return updateSnapshots === "changed" || updateSnapshots === "all";
 }
 
 type RawTestStepInfo = Pick<TestStepInfo, "titlePath">;

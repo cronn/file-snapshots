@@ -62,11 +62,14 @@ describe("parseTestInfo", () => {
 });
 
 describe("parseUpdateSnapshots", () => {
-  test("when value is 'changed', returns true", () => {
-    expect(parseUpdateSnapshots("changed")).toBe(true);
-  });
+  test.each(["changed", "all"] as const)(
+    "when value is '%s', returns true",
+    (value) => {
+      expect(parseUpdateSnapshots(value)).toBe(true);
+    },
+  );
 
-  test.each(["none", "missing", "all"] as const)(
+  test.each(["none", "missing"] as const)(
     "when value is '%s', returns false",
     (value) => {
       expect(parseUpdateSnapshots(value)).toBe(false);
