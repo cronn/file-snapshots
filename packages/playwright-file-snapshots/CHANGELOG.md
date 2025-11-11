@@ -1,5 +1,12 @@
 # @cronn/playwright-file-snapshots
 
+## 0.28.0
+
+### Minor Changes
+
+- ce5ceea: Disable snapshot retries when update "all" snapshots is configured
+- 3b4f352: Fix: Typing for `toMatchTextFile` does not allow to pass promises or functions as value
+
 ## 0.27.0
 
 ### Minor Changes
