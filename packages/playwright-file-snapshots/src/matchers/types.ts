@@ -38,13 +38,19 @@ export interface PlaywrightValidationFileMatcherConfig {
   resolveFilePath?: FilePathResolver;
 }
 
+type ValueOrValueFunction<TValue> =
+  | TValue
+  | Promise<TValue>
+  | (() => TValue)
+  | (() => Promise<TValue>);
+
 export interface PlaywrightValidationFileMatchers {
   toMatchJsonFile: (
-    actual: unknown,
+    actual: ValueOrValueFunction<unknown>,
     options?: PlaywrightMatchJsonFileOptions,
   ) => Promise<MatcherReturnType>;
   toMatchTextFile: (
-    actual: string,
+    actual: ValueOrValueFunction<string>,
     options?: PlaywrightMatchTextFileOptions,
   ) => Promise<MatcherReturnType>;
 }

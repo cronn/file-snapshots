@@ -9,6 +9,18 @@ test("matches value with text file", async () => {
   await expect("value").toMatchTextFile();
 });
 
+test("matches async value with text file", async () => {
+  await expect(Promise.resolve("async value")).toMatchTextFile();
+});
+
+test("matches function value with text file", async () => {
+  await expect(() => "function value").toMatchTextFile();
+});
+
+test("matches async function value with text file", async () => {
+  await expect(() => Promise.resolve("async function value")).toMatchTextFile();
+});
+
 test("applies normalizer", async () => {
   function maskNumber(value: string): string {
     return value.replaceAll(/\d+/g, "[NUMBER]");

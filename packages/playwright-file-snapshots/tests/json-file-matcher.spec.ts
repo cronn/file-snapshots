@@ -9,6 +9,20 @@ test("matches value with JSON file", async () => {
   await expect({ key: "value" }).toMatchJsonFile();
 });
 
+test("matches async value with JSON file", async () => {
+  await expect(Promise.resolve(["async value"])).toMatchJsonFile();
+});
+
+test("matches function value with JSON file", async () => {
+  await expect(() => ["function value"]).toMatchJsonFile();
+});
+
+test("matches async function value with JSON file", async () => {
+  await expect(() =>
+    Promise.resolve(["async function value"]),
+  ).toMatchJsonFile();
+});
+
 test("when includeUndefinedObjectProperties is true, serializes undefined object properties", async () => {
   await expect({ undefinedValue: undefined }).toMatchJsonFile({
     includeUndefinedObjectProperties: true,
