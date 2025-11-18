@@ -1,5 +1,19 @@
 # @cronn/playwright-file-snapshots
 
+## 0.29.0
+
+### Minor Changes
+
+- a1c7bba: Add `sort` attribute to element snapshot for role `columnheader`
+- 35faaa1: Snapshot attributes `url` and `disabled` for elements with role `menuitem`
+
+### Patch Changes
+
+- Updated dependencies [a1c7bba]
+- Updated dependencies [a9baddc]
+- Updated dependencies [35faaa1]
+  - @cronn/element-snapshot@0.3.0
+
 ## 0.28.0
 
 ### Minor Changes

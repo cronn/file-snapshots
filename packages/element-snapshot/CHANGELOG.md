@@ -1,5 +1,13 @@
 # @cronn/element-snapshot
 
+## 0.3.0
+
+### Minor Changes
+
+- a1c7bba: Add `sort` attribute to element snapshot for role `columnheader`
+- a9baddc: Expose types `NodeRole` and `ElementRole`
+- 35faaa1: Snapshot attributes `url` and `disabled` for elements with role `menuitem`
+
 ## 0.2.0
 
 ### Minor Changes
