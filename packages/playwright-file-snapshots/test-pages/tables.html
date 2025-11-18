@@ -13,7 +13,7 @@
           <thead>
             <tr>
               <th scope="col">Column Header 1</th>
-              <th scope="col">Column Header 2</th>
+              <th scope="col" aria-sort="descending">Column Header 2</th>
             </tr>
           </thead>
           <tbody>
@@ -55,8 +55,8 @@
         <h2>Role-Based Table</h2>
         <div role="table">
           <div role="row">
-            <div role="columnheader">Column Header 1</div>
-            <div role="columnheader">Column Header 2</div>
+            <div role="columnheader" aria-sort="none">Column Header 1</div>
+            <div role="columnheader" aria-sort="other">Column Header 2</div>
           </div>
           <div role="rowgroup">
             <div role="row">

@@ -22,7 +22,6 @@ const CONTAINER_ROLES = [
   "grid",
   "rowgroup",
   "row",
-  "columnheader",
   "rowheader",
   "cell",
   "gridcell",

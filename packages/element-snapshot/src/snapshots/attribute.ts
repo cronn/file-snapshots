@@ -22,6 +22,17 @@ export function numericAttribute(value: string | null): number | undefined {
   }
 }
 
+export function enumAttribute<TEnum extends string>(
+  value: string | null,
+  supportedValues: Set<TEnum>,
+): TEnum | undefined {
+  if (value === null || !(supportedValues as Set<string>).has(value)) {
+    return undefined;
+  }
+
+  return value as TEnum;
+}
+
 export function resolveElementReference(
   element: SnapshotTargetElement,
   attributeName: string,

@@ -11,6 +11,7 @@ import { snapshotLink } from "./link";
 import { snapshotMenuitem } from "./list";
 import { parseElementRole } from "./role";
 import { snapshotTab } from "./tab";
+import { snapshotColumnheader } from "./table";
 import { snapshotTextNode } from "./text";
 import type {
   ElementRole,
@@ -43,6 +44,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   alertdialog: snapshotDialogWithRole("alertdialog"),
   tab: snapshotTab,
   menuitem: snapshotMenuitem,
+  columnheader: snapshotColumnheader,
 };
 
 export function snapshotElement(
