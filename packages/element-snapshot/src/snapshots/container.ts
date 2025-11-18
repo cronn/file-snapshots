@@ -28,7 +28,6 @@ const CONTAINER_ROLES = [
   "gridcell",
   "alert",
   "menu",
-  "menuitem",
   "tablist",
   "tabpanel",
 ] as const;

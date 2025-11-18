@@ -7,9 +7,16 @@ export interface DisableableAttributes {
 
 export function disableableAttributes(
   element: SnapshotTargetElement,
+  ariaOnly = false,
 ): DisableableAttributes {
+  if (ariaOnly) {
+    return { disabled: booleanAttribute(element.ariaDisabled) };
+  }
+
   return {
-    disabled: booleanAttribute(element.hasAttribute("disabled")),
+    disabled:
+      booleanAttribute(element.hasAttribute("disabled")) ??
+      booleanAttribute(element.ariaDisabled),
   };
 }
 
