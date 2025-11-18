@@ -54,3 +54,5 @@ export interface GenericElementSnapshot<
   attributes?: TAttributes;
   children?: Array<NodeSnapshot>;
 }
+
+export type SetValues<TSet> = TSet extends Set<infer TValue> ? TValue : never;

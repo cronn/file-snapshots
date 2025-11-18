@@ -1,8 +1,12 @@
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
+import type {
+  GenericElementSnapshot,
+  SetValues,
+  SnapshotTargetElement,
+} from "./types";
 
-const CONTAINER_ROLES = [
+const CONTAINER_ROLES = new Set([
   "paragraph",
   "list",
   "listitem",
@@ -29,12 +33,12 @@ const CONTAINER_ROLES = [
   "menu",
   "tablist",
   "tabpanel",
-] as const;
+] as const);
 
 export interface ContainerSnapshot
   extends GenericElementSnapshot<ContainerRole> {}
 
-export type ContainerRole = (typeof CONTAINER_ROLES)[number];
+export type ContainerRole = SetValues<typeof CONTAINER_ROLES>;
 
 export function snapshotContainer(
   role: ContainerRole,
@@ -49,8 +53,6 @@ export function snapshotContainer(
   };
 }
 
-const CONTAINER_ROLES_SET = new Set<string>(CONTAINER_ROLES);
-
 export function isContainerRole(role: string): role is ContainerRole {
-  return CONTAINER_ROLES_SET.has(role);
+  return (CONTAINER_ROLES as Set<string>).has(role);
 }
