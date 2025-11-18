@@ -1,10 +1,11 @@
 import { enumAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
-
-const SORT_ATTRIBUTES = ["ascending", "descending", "other"] as const;
-type SortAttribute = (typeof SORT_ATTRIBUTES)[number];
+import type {
+  GenericElementSnapshot,
+  SetValues,
+  SnapshotTargetElement,
+} from "./types";
 
 export interface ColumnheaderSnapshot
   extends GenericElementSnapshot<"columnheader", ColumnheaderAttributes> {}
@@ -13,7 +14,8 @@ interface ColumnheaderAttributes {
   sort?: SortAttribute;
 }
 
-const SORT_ATTRIBUTES_SET = new Set(SORT_ATTRIBUTES);
+const SORT_ATTRIBUTES = new Set(["ascending", "descending", "other"] as const);
+type SortAttribute = SetValues<typeof SORT_ATTRIBUTES>;
 
 export function snapshotColumnheader(
   element: SnapshotTargetElement,
@@ -22,7 +24,7 @@ export function snapshotColumnheader(
     role: "columnheader",
     name: resolveAccessibleName(element),
     attributes: {
-      sort: enumAttribute(element.ariaSort, SORT_ATTRIBUTES_SET),
+      sort: enumAttribute(element.ariaSort, SORT_ATTRIBUTES),
     },
     children: snapshotChildren(element),
   };
