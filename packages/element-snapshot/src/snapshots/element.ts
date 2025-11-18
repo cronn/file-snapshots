@@ -8,6 +8,7 @@ import { snapshotDialogWithRole } from "./dialog";
 import { snapshotHeading } from "./heading";
 import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
+import { snapshotMenuitem } from "./list";
 import { parseElementRole } from "./role";
 import { snapshotTab } from "./tab";
 import { snapshotTextNode } from "./text";
@@ -41,6 +42,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   dialog: snapshotDialogWithRole("dialog"),
   alertdialog: snapshotDialogWithRole("alertdialog"),
   tab: snapshotTab,
+  menuitem: snapshotMenuitem,
 };
 
 export function snapshotElement(

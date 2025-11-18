@@ -108,7 +108,16 @@
             "menuitem": "Menu Item 1"
           },
           {
-            "menuitem": "Menu Item 2"
+            "menuitem": {
+              "name": "Disabled Menu Item",
+              "disabled": true
+            }
+          },
+          {
+            "menuitem": {
+              "name": "Link Menu Item",
+              "url": "/"
+            }
           }
         ]
       }

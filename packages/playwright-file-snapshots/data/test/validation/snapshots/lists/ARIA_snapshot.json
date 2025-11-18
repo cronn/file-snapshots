@@ -61,7 +61,8 @@
     {
       "menu 'Menu'": [
         "menuitem 'Menu Item 1'",
-        "menuitem 'Menu Item 2'"
+        "menuitem 'Disabled Menu Item' [disabled]",
+        "menuitem 'Link Menu Item'"
       ]
     },
     "heading 'Incomplete List' [level=2]",
