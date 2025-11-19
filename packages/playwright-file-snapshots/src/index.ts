@@ -11,8 +11,21 @@ export type {
 } from "./matchers/types";
 
 export type {
-  NodeSnapshot,
+  ButtonSnapshot,
+  ColumnheaderSnapshot,
+  ComboboxSnapshot,
+  ContainerSnapshot,
+  DialogSnapshot,
+  ElementRole,
   ElementSnapshot,
+  HeadingSnapshot,
+  InputSnapshot,
+  LinkSnapshot,
+  MenuitemSnapshot,
+  NodeRole,
+  NodeSnapshot,
+  OptionSnapshot,
+  TabSnapshot,
   TextSnapshot,
 } from "@cronn/element-snapshot/types";
 
