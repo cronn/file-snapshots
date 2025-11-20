@@ -2,36 +2,13 @@ import { expect, test } from "@playwright/test";
 import path from "node:path";
 
 import { defineValidationFileExpect } from "../src";
-import { createTmpDir } from "../src/utils/test";
-
-class SnapshotInstrumentation {
-  public readonly snapshotIntervals: Array<number> = [];
-
-  private intervalStartTime = performance.now();
-
-  public get snapshotCount(): number {
-    return this.snapshotIntervals.length;
-  }
-
-  public addSnapshot(): void {
-    const currentTime = performance.now();
-    this.snapshotIntervals.push(currentTime - this.intervalStartTime);
-    this.intervalStartTime = currentTime;
-  }
-}
-
-function assertSnapshotIntervals(
-  expectedIntervals: Array<number>,
-  instrumentation: SnapshotInstrumentation,
-): void {
-  expect(instrumentation.snapshotCount).toBe(expectedIntervals.length);
-
-  for (const [intervalIndex, expectedInterval] of expectedIntervals.entries()) {
-    const actualInterval = instrumentation.snapshotIntervals.at(intervalIndex)!;
-    expect(actualInterval).toBeGreaterThanOrEqual(expectedInterval);
-    expect(actualInterval).toBeLessThan(expectedInterval + 50);
-  }
-}
+import {
+  SNAPSHOT_UPDATE_TAG,
+  SnapshotInstrumentation,
+  assertSnapshotIntervals,
+  createTmpDir,
+  runOnlyWhenSnapshotUpdatesAreEnabled,
+} from "../src/utils/test";
 
 test("when validation file is missing, waits for delay before creating snapshot", async () => {
   const tmpDir = createTmpDir();
@@ -54,12 +31,9 @@ test("when validation file is missing, waits for delay before creating snapshot"
 
 test(
   "when snapshot updates are enabled, waits for delay before creating snapshot",
-  { tag: ["@snapshot-update"] },
+  { tag: [SNAPSHOT_UPDATE_TAG] },
   async () => {
-    test.skip(
-      test.info().config.updateSnapshots !== "changed",
-      "Snapshot updates are disabled",
-    );
+    runOnlyWhenSnapshotUpdatesAreEnabled();
 
     const testExpect = defineValidationFileExpect();
 
