@@ -1,5 +1,11 @@
 # @cronn/element-snapshot
 
+## 0.4.0
+
+### Minor Changes
+
+- 9daed44: Expose all element snapshot types
+
 ## 0.3.0
 
 ### Minor Changes
