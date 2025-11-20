@@ -1,5 +1,17 @@
 # @cronn/playwright-file-snapshots
 
+## 0.30.0
+
+### Minor Changes
+
+- 9daed44: Expose all element snapshot types
+- 0c481a6: Add option `updateDelay` for repeatable snapshots
+
+### Patch Changes
+
+- Updated dependencies [9daed44]
+  - @cronn/element-snapshot@0.4.0
+
 ## 0.29.0
 
 ### Minor Changes
