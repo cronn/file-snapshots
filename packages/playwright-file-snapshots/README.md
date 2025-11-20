@@ -190,6 +190,7 @@ test("retry snapshot", async ({ page }) => {
 ```
 
 When creating missing file snapshots, instead of retrying a delay of 250 ms (or `timeout` when lower) is added before performing the snapshot. This avoids flaky snapshots and long running tests.
+The default delay can be overridden by defining `updateDelay` as matcher or file snapshot option.
 
 The same behavior can be enforced to update snapshots: simply pass the `--update-snapshots` flag to the Playwright CLI. Note that in contrast to Playwright, this only creates updated output files. The corresponding validation files need to be updated in a separate step.
 
@@ -300,12 +301,13 @@ const expect = defineValidationFileExpect({
 });
 ```
 
-| Option            | Default Value          | Description                                                  |
-| ----------------- | ---------------------- | ------------------------------------------------------------ |
-| `validationDir`   | `data/test/validation` | Directory in which golden masters are stored.                |
-| `outputDir`       | `data/test/output`     | Directory in which file snapshots from test runs are stored. |
-| `indentSize`      | `2`                    | Indentation size in spaces used for serializing snapshots.   |
-| `resolveFileName` | `resolveNameAsFile`    | Custom resolver for the file path used to store snapshots.   |
+| Option            | Default Value          | Description                                                         |
+| ----------------- | ---------------------- | ------------------------------------------------------------------- |
+| `validationDir`   | `data/test/validation` | Directory in which golden masters are stored.                       |
+| `outputDir`       | `data/test/output`     | Directory in which file snapshots from test runs are stored.        |
+| `indentSize`      | `2`                    | Indentation size in spaces used for serializing snapshots.          |
+| `resolveFileName` | `resolveNameAsFile`    | Custom resolver for the file path used to store snapshots.          |
+| `updateDelay`     | `250`                  | Delay in ms before repeatable snapshots are created in update mode. |
 
 ### File Snapshot Options
 
@@ -323,6 +325,7 @@ await expect(value).toMatchTextFile({
 | `normalizers`     | `[]`                | Custom normalizers to apply before serialization.                                                       |
 | `timeout`         | expect timeout      | Retries the snapshot until it passes or the timeout value is reached.                                   |
 | `resolveFileName` | `resolveNameAsFile` | Custom resolver for the file path used to store snapshots.                                              |
+| `updateDelay`     | `250`               | Delay in ms before repeatable snapshots are created in update mode.                                     |
 
 #### JSON Snapshot Options
 
