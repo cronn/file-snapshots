@@ -1,7 +1,13 @@
 import { test } from "@playwright/test";
 
 import { defineValidationFileExpect } from "../src";
-import { testFilePathResolver } from "../src/utils/test";
+import {
+  SNAPSHOT_UPDATE_TAG,
+  SnapshotInstrumentation,
+  assertSnapshotIntervals,
+  runOnlyWhenSnapshotUpdatesAreEnabled,
+  testFilePathResolver,
+} from "../src/utils/test";
 
 const expect = defineValidationFileExpect();
 
@@ -44,4 +50,22 @@ test("applies custom file extension", async () => {
   await expect("# Heading").toMatchTextFile({
     fileExtension: "md",
   });
+});
+
+test("applies update delay", { tag: [SNAPSHOT_UPDATE_TAG] }, async () => {
+  runOnlyWhenSnapshotUpdatesAreEnabled();
+
+  const testExpect = defineValidationFileExpect({
+    updateDelay: 100,
+  });
+
+  const instrumentation = new SnapshotInstrumentation();
+  await expect(() =>
+    testExpect(() => {
+      instrumentation.addSnapshot();
+      return "changed value";
+    }).toMatchTextFile(),
+  ).rejects.toThrowError();
+
+  assertSnapshotIntervals([100], instrumentation);
 });

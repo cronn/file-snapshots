@@ -30,7 +30,7 @@ import type {
 } from "./types";
 import { MATCHER_STEP_TITLE, parseTestInfo, parseTestStepInfo } from "./utils";
 
-const UPDATE_DELAY = 250;
+const DEFAULT_UPDATE_DELAY = 250;
 
 interface MatchValidationFileParams {
   actual: unknown;
@@ -56,8 +56,13 @@ export async function matchValidationFile(
     validationDir = "data/test/validation",
     outputDir = "data/test/output",
     resolveFilePath: configuredFilePathResolver,
+    updateDelay: configuredUpdateDelay,
   } = config;
-  const { name, resolveFilePath: localFilePathResolver } = options;
+  const {
+    name,
+    resolveFilePath: localFilePathResolver,
+    updateDelay: localUpdateDelay,
+  } = options;
   const resolveFilePath: FilePathResolver =
     localFilePathResolver ?? configuredFilePathResolver ?? resolveNameAsFile;
 
@@ -73,7 +78,10 @@ export async function matchValidationFile(
     });
 
     const testTimeout = options.timeout ?? timeout;
-    const updateDelay = Math.min(testTimeout, UPDATE_DELAY);
+    const updateDelay = Math.min(
+      testTimeout,
+      localUpdateDelay ?? configuredUpdateDelay ?? DEFAULT_UPDATE_DELAY,
+    );
     const snapshot = createSnapshotInstance(actual);
 
     const isUpdate = matcher.isValidationFileMissing || updateSnapshots;

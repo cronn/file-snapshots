@@ -36,6 +36,13 @@ export interface PlaywrightValidationFileMatcherConfig {
    * @default resolveNameAsFile
    */
   resolveFilePath?: FilePathResolver;
+
+  /**
+   * Delay in ms before repeatable snapshots are created in update mode
+   *
+   * @default 250
+   */
+  updateDelay?: number;
 }
 
 type ValueOrValueFunction<TValue> =
@@ -78,6 +85,13 @@ export interface PlaywrightMatchValidationFileOptions {
    * @default resolveNameAsFile
    */
   resolveFilePath?: FilePathResolver;
+
+  /**
+   * Delay in ms before repeatable snapshots are created in update mode
+   *
+   * @default 250
+   */
+  updateDelay?: number;
 }
 
 export interface PlaywrightMatchTextFileOptions

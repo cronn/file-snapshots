@@ -1,7 +1,13 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 import { defineValidationFileExpect } from "../src";
-import { testFilePathResolver } from "../src/utils/test";
+import {
+  SNAPSHOT_UPDATE_TAG,
+  SnapshotInstrumentation,
+  assertSnapshotIntervals,
+  runOnlyWhenSnapshotUpdatesAreEnabled,
+  testFilePathResolver,
+} from "../src/utils/test";
 
 test("stores snapshots in custom directories", async () => {
   const expect = defineValidationFileExpect({
@@ -51,4 +57,22 @@ test("ignores indentSize in text file snapshots", async () => {
   });
 
   await expect("value").toMatchTextFile();
+});
+
+test("applies update delay", { tag: [SNAPSHOT_UPDATE_TAG] }, async () => {
+  runOnlyWhenSnapshotUpdatesAreEnabled();
+
+  const testExpect = defineValidationFileExpect({
+    updateDelay: 100,
+  });
+
+  const instrumentation = new SnapshotInstrumentation();
+  await expect(() =>
+    testExpect(() => {
+      instrumentation.addSnapshot();
+      return "changed value";
+    }).toMatchJsonFile(),
+  ).rejects.toThrowError();
+
+  assertSnapshotIntervals([100], instrumentation);
 });
