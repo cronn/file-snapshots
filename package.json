@@ -8,7 +8,7 @@
   "type": "module",
   "packageManager": "pnpm@10.18.3",
   "engines": {
-    "node": ">=22.18 <23",
+    "node": ">=24.11 <25",
     "pnpm": ">=10.16"
   },
   "scripts": {
