@@ -13,7 +13,7 @@ catalog:
   "vitest": 4.0.13
   "yaml": 2.8.1
   "eslint": 9.39.1
-  "typescript-eslint": 8.46.3
+  "typescript-eslint": 8.47.0
   "eslint-config-prettier": 10.1.8
   "eslint-plugin-unused-imports": 4.3.0
   "prettier": 3.6.2
