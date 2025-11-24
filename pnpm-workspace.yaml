@@ -4,7 +4,7 @@ packages:
 catalog:
   "@changesets/cli": 2.29.7
   "@playwright/test": 1.56.1
-  "@types/node": 22.19.0
+  "@types/node": 22.19.1
   "@vitest/coverage-v8": 4.0.13
   "@vitest/expect": 4.0.13
   "serve": 14.2.5
