@@ -128,3 +128,8 @@ test("tabs", async ({ page }) => {
   await page.goto("/tabs");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("buttons", async ({ page }) => {
+  await page.goto("/buttons");
+  await testSnapshots(page.getByRole("main"));
+});
