@@ -126,6 +126,13 @@
                 "/url": "/buttons"
               }
             }
+          },
+          {
+            "listitem": {
+              "link 'Groups'": {
+                "/url": "/groups"
+              }
+            }
           }
         ]
       },

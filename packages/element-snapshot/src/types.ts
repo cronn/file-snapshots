@@ -10,6 +10,7 @@ export type { ButtonSnapshot } from "./snapshots/button";
 export type { ComboboxSnapshot, OptionSnapshot } from "./snapshots/combobox";
 export type { ContainerSnapshot } from "./snapshots/container";
 export type { DialogSnapshot } from "./snapshots/dialog";
+export type { GroupSnapshot } from "./snapshots/group";
 export type { HeadingSnapshot } from "./snapshots/heading";
 export type { InputSnapshot } from "./snapshots/input";
 export type { LinkSnapshot } from "./snapshots/link";

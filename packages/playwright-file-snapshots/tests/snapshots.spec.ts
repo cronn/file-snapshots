@@ -133,3 +133,8 @@ test("buttons", async ({ page }) => {
   await page.goto("/buttons");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("groups", async ({ page }) => {
+  await page.goto("/groups");
+  await testSnapshots(page.getByRole("main"));
+});

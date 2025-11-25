@@ -147,6 +147,14 @@
                 "url": "/buttons"
               }
             }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Groups",
+                "url": "/groups"
+              }
+            }
           }
         ]
       },
