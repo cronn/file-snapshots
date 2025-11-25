@@ -51,6 +51,7 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   tr: "row",
   th: resolveTableHeaderCellRole,
   td: "cell",
+  fieldset: "group",
 };
 
 const CONTEXT_DEPENDENT_ROLES: Partial<

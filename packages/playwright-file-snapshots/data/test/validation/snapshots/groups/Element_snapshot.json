@@ -1,0 +1,62 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Groups",
+        "level": 1
+      }
+    },
+    {
+      "heading": {
+        "name": "Fieldset",
+        "level": 2
+      }
+    },
+    {
+      "group": {
+        "name": "Fieldset Name",
+        "children": [
+          "Fieldset Name",
+          "First Name",
+          {
+            "textbox": "First Name"
+          },
+          "Last Name",
+          {
+            "textbox": "Last Name"
+          }
+        ]
+      }
+    },
+    {
+      "heading": {
+        "name": "Role-Based Group",
+        "level": 2
+      }
+    },
+    {
+      "menu": [
+        {
+          "group": [
+            {
+              "menuitem": "Menu Item 1"
+            },
+            {
+              "menuitem": "Menu Item 2"
+            }
+          ]
+        },
+        {
+          "group": {
+            "name": "Named Group",
+            "children": [
+              {
+                "menuitem": "Menu Item 3"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

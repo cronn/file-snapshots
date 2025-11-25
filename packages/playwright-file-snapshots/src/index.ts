@@ -18,6 +18,7 @@ export type {
   DialogSnapshot,
   ElementRole,
   ElementSnapshot,
+  GroupSnapshot,
   HeadingSnapshot,
   InputSnapshot,
   LinkSnapshot,
