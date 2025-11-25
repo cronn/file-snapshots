@@ -139,6 +139,14 @@
                 "url": "/tabs"
               }
             }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Buttons",
+                "url": "/buttons"
+              }
+            }
           }
         ]
       },
