@@ -1,5 +1,16 @@
 # @cronn/playwright-file-snapshots
 
+## 0.31.0
+
+### Minor Changes
+
+- 9aa2f69: Add `pressed` attribute to element snapshot for role `button`
+
+### Patch Changes
+
+- Updated dependencies [9aa2f69]
+  - @cronn/element-snapshot@0.5.0
+
 ## 0.30.0
 
 ### Minor Changes

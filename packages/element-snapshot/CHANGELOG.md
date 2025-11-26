@@ -1,5 +1,11 @@
 # @cronn/element-snapshot
 
+## 0.5.0
+
+### Minor Changes
+
+- 9aa2f69: Add `pressed` attribute to element snapshot for role `button`
+
 ## 0.4.0
 
 ### Minor Changes
