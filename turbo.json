@@ -1,6 +1,8 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
+    "//#config:check": {},
+    "//#config:fix": {},
     "//#format:check": {},
     "//#format:fix": {
       "dependsOn": ["^lint:fix"]
@@ -15,10 +17,15 @@
       "dependsOn": ["^build"]
     },
     "check": {
-      "dependsOn": ["compile", "lint:check", "//#format:check"]
+      "dependsOn": [
+        "compile",
+        "lint:check",
+        "//#format:check",
+        "//#config:check"
+      ]
     },
     "fix": {
-      "dependsOn": ["lint:fix", "//#format:fix"]
+      "dependsOn": ["lint:fix", "//#format:fix", "//#config:fix"]
     },
     "build": {
       "dependsOn": ["^build", "compile"],

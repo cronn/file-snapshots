@@ -20,6 +20,7 @@ catalog:
   "@trivago/prettier-plugin-sort-imports": 6.0.0
   "turbo": 2.6.1
   "package-directory": 8.1.0
+  "@pnpm/meta-updater": 2.0.6
 
 includeWorkspaceRoot: true
 
