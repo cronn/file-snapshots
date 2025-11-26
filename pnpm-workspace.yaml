@@ -29,3 +29,5 @@ ignoredBuiltDependencies:
   - esbuild
 
 minimumReleaseAge: 1440
+
+trustPolicy: no-downgrade
