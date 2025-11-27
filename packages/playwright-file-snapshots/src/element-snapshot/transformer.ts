@@ -43,10 +43,6 @@ export class ElementSnapshotTransformer {
   }
 
   private simplifyElementSnapshot(snapshot: ElementSnapshot): unknown {
-    if (snapshot.role === "combobox") {
-      return this.simplifyComboboxSnapshot(snapshot);
-    }
-
     const normalizedSnapshot = this.normalizeElementSnapshot(snapshot);
 
     if (this.isEmpty(normalizedSnapshot)) {
@@ -65,6 +61,10 @@ export class ElementSnapshotTransformer {
         role,
         children.length === 1 ? children.at(0) : children,
       );
+    }
+
+    if (snapshot.role === "combobox") {
+      return this.simplifyComboboxSnapshot(snapshot);
     }
 
     const { role, name, attributes, children } = normalizedSnapshot;
