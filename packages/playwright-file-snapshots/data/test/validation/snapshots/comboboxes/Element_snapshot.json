@@ -30,9 +30,7 @@
         },
         "Collapsed Combobox",
         {
-          "combobox": {
-            "name": "Collapsed Combobox"
-          }
+          "combobox": "Collapsed Combobox"
         }
       ]
     }
