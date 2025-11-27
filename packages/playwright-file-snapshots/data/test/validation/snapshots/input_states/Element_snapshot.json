@@ -15,6 +15,13 @@
             "readonly": true
           }
         },
+        "ARIA-Readonly Input",
+        {
+          "textbox": {
+            "name": "ARIA-Readonly Input",
+            "readonly": true
+          }
+        },
         "Disabled Input",
         {
           "textbox": {
@@ -22,10 +29,24 @@
             "disabled": true
           }
         },
+        "ARIA-Disabled Input",
+        {
+          "textbox": {
+            "name": "ARIA-Disabled Input",
+            "disabled": true
+          }
+        },
         "Required Input",
         {
           "textbox": {
             "name": "Required Input",
+            "required": true
+          }
+        },
+        "ARIA-Required Input",
+        {
+          "textbox": {
+            "name": "ARIA-Required Input",
             "required": true
           }
         },
@@ -39,6 +60,12 @@
         {
           "button": {
             "name": "Disabled Button",
+            "disabled": true
+          }
+        },
+        {
+          "button": {
+            "name": "ARIA-Disabled Button",
             "disabled": true
           }
         }
