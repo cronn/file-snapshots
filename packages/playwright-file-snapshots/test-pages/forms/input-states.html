@@ -14,16 +14,34 @@
           <input type="text" id="readonlyInput" readonly />
         </div>
 
+        <!-- aria-readonly -->
+        <div>
+          <label for="ariaReadonlyInput">ARIA-Readonly Input</label>
+          <input type="text" id="ariaReadonlyInput" aria-readonly="true" />
+        </div>
+
         <!-- disabled -->
         <div>
           <label for="disabledInput">Disabled Input</label>
           <input type="text" id="disabledInput" disabled />
         </div>
 
+        <!-- aria-disabled -->
+        <div>
+          <label for="ariaDisabledInput">ARIA-Disabled Input</label>
+          <input type="text" id="ariaDisabledInput" aria-disabled="true" />
+        </div>
+
         <!-- required -->
         <div>
           <label for="requiredInput">Required Input</label>
           <input type="text" id="requiredInput" required />
+        </div>
+
+        <!-- aria-required -->
+        <div>
+          <label for="ariaRequiredInput">ARIA-Required Input</label>
+          <input type="text" id="ariaRequiredInput" aria-required="true" />
         </div>
 
         <!-- invalid -->
@@ -34,6 +52,9 @@
 
         <!-- disabled button -->
         <button disabled>Disabled Button</button>
+
+        <!-- aria-disabled button -->
+        <button aria-disabled="true">ARIA-Disabled Button</button>
       </form>
     </main>
   </body>

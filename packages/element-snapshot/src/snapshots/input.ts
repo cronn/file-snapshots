@@ -33,6 +33,8 @@ export interface CommonInputAttributes extends DisableableAttributes {
   invalid?: boolean;
 }
 
+type InputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+
 export function snapshotInput(
   element: SnapshotTargetElement,
 ): InputSnapshot | null {
@@ -85,15 +87,15 @@ function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
 }
 
 export function snapshotCommonInputAttributes(
-  element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
+  element: InputElement,
   isEmpty: boolean,
 ): CommonInputAttributes {
   return {
     description: resolveDescription(element),
     placeholder: isEmpty ? resolvePlaceholder(element) : undefined,
-    readonly: booleanAttribute(element.hasAttribute("readonly")),
+    readonly: resolveReadonly(element),
     ...disableableAttributes(element),
-    required: booleanAttribute(element.required),
+    required: resolveRequired(element),
     invalid: booleanAttribute(element.ariaInvalid),
   };
 }
@@ -143,12 +145,23 @@ export function resolveInputLabel(
   return undefined;
 }
 
-function resolvePlaceholder(
-  element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
-): string | undefined {
+function resolvePlaceholder(element: InputElement): string | undefined {
   if (element instanceof HTMLSelectElement) {
     return undefined;
   }
 
   return stringAttribute(element.placeholder);
+}
+
+function resolveReadonly(element: InputElement): boolean | undefined {
+  return (
+    booleanAttribute(element.hasAttribute("readonly")) ??
+    booleanAttribute(element.ariaReadOnly)
+  );
+}
+
+function resolveRequired(element: InputElement): boolean | undefined {
+  return (
+    booleanAttribute(element.required) ?? booleanAttribute(element.ariaRequired)
+  );
 }
