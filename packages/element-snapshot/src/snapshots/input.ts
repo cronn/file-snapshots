@@ -33,7 +33,11 @@ export interface CommonInputAttributes extends DisableableAttributes {
   invalid?: boolean;
 }
 
-type InputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+type InputElement =
+  | HTMLInputElement
+  | HTMLTextAreaElement
+  | HTMLSelectElement
+  | HTMLButtonElement;
 
 export function snapshotInput(
   element: SnapshotTargetElement,
@@ -146,7 +150,10 @@ export function resolveInputLabel(
 }
 
 function resolvePlaceholder(element: InputElement): string | undefined {
-  if (element instanceof HTMLSelectElement) {
+  if (
+    element instanceof HTMLSelectElement ||
+    element instanceof HTMLButtonElement
+  ) {
     return undefined;
   }
 
@@ -154,14 +161,19 @@ function resolvePlaceholder(element: InputElement): string | undefined {
 }
 
 function resolveReadonly(element: InputElement): boolean | undefined {
-  return (
-    booleanAttribute(element.hasAttribute("readonly")) ??
-    booleanAttribute(element.ariaReadOnly)
-  );
+  const ariaReadOnly = booleanAttribute(element.ariaReadOnly);
+  if (element instanceof HTMLButtonElement) {
+    return ariaReadOnly;
+  }
+
+  return booleanAttribute(element.hasAttribute("readonly")) ?? ariaReadOnly;
 }
 
 function resolveRequired(element: InputElement): boolean | undefined {
-  return (
-    booleanAttribute(element.required) ?? booleanAttribute(element.ariaRequired)
-  );
+  const ariaRequired = booleanAttribute(element.ariaRequired);
+  if (element instanceof HTMLButtonElement) {
+    return ariaRequired;
+  }
+
+  return booleanAttribute(element.required) ?? ariaRequired;
 }

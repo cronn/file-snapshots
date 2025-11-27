@@ -19,7 +19,7 @@ interface ComboboxAttributes extends CommonInputAttributes {
   value?: string | Array<string>;
 }
 
-type ComboboxElement = HTMLSelectElement | HTMLInputElement;
+type ComboboxElement = HTMLSelectElement | HTMLInputElement | HTMLButtonElement;
 
 export function snapshotCombobox(
   element: SnapshotTargetElement,
@@ -49,7 +49,10 @@ function isCombobox(
     return element.role === null || element.role === "combobox";
   }
 
-  if (element instanceof HTMLInputElement) {
+  if (
+    element instanceof HTMLInputElement ||
+    element instanceof HTMLButtonElement
+  ) {
     return element.role === "combobox";
   }
 
