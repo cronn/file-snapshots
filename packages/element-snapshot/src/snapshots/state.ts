@@ -9,14 +9,14 @@ export function disableableAttributes(
   element: SnapshotTargetElement,
   ariaOnly = false,
 ): DisableableAttributes {
+  const ariaDisabled = booleanAttribute(element.ariaDisabled);
   if (ariaOnly) {
-    return { disabled: booleanAttribute(element.ariaDisabled) };
+    return { disabled: ariaDisabled };
   }
 
   return {
     disabled:
-      booleanAttribute(element.hasAttribute("disabled")) ??
-      booleanAttribute(element.ariaDisabled),
+      booleanAttribute(element.hasAttribute("disabled")) ?? ariaDisabled,
   };
 }
 
