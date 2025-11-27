@@ -26,6 +26,7 @@ export type {
   NodeRole,
   NodeSnapshot,
   OptionSnapshot,
+  ProgressbarSnapshot,
   TabSnapshot,
   TextSnapshot,
 } from "@cronn/element-snapshot/types";
