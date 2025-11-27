@@ -138,3 +138,8 @@ test("groups", async ({ page }) => {
   await page.goto("/groups");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("progressbars", async ({ page }) => {
+  await page.goto("/progressbars");
+  await testSnapshots(page.getByRole("main"));
+});

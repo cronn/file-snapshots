@@ -7,6 +7,7 @@ import type { HeadingSnapshot } from "./heading";
 import type { InputRole, InputSnapshot } from "./input";
 import type { LinkSnapshot } from "./link";
 import type { MenuitemSnapshot } from "./list";
+import type { ProgressbarSnapshot } from "./progressbar";
 import type { TabSnapshot } from "./tab";
 import type { ColumnheaderSnapshot } from "./table";
 import type { TextSnapshot } from "./text";
@@ -28,6 +29,7 @@ export type ElementRole =
   | "menuitem"
   | "columnheader"
   | "group"
+  | "progressbar"
   | ContainerRole
   | InputRole
   | DialogRole;
@@ -46,7 +48,8 @@ export type ElementSnapshot =
   | TabSnapshot
   | MenuitemSnapshot
   | ColumnheaderSnapshot
-  | GroupSnapshot;
+  | GroupSnapshot
+  | ProgressbarSnapshot;
 
 export interface GenericElementSnapshot<
   TRole extends NodeRole = NodeRole,

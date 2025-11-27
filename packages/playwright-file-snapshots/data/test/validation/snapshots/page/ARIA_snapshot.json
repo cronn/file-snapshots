@@ -133,6 +133,13 @@
                 "/url": "/groups"
               }
             }
+          },
+          {
+            "listitem": {
+              "link 'Progressbars'": {
+                "/url": "/progressbars"
+              }
+            }
           }
         ]
       },
