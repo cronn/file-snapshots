@@ -1,9 +1,9 @@
-import { booleanAttribute, stringAttribute } from "./attribute";
+import { stringAttribute } from "./attribute";
 import { resolveDescription } from "./description";
 import { resolveAccessibleName } from "./name";
 import { resolveInputRole } from "./role";
-import type { DisableableAttributes } from "./state";
-import { disableableAttributes } from "./state";
+import type { InputStateAttributes } from "./state";
+import { inputStateAttributes } from "./state";
 import { snapshotTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
@@ -25,12 +25,9 @@ interface InputAttributes extends CommonInputAttributes {
   checked?: boolean;
 }
 
-export interface CommonInputAttributes extends DisableableAttributes {
+export interface CommonInputAttributes extends InputStateAttributes {
   description?: string;
   placeholder?: string;
-  readonly?: boolean;
-  required?: boolean;
-  invalid?: boolean;
 }
 
 type InputElement =
@@ -97,10 +94,7 @@ export function snapshotCommonInputAttributes(
   return {
     description: resolveDescription(element),
     placeholder: isEmpty ? resolvePlaceholder(element) : undefined,
-    readonly: resolveReadonly(element),
-    ...disableableAttributes(element),
-    required: resolveRequired(element),
-    invalid: booleanAttribute(element.ariaInvalid),
+    ...inputStateAttributes(element),
   };
 }
 
@@ -158,22 +152,4 @@ function resolvePlaceholder(element: InputElement): string | undefined {
   }
 
   return stringAttribute(element.placeholder);
-}
-
-function resolveReadonly(element: InputElement): boolean | undefined {
-  const ariaReadOnly = booleanAttribute(element.ariaReadOnly);
-  if (element instanceof HTMLButtonElement) {
-    return ariaReadOnly;
-  }
-
-  return booleanAttribute(element.hasAttribute("readonly")) ?? ariaReadOnly;
-}
-
-function resolveRequired(element: InputElement): boolean | undefined {
-  const ariaRequired = booleanAttribute(element.ariaRequired);
-  if (element instanceof HTMLButtonElement) {
-    return ariaRequired;
-  }
-
-  return booleanAttribute(element.required) ?? ariaRequired;
 }
