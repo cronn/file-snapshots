@@ -7,16 +7,15 @@ export interface DisableableAttributes {
 
 export function disableableAttributes(
   element: SnapshotTargetElement,
-  ariaOnly = false,
 ): DisableableAttributes {
-  const ariaDisabled = booleanAttribute(element.ariaDisabled);
-  if (ariaOnly) {
-    return { disabled: ariaDisabled };
-  }
+  const supportsHtmlAttribute =
+    isNativeInputElement(element) || element instanceof HTMLButtonElement;
+  const disabled = booleanAttribute(
+    supportsHtmlAttribute ? element.hasAttribute("disabled") : false,
+  );
 
   return {
-    disabled:
-      booleanAttribute(element.hasAttribute("disabled")) ?? ariaDisabled,
+    disabled: disabled ?? booleanAttribute(element.ariaDisabled),
   };
 }
 
