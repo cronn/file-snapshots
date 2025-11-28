@@ -19,7 +19,7 @@ export function snapshotMenuitem(
     name: resolveAccessibleName(element),
     attributes: {
       ...linkAttributes(element),
-      ...disableableAttributes(element, true),
+      ...disableableAttributes(element),
     },
     children: snapshotChildren(element),
   };
