@@ -10,6 +10,7 @@ import { snapshotHeading } from "./heading";
 import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
 import { snapshotMenuitem } from "./list";
+import { snapshotProgressbar } from "./progressbar";
 import { parseElementRole } from "./role";
 import { snapshotTab } from "./tab";
 import { snapshotColumnheader } from "./table";
@@ -47,6 +48,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   menuitem: snapshotMenuitem,
   columnheader: snapshotColumnheader,
   group: snapshotGroup,
+  progressbar: snapshotProgressbar,
 };
 
 export function snapshotElement(
