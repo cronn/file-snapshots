@@ -29,3 +29,36 @@ export function selectableAttributes(
 ): SelectableAttributes {
   return { selected: booleanAttribute(element.ariaSelected) };
 }
+
+export interface InputStateAttributes extends DisableableAttributes {
+  readonly?: boolean;
+  required?: boolean;
+  invalid?: boolean;
+}
+
+export function inputStateAttributes(
+  element: SnapshotTargetElement,
+): InputStateAttributes {
+  const supportsHtmlAttributes = isNativeInputElement(element);
+  const readonly = booleanAttribute(
+    supportsHtmlAttributes ? element.hasAttribute("readonly") : false,
+  );
+  const required = booleanAttribute(
+    supportsHtmlAttributes ? element.hasAttribute("required") : false,
+  );
+
+  return {
+    readonly: readonly ?? booleanAttribute(element.ariaReadOnly),
+    ...disableableAttributes(element),
+    required: required ?? booleanAttribute(element.ariaRequired),
+    invalid: booleanAttribute(element.ariaInvalid),
+  };
+}
+
+function isNativeInputElement(element: SnapshotTargetElement): boolean {
+  return (
+    element instanceof HTMLInputElement ||
+    element instanceof HTMLTextAreaElement ||
+    element instanceof HTMLSelectElement
+  );
+}
