@@ -1,5 +1,13 @@
 # @cronn/element-snapshot
 
+## 0.6.0
+
+### Minor Changes
+
+- 37b43d6: Snapshot buttons with role `combobox`
+- f1367bf: Snapshot elements with role `group`
+- 9009cb4: Snapshot attributes `aria-readonly` and `aria-required` on input elements
+
 ## 0.5.0
 
 ### Minor Changes

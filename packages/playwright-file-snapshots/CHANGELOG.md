@@ -1,5 +1,21 @@
 # @cronn/playwright-file-snapshots
 
+## 0.32.0
+
+### Minor Changes
+
+- 4e1e245: Fix: Snapshot for element with role `combobox` is not simplified when it has a name only
+- 37b43d6: Snapshot buttons with role `combobox`
+- f1367bf: Snapshot elements with role `group`
+- 9009cb4: Snapshot attributes `aria-readonly` and `aria-required` on input elements
+
+### Patch Changes
+
+- Updated dependencies [37b43d6]
+- Updated dependencies [f1367bf]
+- Updated dependencies [9009cb4]
+  - @cronn/element-snapshot@0.6.0
+
 ## 0.31.0
 
 ### Minor Changes
