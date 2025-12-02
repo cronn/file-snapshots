@@ -1,5 +1,16 @@
 # @cronn/playwright-file-snapshots
 
+## 0.33.0
+
+### Minor Changes
+
+- a33a2f6: Snapshot elements with role `progressbar`
+
+### Patch Changes
+
+- Updated dependencies [a33a2f6]
+  - @cronn/element-snapshot@0.7.0
+
 ## 0.32.0
 
 ### Minor Changes
