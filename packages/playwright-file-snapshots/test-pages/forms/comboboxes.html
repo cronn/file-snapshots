@@ -31,8 +31,13 @@
             id="collapsedCombobox"
             type="text"
             role="combobox"
+            aria-controls="collapsedOptions"
             aria-expanded="false"
           />
+          <ul id="collapsedOptions" role="listbox">
+            <li role="option" aria-selected="true">Option 1</li>
+            <li role="option" aria-selected="false">Option 2</li>
+          </ul>
         </div>
       </form>
     </main>
