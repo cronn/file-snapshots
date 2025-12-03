@@ -6,7 +6,7 @@ export default function () {
       "package.json": (manifest) => {
         return {
           ...manifest,
-          packageManager: "pnpm@10.23.0",
+          packageManager: "pnpm@10.24.0",
           engines: {
             node: "^20 || ^22 || >=24",
           },
