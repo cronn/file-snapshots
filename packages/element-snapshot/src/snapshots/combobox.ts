@@ -92,11 +92,6 @@ function resolveOptions(element: ComboboxElement): Array<HTMLElement> {
     return Array.from(element.options);
   }
 
-  const ariaExpanded = element.ariaExpanded === "true";
-  if (!ariaExpanded) {
-    return [];
-  }
-
   const controlledElement = resolveElementReference(element, "aria-controls");
   if (controlledElement === null) {
     return [];
