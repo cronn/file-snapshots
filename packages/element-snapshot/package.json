@@ -10,7 +10,7 @@
     "directory": "packages/element-snapshot"
   },
   "homepage": "https://github.com/cronn/file-snapshots",
-  "packageManager": "pnpm@10.23.0",
+  "packageManager": "pnpm@10.24.0",
   "engines": {
     "node": "^20 || ^22 || >=24"
   },
