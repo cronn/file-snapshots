@@ -10,6 +10,12 @@
       ]
     },
     "text 'Collapsed Combobox'",
-    "combobox 'Collapsed Combobox'"
+    "combobox 'Collapsed Combobox'",
+    {
+      "listbox": [
+        "option 'Option 1' [selected]",
+        "option 'Option 2'"
+      ]
+    }
   ]
 }

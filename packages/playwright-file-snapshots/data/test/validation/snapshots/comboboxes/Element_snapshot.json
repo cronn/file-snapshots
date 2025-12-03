@@ -30,7 +30,23 @@
         },
         "Collapsed Combobox",
         {
-          "combobox": "Collapsed Combobox"
+          "combobox": {
+            "name": "Collapsed Combobox",
+            "value": "Option 1"
+          }
+        },
+        {
+          "listbox": [
+            {
+              "option": {
+                "name": "Option 1",
+                "selected": true
+              }
+            },
+            {
+              "option": "Option 2"
+            }
+          ]
         }
       ]
     }
