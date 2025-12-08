@@ -95,10 +95,6 @@
             ]
           }
         },
-        "Button-Based Combobox",
-        {
-          "combobox": "Button-Based Combobox"
-        },
         "Autocomplete",
         {
           "combobox": {

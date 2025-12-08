@@ -47,10 +47,10 @@
         "option 'Option 2' [selected]"
       ]
     },
-    "text 'Button-Based Combobox'",
-    "combobox 'Button-Based Combobox'",
     "text 'Autocomplete'",
-    "combobox 'Autocomplete' [expanded]",
+    {
+      "combobox 'Autocomplete' [expanded]": "Option 1"
+    },
     {
       "listbox": [
         "option 'Option 1' [selected]",
