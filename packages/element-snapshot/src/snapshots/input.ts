@@ -1,5 +1,6 @@
 import { stringAttribute } from "./attribute";
-import { resolveDescription } from "./description";
+import type { DiscribableAttributes } from "./description";
+import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
 import { resolveInputRole } from "./role";
 import type { InputStateAttributes } from "./state";
@@ -25,8 +26,9 @@ interface InputAttributes extends CommonInputAttributes {
   checked?: boolean;
 }
 
-export interface CommonInputAttributes extends InputStateAttributes {
-  description?: string;
+export interface CommonInputAttributes
+  extends InputStateAttributes,
+    DiscribableAttributes {
   placeholder?: string;
 }
 
@@ -92,7 +94,7 @@ export function snapshotCommonInputAttributes(
   isEmpty: boolean,
 ): CommonInputAttributes {
   return {
-    description: resolveDescription(element),
+    ...discribableAttributes(element),
     placeholder: isEmpty ? resolvePlaceholder(element) : undefined,
     ...inputStateAttributes(element),
   };
