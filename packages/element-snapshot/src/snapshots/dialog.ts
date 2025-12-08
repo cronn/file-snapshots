@@ -1,6 +1,7 @@
 import { booleanAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
-import { resolveDescription } from "./description";
+import type { DiscribableAttributes } from "./description";
+import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
@@ -9,8 +10,7 @@ export interface DialogSnapshot
 
 export type DialogRole = "dialog" | "alertdialog";
 
-interface DialogAttributes {
-  description?: string;
+interface DialogAttributes extends DiscribableAttributes {
   modal?: boolean;
 }
 
@@ -28,7 +28,7 @@ function snapshotDialog(
     role,
     name: resolveAccessibleName(element, false),
     attributes: {
-      description: resolveDescription(element),
+      ...discribableAttributes(element),
       modal: booleanAttribute(element.ariaModal),
     },
     children: snapshotChildren(element),
