@@ -2,7 +2,7 @@ import type { ButtonSnapshot } from "./button";
 import type { ComboboxSnapshot, OptionSnapshot } from "./combobox";
 import type { ContainerRole, ContainerSnapshot } from "./container";
 import type { DialogRole, DialogSnapshot } from "./dialog";
-import type { GroupSnapshot } from "./group";
+import type { GroupSnapshot, RadiogroupSnapshot } from "./group";
 import type { HeadingSnapshot } from "./heading";
 import type { InputRole, InputSnapshot } from "./input";
 import type { LinkSnapshot } from "./link";
@@ -29,6 +29,7 @@ export type ElementRole =
   | "menuitem"
   | "columnheader"
   | "group"
+  | "radiogroup"
   | "progressbar"
   | ContainerRole
   | InputRole
@@ -49,6 +50,7 @@ export type ElementSnapshot =
   | MenuitemSnapshot
   | ColumnheaderSnapshot
   | GroupSnapshot
+  | RadiogroupSnapshot
   | ProgressbarSnapshot;
 
 export interface GenericElementSnapshot<

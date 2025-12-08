@@ -5,7 +5,7 @@ import { snapshotCombobox, snapshotOption } from "./combobox";
 import type { ContainerRole } from "./container";
 import { snapshotContainer } from "./container";
 import { snapshotDialogWithRole } from "./dialog";
-import { snapshotGroup } from "./group";
+import { snapshotGroup, snapshotRadiogroup } from "./group";
 import { snapshotHeading } from "./heading";
 import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
@@ -48,6 +48,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   menuitem: snapshotMenuitem,
   columnheader: snapshotColumnheader,
   group: snapshotGroup,
+  radiogroup: snapshotRadiogroup,
   progressbar: snapshotProgressbar,
 };
 

@@ -23,6 +23,16 @@
           "group 'Named Group'": "menuitem 'Menu Item 3'"
         }
       ]
+    },
+    "heading 'Radiogroup' [level=2]",
+    {
+      "radiogroup 'Radiogroup'": [
+        "paragraph 'Radiogroup Description'",
+        "radio 'Option 1'",
+        "text 'Option 1'",
+        "radio 'Option 2'",
+        "text 'Option 2'"
+      ]
     }
   ]
 }
