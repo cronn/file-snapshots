@@ -47,6 +47,20 @@
               "option": "Option 2"
             }
           ]
+        },
+        "Input-Based Combobox without options",
+        {
+          "combobox": {
+            "name": "Input-Based Combobox without options",
+            "value": "Input Value"
+          }
+        },
+        "Button-Based Combobox",
+        {
+          "combobox": {
+            "name": "Button-Based Combobox",
+            "value": "Button Value"
+          }
         }
       ]
     }

@@ -8,6 +8,7 @@ import {
 } from "./input";
 import { resolveAccessibleName } from "./name";
 import { roleSelector, selectorList } from "./selector";
+import { snapshotTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 export interface ComboboxSnapshot
@@ -29,7 +30,7 @@ export function snapshotCombobox(
   }
 
   const options = snapshotOptions(element);
-  const value = resolveValue(element, options);
+  const value = resolveValue(element);
 
   return {
     role: "combobox",
@@ -61,24 +62,28 @@ function isCombobox(
 
 function resolveValue(
   element: ComboboxElement,
-  options: Array<OptionSnapshot>,
 ): string | Array<string> | undefined {
-  const selectedOptions = options
-    .filter((option) => option.attributes?.selected === true)
-    .map((option) => option.name)
-    .filter((optionName) => optionName !== undefined);
-
-  if (selectedOptions.length === 0) {
-    return element instanceof HTMLInputElement
-      ? resolveInputValue(element)
-      : undefined;
+  if (element instanceof HTMLButtonElement) {
+    return snapshotTextContent(element);
   }
 
-  if (selectedOptions.length === 1) {
-    return selectedOptions.at(0);
+  if (element instanceof HTMLInputElement) {
+    return resolveInputValue(element);
   }
 
-  return selectedOptions;
+  const selectedLabels = Array.from(element.selectedOptions).map(
+    (option) => option.label,
+  );
+
+  if (selectedLabels.length === 0) {
+    return undefined;
+  }
+
+  if (selectedLabels.length === 1) {
+    return selectedLabels.at(0);
+  }
+
+  return selectedLabels;
 }
 
 function snapshotOptions(element: ComboboxElement): Array<OptionSnapshot> {
