@@ -57,6 +57,37 @@
           }
         }
       ]
+    },
+    {
+      "heading": {
+        "name": "Radiogroup",
+        "level": 2
+      }
+    },
+    {
+      "radiogroup": {
+        "name": "Radiogroup",
+        "description": "Radiogroup Description",
+        "children": [
+          {
+            "paragraph": "Radiogroup Description"
+          },
+          {
+            "radio": {
+              "name": "Option 1",
+              "value": "on"
+            }
+          },
+          "Option 1",
+          {
+            "radio": {
+              "name": "Option 2",
+              "value": "on"
+            }
+          },
+          "Option 2"
+        ]
+      }
     }
   ]
 }

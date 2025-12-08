@@ -1,4 +1,6 @@
 import { snapshotChildren } from "./children";
+import type { DiscribableAttributes } from "./description";
+import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
 import { snapshotTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
@@ -25,4 +27,20 @@ function resolveGroupName(element: SnapshotTargetElement): string | undefined {
   }
 
   return resolveAccessibleName(element, false);
+}
+
+export interface RadiogroupSnapshot
+  extends GenericElementSnapshot<"radiogroup", RadiogroupAttributes> {}
+
+interface RadiogroupAttributes extends DiscribableAttributes {}
+
+export function snapshotRadiogroup(
+  element: SnapshotTargetElement,
+): RadiogroupSnapshot {
+  return {
+    role: "radiogroup",
+    name: resolveAccessibleName(element, false),
+    attributes: discribableAttributes(element),
+    children: snapshotChildren(element),
+  };
 }
