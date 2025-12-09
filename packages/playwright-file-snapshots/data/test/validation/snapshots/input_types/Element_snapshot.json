@@ -55,16 +55,12 @@
         {
           "radio": {
             "name": "Radio Button 1",
-            "value": "Option 1",
             "checked": true
           }
         },
         "Radio Button 1",
         {
-          "radio": {
-            "name": "Radio Button 2",
-            "value": "Option 2"
-          }
+          "radio": "Radio Button 2"
         },
         "Radio Button 2",
         "File Input",

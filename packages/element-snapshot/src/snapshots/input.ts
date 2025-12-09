@@ -100,10 +100,15 @@ export function snapshotCommonInputAttributes(
   };
 }
 
+const CHECKED_INPUT_TYPES = new Set(["checkbox", "radio"]);
+
 export function resolveInputValue(
   element: HTMLInputElement | HTMLTextAreaElement,
 ): string | undefined {
-  if (element instanceof HTMLInputElement && element.type === "checkbox") {
+  if (
+    element instanceof HTMLInputElement &&
+    CHECKED_INPUT_TYPES.has(element.type)
+  ) {
     return undefined;
   }
 
