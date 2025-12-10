@@ -1,5 +1,15 @@
 # @cronn/element-snapshot
 
+## 0.8.0
+
+### Minor Changes
+
+- ef9a49a: Snapshot element with role `radiogroup`
+- 1dad07c: Fix: Internal value of element with role `radio` is visible in snapshot
+- c47a0c2: Fix: Element snapshot of role-based `combobox` element is missing when the element is collapsed
+- aaf981b: Fix: Value for input- and button-based `combobox` elements is not resolved from visible value
+- c47a0c2: Include `options` in snapshot for `combobox` element even when it is collapsed
+
 ## 0.7.0
 
 ### Minor Changes
