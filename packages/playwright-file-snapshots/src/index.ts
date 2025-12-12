@@ -27,6 +27,7 @@ export type {
   NodeSnapshot,
   OptionSnapshot,
   ProgressbarSnapshot,
+  RadiogroupSnapshot,
   TabSnapshot,
   TextSnapshot,
 } from "@cronn/element-snapshot/types";
