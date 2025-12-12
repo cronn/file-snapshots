@@ -1,5 +1,11 @@
 # @cronn/element-snapshot
 
+## 0.8.1
+
+### Patch Changes
+
+- 908c982: Export type `RadiogroupSnapshot`
+
 ## 0.8.0
 
 ### Minor Changes
