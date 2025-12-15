@@ -38,14 +38,14 @@ jobs:
       - name: Run CI script
         run: pnpm turbo run ci
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         if: ${{ !cancelled() }}
         with:
           name: vitest-reports-${{ matrix.os }}
           path: packages/*/coverage/
           retention-days: 3
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         if: ${{ !cancelled() }}
         with:
           name: playwright-reports-${{ matrix.os }}
