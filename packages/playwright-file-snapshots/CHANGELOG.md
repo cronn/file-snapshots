@@ -1,5 +1,12 @@
 # @cronn/playwright-file-snapshots
 
+## 0.34.1
+
+### Patch Changes
+
+- Updated dependencies [908c982]
+  - @cronn/element-snapshot@0.8.1
+
 ## 0.34.0
 
 ### Minor Changes
