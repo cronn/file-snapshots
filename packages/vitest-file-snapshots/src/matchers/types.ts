@@ -27,8 +27,7 @@ export interface VitestMatchValidationFileOptions {
   resolveFilePath?: FilePathResolver;
 }
 
-export interface VitestMatchTextFileOptions
-  extends VitestMatchValidationFileOptions {
+export interface VitestMatchTextFileOptions extends VitestMatchValidationFileOptions {
   /**
    * Custom normalizers to apply before serialization
    */
@@ -42,8 +41,7 @@ export interface VitestMatchTextFileOptions
   fileExtension?: string;
 }
 
-export interface VitestMatchJsonFileOptions
-  extends VitestMatchValidationFileOptions {
+export interface VitestMatchJsonFileOptions extends VitestMatchValidationFileOptions {
   /**
    * Serializes `undefined` properties in objects. By default, they are omitted.
    *

@@ -3,8 +3,10 @@ import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
-export interface ProgressbarSnapshot
-  extends GenericElementSnapshot<"progressbar", ProgressbarAttributes> {}
+export interface ProgressbarSnapshot extends GenericElementSnapshot<
+  "progressbar",
+  ProgressbarAttributes
+> {}
 
 interface ProgressbarAttributes {
   value?: number;

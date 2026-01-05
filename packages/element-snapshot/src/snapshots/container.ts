@@ -35,8 +35,7 @@ const CONTAINER_ROLES = new Set([
   "tabpanel",
 ] as const);
 
-export interface ContainerSnapshot
-  extends GenericElementSnapshot<ContainerRole> {}
+export interface ContainerSnapshot extends GenericElementSnapshot<ContainerRole> {}
 
 export type ContainerRole = SetValues<typeof CONTAINER_ROLES>;
 

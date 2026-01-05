@@ -5,8 +5,10 @@ import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
-export interface DialogSnapshot
-  extends GenericElementSnapshot<DialogRole, DialogAttributes> {}
+export interface DialogSnapshot extends GenericElementSnapshot<
+  DialogRole,
+  DialogAttributes
+> {}
 
 export type DialogRole = "dialog" | "alertdialog";
 

@@ -11,8 +11,10 @@ import { roleSelector, selectorList } from "./selector";
 import { snapshotTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
-export interface ComboboxSnapshot
-  extends GenericElementSnapshot<"combobox", ComboboxAttributes> {
+export interface ComboboxSnapshot extends GenericElementSnapshot<
+  "combobox",
+  ComboboxAttributes
+> {
   options?: Array<OptionSnapshot>;
 }
 
@@ -106,8 +108,10 @@ function resolveOptions(element: ComboboxElement): Array<HTMLElement> {
   return Array.from(controlledElement.querySelectorAll(optionSelector));
 }
 
-export interface OptionSnapshot
-  extends GenericElementSnapshot<"option", OptionAttributes> {}
+export interface OptionSnapshot extends GenericElementSnapshot<
+  "option",
+  OptionAttributes
+> {}
 
 interface OptionAttributes {
   selected?: boolean;

@@ -3,8 +3,10 @@ import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
-export interface LinkSnapshot
-  extends GenericElementSnapshot<"link", LinkAttributes> {}
+export interface LinkSnapshot extends GenericElementSnapshot<
+  "link",
+  LinkAttributes
+> {}
 
 export interface LinkAttributes {
   url?: string;
