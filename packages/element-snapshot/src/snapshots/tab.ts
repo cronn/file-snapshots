@@ -4,8 +4,10 @@ import type { DisableableAttributes, SelectableAttributes } from "./state";
 import { disableableAttributes, selectableAttributes } from "./state";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
-export interface TabSnapshot
-  extends GenericElementSnapshot<"tab", TabAttributes> {}
+export interface TabSnapshot extends GenericElementSnapshot<
+  "tab",
+  TabAttributes
+> {}
 
 interface TabAttributes extends DisableableAttributes, SelectableAttributes {}
 

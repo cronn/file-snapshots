@@ -5,8 +5,10 @@ import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 const LEVEL_REGEXP = /^H([1-6])$/;
 
-export interface HeadingSnapshot
-  extends GenericElementSnapshot<"heading", HeadingAttributes> {}
+export interface HeadingSnapshot extends GenericElementSnapshot<
+  "heading",
+  HeadingAttributes
+> {}
 
 interface HeadingAttributes {
   level?: number;

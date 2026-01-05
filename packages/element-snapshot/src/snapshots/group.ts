@@ -29,8 +29,10 @@ function resolveGroupName(element: SnapshotTargetElement): string | undefined {
   return resolveAccessibleName(element, false);
 }
 
-export interface RadiogroupSnapshot
-  extends GenericElementSnapshot<"radiogroup", RadiogroupAttributes> {}
+export interface RadiogroupSnapshot extends GenericElementSnapshot<
+  "radiogroup",
+  RadiogroupAttributes
+> {}
 
 interface RadiogroupAttributes extends DiscribableAttributes {}
 

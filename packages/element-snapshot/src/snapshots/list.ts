@@ -6,8 +6,10 @@ import type { DisableableAttributes } from "./state";
 import { disableableAttributes } from "./state";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
-export interface MenuitemSnapshot
-  extends GenericElementSnapshot<"menuitem", MenuitemAttributes> {}
+export interface MenuitemSnapshot extends GenericElementSnapshot<
+  "menuitem",
+  MenuitemAttributes
+> {}
 
 interface MenuitemAttributes extends LinkAttributes, DisableableAttributes {}
 

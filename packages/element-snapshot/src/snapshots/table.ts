@@ -7,8 +7,10 @@ import type {
   SnapshotTargetElement,
 } from "./types";
 
-export interface ColumnheaderSnapshot
-  extends GenericElementSnapshot<"columnheader", ColumnheaderAttributes> {}
+export interface ColumnheaderSnapshot extends GenericElementSnapshot<
+  "columnheader",
+  ColumnheaderAttributes
+> {}
 
 interface ColumnheaderAttributes {
   sort?: SortAttribute;

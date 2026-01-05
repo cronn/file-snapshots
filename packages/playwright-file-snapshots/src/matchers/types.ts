@@ -94,8 +94,7 @@ export interface PlaywrightMatchValidationFileOptions {
   updateDelay?: number;
 }
 
-export interface PlaywrightMatchTextFileOptions
-  extends PlaywrightMatchValidationFileOptions {
+export interface PlaywrightMatchTextFileOptions extends PlaywrightMatchValidationFileOptions {
   /**
    * Custom normalizers to apply before serialization
    */
@@ -109,8 +108,7 @@ export interface PlaywrightMatchTextFileOptions
   fileExtension?: string;
 }
 
-export interface PlaywrightMatchJsonFileOptions
-  extends PlaywrightMatchValidationFileOptions {
+export interface PlaywrightMatchJsonFileOptions extends PlaywrightMatchValidationFileOptions {
   /**
    * Serializes `undefined` properties in objects. By default, they are omitted.
    *

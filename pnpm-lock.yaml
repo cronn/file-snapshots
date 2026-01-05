@@ -40,8 +40,8 @@ catalogs:
       specifier: 8.1.0
       version: 8.1.0
     prettier:
-      specifier: 3.6.2
-      version: 3.6.2
+      specifier: 3.7.4
+      version: 3.7.4
     serve:
       specifier: 14.2.5
       version: 14.2.5
@@ -76,10 +76,10 @@ importers:
         version: 2.0.6(@types/node@24.10.0)(typanion@3.14.0)
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.0(prettier@3.6.2)
+        version: 6.0.0(prettier@3.7.4)
       prettier:
         specifier: 'catalog:'
-        version: 3.6.2
+        version: 3.7.4
       turbo:
         specifier: 'catalog:'
         version: 2.6.1
@@ -91,7 +91,7 @@ importers:
         version: link:../shared-configs
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.0(prettier@3.6.2)
+        version: 6.0.0(prettier@3.7.4)
       eslint:
         specifier: 'catalog:'
         version: 9.39.2(jiti@2.5.1)
@@ -103,7 +103,7 @@ importers:
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.50.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))
       prettier:
         specifier: 'catalog:'
-        version: 3.6.2
+        version: 3.7.4
       tsup:
         specifier: 'catalog:'
         version: 8.5.1(jiti@2.5.1)(postcss@8.5.3)(typescript@5.9.3)(yaml@2.8.2)
@@ -121,7 +121,7 @@ importers:
         version: link:../shared-configs
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.0(prettier@3.6.2)
+        version: 6.0.0(prettier@3.7.4)
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.0
@@ -139,7 +139,7 @@ importers:
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.50.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))
       prettier:
         specifier: 'catalog:'
-        version: 3.6.2
+        version: 3.7.4
       tsup:
         specifier: 'catalog:'
         version: 8.5.1(jiti@2.5.1)(postcss@8.5.3)(typescript@5.9.3)(yaml@2.8.2)
@@ -176,7 +176,7 @@ importers:
         version: 1.56.1
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.0(prettier@3.6.2)
+        version: 6.0.0(prettier@3.7.4)
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.0
@@ -194,7 +194,7 @@ importers:
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.50.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))
       prettier:
         specifier: 'catalog:'
-        version: 3.6.2
+        version: 3.7.4
       serve:
         specifier: 'catalog:'
         version: 14.2.5
@@ -218,7 +218,7 @@ importers:
     devDependencies:
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.0(prettier@3.6.2)
+        version: 6.0.0(prettier@3.7.4)
       eslint:
         specifier: 'catalog:'
         version: 9.39.2(jiti@2.5.1)
@@ -230,7 +230,7 @@ importers:
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.50.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))
       prettier:
         specifier: 'catalog:'
-        version: 3.6.2
+        version: 3.7.4
       tsup:
         specifier: 'catalog:'
         version: 8.5.1(jiti@2.5.1)(postcss@8.5.3)(typescript@5.9.3)(yaml@2.8.2)
@@ -258,7 +258,7 @@ importers:
         version: link:../shared-configs
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.0(prettier@3.6.2)
+        version: 6.0.0(prettier@3.7.4)
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.0
@@ -279,7 +279,7 @@ importers:
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.50.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.5.1))
       prettier:
         specifier: 'catalog:'
-        version: 3.6.2
+        version: 3.7.4
       tsup:
         specifier: 'catalog:'
         version: 8.5.1(jiti@2.5.1)(postcss@8.5.3)(typescript@5.9.3)(yaml@2.8.2)
@@ -3164,8 +3164,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.7.4:
+    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -5477,7 +5477,7 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
-  '@trivago/prettier-plugin-sort-imports@6.0.0(prettier@3.6.2)':
+  '@trivago/prettier-plugin-sort-imports@6.0.0(prettier@3.7.4)':
     dependencies:
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
@@ -5487,7 +5487,7 @@ snapshots:
       lodash-es: 4.17.21
       minimatch: 9.0.5
       parse-imports-exports: 0.2.4
-      prettier: 3.6.2
+      prettier: 3.7.4
     transitivePeerDependencies:
       - supports-color
 
@@ -7158,7 +7158,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.6.2: {}
+  prettier@3.7.4: {}
 
   pretty-bytes@5.6.0: {}
 

@@ -8,8 +8,10 @@ import { inputStateAttributes } from "./state";
 import { snapshotTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
-export interface InputSnapshot
-  extends GenericElementSnapshot<CommonInputRole, InputAttributes> {}
+export interface InputSnapshot extends GenericElementSnapshot<
+  CommonInputRole,
+  InputAttributes
+> {}
 
 export type InputRole = "button" | "combobox" | CommonInputRole;
 
@@ -27,8 +29,7 @@ interface InputAttributes extends CommonInputAttributes {
 }
 
 export interface CommonInputAttributes
-  extends InputStateAttributes,
-    DiscribableAttributes {
+  extends InputStateAttributes, DiscribableAttributes {
   placeholder?: string;
 }
 

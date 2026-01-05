@@ -5,8 +5,10 @@ import type { DisableableAttributes } from "./state";
 import { disableableAttributes } from "./state";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
-export interface ButtonSnapshot
-  extends GenericElementSnapshot<"button", ButtonAttributes> {}
+export interface ButtonSnapshot extends GenericElementSnapshot<
+  "button",
+  ButtonAttributes
+> {}
 
 interface ButtonAttributes extends DisableableAttributes {
   expanded?: boolean;
