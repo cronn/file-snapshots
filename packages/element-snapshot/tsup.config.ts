@@ -4,12 +4,12 @@ import { tsupConfig } from "@cronn/shared-configs/tsup";
 
 export default defineConfig((options) => [
   tsupConfig({
-    entry: ["src/index.ts"],
+    entry: ["src/browser-lib.ts"],
     format: ["iife"],
     ...options,
   }),
   tsupConfig({
-    entry: ["src/types.ts"],
+    entry: ["src/index.ts"],
     ...options,
   }),
 ]);

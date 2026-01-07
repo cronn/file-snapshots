@@ -36,25 +36,29 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.global.js"
-    },
-    "./types": {
-      "types": "./dist/types.d.ts",
-      "default": "./dist/types.js"
+      "default": "./dist/index.js"
     }
   },
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "package-directory": "catalog:"
+  },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@types/node": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
+    "@playwright/test": "catalog:",
     "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:"
+  },
+  "peerDependencies": {
+    "@playwright/test": "^1.55"
   }
 }

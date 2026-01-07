@@ -1,4 +1,10 @@
-/// <reference types="@cronn/element-snapshot" />
+import type { ComboboxSnapshot } from "../browser/combobox";
+import type { TextSnapshot } from "../browser/text";
+import type {
+  ElementRole,
+  ElementSnapshot,
+  NodeSnapshot,
+} from "../browser/types";
 
 interface NormalizedElementSnapshot {
   role: ElementRole;
