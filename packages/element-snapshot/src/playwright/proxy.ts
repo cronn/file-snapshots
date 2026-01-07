@@ -1,6 +1,8 @@
-/// <reference lib="dom" />
 import type { Locator, Page } from "@playwright/test";
-import { fileURLToPath } from "node:url";
+import path from "node:path";
+import { packageDirectory } from "package-directory";
+
+import type { NodeSnapshot } from "../browser/types";
 
 export class ElementSnapshotProxy {
   private readonly page: Page;
@@ -26,11 +28,26 @@ export class ElementSnapshotProxy {
   }
 
   private async loadLibrary(): Promise<void> {
-    const libPath = fileURLToPath(
-      import.meta.resolve("@cronn/element-snapshot"),
+    const packageRootDir = await this.resolvePackageRootDir();
+    const libPath = path.resolve(
+      packageRootDir,
+      "dist",
+      "browser-lib.global.js",
     );
     await this.page.addScriptTag({
       path: libPath,
     });
+  }
+
+  private async resolvePackageRootDir(): Promise<string> {
+    const packageDir = await packageDirectory({
+      cwd: import.meta.dirname,
+    });
+
+    if (packageDir === undefined) {
+      throw new Error("Unable to resolve root directory of package");
+    }
+
+    return packageDir;
   }
 }

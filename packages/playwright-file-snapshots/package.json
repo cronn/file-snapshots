@@ -56,12 +56,12 @@
     "dist"
   ],
   "dependencies": {
-    "@cronn/element-snapshot": "workspace:*",
     "@cronn/lib-file-snapshots": "workspace:*",
     "package-directory": "catalog:"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
+    "@cronn/element-snapshot": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",

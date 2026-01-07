@@ -1,6 +1,6 @@
 import type { Locator } from "@playwright/test";
 
-import type { NodeSnapshot } from "@cronn/element-snapshot/types";
+import type { NodeSnapshot } from "../browser/types";
 
 import { ElementSnapshotProxy } from "./proxy";
 import { ElementSnapshotTransformer } from "./transformer";

@@ -215,9 +215,12 @@ export const expect = defineValidationFileExpect().configure({
 });
 ```
 
-Note: Enabling soft assertions for all matchers may have unintended side effects if you are using matchers like `expect.toPass`.
+> [!NOTE]
+> Enabling soft assertions for all matchers may have unintended side effects if you are using matchers like `expect.toPass`.
 
-## ARIA Snapshots
+## Snapshot Implementations
+
+### ARIA Snapshots
 
 Playwright's [ARIA Snapshots](https://playwright.dev/docs/aria-snapshots)
 provide a way to snapshot the accessibility tree of a page. Unfortunately, they
@@ -238,6 +241,26 @@ test("matches ARIA snapshot", async ({ page }) => {
 });
 ```
 
+ARIA Snapshot Example:
+
+```json
+{
+  "main": [
+    "heading 'List' [level=1]",
+    {
+      "list": [
+        {
+          "listitem": "Apple"
+        },
+        {
+          "listitem": "Peach"
+        }
+      ]
+    }
+  ]
+}
+```
+
 To combine multiple ARIA snapshots in one JSON file, you can group them using an
 object:
 
@@ -252,39 +275,45 @@ test("matches combined ARIA snapshots", async ({ page }) => {
 });
 ```
 
-Note: When using `snapshotAria`, a compatible version of `yaml` needs to be installed in your project.
+> [!NOTE]
+> When using `snapshotAria`, a compatible version of `yaml` needs to be installed in your project.
 
-## Element Snapshots (experimental)
+### Element Snapshots
 
-Element Snapshots are a custom snapshot implementation inspired by Playwright's ARIA Snapshots and the [Accessibility Object Model](https://wicg.github.io/aom/explainer.html). They cover additional properties, e.g. validation attributes like `required` or `invalid` on form inputs, and are optimized to be serialized as JSON.
+[Element Snapshots](../element-snapshot/README.md) are an alternative to ARIA Snapshots, providing a higher coverage of HTML and ARIA attributes as well as the ability to implement custom snapshots, e.g. for Markdown Tables.
 
 ```ts
-import { snapshotElement } from "@cronn/playwright-file-snapshots";
+import { snapshotElement } from "@cronn/element-snapshot";
 
 test("matches element snapshot", async ({ page }) => {
   await expect(snapshotElement(page.getByRole("main"))).toMatchJsonFile();
 });
 ```
 
-Note that Element Snapshots are currently an experimental feature. Not all elements and roles are covered, and the serialization format might change.
+Element Snapshot Example:
 
-### Element Snapshot Options
-
-Snapshot options can be passed when calling the snapshot function:
-
-```ts
-await expect(
-  snapshotElement(page.getByLabel("My select"), {
-    includeComboboxOptions: true,
-  }),
-).toMatchJsonFile({
-  name: "select options",
-});
+```json
+{
+  "main": [
+    {
+      "heading": {
+        "name": "List",
+        "level": 1
+      }
+    },
+    {
+      "list": [
+        {
+          "listitem": "Apple"
+        },
+        {
+          "listitem": "Peach"
+        }
+      ]
+    }
+  ]
+}
 ```
-
-| Option                   | Default Value | Description                               |
-| ------------------------ | ------------- | ----------------------------------------- |
-| `includeComboboxOptions` | `false`       | Include combobox options in the snapshot. |
 
 ## Configuration
 
