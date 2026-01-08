@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.35.0
+
+### Minor Changes
+
+- 5046371: Breaking change: Move element snapshot functions to `@cronn/element-snapshot`
+
 ## 0.34.0
 
 ### Minor Changes
