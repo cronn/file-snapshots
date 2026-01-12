@@ -30,6 +30,7 @@ function createConfig(values: Partial<FullConfig> = {}): FullConfig {
     reportSlowTests: null,
     rootDir: "",
     shard: null,
+    tags: [],
     updateSnapshots: "none",
     updateSourceMethod: "overwrite",
     version: "",

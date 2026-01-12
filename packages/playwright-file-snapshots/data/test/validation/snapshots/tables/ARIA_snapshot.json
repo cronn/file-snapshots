@@ -92,7 +92,7 @@
       "table": {
         "rowgroup": {
           "row 'th outside row td outside row'": [
-            "cell 'th outside row'",
+            "rowheader 'th outside row'",
             "cell 'td outside row'"
           ]
         }
