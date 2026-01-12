@@ -1,20 +1,13 @@
 {
-  "name": "@cronn/playwright-file-snapshots",
-  "version": "0.35.0",
-  "description": "Write tests with Playwright using file snapshots",
-  "keywords": [
-    "playwright",
-    "file snapshots"
-  ],
-  "bugs": {
-    "url": "https://github.com/cronn/file-snapshots/issues"
-  },
+  "name": "@cronn/aria-snapshot",
+  "version": "0.0.0",
+  "description": "JSON-based ARIA snapshots for Playwright",
   "author": "cronn",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/cronn/file-snapshots.git",
-    "directory": "packages/playwright-file-snapshots"
+    "directory": "packages/aria-snapshot"
   },
   "homepage": "https://github.com/cronn/file-snapshots",
   "packageManager": "pnpm@10.27.0",
@@ -34,15 +27,10 @@
     }
   },
   "scripts": {
-    "lint:check": "eslint src/ tests/ --max-warnings=0",
-    "lint:fix": "eslint src/ tests/ --max-warnings=0 --fix",
-    "test:unit": "vitest run",
-    "test:unit:coverage": "vitest run --coverage",
-    "test:integration": "playwright test && playwright test --grep @snapshot-update --update-snapshots",
-    "playwright:install": "playwright install chromium",
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "compile": "tsc",
-    "build": "tsup",
-    "start": "serve test-pages/"
+    "build": "tsup"
   },
   "type": "module",
   "exports": {
@@ -56,13 +44,10 @@
     "dist"
   ],
   "dependencies": {
-    "@cronn/lib-file-snapshots": "workspace:*",
-    "package-directory": "catalog:"
+    "yaml": "catalog:"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
-    "@cronn/aria-snapshot": "workspace:*",
-    "@cronn/element-snapshot": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
@@ -72,7 +57,6 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
-    "serve": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",

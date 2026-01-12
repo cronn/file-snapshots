@@ -220,21 +220,12 @@ export const expect = defineValidationFileExpect().configure({
 
 ## Snapshot Implementations
 
-### ARIA Snapshots
+### [ARIA Snapshots](../aria-snapshot/README.md)
 
-Playwright's [ARIA Snapshots](https://playwright.dev/docs/aria-snapshots)
-provide a way to snapshot the accessibility tree of a page. Unfortunately, they
-use YAML as serialization format, which makes it hard to programmatically
-process ARIA snapshots in TypeScript, e.g. for combining ARIA snapshots of
-multiple locators in a single snapshot.
-
-For this reason, `playwright-file-snapshots` provides the custom wrapper
-`snapshotAria` around Playwright's ARIA snapshot, which transforms the YAML
-snapshot into a JSON-compatible snapshot ready to be passed to
-`toMatchJsonFile`:
+ARIA Snapshots are a JSON-based adapter for Playwright's YAML-based ARIA Snapshots. They facilitate snapshot composition using a format natively supported by JavaScript.
 
 ```ts
-import { snapshotAria } from "@cronn/playwright-file-snapshots";
+import { snapshotAria } from "@cronn/aria-snapshot";
 
 test("matches ARIA snapshot", async ({ page }) => {
   await expect(snapshotAria(page.getByRole("main"))).toMatchJsonFile();
@@ -261,26 +252,9 @@ ARIA Snapshot Example:
 }
 ```
 
-To combine multiple ARIA snapshots in one JSON file, you can group them using an
-object:
+### [Element Snapshots](../element-snapshot/README.md)
 
-```ts
-import { snapshotAria } from "@cronn/playwright-file-snapshots";
-
-test("matches combined ARIA snapshots", async ({ page }) => {
-  await expect({
-    nav: await snapshotAria(page.getByRole("navigation")),
-    main: await snapshotAria(page.getByRole("main")),
-  }).toMatchJsonFile();
-});
-```
-
-> [!NOTE]
-> When using `snapshotAria`, a compatible version of `yaml` needs to be installed in your project.
-
-### Element Snapshots
-
-[Element Snapshots](../element-snapshot/README.md) are an alternative to ARIA Snapshots, providing a higher coverage of HTML and ARIA attributes as well as the ability to implement custom snapshots, e.g. for Markdown Tables.
+Element Snapshots are an alternative to ARIA Snapshots, providing a higher coverage of HTML and ARIA attributes as well as the ability to implement custom snapshots, e.g. for Markdown Tables.
 
 ```ts
 import { snapshotElement } from "@cronn/element-snapshot";
