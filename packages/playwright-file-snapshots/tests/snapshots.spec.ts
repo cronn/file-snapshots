@@ -1,9 +1,10 @@
 import type { Locator } from "@playwright/test";
 import test from "@playwright/test";
 
+import { snapshotAria } from "@cronn/aria-snapshot";
 import { snapshotElement } from "@cronn/element-snapshot";
 
-import { defineValidationFileExpect, snapshotAria } from "../src";
+import { defineValidationFileExpect } from "../src";
 
 const expect = defineValidationFileExpect();
 

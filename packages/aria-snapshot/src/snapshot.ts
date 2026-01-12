@@ -1,16 +1,13 @@
 import type { Locator } from "@playwright/test";
+import { parse } from "yaml";
 
+import type { ParsedSinglePropertyObject, PlainObject } from "./utils";
 import {
-  type PlainObject,
   isArray,
-  isPlainObject,
-  isString,
-} from "@cronn/lib-file-snapshots";
-
-import type { ParsedSinglePropertyObject } from "./utils";
-import {
   isNonNullish,
+  isPlainObject,
   isSingleItemArray,
+  isString,
   parseSinglePropertyObject,
   unwrapSingleItemArray,
 } from "./utils";
@@ -33,17 +30,8 @@ class AriaSnapshot {
 
   public async snapshot(locator: Locator): Promise<unknown> {
     const yamlSnapshot = await locator.ariaSnapshot();
-    const jsonSnapshot: unknown = await this.parseYaml(yamlSnapshot);
+    const jsonSnapshot: unknown = await parse(yamlSnapshot);
     return this.normalizeJsonRecursive(jsonSnapshot);
-  }
-
-  private async parseYaml(yamlString: string): Promise<unknown> {
-    try {
-      const { parse } = await import("yaml");
-      return parse(yamlString);
-    } catch {
-      throw new Error("Missing peer dependency 'yaml'");
-    }
   }
 
   private normalizeJsonRecursive(value: unknown): unknown {
