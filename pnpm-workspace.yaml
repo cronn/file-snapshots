@@ -2,7 +2,7 @@ packages:
   - packages/*
 
 catalog:
-  "@changesets/cli": 2.29.7
+  "@changesets/cli": 2.29.8
   "@playwright/test": 1.56.1
   "@types/node": 24.10.4
   "@vitest/coverage-v8": 4.0.16
