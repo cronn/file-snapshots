@@ -22,6 +22,13 @@ catalog:
   "package-directory": 8.1.0
   "@pnpm/meta-updater": 2.0.6
 
+overrides:
+  "brace-expansion": ">=2.0.2"
+  "cross-spawn": ">=7.0.5"
+  "glob": ">=10.5.0"
+  "js-yaml": ">=4.1.1"
+  "vite": ">=6.4.1"
+
 includeWorkspaceRoot: true
 
 strictDepBuilds: true
