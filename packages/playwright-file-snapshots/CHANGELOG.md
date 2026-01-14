@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 0.36.0
+
+### Minor Changes
+
+- a9b2c00: Breaking change: Extract `snapshotAria` to package `@cronn/aria-snapshot`
+
 ## 0.35.0
 
 ### Minor Changes
