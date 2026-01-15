@@ -40,6 +40,9 @@ jobs:
       - name: Remove devEngines.packageManager for npm info during release
         run: jq 'del(.devEngines.packageManager)' package.json > tmp.json && mv tmp.json package.json
 
+      - name: Configure npm token
+        run: npm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}" # pnpm config set is broken
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
