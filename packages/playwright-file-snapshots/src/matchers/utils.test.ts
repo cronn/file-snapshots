@@ -2,6 +2,8 @@ import type { FullConfig } from "@playwright/test";
 import path from "node:path";
 import { describe, expect, test } from "vitest";
 
+import type { UpdateSnapshotsType } from "@cronn/lib-file-snapshots";
+
 import type { ParsedTestInfo } from "./utils";
 import {
   parseTestInfo,
@@ -57,23 +59,20 @@ describe("parseTestInfo", () => {
       }).then(normalizeRootDir),
     ).resolves.toStrictEqual({
       rootDir: "playwright-file-snapshots",
-      updateSnapshots: true,
+      updateSnapshots: "all",
     });
   });
 });
 
 describe("parseUpdateSnapshots", () => {
-  test.each(["changed", "all"] as const)(
-    "when value is '%s', returns true",
-    (value) => {
-      expect(parseUpdateSnapshots(value)).toBe(true);
-    },
-  );
+  test("when value is 'changed', returns 'all'", () => {
+    expect(parseUpdateSnapshots("changed")).toBe("all");
+  });
 
-  test.each(["none", "missing"] as const)(
-    "when value is '%s', returns false",
-    (value) => {
-      expect(parseUpdateSnapshots(value)).toBe(false);
+  test.each(["all", "missing", "none"] as const)(
+    "when value is '%s', returns '%'",
+    (value: UpdateSnapshotsType) => {
+      expect(parseUpdateSnapshots(value)).toBe(value);
     },
   );
 });

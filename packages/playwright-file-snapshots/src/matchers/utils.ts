@@ -1,12 +1,14 @@
 import type { TestInfo, TestStepInfo } from "@playwright/test";
 
+import type { UpdateSnapshotsType } from "@cronn/lib-file-snapshots";
+
 import { resolvePackageRootDir } from "../utils/file";
 
 type RawTestInfo = Pick<TestInfo, "config">;
 
 export interface ParsedTestInfo {
   rootDir: string;
-  updateSnapshots: boolean;
+  updateSnapshots: UpdateSnapshotsType;
 }
 
 export async function parseTestInfo(
@@ -22,8 +24,12 @@ export async function parseTestInfo(
 
 export function parseUpdateSnapshots(
   updateSnapshots: TestInfo["config"]["updateSnapshots"],
-): boolean {
-  return updateSnapshots === "changed" || updateSnapshots === "all";
+): UpdateSnapshotsType {
+  if (updateSnapshots === "changed") {
+    return "all";
+  }
+
+  return updateSnapshots;
 }
 
 type RawTestStepInfo = Pick<TestStepInfo, "titlePath">;

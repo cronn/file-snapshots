@@ -36,6 +36,7 @@
     "@pnpm/meta-updater": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "prettier": "catalog:",
-    "turbo": "catalog:"
+    "turbo": "catalog:",
+    "wait-on": "catalog:"
   }
 }

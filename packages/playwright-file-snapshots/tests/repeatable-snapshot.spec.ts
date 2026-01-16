@@ -1,22 +1,16 @@
 import { expect, test } from "@playwright/test";
-import path from "node:path";
 
 import { defineValidationFileExpect } from "../src";
 import {
-  SNAPSHOT_UPDATE_TAG,
   SnapshotInstrumentation,
   assertSnapshotIntervals,
-  createTmpDir,
   runOnlyWhenSnapshotUpdatesAreEnabled,
+  tags,
+  temporarySnapshotDirs,
 } from "../src/utils/test";
 
 test("when validation file is missing, waits for delay before creating snapshot", async () => {
-  const tmpDir = createTmpDir();
-
-  const testExpect = defineValidationFileExpect({
-    validationDir: path.join(tmpDir, "validation"),
-    outputDir: path.join(tmpDir, "output"),
-  });
+  const testExpect = defineValidationFileExpect(temporarySnapshotDirs());
 
   const instrumentation = new SnapshotInstrumentation();
   await expect(() =>
@@ -31,13 +25,16 @@ test("when validation file is missing, waits for delay before creating snapshot"
 
 test(
   "when snapshot updates are enabled, waits for delay before creating snapshot",
-  { tag: [SNAPSHOT_UPDATE_TAG] },
+  { tag: tags.updateAll },
   async () => {
     runOnlyWhenSnapshotUpdatesAreEnabled();
 
-    const testExpect = defineValidationFileExpect();
+    const testExpect = defineValidationFileExpect(temporarySnapshotDirs());
 
     const instrumentation = new SnapshotInstrumentation();
+    await expect(() =>
+      testExpect("initial value").toMatchJsonFile(),
+    ).rejects.toThrowError();
     await expect(() =>
       testExpect(() => {
         instrumentation.addSnapshot();

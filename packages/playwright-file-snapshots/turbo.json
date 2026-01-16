@@ -3,6 +3,12 @@
   "extends": ["//"],
   "tasks": {
     "playwright:install": {},
+    "start": {
+      "persistent": true
+    },
+    "test": {
+      "dependsOn": ["test:unit", "test:integration"]
+    },
     "test:unit": {
       "dependsOn": ["^build", "compile"]
     },
@@ -12,11 +18,26 @@
     },
     "test:integration": {
       "dependsOn": [
-        "^build",
-        "compile",
-        "playwright:install",
-        "copy:browser-lib"
-      ],
+        "test:integration:core",
+        "test:integration:update-all",
+        "test:integration:update-changed",
+        "test:integration:update-none"
+      ]
+    },
+    "test:integration:core": {
+      "dependsOn": ["^build", "compile", "playwright:install"],
+      "outputs": ["playwright-report/**", "test-results/**"]
+    },
+    "test:integration:update-all": {
+      "dependsOn": ["^build", "compile", "playwright:install"],
+      "outputs": ["playwright-report/**", "test-results/**"]
+    },
+    "test:integration:update-changed": {
+      "dependsOn": ["^build", "compile", "playwright:install"],
+      "outputs": ["playwright-report/**", "test-results/**"]
+    },
+    "test:integration:update-none": {
+      "dependsOn": ["^build", "compile", "playwright:install"],
       "outputs": ["playwright-report/**", "test-results/**"]
     },
     "check": {
@@ -27,9 +48,6 @@
         "test:integration",
         "//#format:check"
       ]
-    },
-    "copy:browser-lib": {
-      "dependsOn": ["^build", "build"]
     }
   }
 }
