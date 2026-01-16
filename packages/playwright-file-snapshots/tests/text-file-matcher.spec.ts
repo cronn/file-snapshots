@@ -6,6 +6,7 @@ import {
   SnapshotInstrumentation,
   assertSnapshotIntervals,
   runOnlyWhenSnapshotUpdatesAreEnabled,
+  temporarySnapshotDirs,
   testFilePathResolver,
 } from "../src/utils/test";
 
@@ -56,10 +57,14 @@ test("applies update delay", { tag: [SNAPSHOT_UPDATE_TAG] }, async () => {
   runOnlyWhenSnapshotUpdatesAreEnabled();
 
   const testExpect = defineValidationFileExpect({
+    ...temporarySnapshotDirs(),
     updateDelay: 100,
   });
 
   const instrumentation = new SnapshotInstrumentation();
+  await expect(() =>
+    testExpect("initial value").toMatchTextFile(),
+  ).rejects.toThrowError();
   await expect(() =>
     testExpect(() => {
       instrumentation.addSnapshot();

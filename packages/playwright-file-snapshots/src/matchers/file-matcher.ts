@@ -66,7 +66,7 @@ export async function matchValidationFile(
   const resolveFilePath: FilePathResolver =
     localFilePathResolver ?? configuredFilePathResolver ?? resolveNameAsFile;
 
-  return await test.step(MATCHER_STEP_TITLE, async (stepTestInfo) => {
+  return test.step(MATCHER_STEP_TITLE, async (stepTestInfo) => {
     const { rootDir, updateSnapshots } = await parseTestInfo(test.info());
     const { testPath, titlePath } = parseTestStepInfo(stepTestInfo);
     const filePath = resolveFilePath({ testPath, titlePath, name });
@@ -75,6 +75,7 @@ export async function matchValidationFile(
       outputDir: ensureAbsolutePath(outputDir, rootDir),
       filePath,
       serializer,
+      updateSnapshots,
     });
 
     const testTimeout = options.timeout ?? timeout;
@@ -84,8 +85,7 @@ export async function matchValidationFile(
     );
     const snapshot = createSnapshotInstance(actual);
 
-    const isUpdate = matcher.isValidationFileMissing || updateSnapshots;
-    if (isUpdate && snapshot instanceof RepeatableSnapshot) {
+    if (matcher.isUpdate && snapshot instanceof RepeatableSnapshot) {
       await waitForTimer(updateDelay);
     }
 
@@ -102,7 +102,7 @@ export async function matchValidationFile(
         pass = false;
       }
 
-      const skipRetry = isUpdate || snapshot instanceof StaticSnapshot;
+      const skipRetry = matcher.isUpdate || snapshot instanceof StaticSnapshot;
       const stopRetry =
         pass ||
         (snapshot instanceof RepeatableSnapshot &&

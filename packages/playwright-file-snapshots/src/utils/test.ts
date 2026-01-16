@@ -5,10 +5,21 @@ import path from "node:path";
 
 import type { FilePathResolverParams } from "@cronn/lib-file-snapshots";
 
-import { parseUpdateSnapshots } from "../matchers/utils";
+import type { PlaywrightValidationFileMatcherConfig } from "../matchers/types";
 
 export function createTmpDir(): string {
   return mkdtempSync(path.join(tmpdir(), "test-"));
+}
+
+export function temporarySnapshotDirs(): Pick<
+  PlaywrightValidationFileMatcherConfig,
+  "validationDir" | "outputDir"
+> {
+  const tmpDir = createTmpDir();
+  return {
+    validationDir: path.join(tmpDir, "validation"),
+    outputDir: path.join(tmpDir, "output"),
+  };
 }
 
 export function testFilePathResolver(params: FilePathResolverParams): string {
@@ -51,8 +62,6 @@ export function assertSnapshotIntervals(
 export const SNAPSHOT_UPDATE_TAG = "@snapshot-update";
 
 export function runOnlyWhenSnapshotUpdatesAreEnabled(): void {
-  const updateSnapshots = parseUpdateSnapshots(
-    test.info().config.updateSnapshots,
-  );
-  test.skip(!updateSnapshots, "Snapshot updates are disabled");
+  const skipUpdates = test.info().config.updateSnapshots !== "all";
+  test.skip(skipUpdates, "Snapshot updates are disabled");
 }

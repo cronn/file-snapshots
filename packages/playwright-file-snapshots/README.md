@@ -189,10 +189,10 @@ test("retry snapshot", async ({ page }) => {
 });
 ```
 
-When creating missing file snapshots, instead of retrying a delay of 250 ms (or `timeout` when lower) is added before performing the snapshot. This avoids flaky snapshots and long running tests.
-The default delay can be overridden by defining `updateDelay` as matcher or file snapshot option.
+When creating missing file snapshots, instead of retrying a delay of 250 ms (or `timeout` when lower) is added before performing the snapshot. This avoids flaky snapshots and long-running tests.
+The same behavior is used when updating snapshots.
 
-The same behavior can be enforced to update snapshots: simply pass the `--update-snapshots` flag to the Playwright CLI. Note that in contrast to Playwright, this only creates updated output files. The corresponding validation files need to be updated in a separate step.
+The default delay can be overridden by defining `updateDelay` as matcher or file snapshot option.
 
 ### Using Soft Assertions
 
@@ -341,3 +341,16 @@ await expect(value).toMatchTextFile({
 | Option          | Default Value | Description                                    |
 | --------------- | ------------- | ---------------------------------------------- |
 | `fileExtension` | `txt`         | File extension used for storing the text file. |
+
+## Updating Snapshots
+
+Snapshots can be updated using Playwright's built-in support for snapshot updates:
+
+- Using the CLI parameter `--update-snapshots [mode]`
+- Configuring the Testing Option "Update snapshots" in the Playwright Test UI
+- Configuring the option `updateSnapshots` in your `playwright.config.ts`
+
+By default, only missing validation files are written. Using the values `all` or `changed`, existing validation files will also be overridden.
+
+> ![NOTE]
+> If you accidentally updated more snapshots than intended, you can revert the changes using your VCS and selectively apply updates by diffing the `validation` and `output` directories.
