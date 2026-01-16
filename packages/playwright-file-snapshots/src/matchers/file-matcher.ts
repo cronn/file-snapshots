@@ -66,7 +66,7 @@ export async function matchValidationFile(
   const resolveFilePath: FilePathResolver =
     localFilePathResolver ?? configuredFilePathResolver ?? resolveNameAsFile;
 
-  return await test.step(MATCHER_STEP_TITLE, async (stepTestInfo) => {
+  return test.step(MATCHER_STEP_TITLE, async (stepTestInfo) => {
     const { rootDir, updateSnapshots } = await parseTestInfo(test.info());
     const { testPath, titlePath } = parseTestStepInfo(stepTestInfo);
     const filePath = resolveFilePath({ testPath, titlePath, name });
