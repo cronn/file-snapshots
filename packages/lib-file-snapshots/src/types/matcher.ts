@@ -22,7 +22,16 @@ export interface ValidationFileMatcherConfig {
    * The serializer to use for the snapshot
    */
   serializer: SnapshotSerializer;
+
+  /**
+   * Whether to update golden masters with the actual result.
+   *
+   * @default "missing"
+   */
+  updateSnapshots?: UpdateSnapshotsType;
 }
+
+export type UpdateSnapshotsType = "all" | "missing" | "none";
 
 export interface ValidationFileMatcherResult {
   actual: string;

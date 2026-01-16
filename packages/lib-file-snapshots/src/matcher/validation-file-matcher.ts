@@ -2,6 +2,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 import type {
+  UpdateSnapshotsType,
   ValidationFileMatcherConfig,
   ValidationFileMatcherResult,
 } from "../types/matcher";
@@ -18,11 +19,13 @@ interface MatcherFilePaths {
 }
 
 export class ValidationFileMatcher {
+  private readonly updateSnapshots: UpdateSnapshotsType;
   private readonly serializer: SnapshotSerializer;
   private readonly filePaths: MatcherFilePaths;
-  private readonly validationFile: string | undefined;
+  private validationFile: string | undefined;
 
   public constructor(config: ValidationFileMatcherConfig) {
+    this.updateSnapshots = config.updateSnapshots ?? "missing";
     this.serializer = config.serializer;
     this.filePaths = this.buildFilePaths(config);
     this.validationFile = this.readValidationFile();
@@ -32,23 +35,24 @@ export class ValidationFileMatcher {
     return this.validationFile === undefined;
   }
 
+  public get isUpdate(): boolean {
+    return (
+      this.updateSnapshots === "all" ||
+      (this.isValidationFileMissing && this.updateSnapshots === "missing")
+    );
+  }
+
   public matchFileSnapshot(actual: unknown): ValidationFileMatcherResult {
     if (!this.serializer.canSerialize(actual)) {
       throw new Error(`Cannot serialize value of type ${typeof actual}`);
     }
 
     const serializedActual = this.serializer.serialize(actual);
-
-    if (this.validationFile === undefined) {
-      return this.createMatcherResult({
-        actual: serializedActual,
-        expected: addMissingFileMarker(serializedActual),
-      });
-    }
+    const expected = this.resolveExpected(serializedActual);
 
     return this.createMatcherResult({
       actual: serializedActual,
-      expected: this.validationFile,
+      expected,
     });
   }
 
@@ -97,12 +101,32 @@ export class ValidationFileMatcher {
     matcherResult: Pick<ValidationFileMatcherResult, "actual" | "expected">,
   ): void {
     const { actual, expected } = matcherResult;
-    const { outputFilePath, validationFilePath } = this.filePaths;
 
-    writeSnapshotFile(outputFilePath, actual);
+    this.writeOutputFile(actual);
 
-    if (this.isValidationFileMissing) {
-      writeSnapshotFile(validationFilePath, expected);
+    if (this.isUpdate) {
+      this.writeValidationFile(
+        this.isValidationFileMissing ? expected : actual,
+      );
     }
+  }
+
+  private resolveExpected(actual: string): string {
+    if (this.validationFile === undefined) {
+      return addMissingFileMarker(actual);
+    }
+
+    return this.validationFile;
+  }
+
+  private writeOutputFile(data: string): void {
+    const { outputFilePath } = this.filePaths;
+    writeSnapshotFile(outputFilePath, data);
+  }
+
+  private writeValidationFile(data: string): void {
+    const { validationFilePath } = this.filePaths;
+    writeSnapshotFile(validationFilePath, data);
+    this.validationFile = data;
   }
 }
