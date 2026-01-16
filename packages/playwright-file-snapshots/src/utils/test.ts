@@ -1,3 +1,4 @@
+import type { PlaywrightTestConfig } from "@playwright/test";
 import { expect, test } from "@playwright/test";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -5,10 +6,20 @@ import path from "node:path";
 
 import type { FilePathResolverParams } from "@cronn/lib-file-snapshots";
 
-import { parseUpdateSnapshots } from "../matchers/utils";
+import type { PlaywrightValidationFileMatcherConfig } from "../matchers/types";
 
 export function createTmpDir(): string {
   return mkdtempSync(path.join(tmpdir(), "test-"));
+}
+
+export function temporarySnapshotDirs(): Required<
+  Pick<PlaywrightValidationFileMatcherConfig, "validationDir" | "outputDir">
+> {
+  const tmpDir = createTmpDir();
+  return {
+    validationDir: path.join(tmpDir, "validation"),
+    outputDir: path.join(tmpDir, "output"),
+  };
 }
 
 export function testFilePathResolver(params: FilePathResolverParams): string {
@@ -52,11 +63,22 @@ export function assertSnapshotIntervals(
   }
 }
 
-export const SNAPSHOT_UPDATE_TAG = "@snapshot-update";
+export const tags = {
+  updateAll: "@update-all",
+  updateChanged: "@update-changed",
+  updateNone: "@update-none",
+};
+
+export type PlaywrightUpdateType = PlaywrightTestConfig["updateSnapshots"];
 
 export function runOnlyWhenSnapshotUpdatesAreEnabled(): void {
-  const updateSnapshots = parseUpdateSnapshots(
-    test.info().config.updateSnapshots,
-  );
-  test.skip(!updateSnapshots, "Snapshot updates are disabled");
+  runOnlyWhenUpdateSnapshotsIs("all", "changed");
+}
+
+export function runOnlyWhenUpdateSnapshotsIs(
+  ...expectedUpdateTypes: Array<PlaywrightUpdateType>
+): void {
+  const updateType = test.info().config.updateSnapshots;
+  const isExpectedUpdateType = !expectedUpdateTypes.includes(updateType);
+  test.skip(isExpectedUpdateType, `Skip when updateSnapshots is ${updateType}`);
 }

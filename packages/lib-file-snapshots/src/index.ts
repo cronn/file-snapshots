@@ -16,6 +16,7 @@ export type {
   ValidationFileMatcherResult,
   FilePathResolver,
   FilePathResolverParams,
+  UpdateSnapshotsType,
 } from "./types/matcher";
 export type { SnapshotSerializer } from "./types/serializer";
 export { normalizeFileName } from "./utils/file";

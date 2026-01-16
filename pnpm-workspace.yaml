@@ -21,6 +21,7 @@ catalog:
   "turbo": 2.7.4
   "package-directory": 8.1.0
   "@pnpm/meta-updater": 2.0.6
+  "wait-on": 9.0.3
 
 overrides:
   "brace-expansion": ">=2.0.2"
