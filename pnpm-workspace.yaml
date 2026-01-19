@@ -5,12 +5,12 @@ catalog:
   "@changesets/cli": 2.29.8
   "@playwright/test": 1.57.0
   "@types/node": 24.10.4
-  "@vitest/coverage-v8": 4.0.16
-  "@vitest/expect": 4.0.16
+  "@vitest/coverage-v8": 4.0.17
+  "@vitest/expect": 4.0.17
   "serve": 14.2.5
   "tsup": 8.5.1
   "typescript": 5.9.3
-  "vitest": 4.0.16
+  "vitest": 4.0.17
   "yaml": 2.8.2
   "eslint": 9.39.2
   "typescript-eslint": 8.51.0
