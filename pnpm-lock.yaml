@@ -16,8 +16,8 @@ catalogs:
       specifier: 2.0.6
       version: 2.0.6
     '@trivago/prettier-plugin-sort-imports':
-      specifier: 6.0.1
-      version: 6.0.1
+      specifier: 6.0.2
+      version: 6.0.2
     '@types/node':
       specifier: 24.10.4
       version: 24.10.4
@@ -83,7 +83,7 @@ importers:
         version: 2.0.6(@types/node@24.10.4)(typanion@3.14.0)
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.1(prettier@3.7.4)
+        version: 6.0.2(prettier@3.7.4)
       prettier:
         specifier: 'catalog:'
         version: 3.7.4
@@ -108,7 +108,7 @@ importers:
         version: 1.57.0
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.1(prettier@3.7.4)
+        version: 6.0.2(prettier@3.7.4)
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
@@ -154,7 +154,7 @@ importers:
         version: 1.57.0
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.1(prettier@3.7.4)
+        version: 6.0.2(prettier@3.7.4)
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
@@ -187,7 +187,7 @@ importers:
         version: link:../shared-configs
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.1(prettier@3.7.4)
+        version: 6.0.2(prettier@3.7.4)
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
@@ -245,7 +245,7 @@ importers:
         version: 1.57.0
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.1(prettier@3.7.4)
+        version: 6.0.2(prettier@3.7.4)
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
@@ -284,7 +284,7 @@ importers:
     devDependencies:
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.1(prettier@3.7.4)
+        version: 6.0.2(prettier@3.7.4)
       eslint:
         specifier: 'catalog:'
         version: 9.39.2(jiti@2.5.1)
@@ -324,7 +324,7 @@ importers:
         version: link:../shared-configs
       '@trivago/prettier-plugin-sort-imports':
         specifier: 'catalog:'
-        version: 6.0.1(prettier@3.7.4)
+        version: 6.0.2(prettier@3.7.4)
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
@@ -1446,8 +1446,8 @@ packages:
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
 
-  '@trivago/prettier-plugin-sort-imports@6.0.1':
-    resolution: {integrity: sha512-6B13DCWDfAfh4AEJ43gRgeCSAQmlKG5LHqHzHc0lbUwgBy0rX7o41US+46Fd4XiXBx+JDGEz3NBadCbUls0dUQ==}
+  '@trivago/prettier-plugin-sort-imports@6.0.2':
+    resolution: {integrity: sha512-3DgfkukFyC/sE/VuYjaUUWoFfuVjPK55vOFDsxD56XXynFMCZDYFogH2l/hDfOsQAm1myoU/1xByJ3tWqtulXA==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@vue/compiler-sfc': 3.x
@@ -5333,7 +5333,7 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
-  '@trivago/prettier-plugin-sort-imports@6.0.1(prettier@3.7.4)':
+  '@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.7.4)':
     dependencies:
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
