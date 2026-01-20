@@ -36,8 +36,8 @@ strictDepBuilds: true
 ignoredBuiltDependencies:
   - esbuild
 
-minimumReleaseAge: 10080
+minimumReleaseAge: 10080 # 1 week
 
 trustPolicy: no-downgrade
-trustPolicyIgnoreAfter: 10080
+trustPolicyIgnoreAfter: 40320 # 4 weeks
 blockExoticSubdeps: true
