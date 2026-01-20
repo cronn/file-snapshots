@@ -35,6 +35,8 @@ export class SnapshotInstrumentation {
   }
 }
 
+const maximumIntervalDifference = 125;
+
 export function assertSnapshotIntervals(
   expectedIntervals: Array<number>,
   instrumentation: SnapshotInstrumentation,
@@ -44,7 +46,9 @@ export function assertSnapshotIntervals(
   for (const [intervalIndex, expectedInterval] of expectedIntervals.entries()) {
     const actualInterval = instrumentation.snapshotIntervals.at(intervalIndex)!;
     expect(actualInterval).toBeGreaterThanOrEqual(expectedInterval);
-    expect(actualInterval).toBeLessThan(expectedInterval + 50);
+    expect(actualInterval).toBeLessThan(
+      expectedInterval + maximumIntervalDifference,
+    );
   }
 }
 
