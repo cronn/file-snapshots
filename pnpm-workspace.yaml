@@ -40,3 +40,4 @@ minimumReleaseAge: 10080
 
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 10080
+blockExoticSubdeps: true
