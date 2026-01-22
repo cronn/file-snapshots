@@ -1,5 +1,16 @@
 # @cronn/playwright-file-snapshots
 
+## 0.37.0
+
+### Minor Changes
+
+- da5ff83: Automatically update validation files when `updateSnapshots` is `all` or `changed`
+
+### Patch Changes
+
+- Updated dependencies [da5ff83]
+  - @cronn/lib-file-snapshots@0.18.0
+
 ## 0.36.0
 
 ### Minor Changes

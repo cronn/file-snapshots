@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.18.0
+
+### Minor Changes
+
+- da5ff83: Enable configuration of snapshot updates
+
 ## 0.17.0
 
 ### Minor Changes
