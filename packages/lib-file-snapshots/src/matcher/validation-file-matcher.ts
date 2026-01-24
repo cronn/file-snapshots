@@ -83,6 +83,7 @@ export class ValidationFileMatcher {
   ): ValidationFileMatcherResult {
     const { actual, expected } = params;
     const { outputFilePath, validationFilePath } = this.filePaths;
+    const isValidationFileMissing = this.isValidationFileMissing;
 
     return {
       actual,
@@ -90,7 +91,7 @@ export class ValidationFileMatcher {
       outputFilePath,
       validationFilePath,
       message: () =>
-        this.isValidationFileMissing
+        isValidationFileMissing
           ? `Missing validation file '${validationFilePath}'`
           : `Output file '${outputFilePath}'\ndoes not match validation file '${validationFilePath}'`,
       writeFileSnapshots: () => this.writeFileSnapshots(params),
