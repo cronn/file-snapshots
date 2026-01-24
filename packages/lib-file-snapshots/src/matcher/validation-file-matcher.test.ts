@@ -1,4 +1,3 @@
-import fs from "node:fs";
 import path from "node:path";
 import { type TestContext, expect, test } from "vitest";
 
@@ -9,11 +8,7 @@ import type {
   ValidationFileMatcherConfig,
   ValidationFileMatcherResult,
 } from "../types/matcher";
-import {
-  addTrailingNewLine,
-  normalizeFileName,
-  readSnapshotFile,
-} from "../utils/file";
+import { normalizeFileName, readSnapshotFile } from "../utils/file";
 import {
   FailingSerializer,
   SNAPSHOTS_DIR,
@@ -33,29 +28,52 @@ async function snapshotMatcherResult(
     matcherResult;
   const { testFileName, testName } = resolveTestContext(context);
   const normalizedTestName = normalizeFileName(testName);
+  const normalizedMessage = normalizePath(message(), tmpDir);
+  const normalizedOutputFilePath = normalizePath(outputFilePath, tmpDir);
+  const normalizedValidationFilePath = normalizePath(
+    validationFilePath,
+    tmpDir,
+  );
 
-  const fileExtension = path.extname(validationFilePath);
-  const snapshotDir = path.join(
+  const aggregatedSnapshot = `
+# message
+> ${normalizedMessage}
+
+# actual
+${codeBlock(actual)}
+
+# expected
+${codeBlock(expected)}
+
+# output file
+${normalizedOutputFilePath}
+${optionalFileBlock(outputFilePath)}
+
+# validation file
+${normalizedValidationFilePath}
+${optionalFileBlock(validationFilePath)}
+`;
+
+  const snapshotFilePath = path.join(
     ".",
     SNAPSHOTS_DIR,
     testFileName,
-    normalizedTestName,
+    `${normalizedTestName}.md`,
   );
-  await expect(actual).toMatchFileSnapshot(
-    path.join(snapshotDir, `actual${fileExtension}`),
-  );
-  await expect(expected).toMatchFileSnapshot(
-    path.join(snapshotDir, `expected${fileExtension}`),
-  );
-  await expect(normalizePath(outputFilePath, tmpDir)).toMatchFileSnapshot(
-    path.join(snapshotDir, "output_file_path.txt"),
-  );
-  await expect(normalizePath(validationFilePath, tmpDir)).toMatchFileSnapshot(
-    path.join(snapshotDir, "validation_file_path.txt"),
-  );
-  await expect(normalizePath(message(), tmpDir)).toMatchFileSnapshot(
-    path.join(snapshotDir, "message.txt"),
-  );
+  await expect(aggregatedSnapshot).toMatchFileSnapshot(snapshotFilePath);
+}
+
+function codeBlock(value: string): string {
+  return ["```", value, "```"].join("\n");
+}
+
+function optionalFileBlock(filePath: string): string {
+  try {
+    const fileContents = readSnapshotFile(filePath);
+    return codeBlock(fileContents);
+  } catch {
+    return "> File does not exist.";
+  }
 }
 
 function persistentSnapshotDirs(): Pick<
@@ -89,15 +107,9 @@ test("when validation file is missing, creates validation file with marker", asy
   expect(matcher.isUpdate).toBe(true);
 
   const matcherResult = matcher.matchFileSnapshot("value");
-  await snapshotMatcherResult(context, matcherResult, tmpDir);
-
   matcherResult.writeFileSnapshots();
-  expect(readSnapshotFile(matcherResult.validationFilePath)).toBe(
-    matcherResult.expected,
-  );
-  expect(readSnapshotFile(matcherResult.outputFilePath)).toBe(
-    matcherResult.actual,
-  );
+
+  await snapshotMatcherResult(context, matcherResult, tmpDir);
 });
 
 test("when validation file exists, does not recreate validation file", async (context) => {
@@ -110,12 +122,9 @@ test("when validation file exists, does not recreate validation file", async (co
   expect(matcher.isUpdate).toBe(false);
 
   const matcherResult = matcher.matchFileSnapshot(["value"]);
-  await snapshotMatcherResult(context, matcherResult);
-
   matcherResult.writeFileSnapshots();
-  expect(readSnapshotFile(matcherResult.outputFilePath)).toBe(
-    matcherResult.actual,
-  );
+
+  await snapshotMatcherResult(context, matcherResult);
 });
 
 test("when serializer does not support value, throws error", () => {
@@ -143,6 +152,8 @@ test.for(["all", "missing"] as const)(
     expect(matcher.isUpdate).toBe(true);
 
     const matcherResult = matcher.matchFileSnapshot("value");
+    matcherResult.writeFileSnapshots();
+
     await snapshotMatcherResult(context, matcherResult, tmpDir);
   },
 );
@@ -160,11 +171,10 @@ test("when update type is 'none', does not create validation file", async (conte
   expect(matcher.isUpdate).toBe(false);
 
   const matcherResult = matcher.matchFileSnapshot("value");
-  await snapshotMatcherResult(context, matcherResult, tmpDir);
   matcherResult.writeFileSnapshots();
 
   expect(matcher.isValidationFileMissing).toBe(true);
-  expect(fs.existsSync(matcherResult.validationFilePath)).toBe(false);
+  await snapshotMatcherResult(context, matcherResult, tmpDir);
 });
 
 test("when update type is 'all', updates validation file", async (context) => {
@@ -184,12 +194,9 @@ test("when update type is 'all', updates validation file", async (context) => {
   expect(matcher.isUpdate).toBe(true);
 
   const changedMatcherResult = matcher.matchFileSnapshot("changed value");
-  await snapshotMatcherResult(context, changedMatcherResult, tmpDir);
   changedMatcherResult.writeFileSnapshots();
 
-  expect(readSnapshotFile(changedMatcherResult.validationFilePath)).toBe(
-    addTrailingNewLine("changed value"),
-  );
+  await snapshotMatcherResult(context, changedMatcherResult, tmpDir);
 });
 
 test.for(["missing", "none"] as const)(
@@ -205,11 +212,8 @@ test.for(["missing", "none"] as const)(
     expect(matcher.isUpdate).toBe(false);
 
     const changedMatcherResult = matcher.matchFileSnapshot("changed value");
-    await snapshotMatcherResult(context, changedMatcherResult);
     changedMatcherResult.writeFileSnapshots();
 
-    expect(readSnapshotFile(changedMatcherResult.validationFilePath)).toBe(
-      addTrailingNewLine("initial value"),
-    );
+    await snapshotMatcherResult(context, changedMatcherResult);
   },
 );
