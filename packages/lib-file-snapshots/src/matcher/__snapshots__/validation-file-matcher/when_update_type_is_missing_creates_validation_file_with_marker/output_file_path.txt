@@ -1,1 +1,0 @@
-[TMP_DIR]/output/src/tests/feature/test.txt
