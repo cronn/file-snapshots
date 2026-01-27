@@ -6,19 +6,19 @@ export default function () {
       "package.json": (manifest) => {
         return {
           ...manifest,
-          packageManager: "pnpm@10.27.0",
+          packageManager: "pnpm@10.28.2",
           engines: {
             node: "^20 || ^22 || >=24",
           },
           devEngines: {
             runtime: {
               name: "node",
-              version: ">=24.11 <25",
+              version: ">=24.13 <25",
               onFail: "error",
             },
             packageManager: {
               name: "pnpm",
-              version: ">=10.27 <11",
+              version: ">=10.28.2 <11",
               onFail: "error",
             },
           },
