@@ -1,7 +1,7 @@
 import path from "node:path";
 import { describe, expect, test } from "vitest";
 
-import { parseTestName, parseTestPath } from "./utils";
+import { parseTestName, parseTestPath, parseUpdateSnapshot } from "./utils";
 
 describe("parseTestName", () => {
   test("splits test name into titles", () => {
@@ -49,5 +49,22 @@ describe("parseTestPath", () => {
     expect(parseTestPath("src/tests/feature.test.ts", "src/tests")).toBe(
       "feature",
     );
+  });
+});
+
+describe("parseUpdateSnapshot", () => {
+  test.each(["all", "none"])(
+    "when value is '%s', returns original value",
+    (value) => {
+      expect(parseUpdateSnapshot(value)).toBe(value);
+    },
+  );
+
+  test("when value is 'new', returns 'missing'", () => {
+    expect(parseUpdateSnapshot("new")).toBe("missing");
+  });
+
+  test("when value is unknown, returns 'missing'", () => {
+    expect(parseUpdateSnapshot("value")).toBe("missing");
   });
 });

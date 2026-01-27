@@ -36,7 +36,10 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "test": "vitest run",
+    "test:core": "vitest run",
+    "test:update-new": "cross-env UPDATE_TYPE=new CI=false GITHUB_ACTIONS= vitest run ./matchers/update-snapshot.test.ts",
+    "test:update-all": "cross-env UPDATE_TYPE=all CI=false GITHUB_ACTIONS= vitest run --update ./matchers/update-snapshot.test.ts",
+    "test:update-none": "cross-env UPDATE_TYPE=none CI=true vitest run ./matchers/update-snapshot.test.ts",
     "test:coverage": "vitest run --coverage",
     "compile": "tsc",
     "build": "tsup && node scripts/fix-declaration-file.ts"
@@ -62,9 +65,11 @@
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/expect": "catalog:",
+    "cross-env": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
+    "package-directory": "catalog:",
     "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
