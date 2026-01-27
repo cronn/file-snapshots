@@ -260,3 +260,15 @@ expect(value).toMatchJsonFile({
 | Option          | Default Value | Description                                    |
 | --------------- | ------------- | ---------------------------------------------- |
 | `fileExtension` | `txt`         | File extension used for storing the text file. |
+
+## Updating Snapshots
+
+Snapshots can be updated using Vitest's built-in support for snapshot updates:
+
+- Using the CLI parameter `--update`
+- Configuring the option `update` in your `vitest.config.ts`
+
+By default, only missing validation files are written. When updates are enabled, existing validation files will also be overridden.
+
+> [!NOTE]
+> If you accidentally updated more snapshots than intended, you can revert the changes using your VCS and selectively apply updates by diffing the `validation` and `output` directories.

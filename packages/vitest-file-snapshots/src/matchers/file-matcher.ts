@@ -13,7 +13,12 @@ import type {
   VitestMatchValidationFileOptions,
   VitestValidationFileMatcherConfig,
 } from "./types";
-import { parseTestName, parseTestPath } from "./utils";
+import {
+  parseTestName,
+  parseTestPath,
+  parseUpdateSnapshot,
+  readUpdateSnapshot,
+} from "./utils";
 
 interface MatchValidationFileParams {
   received: unknown;
@@ -55,11 +60,13 @@ export function matchValidationFile(
     titlePath: parseTestName(currentTestName),
     name,
   });
+  const updateSnapshots = parseUpdateSnapshot(readUpdateSnapshot());
   const matcherResult = new ValidationFileMatcher({
     validationDir,
     outputDir,
     filePath,
     serializer,
+    updateSnapshots,
   }).matchFileSnapshot(received);
   matcherResult.writeFileSnapshots();
 

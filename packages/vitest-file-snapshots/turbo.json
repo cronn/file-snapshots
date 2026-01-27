@@ -3,6 +3,23 @@
   "extends": ["//"],
   "tasks": {
     "test": {
+      "dependsOn": [
+        "test:core",
+        "test:update-new",
+        "test:update-all",
+        "test:update-none"
+      ]
+    },
+    "test:core": {
+      "dependsOn": ["^build", "compile"]
+    },
+    "test:update-new": {
+      "dependsOn": ["^build", "compile"]
+    },
+    "test:update-all": {
+      "dependsOn": ["^build", "compile"]
+    },
+    "test:update-none": {
       "dependsOn": ["^build", "compile"]
     },
     "test:coverage": {
@@ -10,7 +27,15 @@
       "outputs": ["coverage/**"]
     },
     "check": {
-      "dependsOn": ["compile", "lint:check", "test:coverage", "//#format:check"]
+      "dependsOn": [
+        "compile",
+        "lint:check",
+        "test:coverage",
+        "test:update-new",
+        "test:update-all",
+        "test:update-none",
+        "//#format:check"
+      ]
     }
   }
 }
