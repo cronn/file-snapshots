@@ -352,5 +352,5 @@ Snapshots can be updated using Playwright's built-in support for snapshot update
 
 By default, only missing validation files are written. Using the values `all` or `changed`, existing validation files will also be overridden.
 
-> ![NOTE]
+> [!NOTE]
 > If you accidentally updated more snapshots than intended, you can revert the changes using your VCS and selectively apply updates by diffing the `validation` and `output` directories.
