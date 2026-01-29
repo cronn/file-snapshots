@@ -1,5 +1,16 @@
 # @cronn/playwright-file-snapshots
 
+## 0.38.0
+
+### Minor Changes
+
+- c72e330: Fix: Matcher result message changes after writing file snapshots
+
+### Patch Changes
+
+- Updated dependencies [c72e330]
+  - @cronn/lib-file-snapshots@0.19.0
+
 ## 0.37.0
 
 ### Minor Changes

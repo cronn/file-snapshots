@@ -1,5 +1,17 @@
 # @cronn/vitest-file-snapshots
 
+## 0.18.0
+
+### Minor Changes
+
+- c72e330: Fix: Matcher result message changes after writing file snapshots
+- cd8626a: Automatically update validation files when snapshot updates are enabled.
+
+### Patch Changes
+
+- Updated dependencies [c72e330]
+  - @cronn/lib-file-snapshots@0.19.0
+
 ## 0.17.1
 
 ### Patch Changes

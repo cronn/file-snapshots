@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.19.0
+
+### Minor Changes
+
+- c72e330: Fix: Matcher result message changes after writing file snapshots
+
 ## 0.18.0
 
 ### Minor Changes
