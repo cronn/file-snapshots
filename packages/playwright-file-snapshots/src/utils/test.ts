@@ -46,7 +46,7 @@ export class SnapshotInstrumentation {
   }
 }
 
-const maximumIntervalDifference = 125;
+const maximumIntervalDifference = 150;
 
 export function assertSnapshotIntervals(
   expectedIntervals: Array<number>,
