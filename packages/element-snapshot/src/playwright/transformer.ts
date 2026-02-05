@@ -14,26 +14,45 @@ interface NormalizedElementSnapshot {
 }
 
 interface DomSnapshotTransformerOptions {
+  filter?: SnapshotFilter;
   includeComboboxOptions?: boolean;
 }
 
+export type SnapshotFilter = (node: NodeSnapshot) => boolean;
+
 export class ElementSnapshotTransformer {
+  private readonly filter: SnapshotFilter;
   private readonly includeComboboxOptions: boolean;
 
   public constructor(options: DomSnapshotTransformerOptions = {}) {
+    this.filter = options.filter ?? (() => true);
     this.includeComboboxOptions = options.includeComboboxOptions ?? false;
   }
 
   public transform(snapshots: Array<NodeSnapshot>): unknown {
-    const transformedSnapshots = snapshots.map((snapshot) =>
-      this.transformSnapshotRecursive(snapshot),
-    );
+    const transformedSnapshots = this.filterAndTransformSnapshots(snapshots);
 
     if (transformedSnapshots.length === 1) {
       return transformedSnapshots.at(0);
     }
 
     return transformedSnapshots;
+  }
+
+  private filterAndTransformSnapshots(
+    snapshots: Array<NodeSnapshot>,
+  ): Array<unknown> {
+    return snapshots.flatMap((snapshot) => {
+      if (this.filter(snapshot)) {
+        return this.transformSnapshotRecursive(snapshot);
+      }
+
+      if ("children" in snapshot) {
+        return this.filterAndTransformSnapshots(snapshot.children ?? []);
+      }
+
+      return [];
+    });
   }
 
   private transformSnapshotRecursive(snapshot: NodeSnapshot): unknown {
@@ -87,19 +106,23 @@ export class ElementSnapshotTransformer {
     const sparseAttributes = this.removeUndefinedProperties(
       (snapshot.attributes ?? {}) as Record<string, unknown>,
     );
-    const transformedChildren = snapshot.children?.map((childSnaphot) =>
-      this.transformSnapshotRecursive(childSnaphot),
+    const transformedChildren = this.filterAndTransformSnapshots(
+      snapshot?.children ?? [],
     );
 
     const nameEqualsChildren =
-      transformedChildren?.length === 1 &&
+      transformedChildren.length === 1 &&
       snapshot.name === transformedChildren.at(0);
 
     return {
       role: snapshot.role,
       name: snapshot.name,
       attributes: sparseAttributes,
-      children: nameEqualsChildren ? undefined : transformedChildren,
+      children: nameEqualsChildren
+        ? undefined
+        : transformedChildren.length === 0
+          ? undefined
+          : transformedChildren,
     };
   }
 

@@ -142,3 +142,12 @@ test("progressbars", async ({ page }) => {
   await page.goto("/progressbars");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("filter elements", async ({ page }) => {
+  await page.goto("/");
+  await expect(
+    snapshotElement(page.locator("body"), {
+      filter: (element) => element.role === "heading",
+    }),
+  ).toMatchJsonFile({ name: "headings" });
+});

@@ -3,9 +3,17 @@ import type { Locator } from "@playwright/test";
 import type { NodeSnapshot } from "../browser/types";
 
 import { ElementSnapshotProxy } from "./proxy";
+import type { SnapshotFilter } from "./transformer";
 import { ElementSnapshotTransformer } from "./transformer";
 
 export interface ElementSnapshotOptions {
+  /**
+   * Include only elements in the snapshot for which the specified filter returns `true`
+   *
+   * @default () => true
+   */
+  filter?: SnapshotFilter;
+
   /**
    * Include combobox options in the snapshot
    *
