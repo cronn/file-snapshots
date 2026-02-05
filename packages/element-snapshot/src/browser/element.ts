@@ -7,6 +7,7 @@ import { snapshotContainer } from "./container";
 import { snapshotDialogWithRole } from "./dialog";
 import { snapshotGroup, snapshotRadiogroup } from "./group";
 import { snapshotHeading } from "./heading";
+import { snapshotImage } from "./image";
 import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
 import { snapshotMenuitem } from "./list";
@@ -50,6 +51,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   group: snapshotGroup,
   radiogroup: snapshotRadiogroup,
   progressbar: snapshotProgressbar,
+  img: snapshotImage,
 };
 
 export function snapshotElement(
@@ -103,7 +105,6 @@ const UNSUPPORTED_ELEMENTS = new Set([
   "style",
   "script",
   "noscript",
-  "img",
   "picture",
   "audio",
   "video",

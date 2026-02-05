@@ -54,6 +54,7 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   fieldset: "group",
   progress: "progressbar",
   hr: "separator",
+  img: "img",
 };
 
 const CONTEXT_DEPENDENT_ROLES: Partial<

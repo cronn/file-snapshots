@@ -1,0 +1,15 @@
+{
+  "main": [
+    "heading 'Images' [level=1]",
+    "heading 'HTML Images' [level=2]",
+    "img",
+    "img 'Alternative text'",
+    "heading 'Role-Based Images' [level=2]",
+    "img 'Image with aria-label'",
+    "heading 'Image with aria-labelledby' [level=3]",
+    "img 'Image with aria-labelledby'",
+    {
+      "img": "Image with text content"
+    }
+  ]
+}

@@ -156,3 +156,8 @@ test("separators", async ({ page }) => {
   await page.goto("/separators");
   await testSnapshots(page.getByRole("main"));
 });
+
+test("images", async ({ page }) => {
+  await page.goto("/images");
+  await testSnapshots(page.getByRole("main"));
+});

@@ -4,6 +4,7 @@ import type { ContainerRole, ContainerSnapshot } from "./container";
 import type { DialogRole, DialogSnapshot } from "./dialog";
 import type { GroupSnapshot, RadiogroupSnapshot } from "./group";
 import type { HeadingSnapshot } from "./heading";
+import type { ImageSnapshot } from "./image";
 import type { InputRole, InputSnapshot } from "./input";
 import type { LinkSnapshot } from "./link";
 import type { MenuitemSnapshot } from "./list";
@@ -31,6 +32,7 @@ export type ElementRole =
   | "group"
   | "radiogroup"
   | "progressbar"
+  | "img"
   | ContainerRole
   | InputRole
   | DialogRole;
@@ -51,7 +53,8 @@ export type ElementSnapshot =
   | ColumnheaderSnapshot
   | GroupSnapshot
   | RadiogroupSnapshot
-  | ProgressbarSnapshot;
+  | ProgressbarSnapshot
+  | ImageSnapshot;
 
 export interface GenericElementSnapshot<
   TRole extends NodeRole = NodeRole,
