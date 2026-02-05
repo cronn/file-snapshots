@@ -1,0 +1,43 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Images",
+        "level": 1
+      }
+    },
+    {
+      "heading": {
+        "name": "HTML Images",
+        "level": 2
+      }
+    },
+    {
+      "img": ""
+    },
+    {
+      "img": "Alternative text"
+    },
+    {
+      "heading": {
+        "name": "Role-Based Images",
+        "level": 2
+      }
+    },
+    {
+      "img": "Image with aria-label"
+    },
+    {
+      "heading": {
+        "name": "Image with aria-labelledby",
+        "level": 3
+      }
+    },
+    {
+      "img": "Image with aria-labelledby"
+    },
+    {
+      "img": "Image with text content"
+    }
+  ]
+}

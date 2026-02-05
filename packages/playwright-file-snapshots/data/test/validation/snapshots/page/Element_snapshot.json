@@ -171,6 +171,14 @@
                 "url": "/separators"
               }
             }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Images",
+                "url": "/images"
+              }
+            }
           }
         ]
       },

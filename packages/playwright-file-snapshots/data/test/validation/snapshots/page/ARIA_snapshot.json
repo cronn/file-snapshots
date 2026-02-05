@@ -147,6 +147,13 @@
                 "/url": "/separators"
               }
             }
+          },
+          {
+            "listitem": {
+              "link 'Images'": {
+                "/url": "/images"
+              }
+            }
           }
         ]
       },
