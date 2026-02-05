@@ -82,12 +82,17 @@ Snapshot options can be passed when calling the snapshot function:
 ```ts
 await expect(
   snapshotElement(page.getByLabel("My select"), {
-    includeComboboxOptions: true,
+    filter: (element) => element.role === "heading",
   }),
 ).toMatchJsonFile({
-  name: "select options",
+  name: "headings",
 });
 ```
+
+| Option                   | Default Value | Description                                                                          |
+| ------------------------ | ------------- | ------------------------------------------------------------------------------------ |
+| `filter`                 | `() => true`  | Include only elements in the snapshot for which the specified filter returns `true`. |
+| `includeComboboxOptions` | `false`       | Include combobox options in the snapshot.                                            |
 
 ### Custom Snapshots
 
