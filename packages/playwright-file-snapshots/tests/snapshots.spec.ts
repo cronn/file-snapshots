@@ -151,3 +151,8 @@ test("filter elements", async ({ page }) => {
     }),
   ).toMatchJsonFile({ name: "headings" });
 });
+
+test("separators", async ({ page }) => {
+  await page.goto("/separators");
+  await testSnapshots(page.getByRole("main"));
+});

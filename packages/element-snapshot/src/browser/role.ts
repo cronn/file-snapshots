@@ -53,6 +53,7 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   td: "cell",
   fieldset: "group",
   progress: "progressbar",
+  hr: "separator",
 };
 
 const CONTEXT_DEPENDENT_ROLES: Partial<
