@@ -163,6 +163,14 @@
                 "url": "/progressbars"
               }
             }
+          },
+          {
+            "listitem": {
+              "link": {
+                "name": "Separators",
+                "url": "/separators"
+              }
+            }
           }
         ]
       },
