@@ -1,0 +1,15 @@
+[
+  {
+    "role": "table",
+    "children": [
+      {
+        "role": "rowgroup",
+        "children": [
+          {
+            "role": "row"
+          }
+        ]
+      }
+    ]
+  }
+]

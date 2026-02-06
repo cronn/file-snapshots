@@ -1,0 +1,14 @@
+[
+  {
+    "role": "text",
+    "name": "Column Header"
+  },
+  {
+    "role": "text",
+    "name": "Row Header"
+  },
+  {
+    "role": "text",
+    "name": "Cell"
+  }
+]

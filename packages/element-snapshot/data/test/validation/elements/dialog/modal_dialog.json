@@ -1,0 +1,14 @@
+[
+  {
+    "role": "dialog",
+    "attributes": {
+      "modal": true
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Modal Dialog"
+      }
+    ]
+  }
+]

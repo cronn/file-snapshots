@@ -1,0 +1,15 @@
+[
+  {
+    "role": "link",
+    "name": "Link",
+    "attributes": {
+      "url": "/target"
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Link"
+      }
+    ]
+  }
+]

@@ -1,6 +1,0 @@
-{
-  "main": [
-    "paragraph 'aria-hidden=false'",
-    "text 'role=presentation role=none'"
-  ]
-}

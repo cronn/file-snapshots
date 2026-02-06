@@ -7,7 +7,6 @@ catalog:
   "@types/node": 24.10.12
   "@vitest/coverage-v8": 4.0.18
   "@vitest/expect": 4.0.18
-  "serve": 14.2.5
   "tsup": 8.5.1
   "typescript": 5.9.3
   "vitest": 4.0.18
@@ -21,7 +20,6 @@ catalog:
   "turbo": 2.8.3
   "package-directory": 8.2.0
   "@pnpm/meta-updater": 2.0.6
-  "wait-on": 9.0.3
   "cross-env": 10.1.0
 
 overrides:

@@ -34,10 +34,7 @@ jobs:
         run: pnpm install
 
       - name: Run CI script
-        run: |
-          pnpm turbo run start &
-          pnpm exec wait-on http://localhost:3000
-          pnpm turbo run ci
+        run: pnpm turbo run ci
 
       - uses: actions/upload-artifact@v6
         if: ${{ !cancelled() }}

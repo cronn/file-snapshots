@@ -1,0 +1,13 @@
+[
+  {
+    "role": "text",
+    "name": "Number Input"
+  },
+  {
+    "role": "spinbutton",
+    "name": "Number Input",
+    "attributes": {
+      "value": "1"
+    }
+  }
+]

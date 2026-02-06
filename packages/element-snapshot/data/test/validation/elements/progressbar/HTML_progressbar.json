@@ -1,0 +1,14 @@
+[
+  {
+    "role": "progressbar",
+    "attributes": {
+      "value": 70
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "70%"
+      }
+    ]
+  }
+]

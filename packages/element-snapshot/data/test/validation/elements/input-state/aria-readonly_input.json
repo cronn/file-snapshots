@@ -1,0 +1,9 @@
+[
+  {
+    "role": "textbox",
+    "name": "ARIA-Readonly Input",
+    "attributes": {
+      "readonly": true
+    }
+  }
+]

@@ -1,0 +1,85 @@
+[
+  {
+    "role": "grid",
+    "children": [
+      {
+        "role": "row",
+        "children": [
+          {
+            "role": "columnheader",
+            "name": "Column Header 1",
+            "attributes": {},
+            "children": [
+              {
+                "role": "text",
+                "name": "Column Header 1"
+              }
+            ]
+          },
+          {
+            "role": "columnheader",
+            "name": "Column Header 2",
+            "attributes": {},
+            "children": [
+              {
+                "role": "text",
+                "name": "Column Header 2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "rowgroup",
+        "children": [
+          {
+            "role": "row",
+            "children": [
+              {
+                "role": "rowheader",
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Row Header 1"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Grid Cell 1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "role": "row",
+            "children": [
+              {
+                "role": "rowheader",
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Row Header 2"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Grid Cell 2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

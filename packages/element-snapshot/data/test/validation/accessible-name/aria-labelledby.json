@@ -1,0 +1,16 @@
+[
+  {
+    "role": "paragraph",
+    "children": [
+      {
+        "role": "text",
+        "name": "Label"
+      }
+    ]
+  },
+  {
+    "role": "textbox",
+    "name": "Label",
+    "attributes": {}
+  }
+]

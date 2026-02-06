@@ -1,0 +1,9 @@
+[
+  {
+    "role": "textbox",
+    "name": "ARIA-Invalid Input",
+    "attributes": {
+      "invalid": true
+    }
+  }
+]

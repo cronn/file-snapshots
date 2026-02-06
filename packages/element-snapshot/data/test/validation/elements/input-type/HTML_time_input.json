@@ -1,0 +1,13 @@
+[
+  {
+    "role": "text",
+    "name": "Time Input"
+  },
+  {
+    "role": "textbox",
+    "name": "Time Input",
+    "attributes": {
+      "value": "12:00"
+    }
+  }
+]

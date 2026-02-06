@@ -1,0 +1,40 @@
+[
+  {
+    "role": "table",
+    "children": [
+      {
+        "role": "rowgroup",
+        "children": [
+          {
+            "role": "row",
+            "children": [
+              {
+                "role": "columnheader",
+                "name": "Column Header",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header"
+                  }
+                ]
+              },
+              {
+                "role": "rowheader",
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Row Header"
+                  }
+                ]
+              },
+              {
+                "role": "cell"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

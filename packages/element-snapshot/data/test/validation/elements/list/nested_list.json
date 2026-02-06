@@ -1,0 +1,39 @@
+[
+  {
+    "role": "list",
+    "children": [
+      {
+        "role": "listitem",
+        "children": [
+          {
+            "role": "text",
+            "name": "Fruits"
+          },
+          {
+            "role": "list",
+            "children": [
+              {
+                "role": "listitem",
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Apple"
+                  }
+                ]
+              },
+              {
+                "role": "listitem",
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Pear"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
