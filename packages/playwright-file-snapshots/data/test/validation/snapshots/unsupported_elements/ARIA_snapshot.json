@@ -1,7 +1,6 @@
 {
   "main": [
     "heading 'Unsupported Elements' [level=1]",
-    "img",
     "img 'Picture'",
     "text 'Download the audio. Download the video.'",
     {
