@@ -1,0 +1,20 @@
+[
+  {
+    "role": "term",
+    "children": [
+      {
+        "role": "text",
+        "name": "Coffee"
+      }
+    ]
+  },
+  {
+    "role": "definition",
+    "children": [
+      {
+        "role": "text",
+        "name": "A brewed drink prepared from roasted coffee beans"
+      }
+    ]
+  }
+]

@@ -1,9 +1,0 @@
-{
-  "main": [
-    "heading 'Buttons' [level=1]",
-    "heading 'Toggle Buttons' [level=2]",
-    "button '[aria-pressed=true]' [pressed]",
-    "button '[aria-pressed=mixed]' [pressed=mixed]",
-    "button '[aria-pressed=false]'"
-  ]
-}

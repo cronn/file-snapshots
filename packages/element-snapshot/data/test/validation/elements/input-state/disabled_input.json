@@ -1,0 +1,9 @@
+[
+  {
+    "role": "textbox",
+    "name": "Disabled Input",
+    "attributes": {
+      "disabled": true
+    }
+  }
+]

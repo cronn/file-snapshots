@@ -1,0 +1,30 @@
+[
+  {
+    "role": "group",
+    "name": "Legend",
+    "children": [
+      {
+        "role": "text",
+        "name": "Legend"
+      },
+      {
+        "role": "text",
+        "name": "First Name"
+      },
+      {
+        "role": "textbox",
+        "name": "First Name",
+        "attributes": {}
+      },
+      {
+        "role": "text",
+        "name": "Last Name"
+      },
+      {
+        "role": "textbox",
+        "name": "Last Name",
+        "attributes": {}
+      }
+    ]
+  }
+]

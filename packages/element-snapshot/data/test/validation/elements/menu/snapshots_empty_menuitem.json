@@ -1,0 +1,11 @@
+[
+  {
+    "role": "menu",
+    "children": [
+      {
+        "role": "menuitem",
+        "attributes": {}
+      }
+    ]
+  }
+]

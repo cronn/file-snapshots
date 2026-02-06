@@ -1,0 +1,13 @@
+[
+  {
+    "role": "text",
+    "name": "Textarea"
+  },
+  {
+    "role": "textbox",
+    "name": "Textarea",
+    "attributes": {
+      "value": "Text"
+    }
+  }
+]

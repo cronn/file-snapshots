@@ -1,0 +1,64 @@
+[
+  {
+    "role": "combobox",
+    "name": "Combobox",
+    "attributes": {
+      "value": "Button Value"
+    },
+    "options": [
+      {
+        "role": "option",
+        "name": "Option 1",
+        "attributes": {
+          "selected": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 1"
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Option 2",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "role": "listbox",
+    "children": [
+      {
+        "role": "option",
+        "name": "Option 1",
+        "attributes": {
+          "selected": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 1"
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Option 2",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 2"
+          }
+        ]
+      }
+    ]
+  }
+]

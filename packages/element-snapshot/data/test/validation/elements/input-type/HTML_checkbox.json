@@ -1,0 +1,22 @@
+[
+  {
+    "role": "checkbox",
+    "name": "Checked",
+    "attributes": {
+      "checked": true
+    }
+  },
+  {
+    "role": "text",
+    "name": "Checked"
+  },
+  {
+    "role": "checkbox",
+    "name": "Unchecked",
+    "attributes": {}
+  },
+  {
+    "role": "text",
+    "name": "Unchecked"
+  }
+]

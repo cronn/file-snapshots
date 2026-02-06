@@ -3,5 +3,11 @@
   "compilerOptions": {
     "lib": ["esnext", "dom"]
   },
-  "include": ["tsup.config.ts", "vitest.config.ts", "./src/**/*.ts"]
+  "include": [
+    "playwright.config.ts",
+    "tsup.config.ts",
+    "vitest.config.ts",
+    "./src/**/*.ts",
+    "./tests/**/*.ts"
+  ]
 }

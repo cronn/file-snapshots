@@ -1,0 +1,9 @@
+[
+  {
+    "role": "textbox",
+    "name": "Required Input",
+    "attributes": {
+      "required": true
+    }
+  }
+]

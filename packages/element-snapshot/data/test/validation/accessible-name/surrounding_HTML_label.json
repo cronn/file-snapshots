@@ -1,0 +1,11 @@
+[
+  {
+    "role": "checkbox",
+    "name": "Label",
+    "attributes": {}
+  },
+  {
+    "role": "text",
+    "name": "Label"
+  }
+]

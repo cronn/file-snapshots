@@ -1,0 +1,9 @@
+[
+  {
+    "role": "textbox",
+    "name": "Readonly Input",
+    "attributes": {
+      "readonly": true
+    }
+  }
+]

@@ -31,6 +31,8 @@
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "test:unit": "vitest run",
     "test:unit:coverage": "vitest run --coverage",
+    "test:integration": "playwright test",
+    "playwright:install": "playwright install chromium",
     "compile": "tsc",
     "build": "tsup"
   },
@@ -49,6 +51,7 @@
     "yaml": "catalog:"
   },
   "devDependencies": {
+    "@cronn/playwright-file-snapshots": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",

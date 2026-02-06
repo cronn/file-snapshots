@@ -1,0 +1,58 @@
+[
+  {
+    "role": "button",
+    "name": "Menu",
+    "attributes": {
+      "expanded": true
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Menu"
+      }
+    ]
+  },
+  {
+    "role": "menu",
+    "name": "Menu",
+    "children": [
+      {
+        "role": "menuitem",
+        "name": "Edit",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Edit"
+          }
+        ]
+      },
+      {
+        "role": "menuitem",
+        "name": "Delete",
+        "attributes": {
+          "disabled": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Delete"
+          }
+        ]
+      },
+      {
+        "role": "menuitem",
+        "name": "Help",
+        "attributes": {
+          "url": "/"
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Help"
+          }
+        ]
+      }
+    ]
+  }
+]
