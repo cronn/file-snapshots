@@ -1,0 +1,55 @@
+[
+  {
+    "role": "text",
+    "name": "Multi Select"
+  },
+  {
+    "role": "combobox",
+    "name": "Multi Select",
+    "attributes": {
+      "value": [
+        "Option 1",
+        "Option 2"
+      ]
+    },
+    "options": [
+      {
+        "role": "option",
+        "name": "Option 1",
+        "attributes": {
+          "selected": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 1"
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Option 2",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 2"
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Option 2",
+        "attributes": {
+          "selected": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 2"
+          }
+        ]
+      }
+    ]
+  }
+]

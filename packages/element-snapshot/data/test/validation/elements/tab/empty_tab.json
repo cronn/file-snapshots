@@ -1,0 +1,11 @@
+[
+  {
+    "role": "tablist",
+    "children": [
+      {
+        "role": "tab",
+        "attributes": {}
+      }
+    ]
+  }
+]

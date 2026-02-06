@@ -1,0 +1,20 @@
+[
+  {
+    "role": "paragraph",
+    "children": [
+      {
+        "role": "text",
+        "name": "Referenced Label"
+      }
+    ]
+  },
+  {
+    "role": "textbox",
+    "name": "Direct Label",
+    "attributes": {}
+  },
+  {
+    "role": "text",
+    "name": "HTML Label"
+  }
+]

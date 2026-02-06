@@ -1,0 +1,53 @@
+[
+  {
+    "role": "tablist",
+    "name": "Tablist",
+    "children": [
+      {
+        "role": "tab",
+        "name": "Tab 1",
+        "attributes": {
+          "selected": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Tab 1"
+          }
+        ]
+      },
+      {
+        "role": "tab",
+        "name": "Tab 2",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Tab 2"
+          }
+        ]
+      },
+      {
+        "role": "tab",
+        "name": "Tab 3",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Tab 3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "role": "tabpanel",
+    "name": "Tab 1",
+    "children": [
+      {
+        "role": "text",
+        "name": "Tabpanel 1"
+      }
+    ]
+  }
+]

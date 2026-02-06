@@ -1,0 +1,15 @@
+[
+  {
+    "role": "grid",
+    "children": [
+      {
+        "role": "row",
+        "children": [
+          {
+            "role": "gridcell"
+          }
+        ]
+      }
+    ]
+  }
+]

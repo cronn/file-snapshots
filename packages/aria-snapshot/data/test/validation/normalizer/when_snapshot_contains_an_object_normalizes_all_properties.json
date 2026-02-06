@@ -1,0 +1,6 @@
+{
+  "main": [
+    "heading 'Heading' [level=1]",
+    "paragraph 'Paragraph'"
+  ]
+}

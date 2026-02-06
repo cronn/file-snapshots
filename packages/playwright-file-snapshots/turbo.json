@@ -3,9 +3,6 @@
   "extends": ["//"],
   "tasks": {
     "playwright:install": { "outputLogs": "new-only" },
-    "start": {
-      "persistent": true
-    },
     "test": {
       "dependsOn": ["test:unit", "test:integration"]
     },
