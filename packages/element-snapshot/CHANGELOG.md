@@ -1,5 +1,14 @@
 # @cronn/element-snapshot
 
+## 0.10.0
+
+### Minor Changes
+
+- c112776: Snapshot `hr` elements and elements with role `separator`
+- 3e95a75: Snapshot `svg` elements
+- 62506e6: Add option `filter` to selectively include elements in the snapshot
+- 412f2d1: Snapshot `img` elements and elements with role `img`
+
 ## 0.9.0
 
 ### Minor Changes
