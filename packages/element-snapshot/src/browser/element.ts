@@ -112,8 +112,10 @@ const UNSUPPORTED_ELEMENTS = new Set([
   "template",
 ]);
 
-function isSupportedElement(node: SnapshotTargetNode): node is HTMLElement {
-  if (!(node instanceof HTMLElement)) {
+function isSupportedElement(
+  node: SnapshotTargetNode,
+): node is SnapshotTargetElement {
+  if (!(node instanceof HTMLElement || node instanceof SVGElement)) {
     return false;
   }
 

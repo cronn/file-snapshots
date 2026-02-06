@@ -4,6 +4,7 @@
     "heading 'HTML Images' [level=2]",
     "img",
     "img 'Alternative text'",
+    "img",
     "heading 'Role-Based Images' [level=2]",
     "img 'Image with aria-label'",
     "heading 'Image with aria-labelledby' [level=3]",
