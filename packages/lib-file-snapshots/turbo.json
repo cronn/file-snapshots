@@ -3,11 +3,13 @@
   "extends": ["//"],
   "tasks": {
     "test": {
-      "dependsOn": ["^build", "compile"]
+      "dependsOn": ["^build", "compile"],
+      "outputLogs": "new-only"
     },
     "test:coverage": {
       "dependsOn": ["^build", "compile"],
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**"],
+      "outputLogs": "new-only"
     },
     "check": {
       "dependsOn": ["compile", "lint:check", "test:coverage", "//#format:check"]

@@ -1,20 +1,24 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
-    "//#config:check": {},
-    "//#config:fix": {},
-    "//#format:check": {},
+    "//#config:check": { "outputLogs": "new-only" },
+    "//#config:fix": { "outputLogs": "new-only" },
+    "//#format:check": { "outputLogs": "new-only" },
     "//#format:fix": {
-      "dependsOn": ["^lint:fix"]
+      "dependsOn": ["^lint:fix"],
+      "outputLogs": "new-only"
     },
     "lint:check": {
-      "dependsOn": ["compile"]
+      "dependsOn": ["compile"],
+      "outputLogs": "new-only"
     },
     "lint:fix": {
-      "dependsOn": ["compile"]
+      "dependsOn": ["compile"],
+      "outputLogs": "new-only"
     },
     "compile": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputLogs": "new-only"
     },
     "check": {
       "dependsOn": [
@@ -29,7 +33,8 @@
     },
     "build": {
       "dependsOn": ["^build", "compile"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "outputLogs": "new-only"
     },
     "ci": {
       "dependsOn": ["^ci", "check", "build"]
