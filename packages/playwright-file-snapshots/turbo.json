@@ -2,7 +2,7 @@
   "$schema": "https://turborepo.com/schema.json",
   "extends": ["//"],
   "tasks": {
-    "playwright:install": {},
+    "playwright:install": { "outputLogs": "new-only" },
     "start": {
       "persistent": true
     },
@@ -10,11 +10,13 @@
       "dependsOn": ["test:unit", "test:integration"]
     },
     "test:unit": {
-      "dependsOn": ["^build", "compile"]
+      "dependsOn": ["^build", "compile"],
+      "outputLogs": "new-only"
     },
     "test:unit:coverage": {
       "dependsOn": ["^build", "compile"],
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**"],
+      "outputLogs": "new-only"
     },
     "test:integration": {
       "dependsOn": [
@@ -26,19 +28,23 @@
     },
     "test:integration:core": {
       "dependsOn": ["^build", "compile", "playwright:install"],
-      "outputs": ["playwright-report/**", "test-results/**"]
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "outputLogs": "new-only"
     },
     "test:integration:update-all": {
       "dependsOn": ["^build", "compile", "playwright:install"],
-      "outputs": ["playwright-report/**", "test-results/**"]
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "outputLogs": "new-only"
     },
     "test:integration:update-changed": {
       "dependsOn": ["^build", "compile", "playwright:install"],
-      "outputs": ["playwright-report/**", "test-results/**"]
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "outputLogs": "new-only"
     },
     "test:integration:update-none": {
       "dependsOn": ["^build", "compile", "playwright:install"],
-      "outputs": ["playwright-report/**", "test-results/**"]
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "outputLogs": "new-only"
     },
     "check": {
       "dependsOn": [
