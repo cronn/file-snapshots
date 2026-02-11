@@ -43,8 +43,6 @@ ignoredBuiltDependencies:
   - esbuild
 
 minimumReleaseAge: 10080 # 1 week
-minimumReleaseAgeExclude:
-  - "@isaacs/brace-expansion"
 
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 40320 # 4 weeks
