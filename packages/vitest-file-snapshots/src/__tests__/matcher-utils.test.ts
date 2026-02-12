@@ -1,7 +1,11 @@
 import path from "node:path";
 import { describe, expect, test } from "vitest";
 
-import { parseTestName, parseTestPath, parseUpdateSnapshot } from "./utils";
+import {
+  parseTestName,
+  parseTestPath,
+  parseUpdateSnapshot,
+} from "../matchers/utils";
 
 describe("parseTestName", () => {
   test("splits test name into titles", () => {

@@ -4,7 +4,7 @@ import {
   addMissingFileMarker,
   addTrailingNewLine,
   normalizeFileName,
-} from "./file";
+} from "../utils/file";
 
 describe("normalize file name", () => {
   test.each([

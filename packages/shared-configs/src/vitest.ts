@@ -3,7 +3,7 @@ import { type ViteUserConfig, configDefaults } from "vitest/config";
 export function vitestConfig(): ViteUserConfig {
   return {
     test: {
-      include: ["src/**/*.test.ts"],
+      include: ["src/__tests__/**/*.test.ts"],
       exclude: configDefaults.exclude,
       environment: "node",
       reporters: ["default"],

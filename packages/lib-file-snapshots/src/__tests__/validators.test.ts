@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { isPositiveInteger } from "./validators";
+import { isPositiveInteger } from "../utils/validators";
 
 describe("is positive integer", () => {
   test.each([1, 2, 4711])("%s is positive integer", (value) => {

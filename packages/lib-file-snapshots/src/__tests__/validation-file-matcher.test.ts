@@ -1,6 +1,7 @@
 import path from "node:path";
 import { type TestContext, expect, test } from "vitest";
 
+import { ValidationFileMatcher } from "../matcher/validation-file-matcher";
 import { JsonSerializer } from "../serializers/json-serializer";
 import { TextSerializer } from "../serializers/text-serializer";
 import type {
@@ -16,8 +17,6 @@ import {
   normalizePath,
   resolveTestContext,
 } from "../utils/test";
-
-import { ValidationFileMatcher } from "./validation-file-matcher";
 
 async function snapshotMatcherResult(
   context: TestContext,

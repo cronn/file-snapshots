@@ -1,8 +1,7 @@
 import { test } from "vitest";
 
+import { TextSerializer } from "../serializers/text-serializer";
 import { testSerializer, testSerializerThrows } from "../utils/test";
-
-import { TextSerializer } from "./text-serializer";
 
 test("text", testSerializer(new TextSerializer(), "value"));
 

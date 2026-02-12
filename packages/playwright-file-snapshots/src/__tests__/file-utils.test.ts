@@ -1,8 +1,8 @@
 import path from "node:path";
 import { describe, expect, test } from "vitest";
 
-import { ensureAbsolutePath, resolvePackageRootDir } from "./file";
-import { createTmpDir } from "./test";
+import { ensureAbsolutePath, resolvePackageRootDir } from "../utils/file";
+import { createTmpDir } from "../utils/test";
 
 describe("resolvePackageRootDir", () => {
   test("returns root directory of package", async () => {

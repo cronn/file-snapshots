@@ -4,14 +4,14 @@ import { describe, expect, test } from "vitest";
 
 import type { UpdateSnapshotsType } from "@cronn/lib-file-snapshots";
 
-import type { ParsedTestInfo } from "./utils";
+import type { ParsedTestInfo } from "../matchers/utils";
 import {
   parseTestInfo,
   parseTestPath,
   parseTestStepInfo,
   parseTitlePath,
   parseUpdateSnapshots,
-} from "./utils";
+} from "../matchers/utils";
 
 function createConfig(values: Partial<FullConfig> = {}): FullConfig {
   return {

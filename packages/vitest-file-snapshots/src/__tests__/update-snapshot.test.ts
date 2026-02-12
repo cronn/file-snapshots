@@ -106,7 +106,6 @@ function readSnapshotFile(validationDir: string): Array<string> {
       path.resolve(
         validationDir,
         "src",
-        "matchers",
         "update-snapshot",
         `${normalizedTestTitle}.txt`,
       ),
