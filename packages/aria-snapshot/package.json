@@ -29,6 +29,8 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "test:unit": "vitest run",
+    "test:unit:coverage": "vitest run --coverage",
     "compile": "tsc",
     "build": "tsup"
   },
