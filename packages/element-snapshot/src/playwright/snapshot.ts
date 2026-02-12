@@ -1,9 +1,9 @@
 import type { Locator } from "@playwright/test";
 
 import type { NodeSnapshot } from "../browser/types";
+import type { SnapshotFilter } from "../utils/snapshot";
 
 import { ElementSnapshotProxy } from "./proxy";
-import type { SnapshotFilter } from "./transformer";
 import { ElementSnapshotTransformer } from "./transformer";
 
 export interface ElementSnapshotOptions {

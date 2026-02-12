@@ -1,5 +1,5 @@
 import { resolveElementReference } from "./attribute";
-import { snapshotTextContent } from "./text";
+import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
 export interface DiscribableAttributes {
@@ -22,7 +22,7 @@ function resolveDescription(
     "aria-describedby",
   );
   if (describedByElement !== null) {
-    return snapshotTextContent(describedByElement);
+    return resolveAccessibleTextContent(describedByElement);
   }
 
   if (element.ariaDescription !== null) {

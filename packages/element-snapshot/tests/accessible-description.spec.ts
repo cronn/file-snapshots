@@ -18,7 +18,10 @@ test("aria-describedby", async ({ page }) => {
     page,
     html`
       <input type="text" aria-label="Label" aria-describedby="description" />
-      <p id="description">Description</p>
+      <p id="description">
+        Description
+        <span aria-hidden="true">Hidden</span>
+      </p>
     `,
   );
 });

@@ -1,12 +1,25 @@
 [
   {
     "role": "button",
-    "name": "Text content",
+    "name": "Text Paragraph",
     "attributes": {},
     "children": [
       {
         "role": "text",
-        "name": "Text content"
+        "name": "Text"
+      },
+      {
+        "role": "img",
+        "name": "Image"
+      },
+      {
+        "role": "paragraph",
+        "children": [
+          {
+            "role": "text",
+            "name": "Paragraph"
+          }
+        ]
       }
     ]
   }

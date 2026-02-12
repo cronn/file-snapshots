@@ -5,7 +5,7 @@ import { resolveAccessibleName } from "./name";
 import { resolveInputRole } from "./role";
 import type { InputStateAttributes } from "./state";
 import { inputStateAttributes } from "./state";
-import { snapshotTextContent } from "./text";
+import { resolveAccessibleTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 export interface InputSnapshot extends GenericElementSnapshot<
@@ -139,13 +139,13 @@ export function resolveInputLabel(
       `[for='${element.id}']`,
     );
     if (referencedElement !== null) {
-      return snapshotTextContent(referencedElement);
+      return resolveAccessibleTextContent(referencedElement);
     }
   }
 
   const closestLabel = element.closest("label");
   if (closestLabel !== null) {
-    return snapshotTextContent(closestLabel);
+    return resolveAccessibleTextContent(closestLabel, [element]);
   }
 
   return undefined;

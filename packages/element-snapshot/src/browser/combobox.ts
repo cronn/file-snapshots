@@ -8,7 +8,7 @@ import {
 } from "./input";
 import { resolveAccessibleName } from "./name";
 import { roleSelector, selectorList } from "./selector";
-import { snapshotTextContent } from "./text";
+import { resolveAccessibleTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 export interface ComboboxSnapshot extends GenericElementSnapshot<
@@ -66,7 +66,7 @@ function resolveValue(
   element: ComboboxElement,
 ): string | Array<string> | undefined {
   if (element instanceof HTMLButtonElement) {
-    return snapshotTextContent(element);
+    return resolveAccessibleTextContent(element);
   }
 
   if (element instanceof HTMLInputElement) {
