@@ -3,6 +3,8 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { packageDirectory } from "package-directory";
 
+import type { FilePathResolverParams } from "@cronn/lib-file-snapshots";
+
 import type { VitestValidationFileMatcherConfig } from "../matchers/types";
 
 export function temporarySnapshotDirs(): Required<
@@ -39,4 +41,12 @@ export async function resolvePackageRootDir(fromDir: string): Promise<string> {
   }
 
   return packageDir;
+}
+
+export function testFilePathResolver(params: FilePathResolverParams): string {
+  const { testPath, titlePath, name } = params;
+  const normalizedTitlePath = path.join(
+    ...titlePath.map((title) => title.replaceAll(" ", "-")),
+  );
+  return path.join(testPath, normalizedTitlePath, name ?? "");
 }
