@@ -24,7 +24,10 @@ test("aria-describedby", async ({ page }) => {
         aria-label="Label"
         aria-describedby="description"
       />
-      <p id="description">Description</p>
+      <p id="description">
+        Description
+        <span aria-hidden="true">Hidden</span>
+      </p>
     `,
   );
 });

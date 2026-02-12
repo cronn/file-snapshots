@@ -7,7 +7,10 @@ test("HTML fieldset", async ({ page }) => {
     page,
     `
       <fieldset>
-        <legend>Legend</legend>
+        <legend>
+            Legend
+            <span aria-hidden="true">Hidden</span>
+        </legend>
         <label for="firstName">First Name</label>
         <input type="text" name="firstName" id="firstName" />
         <label for="lastName">Last Name</label>

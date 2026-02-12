@@ -62,8 +62,9 @@ export function snapshotElement(
 
 export function snapshotNodeRecursive(
   node: SnapshotTargetNode,
+  excludedNodes: Array<Node> = [],
 ): Array<NodeSnapshot> {
-  const snapshot = snapshotNodeByType(node);
+  const snapshot = snapshotNodeByType(node, excludedNodes);
 
   if (snapshot === null) {
     return [];
@@ -78,7 +79,12 @@ export function snapshotNodeRecursive(
 
 function snapshotNodeByType(
   node: SnapshotTargetNode,
+  excludedNodes: Array<Node>,
 ): NodeSnapshot | Array<NodeSnapshot> | null {
+  if (excludedNodes.includes(node)) {
+    return null;
+  }
+
   if (node.nodeType === Node.TEXT_NODE) {
     return snapshotTextNode(node);
   }
@@ -90,7 +96,7 @@ function snapshotNodeByType(
   const elementRole = parseElementRole(node);
 
   if (elementRole === undefined) {
-    return snapshotChildren(node) ?? null;
+    return snapshotChildren(node, excludedNodes) ?? null;
   }
 
   if (hasRoleSpecificSnapshot(elementRole)) {
