@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { isArray, isPlainObject } from "./guards";
+import { isArray, isPlainObject } from "../utils/guards";
 
 describe("is array", () => {
   test.each([{ value: [] }, { value: ["value"] }])(

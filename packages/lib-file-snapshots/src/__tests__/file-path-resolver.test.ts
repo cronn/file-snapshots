@@ -4,7 +4,7 @@ import { describe, expect, test } from "vitest";
 import {
   resolveNameAsFile,
   resolveNameAsFileSuffix,
-} from "./file-path-resolver";
+} from "../matcher/file-path-resolver";
 
 describe("resolveNameAsFile", () => {
   test("when name is undefined, returns path including testPath and titlePath", () => {

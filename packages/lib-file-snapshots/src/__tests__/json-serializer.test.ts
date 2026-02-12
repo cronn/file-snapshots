@@ -1,13 +1,12 @@
 import { expect, test } from "vitest";
 
-import { isString } from "../utils/guards";
-import { type SerializerTestFn, testSerializer } from "../utils/test";
-
 import {
   type JsonNormalizerContext,
   JsonSerializer,
   type JsonSerializerOptions,
-} from "./json-serializer";
+} from "../serializers/json-serializer";
+import { isString } from "../utils/guards";
+import { type SerializerTestFn, testSerializer } from "../utils/test";
 
 function jsonSerializerTest(
   value: unknown,

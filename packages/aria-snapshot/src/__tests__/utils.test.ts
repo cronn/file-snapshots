@@ -7,7 +7,7 @@ import {
   isSingleItemArray,
   parseSinglePropertyObject,
   unwrapSingleItemArray,
-} from "./utils";
+} from "../utils";
 
 describe("is array", () => {
   test.each([{ value: [] }, { value: ["value"] }])(

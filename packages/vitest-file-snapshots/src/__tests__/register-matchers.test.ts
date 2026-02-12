@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test } from "vitest";
 
 import type { FilePathResolverParams } from "@cronn/lib-file-snapshots";
 
-import { registerValidationFileMatchers } from "./register-matchers";
+import { registerValidationFileMatchers } from "../matchers/register-matchers";
 
 describe("matcher configuration", () => {
   test("resolves test path relative to testDir", () => {

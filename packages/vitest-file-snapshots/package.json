@@ -37,9 +37,9 @@
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "test:core": "vitest run",
-    "test:update-new": "cross-env UPDATE_TYPE=new CI=false GITHUB_ACTIONS= vitest run ./matchers/update-snapshot.test.ts",
-    "test:update-all": "cross-env UPDATE_TYPE=all CI=false GITHUB_ACTIONS= vitest run --update ./matchers/update-snapshot.test.ts",
-    "test:update-none": "cross-env UPDATE_TYPE=none CI=true vitest run ./matchers/update-snapshot.test.ts",
+    "test:update-new": "cross-env UPDATE_TYPE=new CI=false GITHUB_ACTIONS= vitest run ./__tests__/update-snapshot.test.ts",
+    "test:update-all": "cross-env UPDATE_TYPE=all CI=false GITHUB_ACTIONS= vitest run --update ./__tests__/update-snapshot.test.ts",
+    "test:update-none": "cross-env UPDATE_TYPE=none CI=true vitest run ./__tests__/update-snapshot.test.ts",
     "test:coverage": "vitest run --coverage",
     "compile": "tsc",
     "build": "tsup && node scripts/fix-declaration-file.ts"
