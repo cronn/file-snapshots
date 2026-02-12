@@ -10,7 +10,7 @@
     "directory": "packages/element-snapshot"
   },
   "homepage": "https://github.com/cronn/file-snapshots",
-  "packageManager": "pnpm@10.28.2",
+  "packageManager": "pnpm@10.29.3",
   "engines": {
     "node": "^20 || ^22 || >=24"
   },
@@ -48,12 +48,12 @@
   },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",
+    "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "@playwright/test": "catalog:",
     "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
