@@ -7,7 +7,11 @@ import { matchRawElementSnapshot } from "../src/test/fixtures";
 test("surrounding HTML label", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    html`<label><input type="checkbox" /> Label</label>`,
+    html`<label>
+      <input type="checkbox" />
+      Label
+      <span aria-hidden="true">Hidden</span>
+    </label>`,
   );
 });
 
@@ -15,7 +19,10 @@ test("referenced HTML label", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
     html`
-      <label for="input">Label</label>
+      <label for="input">
+        Label
+        <span aria-hidden="true">Hidden</span>
+      </label>
       <input type="text" id="input" />
     `,
   );
@@ -32,7 +39,10 @@ test("aria-labelledby", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
     html`
-      <p id="label">Label</p>
+      <p id="label">
+        Label
+        <span aria-hidden="true">Hidden</span>
+      </p>
       <input type="text" aria-labelledby="label" />
     `,
   );
@@ -75,5 +85,15 @@ test("aria-label takes precedence over HTML label", async ({ page }) => {
 });
 
 test("text content", async ({ page }) => {
-  await matchRawElementSnapshot(page, html`<button>Text content</button>`);
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <button>
+        Text
+        <img src="image.jpg" alt="Image" />
+        <p>Paragraph</p>
+        <span aria-hidden="true">Hidden</span>
+      </button>
+    `,
+  );
 });

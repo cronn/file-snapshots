@@ -204,6 +204,7 @@ test("button-based combobox", async ({ page }) => {
         aria-expanded="false"
       >
         Button Value
+        <span aria-hidden="true">Hidden</span>
       </button>
     `,
   );
