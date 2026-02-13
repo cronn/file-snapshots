@@ -1,5 +1,5 @@
 import { resolveElementReference } from "./attribute";
-import { snapshotTextContent } from "./text";
+import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
 export function resolveAccessibleName(
@@ -8,7 +8,7 @@ export function resolveAccessibleName(
 ): string | undefined {
   const labelledByElement = resolveElementReference(element, "aria-labelledby");
   if (labelledByElement !== null) {
-    return snapshotTextContent(labelledByElement);
+    return resolveAccessibleTextContent(labelledByElement);
   }
 
   if (element.ariaLabel !== null) {
@@ -16,7 +16,7 @@ export function resolveAccessibleName(
   }
 
   if (includeTextContent) {
-    return snapshotTextContent(element);
+    return resolveAccessibleTextContent(element);
   }
 
   return undefined;

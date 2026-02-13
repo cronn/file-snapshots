@@ -1,0 +1,33 @@
+[
+  {
+    "role": "dialog",
+    "name": "Dialog",
+    "attributes": {
+      "description": "Description"
+    },
+    "children": [
+      {
+        "role": "heading",
+        "name": "Dialog",
+        "attributes": {
+          "level": 2
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Dialog"
+          }
+        ]
+      },
+      {
+        "role": "paragraph",
+        "children": [
+          {
+            "role": "text",
+            "name": "Description"
+          }
+        ]
+      }
+    ]
+  }
+]

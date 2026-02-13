@@ -1,0 +1,22 @@
+{
+  "main": [
+    {
+      "heading": {
+        "name": "Heading",
+        "level": 1
+      }
+    },
+    {
+      "paragraph": "Text"
+    },
+    {
+      "heading": {
+        "name": "Subheading",
+        "level": 2
+      }
+    },
+    {
+      "paragraph": "Text"
+    }
+  ]
+}

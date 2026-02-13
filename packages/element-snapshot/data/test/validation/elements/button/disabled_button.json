@@ -1,0 +1,15 @@
+[
+  {
+    "role": "button",
+    "name": "Disabled",
+    "attributes": {
+      "disabled": true
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Disabled"
+      }
+    ]
+  }
+]

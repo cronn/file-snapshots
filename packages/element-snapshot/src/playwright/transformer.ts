@@ -5,6 +5,7 @@ import type {
   ElementSnapshot,
   NodeSnapshot,
 } from "../browser/types";
+import { type SnapshotFilter, filterSnapshots } from "../utils/snapshot";
 
 interface NormalizedElementSnapshot {
   role: ElementRole;
@@ -18,19 +19,18 @@ interface DomSnapshotTransformerOptions {
   includeComboboxOptions?: boolean;
 }
 
-export type SnapshotFilter = (node: NodeSnapshot) => boolean;
-
 export class ElementSnapshotTransformer {
-  private readonly filter: SnapshotFilter;
+  private readonly filter?: SnapshotFilter;
   private readonly includeComboboxOptions: boolean;
 
   public constructor(options: DomSnapshotTransformerOptions = {}) {
-    this.filter = options.filter ?? (() => true);
+    this.filter = options.filter;
     this.includeComboboxOptions = options.includeComboboxOptions ?? false;
   }
 
   public transform(snapshots: Array<NodeSnapshot>): unknown {
-    const transformedSnapshots = this.filterAndTransformSnapshots(snapshots);
+    const filteredSnapshots = this.filterSnapshots(snapshots);
+    const transformedSnapshots = this.transformSnapshots(filteredSnapshots);
 
     if (transformedSnapshots.length === 1) {
       return transformedSnapshots.at(0);
@@ -39,20 +39,18 @@ export class ElementSnapshotTransformer {
     return transformedSnapshots;
   }
 
-  private filterAndTransformSnapshots(
-    snapshots: Array<NodeSnapshot>,
-  ): Array<unknown> {
-    return snapshots.flatMap((snapshot) => {
-      if (this.filter(snapshot)) {
-        return this.transformSnapshotRecursive(snapshot);
-      }
+  private filterSnapshots(snapshots: Array<NodeSnapshot>): Array<NodeSnapshot> {
+    if (this.filter === undefined) {
+      return snapshots;
+    }
 
-      if ("children" in snapshot) {
-        return this.filterAndTransformSnapshots(snapshot.children ?? []);
-      }
+    return filterSnapshots(snapshots, this.filter);
+  }
 
-      return [];
-    });
+  private transformSnapshots(snapshots: Array<NodeSnapshot>): Array<unknown> {
+    return snapshots.map((snapshot) =>
+      this.transformSnapshotRecursive(snapshot),
+    );
   }
 
   private transformSnapshotRecursive(snapshot: NodeSnapshot): unknown {
@@ -106,7 +104,7 @@ export class ElementSnapshotTransformer {
     const sparseAttributes = this.removeUndefinedProperties(
       (snapshot.attributes ?? {}) as Record<string, unknown>,
     );
-    const transformedChildren = this.filterAndTransformSnapshots(
+    const transformedChildren = this.transformSnapshots(
       snapshot?.children ?? [],
     );
 

@@ -1,0 +1,35 @@
+[
+  {
+    "role": "button",
+    "name": "Expanded",
+    "attributes": {
+      "expanded": true
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Expanded"
+      }
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Collapsed",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Collapsed"
+      }
+    ]
+  },
+  {
+    "role": "paragraph",
+    "children": [
+      {
+        "role": "text",
+        "name": "Description"
+      }
+    ]
+  }
+]

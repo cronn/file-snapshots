@@ -1,0 +1,13 @@
+[
+  {
+    "role": "text",
+    "name": "Text Input"
+  },
+  {
+    "role": "textbox",
+    "name": "Text Input",
+    "attributes": {
+      "value": "Text"
+    }
+  }
+]

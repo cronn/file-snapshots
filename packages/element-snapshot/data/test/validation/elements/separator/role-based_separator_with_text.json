@@ -1,0 +1,11 @@
+[
+  {
+    "role": "separator",
+    "children": [
+      {
+        "role": "text",
+        "name": "Separator"
+      }
+    ]
+  }
+]

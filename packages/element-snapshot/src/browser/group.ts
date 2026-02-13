@@ -2,7 +2,7 @@ import { snapshotChildren } from "./children";
 import type { DiscribableAttributes } from "./description";
 import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
-import { snapshotTextContent } from "./text";
+import { resolveAccessibleTextContent } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 export interface GroupSnapshot extends GenericElementSnapshot<"group"> {}
@@ -23,7 +23,7 @@ function resolveGroupName(element: SnapshotTargetElement): string | undefined {
       ? element.querySelector("legend")
       : null;
   if (legendElement !== null) {
-    return snapshotTextContent(legendElement);
+    return resolveAccessibleTextContent(legendElement);
   }
 
   return resolveAccessibleName(element, false);

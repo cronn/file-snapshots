@@ -1,0 +1,13 @@
+[
+  {
+    "role": "text",
+    "name": "Search Input"
+  },
+  {
+    "role": "searchbox",
+    "name": "Search Input",
+    "attributes": {
+      "value": "Search"
+    }
+  }
+]

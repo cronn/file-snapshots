@@ -1,0 +1,22 @@
+[
+  {
+    "role": "radio",
+    "name": "Yes",
+    "attributes": {
+      "checked": true
+    }
+  },
+  {
+    "role": "text",
+    "name": "Yes"
+  },
+  {
+    "role": "radio",
+    "name": "No",
+    "attributes": {}
+  },
+  {
+    "role": "text",
+    "name": "No"
+  }
+]

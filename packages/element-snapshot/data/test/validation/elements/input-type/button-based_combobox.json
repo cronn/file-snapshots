@@ -1,0 +1,10 @@
+[
+  {
+    "role": "combobox",
+    "name": "Combobox",
+    "attributes": {
+      "value": "Button Value"
+    },
+    "options": []
+  }
+]
