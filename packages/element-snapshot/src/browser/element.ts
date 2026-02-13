@@ -13,6 +13,7 @@ import { snapshotLink } from "./link";
 import { snapshotMenuitem } from "./list";
 import { snapshotProgressbar } from "./progressbar";
 import { parseElementRole } from "./role";
+import { snapshotSeparator } from "./separator";
 import { snapshotTab } from "./tab";
 import { snapshotColumnheader } from "./table";
 import { snapshotTextNode } from "./text";
@@ -52,6 +53,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   radiogroup: snapshotRadiogroup,
   progressbar: snapshotProgressbar,
   img: snapshotImage,
+  separator: snapshotSeparator,
 };
 
 export function snapshotElement(

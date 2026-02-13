@@ -16,3 +16,14 @@ test("role-based separator with text", async ({ page }) => {
     `<span role="separator">Separator</span>`,
   );
 });
+
+test("all children are presentational", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    `
+      <div role="separator">
+        <h2>Separator</h2>
+      </div>
+    `,
+  );
+});

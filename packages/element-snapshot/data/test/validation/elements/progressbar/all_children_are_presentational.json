@@ -1,0 +1,12 @@
+[
+  {
+    "role": "progressbar",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Loading…"
+      }
+    ]
+  }
+]

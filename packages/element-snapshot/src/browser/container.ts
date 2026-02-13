@@ -33,7 +33,6 @@ const CONTAINER_ROLES = new Set([
   "menu",
   "tablist",
   "tabpanel",
-  "separator",
 ] as const);
 
 export interface ContainerSnapshot extends GenericElementSnapshot<ContainerRole> {}

@@ -23,6 +23,25 @@ export function snapshotTextNode(textNode: Node): TextSnapshot | null {
   };
 }
 
+export function snapshotPresentationalChildren(
+  node: Node,
+): Array<TextSnapshot> | undefined {
+  const accessibleTextContent = resolveAccessibleTextContent(node);
+  if (
+    accessibleTextContent === undefined ||
+    accessibleTextContent.length === 0
+  ) {
+    return undefined;
+  }
+
+  return [
+    {
+      role: "text",
+      name: accessibleTextContent,
+    },
+  ];
+}
+
 export function resolveAccessibleTextContent(
   node: Node,
   excludedNodes: Array<Node> = [],

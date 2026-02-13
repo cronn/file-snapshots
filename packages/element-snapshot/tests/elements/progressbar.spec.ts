@@ -28,3 +28,14 @@ test("role-based progressbar", async ({ page }) => {
 test("empty progressbar", async ({ page }) => {
   await matchRawElementSnapshot(page, `<div role="progressbar"></div>`);
 });
+
+test("all children are presentational", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    `
+      <div role="progressbar">
+        <h2>Loading…</h2>
+      </div>
+    `,
+  );
+});
