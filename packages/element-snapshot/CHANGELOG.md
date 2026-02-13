@@ -1,5 +1,11 @@
 # @cronn/element-snapshot
 
+## 0.11.0
+
+### Minor Changes
+
+- 39b52c2: Fix: Numeric attribute with non-numeric value is parsed to NaN
+
 ## 0.10.0
 
 ### Minor Changes
