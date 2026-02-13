@@ -1,0 +1,13 @@
+[
+  {
+    "role": "button",
+    "name": "Text content",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Text content"
+      }
+    ]
+  }
+]

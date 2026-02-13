@@ -2,8 +2,11 @@
   "$schema": "https://turborepo.com/schema.json",
   "extends": ["//"],
   "tasks": {
+    "playwright:install": {
+      "outputLogs": "new-only"
+    },
     "test": {
-      "dependsOn": ["test:unit"]
+      "dependsOn": ["test:unit", "test:integration"]
     },
     "test:unit": {
       "dependsOn": ["^build", "compile"],
@@ -14,11 +17,17 @@
       "outputs": ["coverage/**"],
       "outputLogs": "new-only"
     },
+    "test:integration": {
+      "dependsOn": ["^build", "compile", "build", "playwright:install"],
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "outputLogs": "new-only"
+    },
     "check": {
       "dependsOn": [
         "compile",
         "lint:check",
         "test:unit:coverage",
+        "test:integration",
         "//#format:check"
       ]
     }

@@ -1,0 +1,12 @@
+[
+  {
+    "role": "alertdialog",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Alert Dialog"
+      }
+    ]
+  }
+]

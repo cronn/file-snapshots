@@ -1,0 +1,13 @@
+[
+  {
+    "role": "text",
+    "name": "Email Input"
+  },
+  {
+    "role": "textbox",
+    "name": "Email Input",
+    "attributes": {
+      "value": "mail@example.com"
+    }
+  }
+]

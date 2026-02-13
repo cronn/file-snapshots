@@ -1,0 +1,7 @@
+{
+  "textbox": {
+    "name": "Input Name",
+    "value": "Input Value",
+    "readonly": true
+  }
+}

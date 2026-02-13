@@ -1,0 +1,51 @@
+[
+  {
+    "role": "table",
+    "children": [
+      {
+        "role": "row",
+        "children": [
+          {
+            "role": "columnheader",
+            "name": "Ascending Sorting",
+            "attributes": {
+              "sort": "ascending"
+            },
+            "children": [
+              {
+                "role": "text",
+                "name": "Ascending Sorting"
+              }
+            ]
+          },
+          {
+            "role": "columnheader",
+            "name": "Descending Sorting",
+            "attributes": {
+              "sort": "descending"
+            },
+            "children": [
+              {
+                "role": "text",
+                "name": "Descending Sorting"
+              }
+            ]
+          },
+          {
+            "role": "columnheader",
+            "name": "Other Sorting",
+            "attributes": {
+              "sort": "other"
+            },
+            "children": [
+              {
+                "role": "text",
+                "name": "Other Sorting"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

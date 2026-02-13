@@ -1,0 +1,15 @@
+[
+  {
+    "role": "button",
+    "name": "ARIA-Disabled",
+    "attributes": {
+      "disabled": true
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "ARIA-Disabled"
+      }
+    ]
+  }
+]

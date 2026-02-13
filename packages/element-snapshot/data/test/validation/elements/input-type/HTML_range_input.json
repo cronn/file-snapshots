@@ -1,0 +1,13 @@
+[
+  {
+    "role": "text",
+    "name": "Range Input"
+  },
+  {
+    "role": "slider",
+    "name": "Range Input",
+    "attributes": {
+      "value": "0"
+    }
+  }
+]

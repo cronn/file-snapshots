@@ -46,9 +46,14 @@
     "./eslint": {
       "types": "./dist/eslint.d.ts",
       "default": "./dist/eslint.js"
+    },
+    "./playwright": {
+      "types": "./dist/playwright.d.ts",
+      "default": "./dist/playwright.js"
     }
   },
   "devDependencies": {
+    "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",

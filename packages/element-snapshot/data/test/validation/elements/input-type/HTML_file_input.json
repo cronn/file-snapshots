@@ -1,0 +1,11 @@
+[
+  {
+    "role": "text",
+    "name": "File Input"
+  },
+  {
+    "role": "textbox",
+    "name": "File Input",
+    "attributes": {}
+  }
+]

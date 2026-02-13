@@ -1,0 +1,51 @@
+[
+  {
+    "role": "heading",
+    "name": "Radiogroup Name",
+    "attributes": {
+      "level": 2
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Radiogroup Name"
+      }
+    ]
+  },
+  {
+    "role": "radiogroup",
+    "name": "Radiogroup Name",
+    "attributes": {
+      "description": "Radiogroup Description"
+    },
+    "children": [
+      {
+        "role": "paragraph",
+        "children": [
+          {
+            "role": "text",
+            "name": "Radiogroup Description"
+          }
+        ]
+      },
+      {
+        "role": "radio",
+        "name": "Option 1",
+        "attributes": {}
+      },
+      {
+        "role": "text",
+        "name": "Option 1"
+      },
+      {
+        "role": "radio",
+        "name": "Option 2",
+        "attributes": {}
+      },
+      {
+        "role": "text",
+        "name": "Option 2"
+      }
+    ]
+  }
+]

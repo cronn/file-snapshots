@@ -1,0 +1,16 @@
+[
+  {
+    "role": "paragraph",
+    "children": [
+      {
+        "role": "text",
+        "name": "Referenced Label"
+      }
+    ]
+  },
+  {
+    "role": "textbox",
+    "name": "Referenced Label",
+    "attributes": {}
+  }
+]

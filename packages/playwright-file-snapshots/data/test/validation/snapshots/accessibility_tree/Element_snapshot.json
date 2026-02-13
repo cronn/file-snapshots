@@ -1,9 +1,0 @@
-{
-  "main": [
-    {
-      "paragraph": "aria-hidden=false"
-    },
-    "role=presentation",
-    "role=none"
-  ]
-}

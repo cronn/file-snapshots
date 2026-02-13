@@ -1,0 +1,9 @@
+[
+  {
+    "role": "textbox",
+    "name": "Textarea",
+    "attributes": {
+      "placeholder": "Placeholder"
+    }
+  }
+]

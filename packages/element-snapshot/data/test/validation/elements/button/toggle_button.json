@@ -1,0 +1,39 @@
+[
+  {
+    "role": "button",
+    "name": "Pressed",
+    "attributes": {
+      "pressed": true
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Pressed"
+      }
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Mixed",
+    "attributes": {
+      "pressed": "mixed"
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Mixed"
+      }
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Not Pressed",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Not Pressed"
+      }
+    ]
+  }
+]

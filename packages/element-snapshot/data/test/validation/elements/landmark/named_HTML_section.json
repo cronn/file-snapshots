@@ -1,0 +1,12 @@
+[
+  {
+    "role": "region",
+    "name": "Name",
+    "children": [
+      {
+        "role": "text",
+        "name": "Section content"
+      }
+    ]
+  }
+]

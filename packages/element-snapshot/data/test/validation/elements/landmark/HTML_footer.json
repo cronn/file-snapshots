@@ -1,0 +1,11 @@
+[
+  {
+    "role": "contentinfo",
+    "children": [
+      {
+        "role": "text",
+        "name": "Footer"
+      }
+    ]
+  }
+]
