@@ -3,7 +3,7 @@
   "include": [
     "playwright.config.ts",
     "vitest.config.ts",
-    "tsup.config.ts",
+    "tsdown.config.ts",
     "./src/**/*.ts",
     "./tests/**/*.ts"
   ]

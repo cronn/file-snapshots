@@ -1,14 +1,14 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsdown";
 
-import { tsupConfig } from "@cronn/shared-configs/tsup";
+import { tsdownConfig } from "@cronn/shared-configs/tsdown";
 
 export default defineConfig((options) => [
-  tsupConfig({
+  tsdownConfig({
     entry: ["src/browser-lib.ts"],
     format: ["iife"],
     ...options,
   }),
-  tsupConfig({
+  tsdownConfig({
     entry: ["src/index.ts"],
     ...options,
   }),
