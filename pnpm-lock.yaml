@@ -110,9 +110,6 @@ importers:
         specifier: 'catalog:'
         version: 2.8.2
     devDependencies:
-      '@changesets/cli':
-        specifier: 'catalog:'
-        version: 2.29.8(@types/node@24.10.9)
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
@@ -241,9 +238,6 @@ importers:
         specifier: 'catalog:'
         version: 8.2.0
     devDependencies:
-      '@changesets/cli':
-        specifier: 'catalog:'
-        version: 2.29.8(@types/node@24.10.9)
       '@cronn/aria-snapshot':
         specifier: workspace:*
         version: link:../aria-snapshot
@@ -329,9 +323,6 @@ importers:
         specifier: workspace:*
         version: link:../lib-file-snapshots
     devDependencies:
-      '@changesets/cli':
-        specifier: 'catalog:'
-        version: 2.29.8(@types/node@24.10.9)
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs

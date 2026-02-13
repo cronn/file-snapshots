@@ -49,7 +49,6 @@
     "yaml": "catalog:"
   },
   "devDependencies": {
-    "@changesets/cli": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
