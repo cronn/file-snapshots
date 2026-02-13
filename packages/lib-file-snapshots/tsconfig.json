@@ -13,5 +13,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["tsup.config.ts", "vitest.config.ts", "./src/**/*.ts"]
+  "include": ["tsdown.config.ts", "vitest.config.ts", "./src/**/*.ts"]
 }
