@@ -31,25 +31,25 @@
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "compile": "tsc",
-    "build": "tsup"
+    "build": "tsdown --config-loader unrun"
   },
   "type": "module",
   "exports": {
-    "./tsup": {
-      "types": "./dist/tsup.d.ts",
-      "default": "./dist/tsup.js"
+    "./tsdown": {
+      "types": "./dist/tsdown.d.mts",
+      "default": "./dist/tsdown.mjs"
     },
     "./vitest": {
-      "types": "./dist/vitest.d.ts",
-      "default": "./dist/vitest.js"
+      "types": "./dist/vitest.d.mts",
+      "default": "./dist/vitest.mjs"
     },
     "./eslint": {
-      "types": "./dist/eslint.d.ts",
-      "default": "./dist/eslint.js"
+      "types": "./dist/eslint.d.mts",
+      "default": "./dist/eslint.mjs"
     },
     "./playwright": {
-      "types": "./dist/playwright.d.ts",
-      "default": "./dist/playwright.js"
+      "types": "./dist/playwright.d.mts",
+      "default": "./dist/playwright.mjs"
     }
   },
   "devDependencies": {
@@ -59,7 +59,7 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"

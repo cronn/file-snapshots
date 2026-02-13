@@ -31,13 +31,13 @@
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "compile": "tsc",
-    "build": "tsup"
+    "build": "tsdown"
   },
   "type": "module",
   "exports": {
     "./playwright": {
-      "types": "./dist/playwright.d.ts",
-      "default": "./dist/playwright.js"
+      "types": "./dist/playwright.d.mts",
+      "default": "./dist/playwright.mjs"
     }
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:"
   }

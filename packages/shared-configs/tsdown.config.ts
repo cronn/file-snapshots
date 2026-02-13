@@ -1,11 +1,11 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsdown";
 
-import { tsupConfig } from "./src/tsup";
+import { tsdownConfig } from "./src/tsdown";
 
 export default defineConfig((options) =>
-  tsupConfig({
+  tsdownConfig({
     entry: [
-      "src/tsup.ts",
+      "src/tsdown.ts",
       "src/vitest.ts",
       "src/eslint.ts",
       "src/playwright.ts",

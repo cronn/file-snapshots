@@ -1,6 +1,6 @@
 import * as fs from "node:fs";
 
-const generatedDeclarationFile = "./dist/register.d.ts";
+const generatedDeclarationFile = "./dist/register.d.mts";
 
 if (!fs.existsSync(generatedDeclarationFile)) {
   throw new Error("Declaration file does not exist.");
@@ -8,10 +8,6 @@ if (!fs.existsSync(generatedDeclarationFile)) {
 
 function addVitestSideEffectImport(declaration: string): string {
   return `import "vitest";\n${declaration}`;
-}
-
-function removeSelfSideEffectImport(declaration: string): string {
-  return declaration.replace("import '@cronn/lib-file-snapshots';\n", "");
 }
 
 /**
@@ -23,7 +19,7 @@ function removeSelfSideEffectImport(declaration: string): string {
 const declaration = fs.readFileSync(generatedDeclarationFile).toString();
 fs.writeFileSync(
   generatedDeclarationFile,
-  addVitestSideEffectImport(removeSelfSideEffectImport(declaration)),
+  addVitestSideEffectImport(declaration),
 );
 
 console.log("Fixed declaration file.");

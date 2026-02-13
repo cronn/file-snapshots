@@ -1,8 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "include": [
+    "eslint.config.ts",
     "playwright.config.ts",
-    "tsup.config.ts",
+    "tsdown.config.ts",
     "vitest.config.ts",
     "./src/**/*.ts",
     "./tests/**/*.ts"
