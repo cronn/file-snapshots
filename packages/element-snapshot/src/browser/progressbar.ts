@@ -1,6 +1,6 @@
 import { numericAttribute } from "./attribute";
-import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
+import { snapshotPresentationalChildren } from "./text";
 import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
 
 export interface ProgressbarSnapshot extends GenericElementSnapshot<
@@ -21,7 +21,7 @@ export function snapshotProgressbar(
     attributes: {
       value: resolveValue(element),
     },
-    children: snapshotChildren(element),
+    children: snapshotPresentationalChildren(element),
   };
 }
 
