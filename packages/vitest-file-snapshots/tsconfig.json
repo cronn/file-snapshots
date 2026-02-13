@@ -1,4 +1,9 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["vitest.config.ts", "tsup.config.ts", "./src/**/*.ts"]
+  "include": [
+    "eslint.config.ts",
+    "vitest.config.ts",
+    "tsdown.config.ts",
+    "./src/**/*.ts"
+  ]
 }

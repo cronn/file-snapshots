@@ -42,14 +42,14 @@
     "test:update-none": "cross-env UPDATE_TYPE=none CI=true vitest run ./__tests__/update-snapshot.test.ts",
     "test:coverage": "vitest run --coverage",
     "compile": "tsc",
-    "build": "tsup && node scripts/fix-declaration-file.ts"
+    "build": "tsdown && node scripts/fix-declaration-file.ts"
   },
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./register": {
-      "types": "./dist/register.d.ts",
-      "default": "./dist/register.js"
+      "types": "./dist/register.d.mts",
+      "default": "./dist/register.mjs"
     }
   },
   "files": [
@@ -70,7 +70,7 @@
     "eslint-plugin-unused-imports": "catalog:",
     "package-directory": "catalog:",
     "prettier": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"

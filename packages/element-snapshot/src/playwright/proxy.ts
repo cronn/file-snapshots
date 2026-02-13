@@ -29,11 +29,7 @@ export class ElementSnapshotProxy {
 
   private async loadLibrary(): Promise<void> {
     const packageRootDir = await this.resolvePackageRootDir();
-    const libPath = path.resolve(
-      packageRootDir,
-      "dist",
-      "browser-lib.global.js",
-    );
+    const libPath = path.resolve(packageRootDir, "dist", "browser-lib.iife.js");
     await this.page.addScriptTag({
       path: libPath,
     });

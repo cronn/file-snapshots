@@ -1,6 +1,6 @@
-import type { Options } from "tsup";
+import type { UserConfig } from "tsdown";
 
-export function tsupConfig(options: Options): Options {
+export function tsdownConfig(options: UserConfig): UserConfig {
   return {
     platform: "node",
     format: ["esm"],

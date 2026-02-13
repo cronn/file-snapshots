@@ -44,14 +44,14 @@
     "test:integration:update-none": "playwright test --grep @update-none --update-snapshots none",
     "playwright:install": "playwright install chromium",
     "compile": "tsc",
-    "build": "tsup"
+    "build": "tsdown"
   },
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
@@ -71,7 +71,7 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
