@@ -3,5 +3,5 @@
   "compilerOptions": {
     "lib": ["esnext", "dom"]
   },
-  "include": ["tsup.config.ts", "./src/**/*.ts"]
+  "include": ["tsup.config.ts", "vitest.config.ts", "./src/**/*.ts"]
 }

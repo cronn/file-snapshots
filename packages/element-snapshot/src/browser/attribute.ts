@@ -15,11 +15,8 @@ export function numericAttribute(value: string | null): number | undefined {
     return undefined;
   }
 
-  try {
-    return parseInt(value);
-  } catch {
-    return undefined;
-  }
+  const parsedValue = parseInt(value);
+  return Number.isNaN(parsedValue) ? undefined : parsedValue;
 }
 
 export function enumAttribute<TEnum extends string>(

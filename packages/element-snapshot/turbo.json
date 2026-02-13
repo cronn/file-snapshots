@@ -1,0 +1,26 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "test": {
+      "dependsOn": ["test:unit"]
+    },
+    "test:unit": {
+      "dependsOn": ["^build", "compile"],
+      "outputLogs": "new-only"
+    },
+    "test:unit:coverage": {
+      "dependsOn": ["^build", "compile"],
+      "outputs": ["coverage/**"],
+      "outputLogs": "new-only"
+    },
+    "check": {
+      "dependsOn": [
+        "compile",
+        "lint:check",
+        "test:unit:coverage",
+        "//#format:check"
+      ]
+    }
+  }
+}
