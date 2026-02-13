@@ -59,7 +59,6 @@
     "@cronn/lib-file-snapshots": "workspace:*"
   },
   "devDependencies": {
-    "@changesets/cli": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",

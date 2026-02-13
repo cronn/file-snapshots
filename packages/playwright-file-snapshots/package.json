@@ -63,7 +63,6 @@
     "package-directory": "catalog:"
   },
   "devDependencies": {
-    "@changesets/cli": "catalog:",
     "@cronn/aria-snapshot": "workspace:*",
     "@cronn/element-snapshot": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
