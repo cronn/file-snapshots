@@ -1,11 +1,13 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("HTML table", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <table>
         <thead>
           <tr>
@@ -37,7 +39,7 @@ test("HTML table", async ({ page }) => {
 test("role-based table", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="table">
         <div role="row">
           <div role="columnheader">Column Header</div>
@@ -56,11 +58,13 @@ test("role-based table", async ({ page }) => {
 test("sorted columnheader", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="table">
         <div role="row">
           <div role="columnheader" aria-sort="ascending">Ascending Sorting</div>
-          <div role="columnheader" aria-sort="descending">Descending Sorting</div>
+          <div role="columnheader" aria-sort="descending">
+            Descending Sorting
+          </div>
           <div role="columnheader" aria-sort="other">Other Sorting</div>
         </div>
       </div>
@@ -69,13 +73,13 @@ test("sorted columnheader", async ({ page }) => {
 });
 
 test("empty table", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<table></table>`);
+  await matchRawElementSnapshot(page, html`<table></table>`);
 });
 
 test("empty rowgroup", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <table>
         <tbody></tbody>
       </table>
@@ -86,7 +90,7 @@ test("empty rowgroup", async ({ page }) => {
 test("empty row", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <table>
         <tr></tr>
       </table>
@@ -97,7 +101,7 @@ test("empty row", async ({ page }) => {
 test("snapshots empty cells", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <table>
         <tr>
           <th scope="col">Column Header</th>
@@ -110,17 +114,20 @@ test("snapshots empty cells", async ({ page }) => {
 });
 
 test("ignores rowgroup outside table", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="rowgroup">Rowgroup</div>`);
+  await matchRawElementSnapshot(
+    page,
+    html`<div role="rowgroup">Rowgroup</div>`,
+  );
 });
 
 test("ignores row outside table", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="row">Row</div>`);
+  await matchRawElementSnapshot(page, html`<div role="row">Row</div>`);
 });
 
 test("ignores cells outside table", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="columnheader">Column Header</div>
       <div role="rowheader">Row Header</div>
       <div role="cell">Cell</div>
@@ -131,7 +138,7 @@ test("ignores cells outside table", async ({ page }) => {
 test("ignores cells outside row", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="table">
         <div role="columnheader">Column Header</div>
         <div role="rowheader">Row Header</div>

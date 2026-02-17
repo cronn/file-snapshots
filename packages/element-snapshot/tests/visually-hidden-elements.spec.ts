@@ -1,55 +1,60 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../src/test/fixtures";
 
 test("element with hidden attribute", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div hidden>Content</div>`);
+  await matchRawElementSnapshot(page, html`<div hidden>Content</div>`);
 });
 
 test("element with hidden=hidden attribute", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div hidden="hidden">Content</div>`);
+  await matchRawElementSnapshot(page, html`<div hidden="hidden">Content</div>`);
 });
 
 test("element with hidden=until-found attribute", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<div hidden="until-found">Content</div>`,
+    html`<div hidden="until-found">Content</div>`,
   );
 });
 
 test("element with arbitrary hidden attribute", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div hidden="custom">Content</div>`);
+  await matchRawElementSnapshot(page, html`<div hidden="custom">Content</div>`);
 });
 
 test("element with display:none style", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<div style="display: none">Content</div>`,
+    html`<div style="display: none">Content</div>`,
   );
 });
 
 test("element with visibility:hidden style", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<div style="visibility: hidden">Content</div>`,
+    html`<div style="visibility: hidden">Content</div>`,
   );
 });
 
 test("element with visibility:collapse style", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<div style="visibility: collapse">Content</div>`,
+    html`<div style="visibility: collapse">Content</div>`,
   );
 });
 
 test("element with opacity:0 style", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div style="opacity: 0">Content</div>`);
+  await matchRawElementSnapshot(
+    page,
+    html`<div style="opacity: 0">Content</div>`,
+  );
 });
 
 test("element with display:none class", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <style>
         .display-none {
           display: none;
@@ -63,7 +68,7 @@ test("element with display:none class", async ({ page }) => {
 test("element with visibility:hidden class", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <style>
         .visibility-hidden {
           visibility: hidden;
@@ -77,7 +82,7 @@ test("element with visibility:hidden class", async ({ page }) => {
 test("element with visibility:collapse class", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <style>
         .visibility-collapse {
           visibility: collapse;
@@ -91,7 +96,7 @@ test("element with visibility:collapse class", async ({ page }) => {
 test("element with opacity:0 class", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <style>
         .opacity-0 {
           opacity: 0;

@@ -1,5 +1,7 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { setupTransformedSnapshotTest } from "../../src/test/fixtures";
 
 test("when snapshot contains multiple elements, returns array of elements", async ({
@@ -7,7 +9,7 @@ test("when snapshot contains multiple elements, returns array of elements", asyn
 }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <p>First Paragraph</p>
       <p>Second Paragraph</p>
     `,
@@ -21,7 +23,7 @@ test("when snapshot contains exactly one element, returns the element", async ({
 }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `<p>Single Paragraph</p>`,
+    html`<p>Single Paragraph</p>`,
   );
 
   await matchSnapshot();
@@ -30,7 +32,7 @@ test("when snapshot contains exactly one element, returns the element", async ({
 test("when element is empty, resolves value to empty string", async ({
   page,
 }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(page, `<p></p>`);
+  const matchSnapshot = await setupTransformedSnapshotTest(page, html`<p></p>`);
 
   await matchSnapshot();
 });
@@ -40,7 +42,7 @@ test("when element has only a name, resolves value to name", async ({
 }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `<input type="text" aria-label="Input Name" />`,
+    html`<input type="text" aria-label="Input Name" />`,
   );
 
   await matchSnapshot();
@@ -51,7 +53,7 @@ test("when element has only children, resolves value to children", async ({
 }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <main>
         <h1>Headline</h1>
         <p>Paragraph</p>
@@ -65,7 +67,12 @@ test("when element has only children, resolves value to children", async ({
 test("flattens defined attributes", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `<input type="text" aria-label="Input Name" value="Input Value" readonly />`,
+    html`<input
+      type="text"
+      aria-label="Input Name"
+      value="Input Value"
+      readonly
+    />`,
   );
 
   await matchSnapshot();
@@ -74,7 +81,7 @@ test("flattens defined attributes", async ({ page }) => {
 test("when name equals children, excludes children", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `<h1>Heading</h1>`,
+    html`<h1>Heading</h1>`,
   );
 
   await matchSnapshot();
@@ -85,7 +92,7 @@ test("when element has name and children, includes children property", async ({
 }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <section aria-labelledby="heading">
         <h2 id="heading">Heading</h2>
         <p>Paragraph</p>
@@ -101,7 +108,7 @@ test("when element has attributes and children, includes children property", asy
 }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <a href="/target">
         <img src="/image.jpg" alt="Image" />
       </h1>

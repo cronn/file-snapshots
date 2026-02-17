@@ -1,74 +1,92 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("readonly input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<input type="text" aria-label="Readonly Input" readonly />`,
+    html`<input type="text" aria-label="Readonly Input" readonly />`,
   );
 });
 
 test("aria-readonly input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<input type="text" aria-label="ARIA-Readonly Input" aria-readonly="true" />`,
+    html`<input
+      type="text"
+      aria-label="ARIA-Readonly Input"
+      aria-readonly="true"
+    />`,
   );
 });
 
 test("disabled input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<input type="text" aria-label="Disabled Input" disabled />`,
+    html`<input type="text" aria-label="Disabled Input" disabled />`,
   );
 });
 
 test("aria-disabled input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<input type="text" aria-label="ARIA-Disabled Input" aria-disabled="true" />`,
+    html`<input
+      type="text"
+      aria-label="ARIA-Disabled Input"
+      aria-disabled="true"
+    />`,
   );
 });
 
 test("required input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<input type="text" aria-label="Required Input" required />`,
+    html`<input type="text" aria-label="Required Input" required />`,
   );
 });
 
 test("aria-required input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<input type="text" aria-label="ARIA-Required Input" aria-required="true" />`,
+    html`<input
+      type="text"
+      aria-label="ARIA-Required Input"
+      aria-required="true"
+    />`,
   );
 });
 
 test("aria-invalid input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<input type="text" aria-label="ARIA-Invalid Input" aria-invalid="true" />`,
+    html`<input
+      type="text"
+      aria-label="ARIA-Invalid Input"
+      aria-invalid="true"
+    />`,
   );
 });
 
 test("input with placeholder", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<input type="text" aria-label="Input" placeholder="Placeholder" />`,
+    html`<input type="text" aria-label="Input" placeholder="Placeholder" />`,
   );
 });
 
 test("textarea with placeholder", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `<textarea aria-label="Textarea" placeholder="Placeholder"></textarea>`,
+    html`<textarea aria-label="Textarea" placeholder="Placeholder"></textarea>`,
   );
 });
 
 test("input with value and placeholder", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <input
         type="text"
         aria-label="Input"
@@ -82,7 +100,7 @@ test("input with value and placeholder", async ({ page }) => {
 test("expanded input-based combobox", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label>
         Combobox
         <input
@@ -104,7 +122,7 @@ test("expanded input-based combobox", async ({ page }) => {
 test("expanded button-based combobox", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <button
         type="button"
         role="combobox"

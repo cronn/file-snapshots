@@ -1,18 +1,15 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("HTML text input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">Text Input</label>
-      <input
-        type="text"
-        id="input"
-        name="input"
-        value="Text"
-      />
+      <input type="text" id="input" name="input" value="Text" />
     `,
   );
 });
@@ -20,14 +17,9 @@ test("HTML text input", async ({ page }) => {
 test("HTML email input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">Email Input</label>
-      <input
-        type="email"
-        id="input"
-        name="input"
-        value="mail@example.com"
-      />
+      <input type="email" id="input" name="input" value="mail@example.com" />
     `,
   );
 });
@@ -35,14 +27,9 @@ test("HTML email input", async ({ page }) => {
 test("HTML password input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">Password Input</label>
-      <input
-        type="password"
-        id="input"
-        name="input"
-        value="secret"
-      />
+      <input type="password" id="input" name="input" value="secret" />
     `,
   );
 });
@@ -50,7 +37,7 @@ test("HTML password input", async ({ page }) => {
 test("HTML number input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">Number Input</label>
       <input
         type="number"
@@ -68,16 +55,9 @@ test("HTML number input", async ({ page }) => {
 test("HTML range input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">Range Input</label>
-      <input
-        type="range"
-        id="input"
-        name="input"
-        value="0"
-        min="0"
-        max="100"
-      />
+      <input type="range" id="input" name="input" value="0" min="0" max="100" />
     `,
   );
 });
@@ -85,14 +65,9 @@ test("HTML range input", async ({ page }) => {
 test("HTML date input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">Date Input</label>
-      <input
-        type="date"
-        id="input"
-        name="input"
-        value="2020-06-15"
-      />
+      <input type="date" id="input" name="input" value="2020-06-15" />
     `,
   );
 });
@@ -100,14 +75,9 @@ test("HTML date input", async ({ page }) => {
 test("HTML time input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">Time Input</label>
-      <input
-        type="time"
-        id="input"
-        name="input"
-        value="12:00"
-      />
+      <input type="time" id="input" name="input" value="12:00" />
     `,
   );
 });
@@ -115,20 +85,13 @@ test("HTML time input", async ({ page }) => {
 test("HTML checkbox", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label>
-        <input
-          type="checkbox"
-          name="input"
-          checked
-        />
+        <input type="checkbox" name="input" checked />
         Checked
       </label>
       <label>
-        <input
-          type="checkbox"
-          name="input"
-        />
+        <input type="checkbox" name="input" />
         Unchecked
       </label>
     `,
@@ -138,7 +101,7 @@ test("HTML checkbox", async ({ page }) => {
 test("HTML radio button", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label>
         <input type="radio" name="input" value="yes" checked />
         Yes
@@ -154,7 +117,7 @@ test("HTML radio button", async ({ page }) => {
 test("HTML file input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">File Input</label>
       <input type="file" id="input" name="input" />
     `,
@@ -164,7 +127,7 @@ test("HTML file input", async ({ page }) => {
 test("HTML search input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="input">Search Input</label>
       <input type="search" id="input" name="input" value="Search" />
     `,
@@ -174,7 +137,7 @@ test("HTML search input", async ({ page }) => {
 test("HTML textarea", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="textarea">Textarea</label>
       <textarea id="textarea" name="input">Text</textarea>
     `,
@@ -184,7 +147,7 @@ test("HTML textarea", async ({ page }) => {
 test("HTML single select", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="select">Single Select</label>
       <select id="select">
         <option value="option1" selected>Option 1</option>
@@ -197,7 +160,7 @@ test("HTML single select", async ({ page }) => {
 test("HTML multi select", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label for="select">Multi Select</label>
       <select id="select" multiple>
         <option value="option1" selected>Option 1</option>
@@ -211,7 +174,7 @@ test("HTML multi select", async ({ page }) => {
 test("input-based combobox", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <label>
         Combobox
         <input
@@ -233,7 +196,7 @@ test("input-based combobox", async ({ page }) => {
 test("button-based combobox", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <button
         type="button"
         role="combobox"
