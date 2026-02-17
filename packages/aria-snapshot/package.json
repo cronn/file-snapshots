@@ -53,6 +53,7 @@
   "devDependencies": {
     "@cronn/playwright-file-snapshots": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
+    "@cronn/test-utils": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",

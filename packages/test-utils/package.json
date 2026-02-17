@@ -1,13 +1,14 @@
 {
-  "name": "@cronn/element-snapshot",
-  "version": "0.10.0",
-  "description": "Element snapshots for Playwright",
+  "name": "@cronn/test-utils",
+  "version": "0.0.0",
+  "description": "Internal test utils for the monorepo",
   "author": "cronn",
+  "private": true,
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/cronn/file-snapshots.git",
-    "directory": "packages/element-snapshot"
+    "directory": "packages/test-utils"
   },
   "homepage": "https://github.com/cronn/file-snapshots",
   "packageManager": "pnpm@10.29.3",
@@ -29,45 +30,26 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "test:unit": "vitest run",
-    "test:unit:coverage": "vitest run --coverage",
-    "test:integration": "playwright test",
-    "playwright:install": "playwright install chromium",
     "compile": "tsc",
     "build": "tsup"
   },
   "type": "module",
   "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+    "./playwright": {
+      "types": "./dist/playwright.d.ts",
+      "default": "./dist/playwright.js"
     }
   },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "package-directory": "catalog:"
-  },
   "devDependencies": {
-    "@cronn/playwright-file-snapshots": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
-    "@cronn/test-utils": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
-    "@types/node": "catalog:",
-    "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
-    "typescript-eslint": "catalog:",
-    "vitest": "catalog:"
-  },
-  "peerDependencies": {
-    "@playwright/test": "^1.55"
+    "typescript-eslint": "catalog:"
   }
 }
