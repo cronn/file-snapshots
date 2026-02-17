@@ -1,5 +1,14 @@
 import type { Locator, Page } from "@playwright/test";
 
+export function html(
+  strings: TemplateStringsArray,
+  ...values: Array<string>
+): string {
+  return strings.reduce((result, str, i) => {
+    return result + str + (values[i] ?? "");
+  }, "");
+}
+
 export async function setupSnapshotTest(
   page: Page,
   content: string,

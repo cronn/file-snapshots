@@ -1,11 +1,13 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("tabs", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="tablist" aria-label="Tablist">
         <button
           role="tab"
@@ -61,13 +63,13 @@ test("tabs", async ({ page }) => {
 });
 
 test("empty tablist", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="tablist"></div>`);
+  await matchRawElementSnapshot(page, html`<div role="tablist"></div>`);
 });
 
 test("empty tab", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="tablist">
         <div role="tab"></div>
       </div>
@@ -76,9 +78,9 @@ test("empty tab", async ({ page }) => {
 });
 
 test("empty tabpanel", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="tabpanel"></div>`);
+  await matchRawElementSnapshot(page, html`<div role="tabpanel"></div>`);
 });
 
 test("ignores tab outside tablist", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="tab">Tab</div>`);
+  await matchRawElementSnapshot(page, html`<div role="tab">Tab</div>`);
 });

@@ -1,11 +1,13 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("grid", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="grid">
         <div role="row">
           <div role="columnheader">Column Header 1</div>
@@ -27,13 +29,13 @@ test("grid", async ({ page }) => {
 });
 
 test("empty grid", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="grid"></div>`);
+  await matchRawElementSnapshot(page, html`<div role="grid"></div>`);
 });
 
 test("empty gridcell", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="grid">
         <div role="row">
           <div role="gridcell"></div>
@@ -44,17 +46,20 @@ test("empty gridcell", async ({ page }) => {
 });
 
 test("ignores rowgroup outside grid", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="rowgroup">Rowgroup</div>`);
+  await matchRawElementSnapshot(
+    page,
+    html`<div role="rowgroup">Rowgroup</div>`,
+  );
 });
 
 test("ignores row outside grid", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="row">Row</div>`);
+  await matchRawElementSnapshot(page, html`<div role="row">Row</div>`);
 });
 
 test("ignores cells outside grid", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="columnheader">Column Header</div>
       <div role="rowheader">Row Header</div>
       <div role="gridcell">Grid Cell</div>
@@ -65,7 +70,7 @@ test("ignores cells outside grid", async ({ page }) => {
 test("ignores cells outside row", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="grid">
         <div role="columnheader">Column Header</div>
         <div role="rowheader">Row Header</div>

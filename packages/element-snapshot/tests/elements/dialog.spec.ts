@@ -1,16 +1,14 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("dialog", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
-      <div
-        role="dialog"
-        aria-labelledby="title"
-        aria-describedby="description"
-      >
+    html`
+      <div role="dialog" aria-labelledby="title" aria-describedby="description">
         <h2 id="title">Dialog</h2>
         <p id="description">Description</p>
       </div>
@@ -21,30 +19,17 @@ test("dialog", async ({ page }) => {
 test("modal dialog", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
-      <div
-        role="dialog"
-        aria-modal="true"
-      >
-        Modal Dialog
-      </div>
-    `,
+    html`<div role="dialog" aria-modal="true">Modal Dialog</div>`,
   );
 });
 
 test("alert dialog", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
-      <div
-        role="alertdialog"
-      >
-        Alert Dialog
-      </div>
-    `,
+    html`<div role="alertdialog">Alert Dialog</div>`,
   );
 });
 
 test("empty dialog", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="dialog"></div>`);
+  await matchRawElementSnapshot(page, html`<div role="dialog"></div>`);
 });

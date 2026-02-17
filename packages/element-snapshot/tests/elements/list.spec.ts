@@ -1,11 +1,13 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("unordered HTML list", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <ul>
         <li>Apple</li>
         <li>Pear</li>
@@ -17,7 +19,7 @@ test("unordered HTML list", async ({ page }) => {
 test("ordered HTML list", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <ol>
         <li>Apple</li>
         <li>Pear</li>
@@ -29,7 +31,7 @@ test("ordered HTML list", async ({ page }) => {
 test("nested list", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <ul>
         <li>
           Fruits
@@ -44,13 +46,13 @@ test("nested list", async ({ page }) => {
 });
 
 test("empty list", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<ul></ul>`);
+  await matchRawElementSnapshot(page, html`<ul></ul>`);
 });
 
 test("empty listitem", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <ul>
         <li></li>
       </ul>
@@ -61,7 +63,7 @@ test("empty listitem", async ({ page }) => {
 test("role-based list", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="list">
         <div role="listitem">Apple</div>
         <div role="listitem">Pear</div>
@@ -71,5 +73,5 @@ test("role-based list", async ({ page }) => {
 });
 
 test("ignores listitem outside list", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<li>Apple</li>`);
+  await matchRawElementSnapshot(page, html`<li>Apple</li>`);
 });

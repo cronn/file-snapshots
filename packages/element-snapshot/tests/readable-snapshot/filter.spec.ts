@@ -1,11 +1,13 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { setupTransformedSnapshotTest } from "../../src/test/fixtures";
 
 test("includes heading elements", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <main>
         <h1>Heading</h1>
         <p>Text</p>
@@ -24,7 +26,7 @@ test("includes heading elements", async ({ page }) => {
 test("excludes separator elements", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <main>
         <h1>Heading</h1>
         <p>Text</p>

@@ -1,11 +1,13 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { setupTransformedSnapshotTest } from "../../src/test/fixtures";
 
 test("excludes options by default", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <select aria-label="Select">
         <option value="option1" selected>Option 1</option>
         <option value="option2">Option 2</option>
@@ -19,7 +21,7 @@ test("excludes options by default", async ({ page }) => {
 test("includes options of HTML select", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <select aria-label="Select">
         <option value="option1" selected>Option 1</option>
         <option value="option2">Option 2</option>
@@ -33,7 +35,7 @@ test("includes options of HTML select", async ({ page }) => {
 test("includes options from referenced listbox", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
+    html`
       <input
         type="text"
         role="combobox"
@@ -55,13 +57,8 @@ test("includes options from referenced listbox", async ({ page }) => {
 test("excludes empty options", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
     page,
-    `
-      <input
-        type="text"
-        role="combobox"
-        aria-label="Combobox"
-        value="Value"
-      />
+    html`
+      <input type="text" role="combobox" aria-label="Combobox" value="Value" />
     `,
   );
 

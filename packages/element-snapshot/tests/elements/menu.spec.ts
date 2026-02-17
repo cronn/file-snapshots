@@ -1,11 +1,13 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("menu", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <button
         id="menubutton"
         aria-haspopup="true"
@@ -24,13 +26,13 @@ test("menu", async ({ page }) => {
 });
 
 test("empty menu", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<ul role="menu"></ul>`);
+  await matchRawElementSnapshot(page, html`<ul role="menu"></ul>`);
 });
 
 test("snapshots empty menuitem", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <ul role="menu">
         <li role="menuitem"></li>
       </ul>
@@ -39,5 +41,8 @@ test("snapshots empty menuitem", async ({ page }) => {
 });
 
 test("ignores menuitem outside menu", async ({ page }) => {
-  await matchRawElementSnapshot(page, `<div role="menuitem">Menuitem</div>`);
+  await matchRawElementSnapshot(
+    page,
+    html`<div role="menuitem">Menuitem</div>`,
+  );
 });

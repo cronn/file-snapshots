@@ -1,11 +1,13 @@
 import test from "@playwright/test";
 
+import { html } from "@cronn/test-utils/playwright";
+
 import { matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("HTML fieldset", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <fieldset>
         <legend>Legend</legend>
         <label for="firstName">First Name</label>
@@ -20,7 +22,7 @@ test("HTML fieldset", async ({ page }) => {
 test("role-based group", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="menu">
         <ul role="group" aria-label="Actions">
           <li role="menuitem">Edit</li>
@@ -37,7 +39,7 @@ test("role-based group", async ({ page }) => {
 test("role-based-group without name", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <div role="group">
         <label for="firstName">First Name</label>
         <input type="text" name="firstName" id="firstName" />
@@ -51,7 +53,7 @@ test("role-based-group without name", async ({ page }) => {
 test("radiogroup", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
-    `
+    html`
       <h2 id="label">Radiogroup Name</h2>
       <div
         role="radiogroup"
