@@ -2,10 +2,10 @@ import test from "@playwright/test";
 
 import { html } from "@cronn/test-utils/playwright";
 
-import { matchRawElementSnapshot } from "../src/test/fixtures";
+import { matchEmptyRawElementSnapshot } from "../src/test/fixtures";
 
 test("ignores style element", async ({ page }) => {
-  await matchRawElementSnapshot(
+  await matchEmptyRawElementSnapshot(
     page,
     html`
       <style>
@@ -18,7 +18,7 @@ test("ignores style element", async ({ page }) => {
 });
 
 test("ignores script element", async ({ page }) => {
-  await matchRawElementSnapshot(
+  await matchEmptyRawElementSnapshot(
     page,
     html`
       <script>
@@ -29,21 +29,21 @@ test("ignores script element", async ({ page }) => {
 });
 
 test("ignores noscript element", async ({ page }) => {
-  await matchRawElementSnapshot(
+  await matchEmptyRawElementSnapshot(
     page,
     html`<noscript>JavaScript is disabled.</noscript>`,
   );
 });
 
 test("ignores template element", async ({ page }) => {
-  await matchRawElementSnapshot(
+  await matchEmptyRawElementSnapshot(
     page,
     html`<template>Template Content</template>`,
   );
 });
 
 test("ignores picture element", async ({ page }) => {
-  await matchRawElementSnapshot(
+  await matchEmptyRawElementSnapshot(
     page,
     html`
       <picture>
@@ -55,7 +55,7 @@ test("ignores picture element", async ({ page }) => {
 });
 
 test("ignores audio element", async ({ page }) => {
-  await matchRawElementSnapshot(
+  await matchEmptyRawElementSnapshot(
     page,
     html`
       <audio controls>
@@ -67,7 +67,7 @@ test("ignores audio element", async ({ page }) => {
 });
 
 test("ignores video element", async ({ page }) => {
-  await matchRawElementSnapshot(
+  await matchEmptyRawElementSnapshot(
     page,
     html`
       <video controls width="250">
@@ -79,7 +79,7 @@ test("ignores video element", async ({ page }) => {
 });
 
 test("ignores figure element", async ({ page }) => {
-  await matchRawElementSnapshot(
+  await matchEmptyRawElementSnapshot(
     page,
     html`
       <figure>
