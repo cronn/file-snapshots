@@ -1,6 +1,7 @@
-import type { Locator, Page } from "@playwright/test";
+import type { Page } from "@playwright/test";
 
 import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { setupSnapshotTest } from "@cronn/test-utils/playwright";
 
 import { snapshotAria } from "../snapshot";
 
@@ -13,22 +14,4 @@ export async function matchAriaSnapshot(
   const bodyLocator = await setupSnapshotTest(page, content);
 
   await expect(snapshotAria(bodyLocator)).toMatchJsonFile();
-}
-async function setupSnapshotTest(
-  page: Page,
-  content: string,
-): Promise<Locator> {
-  await page.setContent(`<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Test Page</title>
-  </head>
-  <body>
-    ${content}
-  </body>
-</html>
-`);
-
-  return page.locator("body");
 }
