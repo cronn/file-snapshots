@@ -20,6 +20,7 @@ const CONTAINER_ROLES = new Set([
   "navigation",
   "region",
   "search",
+  "descriptionlist",
   "term",
   "definition",
   "table",

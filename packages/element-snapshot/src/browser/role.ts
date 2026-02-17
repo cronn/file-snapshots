@@ -42,6 +42,7 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   textarea: "textbox",
   select: "combobox",
   option: "option",
+  dl: "descriptionlist",
   dt: "term",
   dd: "definition",
   table: "table",
