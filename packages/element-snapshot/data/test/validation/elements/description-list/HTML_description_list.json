@@ -1,46 +1,51 @@
 [
   {
-    "role": "term",
+    "role": "descriptionlist",
     "children": [
       {
-        "role": "text",
-        "name": "Coffee"
-      }
-    ]
-  },
-  {
-    "role": "definition",
-    "children": [
+        "role": "term",
+        "children": [
+          {
+            "role": "text",
+            "name": "Coffee"
+          }
+        ]
+      },
       {
-        "role": "text",
-        "name": "A brewed drink prepared from roasted coffee beans"
-      }
-    ]
-  },
-  {
-    "role": "term",
-    "children": [
+        "role": "definition",
+        "children": [
+          {
+            "role": "text",
+            "name": "A brewed drink prepared from roasted coffee beans"
+          }
+        ]
+      },
       {
-        "role": "text",
-        "name": "Tea"
-      }
-    ]
-  },
-  {
-    "role": "definition",
-    "children": [
+        "role": "term",
+        "children": [
+          {
+            "role": "text",
+            "name": "Tea"
+          }
+        ]
+      },
       {
-        "role": "text",
-        "name": "A beverage made by steeping dried leaves in hot water"
-      }
-    ]
-  },
-  {
-    "role": "definition",
-    "children": [
+        "role": "definition",
+        "children": [
+          {
+            "role": "text",
+            "name": "A beverage made by steeping dried leaves in hot water"
+          }
+        ]
+      },
       {
-        "role": "text",
-        "name": "An afternoon meal or social gathering, typically in British culture"
+        "role": "definition",
+        "children": [
+          {
+            "role": "text",
+            "name": "An afternoon meal or social gathering, typically in British culture"
+          }
+        ]
       }
     ]
   }

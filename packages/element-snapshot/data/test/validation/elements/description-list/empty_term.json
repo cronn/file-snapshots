@@ -1,5 +1,10 @@
 [
   {
-    "role": "term"
+    "role": "descriptionlist",
+    "children": [
+      {
+        "role": "term"
+      }
+    ]
   }
 ]
