@@ -17,6 +17,15 @@ export async function matchRawElementSnapshot(
   await expect(snapshotElementRaw(bodyLocator)).toMatchJsonFile();
 }
 
+export async function matchEmptyRawElementSnapshot(
+  page: Page,
+  content: string,
+): Promise<void> {
+  const bodyLocator = await setupSnapshotTest(page, content);
+
+  await expect(snapshotElementRaw(bodyLocator)).resolves.toEqual([]);
+}
+
 type ElementSnapshotMatcher = (
   options?: ElementSnapshotOptions,
 ) => Promise<void>;
