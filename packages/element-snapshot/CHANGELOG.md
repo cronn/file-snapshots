@@ -1,5 +1,17 @@
 # @cronn/element-snapshot
 
+## 0.11.0
+
+### Minor Changes
+
+- 39b52c2: Fix: Numeric attribute with non-numeric value is parsed to NaN
+- 52805ef: Fix: Treat all children of `progressbar` and `separator` elements as presentational
+- 45d6beb: Fix: Hidden text content is included in accessible name
+
+### Patch Changes
+
+- 93e2ae6: Migrate from tsup to tsdown
+
 ## 0.10.0
 
 ### Minor Changes

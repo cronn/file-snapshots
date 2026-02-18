@@ -1,5 +1,13 @@
 # @cronn/playwright-file-snapshots
 
+## 0.38.1
+
+### Patch Changes
+
+- 93e2ae6: Migrate from tsup to tsdown
+- Updated dependencies [93e2ae6]
+  - @cronn/lib-file-snapshots@0.19.1
+
 ## 0.38.0
 
 ### Minor Changes

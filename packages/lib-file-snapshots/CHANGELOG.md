@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 0.19.1
+
+### Patch Changes
+
+- 93e2ae6: Migrate from tsup to tsdown
+
 ## 0.19.0
 
 ### Minor Changes
