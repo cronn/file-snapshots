@@ -7,9 +7,15 @@ export interface ImageSnapshot extends GenericElementSnapshot<"img"> {}
 export function snapshotImage(
   element: SnapshotTargetElement,
 ): ImageSnapshot | null {
+  const imageName = resolveImageName(element);
+
+  if (imageName === undefined) {
+    return null;
+  }
+
   return {
     role: "img",
-    name: resolveImageName(element),
+    name: imageName,
   };
 }
 
