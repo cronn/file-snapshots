@@ -11,31 +11,58 @@ type FilteredSnapshot<TSnapshot extends NodeSnapshot> =
     ? TSnapshot & { children?: Array<TSnapshot> }
     : TSnapshot;
 
+interface SnapshotFilterOptions {
+  filter: SnapshotFilter;
+  snapshots: Array<NodeSnapshot>;
+  recurse: boolean;
+}
+
+interface GuardedSnapshotFilterOptions<TSnapshot extends NodeSnapshot> {
+  filter: GuardedSnapshotFilter<TSnapshot>;
+  snapshots: Array<NodeSnapshot>;
+  recurse?: boolean;
+}
+
 export function filterSnapshots<TSnapshot extends NodeSnapshot = NodeSnapshot>(
-  snapshots: Array<NodeSnapshot>,
-  filter: GuardedSnapshotFilter<TSnapshot>,
-): Array<TSnapshot>;
+  options: GuardedSnapshotFilterOptions<TSnapshot>,
+): Array<FilteredSnapshot<TSnapshot>>;
 export function filterSnapshots(
-  snapshots: Array<NodeSnapshot>,
-  filter: SnapshotFilter,
+  options: SnapshotFilterOptions,
 ): Array<NodeSnapshot>;
 export function filterSnapshots<TSnapshot extends NodeSnapshot>(
-  snapshots: Array<NodeSnapshot>,
-  filter: SnapshotFilter | GuardedSnapshotFilter<TSnapshot>,
+  options: SnapshotFilterOptions | GuardedSnapshotFilterOptions<TSnapshot>,
 ): Array<FilteredSnapshot<TSnapshot>> {
-  return snapshots.flatMap((snapshot) => {
-    const filteredChildren = hasChildren(snapshot)
-      ? filterSnapshots(snapshot.children ?? [], filter)
-      : [];
+  const { filter, snapshots, recurse = false } = options;
 
-    if (filter(snapshot)) {
-      return {
-        ...snapshot,
-        children: filteredChildren.length > 0 ? filteredChildren : undefined,
-      } as FilteredSnapshot<TSnapshot>;
+  return snapshots.flatMap((snapshot) => {
+    const isFilteredIn = filter(snapshot);
+
+    // end recursion on filtered in snapshot
+    if (isFilteredIn && !recurse) {
+      return snapshot as FilteredSnapshot<TSnapshot>;
     }
 
-    return filteredChildren as Array<FilteredSnapshot<TSnapshot>>;
+    // end recursion on filtered out snapshot
+    if (!isFilteredIn && recurse) {
+      return [];
+    }
+
+    const filteredChildren = hasChildren(snapshot)
+      ? filterSnapshots<TSnapshot>({
+          filter: filter as GuardedSnapshotFilter<TSnapshot>,
+          snapshots: snapshot.children ?? [],
+          recurse,
+        })
+      : [];
+
+    if (!isFilteredIn) {
+      return filteredChildren;
+    }
+
+    return {
+      ...snapshot,
+      children: filteredChildren.length > 0 ? filteredChildren : undefined,
+    } as FilteredSnapshot<TSnapshot>;
   });
 }
 
