@@ -89,10 +89,11 @@ await expect(
 });
 ```
 
-| Option                   | Default Value | Description                                                                          |
-| ------------------------ | ------------- | ------------------------------------------------------------------------------------ |
-| `filter`                 | `() => true`  | Include only elements in the snapshot for which the specified filter returns `true`. |
-| `includeComboboxOptions` | `false`       | Include combobox options in the snapshot.                                            |
+| Option                   | Default Value | Description                                                                                                                                                                                                                   |
+| ------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `filter`                 | `() => true`  | Include only elements in the snapshot for which the specified filter returns `true`.                                                                                                                                          |
+| `recurseFilter`          | `false`       | Recursively apply specified filter to children of filtered elements. By default, recursion ends when the filter returns `true` for an element. Should be `true` for filters intended to remove specific elements recursively. |
+| `includeComboboxOptions` | `false`       | Include combobox options in the snapshot.                                                                                                                                                                                     |
 
 ### Custom Snapshots
 

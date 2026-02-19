@@ -51,10 +51,10 @@ export function resolveAccessibleTextContent(
     return undefined;
   }
 
-  const textNodes = filterSnapshots(
-    children,
-    (element) => element.role === "text",
-  );
+  const textNodes = filterSnapshots({
+    snapshots: children,
+    filter: (element) => element.role === "text",
+  });
 
   const aggregatedText = textNodes.map((textNode) => textNode.name).join(" ");
   const normalizedText = normalizeText(aggregatedText);

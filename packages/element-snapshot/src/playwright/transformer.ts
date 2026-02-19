@@ -5,7 +5,8 @@ import type {
   ElementSnapshot,
   NodeSnapshot,
 } from "../browser/types";
-import { type SnapshotFilter, filterSnapshots } from "../utils/snapshot";
+import type { SnapshotFilter } from "../utils/snapshot";
+import { filterSnapshots } from "../utils/snapshot";
 
 interface NormalizedElementSnapshot {
   role: ElementRole;
@@ -16,15 +17,18 @@ interface NormalizedElementSnapshot {
 
 interface DomSnapshotTransformerOptions {
   filter?: SnapshotFilter;
+  recurseFilter?: boolean;
   includeComboboxOptions?: boolean;
 }
 
 export class ElementSnapshotTransformer {
   private readonly filter?: SnapshotFilter;
+  private readonly recurseFilter: boolean;
   private readonly includeComboboxOptions: boolean;
 
   public constructor(options: DomSnapshotTransformerOptions = {}) {
     this.filter = options.filter;
+    this.recurseFilter = options.recurseFilter ?? false;
     this.includeComboboxOptions = options.includeComboboxOptions ?? false;
   }
 
@@ -44,7 +48,11 @@ export class ElementSnapshotTransformer {
       return snapshots;
     }
 
-    return filterSnapshots(snapshots, this.filter);
+    return filterSnapshots({
+      filter: this.filter,
+      snapshots,
+      recurse: this.recurseFilter,
+    });
   }
 
   private transformSnapshots(snapshots: Array<NodeSnapshot>): Array<unknown> {

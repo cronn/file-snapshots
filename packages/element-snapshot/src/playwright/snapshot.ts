@@ -15,6 +15,16 @@ export interface ElementSnapshotOptions {
   filter?: SnapshotFilter;
 
   /**
+   * Recursively apply specified filter to children of filtered elements
+   *
+   * By default, recursion ends when the filter returns `true` for an element.
+   * Should be `true` for filters intended to remove specific elements recursively.
+   *
+   * @default false
+   */
+  recurseFilter?: boolean;
+
+  /**
    * Include combobox options in the snapshot
    *
    * @default false
