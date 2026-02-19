@@ -1,5 +1,18 @@
 # @cronn/element-snapshot
 
+## 0.12.0
+
+### Minor Changes
+
+- d9447bd: Add `recurseFilter` option to control filter recursion behavior
+- 295576b: Introduce role `descriptionlist` for HTML description list element
+- 7daa13f: Ignore images without name
+- b7ef2b2: Export `filterSnapshots` utility function
+
+### Patch Changes
+
+- 5212760: Export `ImageSnapshot` and `SeparatorSnapshot` types
+
 ## 0.11.0
 
 ### Minor Changes
