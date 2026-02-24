@@ -134,11 +134,13 @@ function updateScripts(scripts, packageDir) {
 function updateDevDependencies(devDependencies) {
   return {
     ...devDependencies,
+    "@arethetypeswrong/core": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     eslint: "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     prettier: "catalog:",
+    publint: "catalog:",
     tsdown: "catalog:",
     typescript: "catalog:",
     "typescript-eslint": "catalog:",
