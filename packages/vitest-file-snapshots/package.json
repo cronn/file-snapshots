@@ -59,6 +59,7 @@
     "@cronn/lib-file-snapshots": "workspace:*"
   },
   "devDependencies": {
+    "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",
@@ -70,6 +71,7 @@
     "eslint-plugin-unused-imports": "catalog:",
     "package-directory": "catalog:",
     "prettier": "catalog:",
+    "publint": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",
