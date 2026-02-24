@@ -86,7 +86,7 @@ function defineRepository(packageDir) {
   const relativeDir = toRelativeDir(packageDir);
   const baseReposistory = {
     type: "git",
-    url: "https://github.com/cronn/file-snapshots.git",
+    url: "git+https://github.com/cronn/file-snapshots.git",
   };
 
   if (relativeDir === "") {
