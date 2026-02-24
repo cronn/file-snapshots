@@ -8,6 +8,10 @@ export function tsdownConfig(options: UserConfig): UserConfig {
     outDir: "./dist",
     clean: true,
     skipNodeModulesBundle: true,
+    publint: true,
+    attw: {
+      profile: "esm-only",
+    },
     ...options,
   };
 }
