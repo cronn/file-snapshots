@@ -52,6 +52,7 @@
     "dist"
   ],
   "devDependencies": {
+    "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",
@@ -60,6 +61,7 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
+    "publint": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",
