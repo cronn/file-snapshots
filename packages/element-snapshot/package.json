@@ -2,6 +2,9 @@
   "name": "@cronn/element-snapshot",
   "version": "0.12.0",
   "description": "Element snapshots for Playwright",
+  "bugs": {
+    "url": "https://github.com/cronn/file-snapshots/issues"
+  },
   "author": "cronn",
   "license": "Apache-2.0",
   "repository": {
@@ -27,8 +30,8 @@
     }
   },
   "scripts": {
-    "lint:check": "eslint src/ --max-warnings=0",
-    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "lint:check": "eslint src/ tests/ --max-warnings=0",
+    "lint:fix": "eslint src/ tests/ --max-warnings=0 --fix",
     "test:unit": "vitest run",
     "test:unit:coverage": "vitest run --coverage",
     "test:integration": "playwright test",
