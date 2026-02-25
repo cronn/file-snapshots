@@ -37,7 +37,7 @@
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "compile": "tsc",
+    "compile": "tsgo",
     "build": "tsdown"
   },
   "type": "module",
@@ -55,6 +55,7 @@
     "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
@@ -63,7 +64,6 @@
     "prettier": "catalog:",
     "publint": "catalog:",
     "tsdown": "catalog:",
-    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   }

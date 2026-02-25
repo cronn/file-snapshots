@@ -122,7 +122,7 @@ function updateScripts(scripts, packageDir) {
     ...scripts,
     "lint:check": `eslint ${lintedDirs} --max-warnings=0`,
     "lint:fix": `eslint ${lintedDirs} --max-warnings=0 --fix`,
-    compile: "tsc",
+    compile: "tsgo",
   };
 }
 
@@ -136,13 +136,13 @@ function updateDevDependencies(devDependencies) {
     ...devDependencies,
     "@arethetypeswrong/core": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@typescript/native-preview": "catalog:",
     eslint: "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     prettier: "catalog:",
     publint: "catalog:",
     tsdown: "catalog:",
-    typescript: "catalog:",
     "typescript-eslint": "catalog:",
   };
 }

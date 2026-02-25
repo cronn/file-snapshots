@@ -30,7 +30,7 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "compile": "tsc",
+    "compile": "tsgo",
     "build": "tsdown --config-loader unrun"
   },
   "type": "module",
@@ -55,12 +55,12 @@
   "devDependencies": {
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
     "tsdown": "catalog:",
-    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   }

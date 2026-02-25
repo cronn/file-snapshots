@@ -7,6 +7,7 @@ catalog:
   "@playwright/test": 1.58.2
   "@pnpm/meta-updater": 2.0.6
   "@trivago/prettier-plugin-sort-imports": 6.0.2
+  "@typescript/native-preview": 7.0.0-dev.20260218.1
   "@types/node": 24.10.13
   "@vitest/coverage-v8": 4.0.18
   "@vitest/expect": 4.0.18
@@ -19,7 +20,6 @@ catalog:
   "publint": 0.3.17
   "tsdown": 0.20.3
   "turbo": 2.8.9
-  "typescript": 5.9.3
   "typescript-eslint": 8.54.0
   "vitest": 4.0.18
   "yaml": 2.8.2
