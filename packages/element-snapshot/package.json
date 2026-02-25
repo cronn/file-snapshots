@@ -36,7 +36,7 @@
     "test:unit:coverage": "vitest run --coverage",
     "test:integration": "playwright test",
     "playwright:install": "playwright install chromium",
-    "compile": "tsc",
+    "compile": "tsgo",
     "build": "tsdown"
   },
   "type": "module",
@@ -60,6 +60,7 @@
     "@cronn/test-utils": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
@@ -68,7 +69,6 @@
     "prettier": "catalog:",
     "publint": "catalog:",
     "tsdown": "catalog:",
-    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   },
