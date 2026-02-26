@@ -5,14 +5,15 @@ import type {
   ElementSnapshot,
   NodeSnapshot,
 } from "../browser/types";
+import { isEmpty, isTextSnapshot } from "../utils/guards";
 import type { SnapshotFilter } from "../utils/snapshot";
 import { filterSnapshots } from "../utils/snapshot";
 
 interface NormalizedElementSnapshot {
   role: ElementRole;
-  name?: string;
-  attributes?: Record<string, unknown>;
-  children?: Array<unknown>;
+  name: string;
+  attributes: Record<string, unknown>;
+  children: Array<unknown>;
 }
 
 interface DomSnapshotTransformerOptions {
@@ -62,7 +63,7 @@ export class ElementSnapshotTransformer {
   }
 
   private transformSnapshotRecursive(snapshot: NodeSnapshot): unknown {
-    if (snapshot.role === "text") {
+    if (isTextSnapshot(snapshot)) {
       return this.simplifyTextSnapshot(snapshot);
     }
 
@@ -100,42 +101,35 @@ export class ElementSnapshotTransformer {
 
     const { role, name, attributes, children } = normalizedSnapshot;
     return this.transformedSnapshot(role, {
-      name,
+      name: name.length === 0 ? undefined : name,
       ...attributes,
-      children,
+      children: children.length === 0 ? undefined : children,
     });
   }
 
   private normalizeElementSnapshot(
     snapshot: ElementSnapshot,
   ): NormalizedElementSnapshot {
+    const normalizedName = snapshot.name ?? "";
     const sparseAttributes = this.removeUndefinedProperties(
-      (snapshot.attributes ?? {}) as Record<string, unknown>,
+      snapshot.attributes as Record<string, unknown>,
     );
-    const transformedChildren = this.transformSnapshots(
-      snapshot?.children ?? [],
-    );
-
+    const transformedChildren = this.transformSnapshots(snapshot.children);
     const nameEqualsChildren =
       transformedChildren.length === 1 &&
-      snapshot.name === transformedChildren.at(0);
+      normalizedName === transformedChildren.at(0);
 
     return {
       role: snapshot.role,
-      name: snapshot.name,
+      name: normalizedName,
       attributes: sparseAttributes,
-      children: nameEqualsChildren
-        ? undefined
-        : transformedChildren.length === 0
-          ? undefined
-          : transformedChildren,
+      children: nameEqualsChildren ? [] : transformedChildren,
     };
   }
 
   private simplifyComboboxSnapshot(snapshot: ComboboxSnapshot): unknown {
     const { role, name, attributes } = this.normalizeElementSnapshot(snapshot);
-    const options = snapshot.options ?? [];
-    const transformedOptions = options.map((optionSnapshot) =>
+    const transformedOptions = snapshot.options.map((optionSnapshot) =>
       this.simplifyElementSnapshot(optionSnapshot),
     );
 
@@ -151,36 +145,31 @@ export class ElementSnapshotTransformer {
 
   private isEmpty(snapshot: NormalizedElementSnapshot): boolean {
     return (
-      snapshot.name === undefined &&
-      (snapshot.attributes === undefined ||
-        Object.keys(snapshot.attributes).length === 0) &&
-      (snapshot.children === undefined || snapshot.children.length === 0)
+      isEmpty(snapshot.name) &&
+      isEmpty(snapshot.attributes) &&
+      isEmpty(snapshot.children)
     );
   }
 
-  private hasOnlyName(
-    snapshot: NormalizedElementSnapshot,
-  ): snapshot is { role: ElementRole; name: string } {
+  private hasOnlyName(snapshot: NormalizedElementSnapshot): boolean {
     return (
-      snapshot.name !== undefined &&
-      snapshot.attributes === undefined &&
-      snapshot.children === undefined
+      !isEmpty(snapshot.name) &&
+      isEmpty(snapshot.attributes) &&
+      isEmpty(snapshot.children)
     );
   }
 
-  private hasOnlyChildren(
-    snapshot: NormalizedElementSnapshot,
-  ): snapshot is { role: ElementRole; children: Array<NodeSnapshot> } {
+  private hasOnlyChildren(snapshot: NormalizedElementSnapshot): boolean {
     return (
-      snapshot.name === undefined &&
-      snapshot.attributes === undefined &&
-      snapshot.children !== undefined
+      isEmpty(snapshot.name) &&
+      isEmpty(snapshot.attributes) &&
+      !isEmpty(snapshot.children)
     );
   }
 
   private removeUndefinedProperties(
     attributes: Record<string, unknown>,
-  ): Record<string, unknown> | undefined {
+  ): Record<string, unknown> {
     const sparseAttributes: Record<string, unknown> = {};
 
     Object.entries(attributes).forEach(([key, value]) => {
@@ -189,9 +178,7 @@ export class ElementSnapshotTransformer {
       }
     });
 
-    return Object.keys(sparseAttributes).length > 0
-      ? sparseAttributes
-      : undefined;
+    return sparseAttributes;
   }
 
   private transformedSnapshot(role: ElementRole, content: unknown): unknown {

@@ -8,6 +8,7 @@
     "name": "Date Input",
     "attributes": {
       "value": "2020-06-15"
-    }
+    },
+    "children": []
   }
 ]

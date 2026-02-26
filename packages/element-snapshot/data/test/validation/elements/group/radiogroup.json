@@ -21,6 +21,7 @@
     "children": [
       {
         "role": "paragraph",
+        "attributes": {},
         "children": [
           {
             "role": "text",
@@ -31,7 +32,8 @@
       {
         "role": "radio",
         "name": "Option 1",
-        "attributes": {}
+        "attributes": {},
+        "children": []
       },
       {
         "role": "text",
@@ -40,7 +42,8 @@
       {
         "role": "radio",
         "name": "Option 2",
-        "attributes": {}
+        "attributes": {},
+        "children": []
       },
       {
         "role": "text",

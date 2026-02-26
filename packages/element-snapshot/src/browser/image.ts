@@ -16,6 +16,8 @@ export function snapshotImage(
   return {
     role: "img",
     name: imageName,
+    attributes: {},
+    children: [],
   };
 }
 

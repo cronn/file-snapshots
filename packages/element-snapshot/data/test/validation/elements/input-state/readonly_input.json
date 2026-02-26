@@ -4,6 +4,7 @@
     "name": "Readonly Input",
     "attributes": {
       "readonly": true
-    }
+    },
+    "children": []
   }
 ]

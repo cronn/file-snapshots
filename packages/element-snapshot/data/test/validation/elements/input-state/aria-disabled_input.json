@@ -4,6 +4,7 @@
     "name": "ARIA-Disabled Input",
     "attributes": {
       "disabled": true
-    }
+    },
+    "children": []
   }
 ]

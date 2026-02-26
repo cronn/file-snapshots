@@ -1,9 +1,12 @@
 [
   {
     "role": "list",
+    "attributes": {},
     "children": [
       {
-        "role": "listitem"
+        "role": "listitem",
+        "attributes": {},
+        "children": []
       }
     ]
   }

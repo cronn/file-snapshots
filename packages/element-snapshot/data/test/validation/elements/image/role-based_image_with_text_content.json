@@ -1,6 +1,8 @@
 [
   {
     "role": "img",
-    "name": "Text"
+    "name": "Text",
+    "attributes": {},
+    "children": []
   }
 ]

@@ -1,6 +1,7 @@
 [
   {
     "role": "alert",
+    "attributes": {},
     "children": [
       {
         "role": "text",

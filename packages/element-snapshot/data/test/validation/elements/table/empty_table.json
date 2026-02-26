@@ -1,5 +1,7 @@
 [
   {
-    "role": "table"
+    "role": "table",
+    "attributes": {},
+    "children": []
   }
 ]

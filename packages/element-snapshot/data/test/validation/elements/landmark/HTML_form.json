@@ -1,6 +1,7 @@
 [
   {
     "role": "form",
+    "attributes": {},
     "children": [
       {
         "role": "text",

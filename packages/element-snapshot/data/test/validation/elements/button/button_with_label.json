@@ -2,6 +2,7 @@
   {
     "role": "button",
     "name": "Button Name",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   }
 ]

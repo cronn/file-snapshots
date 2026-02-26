@@ -2,6 +2,7 @@
   {
     "role": "tablist",
     "name": "Tablist",
+    "attributes": {},
     "children": [
       {
         "role": "tab",
@@ -43,6 +44,7 @@
   {
     "role": "tabpanel",
     "name": "Tab 1",
+    "attributes": {},
     "children": [
       {
         "role": "text",

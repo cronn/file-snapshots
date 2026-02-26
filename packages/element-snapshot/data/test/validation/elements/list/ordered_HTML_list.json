@@ -1,9 +1,11 @@
 [
   {
     "role": "list",
+    "attributes": {},
     "children": [
       {
         "role": "listitem",
+        "attributes": {},
         "children": [
           {
             "role": "text",
@@ -13,6 +15,7 @@
       },
       {
         "role": "listitem",
+        "attributes": {},
         "children": [
           {
             "role": "text",

@@ -4,6 +4,7 @@
     "name": "ARIA-Readonly Input",
     "attributes": {
       "readonly": true
-    }
+    },
+    "children": []
   }
 ]

@@ -1,10 +1,12 @@
 [
   {
     "role": "menu",
+    "attributes": {},
     "children": [
       {
         "role": "menuitem",
-        "attributes": {}
+        "attributes": {},
+        "children": []
       }
     ]
   }

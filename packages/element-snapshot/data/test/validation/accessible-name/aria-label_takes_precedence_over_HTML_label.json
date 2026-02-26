@@ -1,6 +1,7 @@
 [
   {
     "role": "paragraph",
+    "attributes": {},
     "children": [
       {
         "role": "text",
@@ -11,7 +12,8 @@
   {
     "role": "textbox",
     "name": "Direct Label",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   },
   {
     "role": "text",

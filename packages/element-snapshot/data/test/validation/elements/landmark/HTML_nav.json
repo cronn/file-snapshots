@@ -1,6 +1,7 @@
 [
   {
     "role": "navigation",
+    "attributes": {},
     "children": [
       {
         "role": "text",

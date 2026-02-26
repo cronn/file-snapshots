@@ -6,6 +6,7 @@
   {
     "role": "textbox",
     "name": "File Input",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   }
 ]

@@ -1,6 +1,7 @@
 [
   {
     "role": "dialog",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   }
 ]

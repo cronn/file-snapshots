@@ -21,6 +21,7 @@
       },
       {
         "role": "paragraph",
+        "attributes": {},
         "children": [
           {
             "role": "text",

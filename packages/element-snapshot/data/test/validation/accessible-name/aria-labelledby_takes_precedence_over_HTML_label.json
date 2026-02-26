@@ -1,6 +1,7 @@
 [
   {
     "role": "paragraph",
+    "attributes": {},
     "children": [
       {
         "role": "text",
@@ -11,7 +12,8 @@
   {
     "role": "textbox",
     "name": "Referenced Label",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   },
   {
     "role": "text",

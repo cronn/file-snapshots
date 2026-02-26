@@ -1,10 +1,12 @@
 [
   {
     "role": "menu",
+    "attributes": {},
     "children": [
       {
         "role": "group",
         "name": "Actions",
+        "attributes": {},
         "children": [
           {
             "role": "menuitem",
@@ -32,6 +34,7 @@
       },
       {
         "role": "group",
+        "attributes": {},
         "children": [
           {
             "role": "menuitem",

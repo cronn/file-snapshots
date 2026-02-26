@@ -1,15 +1,10 @@
-import type { GenericElementSnapshot, NodeSnapshot } from "../browser/types";
+import type { NodeSnapshot } from "../browser/types";
 
 export type SnapshotFilter = (snapshot: NodeSnapshot) => boolean;
 
 type GuardedSnapshotFilter<TSnapshot extends NodeSnapshot> = (
   snapshot: NodeSnapshot,
 ) => snapshot is TSnapshot;
-
-type FilteredSnapshot<TSnapshot extends NodeSnapshot> =
-  TSnapshot extends GenericElementSnapshot
-    ? TSnapshot & { children?: Array<TSnapshot> }
-    : TSnapshot;
 
 interface SnapshotFilterOptions {
   filter: SnapshotFilter;
@@ -25,24 +20,24 @@ interface GuardedSnapshotFilterOptions<TSnapshot extends NodeSnapshot> {
 
 export function filterSnapshots<TSnapshot extends NodeSnapshot = NodeSnapshot>(
   options: GuardedSnapshotFilterOptions<TSnapshot>,
-): Array<FilteredSnapshot<TSnapshot>>;
+): Array<TSnapshot>;
 export function filterSnapshots(
   options: SnapshotFilterOptions,
 ): Array<NodeSnapshot>;
 export function filterSnapshots<TSnapshot extends NodeSnapshot>(
   options: SnapshotFilterOptions | GuardedSnapshotFilterOptions<TSnapshot>,
-): Array<FilteredSnapshot<TSnapshot>> {
+): Array<TSnapshot> {
   const { filter, snapshots, recurse = false } = options;
 
   return snapshots.flatMap((snapshot) => {
     const isFilteredIn = filter(snapshot);
 
-    // end recursion on filtered in snapshot
+    // end recursion on included snapshot
     if (isFilteredIn && !recurse) {
-      return snapshot as FilteredSnapshot<TSnapshot>;
+      return snapshot as TSnapshot;
     }
 
-    // end recursion on filtered out snapshot
+    // end recursion on excluded snapshot
     if (!isFilteredIn && recurse) {
       return [];
     }
@@ -55,23 +50,21 @@ export function filterSnapshots<TSnapshot extends NodeSnapshot>(
         })
       : [];
 
+    // recurse excluded snapshot
     if (!isFilteredIn) {
       return filteredChildren;
     }
 
+    // recurse included snapshot
     return {
       ...snapshot,
-      children: filteredChildren.length > 0 ? filteredChildren : undefined,
-    } as FilteredSnapshot<TSnapshot>;
+      children: filteredChildren as Array<NodeSnapshot>,
+    } as TSnapshot;
   });
 }
 
 function hasChildren(
   snapshot: NodeSnapshot,
 ): snapshot is NodeSnapshot & { children: Array<NodeSnapshot> } {
-  return (
-    "children" in snapshot &&
-    snapshot.children !== undefined &&
-    snapshot.children.length > 0
-  );
+  return "children" in snapshot && snapshot.children.length > 0;
 }

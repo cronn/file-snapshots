@@ -4,6 +4,7 @@
     "name": "Label",
     "attributes": {
       "description": "Description"
-    }
+    },
+    "children": []
   }
 ]

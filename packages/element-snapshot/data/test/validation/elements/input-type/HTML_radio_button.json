@@ -4,7 +4,8 @@
     "name": "Yes",
     "attributes": {
       "checked": true
-    }
+    },
+    "children": []
   },
   {
     "role": "text",
@@ -13,7 +14,8 @@
   {
     "role": "radio",
     "name": "No",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   },
   {
     "role": "text",

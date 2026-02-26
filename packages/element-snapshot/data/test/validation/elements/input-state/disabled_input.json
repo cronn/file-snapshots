@@ -4,6 +4,7 @@
     "name": "Disabled Input",
     "attributes": {
       "disabled": true
-    }
+    },
+    "children": []
   }
 ]

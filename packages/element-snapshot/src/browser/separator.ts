@@ -8,6 +8,7 @@ export function snapshotSeparator(
 ): SeparatorSnapshot {
   return {
     role: "separator",
+    attributes: {},
     children: snapshotPresentationalChildren(element),
   };
 }

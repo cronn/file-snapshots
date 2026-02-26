@@ -1,5 +1,7 @@
 [
   {
-    "role": "separator"
+    "role": "separator",
+    "attributes": {},
+    "children": []
   }
 ]

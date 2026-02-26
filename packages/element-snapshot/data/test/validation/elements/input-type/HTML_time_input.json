@@ -8,6 +8,7 @@
     "name": "Time Input",
     "attributes": {
       "value": "12:00"
-    }
+    },
+    "children": []
   }
 ]

@@ -1,6 +1,7 @@
 [
   {
     "role": "banner",
+    "attributes": {},
     "children": [
       {
         "role": "text",

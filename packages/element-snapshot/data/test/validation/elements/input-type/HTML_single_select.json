@@ -9,6 +9,7 @@
     "attributes": {
       "value": "Option 1"
     },
+    "children": [],
     "options": [
       {
         "role": "option",

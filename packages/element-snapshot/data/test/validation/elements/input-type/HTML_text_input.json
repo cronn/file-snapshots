@@ -8,6 +8,7 @@
     "name": "Text Input",
     "attributes": {
       "value": "Text"
-    }
+    },
+    "children": []
   }
 ]

@@ -1,6 +1,7 @@
 [
   {
     "role": "search",
+    "attributes": {},
     "children": [
       {
         "role": "text",

@@ -1,9 +1,11 @@
 [
   {
     "role": "table",
+    "attributes": {},
     "children": [
       {
         "role": "row",
+        "attributes": {},
         "children": [
           {
             "role": "columnheader",
