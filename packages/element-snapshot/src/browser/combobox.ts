@@ -15,7 +15,7 @@ export interface ComboboxSnapshot extends GenericElementSnapshot<
   "combobox",
   ComboboxAttributes
 > {
-  options?: Array<OptionSnapshot>;
+  options: Array<OptionSnapshot>;
 }
 
 interface ComboboxAttributes extends CommonInputAttributes {
@@ -41,6 +41,7 @@ export function snapshotCombobox(
       value,
       ...snapshotCommonInputAttributes(element, value === undefined),
     },
+    children: [],
     options,
   };
 }
