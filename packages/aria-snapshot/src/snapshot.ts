@@ -65,9 +65,9 @@ class AriaSnapshot {
   private normalizeObject(value: PlainObject): unknown {
     const objectEntries = Object.entries(value);
     const normalizedObject: PlainObject = {};
-    for (const [key, value] of objectEntries) {
+    for (const [key, propertyValue] of objectEntries) {
       normalizedObject[this.normalizeString(key)] =
-        this.normalizeJsonRecursive(value);
+        this.normalizeJsonRecursive(propertyValue);
     }
 
     const parsedNode = parseSinglePropertyObject(value);

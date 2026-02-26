@@ -16,8 +16,8 @@ export function normalizeFileName(testName: string): string {
     .replaceAll(/_{2,}/g, "_");
 }
 
-export function readSnapshotFile(path: string): string {
-  const contents = fs.readFileSync(path, { encoding: "utf8" });
+export function readSnapshotFile(filePath: string): string {
+  const contents = fs.readFileSync(filePath, { encoding: "utf8" });
 
   if (os.EOL === NEW_LINE_SEPARATOR) {
     return contents;
@@ -26,13 +26,13 @@ export function readSnapshotFile(path: string): string {
   return contents.replace(new RegExp(os.EOL, "g"), NEW_LINE_SEPARATOR);
 }
 
-export function writeSnapshotFile(file: string, data: string): void {
-  mkdirRecursive(path.dirname(file));
-  fs.writeFileSync(file, data, { encoding: "utf8" });
+export function writeSnapshotFile(filePath: string, data: string): void {
+  mkdirRecursive(path.dirname(filePath));
+  fs.writeFileSync(filePath, data, { encoding: "utf8" });
 }
 
-function mkdirRecursive(path: string): void {
-  fs.mkdirSync(path, { recursive: true });
+function mkdirRecursive(dirPath: string): void {
+  fs.mkdirSync(dirPath, { recursive: true });
 }
 
 export function addTrailingNewLine(data: string): string {
