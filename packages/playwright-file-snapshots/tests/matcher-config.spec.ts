@@ -11,53 +11,53 @@ import {
 } from "../src/utils/test";
 
 test("stores snapshots in custom directories", async () => {
-  const expect = defineValidationFileExpect({
+  const testExpect = defineValidationFileExpect({
     validationDir: "custom-data/validation",
     outputDir: "custom-data/output",
   });
 
-  await expect("value").toMatchTextFile();
+  await testExpect("value").toMatchTextFile();
 });
 
 test("applies custom file path resolver", async () => {
-  const expect = defineValidationFileExpect({
+  const testExpect = defineValidationFileExpect({
     resolveFilePath: testFilePathResolver,
   });
 
-  await expect("value").toMatchTextFile({ name: "name" });
+  await testExpect("value").toMatchTextFile({ name: "name" });
 });
 
 test("when snapshot does not match, hard assertion throws error", async () => {
-  const expect = defineValidationFileExpect();
+  const testExpect = defineValidationFileExpect();
 
   await expect(() =>
-    expect("changed value").toMatchJsonFile(),
+    testExpect("changed value").toMatchJsonFile(),
   ).rejects.toThrowError();
 });
 
 test.fail(
   "when snapshot does not match, soft assertion fails test",
   async () => {
-    const expect = defineValidationFileExpect();
+    const testExpect = defineValidationFileExpect();
 
-    await expect.soft("changed value").toMatchJsonFile();
+    await testExpect.soft("changed value").toMatchJsonFile();
   },
 );
 
 test("applies indentSize to JSON file snapshots", async () => {
-  const expect = defineValidationFileExpect({
+  const testExpect = defineValidationFileExpect({
     indentSize: 4,
   });
 
-  await expect({ key: "value" }).toMatchJsonFile();
+  await testExpect({ key: "value" }).toMatchJsonFile();
 });
 
 test("ignores indentSize in text file snapshots", async () => {
-  const expect = defineValidationFileExpect({
+  const testExpect = defineValidationFileExpect({
     indentSize: 4,
   });
 
-  await expect("value").toMatchTextFile();
+  await testExpect("value").toMatchTextFile();
 });
 
 test("applies update delay", { tag: tags.updateAll }, async () => {

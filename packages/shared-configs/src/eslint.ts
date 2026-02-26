@@ -63,6 +63,9 @@ export function eslintConfig(): Array<Linter.Config> {
             argsIgnorePattern: "^_",
           },
         ],
+
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
       },
     },
   );

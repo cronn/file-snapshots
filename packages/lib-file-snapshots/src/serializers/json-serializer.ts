@@ -229,9 +229,9 @@ export class JsonSerializer implements SnapshotSerializer {
 
   private normalizeMap(value: Map<unknown, unknown>): Record<string, unknown> {
     return Array.from(value.entries()).reduce(
-      (object, [key, value]) => {
+      (object, [key, propertyValue]) => {
         this.assertKeyType(key);
-        object[key] = value;
+        object[key] = propertyValue;
         return object;
       },
       {} as Record<string, unknown>,

@@ -6,7 +6,7 @@ export function snapshotChildren(
   excludedNodes: Array<Node> = [],
 ): Array<NodeSnapshot> | undefined {
   const children = Array.from(node.childNodes)
-    .map((node) => snapshotNodeRecursive(node, excludedNodes))
+    .map((childNode) => snapshotNodeRecursive(childNode, excludedNodes))
     .filter((childSnapshot) => childSnapshot !== null)
     .flat();
   return children.length > 0 ? children : undefined;
