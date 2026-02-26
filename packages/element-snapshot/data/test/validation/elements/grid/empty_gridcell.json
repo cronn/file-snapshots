@@ -1,12 +1,16 @@
 [
   {
     "role": "grid",
+    "attributes": {},
     "children": [
       {
         "role": "row",
+        "attributes": {},
         "children": [
           {
-            "role": "gridcell"
+            "role": "gridcell",
+            "attributes": {},
+            "children": []
           }
         ]
       }

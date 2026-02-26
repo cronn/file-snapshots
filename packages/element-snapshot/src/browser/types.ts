@@ -61,12 +61,12 @@ export type ElementSnapshot =
 
 export interface GenericElementSnapshot<
   TRole extends NodeRole = NodeRole,
-  TAttributes = unknown,
+  TAttributes = Record<string, unknown>,
 > {
   role: TRole;
   name?: string;
-  attributes?: TAttributes;
-  children?: Array<NodeSnapshot>;
+  attributes: TAttributes;
+  children: Array<NodeSnapshot>;
 }
 
 export type SetValues<TSet> = TSet extends Set<infer TValue> ? TValue : never;

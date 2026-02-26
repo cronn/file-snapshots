@@ -1,5 +1,7 @@
 [
   {
-    "role": "menu"
+    "role": "menu",
+    "attributes": {},
+    "children": []
   }
 ]

@@ -49,6 +49,7 @@ export function snapshotContainer(
   return {
     role,
     name: resolveAccessibleName(element, false),
+    attributes: {},
     children,
   };
 }

@@ -9,6 +9,7 @@
     "attributes": {
       "value": "Input Value"
     },
+    "children": [],
     "options": [
       {
         "role": "option",
@@ -38,6 +39,7 @@
   },
   {
     "role": "listbox",
+    "attributes": {},
     "children": [
       {
         "role": "option",

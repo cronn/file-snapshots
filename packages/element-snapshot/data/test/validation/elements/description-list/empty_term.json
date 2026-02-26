@@ -1,9 +1,12 @@
 [
   {
     "role": "descriptionlist",
+    "attributes": {},
     "children": [
       {
-        "role": "term"
+        "role": "term",
+        "attributes": {},
+        "children": []
       }
     ]
   }

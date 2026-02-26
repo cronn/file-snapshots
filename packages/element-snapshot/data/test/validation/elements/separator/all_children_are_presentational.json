@@ -1,6 +1,7 @@
 [
   {
     "role": "separator",
+    "attributes": {},
     "children": [
       {
         "role": "text",

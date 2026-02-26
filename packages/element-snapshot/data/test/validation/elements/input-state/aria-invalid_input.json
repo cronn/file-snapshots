@@ -4,6 +4,7 @@
     "name": "ARIA-Invalid Input",
     "attributes": {
       "invalid": true
-    }
+    },
+    "children": []
   }
 ]

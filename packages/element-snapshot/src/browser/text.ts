@@ -1,3 +1,4 @@
+import { isTextSnapshot } from "../utils/guards";
 import { filterSnapshots } from "../utils/snapshot";
 
 import { snapshotChildren } from "./children";
@@ -25,13 +26,13 @@ export function snapshotTextNode(textNode: Node): TextSnapshot | null {
 
 export function snapshotPresentationalChildren(
   node: Node,
-): Array<TextSnapshot> | undefined {
+): Array<TextSnapshot> {
   const accessibleTextContent = resolveAccessibleTextContent(node);
   if (
     accessibleTextContent === undefined ||
     accessibleTextContent.length === 0
   ) {
-    return undefined;
+    return [];
   }
 
   return [
@@ -53,7 +54,7 @@ export function resolveAccessibleTextContent(
 
   const textNodes = filterSnapshots({
     snapshots: children,
-    filter: (element) => element.role === "text",
+    filter: isTextSnapshot,
   });
 
   const aggregatedText = textNodes.map((textNode) => textNode.name).join(" ");

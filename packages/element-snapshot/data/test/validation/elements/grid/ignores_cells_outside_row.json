@@ -1,6 +1,7 @@
 [
   {
     "role": "grid",
+    "attributes": {},
     "children": [
       {
         "role": "text",

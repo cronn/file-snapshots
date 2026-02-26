@@ -1,5 +1,7 @@
 [
   {
-    "role": "tablist"
+    "role": "tablist",
+    "attributes": {},
+    "children": []
   }
 ]

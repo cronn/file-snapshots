@@ -4,10 +4,12 @@
     "name": "Label",
     "attributes": {
       "description": "Referenced Description"
-    }
+    },
+    "children": []
   },
   {
     "role": "paragraph",
+    "attributes": {},
     "children": [
       {
         "role": "text",

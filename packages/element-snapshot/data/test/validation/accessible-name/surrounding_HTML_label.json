@@ -2,7 +2,8 @@
   {
     "role": "checkbox",
     "name": "Label",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   },
   {
     "role": "text",

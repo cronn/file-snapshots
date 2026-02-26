@@ -8,6 +8,7 @@
     "name": "Textarea",
     "attributes": {
       "value": "Text"
-    }
+    },
+    "children": []
   }
 ]

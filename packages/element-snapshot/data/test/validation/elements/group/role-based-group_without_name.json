@@ -1,6 +1,7 @@
 [
   {
     "role": "group",
+    "attributes": {},
     "children": [
       {
         "role": "text",
@@ -9,7 +10,8 @@
       {
         "role": "textbox",
         "name": "First Name",
-        "attributes": {}
+        "attributes": {},
+        "children": []
       },
       {
         "role": "text",
@@ -18,7 +20,8 @@
       {
         "role": "textbox",
         "name": "Last Name",
-        "attributes": {}
+        "attributes": {},
+        "children": []
       }
     ]
   }

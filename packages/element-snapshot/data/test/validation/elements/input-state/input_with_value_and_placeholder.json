@@ -4,6 +4,7 @@
     "name": "Input",
     "attributes": {
       "value": "Value"
-    }
+    },
+    "children": []
   }
 ]

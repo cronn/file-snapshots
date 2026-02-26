@@ -74,6 +74,7 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
       checked: resolveChecked(element),
       ...snapshotCommonInputAttributes(element, value === undefined),
     },
+    children: [],
   };
 }
 
@@ -87,6 +88,7 @@ function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
       value,
       ...snapshotCommonInputAttributes(element, value === undefined),
     },
+    children: [],
   };
 }
 

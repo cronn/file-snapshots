@@ -10,10 +10,13 @@
       },
       {
         "role": "img",
-        "name": "Image"
+        "name": "Image",
+        "attributes": {},
+        "children": []
       },
       {
         "role": "paragraph",
+        "attributes": {},
         "children": [
           {
             "role": "text",

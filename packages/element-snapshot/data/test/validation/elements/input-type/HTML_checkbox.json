@@ -4,7 +4,8 @@
     "name": "Checked",
     "attributes": {
       "checked": true
-    }
+    },
+    "children": []
   },
   {
     "role": "text",
@@ -13,7 +14,8 @@
   {
     "role": "checkbox",
     "name": "Unchecked",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   },
   {
     "role": "text",

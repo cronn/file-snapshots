@@ -1,12 +1,16 @@
 [
   {
     "role": "table",
+    "attributes": {},
     "children": [
       {
         "role": "rowgroup",
+        "attributes": {},
         "children": [
           {
-            "role": "row"
+            "role": "row",
+            "attributes": {},
+            "children": []
           }
         ]
       }

@@ -1,5 +1,7 @@
 [
   {
-    "role": "grid"
+    "role": "grid",
+    "attributes": {},
+    "children": []
   }
 ]

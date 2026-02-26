@@ -1,6 +1,7 @@
 [
   {
     "role": "table",
+    "attributes": {},
     "children": [
       {
         "role": "text",

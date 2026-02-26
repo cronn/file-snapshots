@@ -2,6 +2,7 @@
   {
     "role": "region",
     "name": "Region Name",
+    "attributes": {},
     "children": [
       {
         "role": "text",

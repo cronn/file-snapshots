@@ -4,6 +4,7 @@
     "name": "ARIA-Required Input",
     "attributes": {
       "required": true
-    }
+    },
+    "children": []
   }
 ]

@@ -1,10 +1,12 @@
 [
   {
     "role": "tablist",
+    "attributes": {},
     "children": [
       {
         "role": "tab",
-        "attributes": {}
+        "attributes": {},
+        "children": []
       }
     ]
   }

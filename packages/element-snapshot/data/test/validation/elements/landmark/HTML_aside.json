@@ -1,6 +1,7 @@
 [
   {
     "role": "complementary",
+    "attributes": {},
     "children": [
       {
         "role": "text",

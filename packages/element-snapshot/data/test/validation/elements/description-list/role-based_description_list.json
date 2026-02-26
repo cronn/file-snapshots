@@ -1,9 +1,11 @@
 [
   {
     "role": "descriptionlist",
+    "attributes": {},
     "children": [
       {
         "role": "term",
+        "attributes": {},
         "children": [
           {
             "role": "text",
@@ -13,6 +15,7 @@
       },
       {
         "role": "definition",
+        "attributes": {},
         "children": [
           {
             "role": "text",

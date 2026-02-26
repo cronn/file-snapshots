@@ -1,6 +1,7 @@
 [
   {
     "role": "progressbar",
-    "attributes": {}
+    "attributes": {},
+    "children": []
   }
 ]

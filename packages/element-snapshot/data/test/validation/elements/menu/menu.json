@@ -15,6 +15,7 @@
   {
     "role": "menu",
     "name": "Menu",
+    "attributes": {},
     "children": [
       {
         "role": "menuitem",

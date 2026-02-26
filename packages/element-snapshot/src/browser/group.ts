@@ -13,6 +13,7 @@ export function snapshotGroup(
   return {
     role: "group",
     name: resolveGroupName(element),
+    attributes: {},
     children: snapshotChildren(element),
   };
 }

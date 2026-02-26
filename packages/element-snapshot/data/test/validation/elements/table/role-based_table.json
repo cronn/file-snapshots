@@ -1,9 +1,11 @@
 [
   {
     "role": "table",
+    "attributes": {},
     "children": [
       {
         "role": "row",
+        "attributes": {},
         "children": [
           {
             "role": "columnheader",
@@ -20,12 +22,15 @@
       },
       {
         "role": "rowgroup",
+        "attributes": {},
         "children": [
           {
             "role": "row",
+            "attributes": {},
             "children": [
               {
                 "role": "rowheader",
+                "attributes": {},
                 "children": [
                   {
                     "role": "text",
@@ -35,6 +40,7 @@
               },
               {
                 "role": "cell",
+                "attributes": {},
                 "children": [
                   {
                     "role": "text",

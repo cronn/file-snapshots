@@ -1,6 +1,7 @@
 [
   {
     "role": "contentinfo",
+    "attributes": {},
     "children": [
       {
         "role": "text",

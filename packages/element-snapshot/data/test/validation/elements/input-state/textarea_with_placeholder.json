@@ -4,6 +4,7 @@
     "name": "Textarea",
     "attributes": {
       "placeholder": "Placeholder"
-    }
+    },
+    "children": []
   }
 ]
