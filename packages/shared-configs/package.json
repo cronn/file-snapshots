@@ -30,26 +30,25 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "compile": "tsgo",
-    "build": "tsdown --config-loader unrun"
+    "compile": "tsgo"
   },
   "type": "module",
   "exports": {
     "./tsdown": {
-      "types": "./dist/tsdown.d.mts",
-      "default": "./dist/tsdown.mjs"
+      "types": "./src/tsdown.ts",
+      "default": "./src/tsdown.ts"
     },
     "./vitest": {
-      "types": "./dist/vitest.d.mts",
-      "default": "./dist/vitest.mjs"
+      "types": "./src/vitest.ts",
+      "default": "./src/vitest.ts"
     },
     "./eslint": {
-      "types": "./dist/eslint.d.mts",
-      "default": "./dist/eslint.mjs"
+      "types": "./src/eslint.ts",
+      "default": "./src/eslint.ts"
     },
     "./playwright": {
-      "types": "./dist/playwright.d.mts",
-      "default": "./dist/playwright.mjs"
+      "types": "./src/playwright.ts",
+      "default": "./src/playwright.ts"
     }
   },
   "devDependencies": {
