@@ -13,7 +13,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cronn/file-snapshots.git",
+    "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/playwright-file-snapshots"
   },
   "homepage": "https://github.com/cronn/file-snapshots",
@@ -43,7 +43,7 @@
     "test:integration:update-changed": "playwright test --grep @update-changed --update-snapshots changed",
     "test:integration:update-none": "playwright test --grep @update-none --update-snapshots none",
     "playwright:install": "playwright install chromium",
-    "compile": "tsc",
+    "compile": "tsgo",
     "build": "tsdown"
   },
   "type": "module",
@@ -62,17 +62,19 @@
     "package-directory": "catalog:"
   },
   "devDependencies": {
+    "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
+    "publint": "catalog:",
     "tsdown": "catalog:",
-    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   },

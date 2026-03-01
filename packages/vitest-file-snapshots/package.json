@@ -13,7 +13,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cronn/file-snapshots.git",
+    "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/vitest-file-snapshots"
   },
   "homepage": "https://github.com/cronn/file-snapshots",
@@ -41,7 +41,7 @@
     "test:update-all": "cross-env UPDATE_TYPE=all CI=false GITHUB_ACTIONS= vitest run --update ./__tests__/update-snapshot.test.ts",
     "test:update-none": "cross-env UPDATE_TYPE=none CI=true vitest run ./__tests__/update-snapshot.test.ts",
     "test:coverage": "vitest run --coverage",
-    "compile": "tsc",
+    "compile": "tsgo",
     "build": "tsdown && node scripts/fix-declaration-file.ts"
   },
   "type": "module",
@@ -59,8 +59,10 @@
     "@cronn/lib-file-snapshots": "workspace:*"
   },
   "devDependencies": {
+    "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/expect": "catalog:",
@@ -70,8 +72,8 @@
     "eslint-plugin-unused-imports": "catalog:",
     "package-directory": "catalog:",
     "prettier": "catalog:",
+    "publint": "catalog:",
     "tsdown": "catalog:",
-    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   },
