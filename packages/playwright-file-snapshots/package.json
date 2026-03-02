@@ -13,7 +13,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cronn/file-snapshots.git",
+    "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/playwright-file-snapshots"
   },
   "homepage": "https://github.com/cronn/file-snapshots",
@@ -62,6 +62,7 @@
     "package-directory": "catalog:"
   },
   "devDependencies": {
+    "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
@@ -71,6 +72,7 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
+    "publint": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",
