@@ -1,6 +1,6 @@
 {
   "name": "@cronn/playwright-file-snapshots",
-  "version": "0.38.1",
+  "version": "1.0.0",
   "description": "Write tests with Playwright using file snapshots",
   "keywords": [
     "playwright",
