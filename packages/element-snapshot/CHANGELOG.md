@@ -1,5 +1,16 @@
 # @cronn/element-snapshot
 
+## 0.13.0
+
+### Minor Changes
+
+- e74bdf4: Make `attributes` and `children` required fields in `GenericElementSnapshot`
+- 3888abb: Make `options` required field in `ComboboxSnapshot`
+
+### Patch Changes
+
+- 1b737a6: Define full git URL for `repository.url` in `package.json`
+
 ## 0.12.0
 
 ### Minor Changes
