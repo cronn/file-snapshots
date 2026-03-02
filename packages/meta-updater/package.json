@@ -1,14 +1,14 @@
 {
-  "name": "@cronn/test-utils",
+  "name": "@cronn/meta-updater",
   "version": "0.0.0",
-  "description": "Internal test utils for the monorepo",
+  "description": "Internal pnpm meta updaters for the monorepo",
   "author": "cronn",
   "private": true,
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cronn/file-snapshots.git",
-    "directory": "packages/test-utils"
+    "directory": "packages/meta-updater"
   },
   "homepage": "https://github.com/cronn/file-snapshots",
   "packageManager": "pnpm@10.29.3",
@@ -30,28 +30,23 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "compile": "tsgo",
-    "build": "tsdown"
+    "compile": "tsgo"
   },
   "type": "module",
   "exports": {
-    "./playwright": {
-      "types": "./dist/playwright.d.mts",
-      "default": "./dist/playwright.mjs"
-    }
+    "types": "./src/index.ts",
+    "default": "./src/index.ts"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
-    "@playwright/test": "catalog:",
+    "@npm/types": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
-    "publint": "catalog:",
-    "tsdown": "catalog:",
     "typescript-eslint": "catalog:"
   }
 }

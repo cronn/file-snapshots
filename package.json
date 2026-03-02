@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
+    "@cronn/meta-updater": "workspace:*",
     "@pnpm/meta-updater": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "prettier": "catalog:",
