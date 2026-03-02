@@ -4,6 +4,7 @@ packages:
 catalog:
   "@arethetypeswrong/core": 0.18.2
   "@changesets/cli": 2.29.8
+  "@npm/types": 2.1.0
   "@playwright/test": 1.58.2
   "@pnpm/meta-updater": 2.0.6
   "@trivago/prettier-plugin-sort-imports": 6.0.2
