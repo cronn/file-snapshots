@@ -1,5 +1,11 @@
 # @cronn/aria-snapshot
 
+## 1.0.0
+
+### Major Changes
+
+- 3da5fd7: Release v1
+
 ## 0.1.1
 
 ### Patch Changes

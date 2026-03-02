@@ -1,5 +1,12 @@
 # @cronn/element-snapshot
 
+## 0.13.0
+
+### Minor Changes
+
+- e74bdf4: Make `attributes` and `children` required fields in `GenericElementSnapshot`
+- 3888abb: Make `options` required field in `ComboboxSnapshot`
+
 ## 0.12.0
 
 ### Minor Changes
