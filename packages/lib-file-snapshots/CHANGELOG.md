@@ -1,5 +1,15 @@
 # @cronn/lib-file-snapshots
 
+## 1.0.0
+
+### Major Changes
+
+- 3da5fd7: Release v1
+
+### Patch Changes
+
+- 1b737a6: Define full git URL for `repository.url` in `package.json`
+
 ## 0.19.1
 
 ### Patch Changes
