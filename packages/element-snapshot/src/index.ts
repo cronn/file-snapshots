@@ -25,3 +25,4 @@ export { snapshotElement, snapshotElementRaw } from "./playwright/snapshot";
 
 export { filter } from "./utils/filter";
 export { includeRole, excludeRole } from "./utils/predicates";
+export { getTextContent } from "./utils/text";
