@@ -1,5 +1,4 @@
-import { filter } from "../utils/filter";
-import { isTextSnapshot } from "../utils/guards";
+import { getTextContent, normalizeText } from "../utils/text";
 
 import { snapshotChildren } from "./children";
 
@@ -52,16 +51,6 @@ export function resolveAccessibleTextContent(
     return undefined;
   }
 
-  const textNodes = filter({
-    snapshots: children,
-    predicate: isTextSnapshot,
-  });
-
-  const aggregatedText = textNodes.map((textNode) => textNode.name).join(" ");
-  const normalizedText = normalizeText(aggregatedText);
-  return normalizedText.length > 0 ? normalizedText : undefined;
-}
-
-function normalizeText(text: string): string {
-  return text.replaceAll(/\s+/g, " ").trim();
+  const textContent = getTextContent(children);
+  return textContent.length > 0 ? textContent : undefined;
 }
