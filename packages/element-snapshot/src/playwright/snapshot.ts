@@ -1,7 +1,7 @@
 import type { Locator } from "@playwright/test";
 
 import type { NodeSnapshot } from "../browser/types";
-import type { SnapshotFilter } from "../utils/snapshot";
+import type { FilterPredicate } from "../utils/filter";
 
 import { ElementSnapshotProxy } from "./proxy";
 import { ElementSnapshotTransformer } from "./transformer";
@@ -12,7 +12,7 @@ export interface ElementSnapshotOptions {
    *
    * @default () => true
    */
-  filter?: SnapshotFilter;
+  filter?: FilterPredicate;
 
   /**
    * Recursively apply specified filter to children of filtered elements

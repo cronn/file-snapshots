@@ -5,9 +5,9 @@ import type {
   ElementSnapshot,
   NodeSnapshot,
 } from "../browser/types";
+import type { FilterPredicate } from "../utils/filter";
+import { filter } from "../utils/filter";
 import { isEmpty, isTextSnapshot } from "../utils/guards";
-import type { SnapshotFilter } from "../utils/snapshot";
-import { filterSnapshots } from "../utils/snapshot";
 
 interface NormalizedElementSnapshot {
   role: ElementRole;
@@ -17,13 +17,13 @@ interface NormalizedElementSnapshot {
 }
 
 interface ElementSnapshotTransformerOptions {
-  filter?: SnapshotFilter;
+  filter?: FilterPredicate;
   recurseFilter?: boolean;
   includeComboboxOptions?: boolean;
 }
 
 export class ElementSnapshotTransformer {
-  private readonly filter?: SnapshotFilter;
+  private readonly filter?: FilterPredicate;
   private readonly recurseFilter: boolean;
   private readonly includeComboboxOptions: boolean;
 
@@ -49,8 +49,8 @@ export class ElementSnapshotTransformer {
       return snapshots;
     }
 
-    return filterSnapshots({
-      filter: this.filter,
+    return filter({
+      predicate: this.filter,
       snapshots,
       recurse: this.recurseFilter,
     });

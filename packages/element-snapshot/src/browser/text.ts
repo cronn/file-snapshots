@@ -1,5 +1,5 @@
+import { filter } from "../utils/filter";
 import { isTextSnapshot } from "../utils/guards";
-import { filterSnapshots } from "../utils/snapshot";
 
 import { snapshotChildren } from "./children";
 
@@ -52,9 +52,9 @@ export function resolveAccessibleTextContent(
     return undefined;
   }
 
-  const textNodes = filterSnapshots({
+  const textNodes = filter({
     snapshots: children,
-    filter: isTextSnapshot,
+    predicate: isTextSnapshot,
   });
 
   const aggregatedText = textNodes.map((textNode) => textNode.name).join(" ");
