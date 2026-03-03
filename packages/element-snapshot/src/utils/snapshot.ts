@@ -9,7 +9,7 @@ type GuardedSnapshotFilter<TSnapshot extends NodeSnapshot> = (
 interface SnapshotFilterOptions {
   filter: SnapshotFilter;
   snapshots: Array<NodeSnapshot>;
-  recurse: boolean;
+  recurse?: boolean;
 }
 
 interface GuardedSnapshotFilterOptions<TSnapshot extends NodeSnapshot> {
