@@ -6,18 +6,42 @@ type GuardedSnapshotFilter<TSnapshot extends NodeSnapshot> = (
   snapshot: NodeSnapshot,
 ) => snapshot is TSnapshot;
 
-interface SnapshotFilterOptions {
+interface SnapshotFilterOptions extends SnapshotFilterBaseOptions {
+  /**
+   * Include only elements in the snapshot for which the specified filter returns `true`
+   */
   filter: SnapshotFilter;
-  snapshots: Array<NodeSnapshot>;
-  recurse?: boolean;
 }
 
-interface GuardedSnapshotFilterOptions<TSnapshot extends NodeSnapshot> {
+interface GuardedSnapshotFilterOptions<
+  TSnapshot extends NodeSnapshot,
+> extends SnapshotFilterBaseOptions {
+  /**
+   * Include only elements in the snapshot for which the specified filter returns `true`
+   */
   filter: GuardedSnapshotFilter<TSnapshot>;
+}
+
+interface SnapshotFilterBaseOptions {
+  /**
+   * Array of snapshots to filter.
+   */
   snapshots: Array<NodeSnapshot>;
+
+  /**
+   * Recursively apply specified filter to children of filtered elements
+   *
+   * By default, recursion ends when the filter returns `true` for an element.
+   * Should be `true` for filters intended to remove specific elements recursively.
+   *
+   * @default false
+   */
   recurse?: boolean;
 }
 
+/**
+ * Filters node snapshots based on the provided predicate function
+ */
 export function filterSnapshots<TSnapshot extends NodeSnapshot = NodeSnapshot>(
   options: GuardedSnapshotFilterOptions<TSnapshot>,
 ): Array<TSnapshot>;
