@@ -1,6 +1,8 @@
-import type { NodeSnapshot } from "../browser/types";
+import type { NodeRole, NodeSnapshot } from "../browser/types";
+import type { SnapshotByRole } from "../types/snapshot";
 
 import { isTextSnapshot } from "./guards";
+import { includeRole } from "./predicates";
 
 export type FilterPredicate = (snapshot: NodeSnapshot) => boolean;
 
@@ -88,6 +90,20 @@ export function filter<TSnapshot extends NodeSnapshot>(
       ...snapshot,
       children: filteredChildren as Array<NodeSnapshot>,
     } as TSnapshot;
+  });
+}
+
+/**
+ * Filters node snapshots by a specific role
+ */
+export function filterByRole<TRole extends NodeRole>(
+  role: TRole,
+  snapshots: Array<NodeSnapshot>,
+): Array<SnapshotByRole<TRole>> {
+  return filter({
+    predicate: includeRole(role),
+    recurse: false,
+    snapshots,
   });
 }
 
