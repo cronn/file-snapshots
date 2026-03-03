@@ -23,4 +23,4 @@ export type { ColumnheaderSnapshot } from "./browser/table";
 
 export { snapshotElement, snapshotElementRaw } from "./playwright/snapshot";
 
-export { filterSnapshots } from "./utils/snapshot";
+export { filter } from "./utils/filter";

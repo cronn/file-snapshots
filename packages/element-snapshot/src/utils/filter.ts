@@ -1,28 +1,28 @@
 import type { NodeSnapshot } from "../browser/types";
 
-export type SnapshotFilter = (snapshot: NodeSnapshot) => boolean;
+export type FilterPredicate = (snapshot: NodeSnapshot) => boolean;
 
-type GuardedSnapshotFilter<TSnapshot extends NodeSnapshot> = (
+type GuardedFilterPredicate<TSnapshot extends NodeSnapshot> = (
   snapshot: NodeSnapshot,
 ) => snapshot is TSnapshot;
 
-interface SnapshotFilterOptions extends SnapshotFilterBaseOptions {
+interface FilterOptions extends FilterBaseOptions {
   /**
-   * Include only elements in the snapshot for which the specified filter returns `true`
+   * Include only elements in the snapshot for which the specified predicate returns `true`
    */
-  filter: SnapshotFilter;
+  predicate: FilterPredicate;
 }
 
-interface GuardedSnapshotFilterOptions<
+interface GuardedFilterOptions<
   TSnapshot extends NodeSnapshot,
-> extends SnapshotFilterBaseOptions {
+> extends FilterBaseOptions {
   /**
-   * Include only elements in the snapshot for which the specified filter returns `true`
+   * Include only elements in the snapshot for which the specified predicate returns `true`
    */
-  filter: GuardedSnapshotFilter<TSnapshot>;
+  predicate: GuardedFilterPredicate<TSnapshot>;
 }
 
-interface SnapshotFilterBaseOptions {
+interface FilterBaseOptions {
   /**
    * Array of snapshots to filter.
    */
@@ -42,19 +42,17 @@ interface SnapshotFilterBaseOptions {
 /**
  * Filters node snapshots based on the provided predicate function
  */
-export function filterSnapshots<TSnapshot extends NodeSnapshot = NodeSnapshot>(
-  options: GuardedSnapshotFilterOptions<TSnapshot>,
+export function filter<TSnapshot extends NodeSnapshot = NodeSnapshot>(
+  options: GuardedFilterOptions<TSnapshot>,
 ): Array<TSnapshot>;
-export function filterSnapshots(
-  options: SnapshotFilterOptions,
-): Array<NodeSnapshot>;
-export function filterSnapshots<TSnapshot extends NodeSnapshot>(
-  options: SnapshotFilterOptions | GuardedSnapshotFilterOptions<TSnapshot>,
+export function filter(options: FilterOptions): Array<NodeSnapshot>;
+export function filter<TSnapshot extends NodeSnapshot>(
+  options: FilterOptions | GuardedFilterOptions<TSnapshot>,
 ): Array<TSnapshot> {
-  const { filter, snapshots, recurse = false } = options;
+  const { predicate, snapshots, recurse = false } = options;
 
   return snapshots.flatMap((snapshot) => {
-    const isFilteredIn = filter(snapshot);
+    const isFilteredIn = predicate(snapshot);
 
     // end recursion on included snapshot
     if (isFilteredIn && !recurse) {
@@ -67,8 +65,8 @@ export function filterSnapshots<TSnapshot extends NodeSnapshot>(
     }
 
     const filteredChildren = hasChildren(snapshot)
-      ? filterSnapshots<TSnapshot>({
-          filter: filter as GuardedSnapshotFilter<TSnapshot>,
+      ? filter<TSnapshot>({
+          predicate: predicate as GuardedFilterPredicate<TSnapshot>,
           snapshots: snapshot.children ?? [],
           recurse,
         })
