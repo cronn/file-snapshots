@@ -16,7 +16,7 @@ interface NormalizedElementSnapshot {
   children: Array<unknown>;
 }
 
-interface DomSnapshotTransformerOptions {
+interface ElementSnapshotTransformerOptions {
   filter?: SnapshotFilter;
   recurseFilter?: boolean;
   includeComboboxOptions?: boolean;
@@ -27,7 +27,7 @@ export class ElementSnapshotTransformer {
   private readonly recurseFilter: boolean;
   private readonly includeComboboxOptions: boolean;
 
-  public constructor(options: DomSnapshotTransformerOptions = {}) {
+  public constructor(options: ElementSnapshotTransformerOptions = {}) {
     this.filter = options.filter;
     this.recurseFilter = options.recurseFilter ?? false;
     this.includeComboboxOptions = options.includeComboboxOptions ?? false;
