@@ -1,4 +1,4 @@
-import { NodeSnapshot } from "../browser/types";
+import type { NodeSnapshot } from "../browser/types";
 
 import { filter } from "./filter";
 import { isTextSnapshot } from "./guards";
