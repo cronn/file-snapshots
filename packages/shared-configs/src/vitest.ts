@@ -1,6 +1,8 @@
 import { type ViteUserConfig, configDefaults } from "vitest/config";
 
-export function vitestConfig(): ViteUserConfig {
+export function vitestConfig(
+  config: ViteUserConfig["test"] = {},
+): ViteUserConfig {
   return {
     test: {
       include: ["src/__tests__/**/*.test.ts"],
@@ -13,6 +15,7 @@ export function vitestConfig(): ViteUserConfig {
         reporter: ["text-summary", "html"],
         include: ["src/**/*.{js,jsx,ts,tsx}"],
       },
+      ...config,
     },
   };
 }

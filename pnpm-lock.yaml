@@ -180,6 +180,9 @@ importers:
       '@cronn/test-utils':
         specifier: workspace:*
         version: link:../test-utils
+      '@cronn/vitest-file-snapshots':
+        specifier: workspace:*
+        version: link:../vitest-file-snapshots
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.58.2
