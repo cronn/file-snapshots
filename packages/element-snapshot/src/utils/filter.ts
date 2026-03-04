@@ -2,7 +2,7 @@ import type { NodeSnapshot } from "../browser/types";
 
 export type FilterPredicate = (snapshot: NodeSnapshot) => boolean;
 
-type GuardedFilterPredicate<TSnapshot extends NodeSnapshot> = (
+export type GuardedFilterPredicate<TSnapshot extends NodeSnapshot> = (
   snapshot: NodeSnapshot,
 ) => snapshot is TSnapshot;
 
