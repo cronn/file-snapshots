@@ -13,11 +13,11 @@ export interface ColumnheaderSnapshot extends GenericElementSnapshot<
 > {}
 
 interface ColumnheaderAttributes {
-  sort?: SortAttribute;
+  sort?: SortType;
 }
 
-const SORT_ATTRIBUTES = new Set(["ascending", "descending", "other"] as const);
-type SortAttribute = SetValues<typeof SORT_ATTRIBUTES>;
+const SORT_TYPES = new Set(["ascending", "descending", "other"] as const);
+export type SortType = SetValues<typeof SORT_TYPES>;
 
 export function snapshotColumnheader(
   element: SnapshotTargetElement,
@@ -26,7 +26,7 @@ export function snapshotColumnheader(
     role: "columnheader",
     name: resolveAccessibleName(element),
     attributes: {
-      sort: enumAttribute(element.ariaSort, SORT_ATTRIBUTES),
+      sort: enumAttribute(element.ariaSort, SORT_TYPES),
     },
     children: snapshotChildren(element),
   };

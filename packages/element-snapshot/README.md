@@ -25,6 +25,12 @@ pnpm add -D @cronn/element-snapshot
 
 ## Writing Tests
 
+This package provides multiple snapshot formats for different use cases:
+
+- **General-Purpose Snapshots**: Human-readable JSON format for all element types
+- **Markdown Table Snapshots**: Specialized format for tables and grids ([documentation](docs/markdown-table-snapshot.md))
+- **Custom Snapshots**: Build your own snapshot formats using raw element data and utility functions
+
 ### General-Purpose Snapshots
 
 The function `snapshotElement` provides a general-purpose snapshot including all supported roles and attributes. It can be used to achieve a high test coverage, but can become hard to read for complex HTML structures.
