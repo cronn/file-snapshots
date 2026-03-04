@@ -17,6 +17,7 @@ catalog:
   "eslint-config-prettier": 10.1.8
   "eslint-plugin-check-file": 3.3.1
   "eslint-plugin-unused-imports": 4.4.1
+  "markdown-table": 3.0.4
   "package-directory": 8.2.0
   "prettier": 3.8.1
   "publint": 0.3.18
