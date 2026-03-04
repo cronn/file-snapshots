@@ -1,5 +1,7 @@
 import type { NodeSnapshot } from "../browser/types";
 
+import { isTextSnapshot } from "./guards";
+
 export type FilterPredicate = (snapshot: NodeSnapshot) => boolean;
 
 export type GuardedFilterPredicate<TSnapshot extends NodeSnapshot> = (
@@ -78,6 +80,10 @@ export function filter<TSnapshot extends NodeSnapshot>(
     }
 
     // recurse included snapshot
+    if (isTextSnapshot(snapshot)) {
+      return snapshot as TSnapshot;
+    }
+
     return {
       ...snapshot,
       children: filteredChildren as Array<NodeSnapshot>,

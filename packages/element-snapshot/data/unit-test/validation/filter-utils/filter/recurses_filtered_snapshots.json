@@ -5,8 +5,7 @@
     "children": [
       {
         "role": "text",
-        "name": "Text",
-        "children": []
+        "name": "Text"
       }
     ]
   }
