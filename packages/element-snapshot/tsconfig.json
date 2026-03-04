@@ -8,6 +8,7 @@
     "playwright.config.ts",
     "tsdown.config.ts",
     "vitest.config.ts",
+    "vitest-setup.ts",
     "./src/**/*.ts",
     "./tests/**/*.ts"
   ]

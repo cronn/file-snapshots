@@ -58,6 +58,7 @@
     "@cronn/playwright-file-snapshots": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@cronn/test-utils": "workspace:*",
+    "@cronn/vitest-file-snapshots": "workspace:*",
     "@playwright/test": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@typescript/native-preview": "catalog:",

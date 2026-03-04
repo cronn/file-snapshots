@@ -2,4 +2,8 @@ import { defineConfig } from "vitest/config";
 
 import { vitestConfig } from "@cronn/shared-configs/vitest";
 
-export default defineConfig(vitestConfig());
+export default defineConfig(
+  vitestConfig({
+    setupFiles: ["vitest-setup.ts"],
+  }),
+);
