@@ -6,7 +6,10 @@ import { setupSnapshotTest } from "@cronn/test-utils/playwright";
 import type { ElementSnapshotOptions } from "../playwright/snapshot";
 import { snapshotElement, snapshotElementRaw } from "../playwright/snapshot";
 
-export const expect = defineValidationFileExpect();
+export const expect = defineValidationFileExpect({
+  validationDir: "data/integration-test/validation",
+  outputDir: "data/integration-test/output",
+});
 
 export async function matchRawElementSnapshot(
   page: Page,

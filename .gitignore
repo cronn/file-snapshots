@@ -15,4 +15,5 @@ test-results
 playwright-report
 **/data/test/output
 **/data/unit-test/output
+**/data/integration-test/output
 **/custom-data/output
