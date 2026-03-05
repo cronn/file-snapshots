@@ -10,13 +10,13 @@ describe("includeRole", () => {
   });
 
   test("when snapshot has provided role, returns true", () => {
-    const hasRoleParagraph = includeRole("paragraph");
-    expect(hasRoleParagraph(paragraphSnapshot)).toBe(true);
+    const includeParagraph = includeRole("paragraph");
+    expect(includeParagraph(paragraphSnapshot)).toBe(true);
   });
 
-  test("when snapshot has different role, returns false", () => {
-    const hasRoleList = includeRole("list");
-    expect(hasRoleList(paragraphSnapshot)).toBe(false);
+  test("when snapshot does not have provided role, returns false", () => {
+    const includeHeading = includeRole("heading");
+    expect(includeHeading(paragraphSnapshot)).toBe(false);
   });
 });
 
@@ -26,12 +26,12 @@ describe("excludeRole", () => {
   });
 
   test("when snapshot has provided role, returns false", () => {
-    const hasRoleParagraph = excludeRole("paragraph");
-    expect(hasRoleParagraph(paragraphSnapshot)).toBe(false);
+    const excludeParagraph = excludeRole("paragraph");
+    expect(excludeParagraph(paragraphSnapshot)).toBe(false);
   });
 
-  test("when snapshot has different role, returns true", () => {
-    const hasRoleList = excludeRole("list");
-    expect(hasRoleList(paragraphSnapshot)).toBe(true);
+  test("when snapshot does not have provided role, returns true", () => {
+    const excludeHeading = excludeRole("heading");
+    expect(excludeHeading(paragraphSnapshot)).toBe(true);
   });
 });

@@ -1,6 +1,8 @@
 import { describe, expect, test } from "vitest";
 
-import { isEmpty, isTextSnapshot } from "../utils/guards";
+import type { ElementSnapshot } from "../browser/types";
+import { elementSnapshot } from "../utils/factories";
+import { hasRole, isEmpty, isTextSnapshot } from "../utils/guards";
 
 describe("isTextSnapshot", () => {
   test("when value is text snapshot, returns true", () => {
@@ -11,6 +13,28 @@ describe("isTextSnapshot", () => {
     expect(isTextSnapshot({ role: "main", attributes: {}, children: [] })).toBe(
       false,
     );
+  });
+});
+
+describe("hasRole", () => {
+  const paragraphSnapshot: ElementSnapshot = elementSnapshot({
+    role: "paragraph",
+  });
+
+  test("when snapshot has provided role, returns true", () => {
+    expect(hasRole("paragraph", paragraphSnapshot)).toBe(true);
+  });
+
+  test("when snapshot has any of the provided roles, returns true", () => {
+    expect(hasRole(["heading", "paragraph"], paragraphSnapshot)).toBe(true);
+  });
+
+  test("when snapshot does not have the provided role, returns false", () => {
+    expect(hasRole("heading", paragraphSnapshot)).toBe(false);
+  });
+
+  test("when snapshot has none of the provided roles, returns false", () => {
+    expect(hasRole(["heading", "list"], paragraphSnapshot)).toBe(false);
   });
 });
 
