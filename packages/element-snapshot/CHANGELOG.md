@@ -1,5 +1,17 @@
 # @cronn/element-snapshot
 
+## 0.14.0
+
+### Minor Changes
+
+- 63d9bda: Rename `filterSnapshots` to `filter`
+- 9135923: Export filter predicates `includeRole` and `excludeRole`
+- 0583ebb: Fix: Make `recurse` optional in `SnapshotFilterOptions`
+
+### Patch Changes
+
+- a95660f: Fix: Text snapshot has empty children after filtering
+
 ## 0.13.0
 
 ### Minor Changes
