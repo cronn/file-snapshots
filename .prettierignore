@@ -6,5 +6,7 @@ pnpm-lock.yaml
 
 # tests
 **/data/test/
+**/data/unit-test/
+**/data/integration-test/
 **/custom-data/test/
 __snapshots__
