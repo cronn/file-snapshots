@@ -3,6 +3,7 @@ import test from "@playwright/test";
 import { html } from "@cronn/test-utils/playwright";
 
 import { setupTransformedSnapshotTest } from "../../src/test/fixtures";
+import { excludeRole, includeRole } from "../../src/utils/predicates";
 
 test("includes list elements", async ({ page }) => {
   const matchSnapshot = await setupTransformedSnapshotTest(
@@ -25,7 +26,7 @@ test("includes list elements", async ({ page }) => {
   );
 
   await matchSnapshot({
-    filter: (element) => element.role === "list",
+    filter: includeRole("list"),
   });
 });
 
@@ -50,7 +51,7 @@ test("excludes paragraph elements", async ({ page }) => {
   );
 
   await matchSnapshot({
-    filter: (element) => element.role !== "paragraph",
+    filter: excludeRole("paragraph"),
     recurseFilter: true,
   });
 });

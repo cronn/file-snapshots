@@ -1,10 +1,22 @@
 import type { TextSnapshot } from "../browser/text";
-import type { NodeSnapshot } from "../browser/types";
+import type { NodeRole, NodeSnapshot } from "../browser/types";
+import type { SnapshotByRole } from "../types/snapshot";
 
 export function isTextSnapshot(
   snapshot: NodeSnapshot,
 ): snapshot is TextSnapshot {
-  return snapshot.role === "text";
+  return hasRole("text", snapshot);
+}
+
+export function hasRole<TRole extends NodeRole>(
+  role: TRole | Array<TRole>,
+  snapshot: NodeSnapshot,
+): snapshot is SnapshotByRole<TRole> {
+  if (typeof role === "string") {
+    return role === snapshot.role;
+  }
+
+  return role.includes(snapshot.role as TRole);
 }
 
 export function isEmpty(

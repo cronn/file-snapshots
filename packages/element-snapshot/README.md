@@ -113,3 +113,11 @@ function transformToMarkdownTable(snapshot: Array<NodeSnapshot>): string {
   // transform table snapshot to markdown table
 }
 ```
+
+#### Utility Functions for Custom Snapshots
+
+| Function      | Description                                                      |
+| ------------- | ---------------------------------------------------------------- |
+| `filter`      | Filters node snapshots based on the provided predicate function. |
+| `includeRole` | Includes only elements with the specified role.                  |
+| `excludeRole` | Excludes elements with the specified role.                       |

@@ -24,3 +24,4 @@ export type { ColumnheaderSnapshot } from "./browser/table";
 export { snapshotElement, snapshotElementRaw } from "./playwright/snapshot";
 
 export { filter } from "./utils/filter";
+export { includeRole, excludeRole } from "./utils/predicates";
