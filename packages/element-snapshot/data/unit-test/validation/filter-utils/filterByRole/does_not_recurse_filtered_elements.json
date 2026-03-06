@@ -1,0 +1,12 @@
+[
+  {
+    "role": "paragraph",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Text"
+      }
+    ]
+  }
+]

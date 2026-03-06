@@ -25,6 +25,12 @@ pnpm add -D @cronn/element-snapshot
 
 ## Writing Tests
 
+This package provides multiple snapshot formats for different use cases:
+
+- **General-Purpose Snapshots**: Human-readable JSON format for all element types
+- **Markdown Table Snapshots**: Specialized format for tables and grids ([documentation](docs/markdown-table-snapshot.md))
+- **Custom Snapshots**: Build your own snapshot formats using raw element data and utility functions
+
 ### General-Purpose Snapshots
 
 The function `snapshotElement` provides a general-purpose snapshot including all supported roles and attributes. It can be used to achieve a high test coverage, but can become hard to read for complex HTML structures.
@@ -116,8 +122,10 @@ function transformToMarkdownTable(snapshot: Array<NodeSnapshot>): string {
 
 #### Utility Functions for Custom Snapshots
 
-| Function      | Description                                                      |
-| ------------- | ---------------------------------------------------------------- |
-| `filter`      | Filters node snapshots based on the provided predicate function. |
-| `includeRole` | Includes only elements with the specified role.                  |
-| `excludeRole` | Excludes elements with the specified role.                       |
+| Function         | Description                                                           |
+| ---------------- | --------------------------------------------------------------------- |
+| `filter`         | Filters node snapshots based on the provided predicate function.      |
+| `filterByRole`   | Filters node snapshots by the specified role.                         |
+| `includeRole`    | Includes only elements with the specified role.                       |
+| `excludeRole`    | Excludes elements with the specified role.                            |
+| `getTextContent` | Aggregates and normalizes the text content of all provided snapshots. |

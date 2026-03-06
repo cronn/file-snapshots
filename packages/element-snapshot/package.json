@@ -51,6 +51,7 @@
     "dist"
   ],
   "dependencies": {
+    "markdown-table": "catalog:",
     "package-directory": "catalog:"
   },
   "devDependencies": {
