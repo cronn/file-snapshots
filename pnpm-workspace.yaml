@@ -30,8 +30,9 @@ overrides:
   "glob": ">=10.5.0"
   "lodash": ">=4.17.23"
   "lodash-es": ">=4.17.23"
-  "minimatch": ">=10.2.1"
-  "tar": ">=7.5.8"
+  "minimatch": ">=10.2.3"
+  "rollup": ">=4.59.0"
+  "tar": ">=7.5.10"
 
 includeWorkspaceRoot: true
 
@@ -42,7 +43,7 @@ ignoredBuiltDependencies:
 
 minimumReleaseAge: 10080 # 1 week
 minimumReleaseAgeExclude:
-  - "minimatch@10.2.1"
+  - "tar@7.5.11"
 
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 40320 # 4 weeks
