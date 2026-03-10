@@ -45,6 +45,9 @@ catalogs:
     eslint-config-prettier:
       specifier: 10.1.8
       version: 10.1.8
+    eslint-plugin-check-file:
+      specifier: 3.3.1
+      version: 3.3.1
     eslint-plugin-unused-imports:
       specifier: 4.4.1
       version: 4.4.1
@@ -144,6 +147,9 @@ importers:
       eslint-config-prettier:
         specifier: 'catalog:'
         version: 10.1.8(eslint@10.0.2(jiti@2.5.1))
+      eslint-plugin-check-file:
+        specifier: 'catalog:'
+        version: 3.3.1(eslint@10.0.2(jiti@2.5.1))
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))
@@ -205,6 +211,9 @@ importers:
       eslint-config-prettier:
         specifier: 'catalog:'
         version: 10.1.8(eslint@10.0.2(jiti@2.5.1))
+      eslint-plugin-check-file:
+        specifier: 'catalog:'
+        version: 3.3.1(eslint@10.0.2(jiti@2.5.1))
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))
@@ -250,6 +259,9 @@ importers:
       eslint-config-prettier:
         specifier: 'catalog:'
         version: 10.1.8(eslint@10.0.2(jiti@2.5.1))
+      eslint-plugin-check-file:
+        specifier: 'catalog:'
+        version: 3.3.1(eslint@10.0.2(jiti@2.5.1))
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))
@@ -292,6 +304,9 @@ importers:
       eslint-config-prettier:
         specifier: 'catalog:'
         version: 10.1.8(eslint@10.0.2(jiti@2.5.1))
+      eslint-plugin-check-file:
+        specifier: 'catalog:'
+        version: 3.3.1(eslint@10.0.2(jiti@2.5.1))
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))
@@ -338,6 +353,9 @@ importers:
       eslint-config-prettier:
         specifier: 'catalog:'
         version: 10.1.8(eslint@10.0.2(jiti@2.5.1))
+      eslint-plugin-check-file:
+        specifier: 'catalog:'
+        version: 3.3.1(eslint@10.0.2(jiti@2.5.1))
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))
@@ -374,6 +392,9 @@ importers:
       eslint-config-prettier:
         specifier: 'catalog:'
         version: 10.1.8(eslint@10.0.2(jiti@2.5.1))
+      eslint-plugin-check-file:
+        specifier: 'catalog:'
+        version: 3.3.1(eslint@10.0.2(jiti@2.5.1))
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))
@@ -413,6 +434,9 @@ importers:
       eslint-config-prettier:
         specifier: 'catalog:'
         version: 10.1.8(eslint@10.0.2(jiti@2.5.1))
+      eslint-plugin-check-file:
+        specifier: 'catalog:'
+        version: 3.3.1(eslint@10.0.2(jiti@2.5.1))
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))
@@ -465,6 +489,9 @@ importers:
       eslint-config-prettier:
         specifier: 'catalog:'
         version: 10.1.8(eslint@10.0.2(jiti@2.5.1))
+      eslint-plugin-check-file:
+        specifier: 'catalog:'
+        version: 3.3.1(eslint@10.0.2(jiti@2.5.1))
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))
@@ -2297,6 +2324,12 @@ packages:
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
+
+  eslint-plugin-check-file@3.3.1:
+    resolution: {integrity: sha512-b7fDkp8Y0T9vloTYSrkMnb5Cqpk1bc6+jDQdgKIhzdwb47NmLAvMFYo3SzHOPF8u4SEsOVhmrNSbo6Sp633syg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      eslint: '>=9.0.0'
 
   eslint-plugin-unused-imports@4.4.1:
     resolution: {integrity: sha512-oZGYUz1X3sRMGUB+0cZyK2VcvRX5lm/vB56PgNNcU+7ficUCKm66oZWKUubXWnOuPjQ8PvmXtCViXBMONPe7tQ==}
@@ -6136,6 +6169,12 @@ snapshots:
   eslint-config-prettier@10.1.8(eslint@10.0.2(jiti@2.5.1)):
     dependencies:
       eslint: 10.0.2(jiti@2.5.1)
+
+  eslint-plugin-check-file@3.3.1(eslint@10.0.2(jiti@2.5.1)):
+    dependencies:
+      eslint: 10.0.2(jiti@2.5.1)
+      is-glob: 4.0.3
+      micromatch: 4.0.8
 
   eslint-plugin-unused-imports@4.4.1(@typescript-eslint/eslint-plugin@8.56.1(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.5.1)):
     dependencies:
