@@ -1,5 +1,6 @@
 import type { Linter } from "eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
+import checkFile from "eslint-plugin-check-file";
 import eslintPluginUnusedImports from "eslint-plugin-unused-imports";
 import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
@@ -11,6 +12,7 @@ export function eslintConfig(): Array<Linter.Config> {
     eslintConfigPrettier,
     {
       plugins: {
+        "check-file": checkFile,
         "unused-imports": eslintPluginUnusedImports,
       },
       languageOptions: {
@@ -66,6 +68,15 @@ export function eslintConfig(): Array<Linter.Config> {
 
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": "error",
+
+        "check-file/filename-naming-convention": [
+          "error",
+          { "*.ts": "KEBAB_CASE" },
+        ],
+        "check-file/folder-naming-convention": [
+          "error",
+          { "src/**/!(__tests__)/": "KEBAB_CASE" },
+        ],
       },
     },
   );

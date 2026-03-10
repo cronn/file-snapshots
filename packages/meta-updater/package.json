@@ -45,6 +45,7 @@
     "@typescript/native-preview": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
+    "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
     "typescript-eslint": "catalog:"

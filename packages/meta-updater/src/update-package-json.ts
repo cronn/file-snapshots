@@ -154,6 +154,7 @@ function updateDevDependencies(
     ...when(context.needsEslint, {
       eslint: "catalog:",
       "eslint-config-prettier": "catalog:",
+      "eslint-plugin-check-file": "catalog:",
       "eslint-plugin-unused-imports": "catalog:",
     }),
     prettier: "catalog:",
