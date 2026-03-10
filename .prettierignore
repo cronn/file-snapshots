@@ -10,3 +10,7 @@ pnpm-lock.yaml
 **/data/integration-test/
 **/custom-data/test/
 __snapshots__
+
+# vitepress
+packages/docs/.vitepress/cache
+packages/docs/.vitepress/dist
