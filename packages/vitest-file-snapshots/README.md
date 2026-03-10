@@ -76,7 +76,7 @@ stored in `/data/test/validation`, which should be under version control. The
 file snapshots generated for test runs will be stored under
 `/data/test/output` and should be ignored:
 
-```gitignore
+```
 # file snapshots
 /data/test/output
 ```
