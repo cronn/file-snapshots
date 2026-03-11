@@ -92,6 +92,10 @@ export default defineConfig({
                   text: "toMatchTextFile",
                   link: "/vitest/file-matchers/to-match-text-file",
                 },
+                {
+                  text: "toMatchMarkdownTableFile",
+                  link: "/vitest/file-matchers/to-match-markdown-table-file",
+                },
               ],
             },
           ],

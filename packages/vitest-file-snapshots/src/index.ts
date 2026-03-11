@@ -5,6 +5,7 @@ export type {
 } from "./matchers/types";
 
 export {
+  Table,
   normalizeFileName,
   resolveNameAsFile,
   resolveNameAsFileSuffix,

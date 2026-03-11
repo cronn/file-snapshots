@@ -1,0 +1,3 @@
+| normalized value |
+| ---------------- |
+| [VALUE]          |

@@ -1,12 +1,16 @@
 import type {
   FilePathResolver,
   JsonNormalizer,
+  MarkdownTableNormalizer,
   TextNormalizer,
 } from "@cronn/lib-file-snapshots";
 
 export interface VitestValidationFileMatchers<R = unknown> {
   toMatchTextFile: (options?: VitestMatchTextFileOptions) => R;
   toMatchJsonFile: (options?: VitestMatchJsonFileOptions) => R;
+  toMatchMarkdownTableFile: (
+    options?: VitestMatchMarkdownTableFileOptions,
+  ) => R;
 }
 
 export interface VitestMatchValidationFileOptions {
@@ -53,6 +57,13 @@ export interface VitestMatchJsonFileOptions extends VitestMatchValidationFileOpt
    * Custom normalizers to apply before serialization
    */
   normalizers?: Array<JsonNormalizer>;
+}
+
+export interface VitestMatchMarkdownTableFileOptions extends VitestMatchValidationFileOptions {
+  /**
+   * Custom normalizers to apply before serialization
+   */
+  normalizers?: Array<MarkdownTableNormalizer>;
 }
 
 export interface VitestValidationFileMatcherConfig {

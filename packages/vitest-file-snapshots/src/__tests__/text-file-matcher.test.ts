@@ -9,6 +9,10 @@ test("matches value with text file", () => {
   expect("value").toMatchTextFile();
 });
 
+test("when value cannot be serialized, throws error", () => {
+  expect(() => expect(4711).toMatchTextFile()).toThrowError();
+});
+
 test("when matcher is inverted, throws error", () => {
   expect(() => expect("value").not.toMatchTextFile()).toThrowError();
 });
