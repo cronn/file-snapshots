@@ -4,7 +4,6 @@ import { describe, expect, test } from "vitest";
 import {
   parseTestName,
   parseTestPath,
-  parseTextValue,
   parseUpdateSnapshot,
 } from "../matchers/utils";
 
@@ -72,12 +71,4 @@ describe("parseUpdateSnapshot", () => {
   test("when value is unknown, returns 'missing'", () => {
     expect(parseUpdateSnapshot("value")).toBe("missing");
   });
-});
-
-describe("parseTextValue", () => {
-  test("when value is of type string, parse returns value", () =>
-    expect(parseTextValue("value")).toBe("value"));
-
-  test("when value is not of type string, parse throws error", () =>
-    expect(() => parseTextValue(["value"])).toThrow());
 });

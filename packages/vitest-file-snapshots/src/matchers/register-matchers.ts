@@ -1,16 +1,21 @@
 import type { ExpectationResult, MatcherState } from "@vitest/expect";
 import { expect } from "vitest";
 
-import { JsonSerializer, TextSerializer } from "@cronn/lib-file-snapshots";
+import {
+  JsonSerializer,
+  MarkdownTableSerializer,
+  TextSerializer,
+} from "@cronn/lib-file-snapshots";
 
 import { matchValidationFile } from "./file-matcher";
+import { parseTableData, parseTextValue } from "./parsers";
 import type {
   VitestMatchJsonFileOptions,
+  VitestMatchMarkdownTableFileOptions,
   VitestMatchTextFileOptions,
   VitestValidationFileMatcherConfig,
   VitestValidationFileMatchers,
 } from "./types";
-import { parseTextValue } from "./utils";
 
 export function registerValidationFileMatchers(
   config: VitestValidationFileMatcherConfig = {},
@@ -55,8 +60,24 @@ export function registerValidationFileMatchers(
     });
   }
 
+  function toMatchMarkdownTableFile(
+    this: MatcherState,
+    received: unknown,
+    options: VitestMatchMarkdownTableFileOptions = {},
+  ): ExpectationResult {
+    const { normalizers, ...snapshotOptions } = options;
+    return matchValidationFile({
+      received: parseTableData(received),
+      serializer: new MarkdownTableSerializer({ normalizers }),
+      config: snapshotConfig,
+      options: snapshotOptions,
+      matcherState: this,
+    });
+  }
+
   expect.extend({
     toMatchJsonFile,
     toMatchTextFile,
+    toMatchMarkdownTableFile,
   } satisfies VitestValidationFileMatchers);
 }

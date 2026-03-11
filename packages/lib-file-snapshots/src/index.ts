@@ -1,8 +1,18 @@
 export {
+  Table,
+  type TableCell,
+  type TableData,
+  type TableRow,
+} from "./models/table";
+export {
   JsonSerializer,
   type JsonNormalizer,
   type JsonNormalizerContext,
 } from "./serializers/json-serializer";
+export {
+  MarkdownTableSerializer,
+  type MarkdownTableNormalizer,
+} from "./serializers/markdown-table-serializer";
 export {
   TextSerializer,
   type TextNormalizer,

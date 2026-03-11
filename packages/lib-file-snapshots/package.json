@@ -62,6 +62,7 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
+    "markdown-table": "catalog:",
     "prettier": "catalog:",
     "publint": "catalog:",
     "tsdown": "catalog:",

@@ -6,6 +6,7 @@ Each file matcher targets a specific snapshot format:
 
 - [`toMatchJsonFile`](/vitest/file-matchers/to-match-json-file) — serializes the value as a JSON file
 - [`toMatchTextFile`](/vitest/file-matchers/to-match-text-file) — serializes the value as a plain text file
+- [`toMatchMarkdownTableFile`](/vitest/file-matchers/to-match-markdown-table-file) — serializes tabular data as a Markdown table file
 
 **Example:**
 
