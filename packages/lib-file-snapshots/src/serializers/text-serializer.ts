@@ -28,14 +28,10 @@ export class TextSerializer implements SnapshotSerializer {
     this.fileExtension = options.fileExtension ?? "txt";
   }
 
-  public canSerialize(value: unknown): value is string {
-    return isString(value);
-  }
-
   public serialize(value: unknown): string {
-    if (!this.canSerialize(value)) {
+    if (!isString(value)) {
       throw new Error(
-        `Missing text serialization for value of type ${typeof value}.`,
+        `Value of type ${typeof value} cannot be serialized as text. Only strings are supported.`,
       );
     }
 

@@ -5,13 +5,6 @@ export interface SnapshotSerializer {
   readonly fileExtension: string;
 
   /**
-   * Returns true when value can be serialized
-   *
-   * @param value The value to be serialized
-   */
-  canSerialize(value: unknown): boolean;
-
-  /**
    * Serializes value
    *
    * @param value The value to be serialized

@@ -20,7 +20,6 @@ export function testSerializer(
     const serializedValue = serializer.serialize(value);
     const normalizedTestName = normalizeFileName(testName);
 
-    expect(serializer.canSerialize(value)).toBe(true);
     await expect(serializedValue).toMatchFileSnapshot(
       path.join(
         ".",
@@ -37,7 +36,6 @@ export function testSerializerThrows(
   value: unknown,
 ): () => void {
   return (): void => {
-    expect(serializer.canSerialize(value)).toBe(false);
     expect(() => serializer.serialize(value)).toThrowError();
   };
 }

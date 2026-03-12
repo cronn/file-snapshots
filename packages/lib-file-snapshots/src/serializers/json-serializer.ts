@@ -65,10 +65,6 @@ export class JsonSerializer implements SnapshotSerializer {
     this.indentSize = options.indentSize ?? 2;
   }
 
-  public canSerialize(_value: unknown): boolean {
-    return true;
-  }
-
   public serialize(value: unknown): string {
     const jsonValue = this.normalizeValueRecursive(value);
     const jsonString = JSON.stringify(jsonValue, undefined, this.indentSize);

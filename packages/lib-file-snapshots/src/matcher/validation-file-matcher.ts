@@ -43,10 +43,6 @@ export class ValidationFileMatcher {
   }
 
   public matchFileSnapshot(actual: unknown): ValidationFileMatcherResult {
-    if (!this.serializer.canSerialize(actual)) {
-      throw new Error(`Cannot serialize value of type ${typeof actual}`);
-    }
-
     const serializedActual = this.serializer.serialize(actual);
     const expected = this.resolveExpected(serializedActual);
 
