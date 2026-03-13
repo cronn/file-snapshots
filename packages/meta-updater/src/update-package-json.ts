@@ -107,20 +107,34 @@ type Scripts = PackageJSON["scripts"];
 function updateScripts(scripts: Scripts, context: PackageContext): Scripts {
   return {
     ...scripts,
-    ...when(context.needsEslint, defineLintScripts(context.relativeDir)),
+    ...when(
+      context.needsEslint,
+      updateLintScripts(scripts, context.relativeDir),
+    ),
     ...when(context.needsTypeScript, defineCompileScript()),
     ...when(context.needsTsdown, updateBuildScript(scripts)),
   };
 }
 
-function defineLintScripts(packageDir: string): Scripts | undefined {
+function updateLintScripts(
+  scripts: Scripts,
+  packageDir: string,
+): Scripts | undefined {
   const lintedDirs = tsSourceDirs
     .filter((lintedDir) => fs.existsSync(path.resolve(packageDir, lintedDir)))
     .join(" ");
 
   return {
-    "lint:check": `eslint ${lintedDirs} --max-warnings=0`,
-    "lint:fix": `eslint ${lintedDirs} --max-warnings=0 --fix`,
+    ...updateScript(
+      "lint:check",
+      `eslint ${lintedDirs} --max-warnings=0`,
+      scripts,
+    ),
+    ...updateScript(
+      "lint:fix",
+      `eslint ${lintedDirs} --max-warnings=0 --fix`,
+      scripts,
+    ),
   };
 }
 
@@ -131,9 +145,15 @@ function defineCompileScript(): Scripts | undefined {
 }
 
 function updateBuildScript(scripts: Scripts): Scripts | undefined {
-  return {
-    build: scripts?.build ?? "tsdown",
-  };
+  return updateScript("build", "tsdown", scripts);
+}
+
+function updateScript(
+  name: string,
+  defaultValue: string,
+  scripts: Scripts,
+): Scripts {
+  return { [name]: scripts?.[name] ?? defaultValue };
 }
 
 type DevDependencies = PackageJSON["devDependencies"];

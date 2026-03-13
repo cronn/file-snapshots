@@ -24,6 +24,7 @@ catalog:
   "tsdown": 0.20.3
   "turbo": 2.8.12
   "typescript-eslint": 8.56.1
+  "vitepress": 1.6.4
   "vitest": 4.0.18
   "yaml": 2.8.2
 
