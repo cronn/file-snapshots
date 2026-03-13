@@ -1,5 +1,11 @@
 # @cronn/element-snapshot
 
+## 0.14.2
+
+### Patch Changes
+
+- 0c3864a: Export `MarkdownTableSnapshotOptions` type
+
 ## 0.14.1
 
 ### Patch Changes
