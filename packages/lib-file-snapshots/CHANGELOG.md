@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 1.0.1
+
+### Patch Changes
+
+- 3ddb7af: Remove `canSerialize` method from serializers
+
 ## 1.0.0
 
 ### Major Changes
