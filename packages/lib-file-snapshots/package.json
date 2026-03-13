@@ -1,6 +1,6 @@
 {
   "name": "@cronn/lib-file-snapshots",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The library agnostic core for testing file snapshots",
   "keywords": [
     "file snapshots"

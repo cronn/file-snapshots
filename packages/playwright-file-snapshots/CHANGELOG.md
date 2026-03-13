@@ -1,5 +1,12 @@
 # @cronn/playwright-file-snapshots
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies [3ddb7af]
+  - @cronn/lib-file-snapshots@1.0.1
+
 ## 1.0.0
 
 ### Major Changes
