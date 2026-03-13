@@ -21,6 +21,7 @@ export type { SeparatorSnapshot } from "./browser/separator";
 export type { TabSnapshot } from "./browser/tab";
 export type { ColumnheaderSnapshot } from "./browser/table";
 
+export { markdownTableSnapshot } from "./playwright/markdown-table";
 export { snapshotElement, snapshotElementRaw } from "./playwright/snapshot";
 
 export { filter, filterByRole } from "./utils/filter";
