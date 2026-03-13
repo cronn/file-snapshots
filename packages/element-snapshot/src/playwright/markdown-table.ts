@@ -20,7 +20,7 @@ const sortIndicators: Record<SortType, string> = {
   other: "⯁",
 };
 
-export interface TableSnapshotOptions {
+export interface MarkdownTableSnapshotOptions {
   /**
    * Show sort indicator for column headers
    *
@@ -34,7 +34,7 @@ export interface TableSnapshotOptions {
  */
 export async function markdownTableSnapshot(
   locator: Locator,
-  options: TableSnapshotOptions = {},
+  options: MarkdownTableSnapshotOptions = {},
 ): Promise<string> {
   const elementSnapshot = await snapshotElementRaw(locator);
   const { columnHeaders, rows } = parseTable(elementSnapshot, options);
@@ -51,7 +51,7 @@ type RowCells = Array<string>;
 
 function parseTable(
   snapshot: Array<NodeSnapshot>,
-  options: TableSnapshotOptions,
+  options: MarkdownTableSnapshotOptions,
 ): ParsedTable {
   const { showSortIndicator = true } = options;
 
