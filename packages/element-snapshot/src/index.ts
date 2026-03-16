@@ -27,6 +27,8 @@ export {
 } from "./playwright/markdown-table";
 export { snapshotElement, snapshotElementRaw } from "./playwright/snapshot";
 
+export type { SnapshotByRole } from "./types/snapshot";
+
 export { filter, filterByRole } from "./utils/filter";
 export { includeRole, excludeRole } from "./utils/predicates";
 export { getTextContent } from "./utils/text";
