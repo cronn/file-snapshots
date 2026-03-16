@@ -7,7 +7,9 @@ export function tsdownConfig(options: UserConfig): UserConfig {
     dts: true,
     outDir: "./dist",
     clean: true,
-    skipNodeModulesBundle: true,
+    deps: {
+      skipNodeModulesBundle: true,
+    },
     publint: true,
     attw: {
       profile: "esm-only",
