@@ -1,8 +1,10 @@
-import { type ViteUserConfig, configDefaults } from "vitest/config";
+import {
+  type TestUserConfig,
+  type ViteUserConfig,
+  configDefaults,
+} from "vitest/config";
 
-export function vitestConfig(
-  config: ViteUserConfig["test"] = {},
-): ViteUserConfig {
+export function vitestConfig(config: TestUserConfig = {}): ViteUserConfig {
   return {
     test: {
       include: ["src/__tests__/**/*.test.ts"],
