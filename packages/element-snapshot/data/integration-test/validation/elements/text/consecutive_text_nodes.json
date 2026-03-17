@@ -1,0 +1,15 @@
+[
+  {
+    "role": "text",
+    "name": "First Second"
+  },
+  {
+    "role": "separator",
+    "attributes": {},
+    "children": []
+  },
+  {
+    "role": "text",
+    "name": "Third Fourth"
+  }
+]

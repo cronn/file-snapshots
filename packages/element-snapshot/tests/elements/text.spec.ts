@@ -33,3 +33,12 @@ test("empty paragraph", async ({ page }) => {
 test("HTML span", async ({ page }) => {
   await matchRawElementSnapshot(page, html`<span>Span</span>`);
 });
+
+test("consecutive text nodes", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<span>First</span><span>Second</span>
+      <hr />
+      <span>Third</span><span>Fourth</span>`,
+  );
+});
