@@ -1,5 +1,17 @@
 # @cronn/element-snapshot
 
+## 0.15.0
+
+### Minor Changes
+
+- a839880: Add label role for `label` and `legend` elements
+- 8bf27b7: Merge consecutive text nodes in snapshots
+
+### Patch Changes
+
+- e8f7291: Export `SnapshotByRole` type
+- 0c3864a: Export `MarkdownTableSnapshotOptions` type
+
 ## 0.14.1
 
 ### Patch Changes
