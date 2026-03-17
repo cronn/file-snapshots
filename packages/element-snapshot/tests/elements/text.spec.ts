@@ -12,9 +12,9 @@ test("multiline text", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
     `
-    First Line
-    Second Line
-  `,
+      First Line
+      Second Line
+    `,
   );
 });
 
