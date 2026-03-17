@@ -5,15 +5,7 @@
     "children": [
       {
         "role": "text",
-        "name": "Column Header"
-      },
-      {
-        "role": "text",
-        "name": "Row Header"
-      },
-      {
-        "role": "text",
-        "name": "Grid Cell"
+        "name": "Column Header Row Header Grid Cell"
       }
     ]
   }

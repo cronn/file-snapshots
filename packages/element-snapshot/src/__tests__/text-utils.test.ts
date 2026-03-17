@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 
 import { elementSnapshot, textSnapshot } from "../utils/factories";
-import { getTextContent, normalizeText } from "../utils/text";
+import { getTextContent, mergeTexts, normalizeText } from "../utils/text";
 
 describe("getTextContent", () => {
   test("returns text from text snapshots only", () => {
@@ -37,5 +37,19 @@ describe("normalizeText", () => {
 
   test("replaces multiple infix whitespaces by single whitespace", () => {
     expect(normalizeText("word1 \t\r\n\v\f word2")).toBe("word1 word2");
+  });
+});
+
+describe("mergeTexts", () => {
+  test("concatenates text snapshots", () => {
+    expect(mergeTexts([textSnapshot("word1"), textSnapshot("word2")])).toBe(
+      "word1 word2",
+    );
+  });
+
+  test("normalizes merged text", () => {
+    expect(mergeTexts([textSnapshot(" word1"), textSnapshot(" word2 ")])).toBe(
+      "word1 word2",
+    );
   });
 });
