@@ -1,7 +1,14 @@
 [
   {
-    "role": "text",
-    "name": "Single Select"
+    "role": "label",
+    "name": "Single Select",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Single Select"
+      }
+    ]
   },
   {
     "role": "combobox",

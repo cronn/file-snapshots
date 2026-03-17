@@ -34,7 +34,10 @@ const CONTAINER_ROLES = new Set([
   "menu",
   "tablist",
   "tabpanel",
+  "label",
 ] as const);
+
+const NAMEABLE_CONTAINER_ROLES = new Set(["label"]);
 
 export interface ContainerSnapshot extends GenericElementSnapshot<ContainerRole> {}
 
@@ -48,7 +51,7 @@ export function snapshotContainer(
 
   return {
     role,
-    name: resolveAccessibleName(element, false),
+    name: resolveAccessibleName(element, NAMEABLE_CONTAINER_ROLES.has(role)),
     attributes: {},
     children,
   };

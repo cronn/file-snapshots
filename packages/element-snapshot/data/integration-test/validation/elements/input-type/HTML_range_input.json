@@ -1,7 +1,14 @@
 [
   {
-    "role": "text",
-    "name": "Range Input"
+    "role": "label",
+    "name": "Range Input",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Range Input"
+      }
+    ]
   },
   {
     "role": "slider",

@@ -1,12 +1,19 @@
 [
   {
-    "role": "checkbox",
+    "role": "label",
     "name": "Label",
     "attributes": {},
-    "children": []
-  },
-  {
-    "role": "text",
-    "name": "Label"
+    "children": [
+      {
+        "role": "checkbox",
+        "name": "Label",
+        "attributes": {},
+        "children": []
+      },
+      {
+        "role": "text",
+        "name": "Label"
+      }
+    ]
   }
 ]

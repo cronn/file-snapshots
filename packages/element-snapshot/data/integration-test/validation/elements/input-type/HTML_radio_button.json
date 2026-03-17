@@ -1,24 +1,38 @@
 [
   {
-    "role": "radio",
+    "role": "label",
     "name": "Yes",
-    "attributes": {
-      "checked": true
-    },
-    "children": []
+    "attributes": {},
+    "children": [
+      {
+        "role": "radio",
+        "name": "Yes",
+        "attributes": {
+          "checked": true
+        },
+        "children": []
+      },
+      {
+        "role": "text",
+        "name": "Yes"
+      }
+    ]
   },
   {
-    "role": "text",
-    "name": "Yes"
-  },
-  {
-    "role": "radio",
+    "role": "label",
     "name": "No",
     "attributes": {},
-    "children": []
-  },
-  {
-    "role": "text",
-    "name": "No"
+    "children": [
+      {
+        "role": "radio",
+        "name": "No",
+        "attributes": {},
+        "children": []
+      },
+      {
+        "role": "text",
+        "name": "No"
+      }
+    ]
   }
 ]

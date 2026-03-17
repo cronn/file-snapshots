@@ -1,7 +1,14 @@
 [
   {
-    "role": "text",
-    "name": "Number Input"
+    "role": "label",
+    "name": "Number Input",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Number Input"
+      }
+    ]
   },
   {
     "role": "spinbutton",

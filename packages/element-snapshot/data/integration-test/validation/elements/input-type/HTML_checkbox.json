@@ -1,24 +1,38 @@
 [
   {
-    "role": "checkbox",
+    "role": "label",
     "name": "Checked",
-    "attributes": {
-      "checked": true
-    },
-    "children": []
+    "attributes": {},
+    "children": [
+      {
+        "role": "checkbox",
+        "name": "Checked",
+        "attributes": {
+          "checked": true
+        },
+        "children": []
+      },
+      {
+        "role": "text",
+        "name": "Checked"
+      }
+    ]
   },
   {
-    "role": "text",
-    "name": "Checked"
-  },
-  {
-    "role": "checkbox",
+    "role": "label",
     "name": "Unchecked",
     "attributes": {},
-    "children": []
-  },
-  {
-    "role": "text",
-    "name": "Unchecked"
+    "children": [
+      {
+        "role": "checkbox",
+        "name": "Unchecked",
+        "attributes": {},
+        "children": []
+      },
+      {
+        "role": "text",
+        "name": "Unchecked"
+      }
+    ]
   }
 ]

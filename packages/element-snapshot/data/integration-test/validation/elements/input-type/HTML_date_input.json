@@ -1,7 +1,14 @@
 [
   {
-    "role": "text",
-    "name": "Date Input"
+    "role": "label",
+    "name": "Date Input",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Date Input"
+      }
+    ]
   },
   {
     "role": "textbox",
