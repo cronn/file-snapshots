@@ -1,7 +1,14 @@
 [
   {
-    "role": "text",
-    "name": "Textarea"
+    "role": "label",
+    "name": "Textarea",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Textarea"
+      }
+    ]
   },
   {
     "role": "textbox",

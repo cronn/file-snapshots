@@ -1,7 +1,14 @@
 [
   {
-    "role": "text",
-    "name": "Multi Select"
+    "role": "label",
+    "name": "Multi Select",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Multi Select"
+      }
+    ]
   },
   {
     "role": "combobox",

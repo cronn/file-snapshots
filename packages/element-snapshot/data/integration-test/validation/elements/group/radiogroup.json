@@ -30,24 +30,38 @@
         ]
       },
       {
-        "role": "radio",
+        "role": "label",
         "name": "Option 1",
         "attributes": {},
-        "children": []
+        "children": [
+          {
+            "role": "radio",
+            "name": "Option 1",
+            "attributes": {},
+            "children": []
+          },
+          {
+            "role": "text",
+            "name": "Option 1"
+          }
+        ]
       },
       {
-        "role": "text",
-        "name": "Option 1"
-      },
-      {
-        "role": "radio",
+        "role": "label",
         "name": "Option 2",
         "attributes": {},
-        "children": []
-      },
-      {
-        "role": "text",
-        "name": "Option 2"
+        "children": [
+          {
+            "role": "radio",
+            "name": "Option 2",
+            "attributes": {},
+            "children": []
+          },
+          {
+            "role": "text",
+            "name": "Option 2"
+          }
+        ]
       }
     ]
   }

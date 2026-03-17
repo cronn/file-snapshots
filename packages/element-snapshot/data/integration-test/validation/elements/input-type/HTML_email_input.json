@@ -1,7 +1,14 @@
 [
   {
-    "role": "text",
-    "name": "Email Input"
+    "role": "label",
+    "name": "Email Input",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Email Input"
+      }
+    ]
   },
   {
     "role": "textbox",

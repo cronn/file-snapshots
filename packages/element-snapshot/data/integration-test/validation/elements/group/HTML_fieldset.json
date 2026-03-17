@@ -5,8 +5,26 @@
     "attributes": {},
     "children": [
       {
-        "role": "text",
-        "name": "Legend First Name"
+        "role": "label",
+        "name": "Legend",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Legend"
+          }
+        ]
+      },
+      {
+        "role": "label",
+        "name": "First Name",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "First Name"
+          }
+        ]
       },
       {
         "role": "textbox",
@@ -15,8 +33,15 @@
         "children": []
       },
       {
-        "role": "text",
-        "name": "Last Name"
+        "role": "label",
+        "name": "Last Name",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Last Name"
+          }
+        ]
       },
       {
         "role": "textbox",

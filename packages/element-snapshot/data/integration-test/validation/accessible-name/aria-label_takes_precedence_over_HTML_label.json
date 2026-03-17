@@ -10,13 +10,20 @@
     ]
   },
   {
-    "role": "textbox",
-    "name": "Direct Label",
+    "role": "label",
+    "name": "HTML Label",
     "attributes": {},
-    "children": []
-  },
-  {
-    "role": "text",
-    "name": "HTML Label"
+    "children": [
+      {
+        "role": "textbox",
+        "name": "Direct Label",
+        "attributes": {},
+        "children": []
+      },
+      {
+        "role": "text",
+        "name": "HTML Label"
+      }
+    ]
   }
 ]
