@@ -7,6 +7,12 @@ import type { FilePathResolverParams } from "@cronn/lib-file-snapshots";
 
 import type { VitestValidationFileMatcherConfig } from "../matchers/types";
 
+export const tags = {
+  updateAll: "update-all",
+  updateNew: "update-new",
+  updateNone: "update-none",
+};
+
 export function temporarySnapshotDirs(): Required<
   Pick<VitestValidationFileMatcherConfig, "validationDir" | "outputDir">
 > {

@@ -6,6 +6,7 @@ import { registerValidationFileMatchers } from "../register";
 import {
   isUpdateSnapshot,
   resolvePackageRootDir,
+  tags,
   temporarySnapshotDirs,
 } from "../utils/test";
 
@@ -14,6 +15,7 @@ const changedValidationFile = ["changed value", ""];
 
 test.runIf(isUpdateSnapshot("new"))(
   "when updateSnapshots is 'new', creates missing validation file",
+  { tags: [tags.updateNew] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
     registerValidationFileMatchers(snapshotDirs);
@@ -28,6 +30,7 @@ test.runIf(isUpdateSnapshot("new"))(
 
 test.runIf(isUpdateSnapshot("new"))(
   "when updateSnapshots is 'new', does not update changed validation file",
+  { tags: [tags.updateNew] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
     registerValidationFileMatchers(snapshotDirs);
@@ -43,6 +46,7 @@ test.runIf(isUpdateSnapshot("new"))(
 
 test.runIf(isUpdateSnapshot("all"))(
   "when updateSnapshots is 'all', creates missing validation file",
+  { tags: [tags.updateAll] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
     registerValidationFileMatchers(snapshotDirs);
@@ -57,6 +61,7 @@ test.runIf(isUpdateSnapshot("all"))(
 
 test.runIf(isUpdateSnapshot("all"))(
   "when updateSnapshots is 'all', updates changed validation file",
+  { tags: [tags.updateAll] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
     registerValidationFileMatchers(snapshotDirs);
@@ -72,6 +77,7 @@ test.runIf(isUpdateSnapshot("all"))(
 
 test.runIf(isUpdateSnapshot("none"))(
   "when updateSnapshots is 'none', does not create missing validation file",
+  { tags: [tags.updateNone] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
     registerValidationFileMatchers(snapshotDirs);
@@ -84,6 +90,7 @@ test.runIf(isUpdateSnapshot("none"))(
 
 test.runIf(isUpdateSnapshot("none"))(
   "when updateSnapshots is 'none', does not update changed validation file",
+  { tags: [tags.updateNone] },
   async () => {
     registerValidationFileMatchers();
 
