@@ -20,7 +20,7 @@ export function updatePackageJson(
     author: "cronn",
     license: "Apache-2.0",
     repository: defineRepository(context),
-    homepage: "https://github.com/cronn/file-snapshots",
+    homepage: manifest.homepage ?? "https://github.com/cronn/file-snapshots",
     packageManager: "pnpm@10.29.3",
     engines: {
       node: "^20 || ^22 || >=24",

@@ -1,15 +1,19 @@
-# Element Snapshots
+# Playwright Element Snapshots
 
-Element Snapshots are a custom snapshot implementation inspired by [Playwright's ARIA Snapshots](https://playwright.dev/docs/aria-snapshots#aria-snapshots) and the [Accessibility Object Model](https://wicg.github.io/aom/explainer.html). They cover additional properties, e.g. validation attributes like `required` or `invalid` on form inputs, and are optimized to be serialized as JSON.
+Element snapshots for Playwright.
 
-Element Snapshots are designed to be used in combination with [playwright-file-snapshots](../playwright-file-snapshots/README.md) for writing Playwright tests.
+[Read the full documentation](https://cronn.github.io/file-snapshots/playwright/element-snapshots)
 
 > [!NOTE]
 > Element Snapshots are currently experimental. Not all HTML elements, ARIA roles and attributes are covered. Breaking changes to the snapshot format are possible.
 
 ## Getting Started
 
-### Adding the library to your project
+### Installation
+
+```shell
+pnpm add -D @cronn/element-snapshot
+```
 
 ```shell
 npm install -D @cronn/element-snapshot
@@ -19,21 +23,7 @@ npm install -D @cronn/element-snapshot
 yarn add -D @cronn/element-snapshot
 ```
 
-```shell
-pnpm add -D @cronn/element-snapshot
-```
-
 ## Writing Tests
-
-This package provides multiple snapshot formats for different use cases:
-
-- **General-Purpose Snapshots**: Human-readable JSON format for all element types
-- **Markdown Table Snapshots**: Specialized format for tables and grids ([documentation](docs/markdown-table-snapshot.md))
-- **Custom Snapshots**: Build your own snapshot formats using raw element data and utility functions
-
-### General-Purpose Snapshots
-
-The function `snapshotElement` provides a general-purpose snapshot including all supported roles and attributes. It can be used to achieve a high test coverage, but can become hard to read for complex HTML structures.
 
 ```ts
 import { snapshotElement } from "@cronn/element-snapshot";
@@ -42,11 +32,21 @@ import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 const expect = defineValidationFileExpect();
 
 test("matches element snapshot", async ({ page }) => {
+  await page.setContent(`
+    <main>
+      <h1>List</h1>
+      <ul>
+        <li>Apple</li>
+        <li>Peach</li>
+      </ul>
+    </main>
+  `);
+
   await expect(snapshotElement(page.getByRole("main"))).toMatchJsonFile();
 });
 ```
 
-Element Snapshot Example:
+**_matches_element_snapshot.json_**
 
 ```json
 {
@@ -70,62 +70,3 @@ Element Snapshot Example:
   ]
 }
 ```
-
-To improve the specificity of certain tests, `snapshotElement` can be called on certain areas of the page only:
-
-```ts
-test("matches navigation snapshot", async ({ page }) => {
-  await expect(snapshotElement(page.getByRole("navigation"))).toMatchJsonFile({
-    name: "navigation",
-  });
-});
-```
-
-#### Snapshot Options
-
-Snapshot options can be passed when calling the snapshot function:
-
-```ts
-await expect(
-  snapshotElement(page.getByLabel("My select"), {
-    filter: (element) => element.role === "heading",
-  }),
-).toMatchJsonFile({
-  name: "headings",
-});
-```
-
-| Option                   | Default Value | Description                                                                                                                                                                                                                   |
-| ------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `filter`                 | `() => true`  | Include only elements in the snapshot for which the specified filter returns `true`.                                                                                                                                          |
-| `recurseFilter`          | `false`       | Recursively apply specified filter to children of filtered elements. By default, recursion ends when the filter returns `true` for an element. Should be `true` for filters intended to remove specific elements recursively. |
-| `includeComboboxOptions` | `false`       | Include combobox options in the snapshot.                                                                                                                                                                                     |
-
-### Custom Snapshots
-
-The function `snapshotElementRaw` provides the raw element snapshot in a strictly typed structure. This format is not well suited to be read by humans, but can be utilized to derive custom snapshot formats, e.g. for HTML tables.
-
-```ts
-import { snapshotElementRaw } from "@cronn/element-snapshot";
-
-test("matches custom snapshot", async ({ page }) => {
-  const tableSnapshot = await snapshotElementRaw(page.getByRole("table"));
-  const markdownTable = transformToMarkdownTable(tableSnapshot);
-
-  await expect(markdownTable).toMatchTextFile({ fileExtension: "md" });
-});
-
-function transformToMarkdownTable(snapshot: Array<NodeSnapshot>): string {
-  // transform table snapshot to markdown table
-}
-```
-
-#### Utility Functions for Custom Snapshots
-
-| Function         | Description                                                           |
-| ---------------- | --------------------------------------------------------------------- |
-| `filter`         | Filters node snapshots based on the provided predicate function.      |
-| `filterByRole`   | Filters node snapshots by the specified role.                         |
-| `includeRole`    | Includes only elements with the specified role.                       |
-| `excludeRole`    | Excludes elements with the specified role.                            |
-| `getTextContent` | Aggregates and normalizes the text content of all provided snapshots. |
