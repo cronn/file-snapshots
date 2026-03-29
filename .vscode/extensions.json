@@ -1,3 +1,7 @@
 {
-  "recommendations": ["typescriptteam.native-preview"]
+  "recommendations": [
+    "typescriptteam.native-preview",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
 }
