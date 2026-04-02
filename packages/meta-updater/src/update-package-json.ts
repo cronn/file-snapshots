@@ -33,7 +33,7 @@ export function updatePackageJson(
       },
       packageManager: {
         name: "pnpm",
-        version: ">=10.28.2 <11",
+        version: ">=10.33.0 <11",
         onFail: "error",
       },
     },
