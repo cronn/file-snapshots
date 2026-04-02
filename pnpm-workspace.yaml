@@ -29,7 +29,7 @@ catalog:
   "yaml": 2.8.3
 
 overrides:
-  "@types/node": "<=25"
+  "@types/node": "<25"
   "cross-spawn": ">=7.0.5"
   "glob": ">=10.5.0"
   "lodash": ">=4.17.23"
