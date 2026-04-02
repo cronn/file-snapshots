@@ -13,7 +13,7 @@ test("matches element snapshot", async ({ page }) => {
 });
 ```
 
-Element Snapshot Example:
+**Output: (`̀matches_element_snapshot.json`):**
 
 ```json
 {

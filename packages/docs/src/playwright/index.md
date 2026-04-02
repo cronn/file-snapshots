@@ -53,6 +53,14 @@ test("matches JSON file", async () => {
 });
 ```
 
+**Output (`matches_JSON_file.json`):**
+
+```json
+{
+  "value": "expected value"
+}
+```
+
 ## Snapshot Implementations
 
 ### ARIA Snapshots
@@ -67,7 +75,7 @@ test("matches ARIA snapshot", async ({ page }) => {
 });
 ```
 
-ARIA Snapshot Example:
+**Output (`matches_aria_snapshot.json`):**
 
 ```json
 {
@@ -101,7 +109,7 @@ test("matches element snapshot", async ({ page }) => {
 });
 ```
 
-Element Snapshot Example:
+**Output (`̀matches_element_snapshot.json`):**
 
 ```json
 {
