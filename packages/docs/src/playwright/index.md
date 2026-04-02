@@ -126,7 +126,7 @@ Element Snapshot Example:
 }
 ```
 
-[Learn more about Element Snapshots →](/playwright/element-snapshots)
+[Learn more about Element Snapshots →](/playwright/element-snapshots/)
 
 ## Next Steps
 
