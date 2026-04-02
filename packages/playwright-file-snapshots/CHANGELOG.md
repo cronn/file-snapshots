@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 1.0.2
+
+### Patch Changes
+
+- 42307e8: Restructure READMEs to focus on getting started and link to documentation site
+
 ## 1.0.1
 
 ### Patch Changes

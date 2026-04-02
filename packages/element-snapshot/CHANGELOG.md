@@ -1,5 +1,16 @@
 # @cronn/element-snapshot
 
+## 0.16.0
+
+### Minor Changes
+
+- 6ea31df: Breaking change: Rename `snapshotElement` to `semanticSnapshot`
+- 6ea31df: Breaking change: Rename `snapshotElementRaw` to `rawSnapshot`
+
+### Patch Changes
+
+- 42307e8: Restructure READMEs to focus on getting started and link to documentation site
+
 ## 0.15.0
 
 ### Minor Changes

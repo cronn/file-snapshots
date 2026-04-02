@@ -1,5 +1,11 @@
 # @cronn/aria-snapshot
 
+## 1.0.1
+
+### Patch Changes
+
+- 42307e8: Restructure READMEs to focus on getting started and link to documentation site
+
 ## 1.0.0
 
 ### Major Changes
