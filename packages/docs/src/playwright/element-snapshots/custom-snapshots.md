@@ -1,12 +1,12 @@
 # Custom Snapshots
 
-The function `snapshotElementRaw` provides the raw element snapshot in a strictly typed structure. This format is not well suited to be read by humans, but can be utilized to derive custom snapshot formats, e.g. for HTML tables.
+The function `rawSnapshot` provides the raw element snapshot in a strictly typed structure. This format is not well suited to be read by humans, but can be used to derive custom snapshot formats, e.g., for HTML tables.
 
 ```ts
-import { snapshotElementRaw } from "@cronn/element-snapshot";
+import { type NodeSnapshot, rawSnapshot } from "@cronn/element-snapshot";
 
 test("matches custom snapshot", async ({ page }) => {
-  const tableSnapshot = await snapshotElementRaw(page.getByRole("table"));
+  const tableSnapshot = await rawSnapshot(page.getByRole("table"));
   const markdownTable = transformToMarkdownTable(tableSnapshot);
 
   await expect(markdownTable).toMatchTextFile({ fileExtension: "md" });

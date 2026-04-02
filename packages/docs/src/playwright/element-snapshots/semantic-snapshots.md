@@ -1,19 +1,29 @@
-# General-Purpose Snapshots
+# Semantic Snapshots
 
-The function `snapshotElement` provides a general-purpose snapshot including all supported roles and attributes. It can be used to achieve a high test coverage, but can become hard to read for complex HTML structures.
+The function `semanticSnapshot` provides a general-purpose snapshot covering the semantic structure of the target element. It includes all supported roles and attributes, providing a high test coverage. The format is optimized to be human-readable, but large and complex HTML structures will result in complex snapshots as well.
 
 ```ts
-import { snapshotElement } from "@cronn/element-snapshot";
+import { semanticSnapshot } from "@cronn/element-snapshot";
 import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 
 const expect = defineValidationFileExpect();
 
-test("matches element snapshot", async ({ page }) => {
-  await expect(snapshotElement(page.getByRole("main"))).toMatchJsonFile();
+test("matches semantic snapshot", async ({ page }) => {
+  await page.setContent(`
+    <main>
+      <h1>List</h1>
+      <ul>
+        <li>Apple</li>
+        <li>Peach</li>
+      </ul>
+    </main>
+  `);
+
+  await expect(semanticSnapshot(page.getByRole("list"))).toMatchJsonFile();
 });
 ```
 
-**Output: (`̀matches_element_snapshot.json`):**
+**Output (`matches_semantic_snapshot.json`):**
 
 ```json
 {
@@ -38,11 +48,11 @@ test("matches element snapshot", async ({ page }) => {
 }
 ```
 
-To improve the specificity of certain tests, `snapshotElement` can be called on certain areas of the page only:
+To improve the specificity of certain tests, `semanticSnapshot` can be called on certain areas of the page only:
 
 ```ts
 test("matches navigation snapshot", async ({ page }) => {
-  await expect(snapshotElement(page.getByRole("navigation"))).toMatchJsonFile({
+  await expect(semanticSnapshot(page.getByRole("navigation"))).toMatchJsonFile({
     name: "navigation",
   });
 });
@@ -54,7 +64,7 @@ Snapshot options can be passed when calling the snapshot function:
 
 ```ts
 await expect(
-  snapshotElement(page.getByLabel("My select"), {
+  semanticSnapshot(page.getByLabel("My select"), {
     filter: (element) => element.role === "heading",
   }),
 ).toMatchJsonFile({

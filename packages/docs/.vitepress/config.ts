@@ -40,8 +40,8 @@ export default defineConfig({
                   link: "/playwright/element-snapshots/",
                 },
                 {
-                  text: "General-Purpose Snapshots",
-                  link: "/playwright/element-snapshots/general-purpose-snapshots",
+                  text: "Semantic Snapshots",
+                  link: "/playwright/element-snapshots/semantic-snapshots",
                 },
                 {
                   text: "Markdown Table Snapshot",

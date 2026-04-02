@@ -16,18 +16,18 @@ interface NormalizedElementSnapshot {
   children: Array<unknown>;
 }
 
-interface ElementSnapshotTransformerOptions {
+interface SemanticSnapshotTransformerOptions {
   filter?: FilterPredicate;
   recurseFilter?: boolean;
   includeComboboxOptions?: boolean;
 }
 
-export class ElementSnapshotTransformer {
+export class SemanticSnapshotTransformer {
   private readonly filter?: FilterPredicate;
   private readonly recurseFilter: boolean;
   private readonly includeComboboxOptions: boolean;
 
-  public constructor(options: ElementSnapshotTransformerOptions = {}) {
+  public constructor(options: SemanticSnapshotTransformerOptions = {}) {
     this.filter = options.filter;
     this.recurseFilter = options.recurseFilter ?? false;
     this.includeComboboxOptions = options.includeComboboxOptions ?? false;

@@ -2,11 +2,11 @@ import test from "@playwright/test";
 
 import { html } from "@cronn/test-utils/playwright";
 
-import { setupTransformedSnapshotTest } from "../../src/test/fixtures";
+import { setupSemanticSnapshotTest } from "../../src/test/fixtures";
 import { excludeRole, includeRole } from "../../src/utils/predicates";
 
 test("includes list elements", async ({ page }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <main>
@@ -31,7 +31,7 @@ test("includes list elements", async ({ page }) => {
 });
 
 test("excludes paragraph elements", async ({ page }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <main>

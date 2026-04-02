@@ -102,10 +102,10 @@ test("matches ARIA snapshot", async ({ page }) => {
 Element Snapshots are an alternative to ARIA Snapshots, providing a higher coverage of HTML and ARIA attributes as well as the ability to implement custom snapshots, e.g. for Markdown Tables.
 
 ```ts
-import { snapshotElement } from "@cronn/element-snapshot";
+import { semanticSnapshot } from "@cronn/element-snapshot";
 
 test("matches element snapshot", async ({ page }) => {
-  await expect(snapshotElement(page.getByRole("main"))).toMatchJsonFile();
+  await expect(semanticSnapshot(page.getByRole("main"))).toMatchJsonFile();
 });
 ```
 
