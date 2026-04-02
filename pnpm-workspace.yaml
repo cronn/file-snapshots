@@ -31,10 +31,13 @@ catalog:
 overrides:
   "@types/node": "<25"
   "cross-spawn": ">=7.0.5"
+  "esbuild": ">=0.25.0"
+  "flatted": ">=3.4.2"
   "glob": ">=10.5.0"
   "lodash": ">=4.17.23"
-  "lodash-es": ">=4.17.23"
+  "lodash-es": ">=4.18.0"
   "minimatch": ">=10.2.3"
+  "picomatch": ">=4.0.4"
   "rollup": ">=4.59.0"
   "tar": ">=7.5.10"
 
@@ -48,7 +51,7 @@ ignoredBuiltDependencies:
 
 minimumReleaseAge: 10080 # 1 week
 minimumReleaseAgeExclude:
-  - "tar@7.5.11"
+  - "lodash-es@4.18.1"
 
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 40320 # 4 weeks
