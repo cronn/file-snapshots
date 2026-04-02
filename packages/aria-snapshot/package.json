@@ -1,6 +1,6 @@
 {
   "name": "@cronn/aria-snapshot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JSON-based ARIA snapshots for Playwright",
   "bugs": {
     "url": "https://github.com/cronn/file-snapshots/issues"

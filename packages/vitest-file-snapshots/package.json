@@ -1,6 +1,6 @@
 {
   "name": "@cronn/vitest-file-snapshots",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Write tests with Vitest using file snapshots",
   "keywords": [
     "vitest",
