@@ -39,6 +39,7 @@ overrides:
   "tar": ">=7.5.10"
 
 includeWorkspaceRoot: true
+dedupePeers: true
 
 strictDepBuilds: true
 
