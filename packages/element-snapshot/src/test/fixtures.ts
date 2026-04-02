@@ -3,8 +3,8 @@ import type { Page } from "@playwright/test";
 import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 import { setupSnapshotTest } from "@cronn/test-utils/playwright";
 
-import type { ElementSnapshotOptions } from "../playwright/snapshot";
-import { snapshotElement, snapshotElementRaw } from "../playwright/snapshot";
+import type { SemanticSnapshotOptions } from "../playwright/snapshot";
+import { rawSnapshot, semanticSnapshot } from "../playwright/snapshot";
 
 export const expect = defineValidationFileExpect({
   validationDir: "data/integration-test/validation",
@@ -17,7 +17,7 @@ export async function matchRawElementSnapshot(
 ): Promise<void> {
   const bodyLocator = await setupSnapshotTest(page, content);
 
-  await expect(snapshotElementRaw(bodyLocator)).toMatchJsonFile();
+  await expect(rawSnapshot(bodyLocator)).toMatchJsonFile();
 }
 
 export async function matchEmptyRawElementSnapshot(
@@ -26,19 +26,19 @@ export async function matchEmptyRawElementSnapshot(
 ): Promise<void> {
   const bodyLocator = await setupSnapshotTest(page, content);
 
-  await expect(snapshotElementRaw(bodyLocator)).resolves.toEqual([]);
+  await expect(rawSnapshot(bodyLocator)).resolves.toEqual([]);
 }
 
 type ElementSnapshotMatcher = (
-  options?: ElementSnapshotOptions,
+  options?: SemanticSnapshotOptions,
 ) => Promise<void>;
 
-export async function setupTransformedSnapshotTest(
+export async function setupSemanticSnapshotTest(
   page: Page,
   content: string,
 ): Promise<ElementSnapshotMatcher> {
   const bodyLocator = await setupSnapshotTest(page, content);
 
   return (options) =>
-    expect(snapshotElement(bodyLocator, options)).toMatchJsonFile();
+    expect(semanticSnapshot(bodyLocator, options)).toMatchJsonFile();
 }

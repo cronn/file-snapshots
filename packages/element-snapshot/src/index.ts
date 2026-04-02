@@ -25,7 +25,7 @@ export {
   markdownTableSnapshot,
   type MarkdownTableSnapshotOptions,
 } from "./playwright/markdown-table";
-export { snapshotElement, snapshotElementRaw } from "./playwright/snapshot";
+export { rawSnapshot, semanticSnapshot } from "./playwright/snapshot";
 
 export type { SnapshotByRole } from "./types/snapshot";
 

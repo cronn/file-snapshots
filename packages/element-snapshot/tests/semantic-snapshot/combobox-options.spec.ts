@@ -2,10 +2,10 @@ import test from "@playwright/test";
 
 import { html } from "@cronn/test-utils/playwright";
 
-import { setupTransformedSnapshotTest } from "../../src/test/fixtures";
+import { setupSemanticSnapshotTest } from "../../src/test/fixtures";
 
 test("excludes options by default", async ({ page }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <select aria-label="Select">
@@ -19,7 +19,7 @@ test("excludes options by default", async ({ page }) => {
 });
 
 test("includes options of HTML select", async ({ page }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <select aria-label="Select">
@@ -33,7 +33,7 @@ test("includes options of HTML select", async ({ page }) => {
 });
 
 test("includes options from referenced listbox", async ({ page }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <input
@@ -55,7 +55,7 @@ test("includes options from referenced listbox", async ({ page }) => {
 });
 
 test("excludes empty options", async ({ page }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <input type="text" role="combobox" aria-label="Combobox" value="Value" />

@@ -26,7 +26,7 @@ yarn add -D @cronn/element-snapshot
 ## Writing Tests
 
 ```ts
-import { snapshotElement } from "@cronn/element-snapshot";
+import { semanticSnapshot } from "@cronn/element-snapshot";
 import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 
 const expect = defineValidationFileExpect();
@@ -42,7 +42,7 @@ test("matches element snapshot", async ({ page }) => {
     </main>
   `);
 
-  await expect(snapshotElement(page.getByRole("main"))).toMatchJsonFile();
+  await expect(semanticSnapshot(page.getByRole("main"))).toMatchJsonFile();
 });
 ```
 

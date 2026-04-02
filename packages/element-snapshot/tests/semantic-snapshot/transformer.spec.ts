@@ -2,12 +2,12 @@ import test from "@playwright/test";
 
 import { html } from "@cronn/test-utils/playwright";
 
-import { setupTransformedSnapshotTest } from "../../src/test/fixtures";
+import { setupSemanticSnapshotTest } from "../../src/test/fixtures";
 
 test("when snapshot contains multiple elements, returns array of elements", async ({
   page,
 }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <p>First Paragraph</p>
@@ -21,7 +21,7 @@ test("when snapshot contains multiple elements, returns array of elements", asyn
 test("when snapshot contains exactly one element, returns the element", async ({
   page,
 }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`<p>Single Paragraph</p>`,
   );
@@ -32,7 +32,7 @@ test("when snapshot contains exactly one element, returns the element", async ({
 test("when element is empty, resolves value to empty string", async ({
   page,
 }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(page, html`<p></p>`);
+  const matchSnapshot = await setupSemanticSnapshotTest(page, html`<p></p>`);
 
   await matchSnapshot();
 });
@@ -40,7 +40,7 @@ test("when element is empty, resolves value to empty string", async ({
 test("when element has only a name, resolves value to name", async ({
   page,
 }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`<input type="text" aria-label="Input Name" />`,
   );
@@ -51,7 +51,7 @@ test("when element has only a name, resolves value to name", async ({
 test("when element has only children, resolves value to children", async ({
   page,
 }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <main>
@@ -65,7 +65,7 @@ test("when element has only children, resolves value to children", async ({
 });
 
 test("flattens defined attributes", async ({ page }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`<input
       type="text"
@@ -79,7 +79,7 @@ test("flattens defined attributes", async ({ page }) => {
 });
 
 test("when name equals children, excludes children", async ({ page }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`<h1>Heading</h1>`,
   );
@@ -90,7 +90,7 @@ test("when name equals children, excludes children", async ({ page }) => {
 test("when element has name and children, includes children property", async ({
   page,
 }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <section aria-labelledby="heading">
@@ -106,7 +106,7 @@ test("when element has name and children, includes children property", async ({
 test("when element has attributes and children, includes children property", async ({
   page,
 }) => {
-  const matchSnapshot = await setupTransformedSnapshotTest(
+  const matchSnapshot = await setupSemanticSnapshotTest(
     page,
     html`
       <a href="/target">

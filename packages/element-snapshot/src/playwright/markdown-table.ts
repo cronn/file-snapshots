@@ -8,7 +8,7 @@ import { filter, filterByRole } from "../utils/filter";
 import { includeRole } from "../utils/predicates";
 import { getTextContent } from "../utils/text";
 
-import { snapshotElementRaw } from "./snapshot";
+import { rawSnapshot } from "./snapshot";
 
 const tableRoles = ["table", "grid"] satisfies Array<NodeRole>;
 
@@ -36,7 +36,7 @@ export async function markdownTableSnapshot(
   locator: Locator,
   options: MarkdownTableSnapshotOptions = {},
 ): Promise<string> {
-  const elementSnapshot = await snapshotElementRaw(locator);
+  const elementSnapshot = await rawSnapshot(locator);
   const { columnHeaders, rows } = parseTable(elementSnapshot, options);
 
   return markdownTable([columnHeaders, ...rows]);
