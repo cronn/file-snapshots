@@ -28,7 +28,7 @@ export function updatePackageJson(
     devEngines: {
       runtime: {
         name: "node",
-        version: ">=24.13 <25",
+        version: ">=24.14.1 <25",
         onFail: "error",
       },
       packageManager: {
