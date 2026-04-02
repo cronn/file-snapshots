@@ -37,7 +37,7 @@ export default defineConfig({
               items: [
                 {
                   text: "Getting Started",
-                  link: "/playwright/element-snapshots",
+                  link: "/playwright/element-snapshots/",
                 },
                 {
                   text: "General-Purpose Snapshots",

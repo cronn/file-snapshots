@@ -2,7 +2,7 @@
 
 Element snapshots for Playwright.
 
-[Read the full documentation](https://cronn.github.io/file-snapshots/playwright/element-snapshots)
+[Read the full documentation](https://cronn.github.io/file-snapshots/playwright/element-snapshots/)
 
 > [!NOTE]
 > Element Snapshots are currently experimental. Not all HTML elements, ARIA roles and attributes are covered. Breaking changes to the snapshot format are possible.

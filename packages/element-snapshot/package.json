@@ -12,7 +12,7 @@
     "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/element-snapshot"
   },
-  "homepage": "https://cronn.github.io/file-snapshots/playwright/element-snapshots",
+  "homepage": "https://cronn.github.io/file-snapshots/playwright/element-snapshots/",
   "packageManager": "pnpm@10.29.3",
   "engines": {
     "node": "^20 || ^22 || >=24"
