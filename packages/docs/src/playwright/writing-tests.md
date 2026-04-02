@@ -11,11 +11,14 @@ File snapshot assertions use one of the custom matchers:
 test("value is expected value", async () => {
   await expect({ value: "expected value" }).toMatchJsonFile();
 });
+```
 
-// value_is_expected_value.json
-// {
-//   "value": "expected value"
-// }
+**Output (`value_is_expected_value.json`):**
+
+```json
+{
+  "value": "expected value"
+}
 ```
 
 ## Text File Snapshot
@@ -24,9 +27,12 @@ test("value is expected value", async () => {
 test("value is expected value", async () => {
   await expect("expected value").toMatchTextFile();
 });
+```
 
-// value_is_expected_value.txt
-// expected value
+**Output (`value_is_expected_value.txt`):**
+
+```
+expected value
 ```
 
 ## Normalization of Snapshots
@@ -47,11 +53,14 @@ test("date is masked", async () => {
     normalizers: [maskDate],
   });
 });
+```
 
-// date_is_masked.json
-// {
-//   "date": "[DATE]"
-// }
+**Output (`value_is_expected_value.json`):**
+
+```json
+{
+  "date": "[DATE]"
+}
 ```
 
 ## Named Snapshots

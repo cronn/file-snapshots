@@ -49,7 +49,7 @@ test("value is expected value", async () => {
 });
 ```
 
-**_value_is_expected_value.json_**
+**Output (`value_is_expected_value.json`):**
 
 ```json
 {

@@ -43,7 +43,7 @@ test("matches ARIA snapshot", async ({ page }) => {
 });
 ```
 
-**_matches_aria_snapshot.json_**
+**Output (`matches_ARIA_snapshot.json`):**
 
 ```json
 {

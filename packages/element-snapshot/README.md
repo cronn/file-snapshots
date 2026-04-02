@@ -46,7 +46,7 @@ test("matches element snapshot", async ({ page }) => {
 });
 ```
 
-**_matches_element_snapshot.json_**
+**Output (`matches_element_snapshot.json`):**
 
 ```json
 {

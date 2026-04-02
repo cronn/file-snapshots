@@ -13,11 +13,14 @@ File snapshot assertions use one of the custom matchers:
 test("value is expected value", () => {
   expect({ value: "expected value" }).toMatchJsonFile();
 });
+```
 
-// value_is_expected_value.json
-// {
-//   "value": "expected value"
-// }
+**Output (`value_is_expected_value.json`):**
+
+```json
+{
+  "value": "expected value"
+}
 ```
 
 ## Text File Snapshots
@@ -26,9 +29,12 @@ test("value is expected value", () => {
 test("value is expected value", () => {
   expect("expected value").toMatchTextFile();
 });
+```
 
-// value_is_expected_value.txt
-// expected value
+**Output (`value_is_expected_value.txt`):**
+
+```
+expected value
 ```
 
 ## Multiple Expectations
@@ -47,13 +53,16 @@ test("maps values to string", () => {
     negativeNumber: mapToString(-1),
   }).toMatchJsonFile();
 });
+```
 
-// maps_values_to_string.json
-// {
-//   "boolean": "true",
-//   "positiveNumber": "1",
-//   "negativeNumber": "-1",
-// }
+**Output (`maps_values_to_string.json`):**
+
+```json
+{
+  "boolean": "true",
+  "positiveNumber": "1",
+  "negativeNumber": "-1"
+}
 ```
 
 ## Normalization
@@ -72,11 +81,14 @@ function maskDate(value: unknown): unknown {
 test("date is masked", () => {
   expect({ date: new Date() }).toMatchJsonFile({ normalizers: [maskDate] });
 });
+```
 
-// date_is_masked.json
-// {
-//   "date": "[DATE]"
-// }
+**Output (`date_is_masked.json`):**
+
+```json
+{
+  "date": "[DATE]"
+}
 ```
 
 ## Named Snapshots
@@ -122,16 +134,22 @@ test("value is mapped", () => {
   expect.soft(initialValue).toMatchJsonFile({ name: "before" });
   expect.soft(mapValue(initialValue)).toMatchJsonFile({ name: "after" });
 });
+```
 
-// value_is_mapped_before.json
-// {
-//   "value": "value"
-// }
+**Output 1 (`value_is_mapped_before.json`):**
 
-// value_is_mapped_after.json
-// {
-//   "value": "mapped value"
-// }
+```json
+{
+  "value": "value"
+}
+```
+
+**Output 2 (`value_is_mapped_after.json`):**
+
+```json
+{
+  "value": "mapped value"
+}
 ```
 
 ## Updating Snapshots
