@@ -13,7 +13,7 @@
     "directory": "packages/element-snapshot"
   },
   "homepage": "https://cronn.github.io/file-snapshots/playwright/element-snapshots/",
-  "packageManager": "pnpm@10.29.3",
+  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": "^20 || ^22 || >=24"
   },

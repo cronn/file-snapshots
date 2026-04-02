@@ -17,7 +17,7 @@
     "directory": "packages/playwright-file-snapshots"
   },
   "homepage": "https://cronn.github.io/file-snapshots/playwright/",
-  "packageManager": "pnpm@10.29.3",
+  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": "^20 || ^22 || >=24"
   },
