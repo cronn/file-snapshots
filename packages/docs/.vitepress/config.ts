@@ -8,6 +8,7 @@ export default defineConfig({
   base: "/file-snapshots/",
   srcDir: "src",
   cleanUrls: true,
+  lastUpdated: true,
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -73,5 +74,11 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/cronn/file-snapshots" },
     ],
+
+    editLink: {
+      pattern:
+        "https://github.com/cronn/file-snapshots/edit/main/packages/docs/src/:path",
+      text: "Edit this page on GitHub",
+    },
   },
 });
