@@ -8,6 +8,7 @@ export default defineConfig({
   base: "/file-snapshots/",
   srcDir: "src",
   cleanUrls: true,
+  lastUpdated: true,
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
