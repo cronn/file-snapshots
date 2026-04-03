@@ -73,5 +73,11 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/cronn/file-snapshots" },
     ],
+
+    editLink: {
+      pattern:
+        "https://github.com/cronn/file-snapshots/edit/main/packages/docs/src/:path",
+      text: "Edit this page on GitHub",
+    },
   },
 });
