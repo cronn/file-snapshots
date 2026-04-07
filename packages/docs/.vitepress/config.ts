@@ -25,46 +25,74 @@ export default defineConfig({
     sidebar: {
       "/playwright/": [
         {
-          text: "Playwright",
+          text: "Playwright File Snapshots",
           items: [
             { text: "Overview", link: "/playwright/" },
             { text: "Getting Started", link: "/playwright/getting-started" },
             { text: "Writing Tests", link: "/playwright/writing-tests" },
             { text: "Configuration", link: "/playwright/configuration" },
             {
-              text: "Element Snapshots",
-              collapsed: true,
+              text: "File Matchers",
+              collapsed: false,
               items: [
                 {
-                  text: "Getting Started",
-                  link: "/playwright/element-snapshots/",
+                  text: "toMatchJsonFile",
+                  link: "/playwright/file-matchers/to-match-json-file",
                 },
                 {
-                  text: "Semantic Snapshots",
-                  link: "/playwright/element-snapshots/semantic-snapshots",
-                },
-                {
-                  text: "Markdown Table Snapshot",
-                  link: "/playwright/element-snapshots/markdown-table-snapshot",
-                },
-                {
-                  text: "Custom Snapshots",
-                  link: "/playwright/element-snapshots/custom-snapshots",
+                  text: "toMatchTextFile",
+                  link: "/playwright/file-matchers/to-match-text-file",
                 },
               ],
             },
-            { text: "ARIA Snapshots", link: "/playwright/aria-snapshots" },
           ],
         },
+        {
+          text: "Element Snapshots",
+          collapsed: false,
+          items: [
+            {
+              text: "Getting Started",
+              link: "/playwright/element-snapshots/",
+            },
+            {
+              text: "Semantic Snapshots",
+              link: "/playwright/element-snapshots/semantic-snapshots",
+            },
+            {
+              text: "Markdown Table Snapshot",
+              link: "/playwright/element-snapshots/markdown-table-snapshot",
+            },
+            {
+              text: "Custom Snapshots",
+              link: "/playwright/element-snapshots/custom-snapshots",
+            },
+          ],
+        },
+        { text: "ARIA Snapshots", link: "/playwright/aria-snapshots" },
       ],
       "/vitest/": [
         {
-          text: "Vitest",
+          text: "Vitest File Snapshots",
           items: [
             { text: "Overview", link: "/vitest/" },
             { text: "Getting Started", link: "/vitest/getting-started" },
             { text: "Writing Tests", link: "/vitest/writing-tests" },
             { text: "Configuration", link: "/vitest/configuration" },
+            {
+              text: "File Matchers",
+              collapsed: false,
+              items: [
+                {
+                  text: "toMatchJsonFile",
+                  link: "/vitest/file-matchers/to-match-json-file",
+                },
+                {
+                  text: "toMatchTextFile",
+                  link: "/vitest/file-matchers/to-match-text-file",
+                },
+              ],
+            },
           ],
         },
       ],

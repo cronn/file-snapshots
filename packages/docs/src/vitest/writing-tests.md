@@ -1,13 +1,13 @@
 # Writing Tests
 
-## Custom Matchers
+## File Matchers
 
-File snapshot assertions use one of the custom matchers:
+Each file matcher targets a specific snapshot format:
 
-- `toMatchJsonFile` - for JSON file snapshots
-- `toMatchTextFile` - for text file snapshots
+- [`toMatchJsonFile`](/vitest/file-matchers/to-match-json-file) — serializes the value as a JSON file
+- [`toMatchTextFile`](/vitest/file-matchers/to-match-text-file) — serializes the value as a plain text file
 
-## JSON File Snapshots
+**Example:**
 
 ```ts
 test("value is expected value", () => {
@@ -21,20 +21,6 @@ test("value is expected value", () => {
 {
   "value": "expected value"
 }
-```
-
-## Text File Snapshots
-
-```ts
-test("value is expected value", () => {
-  expect("expected value").toMatchTextFile();
-});
-```
-
-**Output (`value_is_expected_value.txt`):**
-
-```
-expected value
 ```
 
 ## Multiple Expectations
@@ -65,7 +51,7 @@ test("maps values to string", () => {
 }
 ```
 
-## Normalization
+## Normalization of Snapshots
 
 Normalizers can be used to apply custom normalization, e.g., mask values which are not stable. Custom normalizers are applied before internal normalizers and the snapshot serialization.
 

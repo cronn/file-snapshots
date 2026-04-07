@@ -1,11 +1,13 @@
 # Writing Tests
 
-File snapshot assertions use one of the custom matchers:
+## File Matchers
 
-- `toMatchJsonFile`
-- `toMatchTextFile`
+Each file matcher targets a specific snapshot format:
 
-## JSON File Snapshot
+- [`toMatchJsonFile`](/playwright/file-matchers/to-match-json-file) — serializes the value as a JSON file
+- [`toMatchTextFile`](/playwright/file-matchers/to-match-text-file) — serializes the value as a plain text file
+
+**Example:**
 
 ```ts
 test("value is expected value", async () => {
@@ -19,20 +21,6 @@ test("value is expected value", async () => {
 {
   "value": "expected value"
 }
-```
-
-## Text File Snapshot
-
-```ts
-test("value is expected value", async () => {
-  await expect("expected value").toMatchTextFile();
-});
-```
-
-**Output (`value_is_expected_value.txt`):**
-
-```
-expected value
 ```
 
 ## Normalization of Snapshots
@@ -102,7 +90,7 @@ test("retry snapshot", async ({ page }) => {
 });
 ```
 
-By default, Playwright's Expect timeout (5 s) is used. To define a custom timeout, pass the `timeout` option to the matcher:
+By default, Playwright's [expect timeout](https://playwright.dev/docs/test-timeouts) (5 s) is used. To define a custom timeout, pass the `timeout` option to the matcher:
 
 ```ts
 test("retry snapshot", async ({ page }) => {
@@ -114,7 +102,7 @@ test("retry snapshot", async ({ page }) => {
 
 When creating missing file snapshots, instead of retrying a delay of 250 ms (or `timeout` when lower) is added before performing the snapshot. This avoids flaky snapshots and long-running tests. The same behavior is used when updating snapshots.
 
-The default delay can be overridden by defining `updateDelay` as matcher or file snapshot option.
+The default delay can be overridden by defining `updateDelay` as matcher or configuration option.
 
 ## Using Soft Assertions
 
