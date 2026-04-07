@@ -27,16 +27,6 @@ function createTmpDir(): string {
   return mkdtempSync(path.join(tmpdir(), "test-"));
 }
 
-export function isUpdateSnapshot(updateType: "new" | "all" | "none"): boolean {
-  const updateTypeEnv = process.env.UPDATE_TYPE;
-
-  if (process.env.CI === "true") {
-    return updateType === "none";
-  }
-
-  return updateTypeEnv === updateType;
-}
-
 export async function resolvePackageRootDir(fromDir: string): Promise<string> {
   const packageDir = await packageDirectory({
     cwd: fromDir,
