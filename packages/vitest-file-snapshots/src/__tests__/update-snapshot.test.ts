@@ -1,10 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import { expect, test } from "vitest";
+import { TestRunner, expect, test } from "vitest";
 
 import { registerValidationFileMatchers } from "../register";
 import {
-  isUpdateSnapshot,
   resolvePackageRootDir,
   tags,
   temporarySnapshotDirs,
@@ -13,7 +12,7 @@ import {
 const initialValidationFile = ["===== missing file =====", "initial value", ""];
 const changedValidationFile = ["changed value", ""];
 
-test.runIf(isUpdateSnapshot("new"))(
+test.runIf(TestRunner.matchesTags([tags.updateNew]))(
   "when updateSnapshots is 'new', creates missing validation file",
   { tags: [tags.updateNew] },
   () => {
@@ -28,7 +27,7 @@ test.runIf(isUpdateSnapshot("new"))(
   },
 );
 
-test.runIf(isUpdateSnapshot("new"))(
+test.runIf(TestRunner.matchesTags([tags.updateNew]))(
   "when updateSnapshots is 'new', does not update changed validation file",
   { tags: [tags.updateNew] },
   () => {
@@ -44,7 +43,7 @@ test.runIf(isUpdateSnapshot("new"))(
   },
 );
 
-test.runIf(isUpdateSnapshot("all"))(
+test.runIf(TestRunner.matchesTags([tags.updateAll]))(
   "when updateSnapshots is 'all', creates missing validation file",
   { tags: [tags.updateAll] },
   () => {
@@ -59,7 +58,7 @@ test.runIf(isUpdateSnapshot("all"))(
   },
 );
 
-test.runIf(isUpdateSnapshot("all"))(
+test.runIf(TestRunner.matchesTags([tags.updateAll]))(
   "when updateSnapshots is 'all', updates changed validation file",
   { tags: [tags.updateAll] },
   () => {
@@ -75,7 +74,7 @@ test.runIf(isUpdateSnapshot("all"))(
   },
 );
 
-test.runIf(isUpdateSnapshot("none"))(
+test.runIf(TestRunner.matchesTags([tags.updateNone]))(
   "when updateSnapshots is 'none', does not create missing validation file",
   { tags: [tags.updateNone] },
   () => {
@@ -88,7 +87,7 @@ test.runIf(isUpdateSnapshot("none"))(
   },
 );
 
-test.runIf(isUpdateSnapshot("none"))(
+test.runIf(TestRunner.matchesTags([tags.updateNone]))(
   "when updateSnapshots is 'none', does not update changed validation file",
   { tags: [tags.updateNone] },
   async () => {
