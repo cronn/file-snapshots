@@ -212,9 +212,9 @@ importers:
 
   packages/element-snapshot:
     dependencies:
-      markdown-table:
-        specifier: 'catalog:'
-        version: 3.0.4
+      '@cronn/lib-file-snapshots':
+        specifier: workspace:*
+        version: link:../lib-file-snapshots
       package-directory:
         specifier: 'catalog:'
         version: 8.2.0
@@ -309,6 +309,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.58.0)(eslint@10.2.0)
+      markdown-table:
+        specifier: 'catalog:'
+        version: 3.0.4
       prettier:
         specifier: 'catalog:'
         version: 3.8.1

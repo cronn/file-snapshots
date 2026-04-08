@@ -1,5 +1,10 @@
 import type { Locator } from "@playwright/test";
-import { markdownTable } from "markdown-table";
+
+import {
+  MarkdownTableSerializer,
+  type TableData,
+  type TableRow,
+} from "@cronn/lib-file-snapshots";
 
 import type { ColumnHeaderSnapshot, SortType } from "../types/elements/table";
 import type { NodeRole, NodeSnapshot, SnapshotByRole } from "../types/snapshot";
@@ -36,22 +41,15 @@ export async function markdownTableSnapshot(
   options: MarkdownTableSnapshotOptions = {},
 ): Promise<string> {
   const elementSnapshot = await rawSnapshot(locator);
-  const { columnHeaders, rows } = parseTable(elementSnapshot, options);
+  const parsedTable = parseTable(elementSnapshot, options);
 
-  return markdownTable([columnHeaders, ...rows]);
+  return new MarkdownTableSerializer().serialize(parsedTable);
 }
-
-interface ParsedTable {
-  columnHeaders: Array<string>;
-  rows: Array<RowCells>;
-}
-
-type RowCells = Array<string>;
 
 function parseTable(
   snapshot: Array<NodeSnapshot>,
   options: MarkdownTableSnapshotOptions,
-): ParsedTable {
+): TableData {
   const { showSortIndicator = true } = options;
 
   const tableOrGridResult = filter({
@@ -82,7 +80,7 @@ function parseTable(
   );
   const cellsTextsByRow = bodyRows.map(getCellTexts);
 
-  return { columnHeaders: columnHeaderTexts, rows: cellsTextsByRow };
+  return { columns: columnHeaderTexts, rows: cellsTextsByRow };
 }
 
 function getColumnHeaderText(
@@ -100,7 +98,7 @@ function getColumnHeaderText(
   return `${headerText} ${sortIndicator}`;
 }
 
-function getCellTexts(row: SnapshotByRole<"row">): RowCells {
+function getCellTexts(row: SnapshotByRole<"row">): TableRow {
   return filter({
     predicate: includeRole(cellRoles),
     snapshots: row.children,
