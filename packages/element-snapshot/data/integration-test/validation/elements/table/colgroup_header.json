@@ -1,0 +1,115 @@
+[
+  {
+    "role": "table",
+    "attributes": {},
+    "children": [
+      {
+        "role": "rowgroup",
+        "attributes": {},
+        "children": [
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
+              {
+                "role": "columnheader",
+                "name": "Column Header 1",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header 1"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Column Group Header",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Group Header"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
+              {
+                "role": "columnheader",
+                "name": "Column Header 2",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header 2"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Column Header 3",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header 3"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "rowgroup",
+        "attributes": {},
+        "children": [
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
+              {
+                "role": "cell",
+                "name": "Body Cell 1",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Body Cell 1"
+                  }
+                ]
+              },
+              {
+                "role": "cell",
+                "name": "Body Cell 2",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Body Cell 2"
+                  }
+                ]
+              },
+              {
+                "role": "cell",
+                "name": "Body Cell 3",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Body Cell 3"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
