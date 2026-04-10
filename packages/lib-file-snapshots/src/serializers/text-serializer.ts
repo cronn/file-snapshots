@@ -1,6 +1,5 @@
 import type { SnapshotSerializer } from "../types/serializer";
 import { addTrailingNewLine } from "../utils/file";
-import { isString } from "../utils/guards";
 
 export interface TextSerializerOptions {
   /**
@@ -18,7 +17,7 @@ export interface TextSerializerOptions {
 
 export type TextNormalizer = (value: string) => string;
 
-export class TextSerializer implements SnapshotSerializer {
+export class TextSerializer implements SnapshotSerializer<string> {
   public readonly fileExtension;
 
   private readonly normalizers: Array<TextNormalizer>;
@@ -28,13 +27,7 @@ export class TextSerializer implements SnapshotSerializer {
     this.fileExtension = options.fileExtension ?? "txt";
   }
 
-  public serialize(value: unknown): string {
-    if (!isString(value)) {
-      throw new Error(
-        `Value of type ${typeof value} cannot be serialized as text. Only strings are supported.`,
-      );
-    }
-
+  public serialize(value: string): string {
     const normalizedValue = this.normalizeValue(value);
     return addTrailingNewLine(normalizedValue);
   }

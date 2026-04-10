@@ -45,19 +45,21 @@ export interface PlaywrightValidationFileMatcherConfig {
   updateDelay?: number;
 }
 
-type ValueOrValueFunction<TValue> =
-  | TValue
-  | Promise<TValue>
-  | (() => TValue)
-  | (() => Promise<TValue>);
+export type SnapshotValue<TValue> =
+  | StaticSnapshotValue<TValue>
+  | RepeatableSnapshotValue<TValue>;
+
+export type StaticSnapshotValue<TValue> = TValue | Promise<TValue>;
+
+export type RepeatableSnapshotValue<TValue> = () => StaticSnapshotValue<TValue>;
 
 export interface PlaywrightValidationFileMatchers {
   toMatchJsonFile: (
-    actual: ValueOrValueFunction<unknown>,
+    actual: SnapshotValue<unknown>,
     options?: PlaywrightMatchJsonFileOptions,
   ) => Promise<MatcherReturnType>;
   toMatchTextFile: (
-    actual: ValueOrValueFunction<string>,
+    actual: SnapshotValue<string>,
     options?: PlaywrightMatchTextFileOptions,
   ) => Promise<MatcherReturnType>;
 }

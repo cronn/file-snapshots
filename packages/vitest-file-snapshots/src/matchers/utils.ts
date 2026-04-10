@@ -42,3 +42,13 @@ export function parseUpdateSnapshot(
       return "missing";
   }
 }
+
+export function parseTextValue(value: unknown): string {
+  if (typeof value === "string") {
+    return value;
+  }
+
+  throw new Error(
+    `Value of type ${typeof value} cannot be parsed as text. Only strings are supported.`,
+  );
+}

@@ -27,22 +27,23 @@ import {
 import type {
   PlaywrightMatchValidationFileOptions,
   PlaywrightValidationFileMatcherConfig,
+  SnapshotValue,
 } from "./types";
 import { MATCHER_STEP_TITLE, parseTestInfo, parseTestStepInfo } from "./utils";
 
 const DEFAULT_UPDATE_DELAY = 250;
 
-interface MatchValidationFileParams {
-  actual: unknown;
+interface MatchValidationFileParams<TValue> {
+  actual: SnapshotValue<TValue>;
   matcherName: string;
-  serializer: SnapshotSerializer;
+  serializer: SnapshotSerializer<TValue>;
   config: PlaywrightValidationFileMatcherConfig;
   options: PlaywrightMatchValidationFileOptions;
   matcherState: ExpectMatcherState;
 }
 
-export async function matchValidationFile(
-  params: MatchValidationFileParams,
+export async function matchValidationFile<TValue>(
+  params: MatchValidationFileParams<TValue>,
 ): Promise<MatcherReturnType> {
   const { matcherName, actual, serializer, config, options, matcherState } =
     params;

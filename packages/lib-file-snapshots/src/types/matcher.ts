@@ -1,6 +1,6 @@
 import type { SnapshotSerializer } from "./serializer";
 
-export interface ValidationFileMatcherConfig {
+export interface ValidationFileMatcherConfig<TValue> {
   /**
    * Directory in which golden masters are stored
    */
@@ -21,7 +21,7 @@ export interface ValidationFileMatcherConfig {
   /**
    * The serializer to use for the snapshot
    */
-  serializer: SnapshotSerializer;
+  serializer: SnapshotSerializer<TValue>;
 
   /**
    * Whether to update golden masters with the actual result.

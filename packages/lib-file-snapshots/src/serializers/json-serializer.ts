@@ -42,7 +42,7 @@ export interface JsonNormalizerContext {
   index?: number;
 }
 
-export class JsonSerializer implements SnapshotSerializer {
+export class JsonSerializer implements SnapshotSerializer<unknown> {
   public readonly fileExtension = "json";
 
   private readonly includeUndefinedObjectProperties: boolean;

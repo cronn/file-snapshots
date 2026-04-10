@@ -76,7 +76,7 @@ function optionalFileBlock(filePath: string): string {
 }
 
 function persistentSnapshotDirs(): Pick<
-  ValidationFileMatcherConfig,
+  ValidationFileMatcherConfig<unknown>,
   "validationDir" | "outputDir"
 > {
   return {
@@ -87,7 +87,7 @@ function persistentSnapshotDirs(): Pick<
 
 function temporarySnapshotDirs(
   tmpDir: string,
-): Pick<ValidationFileMatcherConfig, "validationDir" | "outputDir"> {
+): Pick<ValidationFileMatcherConfig<unknown>, "validationDir" | "outputDir"> {
   return {
     validationDir: path.join(tmpDir, "validation"),
     outputDir: path.join(tmpDir, "output"),

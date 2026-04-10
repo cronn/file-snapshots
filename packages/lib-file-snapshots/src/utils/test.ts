@@ -11,9 +11,9 @@ export const SNAPSHOTS_DIR = "__snapshots__";
 
 export type SerializerTestFn = (context: TestContext) => Promise<void>;
 
-export function testSerializer(
-  serializer: SnapshotSerializer,
-  value: unknown,
+export function testSerializer<TValue>(
+  serializer: SnapshotSerializer<TValue>,
+  value: TValue,
 ): SerializerTestFn {
   return async (context): Promise<void> => {
     const { testFileName, testName } = resolveTestContext(context);
@@ -31,21 +31,8 @@ export function testSerializer(
   };
 }
 
-export function testSerializerThrows(
-  serializer: SnapshotSerializer,
-  value: unknown,
-): () => void {
-  return (): void => {
-    expect(() => serializer.serialize(value)).toThrowError();
-  };
-}
-
-export class FailingSerializer implements SnapshotSerializer {
+export class FailingSerializer implements SnapshotSerializer<unknown> {
   public readonly fileExtension = "error";
-
-  public canSerialize(_value: unknown): boolean {
-    return false;
-  }
 
   public serialize(_value: unknown): string {
     throw new Error("Not implemented");
