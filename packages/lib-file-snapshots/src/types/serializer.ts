@@ -1,4 +1,4 @@
-export interface SnapshotSerializer {
+export interface SnapshotSerializer<TValue> {
   /**
    * The file extension associated with the serialized value
    */
@@ -11,5 +11,5 @@ export interface SnapshotSerializer {
    * @return {string} The serialized value
    * @throws {Error} Will throw an error if value cannot be serialized.
    */
-  serialize(value: unknown): string;
+  serialize(value: TValue): string;
 }

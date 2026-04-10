@@ -18,13 +18,13 @@ interface MatcherFilePaths {
   validationFilePath: string;
 }
 
-export class ValidationFileMatcher {
+export class ValidationFileMatcher<TValue> {
   private readonly updateSnapshots: UpdateSnapshotsType;
-  private readonly serializer: SnapshotSerializer;
+  private readonly serializer: SnapshotSerializer<TValue>;
   private readonly filePaths: MatcherFilePaths;
   private validationFile: string | undefined;
 
-  public constructor(config: ValidationFileMatcherConfig) {
+  public constructor(config: ValidationFileMatcherConfig<TValue>) {
     this.updateSnapshots = config.updateSnapshots ?? "missing";
     this.serializer = config.serializer;
     this.filePaths = this.buildFilePaths(config);
@@ -42,7 +42,7 @@ export class ValidationFileMatcher {
     );
   }
 
-  public matchFileSnapshot(actual: unknown): ValidationFileMatcherResult {
+  public matchFileSnapshot(actual: TValue): ValidationFileMatcherResult {
     const serializedActual = this.serializer.serialize(actual);
     const expected = this.resolveExpected(serializedActual);
 
@@ -53,7 +53,7 @@ export class ValidationFileMatcher {
   }
 
   private buildFilePaths(
-    config: ValidationFileMatcherConfig,
+    config: ValidationFileMatcherConfig<TValue>,
   ): MatcherFilePaths {
     const { validationDir, outputDir, filePath, serializer } = config;
     const filePathWithExtension = `${filePath}.${serializer.fileExtension}`;

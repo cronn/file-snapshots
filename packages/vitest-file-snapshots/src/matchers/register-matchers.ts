@@ -10,6 +10,7 @@ import type {
   VitestValidationFileMatcherConfig,
   VitestValidationFileMatchers,
 } from "./types";
+import { parseTextValue } from "./utils";
 
 export function registerValidationFileMatchers(
   config: VitestValidationFileMatcherConfig = {},
@@ -46,7 +47,7 @@ export function registerValidationFileMatchers(
   ): ExpectationResult {
     const { normalizers, fileExtension, ...snapshotOptions } = options;
     return matchValidationFile({
-      received,
+      received: parseTextValue(received),
       serializer: new TextSerializer({ normalizers, fileExtension }),
       config: snapshotConfig,
       options: snapshotOptions,

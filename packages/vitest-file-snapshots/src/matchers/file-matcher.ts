@@ -20,16 +20,16 @@ import {
   readUpdateSnapshot,
 } from "./utils";
 
-interface MatchValidationFileParams {
-  received: unknown;
-  serializer: SnapshotSerializer;
+interface MatchValidationFileParams<TValue> {
+  received: TValue;
+  serializer: SnapshotSerializer<TValue>;
   config: VitestValidationFileMatcherConfig;
   options: VitestMatchValidationFileOptions;
   matcherState: MatcherState;
 }
 
-export function matchValidationFile(
-  params: MatchValidationFileParams,
+export function matchValidationFile<TValue>(
+  params: MatchValidationFileParams<TValue>,
 ): ExpectationResult {
   const { received, serializer, config, options, matcherState } = params;
   const { currentTestName, testPath, equals, isNot } = matcherState;

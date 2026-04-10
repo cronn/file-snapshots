@@ -2,15 +2,19 @@ import { performance } from "node:perf_hooks";
 
 import { waitForTimer } from "../utils/timer";
 
-interface Snapshot {
-  getValue: () => unknown;
+import type {
+  RepeatableSnapshotValue,
+  SnapshotValue,
+  StaticSnapshotValue,
+} from "./types";
+
+interface Snapshot<TValue> {
+  getValue: () => StaticSnapshotValue<TValue>;
 }
 
-type RepeatableSnapshotValue = () => unknown;
-
-export function createSnapshotInstance(
-  value: unknown,
-): StaticSnapshot | RepeatableSnapshot {
+export function createSnapshotInstance<TValue>(
+  value: SnapshotValue<TValue>,
+): StaticSnapshot<TValue> | RepeatableSnapshot<TValue> {
   if (isFunctionWithParameters(value)) {
     throw new Error(
       "Invalid snapshot value: only functions without parameters are supported.",
@@ -18,46 +22,46 @@ export function createSnapshotInstance(
   }
 
   if (isRepeatableSnapshotValue(value)) {
-    return new RepeatableSnapshot(value);
+    return new RepeatableSnapshot<TValue>(value);
   }
 
-  return new StaticSnapshot(value);
+  return new StaticSnapshot<TValue>(value);
 }
 
 function isFunctionWithParameters(value: unknown): boolean {
   return typeof value === "function" && value.length > 0;
 }
 
-function isRepeatableSnapshotValue(
-  value: unknown,
-): value is RepeatableSnapshotValue {
+function isRepeatableSnapshotValue<TValue>(
+  value: SnapshotValue<TValue>,
+): value is RepeatableSnapshotValue<TValue> {
   return typeof value === "function" && value.length === 0;
 }
 
-export class StaticSnapshot implements Snapshot {
-  private readonly value: unknown;
+export class StaticSnapshot<TValue> implements Snapshot<TValue> {
+  private readonly value: StaticSnapshotValue<TValue>;
 
-  public constructor(value: unknown) {
+  public constructor(value: StaticSnapshotValue<TValue>) {
     this.value = value;
   }
 
-  public getValue(): unknown {
+  public getValue(): StaticSnapshotValue<TValue> {
     return this.value;
   }
 }
 
-export class RepeatableSnapshot implements Snapshot {
+export class RepeatableSnapshot<TValue> implements Snapshot<TValue> {
   private readonly maxRetryInterval = 1000;
   private readonly retryIntervals = [100, 250, 500];
   private readonly startTime = performance.now();
   private snapshotCounter = 0;
-  private readonly snapshotValueFn: RepeatableSnapshotValue;
+  private readonly snapshotValueFn: RepeatableSnapshotValue<TValue>;
 
-  public constructor(snapshotValueFn: RepeatableSnapshotValue) {
+  public constructor(snapshotValueFn: RepeatableSnapshotValue<TValue>) {
     this.snapshotValueFn = snapshotValueFn;
   }
 
-  public async getValue(): Promise<unknown> {
+  public async getValue(): Promise<TValue> {
     const snapshot = await this.snapshotValueFn();
     this.snapshotCounter++;
     return snapshot;

@@ -1,7 +1,7 @@
 import { test } from "vitest";
 
 import { TextSerializer } from "../serializers/text-serializer";
-import { testSerializer, testSerializerThrows } from "../utils/test";
+import { testSerializer } from "../utils/test";
 
 test("text", testSerializer(new TextSerializer(), "value"));
 
@@ -24,11 +24,6 @@ test(
     new TextSerializer({ normalizers: [maskNumber, removeComment] }),
     "4711 comment",
   ),
-);
-
-test(
-  "when value is not of type string, throws error",
-  testSerializerThrows(new TextSerializer(), ["value"]),
 );
 
 function maskNumber(value: string): string {

@@ -13,6 +13,7 @@ import type {
   PlaywrightMatchTextFileOptions,
   PlaywrightValidationFileMatcherConfig,
   PlaywrightValidationFileMatchers,
+  SnapshotValue,
 } from "./types";
 
 export function defineValidationFileExpect(
@@ -22,7 +23,7 @@ export function defineValidationFileExpect(
 
   async function toMatchJsonFile(
     this: ExpectMatcherState,
-    actual: unknown,
+    actual: SnapshotValue<unknown>,
     options: PlaywrightMatchJsonFileOptions = {},
   ): Promise<MatcherReturnType> {
     const {
@@ -46,7 +47,7 @@ export function defineValidationFileExpect(
 
   async function toMatchTextFile(
     this: ExpectMatcherState,
-    actual: unknown,
+    actual: SnapshotValue<string>,
     options: PlaywrightMatchTextFileOptions = {},
   ): Promise<MatcherReturnType> {
     const { normalizers, fileExtension, ...snapshotOptions } = options;
