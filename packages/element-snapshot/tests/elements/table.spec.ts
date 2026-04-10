@@ -72,6 +72,52 @@ test("sorted columnheader", async ({ page }) => {
   );
 });
 
+test("colgroup header", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <table>
+        <colgroup></colgroup>
+        <colgroup span="2"></colgroup>
+        <thead>
+          <tr>
+            <th scope="col" rowspan="2">Column Header 1</th>
+            <th scope="colgroup" colspan="2">Column Group Header</th>
+          </tr>
+          <tr>
+            <th scope="col">Column Header 2</th>
+            <th scope="col">Column Header 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Body Cell 1</td>
+            <td>Body Cell 2</td>
+            <td>Body Cell 3</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+  );
+});
+
+test("rowgroup header", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <table>
+        <tr>
+          <th scope="rowgroup" rowspan="2">Row Group Header</th>
+          <td>Body Cell 1</th>
+        </tr>
+        <tr>
+          <td>Body Cell 2</td>
+        </tr>
+      </table>
+    `,
+  );
+});
+
 test("empty table", async ({ page }) => {
   await matchRawElementSnapshot(page, html`<table></table>`);
 });

@@ -205,8 +205,10 @@ function resolveTableHeaderCellRole(
 
   switch (scope) {
     case "col":
+    case "colgroup":
       return "columnheader";
     case "row":
+    case "rowgroup":
       return "rowheader";
     default:
       return undefined;

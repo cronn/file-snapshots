@@ -1,0 +1,59 @@
+[
+  {
+    "role": "table",
+    "attributes": {},
+    "children": [
+      {
+        "role": "rowgroup",
+        "attributes": {},
+        "children": [
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
+              {
+                "role": "rowheader",
+                "name": "Row Group Header",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Row Group Header"
+                  }
+                ]
+              },
+              {
+                "role": "cell",
+                "name": "Body Cell 1",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Body Cell 1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
+              {
+                "role": "cell",
+                "name": "Body Cell 2",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Body Cell 2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
