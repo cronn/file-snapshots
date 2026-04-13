@@ -9,7 +9,6 @@
     "url": "git+https://github.com/cronn/file-snapshots.git"
   },
   "type": "module",
-  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": "^20 || ^22 || >=24"
   },
