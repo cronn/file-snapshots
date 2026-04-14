@@ -11,7 +11,9 @@ export function disableableAttributes(
   element: SnapshotTargetElement,
 ): DisableableAttributes {
   const supportsHtmlAttribute =
-    isNativeInputElement(element) || element instanceof HTMLButtonElement;
+    isNativeInputElement(element) ||
+    element instanceof HTMLButtonElement ||
+    element instanceof HTMLOptionElement;
   const disabled = booleanAttribute(
     supportsHtmlAttribute ? element.hasAttribute("disabled") : false,
   );
@@ -24,7 +26,14 @@ export function disableableAttributes(
 export function selectableAttributes(
   element: SnapshotTargetElement,
 ): SelectableAttributes {
-  return { selected: booleanAttribute(element.ariaSelected) };
+  const supportsHtmlAttribute = element instanceof HTMLOptionElement;
+  const selected = booleanAttribute(
+    supportsHtmlAttribute ? element.hasAttribute("selected") : false,
+  );
+
+  return {
+    selected: selected ?? booleanAttribute(element.ariaSelected),
+  };
 }
 
 export function inputStateAttributes(

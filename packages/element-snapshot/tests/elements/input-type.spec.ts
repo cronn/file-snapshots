@@ -152,6 +152,7 @@ test("HTML single select", async ({ page }) => {
       <select id="select">
         <option value="option1" selected>Option 1</option>
         <option value="option2">Option 2</option>
+        <option value="option3" disabled>Option 3</option>
       </select>
     `,
   );
@@ -188,6 +189,7 @@ test("input-based combobox", async ({ page }) => {
       <ul id="options" role="listbox">
         <li role="option" aria-selected="true">Option 1</li>
         <li role="option" aria-selected="false">Option 2</li>
+        <li role="option" aria-disabled="true">Option 3</li>
       </ul>
     `,
   );

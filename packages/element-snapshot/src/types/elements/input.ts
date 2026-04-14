@@ -1,6 +1,8 @@
 import type {
+  DisableableAttributes,
   DiscribableAttributes,
   InputStateAttributes,
+  SelectableAttributes,
 } from "../attributes";
 import type { GenericElementSnapshot } from "../snapshot";
 
@@ -46,6 +48,5 @@ export interface OptionSnapshot extends GenericElementSnapshot<
   OptionAttributes
 > {}
 
-interface OptionAttributes {
-  selected?: boolean;
-}
+interface OptionAttributes
+  extends SelectableAttributes, DisableableAttributes {}
