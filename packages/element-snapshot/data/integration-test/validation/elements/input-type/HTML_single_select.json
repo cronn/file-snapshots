@@ -41,6 +41,19 @@
             "name": "Option 2"
           }
         ]
+      },
+      {
+        "role": "option",
+        "name": "Option 3",
+        "attributes": {
+          "disabled": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 3"
+          }
+        ]
       }
     ]
   }

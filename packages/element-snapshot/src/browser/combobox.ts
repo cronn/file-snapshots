@@ -1,7 +1,7 @@
 import type { ComboboxSnapshot, OptionSnapshot } from "../types/elements/input";
 import { filterByRole } from "../utils/filter";
 
-import { booleanAttribute, resolveElementReference } from "./attribute";
+import { resolveElementReference } from "./attribute";
 import { snapshotChildren } from "./children";
 import {
   resolveInputLabel,
@@ -9,6 +9,7 @@ import {
   snapshotCommonInputAttributes,
 } from "./input";
 import { resolveAccessibleName } from "./name";
+import { disableableAttributes, selectableAttributes } from "./state";
 import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
@@ -107,10 +108,8 @@ export function snapshotOption(
     role: "option",
     name: resolveAccessibleName(element),
     attributes: {
-      selected:
-        element instanceof HTMLOptionElement
-          ? booleanAttribute(element.selected)
-          : booleanAttribute(element.ariaSelected),
+      ...selectableAttributes(element),
+      ...disableableAttributes(element),
     },
     children: snapshotChildren(element),
   };
