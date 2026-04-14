@@ -165,7 +165,7 @@ test("HTML multi select", async ({ page }) => {
       <select id="select" multiple>
         <option value="option1" selected>Option 1</option>
         <option value="option2">Option 2</option>
-        <option value="option3" selected>Option 2</option>
+        <option value="option3" selected>Option 3</option>
       </select>
     `,
   );
