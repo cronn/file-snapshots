@@ -28,7 +28,7 @@ yarn add -D @cronn/aria-snapshot
 
 Define the Custom Matchers as a reusable export (e.g. in `fixtures.ts`):
 
-```ts
+```ts [fixtures.ts]
 import { defineAriaSnapshotMatchers } from "@cronn/aria-snapshot";
 
 export const expect = defineAriaSnapshotMatchers();
@@ -58,9 +58,9 @@ test("matches ARIA snapshot", async ({ page }) => {
 });
 ```
 
-**Output (`̀matches_ARIA_snapshot.json`):**
+**Output:**
 
-```json
+```json [matches_ARIA_snapshot.json]
 {
   "main": [
     "heading 'List' [level=1]",

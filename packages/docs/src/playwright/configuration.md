@@ -2,7 +2,7 @@
 
 Configuration options can be passed when defining the file matchers:
 
-```ts
+```ts [fixtures.ts]
 import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
 const expect = defineFileSnapshotMatchers({

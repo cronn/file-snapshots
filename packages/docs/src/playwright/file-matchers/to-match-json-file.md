@@ -16,9 +16,9 @@ test("matches page title ultimately", async () => {
 });
 ```
 
-**Output (`matches_page_title.json`):**
+**Output:**
 
-```json
+```json [matches_page_title.json]
 {
   "title": "Page Title"
 }
@@ -50,9 +50,9 @@ test("includes undefined properties", async () => {
 });
 ```
 
-**Output (`includes_undefined_properties.json`):**
+**Output:**
 
-```json
+```json [includes_undefined_properties.json]
 {
   "name": "Alice",
   "age": {

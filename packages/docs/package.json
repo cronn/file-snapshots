@@ -29,7 +29,8 @@
     "oxc-minify": "catalog:",
     "rimraf": "catalog:",
     "typescript-eslint": "catalog:",
-    "vitepress": "catalog:"
+    "vitepress": "catalog:",
+    "vitepress-plugin-group-icons": "catalog:"
   },
   "devEngines": {
     "packageManager": {

@@ -74,7 +74,7 @@ test("employee table", async ({ page }) => {
 
 **Output:**
 
-```md
+```md [employee_table.md]
 | Employee      | Department  | Salary  |
 | ------------- | ----------- | ------- |
 | Alice Johnson | Engineering | $95,000 |
@@ -111,7 +111,7 @@ test("product grid", async ({ page }) => {
 
 **Output:**
 
-```md
+```md [product_grid.md]
 | Product | Price | Stock |
 | ------- | ----- | ----- |
 | Laptop  | $999  | 15    |
@@ -149,7 +149,7 @@ test("sorted table", async ({ page }) => {
 
 **Output:**
 
-```md
+```md [sorted_table.md]
 | Name ⯆ | Score |
 | ------ | ----- |
 | Alice  | 95    |

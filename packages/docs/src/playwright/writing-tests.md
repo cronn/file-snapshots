@@ -15,9 +15,9 @@ test("value is expected value", async () => {
 });
 ```
 
-**Output (`value_is_expected_value.json`):**
+**Output:**
 
-```json
+```json [value_is_expected_value.json]
 {
   "value": "expected value"
 }
@@ -43,9 +43,9 @@ test("date is masked", async () => {
 });
 ```
 
-**Output (`value_is_expected_value.json`):**
+**Output:**
 
-```json
+```json [date_is_masked.json]
 {
   "date": "[DATE]"
 }
@@ -119,7 +119,7 @@ test("match values using soft assertions", async () => {
 
 ### Enabling Soft Assertions for All Matchers
 
-```ts
+```ts [fixtures.ts]
 export const expect = defineFileSnapshotMatchers().configure({
   soft: true,
 });

@@ -30,7 +30,7 @@ yarn add -D @cronn/element-snapshot
 
 Define the Custom Matchers as a reusable export (e.g. in `fixtures.ts`):
 
-```ts
+```ts [fixtures.ts]
 import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 
 export const expect = defineElementSnapshotMatchers();
