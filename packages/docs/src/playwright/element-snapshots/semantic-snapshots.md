@@ -22,9 +22,9 @@ test("matches semantic snapshot", async ({ page }) => {
 });
 ```
 
-**Output (`matches_semantic_snapshot.json`):**
+**Output:**
 
-```json
+```json [matches_semantic_snapshot.json]
 {
   "main": [
     {

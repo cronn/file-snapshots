@@ -35,7 +35,7 @@ yarn add -D @cronn/playwright-file-snapshots
 
 Define the custom matchers (e.g. in `fixtures.ts`):
 
-```ts
+```ts [fixtures.ts]
 import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
 export const expect = defineFileSnapshotMatchers();
@@ -53,9 +53,9 @@ test("matches JSON file", async () => {
 });
 ```
 
-**Output (`matches_JSON_file.json`):**
+**Output:**
 
-```json
+```json [matches_JSON_file.json]
 {
   "value": "expected value"
 }
@@ -75,9 +75,9 @@ test("matches ARIA snapshot", async ({ page }) => {
 });
 ```
 
-**Output (`matches_aria_snapshot.json`):**
+**Output:**
 
-```json
+```json [matches_ARIA_snapshot.json]
 {
   "main": [
     "heading 'List' [level=1]",
@@ -109,9 +109,9 @@ test("matches element snapshot", async ({ page }) => {
 });
 ```
 
-**Output (`̀matches_element_snapshot.json`):**
+**Output:**
 
-```json
+```json [matches_element_snapshot.json]
 {
   "main": [
     {

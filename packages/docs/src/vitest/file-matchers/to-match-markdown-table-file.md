@@ -24,9 +24,9 @@ test("matches Markdown table", () => {
 });
 ```
 
-**Output (`matches_Markdown_table.md`):**
+**Output:**
 
-```md
+```md [matches_Markdown_table.md]
 | input   | output   |
 | ------- | -------- |
 | input 1 | output 1 |
@@ -50,9 +50,9 @@ test("matches Markdown table from records", () => {
 });
 ```
 
-**Output (`matches_Markdown_table_from_records.md`):**
+**Output:**
 
-```md
+```md [matches_Markdown_table_from_records.md]
 | input   | output   |
 | ------- | -------- |
 | input 1 | output 1 |

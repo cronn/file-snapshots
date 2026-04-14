@@ -1,4 +1,8 @@
 import { defineConfig } from "vitepress";
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin,
+} from "vitepress-plugin-group-icons";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -9,6 +13,15 @@ export default defineConfig({
   srcDir: "src",
   cleanUrls: true,
   lastUpdated: true,
+
+  markdown: {
+    config(md) {
+      md.use(groupIconMdPlugin);
+    },
+  },
+  vite: {
+    plugins: [groupIconVitePlugin()],
+  },
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

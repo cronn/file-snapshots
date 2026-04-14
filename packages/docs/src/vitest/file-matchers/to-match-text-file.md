@@ -10,9 +10,9 @@ test("value is expected value", () => {
 });
 ```
 
-**Output (`value_is_expected_value.txt`):**
+**Output:**
 
-```
+```[value_is_expected_value.txt]
 expected value
 ```
 
@@ -21,14 +21,14 @@ expected value
 Use `fileExtension` to store snapshots with a different file extension:
 
 ```ts
-test("html snapshot", () => {
+test("HTML snapshot", () => {
   expect("<main>Hello World</main>").toMatchTextFile({ fileExtension: "html" });
 });
 ```
 
-**Output (`html_snapshot.html`):**
+**Output:**
 
-```html
+```html [HTML_snapshot.html]
 <main>Hello World</main>
 ```
 
