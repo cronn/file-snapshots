@@ -43,39 +43,34 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
     return null;
   }
 
-  const value = resolveInputValue(element);
-
   return elementSnapshot({
     role: inputRole,
     name: resolveInputLabel(element),
     attributes: {
-      value,
+      value: resolveInputValue(element),
       checked: resolveChecked(element),
-      ...snapshotCommonInputAttributes(element, value === undefined),
+      ...snapshotCommonInputAttributes(element),
     },
   });
 }
 
 function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
-  const value = resolveInputValue(element);
-
   return elementSnapshot({
     role: "textbox",
     name: resolveInputLabel(element),
     attributes: {
-      value,
-      ...snapshotCommonInputAttributes(element, value === undefined),
+      value: resolveInputValue(element),
+      ...snapshotCommonInputAttributes(element),
     },
   });
 }
 
 export function snapshotCommonInputAttributes(
   element: InputElement,
-  isEmpty: boolean,
 ): CommonInputAttributes {
   return {
     ...discribableAttributes(element),
-    placeholder: isEmpty ? resolvePlaceholder(element) : undefined,
+    placeholder: resolvePlaceholder(element),
     ...inputStateAttributes(element),
   };
 }
