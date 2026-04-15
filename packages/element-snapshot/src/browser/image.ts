@@ -1,4 +1,5 @@
 import type { ImageSnapshot } from "../types/elements/image";
+import { elementSnapshot } from "../utils/factories";
 
 import { stringAttribute } from "./attribute";
 import { resolveAccessibleName } from "./name";
@@ -13,12 +14,10 @@ export function snapshotImage(
     return null;
   }
 
-  return {
+  return elementSnapshot({
     role: "img",
     name: imageName,
-    attributes: {},
-    children: [],
-  };
+  });
 }
 
 function resolveImageName(element: SnapshotTargetElement): string | undefined {

@@ -1,4 +1,5 @@
 import type { SeparatorSnapshot } from "../types/elements/separator";
+import { elementSnapshot } from "../utils/factories";
 
 import { snapshotPresentationalChildren } from "./text";
 import type { SnapshotTargetElement } from "./types";
@@ -6,9 +7,8 @@ import type { SnapshotTargetElement } from "./types";
 export function snapshotSeparator(
   element: SnapshotTargetElement,
 ): SeparatorSnapshot {
-  return {
+  return elementSnapshot({
     role: "separator",
-    attributes: {},
     children: snapshotPresentationalChildren(element),
-  };
+  });
 }
