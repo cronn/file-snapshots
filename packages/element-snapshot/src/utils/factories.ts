@@ -1,9 +1,6 @@
-import type { TextSnapshot } from "../browser/text";
-import type {
-  ElementRole,
-  GenericElementSnapshot,
-  NodeSnapshot,
-} from "../browser/types";
+import type { TextSnapshot } from "../types/elements/text";
+import type { ElementRole } from "../types/role";
+import type { GenericElementSnapshot, NodeSnapshot } from "../types/snapshot";
 
 export function textSnapshot(name: string): TextSnapshot {
   return {

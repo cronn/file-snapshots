@@ -1,20 +1,10 @@
+import type { DialogRole, DialogSnapshot } from "../types/elements/dialog";
+
 import { booleanAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
-import type { DiscribableAttributes } from "./description";
 import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
-
-export interface DialogSnapshot extends GenericElementSnapshot<
-  DialogRole,
-  DialogAttributes
-> {}
-
-export type DialogRole = "dialog" | "alertdialog";
-
-interface DialogAttributes extends DiscribableAttributes {
-  modal?: boolean;
-}
+import type { SnapshotTargetElement } from "./types";
 
 type DialogSnapshotFn = (element: SnapshotTargetElement) => DialogSnapshot;
 

@@ -1,25 +1,23 @@
+export type { ElementRole } from "./types/role";
+export type { ElementSnapshot, NodeRole, NodeSnapshot } from "./types/snapshot";
+export type { TextSnapshot } from "./types/elements/text";
+export type { ButtonSnapshot } from "./types/elements/button";
+export type { ContainerSnapshot } from "./types/elements/container";
+export type { DialogSnapshot } from "./types/elements/dialog";
+export type { GroupSnapshot, RadioGroupSnapshot } from "./types/elements/group";
+export type { HeadingSnapshot } from "./types/elements/heading";
+export type { ImageSnapshot } from "./types/elements/image";
 export type {
-  ElementRole,
-  ElementSnapshot,
-  NodeRole,
-  NodeSnapshot,
-} from "./browser/types";
-export type { TextSnapshot } from "./browser/text";
-
-export type { ButtonSnapshot } from "./browser/button";
-export type { ComboboxSnapshot, OptionSnapshot } from "./browser/combobox";
-export type { ContainerSnapshot } from "./browser/container";
-export type { DialogSnapshot } from "./browser/dialog";
-export type { GroupSnapshot, RadiogroupSnapshot } from "./browser/group";
-export type { HeadingSnapshot } from "./browser/heading";
-export type { ImageSnapshot } from "./browser/image";
-export type { InputSnapshot } from "./browser/input";
-export type { LinkSnapshot } from "./browser/link";
-export type { MenuitemSnapshot } from "./browser/list";
-export type { ProgressbarSnapshot } from "./browser/progressbar";
-export type { SeparatorSnapshot } from "./browser/separator";
-export type { TabSnapshot } from "./browser/tab";
-export type { ColumnheaderSnapshot } from "./browser/table";
+  ComboboxSnapshot,
+  InputSnapshot,
+  OptionSnapshot,
+} from "./types/elements/input";
+export type { LinkSnapshot } from "./types/elements/link";
+export type { MenuItemSnapshot } from "./types/elements/list";
+export type { ProgressbarSnapshot } from "./types/elements/progressbar";
+export type { SeparatorSnapshot } from "./types/elements/separator";
+export type { TabSnapshot } from "./types/elements/tab";
+export type { ColumnHeaderSnapshot } from "./types/elements/table";
 
 export {
   markdownTableSnapshot,

@@ -1,6 +1,7 @@
+import type { ComboboxSnapshot, OptionSnapshot } from "../types/elements/input";
+
 import { booleanAttribute, resolveElementReference } from "./attribute";
 import { snapshotChildren } from "./children";
-import type { CommonInputAttributes } from "./input";
 import {
   resolveInputLabel,
   resolveInputValue,
@@ -9,18 +10,7 @@ import {
 import { resolveAccessibleName } from "./name";
 import { roleSelector, selectorList } from "./selector";
 import { resolveAccessibleTextContent } from "./text";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
-
-export interface ComboboxSnapshot extends GenericElementSnapshot<
-  "combobox",
-  ComboboxAttributes
-> {
-  options: Array<OptionSnapshot>;
-}
-
-interface ComboboxAttributes extends CommonInputAttributes {
-  value?: string | Array<string>;
-}
+import type { SnapshotTargetElement } from "./types";
 
 type ComboboxElement = HTMLSelectElement | HTMLInputElement | HTMLButtonElement;
 
@@ -107,15 +97,6 @@ function resolveOptions(element: ComboboxElement): Array<HTMLElement> {
 
   const optionSelector = selectorList("option", roleSelector("option"));
   return Array.from(controlledElement.querySelectorAll(optionSelector));
-}
-
-export interface OptionSnapshot extends GenericElementSnapshot<
-  "option",
-  OptionAttributes
-> {}
-
-interface OptionAttributes {
-  selected?: boolean;
 }
 
 export function snapshotOption(

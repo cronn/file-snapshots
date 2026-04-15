@@ -1,6 +1,5 @@
-import type { TextSnapshot } from "../browser/text";
-import type { NodeRole, NodeSnapshot } from "../browser/types";
-import type { SnapshotByRole } from "../types/snapshot";
+import type { TextSnapshot } from "../types/elements/text";
+import type { NodeRole, NodeSnapshot, SnapshotByRole } from "../types/snapshot";
 
 export function isTextSnapshot(
   snapshot: NodeSnapshot,

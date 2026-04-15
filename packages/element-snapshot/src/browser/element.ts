@@ -1,11 +1,14 @@
+import type { ContainerRole } from "../types/elements/container";
+import type { ElementRole } from "../types/role";
+import type { ElementSnapshot, NodeSnapshot } from "../types/snapshot";
+
 import { booleanAttribute } from "./attribute";
 import { snapshotButton } from "./button";
 import { snapshotChildren } from "./children";
 import { snapshotCombobox, snapshotOption } from "./combobox";
-import type { ContainerRole } from "./container";
 import { snapshotContainer } from "./container";
 import { snapshotDialogWithRole } from "./dialog";
-import { snapshotGroup, snapshotRadiogroup } from "./group";
+import { snapshotGroup, snapshotRadioGroup } from "./group";
 import { snapshotHeading } from "./heading";
 import { snapshotImage } from "./image";
 import { snapshotInput } from "./input";
@@ -15,15 +18,9 @@ import { snapshotProgressbar } from "./progressbar";
 import { parseElementRole } from "./role";
 import { snapshotSeparator } from "./separator";
 import { snapshotTab } from "./tab";
-import { snapshotColumnheader } from "./table";
+import { snapshotColumnHeader } from "./table";
 import { snapshotTextNode } from "./text";
-import type {
-  ElementRole,
-  ElementSnapshot,
-  NodeSnapshot,
-  SnapshotTargetElement,
-  SnapshotTargetNode,
-} from "./types";
+import type { SnapshotTargetElement, SnapshotTargetNode } from "./types";
 import { getElementTagName } from "./utils";
 
 type ElementSnapshotFn = (
@@ -33,27 +30,27 @@ type ElementSnapshotFn = (
 type NonContainerElementRole = Exclude<ElementRole, ContainerRole>;
 
 const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
+  alertdialog: snapshotDialogWithRole("alertdialog"),
   button: snapshotButton,
   checkbox: snapshotInput,
+  columnheader: snapshotColumnHeader,
   combobox: snapshotCombobox,
-  option: snapshotOption,
+  dialog: snapshotDialogWithRole("dialog"),
+  group: snapshotGroup,
   heading: snapshotHeading,
+  img: snapshotImage,
+  menuitem: snapshotMenuitem,
+  option: snapshotOption,
+  progressbar: snapshotProgressbar,
   link: snapshotLink,
   radio: snapshotInput,
+  radiogroup: snapshotRadioGroup,
   searchbox: snapshotInput,
+  separator: snapshotSeparator,
   slider: snapshotInput,
   spinbutton: snapshotInput,
-  textbox: snapshotInput,
-  dialog: snapshotDialogWithRole("dialog"),
-  alertdialog: snapshotDialogWithRole("alertdialog"),
   tab: snapshotTab,
-  menuitem: snapshotMenuitem,
-  columnheader: snapshotColumnheader,
-  group: snapshotGroup,
-  radiogroup: snapshotRadiogroup,
-  progressbar: snapshotProgressbar,
-  img: snapshotImage,
-  separator: snapshotSeparator,
+  textbox: snapshotInput,
 };
 
 export function snapshotElement(
@@ -110,14 +107,14 @@ function snapshotNodeByType(
 }
 
 const UNSUPPORTED_ELEMENTS = new Set([
-  "style",
-  "script",
+  "audio",
+  "figure",
   "noscript",
   "picture",
-  "audio",
-  "video",
-  "figure",
+  "script",
+  "style",
   "template",
+  "video",
 ]);
 
 function isSupportedElement(

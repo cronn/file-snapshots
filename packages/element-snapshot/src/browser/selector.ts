@@ -1,4 +1,4 @@
-import type { ElementRole } from "./types";
+import type { ElementRole } from "../types/role";
 
 export function selectorList(...selectors: Array<string>): string {
   return selectors.join(",");

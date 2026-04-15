@@ -1,7 +1,7 @@
-import { snapshotPresentationalChildren } from "./text";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
+import type { SeparatorSnapshot } from "../types/elements/separator";
 
-export interface SeparatorSnapshot extends GenericElementSnapshot<"separator"> {}
+import { snapshotPresentationalChildren } from "./text";
+import type { SnapshotTargetElement } from "./types";
 
 export function snapshotSeparator(
   element: SnapshotTargetElement,

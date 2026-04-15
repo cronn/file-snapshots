@@ -1,5 +1,4 @@
-import type { NodeRole, NodeSnapshot } from "../browser/types";
-import type { SnapshotByRole } from "../types/snapshot";
+import type { NodeRole, NodeSnapshot, SnapshotByRole } from "../types/snapshot";
 
 import type { GuardedFilterPredicate } from "./filter";
 import { hasRole } from "./guards";

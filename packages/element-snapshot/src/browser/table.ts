@@ -1,27 +1,14 @@
+import type { ColumnHeaderSnapshot } from "../types/elements/table";
+import { SORT_TYPES } from "../types/elements/table";
+
 import { enumAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
-import type {
-  GenericElementSnapshot,
-  SetValues,
-  SnapshotTargetElement,
-} from "./types";
+import type { SnapshotTargetElement } from "./types";
 
-export interface ColumnheaderSnapshot extends GenericElementSnapshot<
-  "columnheader",
-  ColumnheaderAttributes
-> {}
-
-interface ColumnheaderAttributes {
-  sort?: SortType;
-}
-
-const SORT_TYPES = new Set(["ascending", "descending", "other"] as const);
-export type SortType = SetValues<typeof SORT_TYPES>;
-
-export function snapshotColumnheader(
+export function snapshotColumnHeader(
   element: SnapshotTargetElement,
-): ColumnheaderSnapshot {
+): ColumnHeaderSnapshot {
   return {
     role: "columnheader",
     name: resolveAccessibleName(element),

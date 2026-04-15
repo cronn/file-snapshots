@@ -1,10 +1,8 @@
+import type { DiscribableAttributes } from "../types/attributes";
+
 import { resolveElementReference } from "./attribute";
 import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
-
-export interface DiscribableAttributes {
-  description?: string;
-}
 
 export function discribableAttributes(
   element: SnapshotTargetElement,

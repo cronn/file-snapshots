@@ -1,6 +1,6 @@
 import type { Locator } from "@playwright/test";
 
-import type { NodeSnapshot } from "../browser/types";
+import type { NodeSnapshot } from "../types/snapshot";
 import type { FilterPredicate } from "../utils/filter";
 
 import { ElementSnapshotProxy } from "./proxy";

@@ -1,16 +1,9 @@
+import type { ProgressbarSnapshot } from "../types/elements/progressbar";
+
 import { numericAttribute } from "./attribute";
 import { resolveAccessibleName } from "./name";
 import { snapshotPresentationalChildren } from "./text";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
-
-export interface ProgressbarSnapshot extends GenericElementSnapshot<
-  "progressbar",
-  ProgressbarAttributes
-> {}
-
-interface ProgressbarAttributes {
-  value?: number;
-}
+import type { SnapshotTargetElement } from "./types";
 
 export function snapshotProgressbar(
   element: SnapshotTargetElement,

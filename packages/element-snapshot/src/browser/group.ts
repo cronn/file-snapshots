@@ -1,11 +1,13 @@
+import type {
+  GroupSnapshot,
+  RadioGroupSnapshot,
+} from "../types/elements/group";
+
 import { snapshotChildren } from "./children";
-import type { DiscribableAttributes } from "./description";
 import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
 import { resolveAccessibleTextContent } from "./text";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
-
-export interface GroupSnapshot extends GenericElementSnapshot<"group"> {}
+import type { SnapshotTargetElement } from "./types";
 
 export function snapshotGroup(
   element: SnapshotTargetElement,
@@ -30,16 +32,9 @@ function resolveGroupName(element: SnapshotTargetElement): string | undefined {
   return resolveAccessibleName(element, false);
 }
 
-export interface RadiogroupSnapshot extends GenericElementSnapshot<
-  "radiogroup",
-  RadiogroupAttributes
-> {}
-
-interface RadiogroupAttributes extends DiscribableAttributes {}
-
-export function snapshotRadiogroup(
+export function snapshotRadioGroup(
   element: SnapshotTargetElement,
-): RadiogroupSnapshot {
+): RadioGroupSnapshot {
   return {
     role: "radiogroup",
     name: resolveAccessibleName(element, false),

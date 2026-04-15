@@ -1,37 +1,15 @@
+import type {
+  CommonInputAttributes,
+  InputSnapshot,
+} from "../types/elements/input";
+
 import { stringAttribute } from "./attribute";
-import type { DiscribableAttributes } from "./description";
 import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
 import { resolveInputRole } from "./role";
-import type { InputStateAttributes } from "./state";
 import { inputStateAttributes } from "./state";
 import { resolveAccessibleTextContent } from "./text";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
-
-export interface InputSnapshot extends GenericElementSnapshot<
-  CommonInputRole,
-  InputAttributes
-> {}
-
-export type InputRole = "button" | "combobox" | CommonInputRole;
-
-export type CommonInputRole =
-  | "checkbox"
-  | "radio"
-  | "searchbox"
-  | "slider"
-  | "spinbutton"
-  | "textbox";
-
-interface InputAttributes extends CommonInputAttributes {
-  value?: string;
-  checked?: boolean;
-}
-
-export interface CommonInputAttributes
-  extends InputStateAttributes, DiscribableAttributes {
-  placeholder?: string;
-}
+import type { SnapshotTargetElement } from "./types";
 
 type InputElement =
   | HTMLInputElement

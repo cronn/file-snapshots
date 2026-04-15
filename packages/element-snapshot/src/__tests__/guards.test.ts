@@ -1,6 +1,5 @@
 import { describe, expect, test } from "vitest";
 
-import type { ElementSnapshot } from "../browser/types";
 import { elementSnapshot } from "../utils/factories";
 import { hasRole, isEmpty, isTextSnapshot } from "../utils/guards";
 
@@ -17,7 +16,7 @@ describe("isTextSnapshot", () => {
 });
 
 describe("hasRole", () => {
-  const paragraphSnapshot: ElementSnapshot = elementSnapshot({
+  const paragraphSnapshot = elementSnapshot({
     role: "paragraph",
   });
 

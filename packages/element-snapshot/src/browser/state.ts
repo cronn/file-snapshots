@@ -1,9 +1,11 @@
+import type {
+  DisableableAttributes,
+  InputStateAttributes,
+  SelectableAttributes,
+} from "../types/attributes";
+
 import { booleanAttribute } from "./attribute";
 import type { SnapshotTargetElement } from "./types";
-
-export interface DisableableAttributes {
-  disabled?: boolean;
-}
 
 export function disableableAttributes(
   element: SnapshotTargetElement,
@@ -19,20 +21,10 @@ export function disableableAttributes(
   };
 }
 
-export interface SelectableAttributes {
-  selected?: boolean;
-}
-
 export function selectableAttributes(
   element: SnapshotTargetElement,
 ): SelectableAttributes {
   return { selected: booleanAttribute(element.ariaSelected) };
-}
-
-export interface InputStateAttributes extends DisableableAttributes {
-  readonly?: boolean;
-  required?: boolean;
-  invalid?: boolean;
 }
 
 export function inputStateAttributes(
