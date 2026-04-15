@@ -1,4 +1,5 @@
 import type { ComboboxSnapshot, OptionSnapshot } from "../types/elements/input";
+import { filterByRole } from "../utils/filter";
 
 import { booleanAttribute, resolveElementReference } from "./attribute";
 import { snapshotChildren } from "./children";
@@ -8,7 +9,6 @@ import {
   snapshotCommonInputAttributes,
 } from "./input";
 import { resolveAccessibleName } from "./name";
-import { roleSelector, selectorList } from "./selector";
 import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
@@ -80,23 +80,25 @@ function resolveValue(
 }
 
 function snapshotOptions(element: ComboboxElement): Array<OptionSnapshot> {
-  return resolveOptions(element)
-    .map(snapshotOption)
-    .filter((childSnapshot) => childSnapshot !== null);
+  const optionsContainer = resolveOptionsContainer(element);
+  if (optionsContainer === null) {
+    return [];
+  }
+
+  return filterByRole("option", snapshotChildren(optionsContainer));
 }
 
-function resolveOptions(element: ComboboxElement): Array<HTMLElement> {
+function resolveOptionsContainer(element: ComboboxElement): HTMLElement | null {
   if (element instanceof HTMLSelectElement) {
-    return Array.from(element.options);
+    return element;
   }
 
   const controlledElement = resolveElementReference(element, "aria-controls");
   if (controlledElement === null) {
-    return [];
+    return null;
   }
 
-  const optionSelector = selectorList("option", roleSelector("option"));
-  return Array.from(controlledElement.querySelectorAll(optionSelector));
+  return controlledElement;
 }
 
 export function snapshotOption(
