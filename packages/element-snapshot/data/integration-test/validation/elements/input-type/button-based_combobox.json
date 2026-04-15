@@ -3,9 +3,9 @@
     "role": "combobox",
     "name": "Combobox",
     "attributes": {
-      "value": "Button Value"
+      "value": "Button Value",
+      "options": []
     },
-    "children": [],
-    "options": []
+    "children": []
   }
 ]
