@@ -106,10 +106,12 @@ export class SemanticSnapshotTransformer {
 
   private normalizeElementSnapshot(
     snapshot: ElementSnapshot,
+    excludeAttributes: Array<string> = [],
   ): NormalizedElementSnapshot {
     const normalizedName = snapshot.name ?? "";
-    const sparseAttributes = this.removeUndefinedProperties(
+    const filteredAttributes = this.filterAttributes(
       snapshot.attributes as Record<string, unknown>,
+      excludeAttributes,
     );
     const transformedChildren = this.transformSnapshots(snapshot.children);
     const nameEqualsChildren =
@@ -119,15 +121,17 @@ export class SemanticSnapshotTransformer {
     return {
       role: snapshot.role,
       name: normalizedName,
-      attributes: sparseAttributes,
+      attributes: filteredAttributes,
       children: nameEqualsChildren ? [] : transformedChildren,
     };
   }
 
   private simplifyComboboxSnapshot(snapshot: ComboboxSnapshot): unknown {
-    const { role, name, attributes } = this.normalizeElementSnapshot(snapshot);
-    const transformedOptions = snapshot.options.map((optionSnapshot) =>
-      this.simplifyElementSnapshot(optionSnapshot),
+    const { role, name, attributes } = this.normalizeElementSnapshot(snapshot, [
+      "options",
+    ]);
+    const transformedOptions = snapshot.attributes.options.map(
+      (optionSnapshot) => this.simplifyElementSnapshot(optionSnapshot),
     );
 
     return this.transformedSnapshot(role, {
@@ -164,18 +168,21 @@ export class SemanticSnapshotTransformer {
     );
   }
 
-  private removeUndefinedProperties(
+  private filterAttributes(
     attributes: Record<string, unknown>,
+    exclude: Array<string>,
   ): Record<string, unknown> {
-    const sparseAttributes: Record<string, unknown> = {};
+    const filteredAttributes: Record<string, unknown> = {};
 
     Object.entries(attributes).forEach(([key, value]) => {
-      if (value !== undefined) {
-        sparseAttributes[key] = value;
+      if (value === undefined && !exclude.includes(key)) {
+        return;
       }
+
+      filteredAttributes[key] = value;
     });
 
-    return sparseAttributes;
+    return filteredAttributes;
   }
 
   private transformedSnapshot(role: ElementRole, content: unknown): unknown {

@@ -12,48 +12,48 @@
         "role": "combobox",
         "name": "Combobox",
         "attributes": {
-          "value": "Input Value"
+          "value": "Input Value",
+          "options": [
+            {
+              "role": "option",
+              "name": "Option 1",
+              "attributes": {
+                "selected": true
+              },
+              "children": [
+                {
+                  "role": "text",
+                  "name": "Option 1"
+                }
+              ]
+            },
+            {
+              "role": "option",
+              "name": "Option 2",
+              "attributes": {},
+              "children": [
+                {
+                  "role": "text",
+                  "name": "Option 2"
+                }
+              ]
+            },
+            {
+              "role": "option",
+              "name": "Option 3",
+              "attributes": {
+                "disabled": true
+              },
+              "children": [
+                {
+                  "role": "text",
+                  "name": "Option 3"
+                }
+              ]
+            }
+          ]
         },
-        "children": [],
-        "options": [
-          {
-            "role": "option",
-            "name": "Option 1",
-            "attributes": {
-              "selected": true
-            },
-            "children": [
-              {
-                "role": "text",
-                "name": "Option 1"
-              }
-            ]
-          },
-          {
-            "role": "option",
-            "name": "Option 2",
-            "attributes": {},
-            "children": [
-              {
-                "role": "text",
-                "name": "Option 2"
-              }
-            ]
-          },
-          {
-            "role": "option",
-            "name": "Option 3",
-            "attributes": {
-              "disabled": true
-            },
-            "children": [
-              {
-                "role": "text",
-                "name": "Option 3"
-              }
-            ]
-          }
-        ]
+        "children": []
       }
     ]
   },

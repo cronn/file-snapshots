@@ -35,12 +35,11 @@ export interface CommonInputAttributes
 export interface ComboboxSnapshot extends GenericElementSnapshot<
   "combobox",
   ComboboxAttributes
-> {
-  options: Array<OptionSnapshot>;
-}
+> {}
 
 interface ComboboxAttributes extends CommonInputAttributes {
   value?: string | Array<string>;
+  options: Array<OptionSnapshot>;
 }
 
 export interface OptionSnapshot extends GenericElementSnapshot<

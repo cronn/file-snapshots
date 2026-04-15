@@ -30,9 +30,9 @@ export function snapshotCombobox(
     attributes: {
       value: resolveValue(element),
       ...snapshotCommonInputAttributes(element),
+      options,
     },
     children: [],
-    options,
   };
 }
 
