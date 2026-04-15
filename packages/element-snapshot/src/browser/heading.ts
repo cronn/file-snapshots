@@ -1,18 +1,11 @@
+import type { HeadingSnapshot } from "../types/elements/heading";
+
 import { numericAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
+import type { SnapshotTargetElement } from "./types";
 
 const LEVEL_REGEXP = /^H([1-6])$/;
-
-export interface HeadingSnapshot extends GenericElementSnapshot<
-  "heading",
-  HeadingAttributes
-> {}
-
-interface HeadingAttributes {
-  level?: number;
-}
 
 export function snapshotHeading(
   element: SnapshotTargetElement,

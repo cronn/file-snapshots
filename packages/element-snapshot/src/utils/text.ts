@@ -1,5 +1,5 @@
-import type { TextSnapshot } from "../browser/text";
-import type { NodeSnapshot } from "../browser/types";
+import type { TextSnapshot } from "../types/elements/text";
+import type { NodeSnapshot } from "../types/snapshot";
 
 import { filter } from "./filter";
 import { isTextSnapshot } from "./guards";

@@ -1,21 +1,14 @@
+import type { MenuItemSnapshot } from "../types/elements/list";
+
 import { snapshotChildren } from "./children";
-import type { LinkAttributes } from "./link";
 import { linkAttributes } from "./link";
 import { resolveAccessibleName } from "./name";
-import type { DisableableAttributes } from "./state";
 import { disableableAttributes } from "./state";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
-
-export interface MenuitemSnapshot extends GenericElementSnapshot<
-  "menuitem",
-  MenuitemAttributes
-> {}
-
-interface MenuitemAttributes extends LinkAttributes, DisableableAttributes {}
+import type { SnapshotTargetElement } from "./types";
 
 export function snapshotMenuitem(
   element: SnapshotTargetElement,
-): MenuitemSnapshot {
+): MenuItemSnapshot {
   return {
     role: "menuitem",
     name: resolveAccessibleName(element),

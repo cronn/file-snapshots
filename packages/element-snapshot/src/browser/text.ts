@@ -1,11 +1,7 @@
+import type { TextSnapshot } from "../types/elements/text";
 import { getTextContent, normalizeText } from "../utils/text";
 
 import { snapshotChildren } from "./children";
-
-export interface TextSnapshot {
-  role: "text";
-  name: string;
-}
 
 export function snapshotTextNode(textNode: Node): TextSnapshot | null {
   if (textNode.textContent === null) {

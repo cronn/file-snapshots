@@ -1,16 +1,9 @@
+import type { LinkAttributes, LinkSnapshot } from "../types/elements/link";
+
 import { stringAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
-
-export interface LinkSnapshot extends GenericElementSnapshot<
-  "link",
-  LinkAttributes
-> {}
-
-export interface LinkAttributes {
-  url?: string;
-}
+import type { SnapshotTargetElement } from "./types";
 
 export function snapshotLink(element: SnapshotTargetElement): LinkSnapshot {
   return {

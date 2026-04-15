@@ -2,7 +2,7 @@ import type { Locator, Page } from "@playwright/test";
 import path from "node:path";
 import { packageDirectory } from "package-directory";
 
-import type { NodeSnapshot } from "../browser/types";
+import type { NodeSnapshot } from "../types/snapshot";
 
 export class ElementSnapshotProxy {
   private readonly page: Page;

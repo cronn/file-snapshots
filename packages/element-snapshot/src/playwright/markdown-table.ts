@@ -1,9 +1,8 @@
 import type { Locator } from "@playwright/test";
 import { markdownTable } from "markdown-table";
 
-import type { ColumnheaderSnapshot, SortType } from "../browser/table";
-import type { NodeRole, NodeSnapshot } from "../browser/types";
-import type { SnapshotByRole } from "../types/snapshot";
+import type { ColumnHeaderSnapshot, SortType } from "../types/elements/table";
+import type { NodeRole, NodeSnapshot, SnapshotByRole } from "../types/snapshot";
 import { filter, filterByRole } from "../utils/filter";
 import { includeRole } from "../utils/predicates";
 import { getTextContent } from "../utils/text";
@@ -87,7 +86,7 @@ function parseTable(
 }
 
 function getColumnHeaderText(
-  columnHeader: ColumnheaderSnapshot,
+  columnHeader: ColumnHeaderSnapshot,
   showSortIndicator: boolean,
 ): string {
   const headerText = getTextContent([columnHeader]);

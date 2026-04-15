@@ -1,13 +1,11 @@
+import type { InputRole } from "../types/elements/input";
+import type { ElementRole } from "../types/role";
+
 import { isContainerRole } from "./container";
 import { hasRoleSpecificSnapshot } from "./element";
-import type { InputRole } from "./input";
 import { resolveAccessibleName } from "./name";
 import { roleSelector, selectorList } from "./selector";
-import type {
-  ElementRole,
-  ElementTagName,
-  SnapshotTargetElement,
-} from "./types";
+import type { ElementTagName, SnapshotTargetElement } from "./types";
 import { getElementTagName, isWithinElement } from "./utils";
 
 type ElementRoleResolver<TRoles = ElementRole> =
@@ -17,65 +15,65 @@ type ElementRoleResolver<TRoles = ElementRole> =
 type ElementContextValidator = (element: SnapshotTargetElement) => boolean;
 
 const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
-  main: "main",
-  nav: "navigation",
-  form: "form",
-  header: "banner",
-  section: "region",
+  a: "link",
   article: "article",
   aside: "complementary",
-  search: "search",
+  button: "button",
+  dd: "definition",
+  dl: "descriptionlist",
+  dt: "term",
+  fieldset: "group",
   footer: "contentinfo",
-  p: "paragraph",
+  form: "form",
   h1: "heading",
   h2: "heading",
   h3: "heading",
   h4: "heading",
   h5: "heading",
   h6: "heading",
-  ul: "list",
-  ol: "list",
-  li: "listitem",
-  a: "link",
-  button: "button",
-  input: resolveInputRole,
-  textarea: "textbox",
-  select: "combobox",
-  option: "option",
-  dl: "descriptionlist",
-  dt: "term",
-  dd: "definition",
-  table: "table",
-  thead: "rowgroup",
-  tbody: "rowgroup",
-  tfoot: "rowgroup",
-  tr: "row",
-  th: resolveTableHeaderCellRole,
-  td: "cell",
-  fieldset: "group",
-  progress: "progressbar",
+  header: "banner",
   hr: "separator",
   img: "img",
+  input: resolveInputRole,
   label: "label",
   legend: "label",
+  li: "listitem",
+  main: "main",
+  nav: "navigation",
+  ol: "list",
+  option: "option",
+  p: "paragraph",
+  progress: "progressbar",
+  search: "search",
+  section: "region",
+  select: "combobox",
+  table: "table",
+  tbody: "rowgroup",
+  textarea: "textbox",
+  td: "cell",
+  tfoot: "rowgroup",
+  th: resolveTableHeaderCellRole,
+  thead: "rowgroup",
+  tr: "row",
+  ul: "list",
 };
 
 const CONTEXT_DEPENDENT_ROLES: Partial<
   Record<ElementRole, ElementContextValidator>
 > = {
   banner: isTopLevelBanner,
-  region: hasAccessibleName,
-  term: isWithinDescriptionList,
+  cell: isWithinTableRow,
+  columnheader: isWithinTableRowOrGridRow,
   definition: isWithinDescriptionList,
+  gridcell: isWithinGridRow,
   listitem: isWithinList,
   menuitem: isWithinMenu,
-  rowgroup: isWithinTableOrGrid,
+  region: hasAccessibleName,
   row: isWithinTableOrGrid,
-  columnheader: isWithinTableRowOrGridRow,
+  rowgroup: isWithinTableOrGrid,
   rowheader: isWithinTableRowOrGridRow,
-  cell: isWithinTableRow,
-  gridcell: isWithinGridRow,
   tab: isWithinTablist,
+  term: isWithinDescriptionList,
 };
 
 const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {

@@ -1,47 +1,14 @@
+import type {
+  ContainerRole,
+  ContainerSnapshot,
+} from "../types/elements/container";
+import { CONTAINER_ROLES } from "../types/elements/container";
+
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
-import type {
-  GenericElementSnapshot,
-  SetValues,
-  SnapshotTargetElement,
-} from "./types";
-
-const CONTAINER_ROLES = new Set([
-  "paragraph",
-  "list",
-  "listitem",
-  "listbox",
-  "article",
-  "banner",
-  "complementary",
-  "contentinfo",
-  "form",
-  "main",
-  "navigation",
-  "region",
-  "search",
-  "descriptionlist",
-  "term",
-  "definition",
-  "table",
-  "grid",
-  "rowgroup",
-  "row",
-  "rowheader",
-  "cell",
-  "gridcell",
-  "alert",
-  "menu",
-  "tablist",
-  "tabpanel",
-  "label",
-] as const);
+import type { SnapshotTargetElement } from "./types";
 
 const NAMEABLE_CONTAINER_ROLES = new Set(["label"]);
-
-export interface ContainerSnapshot extends GenericElementSnapshot<ContainerRole> {}
-
-export type ContainerRole = SetValues<typeof CONTAINER_ROLES>;
 
 export function snapshotContainer(
   role: ContainerRole,

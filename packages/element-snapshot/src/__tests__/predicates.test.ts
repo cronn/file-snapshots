@@ -1,11 +1,10 @@
 import { describe, expect, test } from "vitest";
 
-import type { ElementSnapshot } from "../browser/types";
 import { elementSnapshot } from "../utils/factories";
 import { excludeRole, includeRole } from "../utils/predicates";
 
 describe("includeRole", () => {
-  const paragraphSnapshot: ElementSnapshot = elementSnapshot({
+  const paragraphSnapshot = elementSnapshot({
     role: "paragraph",
   });
 
@@ -21,7 +20,7 @@ describe("includeRole", () => {
 });
 
 describe("excludeRole", () => {
-  const paragraphSnapshot: ElementSnapshot = elementSnapshot({
+  const paragraphSnapshot = elementSnapshot({
     role: "paragraph",
   });
 

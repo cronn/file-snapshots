@@ -1,10 +1,7 @@
-import type { ComboboxSnapshot } from "../browser/combobox";
-import type { TextSnapshot } from "../browser/text";
-import type {
-  ElementRole,
-  ElementSnapshot,
-  NodeSnapshot,
-} from "../browser/types";
+import type { ComboboxSnapshot } from "../types/elements/input";
+import type { TextSnapshot } from "../types/elements/text";
+import type { ElementRole } from "../types/role";
+import type { ElementSnapshot, NodeSnapshot } from "../types/snapshot";
 import type { FilterPredicate } from "../utils/filter";
 import { filter } from "../utils/filter";
 import { isEmpty, isTextSnapshot } from "../utils/guards";

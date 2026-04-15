@@ -1,9 +1,9 @@
+import type { NodeSnapshot } from "../types/snapshot";
 import { textSnapshot } from "../utils/factories";
 import { isTextSnapshot } from "../utils/guards";
 import { mergeTexts } from "../utils/text";
 
 import { snapshotNodeRecursive } from "./element";
-import type { NodeSnapshot } from "./types";
 
 export function snapshotChildren(
   node: Node,

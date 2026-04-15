@@ -1,19 +1,11 @@
+import type { TabSnapshot } from "../types/elements/tab";
+
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
-import type { DisableableAttributes, SelectableAttributes } from "./state";
 import { disableableAttributes, selectableAttributes } from "./state";
-import type { GenericElementSnapshot, SnapshotTargetElement } from "./types";
+import type { SnapshotTargetElement } from "./types";
 
-export interface TabSnapshot extends GenericElementSnapshot<
-  "tab",
-  TabAttributes
-> {}
-
-interface TabAttributes extends DisableableAttributes, SelectableAttributes {}
-
-export function snapshotTab(
-  element: SnapshotTargetElement,
-): TabSnapshot | null {
+export function snapshotTab(element: SnapshotTargetElement): TabSnapshot {
   return {
     role: "tab",
     name: resolveAccessibleName(element),
