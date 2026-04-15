@@ -1,4 +1,5 @@
 import type { TextSnapshot } from "../types/elements/text";
+import { textSnapshot } from "../utils/factories";
 import { getTextContent, normalizeText } from "../utils/text";
 
 import { snapshotChildren } from "./children";
@@ -13,10 +14,7 @@ export function snapshotTextNode(textNode: Node): TextSnapshot | null {
     return null;
   }
 
-  return {
-    role: "text",
-    name: normalizedText,
-  };
+  return textSnapshot(normalizedText);
 }
 
 export function snapshotPresentationalChildren(
@@ -30,12 +28,7 @@ export function snapshotPresentationalChildren(
     return [];
   }
 
-  return [
-    {
-      role: "text",
-      name: accessibleTextContent,
-    },
-  ];
+  return [textSnapshot(accessibleTextContent)];
 }
 
 export function resolveAccessibleTextContent(

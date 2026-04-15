@@ -2,6 +2,7 @@ import type {
   GroupSnapshot,
   RadioGroupSnapshot,
 } from "../types/elements/group";
+import { elementSnapshot } from "../utils/factories";
 
 import { snapshotChildren } from "./children";
 import { discribableAttributes } from "./description";
@@ -12,12 +13,11 @@ import type { SnapshotTargetElement } from "./types";
 export function snapshotGroup(
   element: SnapshotTargetElement,
 ): GroupSnapshot | null {
-  return {
+  return elementSnapshot({
     role: "group",
     name: resolveGroupName(element),
-    attributes: {},
     children: snapshotChildren(element),
-  };
+  });
 }
 
 function resolveGroupName(element: SnapshotTargetElement): string | undefined {

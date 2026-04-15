@@ -3,6 +3,7 @@ import type {
   ContainerSnapshot,
 } from "../types/elements/container";
 import { CONTAINER_ROLES } from "../types/elements/container";
+import { elementSnapshot } from "../utils/factories";
 
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
@@ -16,12 +17,11 @@ export function snapshotContainer(
 ): ContainerSnapshot {
   const children = snapshotChildren(element);
 
-  return {
+  return elementSnapshot({
     role,
     name: resolveAccessibleName(element, NAMEABLE_CONTAINER_ROLES.has(role)),
-    attributes: {},
     children,
-  };
+  });
 }
 
 export function isContainerRole(role: string): role is ContainerRole {

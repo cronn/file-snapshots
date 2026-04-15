@@ -2,6 +2,7 @@ import type {
   CommonInputAttributes,
   InputSnapshot,
 } from "../types/elements/input";
+import { elementSnapshot } from "../utils/factories";
 
 import { stringAttribute } from "./attribute";
 import { discribableAttributes } from "./description";
@@ -44,7 +45,7 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
 
   const value = resolveInputValue(element);
 
-  return {
+  return elementSnapshot({
     role: inputRole,
     name: resolveInputLabel(element),
     attributes: {
@@ -52,22 +53,20 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
       checked: resolveChecked(element),
       ...snapshotCommonInputAttributes(element, value === undefined),
     },
-    children: [],
-  };
+  });
 }
 
 function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
   const value = resolveInputValue(element);
 
-  return {
+  return elementSnapshot({
     role: "textbox",
     name: resolveInputLabel(element),
     attributes: {
       value,
       ...snapshotCommonInputAttributes(element, value === undefined),
     },
-    children: [],
-  };
+  });
 }
 
 export function snapshotCommonInputAttributes(
