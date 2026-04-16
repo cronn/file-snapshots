@@ -13,12 +13,7 @@ import type {
   VitestMatchValidationFileOptions,
   VitestValidationFileMatcherConfig,
 } from "./types";
-import {
-  parseTestName,
-  parseTestPath,
-  parseUpdateSnapshot,
-  readUpdateSnapshot,
-} from "./utils";
+import { parseSnapshotState, parseTestName, parseTestPath } from "./utils";
 
 interface MatchValidationFileParams<TValue> {
   received: TValue;
@@ -60,7 +55,7 @@ export function matchValidationFile<TValue>(
     titlePath: parseTestName(currentTestName),
     name,
   });
-  const updateSnapshots = parseUpdateSnapshot(readUpdateSnapshot());
+  const { updateSnapshots } = parseSnapshotState(matcherState.snapshotState);
   const matcherResult = new ValidationFileMatcher({
     validationDir,
     outputDir,

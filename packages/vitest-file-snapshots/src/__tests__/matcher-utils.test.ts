@@ -2,9 +2,10 @@ import path from "node:path";
 import { describe, expect, test } from "vitest";
 
 import {
+  parseSnapshotState,
+  parseSnapshotUpdateState,
   parseTestName,
   parseTestPath,
-  parseUpdateSnapshot,
 } from "../matchers/utils";
 
 describe("parseTestName", () => {
@@ -56,19 +57,23 @@ describe("parseTestPath", () => {
   });
 });
 
-describe("parseUpdateSnapshot", () => {
-  test.each(["all", "none"])(
+describe("parseSnapshotState", () => {
+  test("returns parsed snapshot state", () => {
+    expect(parseSnapshotState({ snapshotUpdateState: "new" })).toStrictEqual({
+      updateSnapshots: "missing",
+    });
+  });
+});
+
+describe("parseSnapshotUpdateState", () => {
+  test.each(["all", "none"] as const)(
     "when value is '%s', returns original value",
     (value) => {
-      expect(parseUpdateSnapshot(value)).toBe(value);
+      expect(parseSnapshotUpdateState(value)).toBe(value);
     },
   );
 
   test("when value is 'new', returns 'missing'", () => {
-    expect(parseUpdateSnapshot("new")).toBe("missing");
-  });
-
-  test("when value is unknown, returns 'missing'", () => {
-    expect(parseUpdateSnapshot("value")).toBe("missing");
+    expect(parseSnapshotUpdateState("new")).toBe("missing");
   });
 });

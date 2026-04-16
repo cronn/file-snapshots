@@ -1,5 +1,6 @@
 import path from "node:path";
-import { expect } from "vitest";
+import type { SnapshotUpdateState } from "vitest";
+import { type MatcherState } from "vitest";
 
 import type { UpdateSnapshotsType } from "@cronn/lib-file-snapshots";
 
@@ -20,20 +21,26 @@ export function parseTestPath(testPath: string, testDir: string): string {
     .replace(TEST_EXTENSION_REGEXP, "");
 }
 
-export function readUpdateSnapshot(): unknown {
-  const snapshotState = expect.getState().snapshotState as object;
-
-  if ("_updateSnapshot" in snapshotState) {
-    return snapshotState._updateSnapshot;
-  }
-
-  return undefined;
+export interface ParsedMatcherState {
+  updateSnapshots: UpdateSnapshotsType;
 }
 
-export function parseUpdateSnapshot(
-  updateSnapshot: unknown,
+type SnapshotState = Pick<MatcherState["snapshotState"], "snapshotUpdateState">;
+
+export function parseSnapshotState(
+  snapshotState: SnapshotState,
+): ParsedMatcherState {
+  return {
+    updateSnapshots: parseSnapshotUpdateState(
+      snapshotState.snapshotUpdateState,
+    ),
+  };
+}
+
+export function parseSnapshotUpdateState(
+  snapshotUpdateState: SnapshotUpdateState,
 ): UpdateSnapshotsType {
-  switch (updateSnapshot) {
+  switch (snapshotUpdateState) {
     case "all":
       return "all";
     case "none":
