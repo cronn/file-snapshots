@@ -30,7 +30,8 @@
   "scripts": {
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "compile": "tsgo"
+    "compile": "tsgo",
+    "clean": "rimraf .turbo"
   },
   "type": "module",
   "exports": {
@@ -48,6 +49,7 @@
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
+    "rimraf": "catalog:",
     "typescript-eslint": "catalog:"
   }
 }

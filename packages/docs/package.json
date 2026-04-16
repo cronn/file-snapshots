@@ -32,7 +32,8 @@
     "compile": "tsgo",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:preview": "vitepress preview",
+    "clean": "rimraf .turbo .vitepress/cache .vitepress/dist"
   },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",
@@ -43,6 +44,7 @@
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
+    "rimraf": "catalog:",
     "typescript-eslint": "catalog:",
     "vitepress": "catalog:"
   }

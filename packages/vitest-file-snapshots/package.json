@@ -42,7 +42,8 @@
     "test:update-none": "vitest run --tags-filter=update-none --update none",
     "test:coverage": "vitest run --tags-filter=!update-* --coverage",
     "compile": "tsgo",
-    "build": "tsdown && node scripts/fix-declaration-file.ts"
+    "build": "tsdown && node scripts/fix-declaration-file.ts",
+    "clean": "rimraf .turbo dist coverage"
   },
   "type": "module",
   "exports": {
@@ -73,6 +74,7 @@
     "package-directory": "catalog:",
     "prettier": "catalog:",
     "publint": "catalog:",
+    "rimraf": "catalog:",
     "tsdown": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"

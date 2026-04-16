@@ -36,6 +36,9 @@
       "outputs": ["dist/**"],
       "outputLogs": "new-only"
     },
+    "clean": {
+      "outputLogs": "new-only"
+    },
     "ci": {
       "dependsOn": ["^ci", "check", "build"]
     }

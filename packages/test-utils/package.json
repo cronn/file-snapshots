@@ -31,7 +31,8 @@
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "compile": "tsgo",
-    "build": "tsdown"
+    "build": "tsdown",
+    "clean": "rimraf .turbo dist"
   },
   "type": "module",
   "exports": {
@@ -52,6 +53,7 @@
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
     "publint": "catalog:",
+    "rimraf": "catalog:",
     "tsdown": "catalog:",
     "typescript-eslint": "catalog:"
   }
