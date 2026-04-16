@@ -33,6 +33,7 @@ This monorepo uses [Turborepo](https://turborepo.com/) as build system.
 | `pnpm turbo fix`   | Applies automatic fixes, including linting and formatting                         |
 | `pnpm turbo build` | Runs the build                                                                    |
 | `pnpm turbo ci`    | Runs all tasks required for CI, including checks and builds                       |
+| `pnpm turbo clean` | Removes all build outputs and caches                                              |
 
 To run tasks for a specific package only, use [filters](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
 

@@ -37,7 +37,8 @@
     "test:integration": "playwright test",
     "playwright:install": "playwright install chromium",
     "compile": "tsgo",
-    "build": "tsdown"
+    "build": "tsdown",
+    "clean": "rimraf .turbo dist playwright-report test-results coverage"
   },
   "type": "module",
   "exports": {
@@ -69,6 +70,7 @@
     "eslint-plugin-unused-imports": "catalog:",
     "prettier": "catalog:",
     "publint": "catalog:",
+    "rimraf": "catalog:",
     "tsdown": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"

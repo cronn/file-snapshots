@@ -32,7 +32,8 @@
     "format:fix": "prettier . --write --list-different",
     "prepublishOnly": "pnpm turbo run ci",
     "version": "pnpm changeset version && pnpm turbo run format:fix",
-    "release": "pnpm turbo run build && pnpm changeset publish"
+    "release": "pnpm turbo run build && pnpm changeset publish",
+    "clean": "rimraf .turbo"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
@@ -40,6 +41,7 @@
     "@pnpm/meta-updater": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
     "prettier": "catalog:",
+    "rimraf": "catalog:",
     "turbo": "catalog:"
   }
 }

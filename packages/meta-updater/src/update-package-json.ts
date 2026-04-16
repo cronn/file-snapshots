@@ -72,6 +72,8 @@ interface PackageContext {
   needsEslint: boolean;
   needsTsdown: boolean;
   needsTypeScript: boolean;
+  needsPlaywright: boolean;
+  needsVitest: boolean;
 }
 
 function resolvePackageContext(
@@ -91,6 +93,10 @@ function resolvePackageContext(
     needsEslint: fs.existsSync(path.resolve(absoluteDir, "eslint.config.ts")),
     needsTsdown: fs.existsSync(path.resolve(absoluteDir, "tsdown.config.ts")),
     needsTypeScript: fs.existsSync(path.resolve(absoluteDir, "tsconfig.json")),
+    needsPlaywright: fs.existsSync(
+      path.resolve(absoluteDir, "playwright.config.ts"),
+    ),
+    needsVitest: fs.existsSync(path.resolve(absoluteDir, "vitest.config.ts")),
   };
 }
 
@@ -113,6 +119,7 @@ function updateScripts(scripts: Scripts, context: PackageContext): Scripts {
     ),
     ...when(context.needsTypeScript, defineCompileScript()),
     ...when(context.needsTsdown, updateBuildScript(scripts)),
+    ...updateCleanScript(scripts, context),
   };
 }
 
@@ -148,6 +155,29 @@ function updateBuildScript(scripts: Scripts): Scripts | undefined {
   return updateScript("build", "tsdown", scripts);
 }
 
+function updateCleanScript(
+  scripts: Scripts,
+  context: PackageContext,
+): Scripts | undefined {
+  const outputDirs = [".turbo"];
+
+  if (context.needsTsdown) {
+    outputDirs.push("dist");
+  }
+
+  if (context.needsPlaywright) {
+    outputDirs.push("playwright-report", "test-results");
+  }
+
+  if (context.needsVitest) {
+    outputDirs.push("coverage");
+  }
+
+  const collectedOutputDirs = outputDirs.join(" ");
+
+  return updateScript("clean", `rimraf ${collectedOutputDirs}`, scripts);
+}
+
 function updateScript(
   name: string,
   defaultValue: string,
@@ -178,6 +208,7 @@ function updateDevDependencies(
       "eslint-plugin-unused-imports": "catalog:",
     }),
     prettier: "catalog:",
+    rimraf: "catalog:",
     ...when(context.needsTsdown, { publint: "catalog:", tsdown: "catalog:" }),
     ...when(context.needsEslint, { "typescript-eslint": "catalog:" }),
   };
