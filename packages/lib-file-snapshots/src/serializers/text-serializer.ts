@@ -1,7 +1,7 @@
 import type { SnapshotSerializer } from "../types/serializer";
 import { addTrailingNewLine } from "../utils/file";
 
-export interface TextSerializerOptions {
+interface TextSerializerOptions {
   /**
    * Custom normalizers to apply before serialization
    */

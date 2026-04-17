@@ -5,7 +5,7 @@ import { setupSnapshotTest } from "@cronn/test-utils/playwright";
 
 import { snapshotAria } from "../snapshot";
 
-export const expect = defineValidationFileExpect();
+const expect = defineValidationFileExpect();
 
 export async function matchAriaSnapshot(
   page: Page,
