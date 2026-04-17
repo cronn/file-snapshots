@@ -1,5 +1,23 @@
 # @cronn/element-snapshot
 
+## 0.17.0
+
+### Minor Changes
+
+- adc4dd0: Support `disabled` attribute on elements with role `option`
+- 1b0d800: Fix: Semantic snapshot for `combobox` is missing included options when combobox has no attributes
+- bf2874c: Always include `placeholder` attribute in input snapshots
+
+### Patch Changes
+
+- 551fb44: Export `SemanticSnapshotOptions` interface
+- 1c2c517: Use `MarkdownTableSerializer` from lib-file-snapshots
+- dc4ed4e: Rename `RadiogroupSnapshot` to `RadioGroupSnapshot`
+- dc4ed4e: Rename `ColumnheaderSnapshot` to `ColumnHeaderSnapshot`
+- Updated dependencies [022cf3b]
+- Updated dependencies [6da034e]
+  - @cronn/lib-file-snapshots@1.1.0
+
 ## 0.16.0
 
 ### Minor Changes

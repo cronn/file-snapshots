@@ -1,5 +1,12 @@
 # @cronn/lib-file-snapshots
 
+## 1.1.0
+
+### Minor Changes
+
+- 022cf3b: Enable strict typing of serializer input value
+- 6da034e: Add `MarkdownTableSerializer` for tabular data
+
 ## 1.0.1
 
 ### Patch Changes
