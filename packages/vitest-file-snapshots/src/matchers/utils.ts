@@ -21,7 +21,7 @@ export function parseTestPath(testPath: string, testDir: string): string {
     .replace(TEST_EXTENSION_REGEXP, "");
 }
 
-export interface ParsedMatcherState {
+interface ParsedMatcherState {
   updateSnapshots: UpdateSnapshotsType;
 }
 
