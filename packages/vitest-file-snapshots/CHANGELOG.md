@@ -1,5 +1,18 @@
 # @cronn/vitest-file-snapshots
 
+## 1.1.0
+
+### Minor Changes
+
+- 6da034e: Add `toMatchMarkdownTableFile` matcher for tabular data
+- 57b5106: Read snapshot update state from public API (requires Vitest v4.1.4 or higher)
+
+### Patch Changes
+
+- Updated dependencies [022cf3b]
+- Updated dependencies [6da034e]
+  - @cronn/lib-file-snapshots@1.1.0
+
 ## 1.0.2
 
 ### Patch Changes
