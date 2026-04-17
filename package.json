@@ -30,6 +30,8 @@
     "config:fix": "meta-updater",
     "format:check": "prettier . --check",
     "format:fix": "prettier . --write --list-different",
+    "knip:check": "knip",
+    "knip:fix": "knip --fix",
     "prepublishOnly": "pnpm turbo run ci",
     "version": "pnpm changeset version && pnpm turbo run format:fix",
     "release": "pnpm turbo run build && pnpm changeset publish",
@@ -40,6 +42,7 @@
     "@cronn/meta-updater": "workspace:*",
     "@pnpm/meta-updater": "catalog:",
     "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "knip": "catalog:",
     "prettier": "catalog:",
     "rimraf": "catalog:",
     "turbo": "catalog:"

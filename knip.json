@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/knip@6.3.1/schema.json",
+  "workspaces": {
+    ".": {
+      "entry": [".meta-updater/main.mjs"]
+    }
+  },
+  "ignoreDependencies": [
+    "@trivago/prettier-plugin-sort-imports",
+    "eslint-config-prettier",
+    "eslint-plugin-check-file",
+    "eslint-plugin-unused-imports",
+    "prettier",
+    "typescript-eslint"
+  ]
+}

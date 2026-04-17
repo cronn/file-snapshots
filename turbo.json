@@ -5,15 +5,17 @@
     "//#config:fix": { "outputLogs": "new-only" },
     "//#format:check": { "outputLogs": "new-only" },
     "//#format:fix": {
-      "dependsOn": ["^lint:fix"],
+      "dependsOn": ["//#knip:fix", "^lint:fix"],
       "outputLogs": "new-only"
     },
+    "//#knip:check": { "outputLogs": "new-only" },
+    "//#knip:fix": { "outputLogs": "new-only" },
     "lint:check": {
       "dependsOn": ["compile"],
       "outputLogs": "new-only"
     },
     "lint:fix": {
-      "dependsOn": ["compile"],
+      "dependsOn": ["//#knip:fix", "compile"],
       "outputLogs": "new-only"
     },
     "compile": {
@@ -25,11 +27,12 @@
         "compile",
         "lint:check",
         "//#format:check",
-        "//#config:check"
+        "//#config:check",
+        "//#knip:check"
       ]
     },
     "fix": {
-      "dependsOn": ["lint:fix", "//#format:fix", "//#config:fix"]
+      "dependsOn": ["lint:fix", "//#format:fix", "//#config:fix", "//#knip:fix"]
     },
     "build": {
       "dependsOn": ["^build", "compile"],
