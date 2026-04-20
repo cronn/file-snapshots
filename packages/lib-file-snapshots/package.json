@@ -52,6 +52,9 @@
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "markdown-table": "catalog:"
+  },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
@@ -63,7 +66,6 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "markdown-table": "catalog:",
     "prettier": "catalog:",
     "publint": "catalog:",
     "rimraf": "catalog:",
