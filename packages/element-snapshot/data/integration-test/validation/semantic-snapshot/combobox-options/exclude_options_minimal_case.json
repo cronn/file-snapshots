@@ -1,8 +1,6 @@
 [
   {
-    "combobox": {
-      "name": "Combobox"
-    }
+    "combobox": "Combobox"
   },
   {
     "listbox": [
