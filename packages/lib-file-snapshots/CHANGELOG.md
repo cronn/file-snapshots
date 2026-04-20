@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 1.1.1
+
+### Patch Changes
+
+- d97e811: Fix: Move `markdown-table` from `devDependencies` to `dependencies`
+
 ## 1.1.0
 
 ### Minor Changes
