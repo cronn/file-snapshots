@@ -1,4 +1,3 @@
-import type { ComboboxSnapshot } from "../types/elements/input";
 import type { TextSnapshot } from "../types/elements/text";
 import type { ElementRole } from "../types/role";
 import type { ElementSnapshot, NodeSnapshot } from "../types/snapshot";
@@ -92,10 +91,6 @@ export class SemanticSnapshotTransformer {
       );
     }
 
-    if (snapshot.role === "combobox") {
-      return this.simplifyComboboxSnapshot(snapshot);
-    }
-
     const { role, name, attributes, children } = normalizedSnapshot;
     return this.transformedSnapshot(role, {
       name: name.length === 0 ? undefined : name,
@@ -106,13 +101,9 @@ export class SemanticSnapshotTransformer {
 
   private normalizeElementSnapshot(
     snapshot: ElementSnapshot,
-    excludeAttributes: Array<string> = [],
   ): NormalizedElementSnapshot {
     const normalizedName = snapshot.name ?? "";
-    const filteredAttributes = this.filterAttributes(
-      snapshot.attributes as Record<string, unknown>,
-      excludeAttributes,
-    );
+    const transformedAttributes = this.transformAttributes(snapshot);
     const transformedChildren = this.transformSnapshots(snapshot.children);
     const nameEqualsChildren =
       transformedChildren.length === 1 &&
@@ -121,27 +112,9 @@ export class SemanticSnapshotTransformer {
     return {
       role: snapshot.role,
       name: normalizedName,
-      attributes: filteredAttributes,
+      attributes: transformedAttributes,
       children: nameEqualsChildren ? [] : transformedChildren,
     };
-  }
-
-  private simplifyComboboxSnapshot(snapshot: ComboboxSnapshot): unknown {
-    const { role, name, attributes } = this.normalizeElementSnapshot(snapshot, [
-      "options",
-    ]);
-    const transformedOptions = snapshot.attributes.options.map(
-      (optionSnapshot) => this.simplifyElementSnapshot(optionSnapshot),
-    );
-
-    return this.transformedSnapshot(role, {
-      name,
-      ...attributes,
-      options:
-        this.includeComboboxOptions && transformedOptions.length > 0
-          ? transformedOptions
-          : undefined,
-    });
   }
 
   private isEmpty(snapshot: NormalizedElementSnapshot): boolean {
@@ -168,21 +141,48 @@ export class SemanticSnapshotTransformer {
     );
   }
 
-  private filterAttributes(
-    attributes: Record<string, unknown>,
-    exclude: Array<string>,
+  private transformAttributes(
+    snapshot: ElementSnapshot,
   ): Record<string, unknown> {
+    const { attributes } = snapshot;
     const filteredAttributes: Record<string, unknown> = {};
+    const attributeNames = Object.keys(attributes) as Array<
+      keyof typeof attributes
+    >;
 
-    Object.entries(attributes).forEach(([key, value]) => {
-      if (value === undefined && !exclude.includes(key)) {
+    attributeNames.forEach((attributeName) => {
+      const transformedAttribute = this.transformAttribute(
+        attributeName,
+        snapshot,
+      );
+
+      if (transformedAttribute === undefined) {
         return;
       }
 
-      filteredAttributes[key] = value;
+      filteredAttributes[attributeName] = transformedAttribute;
     });
 
     return filteredAttributes;
+  }
+
+  private transformAttribute(
+    name: keyof ElementSnapshot["attributes"],
+    snapshot: ElementSnapshot,
+  ): unknown {
+    const { role, attributes } = snapshot;
+
+    if (role === "combobox" && name === "options") {
+      const transformedOptions = attributes.options.map((optionSnapshot) =>
+        this.simplifyElementSnapshot(optionSnapshot),
+      );
+
+      return this.includeComboboxOptions && transformedOptions.length > 0
+        ? transformedOptions
+        : undefined;
+    }
+
+    return attributes[name];
   }
 
   private transformedSnapshot(role: ElementRole, content: unknown): unknown {

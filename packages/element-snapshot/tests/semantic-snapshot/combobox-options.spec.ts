@@ -65,6 +65,27 @@ test("excludes empty options", async ({ page }) => {
   await matchSnapshot({ includeComboboxOptions: true });
 });
 
+test("exclude options minimal case", async ({ page }) => {
+  const matchSnapshot = await setupSemanticSnapshotTest(
+    page,
+    html`
+      <input
+        type="text"
+        role="combobox"
+        aria-label="Combobox"
+        aria-controls="options"
+        aria-expanded="false"
+      />
+      <ul id="options" role="listbox">
+        <li role="option" aria-selected="true">Option 1</li>
+        <li role="option" aria-selected="false">Option 2</li>
+      </ul>
+    `,
+  );
+
+  await matchSnapshot();
+});
+
 test("include options minimal case", async ({ page }) => {
   const matchSnapshot = await setupSemanticSnapshotTest(
     page,
