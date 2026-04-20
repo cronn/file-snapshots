@@ -289,6 +289,10 @@ importers:
         version: 4.1.4(@types/node@24.12.2)(@vitest/coverage-v8@4.1.4)(vite@8.0.4)
 
   packages/lib-file-snapshots:
+    dependencies:
+      markdown-table:
+        specifier: 'catalog:'
+        version: 3.0.4
     devDependencies:
       '@arethetypeswrong/core':
         specifier: 'catalog:'
@@ -320,9 +324,6 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.58.1)(eslint@10.2.0)
-      markdown-table:
-        specifier: 'catalog:'
-        version: 3.0.4
       prettier:
         specifier: 'catalog:'
         version: 3.8.2
