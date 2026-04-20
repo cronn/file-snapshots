@@ -1,5 +1,16 @@
 # @cronn/element-snapshot
 
+## 0.18.0
+
+### Minor Changes
+
+- 2bc684c: Fix: Semantic snapshot does not simplify `combobox` with just name
+
+### Patch Changes
+
+- Updated dependencies [d97e811]
+  - @cronn/lib-file-snapshots@1.1.1
+
 ## 0.17.0
 
 ### Minor Changes
