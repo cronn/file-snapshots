@@ -1,5 +1,11 @@
 # @cronn/vitest-file-snapshots
 
+## 1.1.2
+
+### Patch Changes
+
+- 046a868: Fix: Add missing main entrypoint export to `package.json`
+
 ## 1.1.1
 
 ### Patch Changes
