@@ -40,3 +40,23 @@ To run tasks for a specific package only, use [filters](https://turborepo.com/do
 ```shell
 pnpm turbo --filter=@cronn/playwright-file-snapshots check
 ```
+
+### Testing packages locally
+
+Using `pnpm link`, you can test a local package in another local project.
+
+**Make local package accessible system-wide (e.g. `@cronn/playwright-file-snapshots`)**
+
+```sh
+pnpm link packages/playwright-file-snapshots
+```
+
+**Link local package from another project**
+
+```sh
+cd path/to/project
+pnpm link @cronn/playwright-file-snapshots
+```
+
+This replaces the package in `node_modules` with the local version.
+
