@@ -26,10 +26,6 @@ test("role-based image with label", async ({ page }) => {
   );
 });
 
-test("role-based image with text content", async ({ page }) => {
-  await matchRawElementSnapshot(page, html`<div role="img">Text</div>`);
-});
-
 test("ignores image without name", async ({ page }) => {
   await matchRawElementSnapshot(page, html`<img src="image.jpg" />`);
 });

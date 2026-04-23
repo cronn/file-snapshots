@@ -24,6 +24,7 @@
               },
               {
                 "role": "rowheader",
+                "name": "Row Header",
                 "attributes": {},
                 "children": [
                   {

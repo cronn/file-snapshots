@@ -5,7 +5,6 @@
     "children": [
       {
         "role": "label",
-        "name": "First Name",
         "attributes": {},
         "children": [
           {
@@ -22,7 +21,6 @@
       },
       {
         "role": "label",
-        "name": "Last Name",
         "attributes": {},
         "children": [
           {

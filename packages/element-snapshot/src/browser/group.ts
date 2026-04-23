@@ -7,7 +7,6 @@ import { elementSnapshot } from "../utils/factories";
 import { snapshotChildren } from "./children";
 import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
-import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
 export function snapshotGroup(
@@ -15,21 +14,9 @@ export function snapshotGroup(
 ): GroupSnapshot | null {
   return elementSnapshot({
     role: "group",
-    name: resolveGroupName(element),
+    name: resolveAccessibleName(element),
     children: snapshotChildren(element),
   });
-}
-
-function resolveGroupName(element: SnapshotTargetElement): string | undefined {
-  const legendElement =
-    element instanceof HTMLFieldSetElement
-      ? element.querySelector("legend")
-      : null;
-  if (legendElement !== null) {
-    return resolveAccessibleTextContent(legendElement);
-  }
-
-  return resolveAccessibleName(element, false);
 }
 
 export function snapshotRadioGroup(
@@ -37,7 +24,7 @@ export function snapshotRadioGroup(
 ): RadioGroupSnapshot {
   return {
     role: "radiogroup",
-    name: resolveAccessibleName(element, false),
+    name: resolveAccessibleName(element),
     attributes: discribableAttributes(element),
     children: snapshotChildren(element),
   };

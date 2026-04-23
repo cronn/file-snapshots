@@ -7,10 +7,14 @@ import {
 } from "@cronn/lib-file-snapshots";
 
 import type { ColumnHeaderSnapshot, SortType } from "../types/elements/table";
-import type { NodeRole, NodeSnapshot, SnapshotByRole } from "../types/snapshot";
+import type {
+  ElementSnapshot,
+  NodeRole,
+  NodeSnapshot,
+  SnapshotByRole,
+} from "../types/snapshot";
 import { filter, filterByRole } from "../utils/filter";
 import { includeRole } from "../utils/predicates";
-import { getTextContent } from "../utils/text";
 
 import { rawSnapshot } from "./snapshot";
 
@@ -87,7 +91,7 @@ function getColumnHeaderText(
   columnHeader: ColumnHeaderSnapshot,
   showSortIndicator: boolean,
 ): string {
-  const headerText = getTextContent([columnHeader]);
+  const headerText = getNameOrDefault(columnHeader);
   const sortType = columnHeader.attributes.sort;
 
   if (!showSortIndicator || sortType === undefined) {
@@ -102,5 +106,9 @@ function getCellTexts(row: SnapshotByRole<"row">): TableRow {
   return filter({
     predicate: includeRole(cellRoles),
     snapshots: row.children,
-  }).map((cell) => getTextContent(cell.children));
+  }).map(getNameOrDefault);
+}
+
+function getNameOrDefault(snapshot: ElementSnapshot): string {
+  return snapshot.name ?? "";
 }

@@ -1,4 +1,4 @@
-import type { InputRole } from "../types/elements/input";
+import type { CommonInputRole, InputRole } from "../types/elements/input";
 import type { ElementRole } from "../types/role";
 
 import { isContainerRole } from "./container";
@@ -12,7 +12,10 @@ type ElementRoleResolver<TRoles = ElementRole> =
   | TRoles
   | ((element: SnapshotTargetElement) => TRoles | undefined);
 
-type ElementContextValidator = (element: SnapshotTargetElement) => boolean;
+type ElementContextValidator = (
+  element: SnapshotTargetElement,
+  role: ElementRole,
+) => boolean;
 
 const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   a: "link",
@@ -76,7 +79,10 @@ const CONTEXT_DEPENDENT_ROLES: Partial<
   term: isWithinDescriptionList,
 };
 
-const INPUT_ROLES: Record<string, ElementRoleResolver<InputRole | "button">> = {
+const INPUT_ROLES: Record<
+  string,
+  ElementRoleResolver<CommonInputRole | "button">
+> = {
   button: "button",
   checkbox: "checkbox",
   email: "textbox",
@@ -101,7 +107,10 @@ export function parseElementRole(
   }
 
   const isValidInContext = CONTEXT_DEPENDENT_ROLES[resolvedElementRole];
-  if (isValidInContext !== undefined && !isValidInContext(element)) {
+  if (
+    isValidInContext !== undefined &&
+    !isValidInContext(element, resolvedElementRole)
+  ) {
     return undefined;
   }
 
@@ -183,8 +192,11 @@ function isTopLevelBanner(element: SnapshotTargetElement): boolean {
   return !isWithinElement(element, disallowedContainerSelector);
 }
 
-function hasAccessibleName(element: SnapshotTargetElement): boolean {
-  const accessibleName = resolveAccessibleName(element, false);
+function hasAccessibleName(
+  element: SnapshotTargetElement,
+  role: ElementRole,
+): boolean {
+  const accessibleName = resolveAccessibleName(element, role);
   return accessibleName !== undefined;
 }
 

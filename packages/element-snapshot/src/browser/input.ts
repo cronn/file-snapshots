@@ -9,7 +9,6 @@ import { discribableAttributes } from "./description";
 import { resolveAccessibleName } from "./name";
 import { resolveInputRole } from "./role";
 import { inputStateAttributes } from "./state";
-import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
 type InputElement =
@@ -45,7 +44,7 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
 
   return elementSnapshot({
     role: inputRole,
-    name: resolveInputLabel(element),
+    name: resolveAccessibleName(element),
     attributes: {
       value: resolveInputValue(element),
       checked: resolveChecked(element),
@@ -57,7 +56,7 @@ function snapshotInputElement(element: HTMLInputElement): InputSnapshot | null {
 function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
   return elementSnapshot({
     role: "textbox",
-    name: resolveInputLabel(element),
+    name: resolveAccessibleName(element),
     attributes: {
       value: resolveInputValue(element),
       ...snapshotCommonInputAttributes(element),
@@ -98,31 +97,6 @@ function resolveChecked(
   }
 
   return element.checked ? true : undefined;
-}
-
-export function resolveInputLabel(
-  element: SnapshotTargetElement,
-): string | undefined {
-  const accessibleName = resolveAccessibleName(element, false);
-  if (accessibleName !== undefined) {
-    return accessibleName;
-  }
-
-  if (element.id !== null) {
-    const referencedElement = element.ownerDocument.querySelector(
-      `[for='${element.id}']`,
-    );
-    if (referencedElement !== null) {
-      return resolveAccessibleTextContent(referencedElement);
-    }
-  }
-
-  const closestLabel = element.closest("label");
-  if (closestLabel !== null) {
-    return resolveAccessibleTextContent(closestLabel, [element]);
-  }
-
-  return undefined;
 }
 
 function resolvePlaceholder(element: InputElement): string | undefined {

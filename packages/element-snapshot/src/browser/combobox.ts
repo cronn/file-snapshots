@@ -3,11 +3,7 @@ import { filterByRole } from "../utils/filter";
 
 import { resolveElementReference } from "./attribute";
 import { snapshotChildren } from "./children";
-import {
-  resolveInputLabel,
-  resolveInputValue,
-  snapshotCommonInputAttributes,
-} from "./input";
+import { resolveInputValue, snapshotCommonInputAttributes } from "./input";
 import { resolveAccessibleName } from "./name";
 import { disableableAttributes, selectableAttributes } from "./state";
 import { resolveAccessibleTextContent } from "./text";
@@ -26,7 +22,7 @@ export function snapshotCombobox(
 
   return {
     role: "combobox",
-    name: resolveInputLabel(element),
+    name: resolveAccessibleName(element),
     attributes: {
       value: resolveValue(element),
       ...snapshotCommonInputAttributes(element),

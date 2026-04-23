@@ -1,7 +1,6 @@
 [
   {
     "role": "label",
-    "name": "Checked",
     "attributes": {},
     "children": [
       {
@@ -20,7 +19,6 @@
   },
   {
     "role": "label",
-    "name": "Unchecked",
     "attributes": {},
     "children": [
       {
