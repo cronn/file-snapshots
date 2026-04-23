@@ -59,4 +59,3 @@ pnpm link @cronn/playwright-file-snapshots
 ```
 
 This replaces the package in `node_modules` with the local version.
-
