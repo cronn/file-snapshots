@@ -2,19 +2,18 @@
   "$schema": "https://turborepo.com/schema.json",
   "extends": ["//"],
   "tasks": {
-    "docs:dev": {
+    "dev": {
       "persistent": true,
       "dependsOn": ["compile"],
       "outputs": [".vitepress/cache/**"],
       "outputLogs": "new-only"
     },
-    "docs:build": {
-      "dependsOn": ["compile"],
-      "outputs": [".vitepress/dist/**"],
-      "outputLogs": "new-only"
+    "build": {
+      "outputs": [".vitepress/dist/**"]
     },
-    "docs:preview": {
-      "dependsOn": ["docs:build"],
+    "preview": {
+      "persistent": true,
+      "dependsOn": ["build"],
       "outputLogs": "new-only"
     }
   }

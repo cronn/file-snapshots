@@ -6,8 +6,8 @@ Published at [cronn.github.io/file-snapshots](https://cronn.github.io/file-snaps
 
 ## Common Tasks
 
-| Command                   | Description              |
-| ------------------------- | ------------------------ |
-| `pnpm turbo docs:dev`     | Start development server |
-| `pnpm turbo docs:build`   | Build for production     |
-| `pnpm turbo docs:preview` | Preview production build |
+| Command              | Description              |
+| -------------------- | ------------------------ |
+| `pnpm turbo dev`     | Start development server |
+| `pnpm turbo build`   | Build for production     |
+| `pnpm turbo preview` | Preview production build |
