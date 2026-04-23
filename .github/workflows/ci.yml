@@ -12,10 +12,7 @@ env:
 jobs:
   check:
     name: Run CI checks
-    strategy:
-      matrix:
-        os: [ubuntu-24.04, windows-2025]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
@@ -39,20 +36,20 @@ jobs:
       - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
-          name: vitest-reports-${{ matrix.os }}
+          name: vitest-reports-ubuntu
           path: packages/*/coverage/
           retention-days: 3
 
       - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
-          name: playwright-reports-${{ matrix.os }}
+          name: playwright-reports-ubuntu
           path: packages/*/playwright-report/
           retention-days: 3
 
-  build-docs:
-    name: Build documentation
-    runs-on: ubuntu-24.04
+  test-windows:
+    name: Run tests on Windows
+    runs-on: windows-2025
 
     steps:
       - name: Checkout repository
@@ -70,5 +67,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run docs:build
-        run: pnpm turbo docs:build
+      - name: Run tests
+        run: pnpm turbo run test
+
+      - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: vitest-reports-windows
+          path: packages/*/coverage/
+          retention-days: 3
+
+      - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-reports-windows
+          path: packages/*/playwright-report/
+          retention-days: 3
