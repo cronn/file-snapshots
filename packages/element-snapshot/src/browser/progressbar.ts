@@ -10,7 +10,7 @@ export function snapshotProgressbar(
 ): ProgressbarSnapshot {
   return {
     role: "progressbar",
-    name: resolveAccessibleName(element, false),
+    name: resolveAccessibleName(element),
     attributes: {
       value: resolveValue(element),
     },

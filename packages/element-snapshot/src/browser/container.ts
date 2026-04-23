@@ -9,8 +9,6 @@ import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import type { SnapshotTargetElement } from "./types";
 
-const NAMEABLE_CONTAINER_ROLES = new Set(["label"]);
-
 export function snapshotContainer(
   role: ContainerRole,
   element: SnapshotTargetElement,
@@ -19,7 +17,7 @@ export function snapshotContainer(
 
   return elementSnapshot({
     role,
-    name: resolveAccessibleName(element, NAMEABLE_CONTAINER_ROLES.has(role)),
+    name: resolveAccessibleName(element),
     children,
   });
 }

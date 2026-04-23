@@ -6,7 +6,6 @@
     "children": [
       {
         "role": "label",
-        "name": "Legend",
         "attributes": {},
         "children": [
           {
@@ -17,7 +16,6 @@
       },
       {
         "role": "label",
-        "name": "First Name",
         "attributes": {},
         "children": [
           {
@@ -34,7 +32,6 @@
       },
       {
         "role": "label",
-        "name": "Last Name",
         "attributes": {},
         "children": [
           {

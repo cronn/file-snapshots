@@ -1,7 +1,6 @@
 [
   {
     "role": "label",
-    "name": "Number Input",
     "attributes": {},
     "children": [
       {

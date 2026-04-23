@@ -41,6 +41,7 @@
             "children": [
               {
                 "role": "rowheader",
+                "name": "Row Header 1",
                 "attributes": {},
                 "children": [
                   {
@@ -51,6 +52,7 @@
               },
               {
                 "role": "gridcell",
+                "name": "Grid Cell 1",
                 "attributes": {},
                 "children": [
                   {
@@ -67,6 +69,7 @@
             "children": [
               {
                 "role": "rowheader",
+                "name": "Row Header 2",
                 "attributes": {},
                 "children": [
                   {
@@ -77,6 +80,7 @@
               },
               {
                 "role": "gridcell",
+                "name": "Grid Cell 2",
                 "attributes": {},
                 "children": [
                   {

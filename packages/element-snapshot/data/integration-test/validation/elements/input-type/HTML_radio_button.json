@@ -1,7 +1,6 @@
 [
   {
     "role": "label",
-    "name": "Yes",
     "attributes": {},
     "children": [
       {
@@ -20,7 +19,6 @@
   },
   {
     "role": "label",
-    "name": "No",
     "attributes": {},
     "children": [
       {

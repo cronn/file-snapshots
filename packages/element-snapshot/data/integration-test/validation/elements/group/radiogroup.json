@@ -31,7 +31,6 @@
       },
       {
         "role": "label",
-        "name": "Option 1",
         "attributes": {},
         "children": [
           {
@@ -48,7 +47,6 @@
       },
       {
         "role": "label",
-        "name": "Option 2",
         "attributes": {},
         "children": [
           {

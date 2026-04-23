@@ -18,7 +18,7 @@ function snapshotDialog(
 ): DialogSnapshot {
   return {
     role,
-    name: resolveAccessibleName(element, false),
+    name: resolveAccessibleName(element),
     attributes: {
       ...discribableAttributes(element),
       modal: booleanAttribute(element.ariaModal),
