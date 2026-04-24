@@ -24,19 +24,10 @@ jobs:
       - name: Run CI script
         run: pnpm turbo run ci
 
-      - uses: actions/upload-artifact@v7
-        if: ${{ !cancelled() }}
+      - name: Upload test artifacts
+        uses: ./.github/actions/upload-test-artifacts
         with:
-          name: vitest-reports-ubuntu
-          path: packages/*/coverage/
-          retention-days: 3
-
-      - uses: actions/upload-artifact@v7
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-reports-ubuntu
-          path: packages/*/playwright-report/
-          retention-days: 3
+          name: ubuntu
 
   test-windows:
     name: Run tests on Windows
@@ -52,16 +43,7 @@ jobs:
       - name: Run tests
         run: pnpm turbo run test
 
-      - uses: actions/upload-artifact@v7
-        if: ${{ !cancelled() }}
+      - name: Upload test artifacts
+        uses: ./.github/actions/upload-test-artifacts
         with:
-          name: vitest-reports-windows
-          path: packages/*/coverage/
-          retention-days: 3
-
-      - uses: actions/upload-artifact@v7
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-reports-windows
-          path: packages/*/playwright-report/
-          retention-days: 3
+          name: windows
