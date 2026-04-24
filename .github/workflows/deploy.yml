@@ -25,25 +25,16 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout Repo
+      - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          fetch-depth: 0 # Not needed if lastUpdated is not enabled
+          fetch-depth: 0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v5
+      - name: Run setup
+        uses: ./.github/actions/setup
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: ".node-version"
-          cache: "pnpm"
-
-      - name: Setup Pages
+      - name: Setup pages
         uses: actions/configure-pages@v6
-
-      - name: Install dependencies
-        run: pnpm install
 
       - name: Build with VitePress
         run: pnpm turbo run --filter @cronn/docs build

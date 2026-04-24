@@ -20,20 +20,11 @@ jobs:
     name: Release
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout Repo
+      - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v5
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: ".node-version"
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install
+      - name: Run setup
+        uses: ./.github/actions/setup
 
       - name: Remove devEngines.packageManager for npm info during release
         run: jq 'del(.devEngines.packageManager)' package.json > tmp.json && mv tmp.json package.json
