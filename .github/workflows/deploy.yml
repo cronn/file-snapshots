@@ -46,7 +46,7 @@ jobs:
         run: pnpm install
 
       - name: Build with VitePress
-        run: pnpm turbo docs:build
+        run: pnpm turbo run --filter @cronn/docs build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
