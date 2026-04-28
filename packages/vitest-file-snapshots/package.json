@@ -17,7 +17,6 @@
     "directory": "packages/vitest-file-snapshots"
   },
   "homepage": "https://cronn.github.io/file-snapshots/vitest/",
-  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": "^20 || ^22 || >=24"
   },

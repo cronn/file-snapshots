@@ -13,7 +13,6 @@
     "directory": "packages/aria-snapshot"
   },
   "homepage": "https://cronn.github.io/file-snapshots/playwright/aria-snapshots",
-  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": "^20 || ^22 || >=24"
   },

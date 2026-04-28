@@ -10,7 +10,6 @@
     "directory": "packages/docs"
   },
   "type": "module",
-  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": "^20 || ^22 || >=24"
   },
