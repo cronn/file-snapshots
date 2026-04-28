@@ -2,7 +2,10 @@ export type { ElementRole } from "./types/role";
 export type { ElementSnapshot, NodeRole, NodeSnapshot } from "./types/snapshot";
 export type { TextSnapshot } from "./types/elements/text";
 export type { ButtonSnapshot } from "./types/elements/button";
-export type { ContainerSnapshot } from "./types/elements/container";
+export type {
+  ContainerSnapshot,
+  RegionSnapshot,
+} from "./types/elements/container";
 export type { DialogSnapshot } from "./types/elements/dialog";
 export type { GroupSnapshot, RadioGroupSnapshot } from "./types/elements/group";
 export type { HeadingSnapshot } from "./types/elements/heading";

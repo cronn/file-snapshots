@@ -15,6 +15,7 @@ import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
 import { snapshotMenuitem } from "./list";
 import { snapshotProgressbar } from "./progressbar";
+import { snapshotRegion } from "./region";
 import { parseElementRole } from "./role";
 import { snapshotSeparator } from "./separator";
 import { snapshotTab } from "./tab";
@@ -25,7 +26,7 @@ import { getElementTagName } from "./utils";
 
 type ElementSnapshotFn = (
   node: SnapshotTargetElement,
-) => ElementSnapshot | null;
+) => ElementSnapshot | Array<NodeSnapshot> | null;
 
 type NonContainerElementRole = Exclude<ElementRole, ContainerRole>;
 
@@ -45,6 +46,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   link: snapshotLink,
   radio: snapshotInput,
   radiogroup: snapshotRadioGroup,
+  region: snapshotRegion,
   searchbox: snapshotInput,
   separator: snapshotSeparator,
   slider: snapshotInput,

@@ -52,9 +52,8 @@ type ContextBasedNameResolver = (
 // Inspired by https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/#name_calculation
 export function resolveAccessibleName(
   element: SnapshotTargetElement,
-  role?: ElementRole,
 ): string | undefined {
-  role = role ?? parseElementRole(element);
+  const role = parseElementRole(element);
 
   if (role === undefined || prohibitsNaming.has(role)) {
     return undefined;

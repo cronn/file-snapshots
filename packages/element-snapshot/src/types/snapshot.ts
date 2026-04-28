@@ -1,5 +1,5 @@
 import type { ButtonSnapshot } from "./elements/button";
-import type { ContainerSnapshot } from "./elements/container";
+import type { ContainerSnapshot, RegionSnapshot } from "./elements/container";
 import type { DialogSnapshot } from "./elements/dialog";
 import type { GroupSnapshot, RadioGroupSnapshot } from "./elements/group";
 import type { HeadingSnapshot } from "./elements/heading";
@@ -49,6 +49,7 @@ export type ElementSnapshot =
   | LinkSnapshot
   | OptionSnapshot
   | ProgressbarSnapshot
+  | RegionSnapshot
   | TabSnapshot
   | MenuItemSnapshot
   | RadioGroupSnapshot

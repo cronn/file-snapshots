@@ -15,6 +15,7 @@ export type ElementRole =
   | "option"
   | "progressbar"
   | "radiogroup"
+  | "region"
   | "separator"
   | "tab"
   | ContainerRole

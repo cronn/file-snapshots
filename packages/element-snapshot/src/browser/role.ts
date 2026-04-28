@@ -3,7 +3,6 @@ import type { ElementRole } from "../types/role";
 
 import { isContainerRole } from "./container";
 import { hasRoleSpecificSnapshot } from "./element";
-import { resolveAccessibleName } from "./name";
 import { roleSelector, selectorList } from "./selector";
 import type { ElementTagName, SnapshotTargetElement } from "./types";
 import { getElementTagName, isWithinElement } from "./utils";
@@ -71,7 +70,6 @@ const CONTEXT_DEPENDENT_ROLES: Partial<
   gridcell: isWithinGridRow,
   listitem: isWithinList,
   menuitem: isWithinMenu,
-  region: hasAccessibleName,
   row: isWithinTableOrGrid,
   rowgroup: isWithinTableOrGrid,
   rowheader: isWithinTableRowOrGridRow,
@@ -190,14 +188,6 @@ function isTopLevelBanner(element: SnapshotTargetElement): boolean {
     ...DISALLOWED_BANNER_CONTAINER_ROLES.map(roleSelector),
   );
   return !isWithinElement(element, disallowedContainerSelector);
-}
-
-function hasAccessibleName(
-  element: SnapshotTargetElement,
-  role: ElementRole,
-): boolean {
-  const accessibleName = resolveAccessibleName(element, role);
-  return accessibleName !== undefined;
 }
 
 function isWithinDescriptionList(element: SnapshotTargetElement): boolean {
