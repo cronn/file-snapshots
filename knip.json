@@ -6,11 +6,10 @@
     }
   },
   "ignoreDependencies": [
-    "@trivago/prettier-plugin-sort-imports",
     "eslint-config-prettier",
     "eslint-plugin-check-file",
     "eslint-plugin-unused-imports",
-    "prettier",
+    "oxfmt",
     "typescript-eslint"
   ]
 }

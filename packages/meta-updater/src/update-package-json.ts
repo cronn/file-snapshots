@@ -26,14 +26,14 @@ export function updatePackageJson(
       node: "^20 || ^22 || >=24",
     },
     devEngines: {
-      runtime: {
-        name: "node",
-        version: ">=24.14.1 <25",
-        onFail: "error",
-      },
       packageManager: {
         name: "pnpm",
         version: ">=10.33.0 <11",
+        onFail: "error",
+      },
+      runtime: {
+        name: "node",
+        version: ">=24.14.1 <25",
         onFail: "error",
       },
     },
@@ -195,9 +195,6 @@ function updateDevDependencies(
   return {
     ...devDependencies,
     ...when(context.needsTsdown, { "@arethetypeswrong/core": "catalog:" }),
-    ...when(context.needsEslint, {
-      "@trivago/prettier-plugin-sort-imports": "catalog:",
-    }),
     ...when(context.needsTypeScript, {
       "@typescript/native-preview": "catalog:",
     }),
@@ -207,7 +204,6 @@ function updateDevDependencies(
       "eslint-plugin-check-file": "catalog:",
       "eslint-plugin-unused-imports": "catalog:",
     }),
-    prettier: "catalog:",
     rimraf: "catalog:",
     ...when(context.needsTsdown, { publint: "catalog:", tsdown: "catalog:" }),
     ...when(context.needsEslint, { "typescript-eslint": "catalog:" }),

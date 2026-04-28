@@ -1,4 +1,6 @@
 {
   "eslint.workingDirectories": [{ "mode": "auto" }],
-  "js/ts.experimental.useTsgo": true
+  "js/ts.experimental.useTsgo": true,
+  "oxc.fmt.configPath": "oxfmt.config.ts",
+  "editor.defaultFormatter": "oxc.oxc-vscode"
 }

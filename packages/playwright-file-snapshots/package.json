@@ -3,34 +3,29 @@
   "version": "1.0.4",
   "description": "Write tests with Playwright using file snapshots",
   "keywords": [
-    "playwright",
-    "file snapshots"
+    "file snapshots",
+    "playwright"
   ],
+  "homepage": "https://cronn.github.io/file-snapshots/playwright/",
   "bugs": {
     "url": "https://github.com/cronn/file-snapshots/issues"
   },
-  "author": "cronn",
   "license": "Apache-2.0",
+  "author": "cronn",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/playwright-file-snapshots"
   },
-  "homepage": "https://cronn.github.io/file-snapshots/playwright/",
-  "packageManager": "pnpm@10.33.0",
-  "engines": {
-    "node": "^20 || ^22 || >=24"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=24.14.1 <25",
-      "onFail": "error"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": ">=10.33.0 <11",
-      "onFail": "error"
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     }
   },
   "scripts": {
@@ -47,17 +42,6 @@
     "build": "tsdown",
     "clean": "rimraf .turbo dist playwright-report test-results coverage"
   },
-  "type": "module",
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "@cronn/lib-file-snapshots": "workspace:*",
     "package-directory": "catalog:"
@@ -66,7 +50,6 @@
     "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:",
-    "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:",
     "@vitest/coverage-v8": "catalog:",
@@ -74,7 +57,6 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "prettier": "catalog:",
     "publint": "catalog:",
     "rimraf": "catalog:",
     "tsdown": "catalog:",
@@ -83,5 +65,21 @@
   },
   "peerDependencies": {
     "@playwright/test": "^1.55"
-  }
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10.33.0 <11",
+      "onFail": "error"
+    },
+    "runtime": {
+      "name": "node",
+      "version": ">=24.14.1 <25",
+      "onFail": "error"
+    }
+  },
+  "engines": {
+    "node": "^20 || ^22 || >=24"
+  },
+  "packageManager": "pnpm@10.33.0"
 }
