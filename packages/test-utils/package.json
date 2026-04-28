@@ -1,30 +1,21 @@
 {
   "name": "@cronn/test-utils",
   "version": "0.0.0",
-  "description": "Internal test utils for the monorepo",
-  "author": "cronn",
   "private": true,
+  "description": "Internal test utils for the monorepo",
+  "homepage": "https://github.com/cronn/file-snapshots",
   "license": "Apache-2.0",
+  "author": "cronn",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/test-utils"
   },
-  "homepage": "https://github.com/cronn/file-snapshots",
-  "packageManager": "pnpm@11.0.1",
-  "engines": {
-    "node": "^20 || ^22 || >=24"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=24.14.1 <25",
-      "onFail": "error"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": ">=11 <12",
-      "onFail": "error"
+  "type": "module",
+  "exports": {
+    "./playwright": {
+      "types": "./dist/playwright.d.mts",
+      "default": "./dist/playwright.mjs"
     }
   },
   "scripts": {
@@ -34,27 +25,34 @@
     "build": "tsdown",
     "clean": "rimraf .turbo dist"
   },
-  "type": "module",
-  "exports": {
-    "./playwright": {
-      "types": "./dist/playwright.d.mts",
-      "default": "./dist/playwright.mjs"
-    }
-  },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:",
-    "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@typescript/native-preview": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "prettier": "catalog:",
     "publint": "catalog:",
     "rimraf": "catalog:",
     "tsdown": "catalog:",
     "typescript-eslint": "catalog:"
-  }
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=11 <12",
+      "onFail": "error"
+    },
+    "runtime": {
+      "name": "node",
+      "version": ">=24.14.1 <25",
+      "onFail": "error"
+    }
+  },
+  "engines": {
+    "node": "^20 || ^22 || >=24"
+  },
+  "packageManager": "pnpm@11.0.1"
 }

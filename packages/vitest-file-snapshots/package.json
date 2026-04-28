@@ -3,34 +3,33 @@
   "version": "1.1.2",
   "description": "Write tests with Vitest using file snapshots",
   "keywords": [
-    "vitest",
-    "file snapshots"
+    "file snapshots",
+    "vitest"
   ],
+  "homepage": "https://cronn.github.io/file-snapshots/vitest/",
   "bugs": {
     "url": "https://github.com/cronn/file-snapshots/issues"
   },
-  "author": "cronn",
   "license": "Apache-2.0",
+  "author": "cronn",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/vitest-file-snapshots"
   },
-  "homepage": "https://cronn.github.io/file-snapshots/vitest/",
-  "packageManager": "pnpm@11.0.1",
-  "engines": {
-    "node": "^20 || ^22 || >=24"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=24.14.1 <25",
-      "onFail": "error"
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     },
-    "packageManager": {
-      "name": "pnpm",
-      "version": ">=11 <12",
-      "onFail": "error"
+    "./register": {
+      "types": "./dist/register.d.mts",
+      "default": "./dist/register.mjs"
     }
   },
   "scripts": {
@@ -45,28 +44,12 @@
     "build": "tsdown && node scripts/fix-declaration-file.ts",
     "clean": "rimraf .turbo dist coverage"
   },
-  "type": "module",
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
-    },
-    "./register": {
-      "types": "./dist/register.d.mts",
-      "default": "./dist/register.mjs"
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "@cronn/lib-file-snapshots": "workspace:*"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
-    "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:",
     "@vitest/coverage-v8": "catalog:",
@@ -76,7 +59,6 @@
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "package-directory": "catalog:",
-    "prettier": "catalog:",
     "publint": "catalog:",
     "rimraf": "catalog:",
     "tsdown": "catalog:",
@@ -85,5 +67,21 @@
   },
   "peerDependencies": {
     "vitest": "^4.1.4"
-  }
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=11 <12",
+      "onFail": "error"
+    },
+    "runtime": {
+      "name": "node",
+      "version": ">=24.14.1 <25",
+      "onFail": "error"
+    }
+  },
+  "engines": {
+    "node": "^20 || ^22 || >=24"
+  },
+  "packageManager": "pnpm@11.0.1"
 }

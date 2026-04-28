@@ -59,3 +59,15 @@ pnpm link @cronn/playwright-file-snapshots
 ```
 
 This replaces the package in `node_modules` with the local version.
+
+### Editor Setup
+
+#### IntelliJ IDEA
+
+**Recommended Plugins:**
+
+- [Oxc](https://plugins.jetbrains.com/plugin/27061-oxc) for formatting
+
+#### VS Code
+
+If you configured a default formatter on language level in your user settings, you need to remove it or replace it by `oxc.oxc-vscode` to use oxfmt as formatter.

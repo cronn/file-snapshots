@@ -1,37 +1,15 @@
 {
   "name": "@cronn/shared-configs",
   "version": "0.0.0",
-  "description": "Internal shared configs for the monorepo",
-  "author": "cronn",
   "private": true,
+  "description": "Internal shared configs for the monorepo",
+  "homepage": "https://github.com/cronn/file-snapshots",
   "license": "Apache-2.0",
+  "author": "cronn",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/shared-configs"
-  },
-  "homepage": "https://github.com/cronn/file-snapshots",
-  "packageManager": "pnpm@11.0.1",
-  "engines": {
-    "node": "^20 || ^22 || >=24"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=24.14.1 <25",
-      "onFail": "error"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": ">=11 <12",
-      "onFail": "error"
-    }
-  },
-  "scripts": {
-    "lint:check": "eslint src/ --max-warnings=0",
-    "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "compile": "tsgo",
-    "clean": "rimraf .turbo"
   },
   "type": "module",
   "exports": {
@@ -52,18 +30,38 @@
       "default": "./src/playwright.ts"
     }
   },
+  "scripts": {
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "compile": "tsgo",
+    "clean": "rimraf .turbo"
+  },
   "devDependencies": {
     "@playwright/test": "catalog:",
-    "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@typescript/native-preview": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "prettier": "catalog:",
     "rimraf": "catalog:",
     "tsdown": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
-  }
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=11 <12",
+      "onFail": "error"
+    },
+    "runtime": {
+      "name": "node",
+      "version": ">=24.14.1 <25",
+      "onFail": "error"
+    }
+  },
+  "engines": {
+    "node": "^20 || ^22 || >=24"
+  },
+  "packageManager": "pnpm@11.0.1"
 }
