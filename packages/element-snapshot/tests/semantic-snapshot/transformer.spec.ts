@@ -111,7 +111,7 @@ test("when element has attributes and children, includes children property", asy
     html`
       <a href="/target">
         <img src="/image.jpg" alt="Image" />
-      </h1>
+      </a>
     `,
   );
 
