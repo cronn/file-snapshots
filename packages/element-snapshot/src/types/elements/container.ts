@@ -13,7 +13,6 @@ export const CONTAINER_ROLES = new Set([
   "form",
   "main",
   "navigation",
-  "region",
   "search",
   "descriptionlist",
   "term",
@@ -35,3 +34,5 @@ export const CONTAINER_ROLES = new Set([
 export interface ContainerSnapshot extends GenericElementSnapshot<ContainerRole> {}
 
 export type ContainerRole = SetValues<typeof CONTAINER_ROLES>;
+
+export interface RegionSnapshot extends GenericElementSnapshot<"region"> {}
