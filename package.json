@@ -1,37 +1,22 @@
 {
   "name": "root",
   "private": true,
-  "author": "cronn",
-  "license": "Apache-2.0",
   "homepage": "https://github.com/cronn/file-snapshots",
+  "license": "Apache-2.0",
+  "author": "cronn",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cronn/file-snapshots.git"
   },
   "type": "module",
-  "packageManager": "pnpm@10.33.0",
-  "engines": {
-    "node": "^20 || ^22 || >=24"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=24.14.1 <25",
-      "onFail": "error"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": ">=10.33.0 <11",
-      "onFail": "error"
-    }
-  },
   "scripts": {
     "config:check": "meta-updater --test",
     "config:fix": "meta-updater",
-    "format:check": "prettier . --check",
-    "format:fix": "prettier . --write --list-different",
+    "format:check": "oxfmt --check",
+    "format:fix": "oxfmt",
     "knip:check": "knip",
     "knip:fix": "knip --fix",
+    "compile": "tsgo",
     "prepublishOnly": "pnpm turbo run ci",
     "version": "pnpm changeset version && pnpm turbo run format:fix",
     "release": "pnpm turbo run build && pnpm changeset publish",
@@ -41,10 +26,26 @@
     "@changesets/cli": "catalog:",
     "@cronn/meta-updater": "workspace:*",
     "@pnpm/meta-updater": "catalog:",
-    "@trivago/prettier-plugin-sort-imports": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "knip": "catalog:",
-    "prettier": "catalog:",
+    "oxfmt": "catalog:",
     "rimraf": "catalog:",
     "turbo": "catalog:"
-  }
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10.33.0 <11",
+      "onFail": "error"
+    },
+    "runtime": {
+      "name": "node",
+      "version": ">=24.14.1 <25",
+      "onFail": "error"
+    }
+  },
+  "engines": {
+    "node": "^20 || ^22 || >=24"
+  },
+  "packageManager": "pnpm@10.33.0"
 }

@@ -1,31 +1,15 @@
 {
   "name": "@cronn/docs",
   "private": true,
-  "author": "cronn",
-  "license": "Apache-2.0",
   "homepage": "https://github.com/cronn/file-snapshots",
+  "license": "Apache-2.0",
+  "author": "cronn",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/docs"
   },
   "type": "module",
-  "packageManager": "pnpm@10.33.0",
-  "engines": {
-    "node": "^20 || ^22 || >=24"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=24.14.1 <25",
-      "onFail": "error"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": ">=10.33.0 <11",
-      "onFail": "error"
-    }
-  },
   "scripts": {
     "lint:check": "eslint .vitepress/config.ts --max-warnings=0",
     "lint:fix": "eslint .vitepress/config.ts --max-warnings=0 --fix",
@@ -37,15 +21,29 @@
   },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",
-    "@trivago/prettier-plugin-sort-imports": "catalog:",
     "@typescript/native-preview": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "prettier": "catalog:",
     "rimraf": "catalog:",
     "typescript-eslint": "catalog:",
     "vitepress": "catalog:"
-  }
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10.33.0 <11",
+      "onFail": "error"
+    },
+    "runtime": {
+      "name": "node",
+      "version": ">=24.14.1 <25",
+      "onFail": "error"
+    }
+  },
+  "engines": {
+    "node": "^20 || ^22 || >=24"
+  },
+  "packageManager": "pnpm@10.33.0"
 }

@@ -59,3 +59,9 @@ pnpm link @cronn/playwright-file-snapshots
 ```
 
 This replaces the package in `node_modules` with the local version.
+
+### Editor Setup
+
+#### Recommended IntelliJ IDEA Plugins
+
+- [Oxc](https://plugins.jetbrains.com/plugin/27061-oxc) for formatting
