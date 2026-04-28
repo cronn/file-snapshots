@@ -2,6 +2,6 @@
   "recommendations": [
     "typescriptteam.native-preview",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "oxc.oxc-vscode"
   ]
 }
