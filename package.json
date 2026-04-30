@@ -10,17 +10,17 @@
   },
   "type": "module",
   "scripts": {
+    "clean": "rimraf .turbo",
+    "compile": "tsgo",
     "config:check": "meta-updater --test",
     "config:fix": "meta-updater",
     "format:check": "oxfmt --check",
     "format:fix": "oxfmt",
     "knip:check": "knip",
     "knip:fix": "knip --fix",
-    "compile": "tsgo",
     "prepublishOnly": "pnpm turbo run ci",
-    "version": "pnpm changeset version && pnpm turbo run format:fix",
     "release": "pnpm turbo run build && pnpm changeset publish",
-    "clean": "rimraf .turbo"
+    "version": "pnpm changeset version && pnpm turbo run format:fix"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",

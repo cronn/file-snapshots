@@ -28,13 +28,13 @@
     }
   },
   "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf .turbo dist coverage",
+    "compile": "tsgo",
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "compile": "tsgo",
-    "build": "tsdown",
-    "clean": "rimraf .turbo dist coverage"
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "markdown-table": "catalog:"

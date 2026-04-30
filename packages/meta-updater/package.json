@@ -17,10 +17,10 @@
     "default": "./src/index.ts"
   },
   "scripts": {
-    "lint:check": "eslint src/ --max-warnings=0",
-    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "clean": "rimraf .turbo",
     "compile": "tsgo",
-    "clean": "rimraf .turbo"
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix"
   },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",

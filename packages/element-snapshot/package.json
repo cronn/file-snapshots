@@ -25,15 +25,15 @@
     }
   },
   "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf .turbo dist playwright-report test-results coverage",
+    "compile": "tsgo",
     "lint:check": "eslint src/ tests/ --max-warnings=0",
     "lint:fix": "eslint src/ tests/ --max-warnings=0 --fix",
-    "test:unit": "vitest run",
-    "test:unit:coverage": "vitest run --coverage",
-    "test:integration": "playwright test",
     "playwright:install": "playwright install chromium",
-    "compile": "tsgo",
-    "build": "tsdown",
-    "clean": "rimraf .turbo dist playwright-report test-results coverage"
+    "test:integration": "playwright test",
+    "test:unit": "vitest run",
+    "test:unit:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@cronn/lib-file-snapshots": "workspace:*",
