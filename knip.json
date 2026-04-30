@@ -5,6 +5,7 @@
       "entry": [".meta-updater/main.mjs"]
     }
   },
+  "ignoreBinaries": ["clean-install"],
   "ignoreDependencies": [
     "@trivago/prettier-plugin-sort-imports",
     "eslint-config-prettier",

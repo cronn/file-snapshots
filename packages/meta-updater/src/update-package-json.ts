@@ -21,7 +21,7 @@ export function updatePackageJson(
     license: "Apache-2.0",
     repository: defineRepository(context),
     homepage: manifest.homepage ?? "https://github.com/cronn/file-snapshots",
-    packageManager: "pnpm@10.33.0",
+    packageManager: "pnpm@11.0.1",
     engines: {
       node: "^20 || ^22 || >=24",
     },
@@ -33,7 +33,7 @@ export function updatePackageJson(
       },
       packageManager: {
         name: "pnpm",
-        version: ">=10.33.0 <11",
+        version: ">=11 <12",
         onFail: "error",
       },
     },
