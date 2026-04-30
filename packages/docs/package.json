@@ -11,13 +11,13 @@
   },
   "type": "module",
   "scripts": {
-    "lint:check": "eslint .vitepress/config.ts --max-warnings=0",
-    "lint:fix": "eslint .vitepress/config.ts --max-warnings=0 --fix",
+    "build": "vitepress build",
+    "clean": "rimraf .turbo .vitepress/cache .vitepress/dist",
     "compile": "tsgo",
     "dev": "vitepress dev",
-    "build": "vitepress build",
-    "preview": "vitepress preview",
-    "clean": "rimraf .turbo .vitepress/cache .vitepress/dist"
+    "lint:check": "eslint .vitepress/config.ts --max-warnings=0",
+    "lint:fix": "eslint .vitepress/config.ts --max-warnings=0 --fix",
+    "preview": "vitepress preview"
   },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",

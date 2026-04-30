@@ -33,16 +33,16 @@
     }
   },
   "scripts": {
+    "build": "tsdown && node scripts/fix-declaration-file.ts",
+    "clean": "rimraf .turbo dist coverage",
+    "compile": "tsgo",
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "test:core": "vitest run --tags-filter=!update-*",
-    "test:update-new": "vitest run --tags-filter=update-new --update new",
-    "test:update-all": "vitest run --tags-filter=update-all --update all",
-    "test:update-none": "vitest run --tags-filter=update-none --update none",
     "test:coverage": "vitest run --tags-filter=!update-* --coverage",
-    "compile": "tsgo",
-    "build": "tsdown && node scripts/fix-declaration-file.ts",
-    "clean": "rimraf .turbo dist coverage"
+    "test:update-all": "vitest run --tags-filter=update-all --update all",
+    "test:update-new": "vitest run --tags-filter=update-new --update new",
+    "test:update-none": "vitest run --tags-filter=update-none --update none"
   },
   "dependencies": {
     "@cronn/lib-file-snapshots": "workspace:*"

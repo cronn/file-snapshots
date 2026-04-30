@@ -19,11 +19,11 @@
     }
   },
   "scripts": {
-    "lint:check": "eslint src/ --max-warnings=0",
-    "lint:fix": "eslint src/ --max-warnings=0 --fix",
-    "compile": "tsgo",
     "build": "tsdown",
-    "clean": "rimraf .turbo dist"
+    "clean": "rimraf .turbo dist",
+    "compile": "tsgo",
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:",

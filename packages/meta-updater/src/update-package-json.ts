@@ -113,13 +113,13 @@ type Scripts = PackageJSON["scripts"];
 function updateScripts(scripts: Scripts, context: PackageContext): Scripts {
   return {
     ...scripts,
+    ...when(context.needsTsdown, updateBuildScript(scripts)),
+    ...updateCleanScript(scripts, context),
+    ...when(context.needsTypeScript, defineCompileScript()),
     ...when(
       context.needsEslint,
       updateLintScripts(scripts, context.relativeDir),
     ),
-    ...when(context.needsTypeScript, defineCompileScript()),
-    ...when(context.needsTsdown, updateBuildScript(scripts)),
-    ...updateCleanScript(scripts, context),
   };
 }
 
