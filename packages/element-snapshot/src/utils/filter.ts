@@ -87,6 +87,7 @@ export function filter<TSnapshot extends NodeSnapshot>(
 
     return {
       ...snapshot,
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       children: filteredChildren as Array<NodeSnapshot>,
     } as TSnapshot;
   });
