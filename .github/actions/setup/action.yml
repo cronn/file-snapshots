@@ -7,5 +7,5 @@ runs:
       uses: pnpm/action-setup@v6.0.5
 
     - name: Install dependencies
-      run: pnpm install
+      run: pnpm clean-install
       shell: bash
