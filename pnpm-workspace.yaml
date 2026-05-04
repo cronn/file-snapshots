@@ -19,6 +19,7 @@ catalog:
   "eslint-plugin-unused-imports": 4.4.1
   "knip": 6.5.0
   "markdown-table": 3.0.4
+  "oxc-minify": 0.128.0
   "oxfmt": 0.46.0
   "package-directory": 8.2.0
   "publint": 0.3.18
@@ -26,7 +27,7 @@ catalog:
   "tsdown": 0.21.9
   "turbo": 2.9.6
   "typescript-eslint": 8.58.2
-  "vitepress": 1.6.4
+  "vitepress": 2.0.0-alpha.17
   "vitest": 4.1.4
   "yaml": 2.8.3
 dedupePeers: true
