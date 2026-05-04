@@ -26,6 +26,7 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
+    "oxc-minify": "catalog:",
     "rimraf": "catalog:",
     "typescript-eslint": "catalog:",
     "vitepress": "catalog:"
