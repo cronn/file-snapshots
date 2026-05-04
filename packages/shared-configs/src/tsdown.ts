@@ -1,10 +1,19 @@
 import type { UserConfig } from "tsdown";
 
-export function tsdownConfig(options: UserConfig): UserConfig {
+interface TsdownContext {
+  ci: boolean;
+}
+
+export function tsdownConfig(
+  options: UserConfig,
+  context: TsdownContext,
+): UserConfig {
   return {
     platform: "node",
     format: ["esm"],
-    dts: true,
+    dts: {
+      sourcemap: !context.ci,
+    },
     outDir: "./dist",
     clean: true,
     deps: {
