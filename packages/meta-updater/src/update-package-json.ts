@@ -21,14 +21,14 @@ export function updatePackageJson(
     license: "Apache-2.0",
     repository: defineRepository(context),
     homepage: manifest.homepage ?? "https://github.com/cronn/file-snapshots",
-    packageManager: "pnpm@11.0.1",
+    packageManager: "pnpm@11.0.4",
     engines: {
       node: "^20 || ^22 || >=24",
     },
     devEngines: {
       packageManager: {
         name: "pnpm",
-        version: ">=11 <12",
+        version: ">=11.0.4 <12",
         onFail: "error",
       },
       runtime: {
