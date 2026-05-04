@@ -3,6 +3,7 @@ export type {
   PlaywrightMatchValidationFileOptions,
   PlaywrightMatchTextFileOptions,
   PlaywrightMatchJsonFileOptions,
+  PlaywrightValidationFileMatchers,
 } from "./matchers/types";
 
 export {
