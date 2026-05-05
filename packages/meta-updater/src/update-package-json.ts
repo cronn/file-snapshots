@@ -29,12 +29,12 @@ export function updatePackageJson(
       packageManager: {
         name: "pnpm",
         version: ">=11 <12",
-        onFail: "error",
+        onFail: "download",
       },
       runtime: {
         name: "node",
         version: ">=24.14.1 <25",
-        onFail: "error",
+        onFail: "download",
       },
     },
     scripts: updateScripts(manifest.scripts, context),
