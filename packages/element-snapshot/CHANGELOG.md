@@ -1,5 +1,15 @@
 # @cronn/element-snapshot
 
+## 0.19.0
+
+### Minor Changes
+
+- a2d1197: Resolve accessible name from child content for elements with role `columnheader`, `rowheader`, `cell`, `gridcell`, `tab`, `option`, `term` and `definition`
+
+### Patch Changes
+
+- 6aac909: Introduce separate `RegionSnapshot`
+
 ## 0.18.0
 
 ### Minor Changes
