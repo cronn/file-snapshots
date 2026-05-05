@@ -2,6 +2,7 @@ packages:
   - packages/*
 allowBuilds:
   esbuild: false
+  node: true
 
 catalog:
   "@arethetypeswrong/core": 0.18.2

@@ -1,3 +1,202 @@
+---
+lockfileVersion: '9.0'
+
+importers:
+
+  .:
+    configDependencies: {}
+    packageManagerDependencies:
+      '@pnpm/exe':
+        specifier: '>=11 <12'
+        version: 11.0.5
+      pnpm:
+        specifier: '>=11 <12'
+        version: 11.0.5
+
+packages:
+
+  '@pnpm/exe@11.0.5':
+    resolution: {integrity: sha512-6hfKxb85pbW2IJ9WAZRQfC+7luwU3GGse04yWsjLlJXfHp4WSMWtelKY4DLXFg09xxnynoQ2lYdJOswU2nFTmw==}
+    hasBin: true
+
+  '@pnpm/linux-arm64@11.0.5':
+    resolution: {integrity: sha512-oFKn1vicMPFfI7qJLX7UxShVK3h5EG1JQTtXvXzs0Qt3GECPtle9Ts3nFz7an2VOP9uhN/sUbLV9vaGFZxSEAg==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@pnpm/linux-x64@11.0.5':
+    resolution: {integrity: sha512-j3kN0ZTJypoIXLH8fK2k3m28amEhNMFEB2asP1I9Sc81ntvOkataFDWwDjlb5WsyTaqOu5CsAYjauFMQCVbXFA==}
+    cpu: [x64]
+    os: [linux]
+
+  '@pnpm/linuxstatic-arm64@11.0.5':
+    resolution: {integrity: sha512-7AK2qyd3uPIQYhaRIiTIB446ret+k/pZ6Gk5dsIJETlIZLG/zZ7xTx5rF3YxFgGwvs4jfciod/uYz7IczpQ7oQ==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@pnpm/linuxstatic-x64@11.0.5':
+    resolution: {integrity: sha512-9AO2sBcPv7BLNlhUJiOcLaFZwhUwDCf1IFMpN80skZGwVo2blucUQMYuWFidR0vy7YvLcR15KoN6z+h2QzrL2g==}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@pnpm/macos-arm64@11.0.5':
+    resolution: {integrity: sha512-trKLmXxOTof0k/QJxBJrPyWLvNaes10CUh7dGcHwVPqwpBnjXaRbaD8VEswP4kvyzu//1eiATTZSz/TczAMxnw==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@pnpm/win-arm64@11.0.5':
+    resolution: {integrity: sha512-jNTV5a9y56HRDyDZfk4EL4IfigeG1JlJNJx9/DhBX7yLsCSmE4NENtTnRD8R1uUu+o5WPrPas/4sZt6bzuxzAQ==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@pnpm/win-x64@11.0.5':
+    resolution: {integrity: sha512-Cy8PqWcMQuLHa5pFb9iXSDzu5Kv7mS/ECjVebmyI2b+3gIZV4vq+NuPpJZvFqf3kbFoEGnLFZE0fYDQHHXXPoA==}
+    cpu: [x64]
+    os: [win32]
+
+  '@reflink/reflink-darwin-arm64@0.1.19':
+    resolution: {integrity: sha512-ruy44Lpepdk1FqDz38vExBY/PVUsjxZA+chd9wozjUH9JjuDT/HEaQYA6wYN9mf041l0yLVar6BCZuWABJvHSA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@reflink/reflink-darwin-x64@0.1.19':
+    resolution: {integrity: sha512-By85MSWrMZa+c26TcnAy8SDk0sTUkYlNnwknSchkhHpGXOtjNDUOxJE9oByBnGbeuIE1PiQsxDG3Ud+IVV9yuA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@reflink/reflink-linux-arm64-gnu@0.1.19':
+    resolution: {integrity: sha512-7P+er8+rP9iNeN+bfmccM4hTAaLP6PQJPKWSA4iSk2bNvo6KU6RyPgYeHxXmzNKzPVRcypZQTpFgstHam6maVg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@reflink/reflink-linux-arm64-musl@0.1.19':
+    resolution: {integrity: sha512-37iO/Dp6m5DDaC2sf3zPtx/hl9FV3Xze4xoYidrxxS9bgP3S8ALroxRK6xBG/1TtfXKTvolvp+IjrUU6ujIGmA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@reflink/reflink-linux-x64-gnu@0.1.19':
+    resolution: {integrity: sha512-jbI8jvuYCaA3MVUdu8vLoLAFqC+iNMpiSuLbxlAgg7x3K5bsS8nOpTRnkLF7vISJ+rVR8W+7ThXlXlUQ93ulkw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@reflink/reflink-linux-x64-musl@0.1.19':
+    resolution: {integrity: sha512-e9FBWDe+lv7QKAwtKOt6A2W/fyy/aEEfr0g6j/hWzvQcrzHCsz07BNQYlNOjTfeytrtLU7k449H1PI95jA4OjQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@reflink/reflink-win32-arm64-msvc@0.1.19':
+    resolution: {integrity: sha512-09PxnVIQcd+UOn4WAW73WU6PXL7DwGS6wPlkMhMg2zlHHG65F3vHepOw06HFCq+N42qkaNAc8AKIabWvtk6cIQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@reflink/reflink-win32-x64-msvc@0.1.19':
+    resolution: {integrity: sha512-E//yT4ni2SyhwP8JRjVGWr3cbnhWDiPLgnQ66qqaanjjnMiu3O/2tjCPQXlcGc/DEYofpDc9fvhv6tALQsMV9w==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@reflink/reflink@0.1.19':
+    resolution: {integrity: sha512-DmCG8GzysnCZ15bres3N5AHCmwBwYgp0As6xjhQ47rAUTUXxJiK+lLUxaGsX3hd/30qUpVElh05PbGuxRPgJwA==}
+    engines: {node: '>= 10'}
+
+  detect-libc@2.1.2:
+    resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
+    engines: {node: '>=8'}
+
+  pnpm@11.0.5:
+    resolution: {integrity: sha512-lPoJ5yAWQCrvzniORplOGOsZIpmLFrb9Wqa6/Yrk3qBdCFL2Akf9t9WrgZmnsL7agwOY8/gMufgiOYUioVNUgQ==}
+    engines: {node: '>=22.13'}
+    hasBin: true
+
+snapshots:
+
+  '@pnpm/exe@11.0.5':
+    dependencies:
+      '@reflink/reflink': 0.1.19
+      detect-libc: 2.1.2
+    optionalDependencies:
+      '@pnpm/linux-arm64': 11.0.5
+      '@pnpm/linux-x64': 11.0.5
+      '@pnpm/linuxstatic-arm64': 11.0.5
+      '@pnpm/linuxstatic-x64': 11.0.5
+      '@pnpm/macos-arm64': 11.0.5
+      '@pnpm/win-arm64': 11.0.5
+      '@pnpm/win-x64': 11.0.5
+
+  '@pnpm/linux-arm64@11.0.5':
+    optional: true
+
+  '@pnpm/linux-x64@11.0.5':
+    optional: true
+
+  '@pnpm/linuxstatic-arm64@11.0.5':
+    optional: true
+
+  '@pnpm/linuxstatic-x64@11.0.5':
+    optional: true
+
+  '@pnpm/macos-arm64@11.0.5':
+    optional: true
+
+  '@pnpm/win-arm64@11.0.5':
+    optional: true
+
+  '@pnpm/win-x64@11.0.5':
+    optional: true
+
+  '@reflink/reflink-darwin-arm64@0.1.19':
+    optional: true
+
+  '@reflink/reflink-darwin-x64@0.1.19':
+    optional: true
+
+  '@reflink/reflink-linux-arm64-gnu@0.1.19':
+    optional: true
+
+  '@reflink/reflink-linux-arm64-musl@0.1.19':
+    optional: true
+
+  '@reflink/reflink-linux-x64-gnu@0.1.19':
+    optional: true
+
+  '@reflink/reflink-linux-x64-musl@0.1.19':
+    optional: true
+
+  '@reflink/reflink-win32-arm64-msvc@0.1.19':
+    optional: true
+
+  '@reflink/reflink-win32-x64-msvc@0.1.19':
+    optional: true
+
+  '@reflink/reflink@0.1.19':
+    optionalDependencies:
+      '@reflink/reflink-darwin-arm64': 0.1.19
+      '@reflink/reflink-darwin-x64': 0.1.19
+      '@reflink/reflink-linux-arm64-gnu': 0.1.19
+      '@reflink/reflink-linux-arm64-musl': 0.1.19
+      '@reflink/reflink-linux-x64-gnu': 0.1.19
+      '@reflink/reflink-linux-x64-musl': 0.1.19
+      '@reflink/reflink-win32-arm64-msvc': 0.1.19
+      '@reflink/reflink-win32-x64-msvc': 0.1.19
+
+  detect-libc@2.1.2: {}
+
+  pnpm@11.0.5: {}
+
+---
 lockfileVersion: '9.0'
 
 settings:
@@ -108,6 +307,9 @@ importers:
       knip:
         specifier: 'catalog:'
         version: 6.7.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       oxfmt:
         specifier: 'catalog:'
         version: 0.46.0
@@ -160,6 +362,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       publint:
         specifier: 'catalog:'
         version: 0.3.18
@@ -196,6 +401,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       oxc-minify:
         specifier: 'catalog:'
         version: 0.128.0
@@ -257,6 +465,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       publint:
         specifier: 'catalog:'
         version: 0.3.18
@@ -306,6 +517,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       publint:
         specifier: 'catalog:'
         version: 0.3.18
@@ -348,6 +562,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       rimraf:
         specifier: 'catalog:'
         version: 6.1.3
@@ -394,6 +611,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       publint:
         specifier: 'catalog:'
         version: 0.3.18
@@ -430,6 +650,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       rimraf:
         specifier: 'catalog:'
         version: 6.1.3
@@ -469,6 +692,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       publint:
         specifier: 'catalog:'
         version: 0.3.18
@@ -518,6 +744,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 'catalog:'
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.59.0)(eslint@10.2.1)
+      node:
+        specifier: runtime:>=24.14.1 <25
+        version: 24.15.0
       package-directory:
         specifier: 'catalog:'
         version: 8.2.0
@@ -3706,9 +3935,17 @@ packages:
     resolution: {integrity: sha512-oWgXcUL3zi7KsPNoWLM2Z/EVaOMsZO8em4iAzJmqoo08zinMwsMvkrNbeLDztMdaPJryfYJvbx2OBoBYnPQKpg==}
     engines: {node: '>=6'}
 
+  node-bin-setup@1.1.4:
+    resolution: {integrity: sha512-vWNHOne0ZUavArqPP5LJta50+S8R261Fr5SvGul37HbEDcowvLjwdvd0ZeSr0r2lTSrPxl6okq9QUw8BFGiAxA==}
+
   node-gyp@11.5.0:
     resolution: {integrity: sha512-ra7Kvlhxn5V9Slyus0ygMa2h+UqExPqUIkfk7Pc8QTLT956JLSy51uWFwHtIYy0vI8cB4BDhc/S03+880My/LQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
+    hasBin: true
+
+  node@24.15.0:
+    resolution: {integrity: sha512-hQ1r8QpNk4lovkBOFSBWqnUcZS4CT5kOx1L35AWcERMK8oDHWYUszsGtFKML+vIIz01pNq7XMoJjeZmRIJc6og==}
+    engines: {npm: '>=5.0.0'}
     hasBin: true
 
   nopt@1.0.10:
@@ -8187,6 +8424,8 @@ snapshots:
 
   next-path@1.0.0: {}
 
+  node-bin-setup@1.1.4: {}
+
   node-gyp@11.5.0:
     dependencies:
       env-paths: 2.2.1
@@ -8201,6 +8440,10 @@ snapshots:
       which: 5.0.0
     transitivePeerDependencies:
       - supports-color
+
+  node@24.15.0:
+    dependencies:
+      node-bin-setup: 1.1.4
 
   nopt@1.0.10:
     dependencies:

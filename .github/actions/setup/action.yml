@@ -6,12 +6,6 @@ runs:
     - name: Install pnpm
       uses: pnpm/action-setup@v6.0.5
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v6.4.0
-      with:
-        node-version-file: ".node-version"
-        cache: "pnpm"
-
     - name: Install dependencies
       run: pnpm install
       shell: bash
