@@ -38,9 +38,7 @@ test("HTML table", async ({ page }) => {
     `,
   );
 
-  await expect(markdownTableSnapshot(bodyLocator)).toMatchTextFile({
-    fileExtension: "md",
-  });
+  await expect(bodyLocator).toMatchMarkdownTableSnapshotFile();
 });
 
 test("role-based grid", async ({ page }) => {
@@ -67,9 +65,7 @@ test("role-based grid", async ({ page }) => {
     `,
   );
 
-  await expect(markdownTableSnapshot(bodyLocator)).toMatchTextFile({
-    fileExtension: "md",
-  });
+  await expect(bodyLocator).toMatchMarkdownTableSnapshotFile();
 });
 
 test("sorted column headers", async ({ page }) => {
@@ -103,16 +99,13 @@ test("sorted column headers", async ({ page }) => {
     `,
   );
 
-  await expect.soft(markdownTableSnapshot(bodyLocator)).toMatchTextFile({
+  await expect.soft(bodyLocator).toMatchMarkdownTableSnapshotFile({
     name: "show sort indicator",
-    fileExtension: "md",
   });
-  await expect
-    .soft(markdownTableSnapshot(bodyLocator, { showSortIndicator: false }))
-    .toMatchTextFile({
-      name: "hide sort indicator",
-      fileExtension: "md",
-    });
+  await expect.soft(bodyLocator).toMatchMarkdownTableSnapshotFile({
+    name: "hide sort indicator",
+    showSortIndicator: false,
+  });
 });
 
 test("when multiple tables are found, throws error", async ({ page }) => {
@@ -132,9 +125,9 @@ test("when multiple tables are found, throws error", async ({ page }) => {
     `,
   );
 
-  await expect(markdownTableSnapshot(bodyLocator)).rejects.toThrow(
-    "Multiple tables or grids found",
-  );
+  await expect(() =>
+    expect(bodyLocator).toMatchMarkdownTableSnapshotFile(),
+  ).rejects.toThrow("Multiple tables or grids found");
 });
 
 test("when no table is found, throws error", async ({ page }) => {
@@ -143,17 +136,17 @@ test("when no table is found, throws error", async ({ page }) => {
     html`<div>No table here</div>`,
   );
 
-  await expect(markdownTableSnapshot(bodyLocator)).rejects.toThrow(
-    "No table or grid found",
-  );
+  await expect(() =>
+    expect(bodyLocator).toMatchMarkdownTableSnapshotFile(),
+  ).rejects.toThrow("No table or grid found");
 });
 
 test("when no header row is found, throws error", async ({ page }) => {
   const bodyLocator = await setupSnapshotTest(page, html`<table></table>`);
 
-  await expect(markdownTableSnapshot(bodyLocator)).rejects.toThrow(
-    "No header row found",
-  );
+  await expect(() =>
+    expect(bodyLocator).toMatchMarkdownTableSnapshotFile(),
+  ).rejects.toThrow("No header row found");
 });
 
 test("when no column headers are found, throws error", async ({ page }) => {
@@ -168,7 +161,33 @@ test("when no column headers are found, throws error", async ({ page }) => {
     `,
   );
 
-  await expect(markdownTableSnapshot(bodyLocator)).rejects.toThrow(
-    "No column headers found",
+  await expect(() =>
+    expect(bodyLocator).toMatchMarkdownTableSnapshotFile(),
+  ).rejects.toThrow("No column headers found");
+});
+
+test("snapshot function", async ({ page }) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alice</td>
+            <td>95</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
   );
+
+  await expect(markdownTableSnapshot(bodyLocator)).toMatchTextFile({
+    fileExtension: "md",
+  });
 });

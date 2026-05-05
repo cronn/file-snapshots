@@ -37,11 +37,11 @@
   },
   "dependencies": {
     "@cronn/lib-file-snapshots": "workspace:*",
+    "@cronn/playwright-file-snapshots": "workspace:*",
     "package-directory": "catalog:"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:",
-    "@cronn/playwright-file-snapshots": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@cronn/test-utils": "workspace:*",
     "@cronn/vitest-file-snapshots": "workspace:*",

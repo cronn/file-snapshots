@@ -1,3 +1,5 @@
+export { defineElementSnapshotExpect } from "./playwright/matchers";
+
 export type { ElementRole } from "./types/role";
 export type { ElementSnapshot, NodeRole, NodeSnapshot } from "./types/snapshot";
 export type { TextSnapshot } from "./types/elements/text";
@@ -21,6 +23,11 @@ export type { ProgressbarSnapshot } from "./types/elements/progressbar";
 export type { SeparatorSnapshot } from "./types/elements/separator";
 export type { TabSnapshot } from "./types/elements/tab";
 export type { ColumnHeaderSnapshot } from "./types/elements/table";
+export type {
+  ElementSnapshotMatchers,
+  MatchMarkdownTableSnapshotFileOptions,
+  MatchSemanticSnapshotFileOptions,
+} from "./types/matchers";
 
 export {
   markdownTableSnapshot,

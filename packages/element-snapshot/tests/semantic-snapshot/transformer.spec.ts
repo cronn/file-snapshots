@@ -1,13 +1,13 @@
 import test from "@playwright/test";
 
-import { html } from "@cronn/test-utils/playwright";
+import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
-import { setupSemanticSnapshotTest } from "../../src/test/fixtures";
+import { expect } from "../../src/test/fixtures";
 
 test("when snapshot contains multiple elements, returns array of elements", async ({
   page,
 }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <p>First Paragraph</p>
@@ -15,43 +15,43 @@ test("when snapshot contains multiple elements, returns array of elements", asyn
     `,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("when snapshot contains exactly one element, returns the element", async ({
   page,
 }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`<p>Single Paragraph</p>`,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("when element is empty, resolves value to empty string", async ({
   page,
 }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(page, html`<p></p>`);
+  const bodyLocator = await setupSnapshotTest(page, html`<p></p>`);
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("when element has only a name, resolves value to name", async ({
   page,
 }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`<input type="text" aria-label="Input Name" />`,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("when element has only children, resolves value to children", async ({
   page,
 }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <main>
@@ -61,11 +61,11 @@ test("when element has only children, resolves value to children", async ({
     `,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("flattens defined attributes", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`<input
       type="text"
@@ -75,22 +75,19 @@ test("flattens defined attributes", async ({ page }) => {
     />`,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("when name equals children, excludes children", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
-    page,
-    html`<h1>Heading</h1>`,
-  );
+  const bodyLocator = await setupSnapshotTest(page, html`<h1>Heading</h1>`);
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("when element has name and children, includes children property", async ({
   page,
 }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <section aria-labelledby="heading">
@@ -100,13 +97,13 @@ test("when element has name and children, includes children property", async ({
     `,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("when element has attributes and children, includes children property", async ({
   page,
 }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <a href="/target">
@@ -115,5 +112,5 @@ test("when element has attributes and children, includes children property", asy
     `,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });

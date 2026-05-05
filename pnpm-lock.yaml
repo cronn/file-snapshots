@@ -422,6 +422,9 @@ importers:
       '@cronn/lib-file-snapshots':
         specifier: workspace:*
         version: link:../lib-file-snapshots
+      '@cronn/playwright-file-snapshots':
+        specifier: workspace:*
+        version: link:../playwright-file-snapshots
       package-directory:
         specifier: 'catalog:'
         version: 8.2.0
@@ -429,9 +432,6 @@ importers:
       '@arethetypeswrong/core':
         specifier: 'catalog:'
         version: 0.18.2
-      '@cronn/playwright-file-snapshots':
-        specifier: workspace:*
-        version: link:../playwright-file-snapshots
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs

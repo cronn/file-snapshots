@@ -1,8 +1,13 @@
-export { defineValidationFileExpect } from "./matchers/define-expect";
+export {
+  defineJsonFileMatcher,
+  defineTextFileMatcher,
+  defineValidationFileExpect,
+} from "./matchers/define-expect";
 export type {
   PlaywrightMatchValidationFileOptions,
   PlaywrightMatchTextFileOptions,
   PlaywrightMatchJsonFileOptions,
+  PlaywrightValidationFileMatcherConfig,
   PlaywrightValidationFileMatchers,
 } from "./matchers/types";
 
