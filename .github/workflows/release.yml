@@ -26,8 +26,8 @@ jobs:
       - name: Run setup
         uses: ./.github/actions/setup
 
-      - name: Remove devEngines.packageManager for npm info during release
-        run: jq 'del(.devEngines.packageManager)' package.json > tmp.json && mv tmp.json package.json
+      - name: Remove devEngines for npm info during release
+        run: jq 'del(.devEngines)' package.json > tmp.json && mv tmp.json package.json
 
       - name: Configure npm token
         run: npm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}" # pnpm config set is broken
