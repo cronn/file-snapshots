@@ -1,6 +1,6 @@
 {
   "name": "@cronn/element-snapshot",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "description": "Element snapshots for Playwright",
   "homepage": "https://cronn.github.io/file-snapshots/playwright/element-snapshots/",
   "bugs": {
