@@ -1,12 +1,12 @@
 import test from "@playwright/test";
 
-import { html } from "@cronn/test-utils/playwright";
+import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
-import { setupSemanticSnapshotTest } from "../../src/test/fixtures";
+import { expect } from "../../src/test/fixtures";
 import { excludeRole, includeRole } from "../../src/utils/predicates";
 
 test("includes list elements", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <main>
@@ -25,13 +25,13 @@ test("includes list elements", async ({ page }) => {
     `,
   );
 
-  await matchSnapshot({
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
     filter: includeRole("list"),
   });
 });
 
 test("excludes paragraph elements", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <main>
@@ -50,7 +50,7 @@ test("excludes paragraph elements", async ({ page }) => {
     `,
   );
 
-  await matchSnapshot({
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
     filter: excludeRole("paragraph"),
     recurseFilter: true,
   });

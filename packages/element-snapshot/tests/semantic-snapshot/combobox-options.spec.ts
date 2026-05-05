@@ -1,11 +1,11 @@
 import test from "@playwright/test";
 
-import { html } from "@cronn/test-utils/playwright";
+import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
-import { setupSemanticSnapshotTest } from "../../src/test/fixtures";
+import { expect } from "../../src/test/fixtures";
 
 test("excludes options by default", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <select aria-label="Select">
@@ -15,11 +15,11 @@ test("excludes options by default", async ({ page }) => {
     `,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("includes options of HTML select", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <select aria-label="Select">
@@ -29,11 +29,13 @@ test("includes options of HTML select", async ({ page }) => {
     `,
   );
 
-  await matchSnapshot({ includeComboboxOptions: true });
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    includeComboboxOptions: true,
+  });
 });
 
 test("includes options from referenced listbox", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <input
@@ -51,22 +53,26 @@ test("includes options from referenced listbox", async ({ page }) => {
     `,
   );
 
-  await matchSnapshot({ includeComboboxOptions: true });
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    includeComboboxOptions: true,
+  });
 });
 
 test("excludes empty options", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <input type="text" role="combobox" aria-label="Combobox" value="Value" />
     `,
   );
 
-  await matchSnapshot({ includeComboboxOptions: true });
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    includeComboboxOptions: true,
+  });
 });
 
 test("exclude options minimal case", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <input
@@ -83,11 +89,11 @@ test("exclude options minimal case", async ({ page }) => {
     `,
   );
 
-  await matchSnapshot();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
 test("include options minimal case", async ({ page }) => {
-  const matchSnapshot = await setupSemanticSnapshotTest(
+  const bodyLocator = await setupSnapshotTest(
     page,
     html`
       <input
@@ -104,5 +110,7 @@ test("include options minimal case", async ({ page }) => {
     `,
   );
 
-  await matchSnapshot({ includeComboboxOptions: true });
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    includeComboboxOptions: true,
+  });
 });

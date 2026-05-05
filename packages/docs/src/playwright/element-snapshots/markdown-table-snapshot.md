@@ -1,6 +1,6 @@
 # Markdown Table Snapshot
 
-The `markdownTableSnapshot` function creates a readable Markdown table representation from HTML `<table>` elements or ARIA `grid` elements. This format is ideal for snapshot testing of tabular data in a human-readable format.
+The `toMatchMarkdownTableSnapshotFile` matcher creates a readable Markdown table representation from HTML `<table>` elements or ARIA `grid` elements. This format is ideal for snapshot testing of tabular data in a human-readable format.
 
 ## Purpose
 
@@ -19,9 +19,7 @@ import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 const expect = defineValidationFileExpect();
 
 test("matches table snapshot", async ({ page }) => {
-  await expect(markdownTableSnapshot(page.getByRole("table"))).toMatchTextFile({
-    fileExtension: "md",
-  });
+  await expect(page.getByRole("table")).toMatchMarkdownTableSnapshotFile();
 });
 ```
 
@@ -71,9 +69,7 @@ test("employee table", async ({ page }) => {
     </table>
   `);
 
-  await expect(markdownTableSnapshot(page.getByRole("table"))).toMatchTextFile({
-    fileExtension: "md",
-  });
+  await expect(page.getByRole("table")).toMatchMarkdownTableSnapshotFile();
 });
 ```
 
@@ -110,9 +106,7 @@ test("product grid", async ({ page }) => {
     </div>
   `);
 
-  await expect(markdownTableSnapshot(page.getByRole("grid"))).toMatchTextFile({
-    fileExtension: "md",
-  });
+  await expect(page.getByRole("grid")).toMatchMarkdownTableSnapshotFile();
 });
 ```
 
@@ -150,9 +144,7 @@ test("sorted table", async ({ page }) => {
     </table>
   `);
 
-  await expect(markdownTableSnapshot(page.getByRole("table"))).toMatchTextFile({
-    fileExtension: "md",
-  });
+  await expect(page.getByRole("table")).toMatchMarkdownTableSnapshotFile();
 });
 ```
 
@@ -163,6 +155,37 @@ test("sorted table", async ({ page }) => {
 | ------ | ----- |
 | Alice  | 95    |
 | Bob    | 88    |
+```
+
+## Snapshot Function
+
+The `markdownTableSnapshot` function provides more flexibility than the `toMatchMarkdownTableSnapshotFile` matcher, because it returns the snapshot result as a Markdown string for further processing instead of directly writing it to a file. This makes it suitable for custom assertions, transformations, or integrating the table representation into other parts of a test.
+
+```ts
+import { markdownTableSnapshot } from "@cronn/element-snapshot";
+
+test("processes markdown table snapshot result", async ({ page }) => {
+  await page.setContent(`
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Alice</td>
+          <td>95</td>
+        </tr>
+      </tbody>
+    </table>
+  `);
+
+  const markdownTable = await markdownTableSnapshot(page.getByRole("table"));
+  // Use the Markdown string for custom processing, assertions, or serialization
+  expect(markdownTable).toContain("Alice");
+});
 ```
 
 ## Supported Elements
