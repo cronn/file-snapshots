@@ -13,8 +13,6 @@
     "lib": ["esnext"],
     "moduleResolution": "bundler",
     "skipLibCheck": true,
-    "declaration": true,
-    "declarationMap": true,
     "noEmit": true
   }
 }
