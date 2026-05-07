@@ -27,7 +27,7 @@ import { semanticSnapshot } from "./snapshot";
  * @param {PlaywrightValidationFileMatcherConfig} config - Configuration options for file matching behavior
  * @return {Expect<ElementSnapshotMatchers>} An extended expect instance that includes matcher methods for element snapshot validation.
  */
-export function defineElementSnapshotExpect(
+export function defineElementSnapshotMatchers(
   config: PlaywrightValidationFileMatcherConfig = {},
 ): Expect<ElementSnapshotMatchers> {
   async function toMatchSemanticSnapshotFile(

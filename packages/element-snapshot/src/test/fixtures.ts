@@ -5,7 +5,7 @@ import type { PlaywrightValidationFileMatcherConfig } from "@cronn/playwright-fi
 import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 import { setupSnapshotTest } from "@cronn/test-utils/playwright";
 
-import { defineElementSnapshotExpect } from "../playwright/matchers";
+import { defineElementSnapshotMatchers } from "../playwright/matchers";
 import { rawSnapshot } from "../playwright/snapshot";
 
 const config: PlaywrightValidationFileMatcherConfig = {
@@ -15,7 +15,7 @@ const config: PlaywrightValidationFileMatcherConfig = {
 
 export const expect = mergeExpects(
   defineValidationFileExpect(config),
-  defineElementSnapshotExpect(config),
+  defineElementSnapshotMatchers(config),
 );
 
 export async function matchRawElementSnapshot(
