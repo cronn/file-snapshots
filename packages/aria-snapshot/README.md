@@ -24,9 +24,9 @@ yarn add -D @cronn/aria-snapshot
 
 ```ts
 import { ariaSnapshot } from "@cronn/aria-snapshot";
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
-const expect = defineValidationFileExpect();
+const expect = defineFileSnapshotMatchers();
 
 test("matches ARIA snapshot", async ({ page }) => {
   await page.setContent(`

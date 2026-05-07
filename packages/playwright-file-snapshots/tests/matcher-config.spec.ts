@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import { defineValidationFileExpect } from "../src";
+import { defineFileSnapshotMatchers } from "../src";
 import {
   SnapshotInstrumentation,
   assertSnapshotIntervals,
@@ -11,7 +11,7 @@ import {
 } from "../src/utils/test";
 
 test("stores snapshots in custom directories", async () => {
-  const testExpect = defineValidationFileExpect({
+  const testExpect = defineFileSnapshotMatchers({
     validationDir: "custom-data/validation",
     outputDir: "custom-data/output",
   });
@@ -20,7 +20,7 @@ test("stores snapshots in custom directories", async () => {
 });
 
 test("applies custom file path resolver", async () => {
-  const testExpect = defineValidationFileExpect({
+  const testExpect = defineFileSnapshotMatchers({
     resolveFilePath: testFilePathResolver,
   });
 
@@ -28,7 +28,7 @@ test("applies custom file path resolver", async () => {
 });
 
 test("when snapshot does not match, hard assertion throws error", async () => {
-  const testExpect = defineValidationFileExpect();
+  const testExpect = defineFileSnapshotMatchers();
 
   await expect(() =>
     testExpect("changed value").toMatchJsonFile(),
@@ -38,14 +38,14 @@ test("when snapshot does not match, hard assertion throws error", async () => {
 test.fail(
   "when snapshot does not match, soft assertion fails test",
   async () => {
-    const testExpect = defineValidationFileExpect();
+    const testExpect = defineFileSnapshotMatchers();
 
     await testExpect.soft("changed value").toMatchJsonFile();
   },
 );
 
 test("applies indentSize to JSON file snapshots", async () => {
-  const testExpect = defineValidationFileExpect({
+  const testExpect = defineFileSnapshotMatchers({
     indentSize: 4,
   });
 
@@ -53,7 +53,7 @@ test("applies indentSize to JSON file snapshots", async () => {
 });
 
 test("ignores indentSize in text file snapshots", async () => {
-  const testExpect = defineValidationFileExpect({
+  const testExpect = defineFileSnapshotMatchers({
     indentSize: 4,
   });
 
@@ -63,7 +63,7 @@ test("ignores indentSize in text file snapshots", async () => {
 test("applies update delay", { tag: tags.updateAll }, async () => {
   runOnlyWhenSnapshotUpdatesAreEnabled();
 
-  const testExpect = defineValidationFileExpect({
+  const testExpect = defineFileSnapshotMatchers({
     ...temporarySnapshotDirs(),
     updateDelay: 100,
   });

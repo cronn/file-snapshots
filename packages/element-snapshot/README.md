@@ -27,9 +27,9 @@ yarn add -D @cronn/element-snapshot
 
 ```ts
 import { semanticSnapshot } from "@cronn/element-snapshot";
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
-const expect = defineValidationFileExpect();
+const expect = defineFileSnapshotMatchers();
 
 test("matches element snapshot", async ({ page }) => {
   await page.setContent(`

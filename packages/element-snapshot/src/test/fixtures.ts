@@ -2,7 +2,7 @@ import type { Page } from "@playwright/test";
 import { mergeExpects } from "@playwright/test";
 
 import type { PlaywrightValidationFileMatcherConfig } from "@cronn/playwright-file-snapshots";
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 import { setupSnapshotTest } from "@cronn/test-utils/playwright";
 
 import { defineElementSnapshotMatchers } from "../playwright/matchers";
@@ -14,7 +14,7 @@ const config: PlaywrightValidationFileMatcherConfig = {
 };
 
 export const expect = mergeExpects(
-  defineValidationFileExpect(config),
+  defineFileSnapshotMatchers(config),
   defineElementSnapshotMatchers(config),
 );
 

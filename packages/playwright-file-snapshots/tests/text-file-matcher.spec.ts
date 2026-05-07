@@ -1,6 +1,6 @@
 import { test } from "@playwright/test";
 
-import { defineValidationFileExpect } from "../src";
+import { defineFileSnapshotMatchers } from "../src";
 import {
   SnapshotInstrumentation,
   assertSnapshotIntervals,
@@ -10,7 +10,7 @@ import {
   testFilePathResolver,
 } from "../src/utils/test";
 
-const expect = defineValidationFileExpect();
+const expect = defineFileSnapshotMatchers();
 
 test("matches value with text file", async () => {
   await expect("value").toMatchTextFile();
@@ -56,7 +56,7 @@ test("applies custom file extension", async () => {
 test("applies update delay", { tag: tags.updateAll }, async () => {
   runOnlyWhenSnapshotUpdatesAreEnabled();
 
-  const testExpect = defineValidationFileExpect({
+  const testExpect = defineFileSnapshotMatchers({
     ...temporarySnapshotDirs(),
     updateDelay: 100,
   });

@@ -25,9 +25,9 @@ yarn add -D @cronn/playwright-file-snapshots
 Define the Custom Matchers as a reusable export (e.g. in `fixtures.ts`):
 
 ```ts
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
-export const expect = defineValidationFileExpect();
+export const expect = defineFileSnapshotMatchers();
 ```
 
 Then import your custom `expect` instead of Playwright's base `expect` in your tests:
@@ -48,9 +48,9 @@ If you are already using other custom matchers, you can merge them with the vali
 ```ts
 import { mergeExpects, mergeTests } from "@playwright/test";
 
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
-const expect = mergeExpects(defineValidationFileExpect(), otherExpect);
+const expect = mergeExpects(defineFileSnapshotMatchers(), otherExpect);
 ```
 
 ## Configure `.gitignore`
