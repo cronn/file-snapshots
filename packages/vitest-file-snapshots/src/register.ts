@@ -5,4 +5,4 @@ declare module "vitest" {
   interface Matchers<T = any> extends VitestValidationFileMatchers<T> {}
 }
 
-export { registerValidationFileMatchers } from "./matchers/register-matchers";
+export { registerFileSnapshotMatchers } from "./matchers/register-matchers";

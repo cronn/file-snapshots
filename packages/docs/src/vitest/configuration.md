@@ -3,7 +3,7 @@
 Configuration options can be passed when registering the file matchers in the setup file:
 
 ```ts
-registerValidationFileMatchers({
+registerFileSnapshotMatchers({
   testDir: "src",
 });
 ```

@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { TestRunner, expect, test } from "vitest";
 
-import { registerValidationFileMatchers } from "../register";
+import { registerFileSnapshotMatchers } from "../register";
 import {
   resolvePackageRootDir,
   tags,
@@ -17,7 +17,7 @@ test.runIf(TestRunner.matchesTags([tags.updateNew]))(
   { tags: [tags.updateNew] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
-    registerValidationFileMatchers(snapshotDirs);
+    registerFileSnapshotMatchers(snapshotDirs);
 
     matchInitialValueWithError();
 
@@ -32,7 +32,7 @@ test.runIf(TestRunner.matchesTags([tags.updateNew]))(
   { tags: [tags.updateNew] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
-    registerValidationFileMatchers(snapshotDirs);
+    registerFileSnapshotMatchers(snapshotDirs);
 
     matchInitialValueWithError();
     matchChangedValueWithError();
@@ -48,7 +48,7 @@ test.runIf(TestRunner.matchesTags([tags.updateAll]))(
   { tags: [tags.updateAll] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
-    registerValidationFileMatchers(snapshotDirs);
+    registerFileSnapshotMatchers(snapshotDirs);
 
     matchInitialValueWithError();
 
@@ -63,7 +63,7 @@ test.runIf(TestRunner.matchesTags([tags.updateAll]))(
   { tags: [tags.updateAll] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
-    registerValidationFileMatchers(snapshotDirs);
+    registerFileSnapshotMatchers(snapshotDirs);
 
     matchInitialValueWithError();
     matchChangedValueWithError();
@@ -79,7 +79,7 @@ test.runIf(TestRunner.matchesTags([tags.updateNone]))(
   { tags: [tags.updateNone] },
   () => {
     const snapshotDirs = temporarySnapshotDirs();
-    registerValidationFileMatchers(snapshotDirs);
+    registerFileSnapshotMatchers(snapshotDirs);
 
     matchInitialValueWithError();
 
@@ -91,7 +91,7 @@ test.runIf(TestRunner.matchesTags([tags.updateNone]))(
   "when updateSnapshots is 'none', does not update changed validation file",
   { tags: [tags.updateNone] },
   async () => {
-    registerValidationFileMatchers();
+    registerFileSnapshotMatchers();
 
     matchChangedValueWithError();
 

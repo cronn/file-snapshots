@@ -1,10 +1,10 @@
 import { expect, test } from "vitest";
 
-import { registerValidationFileMatchers } from "../matchers/register-matchers";
+import { registerFileSnapshotMatchers } from "../matchers/register-matchers";
 import { testFilePathResolver } from "../utils/test";
 
 test("resolves test path relative to testDir", () => {
-  registerValidationFileMatchers({
+  registerFileSnapshotMatchers({
     testDir: "src",
   });
 
@@ -12,7 +12,7 @@ test("resolves test path relative to testDir", () => {
 });
 
 test("stores snapshots in custom directories", () => {
-  registerValidationFileMatchers({
+  registerFileSnapshotMatchers({
     validationDir: "custom-data/validation",
     outputDir: "custom-data/output",
   });
@@ -21,7 +21,7 @@ test("stores snapshots in custom directories", () => {
 });
 
 test("applies indentSize to JSON file snapshots", () => {
-  registerValidationFileMatchers({
+  registerFileSnapshotMatchers({
     indentSize: 4,
   });
 
@@ -29,7 +29,7 @@ test("applies indentSize to JSON file snapshots", () => {
 });
 
 test("ignores indentSize in text file snapshots", () => {
-  registerValidationFileMatchers({
+  registerFileSnapshotMatchers({
     indentSize: 4,
   });
 
@@ -37,7 +37,7 @@ test("ignores indentSize in text file snapshots", () => {
 });
 
 test("applies custom file path resolver", () => {
-  registerValidationFileMatchers({
+  registerFileSnapshotMatchers({
     resolveFilePath: testFilePathResolver,
   });
 

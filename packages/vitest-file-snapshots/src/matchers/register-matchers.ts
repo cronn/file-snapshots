@@ -17,7 +17,7 @@ import type {
   VitestValidationFileMatchers,
 } from "./types";
 
-export function registerValidationFileMatchers(
+export function registerFileSnapshotMatchers(
   config: VitestValidationFileMatcherConfig = {},
 ): void {
   const { indentSize, ...snapshotConfig } = config;

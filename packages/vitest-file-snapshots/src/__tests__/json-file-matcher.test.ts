@@ -1,9 +1,9 @@
 import { beforeEach, expect, test } from "vitest";
 
-import { registerValidationFileMatchers } from "../matchers/register-matchers";
+import { registerFileSnapshotMatchers } from "../matchers/register-matchers";
 import { testFilePathResolver } from "../utils/test";
 
-beforeEach(() => registerValidationFileMatchers());
+beforeEach(() => registerFileSnapshotMatchers());
 
 test("matches value with JSON file", () => {
   expect({

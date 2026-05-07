@@ -1,6 +1,6 @@
-import { registerValidationFileMatchers } from "@cronn/vitest-file-snapshots/register";
+import { registerFileSnapshotMatchers } from "@cronn/vitest-file-snapshots/register";
 
-registerValidationFileMatchers({
+registerFileSnapshotMatchers({
   testDir: "src",
   validationDir: "data/unit-test/validation",
   outputDir: "data/unit-test/output",

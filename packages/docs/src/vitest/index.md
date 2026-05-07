@@ -38,9 +38,9 @@ yarn add -D @cronn/vitest-file-snapshots
 Register the custom matchers in your `vitest-setup.ts`:
 
 ```ts
-import { registerValidationFileMatchers } from "@cronn/vitest-file-snapshots/register";
+import { registerFileSnapshotMatchers } from "@cronn/vitest-file-snapshots/register";
 
-registerValidationFileMatchers();
+registerFileSnapshotMatchers();
 ```
 
 Start writing tests:
