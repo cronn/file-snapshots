@@ -2,7 +2,7 @@ import test from "@playwright/test";
 
 import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
-import { snapshotAria } from "../src/snapshot";
+import { ariaSnapshot } from "../src/snapshot";
 import { expect } from "../src/test/fixtures";
 
 test("combined snapshot", async ({ page }) => {
@@ -15,7 +15,7 @@ test("combined snapshot", async ({ page }) => {
   );
 
   await expect({
-    sidenav: await snapshotAria(bodyLocator.getByRole("navigation")),
-    content: await snapshotAria(bodyLocator.getByRole("main")),
+    sidenav: await ariaSnapshot(bodyLocator.getByRole("navigation")),
+    content: await ariaSnapshot(bodyLocator.getByRole("main")),
   }).toMatchJsonFile();
 });

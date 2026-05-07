@@ -70,18 +70,18 @@ test("matches ARIA snapshot", async ({ page }) => {
 
 ### Snapshot Function
 
-The `snapshotAria` function provides more flexibility than the `toMatchAriaSnapshotFile` matcher, because it returns the snapshot result as a JavaScript object instead of directly writing it to a file. This makes it suitable for composing custom assertions:
+The `ariaSnapshot` function provides more flexibility than the `toMatchAriaSnapshotFile` matcher, because it returns the snapshot result as a JavaScript object instead of directly writing it to a file. This makes it suitable for composing custom assertions:
 
 ```ts
-import { snapshotAria } from "@cronn/aria-snapshot";
+import { ariaSnapshot } from "@cronn/aria-snapshot";
 import { defineValidationFileExpect } from "@cronn/playwright-file-matchers";
 
 const expect = defineValidationFileExpect();
 
 test("matches composed ARIA snapshots", async ({ page }) => {
   await expect({
-    nav: await snapshotAria(page.getByRole("navigation")),
-    main: await snapshotAria(page.getByRole("main")),
+    nav: await ariaSnapshot(page.getByRole("navigation")),
+    main: await ariaSnapshot(page.getByRole("main")),
   }).toMatchJsonFile();
 });
 ```

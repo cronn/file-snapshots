@@ -68,10 +68,10 @@ test("matches JSON file", async () => {
 ARIA Snapshots are a JSON-based adapter for Playwright's YAML-based ARIA Snapshots. They facilitate snapshot composition using a format natively supported by JavaScript.
 
 ```ts
-import { snapshotAria } from "@cronn/aria-snapshot";
+import { ariaSnapshot } from "@cronn/aria-snapshot";
 
 test("matches ARIA snapshot", async ({ page }) => {
-  await expect(snapshotAria(page.getByRole("main"))).toMatchJsonFile();
+  await expect(ariaSnapshot(page.getByRole("main"))).toMatchJsonFile();
 });
 ```
 
