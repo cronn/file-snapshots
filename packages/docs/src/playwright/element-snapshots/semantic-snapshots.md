@@ -77,7 +77,7 @@ await expect(page.getByRole("main")).toMatchSemanticSnapshotFile({
 
 ## Snapshot Function
 
-The `semanticSnapshot` function provides more flexibility than the `toMatchSemanticSnapshotFile` matcher, because it returns the snapshot result for further processing instead of directly writing it to a file. This makes it suitable for custom assertions, transformations, or integrating snapshot data into other parts of a test.
+The `semanticSnapshot` function provides more flexibility than the `toMatchSemanticSnapshotFile` matcher, because it returns the snapshot result as a JavaScript object instead of directly writing it to a file. This makes it suitable for composing custom assertions:
 
 ```ts
 import { semanticSnapshot } from "@cronn/element-snapshot";
@@ -92,7 +92,6 @@ test("combines semantic snapshot results", async ({ page }) => {
   `);
 
   const snapshot = await semanticSnapshot(page.locator("body"));
-  // Use the snapshot result for custom processing, assertions, or serialization
   expect({
     sidenav: await semanticSnapshot(page.getByRole("navigation")),
     content: await semanticSnapshot(page.getByRole("main")),
