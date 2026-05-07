@@ -26,11 +26,8 @@ jobs:
       - name: Run setup
         uses: ./.github/actions/setup
 
-      - name: Ignore devEngines for npm info during release
-        run: jq 'walk(if type == "object" and has("onFail") then .onFail = "ignore" else . end)' package.json > package.json.tmp && mv package.json.tmp package.json
-
-      - name: Configure npm token
-        run: npm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}" # pnpm config set is broken
+      - name: Configure npm token # only required for initial releases which are not yet supported by trusted publishing
+        run: pnpm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
