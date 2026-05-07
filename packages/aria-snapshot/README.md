@@ -23,7 +23,7 @@ yarn add -D @cronn/aria-snapshot
 ## Writing Tests
 
 ```ts
-import { snapshotAria } from "@cronn/aria-snapshot";
+import { ariaSnapshot } from "@cronn/aria-snapshot";
 import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
 
 const expect = defineValidationFileExpect();
@@ -39,7 +39,7 @@ test("matches ARIA snapshot", async ({ page }) => {
     </main>
   `);
 
-  await expect(snapshotAria(page.getByRole("main"))).toMatchJsonFile();
+  await expect(ariaSnapshot(page.getByRole("main"))).toMatchJsonFile();
 });
 ```
 

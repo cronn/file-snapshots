@@ -12,7 +12,7 @@ import type {
 } from "@cronn/playwright-file-snapshots";
 import { defineJsonFileMatcher } from "@cronn/playwright-file-snapshots";
 
-import { snapshotAria } from "./snapshot";
+import { ariaSnapshot } from "./snapshot";
 import type { AriaSnapshotMatchers } from "./types";
 
 /**
@@ -33,7 +33,7 @@ export function defineAriaSnapshotMatchers(
       "toMatchAriaSnapshotFile",
       config,
     ).bind(this);
-    return await toMatchJsonFile(() => snapshotAria(actual), options);
+    return await toMatchJsonFile(() => ariaSnapshot(actual), options);
   }
 
   return baseExpect.extend({

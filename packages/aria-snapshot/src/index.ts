@@ -1,5 +1,5 @@
 export { defineAriaSnapshotMatchers } from "./matchers";
 
-export { snapshotAria } from "./snapshot";
+export { ariaSnapshot } from "./snapshot";
 
 export type { AriaSnapshotMatchers } from "./types";

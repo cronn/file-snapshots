@@ -17,11 +17,11 @@ import {
  *
  * @example
  * ```ts
- * await expect(snapshotAria(page.getByRole("main"))).toMatchJsonSnapshot();
+ * await expect(ariaSnapshot(page.getByRole("main"))).toMatchJsonFile();
  * ```
  * @param locator Locator for the element to snapshot
  */
-export async function snapshotAria(locator: Locator): Promise<unknown> {
+export async function ariaSnapshot(locator: Locator): Promise<unknown> {
   return await new AriaSnapshot().snapshot(locator);
 }
 
