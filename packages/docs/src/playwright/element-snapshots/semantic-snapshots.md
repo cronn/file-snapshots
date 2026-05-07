@@ -3,10 +3,9 @@
 The `toMatchSemanticSnapshotFile` matcher provides a general-purpose snapshot covering the semantic structure of the target element. It includes all supported roles and attributes, providing a high test coverage. The format is optimized to be human-readable, but large and complex HTML structures will result in complex snapshots as well.
 
 ```ts
-import { semanticSnapshot } from "@cronn/element-snapshot";
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 
-const expect = defineValidationFileExpect();
+const expect = defineElementSnapshotMatchers();
 
 test("matches semantic snapshot", async ({ page }) => {
   await page.setContent(`
@@ -92,7 +91,7 @@ test("combines semantic snapshot results", async ({ page }) => {
   `);
 
   const snapshot = await semanticSnapshot(page.locator("body"));
-  expect({
+  await expect({
     sidenav: await semanticSnapshot(page.getByRole("navigation")),
     content: await semanticSnapshot(page.getByRole("main")),
   }).toMatchJsonFile();
