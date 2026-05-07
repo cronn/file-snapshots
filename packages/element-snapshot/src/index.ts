@@ -1,4 +1,4 @@
-export { defineElementSnapshotExpect } from "./playwright/matchers";
+export { defineElementSnapshotMatchers } from "./playwright/matchers";
 
 export type { ElementRole } from "./types/role";
 export type { ElementSnapshot, NodeRole, NodeSnapshot } from "./types/snapshot";

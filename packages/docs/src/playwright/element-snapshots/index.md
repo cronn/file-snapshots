@@ -31,9 +31,9 @@ yarn add -D @cronn/element-snapshot
 Define the Custom Matchers as a reusable export (e.g. in `fixtures.ts`):
 
 ```ts
-import { defineElementSnapshotExpect } from "@cronn/element-snapshot";
+import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 
-export const expect = defineElementSnapshotExpect();
+export const expect = defineElementSnapshotMatchers();
 ```
 
 The function takes the same options as `defineValidationFileExpect`. See [Configuration](/playwright/configuration) for a list of available configuration options.
