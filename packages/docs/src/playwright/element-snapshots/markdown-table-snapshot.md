@@ -13,10 +13,9 @@ Markdown table snapshots provide:
 ## Usage
 
 ```ts
-import { markdownTableSnapshot } from "@cronn/element-snapshot";
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 
-const expect = defineValidationFileExpect();
+const expect = defineElementSnapshotMatchers();
 
 test("matches table snapshot", async ({ page }) => {
   await expect(page.getByRole("table")).toMatchMarkdownTableSnapshotFile();
