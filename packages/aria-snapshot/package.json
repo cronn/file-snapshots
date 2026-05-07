@@ -36,11 +36,11 @@
     "test:unit:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@cronn/playwright-file-snapshots": "workspace:*",
     "yaml": "catalog:"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:",
-    "@cronn/playwright-file-snapshots": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@cronn/test-utils": "workspace:*",
     "@playwright/test": "catalog:",

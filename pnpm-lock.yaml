@@ -322,6 +322,9 @@ importers:
 
   packages/aria-snapshot:
     dependencies:
+      '@cronn/playwright-file-snapshots':
+        specifier: workspace:*
+        version: link:../playwright-file-snapshots
       yaml:
         specifier: 'catalog:'
         version: 2.8.3
@@ -329,9 +332,6 @@ importers:
       '@arethetypeswrong/core':
         specifier: 'catalog:'
         version: 0.18.2
-      '@cronn/playwright-file-snapshots':
-        specifier: workspace:*
-        version: link:../playwright-file-snapshots
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
