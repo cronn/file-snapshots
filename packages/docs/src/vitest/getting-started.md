@@ -25,9 +25,9 @@ yarn add -D @cronn/vitest-file-snapshots
 Import the custom matchers in your `vitest-setup.ts`:
 
 ```ts
-import { registerValidationFileMatchers } from "@cronn/vitest-file-snapshots/register";
+import { registerFileSnapshotMatchers } from "@cronn/vitest-file-snapshots/register";
 
-registerValidationFileMatchers();
+registerFileSnapshotMatchers();
 ```
 
 ### Create Setup File

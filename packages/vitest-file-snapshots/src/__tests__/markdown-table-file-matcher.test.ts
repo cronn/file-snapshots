@@ -3,10 +3,10 @@ import { beforeEach, expect, test } from "vitest";
 import type { TableCell } from "@cronn/lib-file-snapshots";
 import { Table } from "@cronn/lib-file-snapshots";
 
-import { registerValidationFileMatchers } from "../matchers/register-matchers";
+import { registerFileSnapshotMatchers } from "../matchers/register-matchers";
 import { testFilePathResolver } from "../utils/test";
 
-beforeEach(() => registerValidationFileMatchers());
+beforeEach(() => registerFileSnapshotMatchers());
 
 test("matches table with Markdown file", () => {
   expect(
