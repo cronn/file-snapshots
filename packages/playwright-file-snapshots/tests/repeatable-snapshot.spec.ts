@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import { defineValidationFileExpect } from "../src";
+import { defineFileSnapshotMatchers } from "../src";
 import {
   SnapshotInstrumentation,
   assertSnapshotIntervals,
@@ -10,7 +10,7 @@ import {
 } from "../src/utils/test";
 
 test("when validation file is missing, waits for delay before creating snapshot", async () => {
-  const testExpect = defineValidationFileExpect(temporarySnapshotDirs());
+  const testExpect = defineFileSnapshotMatchers(temporarySnapshotDirs());
 
   const instrumentation = new SnapshotInstrumentation();
   await expect(() =>
@@ -29,7 +29,7 @@ test(
   async () => {
     runOnlyWhenSnapshotUpdatesAreEnabled();
 
-    const testExpect = defineValidationFileExpect(temporarySnapshotDirs());
+    const testExpect = defineFileSnapshotMatchers(temporarySnapshotDirs());
 
     const instrumentation = new SnapshotInstrumentation();
     await expect(() =>
@@ -47,7 +47,7 @@ test(
 );
 
 test("when validation file exists, repeats failing snapshot until it matches", async () => {
-  const testExpect = defineValidationFileExpect();
+  const testExpect = defineFileSnapshotMatchers();
 
   const instrumentation = new SnapshotInstrumentation();
   await testExpect(() => {
@@ -63,7 +63,7 @@ test("when validation file exists, repeats failing snapshot until it matches", a
 });
 
 test("when validation file exists, repeats failing snapshot until timeout", async () => {
-  const testExpect = defineValidationFileExpect().configure({ timeout: 2_000 });
+  const testExpect = defineFileSnapshotMatchers().configure({ timeout: 2_000 });
 
   const instrumentation = new SnapshotInstrumentation();
   await testExpect(() =>
@@ -77,7 +77,7 @@ test("when validation file exists, repeats failing snapshot until timeout", asyn
 });
 
 test("applies custom timeout", async () => {
-  const testExpect = defineValidationFileExpect();
+  const testExpect = defineFileSnapshotMatchers();
 
   const instrumentation = new SnapshotInstrumentation();
   await testExpect(async () =>
@@ -91,7 +91,7 @@ test("applies custom timeout", async () => {
 });
 
 test("when trying to snapshot a function with parameters, throws error", async () => {
-  const testExpect = defineValidationFileExpect();
+  const testExpect = defineFileSnapshotMatchers();
 
   await expect(() =>
     testExpect((value: unknown) => value).toMatchJsonFile(),

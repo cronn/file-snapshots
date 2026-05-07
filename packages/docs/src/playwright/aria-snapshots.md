@@ -34,7 +34,7 @@ import { defineAriaSnapshotMatchers } from "@cronn/aria-snapshot";
 export const expect = defineAriaSnapshotMatchers();
 ```
 
-The function takes the same options as `defineValidationFileExpect`. See [Configuration](/playwright/configuration) for a list of available configuration options.
+The function takes the same options as `defineFileSnapshotMatchers`. See [Configuration](/playwright/configuration) for a list of available configuration options.
 
 ## Writing Tests
 
@@ -74,9 +74,9 @@ The `ariaSnapshot` function provides more flexibility than the `toMatchAriaSnaps
 
 ```ts
 import { ariaSnapshot } from "@cronn/aria-snapshot";
-import { defineValidationFileExpect } from "@cronn/playwright-file-matchers";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-matchers";
 
-const expect = defineValidationFileExpect();
+const expect = defineFileSnapshotMatchers();
 
 test("matches composed ARIA snapshots", async ({ page }) => {
   await expect({

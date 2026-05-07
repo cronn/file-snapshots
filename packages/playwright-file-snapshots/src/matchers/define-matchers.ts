@@ -24,7 +24,7 @@ import type {
  * @param {PlaywrightValidationFileMatcherConfig} config - Configuration object for customizing the behavior of file validation matchers, such as file paths, update strategies, and comparison options. Defaults to an empty object if not provided.
  * @return {Expect<PlaywrightValidationFileMatchers>} An extended expect object that includes toMatchJsonFile and toMatchTextFile matcher methods for validating content against stored files.
  */
-export function defineValidationFileExpect(
+export function defineFileSnapshotMatchers(
   config: PlaywrightValidationFileMatcherConfig = {},
 ): Expect<PlaywrightValidationFileMatchers> {
   return baseExpect.extend({

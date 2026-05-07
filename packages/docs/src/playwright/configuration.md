@@ -3,9 +3,9 @@
 Configuration options can be passed when defining the file matchers:
 
 ```ts
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
-const expect = defineValidationFileExpect({
+const expect = defineFileSnapshotMatchers({
   validationDir: "custom-validation",
   outputDir: "custom-output",
 });

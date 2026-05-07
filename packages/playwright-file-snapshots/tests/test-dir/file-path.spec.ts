@@ -1,8 +1,8 @@
 import { test } from "@playwright/test";
 
-import { defineValidationFileExpect } from "../../src";
+import { defineFileSnapshotMatchers } from "../../src";
 
-const expect = defineValidationFileExpect();
+const expect = defineFileSnapshotMatchers();
 
 test.describe("describe title", () => {
   test("test title", async () => {

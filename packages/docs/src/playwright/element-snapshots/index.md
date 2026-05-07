@@ -36,4 +36,4 @@ import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 export const expect = defineElementSnapshotMatchers();
 ```
 
-The function takes the same options as `defineValidationFileExpect`. See [Configuration](/playwright/configuration) for a list of available configuration options.
+The function takes the same options as `defineFileSnapshotMatchers`. See [Configuration](/playwright/configuration) for a list of available configuration options.

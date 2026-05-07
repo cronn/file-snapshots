@@ -36,9 +36,9 @@ yarn add -D @cronn/playwright-file-snapshots
 Define the custom matchers (e.g. in `fixtures.ts`):
 
 ```ts
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
-export const expect = defineValidationFileExpect();
+export const expect = defineFileSnapshotMatchers();
 ```
 
 Start writing tests:

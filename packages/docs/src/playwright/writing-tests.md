@@ -120,7 +120,7 @@ test("match values using soft assertions", async () => {
 ### Enabling Soft Assertions for All Matchers
 
 ```ts
-export const expect = defineValidationFileExpect().configure({
+export const expect = defineFileSnapshotMatchers().configure({
   soft: true,
 });
 ```

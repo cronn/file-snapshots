@@ -80,9 +80,9 @@ The `semanticSnapshot` function provides more flexibility than the `toMatchSeman
 
 ```ts
 import { semanticSnapshot } from "@cronn/element-snapshot";
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
-const expect = defineValidationFileExpect();
+const expect = defineFileSnapshotMatchers();
 
 test("combines semantic snapshot results", async ({ page }) => {
   await page.setContent(`

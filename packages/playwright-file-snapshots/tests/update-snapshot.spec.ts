@@ -2,7 +2,7 @@ import { type Expect, expect, test } from "@playwright/test";
 import fs from "node:fs";
 import path from "node:path";
 
-import { defineValidationFileExpect } from "../src";
+import { defineFileSnapshotMatchers } from "../src";
 import type { PlaywrightValidationFileMatchers } from "../src/matchers/types";
 import { resolvePackageRootDir } from "../src/utils/file";
 import {
@@ -20,7 +20,7 @@ test("when updateSnapshots is 'missing', creates missing validation file", async
   runOnlyWhenUpdateSnapshotsIs("missing");
 
   const snapshotDirs = temporarySnapshotDirs();
-  const testExpect = defineValidationFileExpect(snapshotDirs);
+  const testExpect = defineFileSnapshotMatchers(snapshotDirs);
 
   await matchInitialValueWithError(testExpect);
 
@@ -33,7 +33,7 @@ test("when updateSnapshots is 'missing', does not update changed validation file
   runOnlyWhenUpdateSnapshotsIs("missing");
 
   const snapshotDirs = temporarySnapshotDirs();
-  const testExpect = defineValidationFileExpect(snapshotDirs);
+  const testExpect = defineFileSnapshotMatchers(snapshotDirs);
 
   await matchInitialValueWithError(testExpect);
   await matchChangedValueWithError(testExpect);
@@ -61,7 +61,7 @@ for (const { updateType, tag } of updateTestCases) {
       runOnlyWhenUpdateSnapshotsIs(updateType);
 
       const snapshotDirs = temporarySnapshotDirs();
-      const testExpect = defineValidationFileExpect(snapshotDirs);
+      const testExpect = defineFileSnapshotMatchers(snapshotDirs);
 
       await matchInitialValueWithError(testExpect);
 
@@ -78,7 +78,7 @@ for (const { updateType, tag } of updateTestCases) {
       runOnlyWhenSnapshotUpdatesAreEnabled();
 
       const snapshotDirs = temporarySnapshotDirs();
-      const testExpect = defineValidationFileExpect(snapshotDirs);
+      const testExpect = defineFileSnapshotMatchers(snapshotDirs);
 
       await matchInitialValueWithError(testExpect);
       await matchChangedValueWithError(testExpect);
@@ -96,7 +96,7 @@ test(
   async () => {
     runOnlyWhenUpdateSnapshotsIs("none");
 
-    const testExpect = defineValidationFileExpect();
+    const testExpect = defineFileSnapshotMatchers();
 
     await matchInitialValueWithError(testExpect);
 
@@ -111,7 +111,7 @@ test(
   async () => {
     runOnlyWhenUpdateSnapshotsIs("none");
 
-    const testExpect = defineValidationFileExpect();
+    const testExpect = defineFileSnapshotMatchers();
 
     await matchChangedValueWithError(testExpect);
 
