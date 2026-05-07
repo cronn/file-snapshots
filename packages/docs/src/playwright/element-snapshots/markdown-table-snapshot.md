@@ -159,7 +159,7 @@ test("sorted table", async ({ page }) => {
 
 ## Snapshot Function
 
-The `markdownTableSnapshot` function provides more flexibility than the `toMatchMarkdownTableSnapshotFile` matcher, because it returns the snapshot result as a Markdown string for further processing instead of directly writing it to a file. This makes it suitable for custom assertions, transformations, or integrating the table representation into other parts of a test.
+The `markdownTableSnapshot` function provides more flexibility than the `toMatchMarkdownTableSnapshotFile` matcher, because it returns the snapshot result as a Markdown string instead of directly writing it to a file. This makes it suitable for composing custom assertions:
 
 ```ts
 import { markdownTableSnapshot } from "@cronn/element-snapshot";
@@ -183,7 +183,6 @@ test("processes markdown table snapshot result", async ({ page }) => {
   `);
 
   const markdownTable = await markdownTableSnapshot(page.getByRole("table"));
-  // Use the Markdown string for custom processing, assertions, or serialization
   expect(markdownTable).toContain("Alice");
 });
 ```
