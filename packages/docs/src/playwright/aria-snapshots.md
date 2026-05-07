@@ -24,16 +24,27 @@ yarn add -D @cronn/aria-snapshot
 
 :::
 
+## Define Custom Matchers
+
+Define the Custom Matchers as a reusable export (e.g. in `fixtures.ts`):
+
+```ts
+import { defineAriaSnapshotMatchers } from "@cronn/aria-snapshot";
+
+export const expect = defineAriaSnapshotMatchers();
+```
+
+The function takes the same options as `defineValidationFileExpect`. See [Configuration](/playwright/configuration) for a list of available configuration options.
+
 ## Writing Tests
 
 ```ts
-import { snapshotAria } from "@cronn/aria-snapshot";
-import { defineValidationFileExpect } from "@cronn/playwright-file-snapshots";
+import { defineAriaSnapshotMatchers } from "@cronn/aria-snapshot";
 
-const expect = defineValidationFileExpect();
+const expect = defineAriaSnapshotMatchers();
 
 test("matches ARIA snapshot", async ({ page }) => {
-  await expect(snapshotAria(page.getByRole("main"))).toMatchJsonFile();
+  await expect(page.getByRole("main")).toMatchAriaSnapshotFile();
 });
 ```
 
@@ -57,12 +68,15 @@ test("matches ARIA snapshot", async ({ page }) => {
 }
 ```
 
-## Composing Multiple ARIA Snapshots
+### Snapshot Function
 
-To compose multiple ARIA snapshots in a single JSON file, you can use an object structure:
+The `snapshotAria` function provides more flexibility than the `toMatchAriaSnapshotFile` matcher, because it returns the snapshot result as a JavaScript object instead of directly writing it to a file. This makes it suitable for composing custom assertions:
 
 ```ts
 import { snapshotAria } from "@cronn/aria-snapshot";
+import { defineValidationFileExpect } from "@cronn/playwright-file-matchers";
+
+const expect = defineValidationFileExpect();
 
 test("matches composed ARIA snapshots", async ({ page }) => {
   await expect({
