@@ -1,5 +1,19 @@
 # @cronn/aria-snapshot
 
+## 2.0.0
+
+### Major Changes
+
+- 3434b50: Breaking change: Rename `snapshotAria` to `ariaSnapshot`
+- 71b9b3c: Provide `toMatchAriaSnapshotFile` matcher
+
+### Patch Changes
+
+- Updated dependencies [a0d8450]
+- Updated dependencies [bc699fa]
+- Updated dependencies [1d9e54e]
+  - @cronn/playwright-file-snapshots@2.0.0
+
 ## 1.0.1
 
 ### Patch Changes

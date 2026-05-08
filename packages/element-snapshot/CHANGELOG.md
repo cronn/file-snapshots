@@ -1,5 +1,22 @@
 # @cronn/element-snapshot
 
+## 0.19.0
+
+### Minor Changes
+
+- bc699fa: Provide `toMatchSemanticSnapshotFile` matcher
+- cbb10b7: Breaking change: Rename `defineElementSnapshotExpect` to `defineElementSnapshotMatchers`
+- a2d1197: Resolve accessible name from child content for elements with role `columnheader`, `rowheader`, `cell`, `gridcell`, `tab`, `option`, `term` and `definition`
+- bc699fa: Provide `toMatchMarkdownTableSnapshotFile` matcher
+
+### Patch Changes
+
+- 6aac909: Introduce separate `RegionSnapshot`
+- Updated dependencies [a0d8450]
+- Updated dependencies [bc699fa]
+- Updated dependencies [1d9e54e]
+  - @cronn/playwright-file-snapshots@2.0.0
+
 ## 0.18.0
 
 ### Minor Changes
