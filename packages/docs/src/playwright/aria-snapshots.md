@@ -44,6 +44,16 @@ import { defineAriaSnapshotMatchers } from "@cronn/aria-snapshot";
 const expect = defineAriaSnapshotMatchers();
 
 test("matches ARIA snapshot", async ({ page }) => {
+  await page.setContent(`
+    <main>
+      <h1>List</h1>
+      <ul>
+        <li>Apple</li>
+        <li>Peach</li>
+      </ul>
+    </main>
+  `);
+
   await expect(page.getByRole("main")).toMatchAriaSnapshotFile();
 });
 ```
@@ -79,6 +89,11 @@ import { defineFileSnapshotMatchers } from "@cronn/playwright-file-matchers";
 const expect = defineFileSnapshotMatchers();
 
 test("matches composed ARIA snapshots", async ({ page }) => {
+  await page.setContent(`
+    <nav>Sidenav</nav>
+    <main>Content</main>
+  `);
+
   await expect({
     nav: await ariaSnapshot(page.getByRole("navigation")),
     main: await ariaSnapshot(page.getByRole("main")),
