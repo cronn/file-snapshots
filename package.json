@@ -10,7 +10,7 @@
   },
   "type": "module",
   "scripts": {
-    "clean": "rimraf .turbo",
+    "clean": "rimraf .turbo && pnpm pm clean",
     "compile": "tsgo",
     "config:check": "meta-updater --test",
     "config:fix": "meta-updater",

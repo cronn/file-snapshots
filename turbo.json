@@ -1,6 +1,7 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
+    "//#clean": { "outputLogs": "new-only" },
     "//#config:check": { "outputLogs": "new-only" },
     "//#config:fix": { "outputLogs": "new-only" },
     "//#format:check": { "outputLogs": "new-only" },

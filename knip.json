@@ -5,7 +5,7 @@
       "entry": [".meta-updater/main.mjs"]
     }
   },
-  "ignoreBinaries": ["clean-install"],
+  "ignoreBinaries": ["clean-install", "pm"],
   "ignoreDependencies": [
     "eslint-config-prettier",
     "eslint-plugin-check-file",
