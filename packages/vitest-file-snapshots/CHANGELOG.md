@@ -1,5 +1,11 @@
 # @cronn/vitest-file-snapshots
 
+## 2.0.0
+
+### Major Changes
+
+- dd3fc8f: Breaking change: Rename `registerValidationFileMatchers` to `registerFileSnapshotMatchers`
+
 ## 1.1.2
 
 ### Patch Changes

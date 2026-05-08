@@ -1,5 +1,19 @@
 # @cronn/playwright-file-snapshots
 
+## 2.0.0
+
+### Major Changes
+
+- a0d8450: Breaking change: Rename `defineValidationFileExpect` to `defineFileSnapshotMatchers`
+
+### Minor Changes
+
+- bc699fa: Export matcher factories to define custom JSON and text snapshots
+
+### Patch Changes
+
+- 1d9e54e: Export `PlaywrightValidationFileMatchers` interface
+
 ## 1.0.4
 
 ### Patch Changes
