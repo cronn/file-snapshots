@@ -18,7 +18,7 @@ test("matches semantic snapshot", async ({ page }) => {
     </main>
   `);
 
-  await expect(page.getByRole("list")).toMatchSemanticSnapshotFile();
+  await expect(page.getByRole("main")).toMatchSemanticSnapshotFile();
 });
 ```
 
@@ -90,7 +90,6 @@ test("combines semantic snapshot results", async ({ page }) => {
     <main>Content</main>
   `);
 
-  const snapshot = await semanticSnapshot(page.locator("body"));
   await expect({
     sidenav: await semanticSnapshot(page.getByRole("navigation")),
     content: await semanticSnapshot(page.getByRole("main")),
