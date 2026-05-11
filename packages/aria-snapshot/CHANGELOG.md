@@ -1,5 +1,14 @@
 # @cronn/aria-snapshot
 
+## 2.0.1
+
+### Patch Changes
+
+- 60fcb73: Filter `expect` steps with complex locator expressions.
+  Match any locator expression instead of only simple single-method locators, enabling support for chained locator methods like `locator('body').getByRole('textbox', { name: 'my-input' })`.
+- Updated dependencies [60fcb73]
+  - @cronn/playwright-file-snapshots@2.0.1
+
 ## 2.0.0
 
 ### Major Changes
