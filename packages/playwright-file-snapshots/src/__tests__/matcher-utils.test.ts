@@ -119,6 +119,7 @@ describe("parseTitlePath", () => {
         "step title",
         'Expect "toThrowError"',
         'Expect "soft toMatchJsonFile"',
+        `Expect "toMatchLocator" locator('body').getByRole('textbox', { name: 'my-input' })`,
         "Match validation file",
       ]),
     ).toStrictEqual(["test title", "step title"]);
