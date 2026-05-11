@@ -60,8 +60,7 @@ export function parseTestPath(testPath: string): string {
 
 export const MATCHER_STEP_TITLE = "Match validation file";
 
-const EXPECT_STEP_REGEXP =
-  /^Expect "(?<matcher>[\w ]+)"(?<locator> \w+\('\w+'\))?$/;
+const EXPECT_STEP_REGEXP = /^Expect "(?<matcher>[\w ]+)"(?<locator> .+)?$/;
 
 export function parseTitlePath(titlePath: Array<string>): Array<string> {
   return titlePath.filter(isUserDefinedTitle);
