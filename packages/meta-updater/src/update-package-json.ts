@@ -28,7 +28,7 @@ export function updatePackageJson(
     devEngines: {
       packageManager: {
         name: "pnpm",
-        version: "11.0.7",
+        version: "11.1.2",
         onFail: "download",
       },
       runtime: {
