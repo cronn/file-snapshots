@@ -24,7 +24,7 @@ yarn add -D @cronn/playwright-file-snapshots
 
 Define the Custom Matchers as a reusable export (e.g. in `fixtures.ts`):
 
-```ts
+```ts [fixtures.ts]
 import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
 export const expect = defineFileSnapshotMatchers();
@@ -45,7 +45,7 @@ test("matches JSON file", async () => {
 
 If you are already using other custom matchers, you can merge them with the validation file matchers:
 
-```ts
+```ts [fixtures.ts]
 import { mergeExpects, mergeTests } from "@playwright/test";
 
 import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
@@ -57,7 +57,7 @@ const expect = mergeExpects(defineFileSnapshotMatchers(), otherExpect);
 
 All file snapshots are generated to `/data/test`. The golden masters will be stored in `/data/test/validation`, which should be under version control. The file snapshots generated for test runs will be stored under `/data/test/output` and should be ignored:
 
-```
+```[.gitignore]
 # file snapshots
 /data/test/output
 ```

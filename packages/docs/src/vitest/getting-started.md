@@ -24,7 +24,7 @@ yarn add -D @cronn/vitest-file-snapshots
 
 Import the custom matchers in your `vitest-setup.ts`:
 
-```ts
+```ts [vitest-setup.ts]
 import { registerFileSnapshotMatchers } from "@cronn/vitest-file-snapshots/register";
 
 registerFileSnapshotMatchers();
@@ -34,7 +34,7 @@ registerFileSnapshotMatchers();
 
 If you don't have a setup file in your project, create it and add it to your `vitest.config.ts`:
 
-```ts
+```ts [vitest.config.ts]
 {
   test: {
     setupFiles: ["vitest-setup.ts"];
@@ -46,7 +46,7 @@ If you don't have a setup file in your project, create it and add it to your `vi
 
 To get proper typings in TypeScript, add the `vitest-setup.ts` to your `tsconfig.json`:
 
-```json
+```json [tsconfig.json]
 {
   "include": ["vitest-setup.ts"]
 }
@@ -56,7 +56,7 @@ To get proper typings in TypeScript, add the `vitest-setup.ts` to your `tsconfig
 
 All file snapshots are generated to `/data/test`. The golden masters are stored in `/data/test/validation`, which should be under version control. The file snapshots generated for test runs are stored under `/data/test/output` and should be ignored:
 
-```
+```[.gitignore]
 # file snapshots
 /data/test/output
 ```

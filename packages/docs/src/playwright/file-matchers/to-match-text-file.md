@@ -14,9 +14,9 @@ test("matches page title", async () => {
 });
 ```
 
-**Output (`matches_page_title.txt`):**
+**Output:**
 
-```
+```[matches_page_title.txt]
 Page Title
 ```
 
@@ -46,9 +46,9 @@ test("matches HTML snapshot", async ({ page }) => {
 });
 ```
 
-**Output (`matches_HTML_snapshot.html`):**
+**Output:**
 
-```html
+```html [matches_HTML_snapshot.html]
 <main>Hello World</main>
 ```
 

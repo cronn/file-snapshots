@@ -16,9 +16,9 @@ test("value is expected value", () => {
 });
 ```
 
-**Output (`value_is_expected_value.json`):**
+**Output:**
 
-```json
+```json [value_is_expected_value.json]
 {
   "value": "expected value"
 }
@@ -42,9 +42,9 @@ test("maps values to string", () => {
 });
 ```
 
-**Output (`maps_values_to_string.json`):**
+**Output:**
 
-```json
+```json [maps_values_to_string.json]
 {
   "boolean": "true",
   "positiveNumber": "1",
@@ -70,9 +70,9 @@ test("date is masked", () => {
 });
 ```
 
-**Output (`date_is_masked.json`):**
+**Output:**
 
-```json
+```json [date_is_masked.json]
 {
   "date": "[DATE]"
 }
@@ -123,17 +123,17 @@ test("value is mapped", () => {
 });
 ```
 
-**Output 1 (`value_is_mapped_before.json`):**
+**Output 1:**
 
-```json
+```json [value_is_mapped_before.json]
 {
   "value": "value"
 }
 ```
 
-**Output 2 (`value_is_mapped_after.json`):**
+**Output 2:**
 
-```json
+```json [value_is_mapped_after.json]
 {
   "value": "mapped value"
 }

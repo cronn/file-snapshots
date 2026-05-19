@@ -37,7 +37,7 @@ yarn add -D @cronn/vitest-file-snapshots
 
 Register the custom matchers in your `vitest-setup.ts`:
 
-```ts
+```ts [vitest-setup.ts]
 import { registerFileSnapshotMatchers } from "@cronn/vitest-file-snapshots/register";
 
 registerFileSnapshotMatchers();
@@ -51,9 +51,9 @@ test("value is expected value", () => {
 });
 ```
 
-**Output (`value_is_expected_value.json`):**
+**Output:**
 
-```json
+```json [value_is_expected_value.json]
 {
   "value": "expected value"
 }

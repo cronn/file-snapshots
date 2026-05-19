@@ -2,7 +2,7 @@
 
 Configuration options can be passed when registering the file matchers in the setup file:
 
-```ts
+```ts [vitest-setup.ts]
 registerFileSnapshotMatchers({
   testDir: "src",
 });

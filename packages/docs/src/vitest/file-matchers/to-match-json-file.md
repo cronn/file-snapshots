@@ -10,9 +10,9 @@ test("value is expected value", () => {
 });
 ```
 
-**Output (`value_is_expected_value.json`):**
+**Output:**
 
-```json
+```json [value_is_expected_value.json]
 {
   "value": "expected value"
 }
@@ -30,9 +30,9 @@ test("includes undefined properties", () => {
 });
 ```
 
-**Output (`includes_undefined_properties.json`):**
+**Output:**
 
-```json
+```json [includes_undefined_properties.json]
 {
   "name": "Alice",
   "age": {
