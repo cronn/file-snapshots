@@ -68,10 +68,12 @@ test("matches JSON file", async () => {
 ARIA Snapshots are a JSON-based adapter for Playwright's YAML-based ARIA Snapshots. They facilitate snapshot composition using a format natively supported by JavaScript.
 
 ```ts
-import { ariaSnapshot } from "@cronn/aria-snapshot";
+import { defineAriaSnapshotMatchers } from "@cronn/aria-snapshot";
+
+const expect = defineAriaSnapshotMatchers();
 
 test("matches ARIA snapshot", async ({ page }) => {
-  await expect(ariaSnapshot(page.getByRole("main"))).toMatchJsonFile();
+  await expect(page.getByRole("main")).toMatchAriaSnapshotFile();
 });
 ```
 
@@ -102,16 +104,18 @@ test("matches ARIA snapshot", async ({ page }) => {
 Element Snapshots are an alternative to ARIA Snapshots, providing a higher coverage of HTML and ARIA attributes as well as the ability to implement custom snapshots, e.g. for Markdown Tables.
 
 ```ts
-import { semanticSnapshot } from "@cronn/element-snapshot";
+import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 
-test("matches element snapshot", async ({ page }) => {
-  await expect(semanticSnapshot(page.getByRole("main"))).toMatchJsonFile();
+const expect = defineElementSnapshotMatchers();
+
+test("matches semantic snapshot", async ({ page }) => {
+  await expect(page.getByRole("main")).toMatchSemanticSnapshotFile();
 });
 ```
 
 **Output:**
 
-```json [matches_element_snapshot.json]
+```json [matches_semantic_snapshot.json]
 {
   "main": [
     {
