@@ -1,6 +1,7 @@
 import { markdownTable } from "markdown-table";
 
 import type { TableCell, TableData } from "../models/table";
+import type { Normalizer } from "../types/normalizer";
 import type { SnapshotSerializer } from "../types/serializer";
 import { addTrailingNewLine } from "../utils/file";
 
@@ -11,7 +12,7 @@ export interface MarkdownTableSerializerOptions {
   normalizers?: Array<MarkdownTableNormalizer>;
 }
 
-export type MarkdownTableNormalizer = (value: TableCell) => TableCell;
+export type MarkdownTableNormalizer = Normalizer<TableCell>;
 
 export class MarkdownTableSerializer implements SnapshotSerializer<TableData> {
   public readonly fileExtension = "md";

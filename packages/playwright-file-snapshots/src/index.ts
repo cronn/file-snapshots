@@ -12,9 +12,12 @@ export type {
 } from "./matchers/types";
 
 export {
+  maskPattern,
+  maskString,
   normalizeFileName,
   resolveNameAsFile,
   resolveNameAsFileSuffix,
+  stringNormalizer,
 } from "@cronn/lib-file-snapshots";
 export type {
   FilePathResolver,

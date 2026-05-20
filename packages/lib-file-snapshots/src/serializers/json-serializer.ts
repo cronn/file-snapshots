@@ -1,3 +1,4 @@
+import type { NormalizerWithContext } from "../types/normalizer";
 import type { SnapshotSerializer } from "../types/serializer";
 import { addTrailingNewLine } from "../utils/file";
 import { isArray, isPlainObject, isString } from "../utils/guards";
@@ -32,10 +33,10 @@ export interface JsonSerializerOptions {
   indentSize?: number;
 }
 
-export type JsonNormalizer = (
-  value: unknown,
-  context: JsonNormalizerContext,
-) => unknown;
+export type JsonNormalizer = NormalizerWithContext<
+  unknown,
+  JsonNormalizerContext
+>;
 
 export interface JsonNormalizerContext {
   key?: string;

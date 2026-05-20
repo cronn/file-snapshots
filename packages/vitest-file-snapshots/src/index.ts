@@ -6,9 +6,12 @@ export type {
 
 export {
   Table,
+  maskPattern,
+  maskString,
   normalizeFileName,
   resolveNameAsFile,
   resolveNameAsFileSuffix,
+  stringNormalizer,
 } from "@cronn/lib-file-snapshots";
 export type {
   FilePathResolver,

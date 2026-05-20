@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Introduction
-      link: /introduction
+      link: /general/
     - theme: alt
       text: Playwright File Snapshots
       link: /playwright/

@@ -1,5 +1,7 @@
 import { beforeEach, expect, test } from "vitest";
 
+import { maskString } from "@cronn/lib-file-snapshots";
+
 import { registerFileSnapshotMatchers } from "../matchers/register-matchers";
 import { testFilePathResolver } from "../utils/test";
 
@@ -18,11 +20,9 @@ test("when matcher is inverted, throws error", () => {
 });
 
 test("applies normalizer", () => {
-  function maskNumber(value: string): string {
-    return value.replaceAll(/\d+/g, "[NUMBER]");
-  }
-
-  expect("4711").toMatchTextFile({ normalizers: [maskNumber] });
+  expect("2000-01-01").toMatchTextFile({
+    normalizers: [maskString("2000-01-01", "<TODAY>")],
+  });
 });
 
 test("applies name", () => {

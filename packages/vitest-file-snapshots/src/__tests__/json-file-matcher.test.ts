@@ -1,5 +1,7 @@
 import { beforeEach, expect, test } from "vitest";
 
+import { maskString, stringNormalizer } from "@cronn/lib-file-snapshots";
+
 import { registerFileSnapshotMatchers } from "../matchers/register-matchers";
 import { testFilePathResolver } from "../utils/test";
 
@@ -22,15 +24,9 @@ test("when includeUndefinedObjectProperties is true, serializes undefined object
 });
 
 test("applies normalizer", () => {
-  function maskNumber(value: unknown): unknown {
-    if (typeof value !== "number") {
-      return value;
-    }
-
-    return "[NUMBER]";
-  }
-
-  expect({ number: 4711 }).toMatchJsonFile({ normalizers: [maskNumber] });
+  expect({ date: "2000-01-01" }).toMatchJsonFile({
+    normalizers: [stringNormalizer(maskString("2000-01-01", "<TODAY>"))],
+  });
 });
 
 test("applies name", () => {

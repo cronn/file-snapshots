@@ -1,5 +1,7 @@
 import { test } from "@playwright/test";
 
+import { maskString, stringNormalizer } from "@cronn/lib-file-snapshots";
+
 import { defineFileSnapshotMatchers } from "../src";
 import {
   SnapshotInstrumentation,
@@ -37,15 +39,9 @@ test("when includeUndefinedObjectProperties is true, serializes undefined object
 });
 
 test("applies normalizer", async () => {
-  function maskNumber(value: unknown): unknown {
-    if (typeof value !== "number") {
-      return value;
-    }
-
-    return "[NUMBER]";
-  }
-
-  await expect({ number: 4711 }).toMatchJsonFile({ normalizers: [maskNumber] });
+  await expect({ date: "2000-01-01" }).toMatchJsonFile({
+    normalizers: [stringNormalizer(maskString("2000-01-01", "<TODAY>"))],
+  });
 });
 
 test("applies name", async () => {
