@@ -1,3 +1,3 @@
 | normalized value |
 | ---------------- |
-| [VALUE]          |
+| v3               |

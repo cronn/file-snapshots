@@ -1,5 +1,7 @@
 import { test } from "@playwright/test";
 
+import { maskString } from "@cronn/lib-file-snapshots";
+
 import { defineFileSnapshotMatchers } from "../src";
 import {
   SnapshotInstrumentation,
@@ -29,11 +31,9 @@ test("matches async function value with text file", async () => {
 });
 
 test("applies normalizer", async () => {
-  function maskNumber(value: string): string {
-    return value.replaceAll(/\d+/g, "[NUMBER]");
-  }
-
-  await expect("4711").toMatchTextFile({ normalizers: [maskNumber] });
+  await expect("2000-01-01").toMatchTextFile({
+    normalizers: [maskString("2000-01-01", "<TODAY>")],
+  });
 });
 
 test("applies name", async () => {

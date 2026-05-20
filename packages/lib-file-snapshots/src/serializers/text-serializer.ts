@@ -1,3 +1,4 @@
+import type { Normalizer } from "../types/normalizer";
 import type { SnapshotSerializer } from "../types/serializer";
 import { addTrailingNewLine } from "../utils/file";
 
@@ -15,7 +16,7 @@ interface TextSerializerOptions {
   fileExtension?: string;
 }
 
-export type TextNormalizer = (value: string) => string;
+export type TextNormalizer = Normalizer<string>;
 
 export class TextSerializer implements SnapshotSerializer<string> {
   public readonly fileExtension;

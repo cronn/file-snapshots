@@ -4,6 +4,7 @@ export {
   type TableData,
   type TableRow,
 } from "./models/table";
+
 export {
   JsonSerializer,
   type JsonNormalizer,
@@ -17,18 +18,26 @@ export {
   TextSerializer,
   type TextNormalizer,
 } from "./serializers/text-serializer";
+
 export { ValidationFileMatcher } from "./matcher/validation-file-matcher";
 export {
   resolveNameAsFile,
   resolveNameAsFileSuffix,
 } from "./matcher/file-path-resolver";
+
+export { stringNormalizer } from "./normalizers/string-normalizer";
+export { maskPattern } from "./normalizers/mask-pattern";
+export { maskString } from "./normalizers/mask-string";
+
 export type {
   ValidationFileMatcherResult,
   FilePathResolver,
   FilePathResolverParams,
   UpdateSnapshotsType,
 } from "./types/matcher";
+export type { Normalizer, NormalizerWithContext } from "./types/normalizer";
 export type { SnapshotSerializer } from "./types/serializer";
+
 export { normalizeFileName } from "./utils/file";
 export {
   isArray,

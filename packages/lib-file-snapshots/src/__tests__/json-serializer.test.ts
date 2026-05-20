@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
 
+import { stringNormalizer } from "../normalizers/string-normalizer";
 import {
-  type JsonNormalizerContext,
   JsonSerializer,
   type JsonSerializerOptions,
 } from "../serializers/json-serializer";
@@ -101,52 +101,50 @@ test(
 );
 
 test(
-  "custom normalizers",
+  "applies normalizers in order",
   jsonSerializerTest(
     {
-      number: 4711,
-      array: ["item 1", "item 2"],
-      object: {
-        key: "value",
-      },
-      comment: "comment",
+      key: "v1",
     },
     {
-      normalizers: [removeCommentProperty, prefixWithContext, maskNumber],
+      normalizers: [
+        stringNormalizer((value) => value.replace("v1", "v2")),
+        stringNormalizer((value) => value.replace("v2", "v3")),
+      ],
     },
   ),
 );
 
-function removeCommentProperty(value: unknown): unknown {
-  if (typeof value === "object" && value !== null && "comment" in value) {
-    return { ...value, comment: undefined };
-  }
+test(
+  "passes context to normalizers",
+  jsonSerializerTest(
+    {
+      array: ["item 1", "item 2"],
+      object: {
+        key: "value",
+      },
+    },
+    {
+      normalizers: [
+        (value, context) => {
+          if (!isString(value)) {
+            return value;
+          }
 
-  return value;
-}
+          if (context.key !== undefined) {
+            return `${value} (key: ${context.key})`;
+          }
 
-function maskNumber(value: unknown): unknown {
-  if (typeof value === "number") {
-    return "[NUMBER]";
-  }
+          if (context.index !== undefined) {
+            return `${value} (index: ${context.index})`;
+          }
 
-  return value;
-}
-
-function prefixWithContext(
-  value: unknown,
-  context: JsonNormalizerContext,
-): unknown {
-  if (isString(value) && context.index !== undefined) {
-    return `${context.index}:${value}`;
-  }
-
-  if (isString(value) && context.key !== undefined) {
-    return `${context.key}:${value}`;
-  }
-
-  return value;
-}
+          return value;
+        },
+      ],
+    },
+  ),
+);
 
 test(
   "custom indentSize",

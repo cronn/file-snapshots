@@ -1,4 +1,0 @@
-| normalized value |
-| ---------------- |
-| HELLO            |
-| WORLD            |

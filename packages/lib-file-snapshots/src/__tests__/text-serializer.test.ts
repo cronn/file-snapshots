@@ -19,20 +19,17 @@ test(
 );
 
 test(
-  "custom normalizers",
+  "applies normalizers in order",
   testSerializer(
-    new TextSerializer({ normalizers: [maskNumber, removeComment] }),
-    "4711 comment",
+    new TextSerializer({
+      normalizers: [
+        (value) => value.replace("v1", "v2"),
+        (value) => value.replace("v2", "v3"),
+      ],
+    }),
+    "v1",
   ),
 );
-
-function maskNumber(value: string): string {
-  return value.replaceAll(/\d+/g, "[NUMBER]");
-}
-
-function removeComment(value: string): string {
-  return value.replaceAll(/comment/g, "");
-}
 
 test(
   "custom file extension",

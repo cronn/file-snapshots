@@ -1,6 +1,7 @@
 import { expect, test } from "vitest";
 
 import type { TableData } from "../models/table";
+import { stringNormalizer } from "../normalizers/string-normalizer";
 import type { MarkdownTableSerializerOptions } from "../serializers/markdown-table-serializer";
 import { MarkdownTableSerializer } from "../serializers/markdown-table-serializer";
 import { type SerializerTestFn, testSerializer } from "../utils/test";
@@ -66,26 +67,13 @@ test(
 );
 
 test(
-  "applies single normalizer",
+  "applies normalizers in order",
   markdownTableSerializerTest(
-    {
-      columns: ["normalized value"],
-      rows: [["hello"], ["world"]],
-    },
-    {
-      normalizers: [(v) => (typeof v === "string" ? v.toUpperCase() : v)],
-    },
-  ),
-);
-
-test(
-  "applies multiple normalizers in order",
-  markdownTableSerializerTest(
-    { columns: ["normalized value"], rows: [["value"]] },
+    { columns: ["normalized value"], rows: [["v1"]] },
     {
       normalizers: [
-        (v) => (typeof v === "string" ? v.toUpperCase() : v),
-        (v) => (typeof v === "string" ? `[${v}]` : v),
+        stringNormalizer((value) => value.replace("v1", "v2")),
+        stringNormalizer((value) => value.replace("v2", "v3")),
       ],
     },
   ),

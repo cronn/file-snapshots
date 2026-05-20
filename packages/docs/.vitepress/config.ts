@@ -31,12 +31,21 @@ export default defineConfig({
 
     nav: [
       { text: "Home", link: "/" },
-      { text: "Introduction", link: "/introduction" },
+      { text: "General", link: "/general/" },
       { text: "Playwright", link: "/playwright/" },
       { text: "Vitest", link: "/vitest/" },
     ],
 
     sidebar: {
+      "/general/": [
+        {
+          text: "General",
+          items: [
+            { text: "Introduction", link: "/general/" },
+            { text: "Normalizers", link: "/general/normalizers" },
+          ],
+        },
+      ],
       "/playwright/": [
         {
           text: "Playwright File Snapshots",
