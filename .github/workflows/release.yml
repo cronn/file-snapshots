@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -29,7 +30,7 @@ jobs:
       - name: Configure npm token # only required for initial releases which are not yet supported by trusted publishing
         run: pnpm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: Create release pull request or publish to npm
         id: changesets
         uses: changesets/action@v1.8.0
         with:
