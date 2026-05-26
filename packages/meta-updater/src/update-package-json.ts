@@ -3,6 +3,8 @@ import type { FormatPluginFnOptions } from "@pnpm/meta-updater";
 import fs from "node:fs";
 import path from "node:path";
 
+const PNPM_VERSION = "11.1.2";
+
 const tsSourceDirs: Array<string> = ["src/", "tests/"];
 
 export function updatePackageJson(
@@ -21,14 +23,14 @@ export function updatePackageJson(
     license: "Apache-2.0",
     repository: defineRepository(context),
     homepage: manifest.homepage ?? "https://github.com/cronn/file-snapshots",
-    packageManager: "pnpm@11.0.7",
+    packageManager: `pnpm@${PNPM_VERSION}`,
     engines: {
       node: "^20 || ^22 || >=24",
     },
     devEngines: {
       packageManager: {
         name: "pnpm",
-        version: "11.1.2",
+        version: PNPM_VERSION,
         onFail: "download",
       },
       runtime: {

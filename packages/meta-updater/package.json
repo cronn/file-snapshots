@@ -49,5 +49,5 @@
   "engines": {
     "node": "^20 || ^22 || >=24"
   },
-  "packageManager": "pnpm@11.0.7"
+  "packageManager": "pnpm@11.1.2"
 }
