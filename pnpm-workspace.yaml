@@ -37,15 +37,6 @@ dedupePeers: true
 includeWorkspaceRoot: true
 
 minimumReleaseAge: 10080 # 1 week
-minimumReleaseAgeExclude:
-  - "turbo@2.9.7"
-  - "@turbo/darwin-64@2.9.7"
-  - "@turbo/darwin-arm64@2.9.7"
-  - "@turbo/linux-64@2.9.7"
-  - "@turbo/linux-arm64@2.9.7"
-  - "@turbo/windows@2.9.7"
-  - "@turbo/windows-64@2.9.7"
-  - "@turbo/windows-arm64@2.9.7"
 
 overrides:
   "@types/node": "<25"
