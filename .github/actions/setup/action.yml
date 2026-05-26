@@ -4,7 +4,7 @@ runs:
   using: composite
   steps:
     - name: Install pnpm
-      uses: pnpm/action-setup@v6.0.5
+      uses: pnpm/action-setup@v6.0.8
 
     - name: Install dependencies
       run: pnpm clean-install
