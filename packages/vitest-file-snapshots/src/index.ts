@@ -18,5 +18,7 @@ export type {
   FilePathResolverParams,
   JsonNormalizer,
   JsonNormalizerContext,
+  Normalizer,
+  NormalizerWithContext,
   TextNormalizer,
 } from "@cronn/lib-file-snapshots";
