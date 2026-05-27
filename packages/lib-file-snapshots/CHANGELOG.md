@@ -1,5 +1,13 @@
 # @cronn/lib-file-snapshots
 
+## 1.2.0
+
+### Minor Changes
+
+- f0ea737: Provide `maskPattern` normalizer
+- f0ea737: Provide `maskString` normalizer
+- f0ea737: Provide `stringNormalizer` normalizer
+
 ## 1.1.1
 
 ### Patch Changes
