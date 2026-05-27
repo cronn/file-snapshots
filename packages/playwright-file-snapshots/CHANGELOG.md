@@ -1,5 +1,20 @@
 # @cronn/playwright-file-snapshots
 
+## 2.1.0
+
+### Minor Changes
+
+- f0ea737: Provide `maskPattern` normalizer
+- f0ea737: Provide `maskString` normalizer
+- f0ea737: Provide `stringNormalizer` normalizer
+
+### Patch Changes
+
+- Updated dependencies [f0ea737]
+- Updated dependencies [f0ea737]
+- Updated dependencies [f0ea737]
+  - @cronn/lib-file-snapshots@1.2.0
+
 ## 2.0.1
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @cronn/element-snapshot
 
+## 0.19.2
+
+### Patch Changes
+
+- Updated dependencies [f0ea737]
+- Updated dependencies [f0ea737]
+- Updated dependencies [f0ea737]
+  - @cronn/playwright-file-snapshots@2.1.0
+  - @cronn/lib-file-snapshots@1.2.0
+
 ## 0.19.1
 
 ### Patch Changes
