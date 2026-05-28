@@ -46,12 +46,30 @@ test("matches JSON file", async () => {
 If you are already using other custom matchers, you can merge them with the validation file matchers:
 
 ```ts [fixtures.ts]
-import { mergeExpects, mergeTests } from "@playwright/test";
-
+import { mergeExpects } from "@playwright/test";
 import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
 const expect = mergeExpects(defineFileSnapshotMatchers(), otherExpect);
 ```
+
+> [!TIP]
+> When using other custom matchers which are based on `@cronn/playwright-file-snapshots` (e.g. [`@cronn/element-snapshot`](/playwright/element-snapshots/)), you can use the `defineConfig` helper to define a shared configuration:
+>
+> ```ts [fixtures.ts]
+> import { mergeExpects } from "@playwright/test";
+>
+> import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
+> import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
+>
+> const config = definedConfig({
+>   updateDelay: 1000,
+> });
+>
+> const expect = mergeExpects(
+>   defineFileSnapshotMatchers(config),
+>   defineElementSnapshotMatchers(config),
+> );
+> ```
 
 ## Configure `.gitignore`
 

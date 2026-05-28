@@ -10,6 +10,7 @@ export type {
   PlaywrightValidationFileMatcherConfig,
   PlaywrightValidationFileMatchers,
 } from "./matchers/types";
+export { defineConfig } from "./utils/config";
 
 export {
   maskPattern,
