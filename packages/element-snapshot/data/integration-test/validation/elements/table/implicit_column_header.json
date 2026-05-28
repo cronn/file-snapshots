@@ -1,0 +1,42 @@
+[
+  {
+    "role": "table",
+    "attributes": {},
+    "children": [
+      {
+        "role": "rowgroup",
+        "attributes": {},
+        "children": [
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
+              {
+                "role": "columnheader",
+                "name": "Column Header 1",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header 1"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Column Header 2",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header 2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

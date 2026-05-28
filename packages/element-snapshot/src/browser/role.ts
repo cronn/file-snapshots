@@ -2,7 +2,7 @@ import type { CommonInputRole, InputRole } from "../types/elements/input";
 import type { ElementRole } from "../types/role";
 
 import { isContainerRole } from "./container";
-import { hasRoleSpecificSnapshot } from "./element";
+import { getNextElementSibling, hasRoleSpecificSnapshot } from "./element";
 import { roleSelector, selectorList } from "./selector";
 import type { ElementTagName, SnapshotTargetElement } from "./types";
 import { getElementTagName, isWithinElement } from "./utils";
@@ -211,8 +211,36 @@ function resolveTableHeaderCellRole(
     case "rowgroup":
       return "rowheader";
     default:
-      return undefined;
+      return resolveTableHeaderCellRoleFromContext(element);
   }
+}
+
+function resolveTableHeaderCellRoleFromContext(
+  element: HTMLTableCellElement,
+): "columnheader" | "rowheader" | undefined {
+  const row: HTMLTableRowElement | null = element.closest("tr");
+  if (row === null) {
+    return undefined;
+  }
+
+  const nextElementSibling = getNextElementSibling(element);
+  if (
+    row.rowIndex === 0 &&
+    (nextElementSibling === null ||
+      resolveElementRole(nextElementSibling) === "columnheader")
+  ) {
+    return "columnheader";
+  }
+
+  if (
+    element.cellIndex === 0 &&
+    nextElementSibling !== null &&
+    resolveElementRole(nextElementSibling) === "cell"
+  ) {
+    return "rowheader";
+  }
+
+  return undefined;
 }
 
 function isWithinTableOrGrid(element: Element): boolean {

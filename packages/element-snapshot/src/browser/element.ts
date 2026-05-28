@@ -155,3 +155,18 @@ function isHiddenElement(element: SnapshotTargetElement): boolean {
     cssStyles.visibility === "collapse"
   );
 }
+
+export function getNextElementSibling(
+  element: Element,
+): SnapshotTargetElement | null {
+  const nextElementSibling = element.nextElementSibling;
+  if (nextElementSibling === null) {
+    return null;
+  }
+
+  if (!isSupportedElement(nextElementSibling)) {
+    return getNextElementSibling(nextElementSibling);
+  }
+
+  return nextElementSibling;
+}
