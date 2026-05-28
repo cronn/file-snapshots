@@ -118,6 +118,55 @@ test("rowgroup header", async ({ page }) => {
   );
 });
 
+test("implicit column header", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <table>
+        <tr>
+          <th>Column Header 1</th>
+          <th>Column Header 2</th>
+        </tr>
+      </table>
+    `,
+  );
+});
+
+test("implicit row header", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <table>
+        <tr>
+          <th>Row Header</th>
+          <td>Data Cell</td>
+        </tr>
+      </table>
+    `,
+  );
+});
+
+/**
+ * This test just asserts the behavior of the simplified cell scope resolver.
+ * The used algorithm does not fulfill the HTML specification for complex and invalid cases.
+ *
+ * @see https://html.spec.whatwg.org/multipage/tables.html#forming-a-table
+ */
+test("alternating cell types", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <table>
+        <tr>
+          <th>Header Cell 1</th>
+          <td>Data Cell 1</td>
+          <th>Header Cell 2</th>
+        </tr>
+      </table>
+    `,
+  );
+});
+
 test("empty table", async ({ page }) => {
   await matchRawElementSnapshot(page, html`<table></table>`);
 });
