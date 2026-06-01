@@ -28,6 +28,7 @@
     "@pnpm/meta-updater": "catalog:",
     "@typescript/native-preview": "catalog:",
     "knip": "catalog:",
+    "node": "catalog:",
     "oxfmt": "catalog:",
     "rimraf": "catalog:",
     "turbo": "catalog:"
