@@ -1,0 +1,57 @@
+[
+  {
+    "role": "link",
+    "name": "Page",
+    "attributes": {
+      "url": "/page",
+      "current": "page"
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Page"
+      }
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Step",
+    "attributes": {
+      "url": "/step",
+      "current": "step"
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Step"
+      }
+    ]
+  },
+  {
+    "role": "link",
+    "name": "True",
+    "attributes": {
+      "url": "/true",
+      "current": true
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "True"
+      }
+    ]
+  },
+  {
+    "role": "link",
+    "name": "False",
+    "attributes": {
+      "url": "/false"
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "False"
+      }
+    ]
+  }
+]

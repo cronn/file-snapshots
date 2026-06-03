@@ -30,6 +30,17 @@ export function enumAttribute<TEnum extends string>(
   return value as TEnum;
 }
 
+export function booleanOrEnumAttribute<TEnum extends string>(
+  value: string | null,
+  supportedStringValues: Set<TEnum>,
+): true | TEnum | undefined {
+  if (value === "true" || value === "false") {
+    return booleanAttribute(value);
+  }
+
+  return enumAttribute(value, supportedStringValues);
+}
+
 export function resolveElementReference(
   element: SnapshotTargetElement,
   attributeName: string,

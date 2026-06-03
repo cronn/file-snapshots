@@ -1,8 +1,11 @@
 import { describe, expect, test } from "vitest";
 
+import { Table } from "@cronn/lib-file-snapshots";
+
 import {
   booleanAttribute,
   enumAttribute,
+  booleanOrEnumAttribute,
   numericAttribute,
   stringAttribute,
 } from "../browser/attribute";
@@ -73,4 +76,18 @@ describe("enum attribute", () => {
   test("when value is null, returns undefined", () => {
     expect(enumAttribute(null, new Set<string>())).toBeUndefined();
   });
+});
+
+test("boolean or enum attribute", () => {
+  const inputValues = [null, "true", "false", "enum", "other"];
+  const enumValues = new Set(["enum"]);
+
+  expect(
+    Table.fromRecords(
+      inputValues.map((value) => ({
+        value,
+        parsedValue: booleanOrEnumAttribute(value, enumValues),
+      })),
+    ),
+  ).toMatchMarkdownTableFile();
 });
