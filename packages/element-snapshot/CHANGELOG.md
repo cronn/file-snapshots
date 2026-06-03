@@ -1,5 +1,18 @@
 # @cronn/element-snapshot
 
+## 0.20.0
+
+### Minor Changes
+
+- 55069ac: Infer role of `th` elements without `scope` attribute for simple table structures
+- 2619324: Support `colgroup` and `rowgroup` scope attributes for table headers
+
+### Patch Changes
+
+- Updated dependencies [f12d302]
+- Updated dependencies [fbb90fa]
+  - @cronn/playwright-file-snapshots@2.2.0
+
 ## 0.19.2
 
 ### Patch Changes

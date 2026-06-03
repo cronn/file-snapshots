@@ -1,5 +1,15 @@
 # @cronn/playwright-file-snapshots
 
+## 2.2.0
+
+### Minor Changes
+
+- f12d302: Add `defineConfig` helper for shared configuration
+
+### Patch Changes
+
+- fbb90fa: Re-export `Normalizer` and `NormalizerWithContext` interfaces from `@cronn/lib-file-snapshots`
+
 ## 2.1.0
 
 ### Minor Changes
