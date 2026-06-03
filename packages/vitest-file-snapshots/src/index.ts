@@ -20,5 +20,8 @@ export type {
   JsonNormalizerContext,
   Normalizer,
   NormalizerWithContext,
+  TableCell,
+  TableData,
+  TableRow,
   TextNormalizer,
 } from "@cronn/lib-file-snapshots";
