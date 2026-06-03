@@ -1,6 +1,6 @@
-import { describe, expect, test } from "vitest";
+import { expect, test } from "vitest";
 
-import { Table } from "@cronn/lib-file-snapshots";
+import { Table, type TableCell } from "@cronn/vitest-file-snapshots";
 
 import {
   booleanAttribute,
@@ -10,72 +10,39 @@ import {
   stringAttribute,
 } from "../browser/attribute";
 
-describe("string attribute", () => {
-  test("when value is non-empty string, returns value", () => {
-    expect(stringAttribute("value")).toBe("value");
-  });
+test("string attribute", () => {
+  const inputValues = [null, "value", ""];
 
-  test("when value is empty string, returns undefined", () => {
-    expect(stringAttribute(null)).toBeUndefined();
-  });
-
-  test("when value is null, returns undefined", () => {
-    expect(stringAttribute(null)).toBeUndefined();
-  });
+  expect(
+    attributeParserTable(inputValues, stringAttribute),
+  ).toMatchMarkdownTableFile();
 });
 
-describe("boolean attribute", () => {
-  test("when value is true, returns true", () => {
-    expect(booleanAttribute(true)).toBe(true);
-  });
+test("boolean attribute", () => {
+  const inputValues = [null, true, false, "true", "false"];
 
-  test("when value is 'true', returns true", () => {
-    expect(booleanAttribute("true")).toBe(true);
-  });
-
-  test("when value is false, returns undefined", () => {
-    expect(booleanAttribute(false)).toBeUndefined();
-  });
-
-  test("when value is 'false', returns undefined", () => {
-    expect(booleanAttribute("false")).toBeUndefined();
-  });
-
-  test("when value is null, returns undefined", () => {
-    expect(booleanAttribute("false")).toBeUndefined();
-  });
+  expect(
+    attributeParserTable(inputValues, booleanAttribute),
+  ).toMatchMarkdownTableFile();
 });
 
-describe("numeric attribute", () => {
-  test("when value represents a number, returns numeric value", () => {
-    expect(numericAttribute("4711")).toBe(4711);
-  });
+test("numeric attribute", () => {
+  const inputValues = [null, "4711", "value"];
 
-  test("when value does not represent a number, returns undefined", () => {
-    expect(numericAttribute("value")).toBeUndefined();
-  });
-
-  test("when value is null, returns undefined", () => {
-    expect(numericAttribute(null)).toBeUndefined();
-  });
+  expect(
+    attributeParserTable(inputValues, numericAttribute),
+  ).toMatchMarkdownTableFile();
 });
 
-describe("enum attribute", () => {
-  test("when value exists in enum, returns value", () => {
-    expect(enumAttribute("supported", new Set(["supported"]))).toBe(
-      "supported",
-    );
-  });
+test("enum attribute", () => {
+  const inputValues = [null, "enum", "other"];
+  const enumValues = new Set(["enum"]);
 
-  test("when value does not exist in enum, returns undefined", () => {
-    expect(
-      enumAttribute("unsupported", new Set(["supported"])),
-    ).toBeUndefined();
-  });
-
-  test("when value is null, returns undefined", () => {
-    expect(enumAttribute(null, new Set<string>())).toBeUndefined();
-  });
+  expect(
+    attributeParserTable(inputValues, (value) =>
+      enumAttribute(value, enumValues),
+    ),
+  ).toMatchMarkdownTableFile();
 });
 
 test("boolean or enum attribute", () => {
@@ -83,11 +50,26 @@ test("boolean or enum attribute", () => {
   const enumValues = new Set(["enum"]);
 
   expect(
-    Table.fromRecords(
-      inputValues.map((value) => ({
-        value,
-        parsedValue: booleanOrEnumAttribute(value, enumValues),
-      })),
+    attributeParserTable(inputValues, (value) =>
+      booleanOrEnumAttribute(value, enumValues),
     ),
   ).toMatchMarkdownTableFile();
 });
+
+type AttributeValue = string | boolean | null;
+
+function attributeParserTable<TValue extends AttributeValue>(
+  inputValues: Array<TValue>,
+  attributeParser: (value: TValue) => TableCell,
+): Table {
+  return Table.fromRecords(
+    inputValues.map((value) => ({
+      value: serializeValue(value),
+      parsedValue: serializeValue(attributeParser(value)),
+    })),
+  );
+}
+
+function serializeValue(value: TableCell): TableCell {
+  return typeof value === "string" ? `"${value}"` : value;
+}
