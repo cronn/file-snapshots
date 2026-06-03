@@ -1,5 +1,13 @@
 # @cronn/aria-snapshot
 
+## 2.0.3
+
+### Patch Changes
+
+- Updated dependencies [f12d302]
+- Updated dependencies [fbb90fa]
+  - @cronn/playwright-file-snapshots@2.2.0
+
 ## 2.0.2
 
 ### Patch Changes

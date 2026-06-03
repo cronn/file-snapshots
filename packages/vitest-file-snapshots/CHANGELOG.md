@@ -1,5 +1,12 @@
 # @cronn/vitest-file-snapshots
 
+## 2.1.1
+
+### Patch Changes
+
+- fbb90fa: Re-export `Normalizer` and `NormalizerWithContext` interfaces from `@cronn/lib-file-snapshots`
+- 248d298: Re-export `TableData`, `TableRow`, and `TableCell` types from `@cronn/lib-file-snapshots`
+
 ## 2.1.0
 
 ### Minor Changes
