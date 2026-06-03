@@ -1,12 +1,12 @@
-import type { ButtonSnapshot, PressedValue } from "../types/elements/button";
+import type { ButtonSnapshot } from "../types/elements/button";
 
-import { booleanAttribute, enumAttribute } from "./attribute";
+import { booleanAttribute, booleanOrEnumAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import { disableableAttributes } from "./state";
 import type { SnapshotTargetElement } from "./types";
 
-const PRESSED_VALUES = new Set(["true", "mixed", "false"] as const);
+const pressedValues = new Set(["mixed"] as const);
 
 export function snapshotButton(
   element: SnapshotTargetElement,
@@ -17,19 +17,8 @@ export function snapshotButton(
     attributes: {
       ...disableableAttributes(element),
       expanded: booleanAttribute(element.ariaExpanded),
-      pressed: resolvePressedAttribute(element),
+      pressed: booleanOrEnumAttribute(element.ariaPressed, pressedValues),
     },
     children: snapshotChildren(element),
   };
-}
-
-function resolvePressedAttribute(
-  element: SnapshotTargetElement,
-): PressedValue | undefined {
-  const pressed = enumAttribute(element.ariaPressed, PRESSED_VALUES);
-  if (pressed === "mixed") {
-    return pressed;
-  }
-
-  return booleanAttribute(pressed === "true");
 }

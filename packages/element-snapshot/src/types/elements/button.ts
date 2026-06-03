@@ -11,4 +11,4 @@ interface ButtonAttributes extends DisableableAttributes {
   pressed?: PressedValue;
 }
 
-export type PressedValue = true | "mixed";
+type PressedValue = true | "mixed";
