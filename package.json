@@ -19,7 +19,7 @@
     "knip:check": "knip",
     "knip:fix": "knip --fix",
     "prepublishOnly": "pnpm turbo run ci",
-    "release": "pnpm turbo run build && pnpm changeset publish",
+    "release": "pnpm turbo run build && pnpm publish --recursive --access=public --provenance && pnpm changeset tag",
     "version": "pnpm changeset version && pnpm turbo run format:fix"
   },
   "devDependencies": {
