@@ -5,12 +5,10 @@
       "entry": [".meta-updater/main.mjs"]
     }
   },
-  "ignoreBinaries": ["clean-install", "pm"],
   "ignoreDependencies": [
     "eslint-config-prettier",
     "eslint-plugin-check-file",
     "eslint-plugin-unused-imports",
-    "oxfmt",
     "typescript-eslint"
   ]
 }
