@@ -14,7 +14,9 @@
               {
                 "role": "rowheader",
                 "name": "Row Group Header",
-                "attributes": {},
+                "attributes": {
+                  "rowSpan": 2
+                },
                 "children": [
                   {
                     "role": "text",

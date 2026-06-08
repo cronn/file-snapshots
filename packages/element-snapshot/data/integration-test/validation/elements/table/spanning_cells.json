@@ -26,14 +26,14 @@
               },
               {
                 "role": "columnheader",
-                "name": "Column Group Header",
+                "name": "Column Header 2",
                 "attributes": {
                   "colSpan": 2
                 },
                 "children": [
                   {
                     "role": "text",
-                    "name": "Column Group Header"
+                    "name": "Column Header 2"
                   }
                 ]
               }
@@ -45,17 +45,6 @@
             "children": [
               {
                 "role": "columnheader",
-                "name": "Column Header 2",
-                "attributes": {},
-                "children": [
-                  {
-                    "role": "text",
-                    "name": "Column Header 2"
-                  }
-                ]
-              },
-              {
-                "role": "columnheader",
                 "name": "Column Header 3",
                 "attributes": {},
                 "children": [
@@ -64,49 +53,63 @@
                     "name": "Column Header 3"
                   }
                 ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Column Header 4",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header 4"
+                  }
+                ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "role": "rowgroup",
-        "attributes": {},
-        "children": [
+          },
           {
             "role": "row",
             "attributes": {},
             "children": [
               {
                 "role": "cell",
-                "name": "Body Cell 1",
-                "attributes": {},
+                "name": "Data Cell 1",
+                "attributes": {
+                  "colSpan": 2,
+                  "rowSpan": 2
+                },
                 "children": [
                   {
                     "role": "text",
-                    "name": "Body Cell 1"
+                    "name": "Data Cell 1"
                   }
                 ]
               },
               {
                 "role": "cell",
-                "name": "Body Cell 2",
+                "name": "Data Cell 2",
                 "attributes": {},
                 "children": [
                   {
                     "role": "text",
-                    "name": "Body Cell 2"
+                    "name": "Data Cell 2"
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
               {
                 "role": "cell",
-                "name": "Body Cell 3",
+                "name": "Data Cell 3",
                 "attributes": {},
                 "children": [
                   {
                     "role": "text",
-                    "name": "Body Cell 3"
+                    "name": "Data Cell 3"
                   }
                 ]
               }

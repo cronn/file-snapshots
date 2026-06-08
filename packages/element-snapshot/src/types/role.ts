@@ -1,12 +1,12 @@
 import type { ContainerRole } from "./elements/container";
 import type { DialogRole } from "./elements/dialog";
 import type { InputRole } from "./elements/input";
+import type { CellRole } from "./elements/table";
 
 export type TextRole = "text";
 
 export type ElementRole =
   | "button"
-  | "columnheader"
   | "group"
   | "heading"
   | "img"
@@ -18,6 +18,7 @@ export type ElementRole =
   | "region"
   | "separator"
   | "tab"
+  | CellRole
   | ContainerRole
   | DialogRole
   | InputRole;

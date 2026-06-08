@@ -72,6 +72,31 @@ test("sorted columnheader", async ({ page }) => {
   );
 });
 
+test("spanning cells", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <table>
+        <tr>
+          <th scope="col" rowspan="2">Column Header 1</th>
+          <th scope="col" colspan="2">Column Header 2</th>
+        </tr>
+        <tr>
+          <th scope="col">Column Header 3</th>
+          <th scope="col">Column Header 4</th>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="2">Data Cell 1</td>
+          <td>Data Cell 2</td>
+        </tr>
+        <tr>
+          <td>Data Cell 3</td>
+        </tr>
+      </table>
+    `,
+  );
+});
+
 test("colgroup header", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
