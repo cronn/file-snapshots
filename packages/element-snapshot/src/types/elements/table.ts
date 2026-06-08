@@ -9,10 +9,10 @@ export const SORT_TYPES = new Set([
 
 export interface ColumnHeaderSnapshot extends GenericElementSnapshot<
   "columnheader",
-  ColumnheaderAttributes
+  ColumnHeaderAttributes
 > {}
 
-interface ColumnheaderAttributes {
+interface ColumnHeaderAttributes {
   sort?: SortType;
 }
 
