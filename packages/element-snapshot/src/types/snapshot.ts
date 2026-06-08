@@ -14,7 +14,7 @@ import type { MenuItemSnapshot } from "./elements/list";
 import type { ProgressbarSnapshot } from "./elements/progressbar";
 import type { SeparatorSnapshot } from "./elements/separator";
 import type { TabSnapshot } from "./elements/tab";
-import type { ColumnHeaderSnapshot } from "./elements/table";
+import type { CellSnapshot, ColumnHeaderSnapshot } from "./elements/table";
 import type { TextSnapshot } from "./elements/text";
 import type { ElementRole, TextRole } from "./role";
 
@@ -38,6 +38,7 @@ export interface GenericElementSnapshot<
 
 export type ElementSnapshot =
   | ButtonSnapshot
+  | CellSnapshot
   | ColumnHeaderSnapshot
   | ComboboxSnapshot
   | ContainerSnapshot

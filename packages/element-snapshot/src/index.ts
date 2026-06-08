@@ -22,7 +22,10 @@ export type { MenuItemSnapshot } from "./types/elements/list";
 export type { ProgressbarSnapshot } from "./types/elements/progressbar";
 export type { SeparatorSnapshot } from "./types/elements/separator";
 export type { TabSnapshot } from "./types/elements/tab";
-export type { ColumnHeaderSnapshot } from "./types/elements/table";
+export type {
+  CellSnapshot,
+  ColumnHeaderSnapshot,
+} from "./types/elements/table";
 export type {
   ElementSnapshotMatchers,
   MatchMarkdownTableSnapshotFileOptions,

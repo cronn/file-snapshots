@@ -19,7 +19,7 @@ import { snapshotRegion } from "./region";
 import { parseElementRole } from "./role";
 import { snapshotSeparator } from "./separator";
 import { snapshotTab } from "./tab";
-import { snapshotColumnHeader } from "./table";
+import { snapshotCellWithRole, snapshotColumnHeader } from "./table";
 import { snapshotTextNode } from "./text";
 import type { SnapshotTargetElement, SnapshotTargetNode } from "./types";
 import { getElementTagName } from "./utils";
@@ -33,10 +33,12 @@ type NonContainerElementRole = Exclude<ElementRole, ContainerRole>;
 const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   alertdialog: snapshotDialogWithRole("alertdialog"),
   button: snapshotButton,
+  cell: snapshotCellWithRole("cell"),
   checkbox: snapshotInput,
   columnheader: snapshotColumnHeader,
   combobox: snapshotCombobox,
   dialog: snapshotDialogWithRole("dialog"),
+  gridcell: snapshotCellWithRole("gridcell"),
   group: snapshotGroup,
   heading: snapshotHeading,
   img: snapshotImage,
@@ -47,6 +49,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   radio: snapshotInput,
   radiogroup: snapshotRadioGroup,
   region: snapshotRegion,
+  rowheader: snapshotCellWithRole("rowheader"),
   searchbox: snapshotInput,
   separator: snapshotSeparator,
   slider: snapshotInput,
