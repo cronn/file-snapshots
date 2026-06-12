@@ -1,5 +1,17 @@
 # @cronn/element-snapshot
 
+## 0.21.0
+
+### Minor Changes
+
+- 4799e27: Add `aria-current` attribute support to link snapshots
+
+  Link snapshots now include a `current` attribute when `aria-current` is set. Supported values are `true`, `false`, `page` and `step`.
+
+- 6910e7d: Add support for table cell spanning attributes
+
+  Add `colSpan` and `rowSpan` attributes to cell snapshots (cell, gridcell, rowheader, columnheader). Attributes are omitted when value is 1 (default).
+
 ## 0.20.0
 
 ### Minor Changes
