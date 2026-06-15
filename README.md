@@ -20,6 +20,7 @@ For full documentation, visit [cronn.github.io/file-snapshots](https://cronn.git
 ## Related Integrations
 
 - [File Snapshots for JUnit](https://github.com/cronn/validation-file-assertions)
+- [Validation-File Comparison Plugin](https://github.com/cronn/validation-files-comparison-intellij-plugin)
 
 ## Development
 
