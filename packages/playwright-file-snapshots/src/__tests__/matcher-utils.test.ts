@@ -37,6 +37,8 @@ function createConfig(values: Partial<FullConfig> = {}): FullConfig {
     updateSourceMethod: "overwrite",
     version: "",
     workers: 0,
+    argv: [],
+    failOnFlakyTests: false,
     ...values,
   };
 }

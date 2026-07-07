@@ -63,7 +63,7 @@
     "rimraf": "catalog:",
     "tsdown": "catalog:",
     "typescript-eslint": "catalog:",
-    "vitest": "^4.1.8"
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "vitest": "^4.1.4"
