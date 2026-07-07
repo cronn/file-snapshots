@@ -20,7 +20,7 @@ catalog:
   "eslint-plugin-unused-imports": 4.4.1
   "knip": 6.23.0
   "markdown-table": 3.0.4
-  "node": 24.16.0
+  "node": 24.18.0
   "oxc-minify": 0.138.0
   "oxfmt": 0.57.0
   "package-directory": 8.2.0

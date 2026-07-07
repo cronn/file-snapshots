@@ -35,7 +35,7 @@ export function updatePackageJson(
       },
       runtime: {
         name: "node",
-        version: ">=24.14.1 <25",
+        version: ">=24.17 <25",
         onFail: "download",
       },
     },
