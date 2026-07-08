@@ -23,7 +23,6 @@ export function updatePackageJson(
     license: "Apache-2.0",
     repository: defineRepository(context),
     homepage: manifest.homepage ?? "https://github.com/cronn/file-snapshots",
-    packageManager: `pnpm@${PNPM_VERSION}`,
     engines: {
       node: "^20 || ^22 || >=24",
     },
