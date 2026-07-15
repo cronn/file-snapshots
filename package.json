@@ -28,7 +28,6 @@
     "@pnpm/meta-updater": "catalog:",
     "@typescript/native-preview": "catalog:",
     "knip": "catalog:",
-    "node": "catalog:",
     "oxfmt": "catalog:",
     "rimraf": "catalog:",
     "turbo": "catalog:"
@@ -41,7 +40,7 @@
     },
     "runtime": {
       "name": "node",
-      "version": ">=24.17 <25",
+      "version": "24.18.0",
       "onFail": "download"
     }
   },
