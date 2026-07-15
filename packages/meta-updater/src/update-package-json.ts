@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const PNPM_VERSION = "11.13.1";
+const NODE_VERSION = "24.18.0";
 
 const tsSourceDirs: Array<string> = ["src/", "tests/"];
 
@@ -34,7 +35,7 @@ export function updatePackageJson(
       },
       runtime: {
         name: "node",
-        version: ">=24.17 <25",
+        version: NODE_VERSION,
         onFail: "download",
       },
     },
