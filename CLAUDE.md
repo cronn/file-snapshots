@@ -10,7 +10,7 @@ Monorepo providing **file snapshot testing** integrations for several JS test fr
 
 - Node.js and pnpm (declared via `devEngines`, auto-downloaded)
 - pnpm workspace + Turborepo
-- `tsgo` (`@typescript/native-preview`) — type checking
+- `tsc` — type checking
 - `tsdown` — library bundler (produces `dist/`)
 - `oxfmt` — formatter (config in `oxfmt.config.ts`)
 - `eslint` — linter

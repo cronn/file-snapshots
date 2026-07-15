@@ -13,7 +13,7 @@
   "scripts": {
     "build": "vitepress build",
     "clean": "rimraf .turbo .vitepress/cache .vitepress/dist",
-    "compile": "tsgo",
+    "compile": "tsc",
     "dev": "vitepress dev",
     "lint:check": "eslint .vitepress/config.ts --max-warnings=0",
     "lint:fix": "eslint .vitepress/config.ts --max-warnings=0 --fix",
@@ -21,13 +21,14 @@
   },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",
-    "@typescript/native-preview": "catalog:",
+    "@typescript/native": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "oxc-minify": "catalog:",
     "rimraf": "catalog:",
+    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitepress": "catalog:",
     "vitepress-plugin-group-icons": "catalog:"

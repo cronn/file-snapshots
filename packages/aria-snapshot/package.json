@@ -27,7 +27,7 @@
   "scripts": {
     "build": "tsdown",
     "clean": "rimraf .turbo dist playwright-report test-results coverage",
-    "compile": "tsgo",
+    "compile": "tsc",
     "lint:check": "eslint src/ tests/ --max-warnings=0",
     "lint:fix": "eslint src/ tests/ --max-warnings=0 --fix",
     "playwright:install": "playwright install chromium",
@@ -45,7 +45,7 @@
     "@cronn/test-utils": "workspace:*",
     "@playwright/test": "catalog:",
     "@types/node": "catalog:",
-    "@typescript/native-preview": "catalog:",
+    "@typescript/native": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
@@ -54,6 +54,7 @@
     "publint": "catalog:",
     "rimraf": "catalog:",
     "tsdown": "catalog:",
+    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   },
