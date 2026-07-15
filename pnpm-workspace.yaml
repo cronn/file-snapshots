@@ -48,3 +48,6 @@ saveExact: true
 
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 40320 # 4 weeks
+trustPolicyExclude:
+  - "@pnpm/worker@1000.6.11"
+  - "@pnpm/symlink-dependency@1000.0.20"
