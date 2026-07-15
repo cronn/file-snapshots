@@ -35,7 +35,7 @@
   "scripts": {
     "build": "tsdown && node scripts/fix-declaration-file.ts",
     "clean": "rimraf .turbo dist coverage",
-    "compile": "tsgo",
+    "compile": "tsc",
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "test:core": "vitest run --tags-filter=!update-*",
@@ -51,7 +51,7 @@
     "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@types/node": "catalog:",
-    "@typescript/native-preview": "catalog:",
+    "@typescript/native": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/expect": "catalog:",
     "eslint": "catalog:",
@@ -62,6 +62,7 @@
     "publint": "catalog:",
     "rimraf": "catalog:",
     "tsdown": "catalog:",
+    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   },

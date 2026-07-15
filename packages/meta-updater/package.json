@@ -18,7 +18,7 @@
   },
   "scripts": {
     "clean": "rimraf .turbo",
-    "compile": "tsgo",
+    "compile": "tsc",
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix"
   },
@@ -26,12 +26,13 @@
     "@cronn/shared-configs": "workspace:*",
     "@npm/types": "catalog:",
     "@types/node": "catalog:",
-    "@typescript/native-preview": "catalog:",
+    "@typescript/native": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "rimraf": "catalog:",
+    "typescript": "catalog:",
     "typescript-eslint": "catalog:"
   },
   "devEngines": {

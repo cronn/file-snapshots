@@ -11,7 +11,7 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf .turbo && pnpm pm clean",
-    "compile": "tsgo",
+    "compile": "tsc",
     "config:check": "meta-updater --test",
     "config:fix": "meta-updater",
     "format:check": "oxfmt --check",
@@ -26,11 +26,12 @@
     "@changesets/cli": "catalog:",
     "@cronn/meta-updater": "workspace:*",
     "@pnpm/meta-updater": "catalog:",
-    "@typescript/native-preview": "catalog:",
+    "@typescript/native": "catalog:",
     "knip": "catalog:",
     "oxfmt": "catalog:",
     "rimraf": "catalog:",
-    "turbo": "catalog:"
+    "turbo": "catalog:",
+    "typescript": "catalog:"
   },
   "devEngines": {
     "packageManager": {

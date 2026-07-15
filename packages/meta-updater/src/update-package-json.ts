@@ -149,7 +149,7 @@ function updateLintScripts(
 
 function defineCompileScript(): Scripts | undefined {
   return {
-    compile: "tsgo",
+    compile: "tsc",
   };
 }
 
@@ -198,7 +198,8 @@ function updateDevDependencies(
     ...devDependencies,
     ...when(context.needsTsdown, { "@arethetypeswrong/core": "catalog:" }),
     ...when(context.needsTypeScript, {
-      "@typescript/native-preview": "catalog:",
+      "@typescript/native": "catalog:",
+      typescript: "catalog:",
     }),
     ...when(context.needsEslint, {
       eslint: "catalog:",

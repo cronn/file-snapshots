@@ -30,7 +30,7 @@
   "scripts": {
     "build": "tsdown",
     "clean": "rimraf .turbo dist coverage",
-    "compile": "tsgo",
+    "compile": "tsc",
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
     "test": "vitest run",
@@ -43,7 +43,7 @@
     "@arethetypeswrong/core": "catalog:",
     "@cronn/shared-configs": "workspace:*",
     "@types/node": "catalog:",
-    "@typescript/native-preview": "catalog:",
+    "@typescript/native": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
@@ -52,6 +52,7 @@
     "publint": "catalog:",
     "rimraf": "catalog:",
     "tsdown": "catalog:",
+    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   },

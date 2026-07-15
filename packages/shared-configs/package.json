@@ -35,19 +35,20 @@
   },
   "scripts": {
     "clean": "rimraf .turbo",
-    "compile": "tsgo",
+    "compile": "tsc",
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix"
   },
   "devDependencies": {
     "@playwright/test": "catalog:",
-    "@typescript/native-preview": "catalog:",
+    "@typescript/native": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-check-file": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "rimraf": "catalog:",
     "tsdown": "catalog:",
+    "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vitest": "catalog:"
   },
