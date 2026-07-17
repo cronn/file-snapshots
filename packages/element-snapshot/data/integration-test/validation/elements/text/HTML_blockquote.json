@@ -1,0 +1,12 @@
+[
+  {
+    "role": "blockquote",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Quoted text"
+      }
+    ]
+  }
+]

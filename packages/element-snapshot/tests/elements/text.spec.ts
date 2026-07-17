@@ -42,3 +42,29 @@ test("consecutive text nodes", async ({ page }) => {
       <span>Third</span><span>Fourth</span>`,
   );
 });
+
+test("HTML strong", async ({ page }) => {
+  await matchRawElementSnapshot(page, html`<strong>Important</strong>`);
+});
+
+test("HTML emphasis", async ({ page }) => {
+  await matchRawElementSnapshot(page, html`<em>Emphasized</em>`);
+});
+
+test("HTML code", async ({ page }) => {
+  await matchRawElementSnapshot(page, html`<code>const x = 1;</code>`);
+});
+
+test("HTML blockquote", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<blockquote>Quoted text</blockquote>`,
+  );
+});
+
+test("HTML blockquote with accessible name", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<blockquote aria-label="Citation">Quoted text</blockquote>`,
+  );
+});

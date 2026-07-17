@@ -1,0 +1,12 @@
+[
+  {
+    "role": "emphasis",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Emphasized"
+      }
+    ]
+  }
+]
