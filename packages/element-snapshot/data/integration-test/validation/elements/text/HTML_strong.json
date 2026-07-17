@@ -1,0 +1,12 @@
+[
+  {
+    "role": "strong",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Important"
+      }
+    ]
+  }
+]

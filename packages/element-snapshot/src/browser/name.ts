@@ -8,10 +8,13 @@ import type { SnapshotTargetElement } from "./types";
 
 // See https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/#accessiblenameguidancebyrole
 const prohibitsNaming = new Set<ElementRole>([
+  "code",
+  "emphasis",
   "label",
   "listitem",
   "paragraph",
   "rowgroup",
+  "strong",
   "term",
 ]);
 

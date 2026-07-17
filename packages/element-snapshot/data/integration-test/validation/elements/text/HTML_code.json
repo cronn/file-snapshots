@@ -1,0 +1,12 @@
+[
+  {
+    "role": "code",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "const x = 1;"
+      }
+    ]
+  }
+]

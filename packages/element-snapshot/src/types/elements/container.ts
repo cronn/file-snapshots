@@ -3,6 +3,10 @@ import type { SetValues } from "../utils";
 
 export const CONTAINER_ROLES = new Set([
   "paragraph",
+  "blockquote",
+  "code",
+  "emphasis",
+  "strong",
   "list",
   "listitem",
   "listbox",
