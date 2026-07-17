@@ -25,7 +25,7 @@ export function updatePackageJson(
     repository: defineRepository(context),
     homepage: manifest.homepage ?? "https://github.com/cronn/file-snapshots",
     engines: {
-      node: "^20 || ^22 || >=24",
+      node: "^22 || ^24 || >=26",
     },
     devEngines: {
       packageManager: {
