@@ -11,6 +11,9 @@
     "url": "git+https://github.com/cronn/file-snapshots.git",
     "directory": "packages/shared-configs"
   },
+  "files": [
+    "src"
+  ],
   "type": "module",
   "exports": {
     "./tsdown": {
