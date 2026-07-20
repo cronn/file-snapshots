@@ -1,5 +1,13 @@
 # @cronn/vitest-file-snapshots
 
+## 2.1.2
+
+### Patch Changes
+
+- aa786d0: Drop support for Node.js 20
+- Updated dependencies [aa786d0]
+  - @cronn/lib-file-snapshots@1.2.1
+
 ## 2.1.1
 
 ### Patch Changes

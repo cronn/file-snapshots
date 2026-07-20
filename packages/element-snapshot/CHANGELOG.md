@@ -1,5 +1,20 @@
 # @cronn/element-snapshot
 
+## 0.22.0
+
+### Minor Changes
+
+- fe65b66: Add support for `strong`, `em`, `blockquote` and `code` elements
+
+  Snapshot the `strong`, `em`, `blockquote` and `code` elements using their implicit ARIA roles (`strong`, `emphasis`, `blockquote` and `code`). `blockquote` supports an accessible name from `aria-label`/`aria-labelledby`, while `strong`, `emphasis` and `code` prohibit naming.
+
+### Patch Changes
+
+- aa786d0: Drop support for Node.js 20
+- Updated dependencies [aa786d0]
+  - @cronn/playwright-file-snapshots@2.2.1
+  - @cronn/lib-file-snapshots@1.2.1
+
 ## 0.21.0
 
 ### Minor Changes
