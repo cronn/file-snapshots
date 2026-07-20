@@ -1,5 +1,13 @@
 # @cronn/playwright-file-snapshots
 
+## 2.2.1
+
+### Patch Changes
+
+- aa786d0: Drop support for Node.js 20
+- Updated dependencies [aa786d0]
+  - @cronn/lib-file-snapshots@1.2.1
+
 ## 2.2.0
 
 ### Minor Changes
