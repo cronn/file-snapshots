@@ -1,0 +1,12 @@
+[
+  {
+    "role": "log",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "New message received"
+      }
+    ]
+  }
+]

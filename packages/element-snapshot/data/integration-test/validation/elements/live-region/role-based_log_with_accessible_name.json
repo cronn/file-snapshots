@@ -1,0 +1,13 @@
+[
+  {
+    "role": "log",
+    "name": "Chat history",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "New message received"
+      }
+    ]
+  }
+]

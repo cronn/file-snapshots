@@ -47,6 +47,7 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   nav: "navigation",
   ol: "list",
   option: "option",
+  output: "status",
   p: "paragraph",
   progress: "progressbar",
   search: "search",
