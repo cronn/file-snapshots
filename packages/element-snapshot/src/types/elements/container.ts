@@ -7,6 +7,7 @@ export const CONTAINER_ROLES = new Set([
   "code",
   "emphasis",
   "strong",
+  "note",
   "list",
   "listitem",
   "listbox",
