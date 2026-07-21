@@ -1,0 +1,13 @@
+[
+  {
+    "role": "note",
+    "name": "Disclaimer",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Ancillary information"
+      }
+    ]
+  }
+]
