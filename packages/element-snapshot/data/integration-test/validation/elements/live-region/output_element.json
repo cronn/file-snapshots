@@ -1,0 +1,12 @@
+[
+  {
+    "role": "status",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "42"
+      }
+    ]
+  }
+]
