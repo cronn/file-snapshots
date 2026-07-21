@@ -98,3 +98,9 @@ docs             ← VitePress site (cronn.github.io/file-snapshots)
 - Touching any `package.json` field that meta-updater owns? Run `pnpm turbo fix` and commit the result.
 - Adding a user-visible change to a published package? Run `pnpm changeset add` to add a changeset entry — releases are driven by `.changeset/` files, not by hand-edited `CHANGELOG.md`.
 - Imports are auto-sorted by `oxfmt` into groups (`type-import`/builtin/external → `@cronn/*` workspace → internal → parent → sibling). Don't fight the formatter; `pnpm turbo fix` reorders them.
+
+# GitHub Pull Requests
+
+- Self-assign the PR
+- Add labels for each package affected by changes. Use the package name as label.
+- When applicable, include links to relevant sources (e.g. MDN)
