@@ -1,5 +1,17 @@
 # @cronn/element-snapshot
 
+## 0.23.0
+
+### Minor Changes
+
+- 2a6a95b: Add support for elements with `role="note"`
+
+  Snapshot elements with an explicit `note` role. The `note` role supports an accessible name from `aria-label`/`aria-labelledby`.
+
+- 5e78d01: Add support for elements with `role="status"` and `role="log"`
+
+  Snapshot live region elements with an explicit `status` or `log` role, including the implicit `status` role of the `<output>` element. Both roles support an accessible name from `aria-label`/`aria-labelledby`.
+
 ## 0.22.0
 
 ### Minor Changes
