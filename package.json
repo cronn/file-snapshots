@@ -10,7 +10,7 @@
   },
   "type": "module",
   "scripts": {
-    "clean": "rimraf .turbo && pnpm pm clean",
+    "clean": "rimraf .turbo && pnpm run pnpm:clean",
     "compile": "tsc",
     "config:check": "meta-updater --test",
     "config:fix": "meta-updater",
@@ -18,6 +18,9 @@
     "format:fix": "oxfmt",
     "knip:check": "knip",
     "knip:fix": "knip --fix",
+    "pnpm:check": "pnpm dedupe --check",
+    "pnpm:clean": "pnpm pm clean",
+    "pnpm:fix": "pnpm dedupe",
     "prepublishOnly": "pnpm turbo run ci",
     "release": "pnpm turbo run build && pnpm publish --recursive --access=public --provenance && pnpm changeset tag",
     "version": "pnpm changeset version && pnpm turbo run format:fix"
