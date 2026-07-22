@@ -2,6 +2,7 @@
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
     "//#clean": { "outputLogs": "new-only" },
+    "//#compile": { "outputLogs": "new-only" },
     "//#config:check": { "outputLogs": "new-only" },
     "//#config:fix": { "outputLogs": "new-only" },
     "//#format:check": { "outputLogs": "new-only" },
@@ -11,7 +12,9 @@
     },
     "//#knip:check": { "outputLogs": "new-only" },
     "//#knip:fix": { "outputLogs": "new-only" },
-    "//#compile": { "outputLogs": "new-only" },
+    "//#pnpm:check": { "outputLogs": "new-only" },
+    "//#pnpm:fix": { "outputLogs": "new-only" },
+    "//#pnpm:clean": { "outputLogs": "new-only" },
     "lint:check": {
       "dependsOn": ["compile"],
       "outputLogs": "new-only"
@@ -31,11 +34,18 @@
         "//#format:check",
         "//#config:check",
         "//#knip:check",
+        "//#pnpm:check",
         "//#compile"
       ]
     },
     "fix": {
-      "dependsOn": ["lint:fix", "//#format:fix", "//#config:fix", "//#knip:fix"]
+      "dependsOn": [
+        "lint:fix",
+        "//#format:fix",
+        "//#config:fix",
+        "//#knip:fix",
+        "//#pnpm:fix"
+      ]
     },
     "build": {
       "dependsOn": ["^build", "compile"],
