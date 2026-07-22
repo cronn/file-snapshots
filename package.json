@@ -19,7 +19,7 @@
     "knip:check": "knip",
     "knip:fix": "knip --fix",
     "pnpm:check": "pnpm dedupe --check",
-    "pnpm:clean": "pnpm pm clean",
+    "pnpm:clean": "pnpm pm clean && pnpm store prune",
     "pnpm:fix": "pnpm dedupe",
     "prepublishOnly": "pnpm turbo run ci",
     "release": "pnpm turbo run build && pnpm publish --recursive --access=public --provenance && pnpm changeset tag",
