@@ -1,0 +1,12 @@
+[
+  {
+    "role": "insertion",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Inserted"
+      }
+    ]
+  }
+]
