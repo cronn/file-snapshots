@@ -99,6 +99,11 @@ docs             ← VitePress site (cronn.github.io/file-snapshots)
 - Adding a user-visible change to a published package? Run `pnpm changeset add` to add a changeset entry — releases are driven by `.changeset/` files, not by hand-edited `CHANGELOG.md`.
 - Imports are auto-sorted by `oxfmt` into groups (`type-import`/builtin/external → `@cronn/*` workspace → internal → parent → sibling). Don't fight the formatter; `pnpm turbo fix` reorders them.
 
+## element-snapshot Package
+
+- Use MDN as a reference
+- When editing files in `src/browser`, run `pnpm turbo build` before trying to execute Playwright tests
+
 # GitHub Pull Requests
 
 - Self-assign the PR
