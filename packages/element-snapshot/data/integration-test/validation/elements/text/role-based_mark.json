@@ -1,0 +1,12 @@
+[
+  {
+    "role": "mark",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Highlighted"
+      }
+    ]
+  }
+]

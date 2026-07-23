@@ -1,0 +1,12 @@
+[
+  {
+    "role": "subscript",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Subscripted"
+      }
+    ]
+  }
+]

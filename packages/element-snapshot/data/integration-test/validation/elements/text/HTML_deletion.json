@@ -1,0 +1,12 @@
+[
+  {
+    "role": "deletion",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Deleted"
+      }
+    ]
+  }
+]

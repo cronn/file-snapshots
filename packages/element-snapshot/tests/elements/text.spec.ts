@@ -68,3 +68,58 @@ test("HTML blockquote with accessible name", async ({ page }) => {
     html`<blockquote aria-label="Citation">Quoted text</blockquote>`,
   );
 });
+
+test("HTML insertion", async ({ page }) => {
+  await matchRawElementSnapshot(page, html`<ins>Inserted</ins>`);
+});
+
+test("HTML deletion", async ({ page }) => {
+  await matchRawElementSnapshot(page, html`<del>Deleted</del>`);
+});
+
+test("HTML mark", async ({ page }) => {
+  await matchRawElementSnapshot(page, html`<mark>Highlighted</mark>`);
+});
+
+test("HTML subscript", async ({ page }) => {
+  await matchRawElementSnapshot(page, html`<sub>Subscripted</sub>`);
+});
+
+test("HTML superscript", async ({ page }) => {
+  await matchRawElementSnapshot(page, html`<sup>Superscripted</sup>`);
+});
+
+test("role-based insertion", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<span role="insertion">Inserted</span>`,
+  );
+});
+
+test("role-based deletion", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<span role="deletion">Deleted</span>`,
+  );
+});
+
+test("role-based mark", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<span role="mark">Highlighted</span>`,
+  );
+});
+
+test("role-based subscript", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<span role="subscript">Subscripted</span>`,
+  );
+});
+
+test("role-based superscript", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<span role="superscript">Superscripted</span>`,
+  );
+});

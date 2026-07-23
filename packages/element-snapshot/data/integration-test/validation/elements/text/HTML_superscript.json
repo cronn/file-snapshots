@@ -1,0 +1,12 @@
+[
+  {
+    "role": "superscript",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Superscripted"
+      }
+    ]
+  }
+]
