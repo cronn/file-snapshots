@@ -7,7 +7,7 @@ allowBuilds:
 
 catalog:
   "@arethetypeswrong/core": 0.18.5
-  "@changesets/cli": 2.31.0
+  "@changesets/cli": 2.31.1
   "@npm/types": 2.1.0
   "@playwright/test": 1.61.1
   "@pnpm/meta-updater": 2.0.6
@@ -17,19 +17,19 @@ catalog:
   "@vitest/expect": 4.1.10
   "eslint": 10.7.0
   "eslint-config-prettier": 10.1.8
-  "eslint-plugin-check-file": 3.3.1
+  "eslint-plugin-check-file": 3.3.2
   "eslint-plugin-unused-imports": 4.4.1
-  "knip": 6.26.0
+  "knip": 6.27.0
   "markdown-table": 3.0.4
-  "oxc-minify": 0.139.0
-  "oxfmt": 0.58.0
+  "oxc-minify": 0.140.0
+  "oxfmt": 0.59.0
   "package-directory": 8.2.0
   "publint": 0.3.21
   "rimraf": 6.1.3
-  "tsdown": 0.22.7
-  "turbo": 2.10.4
+  "tsdown": 0.22.12
+  "turbo": 2.10.5
   "typescript": "npm:@typescript/typescript6@^6.0.2"
-  "typescript-eslint": 8.63.0
+  "typescript-eslint": 8.64.0
   "vitepress": 2.0.0-alpha.17
   "vitepress-plugin-group-icons": 1.7.5
   "vitest": 4.1.10
