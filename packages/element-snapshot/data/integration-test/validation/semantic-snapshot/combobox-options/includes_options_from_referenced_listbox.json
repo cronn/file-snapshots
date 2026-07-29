@@ -1,28 +1,22 @@
 [
   {
-    "combobox": {
-      "name": "Combobox",
-      "value": "Option 1",
-      "options": [
-        {
-          "option": {
-            "name": "Option 1",
-            "selected": true
-          }
-        },
-        {
-          "option": "Option 2"
-        }
-      ]
-    }
+    "combobox": "Combobox",
+    "value": "Option 1",
+    "options": [
+      {
+        "option": "Option 1",
+        "selected": true
+      },
+      {
+        "option": "Option 2"
+      }
+    ]
   },
   {
     "listbox": [
       {
-        "option": {
-          "name": "Option 1",
-          "selected": true
-        }
+        "option": "Option 1",
+        "selected": true
       },
       {
         "option": "Option 2"

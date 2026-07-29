@@ -1,6 +1,4 @@
 {
-  "combobox": {
-    "name": "Combobox",
-    "value": "Value"
-  }
+  "combobox": "Combobox",
+  "value": "Value"
 }

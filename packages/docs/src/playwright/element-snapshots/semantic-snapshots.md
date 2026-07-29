@@ -28,10 +28,8 @@ test("matches semantic snapshot", async ({ page }) => {
 {
   "main": [
     {
-      "heading": {
-        "name": "List",
-        "level": 1
-      }
+      "heading": "List",
+      "level": 1
     },
     {
       "list": [

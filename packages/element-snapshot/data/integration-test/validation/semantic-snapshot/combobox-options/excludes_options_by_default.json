@@ -1,6 +1,4 @@
 {
-  "combobox": {
-    "name": "Select",
-    "value": "Option 1"
-  }
+  "combobox": "Select",
+  "value": "Option 1"
 }

@@ -1,10 +1,8 @@
 {
   "main": [
     {
-      "heading": {
-        "name": "Headline",
-        "level": 1
-      }
+      "heading": "Headline",
+      "level": 1
     },
     {
       "paragraph": "Paragraph"
