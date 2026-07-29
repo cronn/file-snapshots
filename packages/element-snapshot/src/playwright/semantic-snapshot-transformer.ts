@@ -92,8 +92,7 @@ export class SemanticSnapshotTransformer {
     }
 
     const { role, name, attributes, children } = normalizedSnapshot;
-    return this.transformedSnapshot(role, {
-      name: name.length === 0 ? undefined : name,
+    return this.transformedSnapshot(role, name, {
       ...attributes,
       children: children.length === 0 ? undefined : children,
     });
@@ -185,7 +184,11 @@ export class SemanticSnapshotTransformer {
     return attributes[name];
   }
 
-  private transformedSnapshot(role: ElementRole, content: unknown): unknown {
-    return { [role]: content };
+  private transformedSnapshot(
+    role: ElementRole,
+    nameOrContent: unknown,
+    additionalProperties?: Record<string, unknown>,
+  ): unknown {
+    return { [role]: nameOrContent, ...additionalProperties };
   }
 }

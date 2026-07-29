@@ -1,10 +1,9 @@
 {
-  "link": {
-    "url": "/target",
-    "children": [
-      {
-        "img": "Image"
-      }
-    ]
-  }
+  "link": "",
+  "url": "/target",
+  "children": [
+    {
+      "img": "Image"
+    }
+  ]
 }

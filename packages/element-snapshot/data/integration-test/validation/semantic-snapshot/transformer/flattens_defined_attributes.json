@@ -1,7 +1,5 @@
 {
-  "textbox": {
-    "name": "Input Name",
-    "value": "Input Value",
-    "readonly": true
-  }
+  "textbox": "Input Name",
+  "value": "Input Value",
+  "readonly": true
 }
