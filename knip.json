@@ -9,6 +9,7 @@
     "eslint-config-prettier",
     "eslint-plugin-check-file",
     "eslint-plugin-unused-imports",
+    "oxc-minify",
     "typescript-eslint"
   ]
 }
