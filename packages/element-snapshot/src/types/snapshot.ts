@@ -16,6 +16,7 @@ import type { SeparatorSnapshot } from "./elements/separator";
 import type { TabSnapshot } from "./elements/tab";
 import type { CellSnapshot, ColumnHeaderSnapshot } from "./elements/table";
 import type { TextSnapshot } from "./elements/text";
+import type { TreeItemSnapshot } from "./elements/tree";
 import type { ElementRole, TextRole } from "./role";
 
 export type NodeRole = ElementRole | TextRole;
@@ -54,4 +55,5 @@ export type ElementSnapshot =
   | TabSnapshot
   | MenuItemSnapshot
   | RadioGroupSnapshot
-  | SeparatorSnapshot;
+  | SeparatorSnapshot
+  | TreeItemSnapshot;

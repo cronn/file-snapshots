@@ -10,6 +10,12 @@ export interface ExpandableAttributes {
   expanded?: boolean;
 }
 
+export interface CheckableAttributes {
+  checked?: CheckedValue;
+}
+
+type CheckedValue = true | "mixed";
+
 export interface DiscribableAttributes {
   description?: string;
 }

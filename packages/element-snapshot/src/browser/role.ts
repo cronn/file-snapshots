@@ -85,6 +85,7 @@ const CONTEXT_DEPENDENT_ROLES: Partial<
   rowheader: isWithinTableRowOrGridRow,
   tab: isWithinTablist,
   term: isWithinDescriptionList,
+  treeitem: isWithinTree,
 };
 
 const INPUT_ROLES: Record<
@@ -292,4 +293,8 @@ function isWithinMenu(element: SnapshotTargetElement): boolean {
 
 function isWithinTablist(element: SnapshotTargetElement): boolean {
   return isWithinElement(element, roleSelector("tablist"));
+}
+
+function isWithinTree(element: SnapshotTargetElement): boolean {
+  return isWithinElement(element, roleSelector("tree"));
 }

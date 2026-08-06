@@ -1,11 +1,12 @@
 import type {
+  CheckableAttributes,
   DisableableAttributes,
   ExpandableAttributes,
   InputStateAttributes,
   SelectableAttributes,
 } from "../types/attributes";
 
-import { booleanAttribute } from "./attribute";
+import { booleanAttribute, booleanOrEnumAttribute } from "./attribute";
 import type { SnapshotTargetElement } from "./types";
 
 export function disableableAttributes(
@@ -42,6 +43,16 @@ export function expandableAttributes(
 ): ExpandableAttributes {
   return {
     expanded: booleanAttribute(element.ariaExpanded),
+  };
+}
+
+const checkedValues = new Set(["mixed"] as const);
+
+export function checkableAttributes(
+  element: SnapshotTargetElement,
+): CheckableAttributes {
+  return {
+    checked: booleanOrEnumAttribute(element.ariaChecked, checkedValues),
   };
 }
 

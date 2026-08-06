@@ -1,0 +1,70 @@
+[
+  {
+    "role": "tree",
+    "name": "Tree",
+    "attributes": {},
+    "children": [
+      {
+        "role": "treeitem",
+        "attributes": {
+          "selected": true,
+          "expanded": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Fruits"
+          },
+          {
+            "role": "group",
+            "attributes": {},
+            "children": [
+              {
+                "role": "treeitem",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Apple"
+                  }
+                ]
+              },
+              {
+                "role": "treeitem",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Pear"
+                  }
+                ]
+              },
+              {
+                "role": "treeitem",
+                "attributes": {
+                  "disabled": true
+                },
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Banana"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "treeitem",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Vegetables"
+          }
+        ]
+      }
+    ]
+  }
+]

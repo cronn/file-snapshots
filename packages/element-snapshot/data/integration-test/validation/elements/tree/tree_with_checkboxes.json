@@ -1,0 +1,50 @@
+[
+  {
+    "role": "tree",
+    "name": "Tree",
+    "attributes": {},
+    "children": [
+      {
+        "role": "treeitem",
+        "attributes": {
+          "checked": "mixed",
+          "expanded": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Fruits"
+          },
+          {
+            "role": "group",
+            "attributes": {},
+            "children": [
+              {
+                "role": "treeitem",
+                "attributes": {
+                  "checked": true
+                },
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Apple"
+                  }
+                ]
+              },
+              {
+                "role": "treeitem",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Pear"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

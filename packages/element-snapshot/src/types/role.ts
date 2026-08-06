@@ -18,6 +18,7 @@ export type ElementRole =
   | "region"
   | "separator"
   | "tab"
+  | "treeitem"
   | CellRole
   | ContainerRole
   | DialogRole
