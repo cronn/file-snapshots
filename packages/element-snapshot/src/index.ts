@@ -26,6 +26,7 @@ export type {
   CellSnapshot,
   ColumnHeaderSnapshot,
 } from "./types/elements/table";
+export type { TreeItemSnapshot } from "./types/elements/tree";
 export type {
   ElementSnapshotMatchers,
   MatchMarkdownTableSnapshotFileOptions,

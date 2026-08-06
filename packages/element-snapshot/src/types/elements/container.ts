@@ -38,6 +38,7 @@ export const CONTAINER_ROLES = new Set([
   "tablist",
   "tabpanel",
   "term",
+  "tree",
 ] as const);
 
 export interface ContainerSnapshot extends GenericElementSnapshot<ContainerRole> {}

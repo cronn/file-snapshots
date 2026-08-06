@@ -21,6 +21,7 @@ import { snapshotSeparator } from "./separator";
 import { snapshotTab } from "./tab";
 import { snapshotCellWithRole, snapshotColumnHeader } from "./table";
 import { snapshotTextNode } from "./text";
+import { snapshotTreeItem } from "./tree";
 import type { SnapshotTargetElement, SnapshotTargetNode } from "./types";
 import { getElementTagName } from "./utils";
 
@@ -56,6 +57,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   spinbutton: snapshotInput,
   tab: snapshotTab,
   textbox: snapshotInput,
+  treeitem: snapshotTreeItem,
 };
 
 export function snapshotElement(
