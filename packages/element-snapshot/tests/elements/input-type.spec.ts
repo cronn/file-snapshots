@@ -195,6 +195,30 @@ test("input-based combobox", async ({ page }) => {
   );
 });
 
+test("role-based combobox", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="combobox">Combobox</label>
+      <div
+        id="combobox"
+        role="combobox"
+        tabindex="0"
+        aria-haspopup="listbox"
+        aria-controls="options"
+        aria-expanded="false"
+      >
+        Option 1
+      </div>
+      <ul id="options" role="listbox">
+        <li role="option" aria-selected="true">Option 1</li>
+        <li role="option" aria-selected="false">Option 2</li>
+        <li role="option" aria-disabled="true">Option 3</li>
+      </ul>
+    `,
+  );
+});
+
 test("button-based combobox", async ({ page }) => {
   await matchRawElementSnapshot(
     page,

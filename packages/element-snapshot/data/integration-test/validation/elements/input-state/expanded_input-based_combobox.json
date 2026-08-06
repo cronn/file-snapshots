@@ -12,6 +12,7 @@
         "name": "Combobox",
         "attributes": {
           "value": "Input Value",
+          "expanded": true,
           "options": [
             {
               "role": "option",

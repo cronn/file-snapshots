@@ -1,5 +1,6 @@
 import type {
   DisableableAttributes,
+  ExpandableAttributes,
   InputStateAttributes,
   SelectableAttributes,
 } from "../types/attributes";
@@ -33,6 +34,14 @@ export function selectableAttributes(
 
   return {
     selected: selected ?? booleanAttribute(element.ariaSelected),
+  };
+}
+
+export function expandableAttributes(
+  element: SnapshotTargetElement,
+): ExpandableAttributes {
+  return {
+    expanded: booleanAttribute(element.ariaExpanded),
   };
 }
 

@@ -1,4 +1,7 @@
-import type { DisableableAttributes } from "../attributes";
+import type {
+  DisableableAttributes,
+  ExpandableAttributes,
+} from "../attributes";
 import type { GenericElementSnapshot } from "../snapshot";
 
 export interface ButtonSnapshot extends GenericElementSnapshot<
@@ -6,8 +9,7 @@ export interface ButtonSnapshot extends GenericElementSnapshot<
   ButtonAttributes
 > {}
 
-interface ButtonAttributes extends DisableableAttributes {
-  expanded?: boolean;
+interface ButtonAttributes extends DisableableAttributes, ExpandableAttributes {
   pressed?: PressedValue;
 }
 

@@ -6,6 +6,10 @@ export interface SelectableAttributes {
   selected?: boolean;
 }
 
+export interface ExpandableAttributes {
+  expanded?: boolean;
+}
+
 export interface DiscribableAttributes {
   description?: string;
 }

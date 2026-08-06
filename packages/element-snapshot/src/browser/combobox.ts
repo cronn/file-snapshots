@@ -5,11 +5,13 @@ import { resolveElementReference } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveInputValue, snapshotCommonInputAttributes } from "./input";
 import { resolveAccessibleName } from "./name";
-import { disableableAttributes, selectableAttributes } from "./state";
+import {
+  disableableAttributes,
+  expandableAttributes,
+  selectableAttributes,
+} from "./state";
 import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
-
-type ComboboxElement = HTMLSelectElement | HTMLInputElement | HTMLButtonElement;
 
 export function snapshotCombobox(
   element: SnapshotTargetElement,
@@ -26,38 +28,31 @@ export function snapshotCombobox(
     attributes: {
       value: resolveValue(element),
       ...snapshotCommonInputAttributes(element),
+      ...expandableAttributes(element),
       options,
     },
     children: [],
   };
 }
 
-function isCombobox(
-  element: SnapshotTargetElement,
-): element is ComboboxElement {
+function isCombobox(element: SnapshotTargetElement): boolean {
+  // a <select> without an explicit role has the implicit role "combobox"
   if (element instanceof HTMLSelectElement) {
     return element.role === null || element.role === "combobox";
   }
 
-  if (
-    element instanceof HTMLInputElement ||
-    element instanceof HTMLButtonElement
-  ) {
-    return element.role === "combobox";
-  }
-
-  return false;
+  return element.role === "combobox";
 }
 
 function resolveValue(
-  element: ComboboxElement,
+  element: SnapshotTargetElement,
 ): string | Array<string> | undefined {
-  if (element instanceof HTMLButtonElement) {
-    return resolveAccessibleTextContent(element);
-  }
-
   if (element instanceof HTMLInputElement) {
     return resolveInputValue(element);
+  }
+
+  if (!(element instanceof HTMLSelectElement)) {
+    return resolveAccessibleTextContent(element);
   }
 
   const selectedLabels = Array.from(element.selectedOptions).map(
@@ -75,7 +70,9 @@ function resolveValue(
   return selectedLabels;
 }
 
-function snapshotOptions(element: ComboboxElement): Array<OptionSnapshot> {
+function snapshotOptions(
+  element: SnapshotTargetElement,
+): Array<OptionSnapshot> {
   const optionsContainer = resolveOptionsContainer(element);
   if (optionsContainer === null) {
     return [];
@@ -84,7 +81,9 @@ function snapshotOptions(element: ComboboxElement): Array<OptionSnapshot> {
   return filterByRole("option", snapshotChildren(optionsContainer));
 }
 
-function resolveOptionsContainer(element: ComboboxElement): HTMLElement | null {
+function resolveOptionsContainer(
+  element: SnapshotTargetElement,
+): HTMLElement | null {
   if (element instanceof HTMLSelectElement) {
     return element;
   }
