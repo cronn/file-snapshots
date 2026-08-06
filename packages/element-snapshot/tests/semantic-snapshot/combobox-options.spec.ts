@@ -58,6 +58,31 @@ test("includes options from referenced listbox", async ({ page }) => {
   });
 });
 
+test("includes options of role-based combobox", async ({ page }) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`
+      <div
+        role="combobox"
+        aria-label="Combobox"
+        aria-haspopup="listbox"
+        aria-controls="options"
+        aria-expanded="true"
+      >
+        Option 1
+      </div>
+      <ul id="options" role="listbox">
+        <li role="option" aria-selected="true">Option 1</li>
+        <li role="option" aria-selected="false">Option 2</li>
+      </ul>
+    `,
+  );
+
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    includeComboboxOptions: true,
+  });
+});
+
 test("excludes empty options", async ({ page }) => {
   const bodyLocator = await setupSnapshotTest(
     page,

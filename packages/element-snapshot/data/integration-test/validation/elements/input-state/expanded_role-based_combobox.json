@@ -1,9 +1,19 @@
 [
   {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Combobox"
+      }
+    ]
+  },
+  {
     "role": "combobox",
     "name": "Combobox",
     "attributes": {
-      "value": "Button Value",
+      "value": "Option 1",
       "expanded": true,
       "options": [
         {

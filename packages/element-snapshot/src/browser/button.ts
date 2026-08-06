@@ -1,9 +1,9 @@
 import type { ButtonSnapshot } from "../types/elements/button";
 
-import { booleanAttribute, booleanOrEnumAttribute } from "./attribute";
+import { booleanOrEnumAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
-import { disableableAttributes } from "./state";
+import { disableableAttributes, expandableAttributes } from "./state";
 import type { SnapshotTargetElement } from "./types";
 
 const pressedValues = new Set(["mixed"] as const);
@@ -16,7 +16,7 @@ export function snapshotButton(
     name: resolveAccessibleName(element),
     attributes: {
       ...disableableAttributes(element),
-      expanded: booleanAttribute(element.ariaExpanded),
+      ...expandableAttributes(element),
       pressed: booleanOrEnumAttribute(element.ariaPressed, pressedValues),
     },
     children: snapshotChildren(element),

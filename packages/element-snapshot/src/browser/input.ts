@@ -11,12 +11,6 @@ import { resolveInputRole } from "./role";
 import { inputStateAttributes } from "./state";
 import type { SnapshotTargetElement } from "./types";
 
-type InputElement =
-  | HTMLInputElement
-  | HTMLTextAreaElement
-  | HTMLSelectElement
-  | HTMLButtonElement;
-
 export function snapshotInput(
   element: SnapshotTargetElement,
 ): InputSnapshot | null {
@@ -65,7 +59,7 @@ function snapshotTextareaElement(element: HTMLTextAreaElement): InputSnapshot {
 }
 
 export function snapshotCommonInputAttributes(
-  element: InputElement,
+  element: SnapshotTargetElement,
 ): CommonInputAttributes {
   return {
     ...discribableAttributes(element),
@@ -99,10 +93,12 @@ function resolveChecked(
   return element.checked ? true : undefined;
 }
 
-function resolvePlaceholder(element: InputElement): string | undefined {
+function resolvePlaceholder(
+  element: SnapshotTargetElement,
+): string | undefined {
   if (
-    element instanceof HTMLSelectElement ||
-    element instanceof HTMLButtonElement
+    !(element instanceof HTMLInputElement) &&
+    !(element instanceof HTMLTextAreaElement)
   ) {
     return undefined;
   }
