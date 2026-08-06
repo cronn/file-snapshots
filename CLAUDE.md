@@ -31,3 +31,4 @@ The Playwright and Vitest integration suites have **update-mode variants** becau
 - Self-assign the PR
 - Add labels for each package affected by changes. Use the package name as label.
 - Provide a short summary of the introduced changes. Focus on essential changes.
+- Reference related GitHub issues closed by the changes
