@@ -2,7 +2,7 @@ import type { ElementRole } from "../types/role";
 
 import { resolveElementReference, stringAttribute } from "./attribute";
 import { parseElementRole } from "./role";
-import { attributeSelector } from "./selector";
+import { attributeSelector, roleSelector } from "./selector";
 import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
@@ -45,6 +45,7 @@ const supportsNamingFromChildContent = new Set<ElementRole>([
 const contextBasedNameResolvers: Array<ContextBasedNameResolver> = [
   resolveImageName,
   resolveLegendName,
+  resolveTreeItemName,
 ];
 
 type ContextBasedNameResolver = (
@@ -133,4 +134,18 @@ function resolveImageName(
   }
 
   return undefined;
+}
+
+function resolveTreeItemName(
+  element: SnapshotTargetElement,
+  role: ElementRole,
+): string | undefined {
+  if (role !== "treeitem") {
+    return undefined;
+  }
+
+  return resolveAccessibleTextContent(
+    element,
+    Array.from(element.querySelectorAll(roleSelector("group"))),
+  );
 }
