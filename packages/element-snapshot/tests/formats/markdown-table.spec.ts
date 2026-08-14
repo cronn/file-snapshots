@@ -1,9 +1,32 @@
 import test from "@playwright/test";
 
+import type { Normalizer } from "@cronn/lib-file-snapshots";
+import { maskPattern, stringNormalizer } from "@cronn/lib-file-snapshots";
 import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
 import { markdownTableSnapshot } from "../../src/playwright/markdown-table";
 import { expect } from "../../src/test/fixtures";
+
+const DATED_TABLE = html`
+  <table>
+    <tr>
+      <th scope="col">Order</th>
+      <th scope="col">Created at</th>
+    </tr>
+    <tr>
+      <td>#1001</td>
+      <td>2024-05-01</td>
+    </tr>
+    <tr>
+      <td>#1002</td>
+      <td>2024-05-02</td>
+    </tr>
+  </table>
+`;
+
+function maskDate(): Normalizer<string> {
+  return maskPattern(/\d{4}-\d{2}-\d{2}/g, (index) => `<DATE_${index}>`);
+}
 
 test("HTML table", async ({ page }) => {
   const bodyLocator = await setupSnapshotTest(
@@ -108,6 +131,14 @@ test("sorted column headers", async ({ page }) => {
   });
 });
 
+test("normalizers", async ({ page }) => {
+  const bodyLocator = await setupSnapshotTest(page, DATED_TABLE);
+
+  await expect.soft(bodyLocator).toMatchMarkdownTableSnapshotFile({
+    normalizers: [stringNormalizer(maskDate())],
+  });
+});
+
 test("when multiple tables are found, throws error", async ({ page }) => {
   const bodyLocator = await setupSnapshotTest(
     page,
@@ -190,4 +221,14 @@ test("snapshot function", async ({ page }) => {
   await expect(markdownTableSnapshot(bodyLocator)).toMatchTextFile({
     fileExtension: "md",
   });
+});
+
+test("snapshot function with normalizers", async ({ page }) => {
+  const bodyLocator = await setupSnapshotTest(page, DATED_TABLE);
+
+  await expect(
+    markdownTableSnapshot(bodyLocator, {
+      normalizers: [stringNormalizer(maskDate())],
+    }),
+  ).toMatchTextFile({ fileExtension: "md" });
 });
