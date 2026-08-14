@@ -1,6 +1,7 @@
 import type { Locator } from "@playwright/test";
 
 import {
+  type MarkdownTableNormalizer,
   MarkdownTableSerializer,
   type TableData,
   type TableRow,
@@ -35,6 +36,11 @@ export interface MarkdownTableSnapshotOptions {
    * @default true
    */
   showSortIndicator?: boolean;
+
+  /**
+   * Custom normalizers to apply before serialization
+   */
+  normalizers?: Array<MarkdownTableNormalizer>;
 }
 
 /**
@@ -44,10 +50,12 @@ export async function markdownTableSnapshot(
   locator: Locator,
   options: MarkdownTableSnapshotOptions = {},
 ): Promise<string> {
-  const elementSnapshot = await rawSnapshot(locator);
-  const parsedTable = parseTable(elementSnapshot, options);
+  const { showSortIndicator, normalizers } = options;
 
-  return new MarkdownTableSerializer().serialize(parsedTable);
+  const elementSnapshot = await rawSnapshot(locator);
+  const parsedTable = parseTable(elementSnapshot, { showSortIndicator });
+
+  return new MarkdownTableSerializer({ normalizers }).serialize(parsedTable);
 }
 
 function parseTable(

@@ -54,10 +54,18 @@ export function defineElementSnapshotMatchers(
       "toMatchMarkdownTableSnapshotFile",
       config,
     ).bind(this);
-    return await toMatchTextFile(() => markdownTableSnapshot(actual, options), {
-      ...options,
-      fileExtension: "md",
-    });
+    const { showSortIndicator, normalizers, ...matchFileOptions } = options;
+    return await toMatchTextFile(
+      () =>
+        markdownTableSnapshot(actual, {
+          showSortIndicator,
+          normalizers,
+        }),
+      {
+        ...matchFileOptions,
+        fileExtension: "md",
+      },
+    );
   }
 
   return baseExpect.extend({

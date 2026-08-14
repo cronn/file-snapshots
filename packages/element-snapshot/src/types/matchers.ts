@@ -24,5 +24,5 @@ export interface MatchSemanticSnapshotFileOptions
 
 export interface MatchMarkdownTableSnapshotFileOptions
   extends
-    Omit<PlaywrightMatchTextFileOptions, "fileExtension">,
+    Omit<PlaywrightMatchTextFileOptions, "fileExtension" | "normalizers">,
     MarkdownTableSnapshotOptions {}
