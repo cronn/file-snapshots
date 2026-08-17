@@ -34,10 +34,10 @@ jobs:
         id: changesets
         uses: changesets/action@v2.1.0
         with:
-          version: pnpm run version
-          publish: pnpm run release
-          commit: "ci: Version Packages"
-          title: "ci: Version Packages"
+          version-script: pnpm run version
+          publish-script: pnpm run release
+          commit-message: "ci: Version Packages"
+          pr-title: "ci: Version Packages"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

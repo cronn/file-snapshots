@@ -12,7 +12,7 @@ packages:
 
 catalog:
   "@arethetypeswrong/core": 0.18.5
-  "@changesets/cli": 2.31.1
+  "@changesets/cli": 3.0.0
   "@npm/types": 2.1.0
   "@playwright/test": 1.62.1
   "@pnpm/meta-updater": 2.0.6
@@ -59,6 +59,20 @@ minimumReleaseAgeExclude:
   - uuid@11.1.1
   - adm-zip@0.6.0
   - tar@7.5.21
+  - "@changesets/apply-release-plan@8.0.0"
+  - "@changesets/assemble-release-plan@7.0.0"
+  - "@changesets/changelog-git@1.0.0"
+  - "@changesets/cli@3.0.0"
+  - "@changesets/config@4.0.0"
+  - "@changesets/errors@1.0.0"
+  - "@changesets/get-dependents-graph@3.0.0"
+  - "@changesets/git@4.0.0"
+  - "@changesets/parse@1.0.0"
+  - "@changesets/pre@3.0.0"
+  - "@changesets/read@1.0.0"
+  - "@changesets/should-skip-package@1.0.0"
+  - "@changesets/types@7.0.0"
+  - "@changesets/write@1.0.0"
 
 trustPolicyExclude:
   - "@pnpm/worker@1000.6.11"

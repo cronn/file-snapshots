@@ -22,7 +22,7 @@
     "pnpm:clean": "pnpm pm clean && pnpm store prune",
     "pnpm:fix": "pnpm dedupe",
     "prepublishOnly": "pnpm turbo run ci",
-    "release": "pnpm turbo run build && pnpm publish --recursive --access=public --provenance && pnpm changeset tag",
+    "release": "pnpm turbo run build && pnpm publish --recursive --access=public --provenance && pnpm changeset git-tag",
     "version": "pnpm changeset version && pnpm turbo run format:fix"
   },
   "devDependencies": {
