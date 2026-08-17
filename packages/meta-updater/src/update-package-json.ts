@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const PNPM_VERSION = "11.18.0";
-const NODE_VERSION = "24.18.1";
+const NODE_VERSION = "24.19.0";
 
 const tsSourceDirs: Array<string> = ["src/", "tests/"];
 
