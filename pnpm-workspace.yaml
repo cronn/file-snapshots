@@ -1,9 +1,12 @@
+includeWorkspaceRoot: true
+saveExact: true
+dedupePeers: true
+minimumReleaseAge: 10080 # 1 week
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 40320 # 4 weeks
+
 packages:
   - packages/*
-allowBuilds:
-  esbuild: false
-  node: true
-  node@runtime:24.19.0: true
 
 catalog:
   "@arethetypeswrong/core": 0.18.5
@@ -34,18 +37,6 @@ catalog:
   "vitepress-plugin-group-icons": 1.7.6
   "vitest": 4.1.10
   "yaml": 2.9.0
-dedupePeers: true
-
-includeWorkspaceRoot: true
-
-minimumReleaseAge: 10080 # 1 week
-minimumReleaseAgeExclude:
-  - uuid@11.1.1
-  - vite@8.0.16
-  - adm-zip@0.6.0
-  - tar@7.5.21
-  - postcss@8.5.18
-  - brace-expansion@5.0.8
 
 overrides:
   adm-zip@<0.6.0: ^0.6.0
@@ -55,10 +46,19 @@ overrides:
   uuid@<11.1.1: ^11.1.1
   "vite": ">=8.0.5"
 
-saveExact: true
+allowBuilds:
+  esbuild: false
+  node: true
+  node@runtime:24.19.0: true
 
-trustPolicy: no-downgrade
-trustPolicyIgnoreAfter: 40320 # 4 weeks
+minimumReleaseAgeExclude:
+  - uuid@11.1.1
+  - vite@8.0.16
+  - adm-zip@0.6.0
+  - tar@7.5.21
+  - postcss@8.5.18
+  - brace-expansion@5.0.8
+
 trustPolicyExclude:
   - "@pnpm/worker@1000.6.11"
   - "@pnpm/symlink-dependency@1000.0.20"
