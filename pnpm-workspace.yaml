@@ -1,7 +1,9 @@
 includeWorkspaceRoot: true
 saveExact: true
+catalogPrune: true
 dedupePeers: true
 minimumReleaseAge: 10080 # 1 week
+minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 40320 # 4 weeks
 
