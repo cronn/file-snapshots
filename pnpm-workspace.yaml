@@ -3,7 +3,7 @@ packages:
 allowBuilds:
   esbuild: false
   node: true
-  node@runtime:24.18.1: true
+  node@runtime:24.19.0: true
 
 catalog:
   "@arethetypeswrong/core": 0.18.5
