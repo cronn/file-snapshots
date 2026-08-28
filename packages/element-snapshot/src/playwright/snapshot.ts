@@ -1,11 +1,12 @@
 import type { Page } from "@playwright/test";
 
 import type { NodeSnapshot } from "../types/snapshot";
+import type { SnapshotTransformers } from "../types/transformer";
 import type { PlaywrightTarget } from "../types/utils";
 import type { FilterPredicate } from "../utils/filter";
 
 import { ElementSnapshotProxy } from "./proxy";
-import { SemanticSnapshotTransformer } from "./semantic-snapshot-transformer";
+import { SemanticSnapshotSerializer } from "./semantic-snapshot-serializer";
 
 export interface SemanticSnapshotOptions {
   /**
@@ -28,9 +29,27 @@ export interface SemanticSnapshotOptions {
   /**
    * Include combobox options in the snapshot
    *
+   * Configures the built-in `combobox` transformer. Equivalent to
+   * `transformers: { combobox: comboboxTransformer({ includeOptions: true }) }`.
+   *
    * @default false
    */
   includeComboboxOptions?: boolean;
+
+  /**
+   * Replace the default transformation for specific roles
+   *
+   * Transformers are keyed by role and applied after the filter, but before
+   * the default serialization. A transformer may return any JSON-serializable
+   * value, which is written to the snapshot verbatim. The `transform` function
+   * of its context applies the default transformation to untransformed
+   * children.
+   *
+   * Entries override the built-in transformers for the same role.
+   *
+   * @default { combobox: comboboxTransformer() }
+   */
+  transformers?: SnapshotTransformers;
 }
 
 /**
@@ -48,7 +67,7 @@ export async function semanticSnapshot(
   options?: SemanticSnapshotOptions,
 ): Promise<unknown> {
   const snapshot = await rawSnapshot(target);
-  return new SemanticSnapshotTransformer(options).transform(snapshot);
+  return new SemanticSnapshotSerializer(options).transform(snapshot);
 }
 
 /**
