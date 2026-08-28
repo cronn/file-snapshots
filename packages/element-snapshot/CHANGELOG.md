@@ -1,5 +1,13 @@
 # @cronn/element-snapshot
 
+## 0.28.0
+
+### Minor Changes
+
+- 3ac43df: Add support for snapshotting `Page` targets
+
+  When a Page is passed as target to `rawSnapshot`, `semanticSnapshot` or `expect.toMatchSemanticSnapshotFile`, the snapshot covers the `<body>` of the page.
+
 ## 0.27.0
 
 ### Minor Changes
