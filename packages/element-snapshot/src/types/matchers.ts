@@ -8,9 +8,11 @@ import type {
 import type { MarkdownTableSnapshotOptions } from "../playwright/markdown-table";
 import type { SemanticSnapshotOptions } from "../playwright/snapshot";
 
+import type { PlaywrightTarget } from "./utils";
+
 export interface ElementSnapshotMatchers {
   toMatchSemanticSnapshotFile: (
-    actual: Locator,
+    actual: PlaywrightTarget,
     options?: MatchSemanticSnapshotFileOptions,
   ) => Promise<MatcherReturnType>;
   toMatchMarkdownTableSnapshotFile: (

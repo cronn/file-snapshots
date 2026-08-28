@@ -114,3 +114,19 @@ test("when element has attributes and children, includes children property", asy
 
   await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
+
+test("when target is page, snapshots body", async ({ page }) => {
+  await setupSnapshotTest(
+    page,
+    html`
+      <head>
+        <title>Title</title>
+      </head>
+      <body>
+        <main>Content</main>
+      </body>
+    `,
+  );
+
+  await expect(page).toMatchSemanticSnapshotFile();
+});
