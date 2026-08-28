@@ -1,9 +1,16 @@
+import { comboboxTransformer } from "../transformers/combobox";
 import type { TextSnapshot } from "../types/elements/text";
 import type { ElementRole } from "../types/role";
 import type { ElementSnapshot, NodeSnapshot } from "../types/snapshot";
+import type {
+  SnapshotTransform,
+  SnapshotTransformer,
+  SnapshotTransformers,
+  TransformableElementSnapshot,
+} from "../types/transformer";
 import type { FilterPredicate } from "../utils/filter";
 import { filter } from "../utils/filter";
-import { isEmpty, isTextSnapshot } from "../utils/guards";
+import { isEmpty } from "../utils/guards";
 
 interface NormalizedElementSnapshot {
   role: ElementRole;
@@ -12,21 +19,27 @@ interface NormalizedElementSnapshot {
   children: Array<unknown>;
 }
 
-interface SemanticSnapshotTransformerOptions {
+interface SemanticSnapshotSerializerOptions {
   filter?: FilterPredicate;
   recurseFilter?: boolean;
   includeComboboxOptions?: boolean;
+  transformers?: SnapshotTransformers;
 }
 
-export class SemanticSnapshotTransformer {
+export class SemanticSnapshotSerializer {
   private readonly filter?: FilterPredicate;
   private readonly recurseFilter: boolean;
-  private readonly includeComboboxOptions: boolean;
+  private readonly transformers: SnapshotTransformers;
 
-  public constructor(options: SemanticSnapshotTransformerOptions = {}) {
+  public constructor(options: SemanticSnapshotSerializerOptions = {}) {
     this.filter = options.filter;
     this.recurseFilter = options.recurseFilter ?? false;
-    this.includeComboboxOptions = options.includeComboboxOptions ?? false;
+    this.transformers = {
+      combobox: comboboxTransformer({
+        includeOptions: options.includeComboboxOptions ?? false,
+      }),
+      ...options.transformers,
+    };
   }
 
   public transform(snapshots: Array<NodeSnapshot>): unknown {
@@ -39,6 +52,14 @@ export class SemanticSnapshotTransformer {
 
     return transformedSnapshots;
   }
+
+  private readonly defaultTransform: SnapshotTransform = (snapshot) => {
+    if (snapshot.role === "text") {
+      return this.simplifyTextSnapshot(snapshot);
+    }
+
+    return this.simplifyElementSnapshot(snapshot);
+  };
 
   private filterSnapshots(snapshots: Array<NodeSnapshot>): Array<NodeSnapshot> {
     if (this.filter === undefined) {
@@ -59,18 +80,24 @@ export class SemanticSnapshotTransformer {
   }
 
   private transformSnapshotRecursive(snapshot: NodeSnapshot): unknown {
-    if (isTextSnapshot(snapshot)) {
-      return this.simplifyTextSnapshot(snapshot);
+    const transformer = this.transformers[snapshot.role] as
+      | SnapshotTransformer
+      | undefined;
+
+    if (transformer !== undefined) {
+      return transformer(snapshot, { transform: this.defaultTransform });
     }
 
-    return this.simplifyElementSnapshot(snapshot);
+    return this.defaultTransform(snapshot);
   }
 
   private simplifyTextSnapshot(snapshot: TextSnapshot): string {
     return snapshot.name;
   }
 
-  private simplifyElementSnapshot(snapshot: ElementSnapshot): unknown {
+  private simplifyElementSnapshot(
+    snapshot: ElementSnapshot | TransformableElementSnapshot,
+  ): unknown {
     const normalizedSnapshot = this.normalizeElementSnapshot(snapshot);
 
     if (this.isEmpty(normalizedSnapshot)) {
@@ -99,11 +126,15 @@ export class SemanticSnapshotTransformer {
   }
 
   private normalizeElementSnapshot(
-    snapshot: ElementSnapshot,
+    snapshot: ElementSnapshot | TransformableElementSnapshot,
   ): NormalizedElementSnapshot {
     const normalizedName = snapshot.name ?? "";
-    const transformedAttributes = this.transformAttributes(snapshot);
-    const transformedChildren = this.transformSnapshots(snapshot.children);
+    const transformedAttributes = this.transformAttributes(
+      snapshot.attributes ?? {},
+    );
+    const transformedChildren = this.transformSnapshots(
+      snapshot.children ?? [],
+    );
     const nameEqualsChildren =
       transformedChildren.length === 1 &&
       normalizedName === transformedChildren.at(0);
@@ -140,48 +171,18 @@ export class SemanticSnapshotTransformer {
     );
   }
 
-  private transformAttributes(
-    snapshot: ElementSnapshot,
-  ): Record<string, unknown> {
-    const { attributes } = snapshot;
+  private transformAttributes(attributes: object): Record<string, unknown> {
     const filteredAttributes: Record<string, unknown> = {};
-    const attributeNames = Object.keys(attributes) as Array<
-      keyof typeof attributes
-    >;
 
-    attributeNames.forEach((attributeName) => {
-      const transformedAttribute = this.transformAttribute(
-        attributeName,
-        snapshot,
-      );
-
-      if (transformedAttribute === undefined) {
+    Object.entries(attributes).forEach(([attributeName, attributeValue]) => {
+      if (attributeValue === undefined) {
         return;
       }
 
-      filteredAttributes[attributeName] = transformedAttribute;
+      filteredAttributes[attributeName] = attributeValue;
     });
 
     return filteredAttributes;
-  }
-
-  private transformAttribute(
-    name: keyof ElementSnapshot["attributes"],
-    snapshot: ElementSnapshot,
-  ): unknown {
-    const { role, attributes } = snapshot;
-
-    if (role === "combobox" && name === "options") {
-      const transformedOptions = attributes.options.map((optionSnapshot) =>
-        this.simplifyElementSnapshot(optionSnapshot),
-      );
-
-      return this.includeComboboxOptions && transformedOptions.length > 0
-        ? transformedOptions
-        : undefined;
-    }
-
-    return attributes[name];
   }
 
   private transformedSnapshot(

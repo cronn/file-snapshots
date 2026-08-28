@@ -45,6 +45,19 @@ export {
 
 export type { SnapshotByRole } from "./types/snapshot";
 
+export {
+  comboboxTransformer,
+  type ComboboxTransformerOptions,
+} from "./transformers/combobox";
+export type {
+  SnapshotTransform,
+  SnapshotTransformer,
+  SnapshotTransformerContext,
+  SnapshotTransformers,
+  TransformableElementSnapshot,
+  TransformableSnapshot,
+} from "./types/transformer";
+
 export { filter, filterByRole } from "./utils/filter";
 export { includeRole, excludeRole } from "./utils/predicates";
 export { getTextContent } from "./utils/text";
