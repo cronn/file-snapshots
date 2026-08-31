@@ -3,8 +3,8 @@ import type { FormatPluginFnOptions } from "@pnpm/meta-updater";
 import fs from "node:fs";
 import path from "node:path";
 
-const PNPM_VERSION = "11.22.0";
-const NODE_VERSION = "24.19.0";
+const PNPM_VERSION = "11.25.0";
+const NODE_VERSION = "24.20.0";
 
 const tsSourceDirs: Array<string> = ["src/", "tests/"];
 
