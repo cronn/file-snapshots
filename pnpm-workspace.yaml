@@ -53,7 +53,7 @@ overrides:
 allowBuilds:
   esbuild: false
   node: true
-  node@runtime:24.19.0: true
+  node@runtime:24.20.0: true
 
 minimumReleaseAgeExclude:
   - uuid@11.1.1
