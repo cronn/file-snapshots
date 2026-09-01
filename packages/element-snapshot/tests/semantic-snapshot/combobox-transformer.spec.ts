@@ -2,6 +2,7 @@ import test from "@playwright/test";
 
 import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
+import { comboboxTransformer } from "../../src";
 import { expect } from "../../src/test/fixtures";
 
 test("excludes options by default", async ({ page }) => {
@@ -15,7 +16,11 @@ test("excludes options by default", async ({ page }) => {
     `,
   );
 
-  await expect(bodyLocator).toMatchSemanticSnapshotFile();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    transformers: {
+      combobox: comboboxTransformer(),
+    },
+  });
 });
 
 test("includes options of HTML select", async ({ page }) => {
@@ -30,7 +35,9 @@ test("includes options of HTML select", async ({ page }) => {
   );
 
   await expect(bodyLocator).toMatchSemanticSnapshotFile({
-    includeComboboxOptions: true,
+    transformers: {
+      combobox: comboboxTransformer({ includeOptions: true }),
+    },
   });
 });
 
@@ -54,7 +61,9 @@ test("includes options from referenced listbox", async ({ page }) => {
   );
 
   await expect(bodyLocator).toMatchSemanticSnapshotFile({
-    includeComboboxOptions: true,
+    transformers: {
+      combobox: comboboxTransformer({ includeOptions: true }),
+    },
   });
 });
 
@@ -79,7 +88,9 @@ test("includes options of role-based combobox", async ({ page }) => {
   );
 
   await expect(bodyLocator).toMatchSemanticSnapshotFile({
-    includeComboboxOptions: true,
+    transformers: {
+      combobox: comboboxTransformer({ includeOptions: true }),
+    },
   });
 });
 
@@ -92,7 +103,9 @@ test("excludes empty options", async ({ page }) => {
   );
 
   await expect(bodyLocator).toMatchSemanticSnapshotFile({
-    includeComboboxOptions: true,
+    transformers: {
+      combobox: comboboxTransformer({ includeOptions: true }),
+    },
   });
 });
 
@@ -114,7 +127,11 @@ test("exclude options minimal case", async ({ page }) => {
     `,
   );
 
-  await expect(bodyLocator).toMatchSemanticSnapshotFile();
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    transformers: {
+      combobox: comboboxTransformer(),
+    },
+  });
 });
 
 test("include options minimal case", async ({ page }) => {
@@ -136,6 +153,8 @@ test("include options minimal case", async ({ page }) => {
   );
 
   await expect(bodyLocator).toMatchSemanticSnapshotFile({
-    includeComboboxOptions: true,
+    transformers: {
+      combobox: comboboxTransformer({ includeOptions: true }),
+    },
   });
 });

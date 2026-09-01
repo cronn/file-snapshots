@@ -27,16 +27,6 @@ export interface SemanticSnapshotOptions {
   recurseFilter?: boolean;
 
   /**
-   * Include combobox options in the snapshot
-   *
-   * Configures the built-in `combobox` transformer. Equivalent to
-   * `transformers: { combobox: comboboxTransformer({ includeOptions: true }) }`.
-   *
-   * @default false
-   */
-  includeComboboxOptions?: boolean;
-
-  /**
    * Replace the default transformation for specific roles
    *
    * Transformers are keyed by role and applied after the filter, but before

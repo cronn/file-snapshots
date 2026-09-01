@@ -22,7 +22,6 @@ interface NormalizedElementSnapshot {
 interface SemanticSnapshotSerializerOptions {
   filter?: FilterPredicate;
   recurseFilter?: boolean;
-  includeComboboxOptions?: boolean;
   transformers?: SnapshotTransformers;
 }
 
@@ -35,9 +34,7 @@ export class SemanticSnapshotSerializer {
     this.filter = options.filter;
     this.recurseFilter = options.recurseFilter ?? false;
     this.transformers = {
-      combobox: comboboxTransformer({
-        includeOptions: options.includeComboboxOptions ?? false,
-      }),
+      combobox: comboboxTransformer(),
       ...options.transformers,
     };
   }
