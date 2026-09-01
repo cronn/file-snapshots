@@ -28,8 +28,8 @@ export type SnapshotByRole<TRole extends NodeRole> = NodeSnapshot & {
 };
 
 export interface GenericElementSnapshot<
-  TRole extends NodeRole = NodeRole,
-  TAttributes = Record<string, unknown>,
+  TRole extends ElementRole = ElementRole,
+  TAttributes extends object = object,
 > {
   role: TRole;
   name?: string;

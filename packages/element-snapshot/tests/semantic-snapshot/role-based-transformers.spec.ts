@@ -3,7 +3,7 @@ import test from "@playwright/test";
 import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
 import { expect } from "../../src/test/fixtures";
-import { comboboxTransformer } from "../../src/transformers/combobox";
+import { comboboxTransformer } from "../../src/transformers/combobox-transformer";
 import { excludeRole } from "../../src/utils/predicates";
 import { getTextContent } from "../../src/utils/text";
 
