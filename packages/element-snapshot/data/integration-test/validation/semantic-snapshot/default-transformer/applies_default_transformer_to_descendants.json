@@ -1,0 +1,29 @@
+{
+  "list": [
+    {
+      "listitem": [
+        {
+          "text": "Fruits"
+        },
+        {
+          "list": [
+            {
+              "listitem": [
+                {
+                  "text": "Apple"
+                }
+              ]
+            },
+            {
+              "listitem": [
+                {
+                  "text": "Pear"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

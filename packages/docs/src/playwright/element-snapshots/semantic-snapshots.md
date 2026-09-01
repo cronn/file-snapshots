@@ -66,21 +66,22 @@ await expect(page.getByRole("main")).toMatchSemanticSnapshotFile({
 });
 ```
 
-| Option          | Default Value | Description                                                                                                                                                                                                                   |
-| --------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `filter`        | `() => true`  | Include only elements in the snapshot for which the specified filter returns `true`.                                                                                                                                          |
-| `recurseFilter` | `false`       | Recursively apply specified filter to children of filtered elements. By default, recursion ends when the filter returns `true` for an element. Should be `true` for filters intended to remove specific elements recursively. |
-| `transformers`  | see below     | Replace the default transformation for specific roles. See [Transformers](#transformers).                                                                                                                                     |
+| Option               | Default Value                 | Description                                                                                                                                                                                                                   |
+| -------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `filter`             | `() => true`                  | Include only elements in the snapshot for which the specified filter returns `true`.                                                                                                                                          |
+| `recurseFilter`      | `false`                       | Recursively apply specified filter to children of filtered elements. By default, recursion ends when the filter returns `true` for an element. Should be `true` for filters intended to remove specific elements recursively. |
+| `transformers`       | see below                     | Replace the default transformation for specific roles. See [Role-based Transformers](#role-based-transformers).                                                                                                               |
+| `defaultTransformer` | `semanticSnapshotTransformer` | Replace the default transformation for all roles. See [Default Transformer](#default-transformer).                                                                                                                            |
 
-## Transformers
+## Role-based Transformers
 
-The default transformation can be replaced per role with `transformers`. A transformer is applied **after** the `filter`, but **before** the default serialization, so it always receives the children that survived the filter. It may return any JSON-serializable value, which is written to the snapshot verbatim.
+The default transformation can be replaced per role with `transformers`. A transformer is applied **after** the `filter`, but **before** the default serialization, so it always receives the children that survived the filter. It may return any JSON-serializable value, which is written to the snapshot verbatim. To replace the transformation of all roles at once, use [`defaultTransformer`](#default-transformer) instead.
 
 > [!NOTE]
 > Transformers operate on element snapshots and are keyed by role. They are unrelated to the value-masking [normalizers](/general/normalizers) of `@cronn/lib-file-snapshots`, which are also available on `toMatchSemanticSnapshotFile` as the `normalizers` option and applied to the resulting JSON.
 
 ```ts
-import { getTextContent } from "@cronn/playwright-file-snapshots";
+import { getTextContent } from "@cronn/element-snapshot";
 
 test("transforms list items", async ({ page }) => {
   await page.setContent(`
@@ -120,18 +121,7 @@ await expect(page.getByRole("list")).toMatchSemanticSnapshotFile({
 });
 ```
 
-Pass an inline object literal when re-feeding a modified snapshot to `transform`. A value stored in an explicitly typed variable first is not assignable, because TypeScript only infers an index signature for object literals.
-
-```ts
-await expect(page.getByRole("heading")).toMatchSemanticSnapshotFile({
-  transformers: {
-    heading: (snapshot, { transform }) =>
-      transform({ ...snapshot, attributes: {} }),
-  },
-});
-```
-
-### `comboboxTransformer`
+### Combobox Transformer
 
 Combobox options are excluded by default through the built-in `combobox` transformer. Entries in `transformers` override the built-in transformer for the same role, and an explicit `undefined` disables it.
 
@@ -144,6 +134,82 @@ await expect(page.getByRole("main")).toMatchSemanticSnapshotFile({
   },
 });
 ```
+
+## Default Transformer
+
+While `transformers` replace the transformation of individual roles, `defaultTransformer` replaces it for **all** roles. It receives every snapshot for which no role-based transformer is registered, so role-based transformers always take precedence.
+
+```ts
+import { getTextContent } from "@cronn/element-snapshot";
+
+test("applies default transformer", async ({ page }) => {
+  await page.setContent(`
+    <h1>Heading</h1>
+    <p>Paragraph</p>
+  `);
+
+  await expect(page.locator("body")).toMatchSemanticSnapshotFile({
+    defaultTransformer: (snapshot) => getTextContent([snapshot]),
+  });
+});
+```
+
+**Output:**
+
+```json [applies_default_transformer.json]
+["Heading", "Paragraph"]
+```
+
+The default transformer replaces the default transformation entirely, including the serialization of roles, names and attributes. Because the built-in transformation is no longer applied anywhere, a transformer that should cover nested structures has to recurse itself through the `transform` function of its context. Unlike in a role-based transformer, `transform` does not fall back to the built-in serialization: it re-enters the same transformation pipeline, applying role-based transformers first and the default transformer for everything else.
+
+```ts
+test("applies default transformer to descendants", async ({ page }) => {
+  await page.setContent(`
+    <ul>
+      <li>
+        Fruits
+        <ul>
+          <li>Apple</li>
+          <li>Pear</li>
+        </ul>
+      </li>
+    </ul>
+  `);
+
+  await expect(page.locator("body")).toMatchSemanticSnapshotFile({
+    defaultTransformer: (snapshot, { transform }) => {
+      if ("children" in snapshot && snapshot.children.length > 0) {
+        return { [snapshot.role]: snapshot.children.map(transform) };
+      }
+
+      return { [snapshot.role]: snapshot.name };
+    },
+  });
+});
+```
+
+**Output:**
+
+```json [applies_default_transformer_to_descendants.json]
+{
+  "list": [
+    {
+      "listitem": [
+        { "text": "Fruits" },
+        {
+          "list": [
+            { "listitem": [{ "text": "Apple" }] },
+            { "listitem": [{ "text": "Pear" }] }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+> [!NOTE]
+> The `transform` function passed to a role-based transformer delegates to the default transformer as well. A custom `defaultTransformer` therefore also changes the serialization of children delegated by role-based transformers, including the built-in `combobox` transformer.
 
 ## Snapshot Function
 

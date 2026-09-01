@@ -1,12 +1,15 @@
 import type { Page } from "@playwright/test";
 
 import type { NodeSnapshot } from "../types/snapshot";
-import type { SnapshotTransformers } from "../types/transformer";
+import type {
+  DefaultSnapshotTransformer,
+  RoleBasedSnapshotTransformers,
+} from "../types/transformer";
 import type { PlaywrightTarget } from "../types/utils";
 import type { FilterPredicate } from "../utils/filter";
 
 import { ElementSnapshotProxy } from "./proxy";
-import { SemanticSnapshotSerializer } from "./semantic-snapshot-serializer";
+import { SnapshotSerializer } from "./snapshot-serializer";
 
 export interface SemanticSnapshotOptions {
   /**
@@ -39,7 +42,18 @@ export interface SemanticSnapshotOptions {
    *
    * @default { combobox: comboboxTransformer() }
    */
-  transformers?: SnapshotTransformers;
+  transformers?: RoleBasedSnapshotTransformers;
+
+  /**
+   * Replace the default transformation for all roles
+   *
+   * Applied to every snapshot passed to the default transformation, including
+   * the ones a transformer delegates via the `transform` function of its
+   * context. Transformers registered for a role take precedence.
+   *
+   * @default semanticSnapshotTransformer
+   */
+  defaultTransformer?: DefaultSnapshotTransformer;
 }
 
 /**
@@ -57,7 +71,7 @@ export async function semanticSnapshot(
   options?: SemanticSnapshotOptions,
 ): Promise<unknown> {
   const snapshot = await rawSnapshot(target);
-  return new SemanticSnapshotSerializer(options).transform(snapshot);
+  return new SnapshotSerializer(options).transform(snapshot);
 }
 
 /**

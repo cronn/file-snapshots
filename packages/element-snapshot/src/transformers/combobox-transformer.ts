@@ -1,4 +1,6 @@
-import type { SnapshotTransformer } from "../types/transformer";
+import type { RoleBasedSnapshotTransformer } from "../types/transformer";
+
+import { transformElementSnapshot } from "./semantic-snapshot-transformer";
 
 export interface ComboboxTransformerOptions {
   /**
@@ -17,19 +19,22 @@ export interface ComboboxTransformerOptions {
  */
 export function comboboxTransformer(
   options: ComboboxTransformerOptions = {},
-): SnapshotTransformer<"combobox"> {
+): RoleBasedSnapshotTransformer<"combobox"> {
   const { includeOptions = false } = options;
 
   return (snapshot, { transform }) => {
     const { options: optionSnapshots, ...attributes } = snapshot.attributes;
     const transformedOptions = optionSnapshots.map(transform);
 
-    return transform({
-      ...snapshot,
-      attributes:
-        includeOptions && transformedOptions.length > 0
-          ? { ...attributes, options: transformedOptions }
-          : attributes,
-    });
+    return transformElementSnapshot(
+      {
+        ...snapshot,
+        attributes:
+          includeOptions && transformedOptions.length > 0
+            ? { ...attributes, options: transformedOptions }
+            : attributes,
+      },
+      transform,
+    );
   };
 }
