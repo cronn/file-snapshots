@@ -1,5 +1,23 @@
 # @cronn/element-snapshot
 
+## 0.29.0
+
+### Minor Changes
+
+- ae857a2: **Breaking change**: Removed `includeComboboxOptions` option from semantic snapshot
+
+  Use `transformers.combobox` with `comboboxTransformer({ includeOptions: true })` instead.
+
+- 8746be7: Add `defaultTransformer` option to replace the default transformation of semantic snapshots for all roles.
+
+  The transformer is applied to every snapshot passed to the default transformation, including the ones a role transformer delegates via the `transform` function of its context. Transformers registered for a role take precedence. Its own context provides the built-in `transform` function, which can be wrapped to keep the default serialization of descendants.
+
+- d50c690: Add `transformers` option to replace the default transformation of semantic snapshots per role.
+
+  Transformers are keyed by role and applied after the filter, but before the default serialization. They may return any JSON-serializable value, and receive a context providing the recursive default `transform` function to transform untransformed children.
+
+  The existing combobox handling is now a built-in transformer, exported as `comboboxTransformer`.
+
 ## 0.28.0
 
 ### Minor Changes
