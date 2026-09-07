@@ -29,19 +29,19 @@
     "lint:fix": "eslint src/ --max-warnings=0 --fix"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "catalog:",
+    "@arethetypeswrong/core": "catalog:dev",
     "@cronn/shared-configs": "workspace:*",
-    "@playwright/test": "catalog:",
-    "@typescript/native": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-prettier": "catalog:",
-    "eslint-plugin-check-file": "catalog:",
-    "eslint-plugin-unused-imports": "catalog:",
-    "publint": "catalog:",
-    "rimraf": "catalog:",
-    "tsdown": "catalog:",
-    "typescript": "catalog:",
-    "typescript-eslint": "catalog:"
+    "@playwright/test": "catalog:dev",
+    "@typescript/native": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "eslint-plugin-check-file": "catalog:dev",
+    "eslint-plugin-unused-imports": "catalog:dev",
+    "publint": "catalog:dev",
+    "rimraf": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "typescript": "catalog:dev",
+    "typescript-eslint": "catalog:dev"
   },
   "devEngines": {
     "packageManager": {

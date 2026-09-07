@@ -38,27 +38,27 @@
   "dependencies": {
     "@cronn/lib-file-snapshots": "workspace:*",
     "@cronn/playwright-file-snapshots": "workspace:*",
-    "package-directory": "catalog:"
+    "package-directory": "catalog:prod"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "catalog:",
+    "@arethetypeswrong/core": "catalog:dev",
     "@cronn/shared-configs": "workspace:*",
     "@cronn/test-utils": "workspace:*",
     "@cronn/vitest-file-snapshots": "workspace:*",
-    "@playwright/test": "catalog:",
-    "@types/node": "catalog:",
-    "@typescript/native": "catalog:",
-    "@vitest/coverage-v8": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-prettier": "catalog:",
-    "eslint-plugin-check-file": "catalog:",
-    "eslint-plugin-unused-imports": "catalog:",
-    "publint": "catalog:",
-    "rimraf": "catalog:",
-    "tsdown": "catalog:",
-    "typescript": "catalog:",
-    "typescript-eslint": "catalog:",
-    "vitest": "catalog:"
+    "@playwright/test": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "@typescript/native": "catalog:dev",
+    "@vitest/coverage-v8": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "eslint-plugin-check-file": "catalog:dev",
+    "eslint-plugin-unused-imports": "catalog:dev",
+    "publint": "catalog:dev",
+    "rimraf": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "typescript": "catalog:dev",
+    "typescript-eslint": "catalog:dev",
+    "vitest": "catalog:dev"
   },
   "peerDependencies": {
     "@playwright/test": "^1.55"

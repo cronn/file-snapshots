@@ -196,20 +196,23 @@ function updateDevDependencies(
 ): DevDependencies {
   return {
     ...devDependencies,
-    ...when(context.needsTsdown, { "@arethetypeswrong/core": "catalog:" }),
+    ...when(context.needsTsdown, { "@arethetypeswrong/core": "catalog:dev" }),
     ...when(context.needsTypeScript, {
-      "@typescript/native": "catalog:",
-      typescript: "catalog:",
+      "@typescript/native": "catalog:dev",
+      typescript: "catalog:dev",
     }),
     ...when(context.needsEslint, {
-      eslint: "catalog:",
-      "eslint-config-prettier": "catalog:",
-      "eslint-plugin-check-file": "catalog:",
-      "eslint-plugin-unused-imports": "catalog:",
+      eslint: "catalog:dev",
+      "eslint-config-prettier": "catalog:dev",
+      "eslint-plugin-check-file": "catalog:dev",
+      "eslint-plugin-unused-imports": "catalog:dev",
     }),
-    rimraf: "catalog:",
-    ...when(context.needsTsdown, { publint: "catalog:", tsdown: "catalog:" }),
-    ...when(context.needsEslint, { "typescript-eslint": "catalog:" }),
+    rimraf: "catalog:dev",
+    ...when(context.needsTsdown, {
+      publint: "catalog:dev",
+      tsdown: "catalog:dev",
+    }),
+    ...when(context.needsEslint, { "typescript-eslint": "catalog:dev" }),
   };
 }
 

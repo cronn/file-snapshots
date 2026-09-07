@@ -21,17 +21,17 @@
   },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",
-    "@typescript/native": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-prettier": "catalog:",
-    "eslint-plugin-check-file": "catalog:",
-    "eslint-plugin-unused-imports": "catalog:",
-    "oxc-minify": "catalog:",
-    "rimraf": "catalog:",
-    "typescript": "catalog:",
-    "typescript-eslint": "catalog:",
-    "vitepress": "catalog:",
-    "vitepress-plugin-group-icons": "catalog:"
+    "@typescript/native": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "eslint-plugin-check-file": "catalog:dev",
+    "eslint-plugin-unused-imports": "catalog:dev",
+    "oxc-minify": "catalog:dev",
+    "rimraf": "catalog:dev",
+    "typescript": "catalog:dev",
+    "typescript-eslint": "catalog:dev",
+    "vitepress": "catalog:dev",
+    "vitepress-plugin-group-icons": "catalog:dev"
   },
   "devEngines": {
     "packageManager": {

@@ -205,7 +205,7 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
-  default:
+  dev:
     '@arethetypeswrong/core':
       specifier: 0.18.5
       version: 0.18.5
@@ -248,9 +248,6 @@ catalogs:
     knip:
       specifier: 6.32.2
       version: 6.32.2
-    markdown-table:
-      specifier: 3.0.4
-      version: 3.0.4
     oxc-minify:
       specifier: 0.146.0
       version: 0.146.0
@@ -287,8 +284,15 @@ catalogs:
     vitest:
       specifier: 4.1.11
       version: 4.1.11
+  prod:
+    markdown-table:
+      specifier: ^3.0.4
+      version: 3.0.4
+    package-directory:
+      specifier: ^8.2.0
+      version: 8.2.0
     yaml:
-      specifier: 2.9.0
+      specifier: ^2.9.0
       version: 2.9.0
 
 overrides:
@@ -306,34 +310,34 @@ importers:
   .:
     devDependencies:
       '@changesets/cli':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.0.1
       '@cronn/meta-updater':
         specifier: workspace:*
         version: link:packages/meta-updater
       '@pnpm/meta-updater':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 2.0.6(@types/node@24.13.3)(supports-color@7.2.0)(typanion@3.14.0)
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       knip:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.32.2
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       oxfmt:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.64.0
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       turbo:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 2.10.11
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
 
   packages/aria-snapshot:
@@ -342,11 +346,11 @@ importers:
         specifier: workspace:*
         version: link:../playwright-file-snapshots
       yaml:
-        specifier: 'catalog:'
+        specifier: catalog:prod
         version: 2.9.0
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.18.5
       '@cronn/shared-configs':
         specifier: workspace:*
@@ -355,49 +359,49 @@ importers:
         specifier: workspace:*
         version: link:../test-utils
       '@playwright/test':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 1.62.1
       '@types/node':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 24.13.3
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       '@vitest/coverage-v8':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(vitest@4.1.11)
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       publint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.3.24
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       tsdown:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.22.14(@arethetypeswrong/core@0.18.5)(@typescript/typescript6@6.0.2)(oxc-resolver@11.24.2)(publint@0.3.24)
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
       vitest:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(@types/node@24.13.3)(@vitest/coverage-v8@4.1.11)(vite@8.2.1)
 
   packages/docs:
@@ -406,40 +410,40 @@ importers:
         specifier: workspace:*
         version: link:../shared-configs
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       oxc-minify:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.146.0
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
       vitepress:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 2.0.0-alpha.19(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0)(postcss@8.5.26)(yaml@2.9.0)
       vitepress-plugin-group-icons:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 1.7.6(vite@8.2.1)
 
   packages/element-snapshot:
@@ -451,11 +455,11 @@ importers:
         specifier: workspace:*
         version: link:../playwright-file-snapshots
       package-directory:
-        specifier: 'catalog:'
+        specifier: catalog:prod
         version: 8.2.0
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.18.5
       '@cronn/shared-configs':
         specifier: workspace:*
@@ -467,104 +471,104 @@ importers:
         specifier: workspace:*
         version: link:../vitest-file-snapshots
       '@playwright/test':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 1.62.1
       '@types/node':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 24.13.3
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       '@vitest/coverage-v8':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(vitest@4.1.11)
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       publint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.3.24
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       tsdown:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.22.14(@arethetypeswrong/core@0.18.5)(@typescript/typescript6@6.0.2)(oxc-resolver@11.24.2)(publint@0.3.24)
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
       vitest:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(@types/node@24.13.3)(@vitest/coverage-v8@4.1.11)(vite@8.2.1)
 
   packages/lib-file-snapshots:
     dependencies:
       markdown-table:
-        specifier: 'catalog:'
+        specifier: catalog:prod
         version: 3.0.4
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.18.5
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
       '@types/node':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 24.13.3
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       '@vitest/coverage-v8':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(vitest@4.1.11)
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       publint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.3.24
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       tsdown:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.22.14(@arethetypeswrong/core@0.18.5)(@typescript/typescript6@6.0.2)(oxc-resolver@11.24.2)(publint@0.3.24)
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
       vitest:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(@types/node@24.13.3)(@vitest/coverage-v8@4.1.11)(vite@8.2.1)
 
   packages/meta-updater:
@@ -573,37 +577,37 @@ importers:
         specifier: workspace:*
         version: link:../shared-configs
       '@npm/types':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 2.1.0
       '@types/node':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 24.13.3
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
 
   packages/playwright-file-snapshots:
@@ -612,143 +616,143 @@ importers:
         specifier: workspace:*
         version: link:../lib-file-snapshots
       package-directory:
-        specifier: 'catalog:'
+        specifier: catalog:prod
         version: 8.2.0
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.18.5
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
       '@playwright/test':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 1.62.1
       '@types/node':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 24.13.3
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       '@vitest/coverage-v8':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(vitest@4.1.11)
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       publint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.3.24
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       tsdown:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.22.14(@arethetypeswrong/core@0.18.5)(@typescript/typescript6@6.0.2)(oxc-resolver@11.24.2)(publint@0.3.24)
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
       vitest:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(@types/node@24.13.3)(@vitest/coverage-v8@4.1.11)(vite@8.2.1)
 
   packages/shared-configs:
     devDependencies:
       '@playwright/test':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 1.62.1
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       tsdown:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.22.14(@arethetypeswrong/core@0.18.5)(@typescript/typescript6@6.0.2)(oxc-resolver@11.24.2)(publint@0.3.24)
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
       vitest:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(@types/node@24.13.3)(@vitest/coverage-v8@4.1.11)(vite@8.2.1)
 
   packages/test-utils:
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.18.5
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
       '@playwright/test':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 1.62.1
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       publint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.3.24
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       tsdown:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.22.14(@arethetypeswrong/core@0.18.5)(@typescript/typescript6@6.0.2)(oxc-resolver@11.24.2)(publint@0.3.24)
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
 
   packages/vitest-file-snapshots:
@@ -758,58 +762,58 @@ importers:
         version: link:../lib-file-snapshots
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.18.5
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
       '@types/node':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 24.13.3
       '@typescript/native':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: typescript@7.0.2
       '@vitest/coverage-v8':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(vitest@4.1.11)
       '@vitest/expect':
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11
       eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.9.0(jiti@2.7.0)(supports-color@7.2.0)
       eslint-config-prettier:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 10.1.8(eslint@10.9.0)
       eslint-plugin-check-file:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 3.3.2(eslint@10.9.0)
       eslint-plugin-unused-imports:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.67.0)(eslint@10.9.0)
       node:
         specifier: runtime:24.20.0
         version: runtime:24.20.0
       package-directory:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.2.0
       publint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.3.24
       rimraf:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 6.1.3
       tsdown:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 0.22.14(@arethetypeswrong/core@0.18.5)(@typescript/typescript6@6.0.2)(oxc-resolver@11.24.2)(publint@0.3.24)
       typescript:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: '@typescript/typescript6@6.0.2'
       typescript-eslint:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 8.67.0(@typescript/typescript6@6.0.2)(eslint@10.9.0)(supports-color@7.2.0)
       vitest:
-        specifier: 'catalog:'
+        specifier: catalog:dev
         version: 4.1.11(@types/node@24.13.3)(@vitest/coverage-v8@4.1.11)(vite@8.2.1)
 
 packages:

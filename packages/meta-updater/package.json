@@ -24,16 +24,16 @@
   },
   "devDependencies": {
     "@cronn/shared-configs": "workspace:*",
-    "@npm/types": "catalog:",
-    "@types/node": "catalog:",
-    "@typescript/native": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-prettier": "catalog:",
-    "eslint-plugin-check-file": "catalog:",
-    "eslint-plugin-unused-imports": "catalog:",
-    "rimraf": "catalog:",
-    "typescript": "catalog:",
-    "typescript-eslint": "catalog:"
+    "@npm/types": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "@typescript/native": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "eslint-plugin-check-file": "catalog:dev",
+    "eslint-plugin-unused-imports": "catalog:dev",
+    "rimraf": "catalog:dev",
+    "typescript": "catalog:dev",
+    "typescript-eslint": "catalog:dev"
   },
   "devEngines": {
     "packageManager": {

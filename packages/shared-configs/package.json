@@ -40,17 +40,17 @@
     "lint:fix": "eslint src/ --max-warnings=0 --fix"
   },
   "devDependencies": {
-    "@playwright/test": "catalog:",
-    "@typescript/native": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-prettier": "catalog:",
-    "eslint-plugin-check-file": "catalog:",
-    "eslint-plugin-unused-imports": "catalog:",
-    "rimraf": "catalog:",
-    "tsdown": "catalog:",
-    "typescript": "catalog:",
-    "typescript-eslint": "catalog:",
-    "vitest": "catalog:"
+    "@playwright/test": "catalog:dev",
+    "@typescript/native": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "eslint-plugin-check-file": "catalog:dev",
+    "eslint-plugin-unused-imports": "catalog:dev",
+    "rimraf": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "typescript": "catalog:dev",
+    "typescript-eslint": "catalog:dev",
+    "vitest": "catalog:dev"
   },
   "devEngines": {
     "packageManager": {

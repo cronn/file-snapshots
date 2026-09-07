@@ -26,15 +26,15 @@
     "version": "pnpm changeset version && pnpm turbo run format:fix"
   },
   "devDependencies": {
-    "@changesets/cli": "catalog:",
+    "@changesets/cli": "catalog:dev",
     "@cronn/meta-updater": "workspace:*",
-    "@pnpm/meta-updater": "catalog:",
-    "@typescript/native": "catalog:",
-    "knip": "catalog:",
-    "oxfmt": "catalog:",
-    "rimraf": "catalog:",
-    "turbo": "catalog:",
-    "typescript": "catalog:"
+    "@pnpm/meta-updater": "catalog:dev",
+    "@typescript/native": "catalog:dev",
+    "knip": "catalog:dev",
+    "oxfmt": "catalog:dev",
+    "rimraf": "catalog:dev",
+    "turbo": "catalog:dev",
+    "typescript": "catalog:dev"
   },
   "devEngines": {
     "packageManager": {
