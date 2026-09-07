@@ -37,24 +37,24 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "markdown-table": "catalog:"
+    "markdown-table": "catalog:prod"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "catalog:",
+    "@arethetypeswrong/core": "catalog:dev",
     "@cronn/shared-configs": "workspace:*",
-    "@types/node": "catalog:",
-    "@typescript/native": "catalog:",
-    "@vitest/coverage-v8": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-prettier": "catalog:",
-    "eslint-plugin-check-file": "catalog:",
-    "eslint-plugin-unused-imports": "catalog:",
-    "publint": "catalog:",
-    "rimraf": "catalog:",
-    "tsdown": "catalog:",
-    "typescript": "catalog:",
-    "typescript-eslint": "catalog:",
-    "vitest": "catalog:"
+    "@types/node": "catalog:dev",
+    "@typescript/native": "catalog:dev",
+    "@vitest/coverage-v8": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "eslint-plugin-check-file": "catalog:dev",
+    "eslint-plugin-unused-imports": "catalog:dev",
+    "publint": "catalog:dev",
+    "rimraf": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "typescript": "catalog:dev",
+    "typescript-eslint": "catalog:dev",
+    "vitest": "catalog:dev"
   },
   "devEngines": {
     "packageManager": {
