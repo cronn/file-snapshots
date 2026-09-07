@@ -52,7 +52,6 @@ overrides:
 
 allowBuilds:
   esbuild: false
-  node: true
   node@runtime:24.20.0: true
 
 minimumReleaseAgeExclude:
