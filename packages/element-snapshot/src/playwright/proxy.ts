@@ -1,10 +1,13 @@
 import type { Locator, Page } from "@playwright/test";
+import fs from "node:fs/promises";
 import path from "node:path";
 import { packageDirectory } from "package-directory";
 
 import type { NodeSnapshot } from "../types/snapshot";
 
 export class ElementSnapshotProxy {
+  private static browserLibSource: string | undefined = undefined;
+
   private readonly page: Page;
 
   public constructor(page: Page) {
@@ -28,22 +31,31 @@ export class ElementSnapshotProxy {
   }
 
   private async loadLibrary(): Promise<void> {
-    const packageRootDir = await this.resolvePackageRootDir();
-    const libPath = path.resolve(packageRootDir, "dist", "browser-lib.iife.js");
-    await this.page.addScriptTag({
-      path: libPath,
-    });
+    // cache browser lib source to avoid reading it multiple times
+    ElementSnapshotProxy.browserLibSource ??= await this.readBrowserLibSource();
+
+    await this.page.evaluate(ElementSnapshotProxy.browserLibSource);
   }
 
-  private async resolvePackageRootDir(): Promise<string> {
-    const packageDir = await packageDirectory({
+  private async readBrowserLibSource(): Promise<string> {
+    const libPath = await this.resolveFromPackageRoot(
+      "dist",
+      "browser-lib.iife.js",
+    );
+    return await fs.readFile(libPath, "utf8");
+  }
+
+  private async resolveFromPackageRoot(
+    ...paths: Array<string>
+  ): Promise<string> {
+    const packageRoot = await packageDirectory({
       cwd: import.meta.dirname,
     });
 
-    if (packageDir === undefined) {
+    if (packageRoot === undefined) {
       throw new Error("Unable to resolve root directory of package");
     }
 
-    return packageDir;
+    return path.resolve(packageRoot, ...paths);
   }
 }
