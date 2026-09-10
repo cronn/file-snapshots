@@ -1,5 +1,13 @@
 # @cronn/aria-snapshot
 
+## 2.0.5
+
+### Patch Changes
+
+- 9fd9ca4: Use version range for prod dependencies
+- Updated dependencies [9fd9ca4]
+  - @cronn/playwright-file-snapshots@2.2.2
+
 ## 2.0.4
 
 ### Patch Changes
