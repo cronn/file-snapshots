@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 1.2.2
+
+### Patch Changes
+
+- 9fd9ca4: Use version range for prod dependencies
+
 ## 1.2.1
 
 ### Patch Changes

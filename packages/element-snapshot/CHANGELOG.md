@@ -1,5 +1,18 @@
 # @cronn/element-snapshot
 
+## 0.30.0
+
+### Minor Changes
+
+- 21b3876: Inject browser library without violating a strict content security policy
+
+### Patch Changes
+
+- 9fd9ca4: Use version range for prod dependencies
+- Updated dependencies [9fd9ca4]
+  - @cronn/lib-file-snapshots@1.2.2
+  - @cronn/playwright-file-snapshots@2.2.2
+
 ## 0.29.0
 
 ### Minor Changes

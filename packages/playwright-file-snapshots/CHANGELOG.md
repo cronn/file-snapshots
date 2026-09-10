@@ -1,5 +1,13 @@
 # @cronn/playwright-file-snapshots
 
+## 2.2.2
+
+### Patch Changes
+
+- 9fd9ca4: Use version range for prod dependencies
+- Updated dependencies [9fd9ca4]
+  - @cronn/lib-file-snapshots@1.2.2
+
 ## 2.2.1
 
 ### Patch Changes
