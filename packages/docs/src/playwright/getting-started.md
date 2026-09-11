@@ -58,10 +58,13 @@ const expect = mergeExpects(defineFileSnapshotMatchers(), otherExpect);
 > ```ts [fixtures.ts]
 > import { mergeExpects } from "@playwright/test";
 >
-> import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
+> import {
+>   defineConfig,
+>   defineFileSnapshotMatchers,
+> } from "@cronn/playwright-file-snapshots";
 > import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 >
-> const config = definedConfig({
+> const config = defineConfig({
 >   updateDelay: 1000,
 > });
 >
