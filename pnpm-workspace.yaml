@@ -23,8 +23,8 @@ catalogs:
     "@pnpm/meta-updater": 2.0.6
     "@types/node": 24.13.3
     "@typescript/native": "npm:typescript@^7.0.2"
-    "@vitest/coverage-v8": 4.1.11
-    "@vitest/expect": 4.1.11
+    "@vitest/coverage-v8": 5.0.0
+    "@vitest/expect": 5.0.0
     "eslint": 10.10.0
     "eslint-config-prettier": 10.1.8
     "eslint-plugin-check-file": 3.3.2
@@ -41,7 +41,7 @@ catalogs:
     "typescript-eslint": 8.69.0
     "vitepress": 2.0.0-alpha.20
     "vitepress-plugin-group-icons": 1.7.6
-    "vitest": 4.1.11
+    "vitest": 5.0.0
 
 overrides:
   adm-zip@<0.6.0: ^0.6.0
