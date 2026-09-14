@@ -71,7 +71,8 @@ export function eslintConfig(): Array<Linter.Config> {
 
         "check-file/filename-naming-convention": [
           "error",
-          { "*.ts": "KEBAB_CASE" },
+          { "src/**/*.ts": "KEBAB_CASE" },
+          { ignoreMiddleExtensions: true },
         ],
         "check-file/folder-naming-convention": [
           "error",
