@@ -44,3 +44,9 @@ updates:
       time: "08:00"
     cooldown:
       default-days: 7
+    groups:
+      github-actions-minor-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
