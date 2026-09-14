@@ -5,7 +5,7 @@ import type {
   TextNormalizer,
 } from "@cronn/lib-file-snapshots";
 
-export interface VitestValidationFileMatchers<R = unknown> {
+export interface VitestValidationFileMatchers<R = void> {
   toMatchTextFile: (options?: VitestMatchTextFileOptions) => R;
   toMatchJsonFile: (options?: VitestMatchJsonFileOptions) => R;
   toMatchMarkdownTableFile: (

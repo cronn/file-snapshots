@@ -1,4 +1,5 @@
-import type { ExpectationResult, MatcherState } from "@vitest/expect";
+import type { MatcherState, SyncExpectationResult } from "@vitest/expect";
+import { expect } from "vitest";
 
 import type {
   FilePathResolver,
@@ -25,7 +26,7 @@ interface MatchValidationFileParams<TValue> {
 
 export function matchValidationFile<TValue>(
   params: MatchValidationFileParams<TValue>,
-): ExpectationResult {
+): SyncExpectationResult {
   const { received, serializer, config, options, matcherState } = params;
   const { currentTestName, testPath, equals, isNot } = matcherState;
 
@@ -55,7 +56,9 @@ export function matchValidationFile<TValue>(
     titlePath: parseTestName(currentTestName),
     name,
   });
-  const { updateSnapshots } = parseSnapshotState(matcherState.snapshotState);
+  const { updateSnapshots } = parseSnapshotState(
+    expect.getState().snapshotState,
+  );
   const matcherResult = new ValidationFileMatcher({
     validationDir,
     outputDir,
