@@ -17,7 +17,7 @@ export function tsdownConfig(
     outDir: "./dist",
     clean: true,
     deps: {
-      skipNodeModulesBundle: true,
+      neverBundle: true,
     },
     publint: true,
     attw: {
