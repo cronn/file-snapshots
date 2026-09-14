@@ -9,18 +9,6 @@ updates:
     cooldown:
       default-days: 7
     groups:
-      minor-and-patch-updates-for-production-dependencies:
-        applies-to: version-updates
-        dependency-type: "production"
-        update-types:
-          - "minor"
-          - "patch"
-      minor-and-patch-updates-for-development-dependencies:
-        applies-to: version-updates
-        dependency-type: "development"
-        update-types:
-          - "minor"
-          - "patch"
       vitest:
         applies-to: version-updates
         patterns:
@@ -32,6 +20,11 @@ updates:
           - "eslint"
           - "typescript-eslint"
           - "eslint-*"
+      npm-minor-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
     ignore:
       - dependency-name: "@types/node"
         update-types: ["version-update:semver-major"]
