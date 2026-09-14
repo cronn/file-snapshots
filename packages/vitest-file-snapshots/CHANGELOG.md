@@ -1,5 +1,13 @@
 # @cronn/vitest-file-snapshots
 
+## 3.0.0
+
+### Major Changes
+
+- ef9643d: Update to Vitest v5
+
+  **Breaking**: The package now requires a version of Vitest v5 as peer dependency.
+
 ## 2.1.3
 
 ### Patch Changes
