@@ -1,4 +1,4 @@
-import type { ExpectationResult, MatcherState } from "@vitest/expect";
+import type { MatcherState, SyncExpectationResult } from "@vitest/expect";
 import { expect } from "vitest";
 
 import {
@@ -26,7 +26,7 @@ export function registerFileSnapshotMatchers(
     this: MatcherState,
     received: unknown,
     options: VitestMatchJsonFileOptions = {},
-  ): ExpectationResult {
+  ): SyncExpectationResult {
     const {
       includeUndefinedObjectProperties,
       normalizers,
@@ -49,7 +49,7 @@ export function registerFileSnapshotMatchers(
     this: MatcherState,
     received: unknown,
     options: VitestMatchTextFileOptions = {},
-  ): ExpectationResult {
+  ): SyncExpectationResult {
     const { normalizers, fileExtension, ...snapshotOptions } = options;
     return matchValidationFile({
       received: parseTextValue(received),
@@ -64,7 +64,7 @@ export function registerFileSnapshotMatchers(
     this: MatcherState,
     received: unknown,
     options: VitestMatchMarkdownTableFileOptions = {},
-  ): ExpectationResult {
+  ): SyncExpectationResult {
     const { normalizers, ...snapshotOptions } = options;
     return matchValidationFile({
       received: parseTableData(received),

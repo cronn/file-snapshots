@@ -67,7 +67,7 @@
     "vitest": "catalog:dev"
   },
   "peerDependencies": {
-    "vitest": "^4.1.4"
+    "vitest": "^5"
   },
   "devEngines": {
     "packageManager": {
