@@ -36,8 +36,8 @@ jobs:
         with:
           version-script: pnpm run version
           publish-script: pnpm run release
-          commit-message: "ci: Version Packages"
-          pr-title: "ci: Version Packages"
+          commit-message: "chore: Version packages"
+          pr-title: "Version packages"
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
