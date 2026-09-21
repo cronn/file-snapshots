@@ -5,6 +5,7 @@ dedupePeers: true
 minimumReleaseAge: 10080 # 1 week
 minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
+trustPolicyExcludePrune: true
 trustPolicyIgnoreAfter: 40320 # 4 weeks
 
 packages:
