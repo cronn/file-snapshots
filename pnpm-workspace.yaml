@@ -55,7 +55,7 @@ overrides:
 
 allowBuilds:
   esbuild: false
-  node@runtime:24.20.0: true
+  node@runtime:24.21.0: true
 
 minimumReleaseAgeExclude:
   - uuid@11.1.1
