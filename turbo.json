@@ -12,8 +12,6 @@
     },
     "//#knip:check": { "outputLogs": "new-only" },
     "//#knip:fix": { "outputLogs": "new-only" },
-    "//#pnpm:check": { "outputLogs": "new-only" },
-    "//#pnpm:fix": { "outputLogs": "new-only" },
     "//#pnpm:clean": { "outputLogs": "new-only" },
     "lint:check": {
       "dependsOn": ["compile"],
@@ -34,7 +32,6 @@
         "//#format:check",
         "//#config:check",
         "//#knip:check",
-        "//#pnpm:check",
         "//#compile"
       ]
     },

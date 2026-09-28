@@ -1,5 +1,6 @@
 includeWorkspaceRoot: true
 saveExact: true
+autoDedupe: true
 catalogPrune: true
 dedupePeers: true
 minimumReleaseAge: 10080 # 1 week
