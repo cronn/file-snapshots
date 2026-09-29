@@ -1,0 +1,30 @@
+[
+  {
+    "role": "toolbar",
+    "attributes": {},
+    "children": [
+      {
+        "role": "button",
+        "name": "Bold",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Bold"
+          }
+        ]
+      },
+      {
+        "role": "button",
+        "name": "Italic",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Italic"
+          }
+        ]
+      }
+    ]
+  }
+]
