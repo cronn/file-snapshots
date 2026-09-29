@@ -1,5 +1,13 @@
 # @cronn/element-snapshot
 
+## 0.31.0
+
+### Minor Changes
+
+- 3c9088f: Add support for elements with `role="toolbar"`
+
+  Snapshot elements with an explicit `toolbar` role. The `toolbar` role supports an accessible name from `aria-label`/`aria-labelledby`.
+
 ## 0.30.0
 
 ### Minor Changes
