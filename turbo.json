@@ -36,12 +36,7 @@
       ]
     },
     "fix": {
-      "dependsOn": [
-        "lint:fix",
-        "//#format:fix",
-        "//#config:fix",
-        "//#knip:fix"
-      ]
+      "dependsOn": ["lint:fix", "//#format:fix", "//#config:fix", "//#knip:fix"]
     },
     "build": {
       "dependsOn": ["^build", "compile"],
