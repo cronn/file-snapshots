@@ -96,7 +96,7 @@ function resolveLabelName(element: SnapshotTargetElement): string | undefined {
       attributeSelector("for", element.id),
     );
     if (referencedElement !== null) {
-      return resolveAccessibleTextContent(referencedElement);
+      return resolveAccessibleTextContent(referencedElement, [element]);
     }
   }
 
