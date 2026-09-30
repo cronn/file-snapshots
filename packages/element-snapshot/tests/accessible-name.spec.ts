@@ -28,6 +28,31 @@ test("referenced HTML label", async ({ page }) => {
   );
 });
 
+test("surrounding HTML label with matching reference", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="input">
+        Label
+        <input type="text" id="input" />
+      </label>
+    `,
+  );
+});
+
+test("surrounding HTML label with diverging reference", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="other">
+        Label
+        <input type="text" id="input" />
+      </label>
+      <input type="text" id="other" />
+    `,
+  );
+});
+
 test("aria-label", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
