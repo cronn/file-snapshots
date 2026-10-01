@@ -1,4 +1,5 @@
 import type { ComboboxSnapshot, OptionSnapshot } from "../types/elements/input";
+import { unwrapSingleItem } from "../utils/array";
 import { filterByRole } from "../utils/filter";
 
 import { resolveElementReference } from "./attribute";
@@ -63,11 +64,7 @@ function resolveValue(
     return undefined;
   }
 
-  if (selectedLabels.length === 1) {
-    return selectedLabels.at(0);
-  }
-
-  return selectedLabels;
+  return unwrapSingleItem(selectedLabels);
 }
 
 function snapshotOptions(

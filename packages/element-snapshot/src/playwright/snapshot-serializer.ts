@@ -6,6 +6,7 @@ import type {
   RoleBasedSnapshotTransformer,
   RoleBasedSnapshotTransformers,
 } from "../types/transformer";
+import { unwrapSingleItem } from "../utils/array";
 import type { FilterPredicate } from "../utils/filter";
 import { filter } from "../utils/filter";
 
@@ -39,11 +40,7 @@ export class SnapshotSerializer {
       this.transformSnapshotRecursive,
     );
 
-    if (transformedSnapshots.length === 1) {
-      return transformedSnapshots.at(0);
-    }
-
-    return transformedSnapshots;
+    return unwrapSingleItem(transformedSnapshots);
   }
 
   private filterSnapshots(snapshots: Array<NodeSnapshot>): Array<NodeSnapshot> {

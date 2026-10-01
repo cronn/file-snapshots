@@ -4,6 +4,7 @@ import type {
   SnapshotTransformer,
   SnapshotTransformerContext,
 } from "../types/transformer";
+import { unwrapSingleItem } from "../utils/array";
 import { isEmpty } from "../utils/guards";
 
 interface NormalizedElementSnapshot {
@@ -45,13 +46,13 @@ export function transformElementSnapshot(
 
   if (hasOnlyChildren(normalizedSnapshot)) {
     const { role, children } = normalizedSnapshot;
-    return transformedSnapshot(role, unwrapSingleChild(children));
+    return transformedSnapshot(role, unwrapSingleItem(children));
   }
 
   const { role, name, attributes, children } = normalizedSnapshot;
   return transformedSnapshot(role, name, {
     ...attributes,
-    children: isEmpty(children) ? undefined : unwrapSingleChild(children),
+    children: isEmpty(children) ? undefined : unwrapSingleItem(children),
   });
 }
 
@@ -96,10 +97,6 @@ function hasOnlyChildren(snapshot: NormalizedElementSnapshot): boolean {
     isEmpty(snapshot.attributes) &&
     !isEmpty(snapshot.children)
   );
-}
-
-function unwrapSingleChild(children: Array<unknown>): unknown {
-  return children.length === 1 ? children.at(0) : children;
 }
 
 function transformAttributes(attributes: object): Record<string, unknown> {
