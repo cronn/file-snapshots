@@ -100,7 +100,23 @@ test("when element has name and children, includes children property", async ({
   await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
-test("when element has attributes and children, includes children property", async ({
+test("when element has attributes and multiple children, includes children array", async ({
+  page,
+}) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`
+      <a href="/target">
+        <img src="/first.jpg" alt="First" />
+        <img src="/second.jpg" alt="Second" />
+      </a>
+    `,
+  );
+
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
+});
+
+test("when element has attributes and a single child, unwraps child", async ({
   page,
 }) => {
   const bodyLocator = await setupSnapshotTest(

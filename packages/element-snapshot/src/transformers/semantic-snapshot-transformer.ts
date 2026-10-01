@@ -45,16 +45,13 @@ export function transformElementSnapshot(
 
   if (hasOnlyChildren(normalizedSnapshot)) {
     const { role, children } = normalizedSnapshot;
-    return transformedSnapshot(
-      role,
-      children.length === 1 ? children.at(0) : children,
-    );
+    return transformedSnapshot(role, unwrapSingleChild(children));
   }
 
   const { role, name, attributes, children } = normalizedSnapshot;
   return transformedSnapshot(role, name, {
     ...attributes,
-    children: children.length === 0 ? undefined : children,
+    children: isEmpty(children) ? undefined : unwrapSingleChild(children),
   });
 }
 
@@ -99,6 +96,10 @@ function hasOnlyChildren(snapshot: NormalizedElementSnapshot): boolean {
     isEmpty(snapshot.attributes) &&
     !isEmpty(snapshot.children)
   );
+}
+
+function unwrapSingleChild(children: Array<unknown>): unknown {
+  return children.length === 1 ? children.at(0) : children;
 }
 
 function transformAttributes(attributes: object): Record<string, unknown> {

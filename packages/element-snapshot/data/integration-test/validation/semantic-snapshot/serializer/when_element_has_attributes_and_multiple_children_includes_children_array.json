@@ -3,7 +3,10 @@
   "url": "/target",
   "children": [
     {
-      "img": "Image"
+      "img": "First"
+    },
+    {
+      "img": "Second"
     }
   ]
 }
