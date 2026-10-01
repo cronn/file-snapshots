@@ -1,5 +1,15 @@
 # @cronn/element-snapshot
 
+## 0.32.0
+
+### Minor Changes
+
+- 47fa251: Unwrap a single child in semantic snapshots of elements with a name or attributes
+
+### Patch Changes
+
+- 1a5f55a: Fix maximum call stack size exceeded error when an HTML `<label>` references the input it surrounds
+
 ## 0.31.0
 
 ### Minor Changes
