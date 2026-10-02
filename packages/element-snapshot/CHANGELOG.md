@@ -1,5 +1,11 @@
 # @cronn/element-snapshot
 
+## 0.32.1
+
+### Patch Changes
+
+- 3a9a99a: Ignore leading and trailing whitespace in element references (`aria-labelledby`, `aria-describedby`, `aria-controls`)
+
 ## 0.32.0
 
 ### Minor Changes
