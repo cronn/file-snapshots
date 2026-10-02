@@ -50,5 +50,6 @@ export function resolveElementReference(
     return null;
   }
 
-  return element.ownerDocument.getElementById(referenceId);
+  const normalizedReferenceId = referenceId.trim();
+  return element.ownerDocument.getElementById(normalizedReferenceId);
 }
