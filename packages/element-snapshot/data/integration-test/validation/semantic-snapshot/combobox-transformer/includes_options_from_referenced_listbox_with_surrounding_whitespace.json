@@ -1,0 +1,15 @@
+[
+  {
+    "combobox": "",
+    "options": [
+      {
+        "option": "Option 1"
+      }
+    ]
+  },
+  {
+    "listbox": {
+      "option": "Option 1"
+    }
+  }
+]

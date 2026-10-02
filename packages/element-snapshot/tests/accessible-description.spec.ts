@@ -26,6 +26,16 @@ test("aria-describedby", async ({ page }) => {
   );
 });
 
+test("aria-describedby with surrounding whitespace", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <input type="text" aria-describedby="  description  " />
+      <p id="description">Description</p>
+    `,
+  );
+});
+
 test("aria-describedby takes precedence over aria-description", async ({
   page,
 }) => {

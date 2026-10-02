@@ -67,6 +67,26 @@ test("includes options from referenced listbox", async ({ page }) => {
   });
 });
 
+test("includes options from referenced listbox with surrounding whitespace", async ({
+  page,
+}) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`
+      <input type="text" role="combobox" aria-controls="  options  " />
+      <ul id="options" role="listbox">
+        <li role="option">Option 1</li>
+      </ul>
+    `,
+  );
+
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    transformers: {
+      combobox: comboboxTransformer({ includeOptions: true }),
+    },
+  });
+});
+
 test("includes options of role-based combobox", async ({ page }) => {
   const bodyLocator = await setupSnapshotTest(
     page,

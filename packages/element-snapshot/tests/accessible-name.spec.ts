@@ -73,6 +73,16 @@ test("aria-labelledby", async ({ page }) => {
   );
 });
 
+test("aria-labelledby with surrounding whitespace", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <p id="label">Label</p>
+      <input type="text" aria-labelledby="  label  " />
+    `,
+  );
+});
+
 test("aria-labelledby takes precedence over aria-label", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
