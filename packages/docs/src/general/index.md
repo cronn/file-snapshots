@@ -11,6 +11,8 @@ File snapshots are stored in two directories: `validationDir` and `outputDir`.
 
 By default, the directories are located under `/data/test/validation` and `/data/test/output`.
 
+Within both directories, file snapshots are named after the test file and the hierarchy of test titles. The file path can be customized using [File Path Resolvers](/general/file-path-resolvers).
+
 Using two directories to store snapshots enables diffing using directory comparison. This gives fine-grained control when updating snapshots and facilitates features like detecting unused snapshots.
 
 ## Available Integrations
