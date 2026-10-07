@@ -67,4 +67,4 @@ The columns are derived from the keys while the rows are derived from the values
 | ----------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`            | `undefined`         | Unique name of the file snapshot. Used to distinguish multiple file snapshots within the same `test`. See [Named Snapshots](/vitest/writing-tests#named-snapshots). |
 | `normalizers`     | `[]`                | Custom normalizers to apply before serialization. See [Normalization of Snapshots](/vitest/writing-tests#normalization-of-snapshots).                               |
-| `resolveFilePath` | `resolveNameAsFile` | Custom resolver for the file path used to store snapshots.                                                                                                          |
+| `resolveFilePath` | `resolveNameAsFile` | Custom resolver for the file path used to store snapshots. See [File Path Resolvers](/general/file-path-resolvers).                                                 |

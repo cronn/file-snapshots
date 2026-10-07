@@ -68,19 +68,7 @@ test("named snapshots", async () => {
 
 By default, all named snapshots are stored as separate files in the same directory, which is determined by the test context.
 
-To change this behavior, you can use a different file path resolver:
-
-```ts
-import { resolveNameAsFileSuffix } from "@cronn/playwright-file-snapshots";
-
-test("named snapshots", async () => {
-  // named_snapshots_snapshot_name.txt
-  await expect("value 1").toMatchTextFile({
-    name: "snapshot name",
-    resolveFilePath: resolveNameAsFileSuffix,
-  });
-});
-```
+To change this behavior, e.g. to append the name to the file name instead, use a different file path resolver. See [File Path Resolvers](/general/file-path-resolvers) for the built-in resolvers and how to write custom ones.
 
 ## Snapshot Retries
 

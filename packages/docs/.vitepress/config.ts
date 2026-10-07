@@ -43,6 +43,10 @@ export default defineConfig({
           items: [
             { text: "Introduction", link: "/general/" },
             { text: "Normalizers", link: "/general/normalizers" },
+            {
+              text: "File Path Resolvers",
+              link: "/general/file-path-resolvers",
+            },
           ],
         },
       ],
