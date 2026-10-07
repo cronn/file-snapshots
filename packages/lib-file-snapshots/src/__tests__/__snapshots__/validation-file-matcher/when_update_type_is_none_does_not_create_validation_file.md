@@ -10,8 +10,6 @@ value
 
 # expected
 ```
-===== missing file =====
-value
 
 ```
 
@@ -22,6 +20,6 @@ value
 
 ```
 
-# validation file
+# validation file (missing)
 [TMP_DIR]/validation/src/tests/feature/test.txt
 > File does not exist.

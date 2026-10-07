@@ -7,11 +7,7 @@ import type {
   ValidationFileMatcherResult,
 } from "../types/matcher";
 import type { SnapshotSerializer } from "../types/serializer";
-import {
-  addMissingFileMarker,
-  readSnapshotFile,
-  writeSnapshotFile,
-} from "../utils/file";
+import { readSnapshotFile, writeSnapshotFile } from "../utils/file";
 
 interface MatcherFilePaths {
   outputFilePath: string;
@@ -44,7 +40,7 @@ export class ValidationFileMatcher<TValue> {
 
   public matchFileSnapshot(actual: TValue): ValidationFileMatcherResult {
     const serializedActual = this.serializer.serialize(actual);
-    const expected = this.resolveExpected(serializedActual);
+    const expected = this.resolveExpected();
 
     return this.createMatcherResult({
       actual: serializedActual,
@@ -84,6 +80,7 @@ export class ValidationFileMatcher<TValue> {
     return {
       actual,
       expected,
+      isValidationFileMissing,
       outputFilePath,
       validationFilePath,
       message: () =>
@@ -97,25 +94,18 @@ export class ValidationFileMatcher<TValue> {
   private writeFileSnapshots(
     matcherResult: Pick<ValidationFileMatcherResult, "actual" | "expected">,
   ): void {
-    const { actual, expected } = matcherResult;
+    const { actual } = matcherResult;
     const { outputFilePath, validationFilePath } = this.filePaths;
 
     writeSnapshotFile(outputFilePath, actual);
 
     if (this.isUpdate) {
-      const validationFileData = this.isValidationFileMissing
-        ? expected
-        : actual;
-      writeSnapshotFile(validationFilePath, validationFileData);
-      this.validationFile = validationFileData;
+      writeSnapshotFile(validationFilePath, actual);
+      this.validationFile = actual;
     }
   }
 
-  private resolveExpected(actual: string): string {
-    if (this.validationFile === undefined) {
-      return addMissingFileMarker(actual);
-    }
-
-    return this.validationFile;
+  private resolveExpected(): string {
+    return this.validationFile ?? "";
   }
 }

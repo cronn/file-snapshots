@@ -1,10 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import {
-  addMissingFileMarker,
-  addTrailingNewLine,
-  normalizeFileName,
-} from "../utils/file";
+import { addTrailingNewLine, normalizeFileName } from "../utils/file";
 
 describe("normalize file name", () => {
   test.each([
@@ -65,8 +61,4 @@ describe("normalize file name", () => {
 
 test("adds trailing new line", () => {
   expect(addTrailingNewLine("line")).toBe("line\n");
-});
-
-test("adds missing file marker", () => {
-  expect(addMissingFileMarker("line")).toBe("===== missing file =====\nline");
 });

@@ -94,14 +94,8 @@ export async function matchValidationFile<TValue>(
       const currentActual = await snapshot.getValue();
       const matcherResult = matcher.matchFileSnapshot(currentActual);
 
-      let pass: boolean;
-
-      try {
-        baseExpect(matcherResult.actual).toBe(matcherResult.expected);
-        pass = true;
-      } catch {
-        pass = false;
-      }
+      const pass =
+        !matcherResult.isValidationFileMissing && isMatch(matcherResult);
 
       const skipRetry = matcher.isUpdate || snapshot instanceof StaticSnapshot;
       const stopRetry =
@@ -121,6 +115,15 @@ export async function matchValidationFile<TValue>(
       await snapshot.waitForNextRetry();
     }
   });
+}
+
+function isMatch(matcherResult: ValidationFileMatcherResult): boolean {
+  try {
+    baseExpect(matcherResult.actual).toBe(matcherResult.expected);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 interface BuildMatcherReturnTypeParams {

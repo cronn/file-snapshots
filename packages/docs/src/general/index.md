@@ -26,15 +26,11 @@ This monorepo provides file snapshot testing support for:
 
 ### Adding New File Snapshots
 
-When no validation file exists for a file snapshot, a new validation file is created containing a marker in the first line:
+When no validation file exists for a file snapshot, a new validation file is created from the actual value. The assertion fails on this first run, so new file snapshots are always explicitly noticed. Subsequent runs compare against the created validation file.
 
-```
-===== missing file =====
-```
+To use the snapshot as validation file:
 
-This explicitly marks the file as new. To use the snapshot as validation file:
-
-1. Remove the marker line from the file
+1. Review the created validation file
 2. Add the file to version control
 
 ### Updating Changed File Snapshots

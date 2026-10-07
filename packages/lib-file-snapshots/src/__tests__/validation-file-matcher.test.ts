@@ -23,8 +23,14 @@ async function snapshotMatcherResult(
   matcherResult: ValidationFileMatcherResult,
   tmpDir?: string,
 ): Promise<void> {
-  const { actual, expected, outputFilePath, validationFilePath, message } =
-    matcherResult;
+  const {
+    actual,
+    expected,
+    isValidationFileMissing,
+    outputFilePath,
+    validationFilePath,
+    message,
+  } = matcherResult;
   const { testFileName, testName } = resolveTestContext(context);
   const normalizedTestName = normalizeFileName(testName);
   const normalizedMessage = normalizePath(message(), tmpDir);
@@ -48,7 +54,7 @@ ${codeBlock(expected)}
 ${normalizedOutputFilePath}
 ${optionalFileBlock(outputFilePath)}
 
-# validation file
+# validation file${isValidationFileMissing ? " (missing)" : ""}
 ${normalizedValidationFilePath}
 ${optionalFileBlock(validationFilePath)}
 `;
@@ -94,7 +100,7 @@ function temporarySnapshotDirs(
   };
 }
 
-test("when validation file is missing, creates validation file with marker", async (context) => {
+test("when validation file is missing, creates validation file", async (context) => {
   const tmpDir = createTmpDir();
 
   const matcher = new ValidationFileMatcher({
@@ -137,7 +143,7 @@ test("when serializer does not support value, throws error", () => {
 });
 
 test.for(["all", "missing"] as const)(
-  "when update type is '%s', creates validation file with marker",
+  "when update type is '%s', creates validation file",
   async (updateType: UpdateSnapshotsType, context: TestContext) => {
     const tmpDir = createTmpDir();
 
