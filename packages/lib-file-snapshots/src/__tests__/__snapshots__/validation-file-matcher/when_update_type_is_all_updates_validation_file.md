@@ -11,7 +11,6 @@ changed value
 
 # expected
 ```
-===== missing file =====
 initial value
 
 ```

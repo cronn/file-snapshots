@@ -9,7 +9,7 @@ import {
   temporarySnapshotDirs,
 } from "../utils/test";
 
-const initialValidationFile = ["===== missing file =====", "initial value", ""];
+const initialValidationFile = ["initial value", ""];
 const changedValidationFile = ["changed value", ""];
 
 test.runIf(TestRunner.matchesTags([tags.updateNew]))(

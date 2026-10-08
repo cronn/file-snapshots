@@ -13,7 +13,7 @@ import {
   temporarySnapshotDirs,
 } from "../src/utils/test";
 
-const initialValidationFile = ["===== missing file =====", "initial value", ""];
+const initialValidationFile = ["initial value", ""];
 const changedValidationFile = ["changed value", ""];
 
 test("when updateSnapshots is 'missing', creates missing validation file", async () => {
