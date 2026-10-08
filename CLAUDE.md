@@ -21,6 +21,12 @@ The Playwright and Vitest integration suites have **update-mode variants** becau
 - Use `kebab-case` for directory and file names
 - Use `UPPER_CASE` for naming top-level constants
 
+## Documentation
+
+- Add JSDoc with examples for public APIs
+- Document interfaces and types only when they are not self-descriptive
+- Do not include implementation details which are likely to change
+
 ## Before committing
 
 - Run `pnpm turbo fix`
