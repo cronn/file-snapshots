@@ -36,6 +36,11 @@ export type UpdateSnapshotsType = "all" | "missing" | "none";
 export interface ValidationFileMatcherResult {
   actual: string;
   expected: string;
+  /**
+   * Whether the validation file was missing when matching the snapshot.
+   * A missing validation file should be treated as a failed match.
+   */
+  isValidationFileMissing: boolean;
   outputFilePath: string;
   validationFilePath: string;
   message: () => string;

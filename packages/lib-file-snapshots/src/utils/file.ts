@@ -38,7 +38,3 @@ function mkdirRecursive(dirPath: string): void {
 export function addTrailingNewLine(data: string): string {
   return `${data}${NEW_LINE_SEPARATOR}`;
 }
-
-export function addMissingFileMarker(data: string): string {
-  return `===== missing file =====${NEW_LINE_SEPARATOR}${data}`;
-}

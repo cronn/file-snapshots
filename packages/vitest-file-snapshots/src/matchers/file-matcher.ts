@@ -69,7 +69,9 @@ export function matchValidationFile<TValue>(
   matcherResult.writeFileSnapshots();
 
   return {
-    pass: equals(matcherResult.actual, matcherResult.expected, [], true),
+    pass:
+      !matcherResult.isValidationFileMissing &&
+      equals(matcherResult.actual, matcherResult.expected, [], true),
     message: matcherResult.message,
     actual: matcherResult.actual,
     expected: matcherResult.expected,
