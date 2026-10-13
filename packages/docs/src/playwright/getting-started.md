@@ -47,6 +47,7 @@ If you are already using other custom matchers, you can merge them with the vali
 
 ```ts [fixtures.ts]
 import { mergeExpects } from "@playwright/test";
+
 import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
 const expect = mergeExpects(defineFileSnapshotMatchers(), otherExpect);
@@ -58,11 +59,11 @@ const expect = mergeExpects(defineFileSnapshotMatchers(), otherExpect);
 > ```ts [fixtures.ts]
 > import { mergeExpects } from "@playwright/test";
 >
+> import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 > import {
 >   defineConfig,
 >   defineFileSnapshotMatchers,
 > } from "@cronn/playwright-file-snapshots";
-> import { defineElementSnapshotMatchers } from "@cronn/element-snapshot";
 >
 > const config = defineConfig({
 >   updateDelay: 1000,
