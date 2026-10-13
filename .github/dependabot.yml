@@ -11,11 +11,15 @@ updates:
     groups:
       vitest:
         applies-to: version-updates
+        update-types:
+          - "major"
         patterns:
           - "vitest"
           - "@vitest/*"
       eslint:
         applies-to: version-updates
+        update-types:
+          - "major"
         patterns:
           - "eslint"
           - "typescript-eslint"
