@@ -16,6 +16,7 @@ import {
 function createConfig(values: Partial<FullConfig> = {}): FullConfig {
   return {
     projects: [],
+    filteredProjects: [],
     reporter: [],
     webServer: null,
     forbidOnly: false,
