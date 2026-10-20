@@ -68,6 +68,10 @@ describe("parseTestInfo", () => {
 });
 
 describe("parseUpdateSnapshots", () => {
+  test("when value is 'default', returns 'missing'", () => {
+    expect(parseUpdateSnapshots("changed")).toBe("all");
+  });
+
   test("when value is 'changed', returns 'all'", () => {
     expect(parseUpdateSnapshots("changed")).toBe("all");
   });
