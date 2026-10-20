@@ -1,5 +1,12 @@
 # @cronn/element-snapshot
 
+## 0.32.2
+
+### Patch Changes
+
+- Updated dependencies [3ab3f38]
+  - @cronn/playwright-file-snapshots@2.3.0
+
 ## 0.32.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @cronn/playwright-file-snapshots
 
+## 2.3.0
+
+### Minor Changes
+
+- 3ab3f38: Add support for `updateSnapshots=default` introduced in Playwright 1.64
+
 ## 2.2.2
 
 ### Patch Changes
