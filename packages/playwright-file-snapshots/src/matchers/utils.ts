@@ -25,6 +25,10 @@ export async function parseTestInfo(
 export function parseUpdateSnapshots(
   updateSnapshots: TestInfo["config"]["updateSnapshots"],
 ): UpdateSnapshotsType {
+  if (updateSnapshots === "default") {
+    return "missing";
+  }
+
   if (updateSnapshots === "changed") {
     return "all";
   }
