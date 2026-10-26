@@ -21,29 +21,29 @@ catalogs:
     "@arethetypeswrong/core": 0.18.5
     "@changesets/cli": 3.0.3
     "@npm/types": 2.1.0
-    "@playwright/test": 1.64.0
+    "@playwright/test": 1.64.1
     "@pnpm/meta-updater": 2.0.6
     "@types/node": 24.19.2
     "@typescript/native": "npm:typescript@^7.0.2"
-    "@vitest/coverage-v8": 5.0.3
-    "@vitest/expect": 5.0.3
-    "eslint": 10.12.0
+    "@vitest/coverage-v8": 5.0.5
+    "@vitest/expect": 5.0.5
+    "eslint": 10.13.0
     "eslint-config-prettier": 10.1.8
     "eslint-plugin-check-file": 3.3.2
     "eslint-plugin-unused-imports": 4.4.1
-    "knip": 6.41.0
-    "oxc-minify": 0.153.0
-    "oxfmt": 0.72.0
+    "knip": 6.42.0
+    "oxc-minify": 0.154.0
+    "oxfmt": 0.73.0
     "package-directory": 8.2.0
     "publint": 0.3.25
     "rimraf": 6.1.3
     "tsdown": 0.23.1
-    "turbo": 2.11.7
+    "turbo": 2.11.9
     "typescript": "npm:@typescript/typescript6@^6.0.2"
-    "typescript-eslint": 8.71.1
+    "typescript-eslint": 8.71.2
     "vitepress": 2.0.0-alpha.20
-    "vitepress-plugin-group-icons": 1.7.7
-    "vitest": 5.0.3
+    "vitepress-plugin-group-icons": 1.8.1
+    "vitest": 5.0.5
 
 overrides:
   "@types/node@<24.19.0": ^24.19.0
