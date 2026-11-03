@@ -6,10 +6,7 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  id-token: write
-  contents: write
-  pull-requests: write
+permissions: {}
 
 env:
   TURBO_TELEMETRY_DISABLED: 1
@@ -17,27 +14,110 @@ env:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release:
-    name: Release
+  # Selects `version` when changesets are pending, `publish` when package versions are missing on npm, `none` otherwise
+  select-mode:
+    name: Select mode
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    outputs:
+      mode: ${{ steps.select-mode.outputs.mode }}
+      publish-plan-artifact-id: ${{ steps.select-mode.outputs.publish-plan-artifact-id }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Run setup
         uses: ./.github/actions/setup
 
-      - name: Configure npm token # only required for initial releases which are not yet supported by trusted publishing
-        run: pnpm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
+      - name: Select mode
+        id: select-mode
+        uses: changesets/action/select-mode@v2.1.2
 
-      - name: Create release pull request or publish to npm
-        id: changesets
-        uses: changesets/action@v2.1.2
+  version:
+    name: Create release pull request
+    needs: select-mode
+    if: needs.select-mode.outputs.mode == 'version'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
         with:
-          version-script: pnpm run version
-          publish-script: pnpm run release
+          persist-credentials: false
+
+      - name: Run setup
+        uses: ./.github/actions/setup
+        with:
+          cache: false
+
+      - name: Create or update release pull request
+        uses: changesets/action/version@v2.1.2
+        with:
+          script: pnpm run version
           commit-message: "chore: Version packages"
           pr-title: "Version packages"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  pack:
+    name: Pack packages
+    needs: select-mode
+    if: needs.select-mode.outputs.mode == 'publish'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    outputs:
+      pack-dir-artifact-id: ${{ steps.pack.outputs.pack-dir-artifact-id }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run setup
+        uses: ./.github/actions/setup
+        with:
+          cache: false
+
+      - name: Build packages
+        run: pnpm turbo run build
+
+      - name: Pack packages
+        id: pack
+        uses: changesets/action/pack@v2.1.2
+        with:
+          publish-plan-artifact-id: ${{ needs.select-mode.outputs.publish-plan-artifact-id }}
+
+  publish:
+    name: Publish to npm
+    needs: pack
+    runs-on: ubuntu-24.04
+    environment: release
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run setup
+        uses: ./.github/actions/setup
+        with:
+          cache: false
+
+      - name: Configure npm token # only required for initial releases which are not yet supported by trusted publishing
+        run: pnpm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to npm
+        uses: changesets/action/publish@v2.1.2
+        with:
+          pack-dir-artifact-id: ${{ needs.pack.outputs.pack-dir-artifact-id }}
+        env:
+          NPM_CONFIG_PROVENANCE: true

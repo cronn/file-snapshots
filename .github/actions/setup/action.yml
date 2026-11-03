@@ -1,5 +1,11 @@
 name: Setup
 
+inputs:
+  cache:
+    description: Whether to cache the pnpm store. Disable in privileged jobs to prevent cache poisoning.
+    required: false
+    default: "true"
+
 runs:
   using: composite
   steps:
@@ -7,7 +13,7 @@ runs:
       uses: pnpm/setup@v1.0.0
       with:
         install: false
-        cache: true
+        cache: ${{ inputs.cache }}
 
     - name: Install dependencies
       run: pnpm clean-install
