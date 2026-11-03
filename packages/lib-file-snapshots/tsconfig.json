@@ -1,18 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "strict": true,
-    "erasableSyntaxOnly": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "outDir": "./types",
-    "lib": ["esnext"],
-    "moduleResolution": "bundler",
-    "skipLibCheck": true,
-    "noEmit": true
-  },
+  "extends": "../../tsconfig.base.json",
   "include": [
     "eslint.config.ts",
     "tsdown.config.ts",
