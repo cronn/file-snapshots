@@ -47,6 +47,7 @@ export default defineConfig({
               text: "File Path Resolvers",
               link: "/general/file-path-resolvers",
             },
+            { text: "CLI", link: "/general/cli" },
           ],
         },
       ],

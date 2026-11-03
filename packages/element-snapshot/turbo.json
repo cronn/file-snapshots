@@ -10,16 +10,26 @@
     },
     "test:unit": {
       "dependsOn": ["^build", "compile"],
-      "outputLogs": "new-only"
+      "outputLogs": "new-only",
+      "outputs": ["data/unit-test/output/**"]
     },
     "test:unit:coverage": {
       "dependsOn": ["^build", "compile"],
-      "outputs": ["coverage/**"],
+      "outputs": ["coverage/**", "data/unit-test/output/**"],
       "outputLogs": "new-only"
     },
     "test:integration": {
       "dependsOn": ["^build", "compile", "build", "playwright:install"],
-      "outputs": ["playwright-report/**", "test-results/**"],
+      "outputs": [
+        "playwright-report/**",
+        "test-results/**",
+        "data/integration-test/output/**"
+      ],
+      "outputLogs": "new-only"
+    },
+    "snapshots:check": {
+      "dependsOn": ["^build", "test:unit:coverage", "test:integration"],
+      "cache": false,
       "outputLogs": "new-only"
     },
     "check": {
@@ -28,6 +38,7 @@
         "lint:check",
         "test:unit:coverage",
         "test:integration",
+        "snapshots:check",
         "//#format:check"
       ]
     }

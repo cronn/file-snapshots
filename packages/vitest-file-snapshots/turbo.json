@@ -12,23 +12,42 @@
     },
     "test:core": {
       "dependsOn": ["^build", "compile"],
-      "outputLogs": "new-only"
+      "outputLogs": "new-only",
+      "outputs": ["data/test/output/**", "custom-data/output/**"]
     },
     "test:update-new": {
       "dependsOn": ["^build", "compile"],
-      "outputLogs": "new-only"
+      "outputLogs": "new-only",
+      "outputs": ["data/test/output/**", "custom-data/output/**"]
     },
     "test:update-all": {
       "dependsOn": ["^build", "compile"],
-      "outputLogs": "new-only"
+      "outputLogs": "new-only",
+      "outputs": ["data/test/output/**", "custom-data/output/**"]
     },
     "test:update-none": {
       "dependsOn": ["^build", "compile"],
-      "outputLogs": "new-only"
+      "outputLogs": "new-only",
+      "outputs": ["data/test/output/**", "custom-data/output/**"]
     },
     "test:coverage": {
       "dependsOn": ["^build", "compile"],
-      "outputs": ["coverage/**"],
+      "outputs": [
+        "coverage/**",
+        "data/test/output/**",
+        "custom-data/output/**"
+      ],
+      "outputLogs": "new-only"
+    },
+    "snapshots:check": {
+      "dependsOn": [
+        "^build",
+        "test:coverage",
+        "test:update-new",
+        "test:update-all",
+        "test:update-none"
+      ],
+      "cache": false,
       "outputLogs": "new-only"
     },
     "check": {
@@ -39,6 +58,7 @@
         "test:update-new",
         "test:update-all",
         "test:update-none",
+        "snapshots:check",
         "//#format:check"
       ]
     }

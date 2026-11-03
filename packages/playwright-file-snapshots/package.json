@@ -35,6 +35,7 @@
     "lint:check": "eslint src/ tests/ --max-warnings=0",
     "lint:fix": "eslint src/ tests/ --max-warnings=0 --fix",
     "playwright:install": "playwright install chromium",
+    "snapshots:check": "file-snapshots check --dir data/test --dir custom-data",
     "test:integration:core": "playwright test",
     "test:integration:update-all": "playwright test --grep @update-all --update-snapshots all",
     "test:integration:update-changed": "playwright test --grep @update-changed --update-snapshots changed",
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:dev",
+    "@cronn/file-snapshots-cli": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@playwright/test": "catalog:dev",
     "@types/node": "catalog:dev",
