@@ -56,9 +56,13 @@ Since validation files are named after the test, you can navigate to a validatio
 
 When regularly switching between branches with changed validation files, it can be helpful to clear the output directory. Otherwise, updated validation files will appear in the diff even though they did not change in the current branch.
 
+The output directory can be cleared using the [CLI](/general/cli): `file-snapshots clean`
+
 ### Removing Unused Validation Files
 
 Unused validation files are validation files from tests which no longer exist, e.g. because the test was renamed or deleted. To avoid confusion, unused validation files should always be deleted.
+
+The [CLI](/general/cli) detects unused validation files after a test run (`file-snapshots check`) and deletes them (`file-snapshots prune`). Running the check in CI prevents unused validation files from being merged.
 
 ## Tools for Comparing File Snapshots
 

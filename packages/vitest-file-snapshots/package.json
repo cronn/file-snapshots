@@ -38,6 +38,7 @@
     "compile": "tsc",
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "snapshots:check": "file-snapshots check --dir data/test --dir custom-data",
     "test:core": "vitest run --tags-filter=!update-*",
     "test:coverage": "vitest run --tags-filter=!update-* --coverage",
     "test:update-all": "vitest run --tags-filter=update-all --update all",
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:dev",
+    "@cronn/file-snapshots-cli": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@types/node": "catalog:dev",
     "@typescript/native": "catalog:dev",

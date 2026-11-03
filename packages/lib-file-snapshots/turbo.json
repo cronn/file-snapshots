@@ -4,15 +4,27 @@
   "tasks": {
     "test": {
       "dependsOn": ["^build", "compile"],
-      "outputLogs": "new-only"
+      "outputLogs": "new-only",
+      "outputs": ["data/test/output/**"]
     },
     "test:coverage": {
       "dependsOn": ["^build", "compile"],
-      "outputs": ["coverage/**"],
+      "outputs": ["coverage/**", "data/test/output/**"],
+      "outputLogs": "new-only"
+    },
+    "snapshots:check": {
+      "dependsOn": ["^build", "test:coverage"],
+      "cache": false,
       "outputLogs": "new-only"
     },
     "check": {
-      "dependsOn": ["compile", "lint:check", "test:coverage", "//#format:check"]
+      "dependsOn": [
+        "compile",
+        "lint:check",
+        "test:coverage",
+        "snapshots:check",
+        "//#format:check"
+      ]
     }
   }
 }

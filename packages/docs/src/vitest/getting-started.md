@@ -60,3 +60,11 @@ All file snapshots are generated to `/data/test`. The golden masters are stored 
 # file snapshots
 /data/test/output
 ```
+
+### Detect Unused File Snapshots
+
+Validation files of renamed or deleted tests are not removed automatically. Use the [CLI](/general/cli) to detect unused validation files in CI and delete them:
+
+```shell
+file-snapshots check
+```

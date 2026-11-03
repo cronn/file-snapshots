@@ -33,6 +33,7 @@
     "compile": "tsc",
     "lint:check": "eslint src/ --max-warnings=0",
     "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "snapshots:check": "file-snapshots check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "catalog:dev",
+    "@cronn/file-snapshots-cli": "workspace:*",
     "@cronn/shared-configs": "workspace:*",
     "@types/node": "catalog:dev",
     "@typescript/native": "catalog:dev",

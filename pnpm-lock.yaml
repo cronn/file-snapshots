@@ -312,6 +312,9 @@ importers:
       '@arethetypeswrong/core':
         specifier: catalog:dev
         version: 0.18.5
+      '@cronn/file-snapshots-cli':
+        specifier: workspace:*
+        version: link:../file-snapshots-cli
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
@@ -421,6 +424,9 @@ importers:
       '@arethetypeswrong/core':
         specifier: catalog:dev
         version: 0.18.5
+      '@cronn/file-snapshots-cli':
+        specifier: workspace:*
+        version: link:../file-snapshots-cli
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
@@ -476,6 +482,57 @@ importers:
         specifier: catalog:dev
         version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5)
 
+  packages/file-snapshots-cli:
+    devDependencies:
+      '@arethetypeswrong/core':
+        specifier: catalog:dev
+        version: 0.18.5
+      '@cronn/shared-configs':
+        specifier: workspace:*
+        version: link:../shared-configs
+      '@types/node':
+        specifier: catalog:dev
+        version: 26.6.5
+      '@typescript/native':
+        specifier: catalog:dev
+        version: typescript@7.0.2
+      '@vitest/coverage-v8':
+        specifier: catalog:dev
+        version: 5.0.5(vitest@5.0.5)
+      eslint:
+        specifier: catalog:dev
+        version: 10.13.0(jiti@2.7.0)(supports-color@7.2.0)
+      eslint-config-prettier:
+        specifier: catalog:dev
+        version: 10.1.8(eslint@10.13.0)
+      eslint-plugin-check-file:
+        specifier: catalog:dev
+        version: 3.3.2(eslint@10.13.0)
+      eslint-plugin-unused-imports:
+        specifier: catalog:dev
+        version: 4.4.1(@typescript-eslint/eslint-plugin@8.72.0)(eslint@10.13.0)
+      node:
+        specifier: runtime:26.13.0
+        version: runtime:26.13.0
+      publint:
+        specifier: catalog:dev
+        version: 0.3.25
+      rimraf:
+        specifier: catalog:dev
+        version: 6.1.3
+      tsdown:
+        specifier: catalog:dev
+        version: 0.23.2(@arethetypeswrong/core@0.18.5)(@typescript/typescript6@6.0.2)(oxc-resolver@11.24.2)(publint@0.3.25)
+      typescript:
+        specifier: catalog:dev
+        version: '@typescript/typescript6@6.0.2'
+      typescript-eslint:
+        specifier: catalog:dev
+        version: 8.72.0(@typescript/typescript6@6.0.2)(eslint@10.13.0)(supports-color@7.2.0)
+      vitest:
+        specifier: catalog:dev
+        version: 5.0.5(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(vite@8.3.5)
+
   packages/lib-file-snapshots:
     dependencies:
       markdown-table:
@@ -485,6 +542,9 @@ importers:
       '@arethetypeswrong/core':
         specifier: catalog:dev
         version: 0.18.5
+      '@cronn/file-snapshots-cli':
+        specifier: workspace:*
+        version: link:../file-snapshots-cli
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
@@ -582,6 +642,9 @@ importers:
       '@arethetypeswrong/core':
         specifier: catalog:dev
         version: 0.18.5
+      '@cronn/file-snapshots-cli':
+        specifier: workspace:*
+        version: link:../file-snapshots-cli
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs
@@ -724,6 +787,9 @@ importers:
       '@arethetypeswrong/core':
         specifier: catalog:dev
         version: 0.18.5
+      '@cronn/file-snapshots-cli':
+        specifier: workspace:*
+        version: link:../file-snapshots-cli
       '@cronn/shared-configs':
         specifier: workspace:*
         version: link:../shared-configs

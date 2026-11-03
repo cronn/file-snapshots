@@ -1,0 +1,71 @@
+{
+  "name": "@cronn/file-snapshots-cli",
+  "version": "0.0.0",
+  "description": "CLI for finding unused file snapshots and cleaning snapshot outputs",
+  "keywords": [
+    "cli",
+    "file snapshots"
+  ],
+  "homepage": "https://github.com/cronn/file-snapshots",
+  "bugs": {
+    "url": "https://github.com/cronn/file-snapshots/issues"
+  },
+  "license": "Apache-2.0",
+  "author": "cronn",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cronn/file-snapshots.git",
+    "directory": "packages/file-snapshots-cli"
+  },
+  "bin": {
+    "file-snapshots": "./dist/cli.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf .turbo dist coverage",
+    "compile": "tsc",
+    "lint:check": "eslint src/ --max-warnings=0",
+    "lint:fix": "eslint src/ --max-warnings=0 --fix",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/core": "catalog:dev",
+    "@cronn/shared-configs": "workspace:*",
+    "@types/node": "catalog:dev",
+    "@typescript/native": "catalog:dev",
+    "@vitest/coverage-v8": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "eslint-plugin-check-file": "catalog:dev",
+    "eslint-plugin-unused-imports": "catalog:dev",
+    "publint": "catalog:dev",
+    "rimraf": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "typescript": "catalog:dev",
+    "typescript-eslint": "catalog:dev",
+    "vitest": "catalog:dev"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.15.0",
+      "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "26.13.0",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "node": "^24.8.0 || >=26"
+  }
+}
