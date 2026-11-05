@@ -1,5 +1,16 @@
 # @cronn/aria-snapshot
 
+## 2.1.0
+
+### Minor Changes
+
+- f5bc0da: Drop support for Node.js 22. The minimum supported version is now Node.js 24.8.0.
+
+### Patch Changes
+
+- Updated dependencies [f5bc0da]
+  - @cronn/playwright-file-snapshots@2.4.0
+
 ## 2.0.6
 
 ### Patch Changes

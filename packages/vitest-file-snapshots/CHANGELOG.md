@@ -1,5 +1,16 @@
 # @cronn/vitest-file-snapshots
 
+## 3.1.0
+
+### Minor Changes
+
+- f5bc0da: Drop support for Node.js 22. The minimum supported version is now Node.js 24.8.0.
+
+### Patch Changes
+
+- Updated dependencies [f5bc0da]
+  - @cronn/lib-file-snapshots@1.3.0
+
 ## 3.0.0
 
 ### Major Changes

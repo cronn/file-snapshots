@@ -1,5 +1,11 @@
 # @cronn/lib-file-snapshots
 
+## 1.3.0
+
+### Minor Changes
+
+- f5bc0da: Drop support for Node.js 22. The minimum supported version is now Node.js 24.8.0.
+
 ## 1.2.2
 
 ### Patch Changes

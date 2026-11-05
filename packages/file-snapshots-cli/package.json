@@ -1,6 +1,6 @@
 {
   "name": "@cronn/file-snapshots-cli",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "CLI for finding unused file snapshots and cleaning snapshot outputs",
   "keywords": [
     "cli",
