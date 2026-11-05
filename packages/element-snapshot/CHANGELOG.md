@@ -1,5 +1,17 @@
 # @cronn/element-snapshot
 
+## 0.33.0
+
+### Minor Changes
+
+- f5bc0da: Drop support for Node.js 22. The minimum supported version is now Node.js 24.8.0.
+
+### Patch Changes
+
+- Updated dependencies [f5bc0da]
+  - @cronn/lib-file-snapshots@1.3.0
+  - @cronn/playwright-file-snapshots@2.4.0
+
 ## 0.32.2
 
 ### Patch Changes
