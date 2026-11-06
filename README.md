@@ -13,9 +13,10 @@ For full documentation, visit [cronn.github.io/file-snapshots](https://cronn.git
 
 ## Further Packages
 
-- `@cronn/lib-file-snapshots` — Library for snapshot testing
-- [`@cronn/element-snapshot`](packages/element-snapshot/README.md) — Element snapshots for Playwright
+- `@cronn/lib-file-snapshots` — Core library for snapshot testing
+- [`@cronn/element-snapshot`](packages/element-snapshot/README.md) — Semantic snapshots for Playwright
 - [`@cronn/aria-snapshot`](packages/aria-snapshot/README.md) — JSON-based ARIA snapshots for Playwright
+- [`@cronn/file-snapshots-cli`](packages/file-snapshots-cli/README.md) — CLI for detecting unused file snapshots and cleaning snapshot outputs
 
 ## Related Integrations
 
