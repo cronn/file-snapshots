@@ -87,9 +87,7 @@ export async function rawSnapshot(
   target: PlaywrightTarget,
 ): Promise<Array<NodeSnapshot>> {
   const locator = isPage(target) ? target.locator("body") : target;
-  return await new ElementSnapshotProxy(locator.page()).snapshotElement(
-    locator,
-  );
+  return await new ElementSnapshotProxy().snapshotElement(locator);
 }
 
 function isPage(target: PlaywrightTarget): target is Page {

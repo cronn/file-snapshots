@@ -1,0 +1,13 @@
+[
+  {
+    "role": "button",
+    "name": "Inside frame",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Inside frame"
+      }
+    ]
+  }
+]
