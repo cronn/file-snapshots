@@ -1,4 +1,4 @@
-import type { Locator, Page } from "@playwright/test";
+import type { Frame, Locator } from "@playwright/test";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { packageDirectory } from "package-directory";
@@ -8,15 +8,11 @@ import type { NodeSnapshot } from "../types/snapshot";
 export class ElementSnapshotProxy {
   private static browserLibSource: string | undefined = undefined;
 
-  private readonly page: Page;
-
-  public constructor(page: Page) {
-    this.page = page;
-  }
-
   public async snapshotElement(locator: Locator): Promise<Array<NodeSnapshot>> {
-    if (!(await this.isLibraryLoaded())) {
-      await this.loadLibrary();
+    // the library must be loaded into the element's own frame, which differs
+    // from the page's main frame for elements inside iframes
+    if (!(await this.isLibraryLoaded(locator))) {
+      await this.loadLibrary(await this.resolveOwnerFrame(locator));
     }
 
     return await locator.evaluate((element) => {
@@ -24,17 +20,32 @@ export class ElementSnapshotProxy {
     });
   }
 
-  private async isLibraryLoaded(): Promise<boolean> {
-    return await this.page.evaluate(
+  private async isLibraryLoaded(locator: Locator): Promise<boolean> {
+    return await locator.evaluate(
       () => typeof window.snapshotElement === "function",
     );
   }
 
-  private async loadLibrary(): Promise<void> {
+  private async resolveOwnerFrame(locator: Locator): Promise<Frame> {
+    const elementHandle = await locator.elementHandle();
+    try {
+      const frame = await elementHandle.ownerFrame();
+      if (frame === null) {
+        throw new Error("Unable to resolve frame of element");
+      }
+      return frame;
+    } finally {
+      await elementHandle.dispose();
+    }
+  }
+
+  private async loadLibrary(frame: Frame): Promise<void> {
     // cache browser lib source to avoid reading it multiple times
     ElementSnapshotProxy.browserLibSource ??= await this.readBrowserLibSource();
 
-    await this.page.evaluate(ElementSnapshotProxy.browserLibSource);
+    // evaluate source via Playwright instead of in-page `eval` to comply with
+    // strict content security policies
+    await frame.evaluate(ElementSnapshotProxy.browserLibSource);
   }
 
   private async readBrowserLibSource(): Promise<string> {
