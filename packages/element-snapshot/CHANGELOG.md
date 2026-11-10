@@ -1,5 +1,11 @@
 # @cronn/element-snapshot
 
+## 0.33.1
+
+### Patch Changes
+
+- cdc78ff: Fix snapshots of elements inside iframes failing with `window.snapshotElement is not a function`
+
 ## 0.33.0
 
 ### Minor Changes
