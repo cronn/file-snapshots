@@ -1,0 +1,20 @@
+[
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Label"
+      }
+    ]
+  },
+  {
+    "role": "combobox",
+    "attributes": {
+      "value": "Option",
+      "options": []
+    },
+    "children": []
+  }
+]

@@ -9,7 +9,6 @@
       },
       {
         "role": "textbox",
-        "name": "Label",
         "attributes": {},
         "children": []
       }

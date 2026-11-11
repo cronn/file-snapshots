@@ -199,11 +199,10 @@ test("role-based combobox", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
     html`
-      <label for="combobox">Combobox</label>
       <div
-        id="combobox"
         role="combobox"
         tabindex="0"
+        aria-label="Combobox"
         aria-haspopup="listbox"
         aria-controls="options"
         aria-expanded="false"

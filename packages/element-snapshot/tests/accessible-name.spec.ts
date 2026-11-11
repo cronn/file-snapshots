@@ -53,6 +53,41 @@ test("surrounding HTML label with diverging reference", async ({ page }) => {
   );
 });
 
+test("surrounding HTML label with missing reference", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="missing">
+        Label
+        <input type="text" id="input" />
+      </label>
+    `,
+  );
+});
+
+test("HTML label referencing non-labelable element", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="combobox">Label</label>
+      <div id="combobox" role="combobox" aria-expanded="false">Option</div>
+    `,
+  );
+});
+
+test("multiple HTML labels", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="input">First</label>
+      <label>
+        Second
+        <input type="text" id="input" />
+      </label>
+    `,
+  );
+});
+
 test("aria-label", async ({ page }) => {
   await matchRawElementSnapshot(
     page,

@@ -1,15 +1,5 @@
 [
   {
-    "role": "label",
-    "attributes": {},
-    "children": [
-      {
-        "role": "text",
-        "name": "Combobox"
-      }
-    ]
-  },
-  {
     "role": "combobox",
     "name": "Combobox",
     "attributes": {
