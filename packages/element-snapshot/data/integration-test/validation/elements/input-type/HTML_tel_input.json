@@ -1,0 +1,20 @@
+[
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Tel Input"
+      }
+    ]
+  },
+  {
+    "role": "textbox",
+    "name": "Tel Input",
+    "attributes": {
+      "value": "+49 123 456789"
+    },
+    "children": []
+  }
+]
