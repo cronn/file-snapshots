@@ -83,6 +83,19 @@ test("aria-labelledby with surrounding whitespace", async ({ page }) => {
   );
 });
 
+test("aria-labelledby referencing hidden element", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <p id="label" hidden>
+        Hidden
+        <span>Label</span>
+      </p>
+      <input type="text" aria-labelledby="label" />
+    `,
+  );
+});
+
 test("aria-labelledby takes precedence over aria-label", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
