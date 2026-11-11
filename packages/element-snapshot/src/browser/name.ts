@@ -51,6 +51,15 @@ const contextBasedNameResolvers: Array<ContextBasedNameResolver> = [
   resolveTreeItemName,
 ];
 
+type LabelableElement =
+  | HTMLButtonElement
+  | HTMLInputElement
+  | HTMLMeterElement
+  | HTMLOutputElement
+  | HTMLProgressElement
+  | HTMLSelectElement
+  | HTMLTextAreaElement;
+
 type ContextBasedNameResolver = (
   element: SnapshotTargetElement,
   role: ElementRole,
@@ -98,25 +107,17 @@ export function resolveAccessibleName(
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/labels
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control
 function resolveLabelName(element: SnapshotTargetElement): string | undefined {
-  const labels = resolveLabels(element);
-  if (labels === null) {
-    return undefined;
-  }
-
-  return resolveJoinedAccessibleTextContent(Array.from(labels), [element]);
+  return resolveJoinedAccessibleTextContent(resolveLabels(element), [element]);
 }
 
 function resolveLabels(
   element: SnapshotTargetElement,
-): NodeListOf<HTMLLabelElement> | null {
+): Array<HTMLLabelElement> {
   if (!("labels" in element)) {
-    return null;
+    return [];
   }
 
-  const labels: unknown = element.labels;
-  return labels instanceof NodeList
-    ? (labels as NodeListOf<HTMLLabelElement>)
-    : null;
+  return Array.from((element as LabelableElement).labels ?? []);
 }
 
 function resolveLegendName(element: SnapshotTargetElement): string | undefined {
