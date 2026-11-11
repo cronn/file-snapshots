@@ -8,6 +8,6 @@ export function roleSelector(roleName: ElementRole): string {
   return attributeSelector("role", roleName);
 }
 
-export function attributeSelector(name: string, value: string): string {
+function attributeSelector(name: string, value: string): string {
   return `[${name}='${value}']`;
 }

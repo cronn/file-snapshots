@@ -2,7 +2,7 @@ import type { ElementRole } from "../types/role";
 
 import { resolveElementReference, stringAttribute } from "./attribute";
 import { parseElementRole } from "./role";
-import { attributeSelector, roleSelector } from "./selector";
+import { roleSelector } from "./selector";
 import { resolveAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
@@ -90,22 +90,33 @@ export function resolveAccessibleName(
   return undefined;
 }
 
+// Uses the label association computed by the browser, see
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/labels
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control
 function resolveLabelName(element: SnapshotTargetElement): string | undefined {
-  if (element.id !== null) {
-    const referencedElement = element.ownerDocument.querySelector(
-      attributeSelector("for", element.id),
-    );
-    if (referencedElement !== null) {
-      return resolveAccessibleTextContent(referencedElement, [element]);
-    }
+  const labels = resolveLabels(element);
+  if (labels === null) {
+    return undefined;
   }
 
-  const closestLabel = element.closest("label");
-  if (closestLabel !== null) {
-    return resolveAccessibleTextContent(closestLabel, [element]);
+  const labelNames = Array.from(labels)
+    .map((label) => resolveAccessibleTextContent(label, [element]))
+    .filter((name) => name !== undefined);
+
+  return labelNames.length > 0 ? labelNames.join(" ") : undefined;
+}
+
+function resolveLabels(
+  element: SnapshotTargetElement,
+): NodeListOf<HTMLLabelElement> | null {
+  if (!("labels" in element)) {
+    return null;
   }
 
-  return undefined;
+  const labels: unknown = element.labels;
+  return labels instanceof NodeList
+    ? (labels as NodeListOf<HTMLLabelElement>)
+    : null;
 }
 
 function resolveLegendName(element: SnapshotTargetElement): string | undefined {
