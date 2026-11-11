@@ -1,5 +1,3 @@
-import type { SnapshotTargetElement } from "./types";
-
 export function stringAttribute(value: string | null): string | undefined {
   return value !== null && value !== "" ? value : undefined;
 }
@@ -39,17 +37,4 @@ export function booleanOrEnumAttribute<TEnum extends string>(
   }
 
   return enumAttribute(value, supportedStringValues);
-}
-
-export function resolveElementReference(
-  element: SnapshotTargetElement,
-  attributeName: string,
-): HTMLElement | null {
-  const referenceId = element.getAttribute(attributeName);
-  if (referenceId === null) {
-    return null;
-  }
-
-  const normalizedReferenceId = referenceId.trim();
-  return element.ownerDocument.getElementById(normalizedReferenceId);
 }

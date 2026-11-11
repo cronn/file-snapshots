@@ -36,6 +36,31 @@ test("aria-describedby with surrounding whitespace", async ({ page }) => {
   );
 });
 
+test("aria-describedby with multiple references", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <input type="text" aria-label="Label" aria-describedby="first second" />
+      <p id="first">First</p>
+      <p id="second">Second</p>
+    `,
+  );
+});
+
+test("aria-describedby with partially missing references", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <input
+        type="text"
+        aria-label="Label"
+        aria-describedby="missing description"
+      />
+      <p id="description">Description</p>
+    `,
+  );
+});
+
 test("aria-describedby referencing hidden element", async ({ page }) => {
   await matchRawElementSnapshot(
     page,

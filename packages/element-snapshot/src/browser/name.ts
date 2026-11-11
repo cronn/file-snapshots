@@ -1,9 +1,12 @@
 import type { ElementRole } from "../types/role";
 
-import { resolveElementReference, stringAttribute } from "./attribute";
+import { stringAttribute } from "./attribute";
 import { parseElementRole } from "./role";
 import { roleSelector } from "./selector";
-import { resolveAccessibleTextContent } from "./text";
+import {
+  resolveAccessibleTextContent,
+  resolveJoinedAccessibleTextContent,
+} from "./text";
 import type { SnapshotTargetElement } from "./types";
 
 // See https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/#accessiblenameguidancebyrole
@@ -63,9 +66,10 @@ export function resolveAccessibleName(
     return undefined;
   }
 
-  const labelledByElement = resolveElementReference(element, "aria-labelledby");
-  if (labelledByElement !== null) {
-    return resolveAccessibleTextContent(labelledByElement);
+  // See https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLabelledByElements
+  const labelledByElements = element.ariaLabelledByElements ?? [];
+  if (labelledByElements.length > 0) {
+    return resolveJoinedAccessibleTextContent(labelledByElements);
   }
 
   if (element.ariaLabel !== null) {
@@ -99,11 +103,7 @@ function resolveLabelName(element: SnapshotTargetElement): string | undefined {
     return undefined;
   }
 
-  const labelNames = Array.from(labels)
-    .map((label) => resolveAccessibleTextContent(label, [element]))
-    .filter((name) => name !== undefined);
-
-  return labelNames.length > 0 ? labelNames.join(" ") : undefined;
+  return resolveJoinedAccessibleTextContent(Array.from(labels), [element]);
 }
 
 function resolveLabels(

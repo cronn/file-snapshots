@@ -1,7 +1,6 @@
 import type { DiscribableAttributes } from "../types/attributes";
 
-import { resolveElementReference } from "./attribute";
-import { resolveAccessibleTextContent } from "./text";
+import { resolveJoinedAccessibleTextContent } from "./text";
 import type { SnapshotTargetElement } from "./types";
 
 export function discribableAttributes(
@@ -15,12 +14,10 @@ export function discribableAttributes(
 function resolveDescription(
   element: SnapshotTargetElement,
 ): string | undefined {
-  const describedByElement = resolveElementReference(
-    element,
-    "aria-describedby",
-  );
-  if (describedByElement !== null) {
-    return resolveAccessibleTextContent(describedByElement);
+  // See https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaDescribedByElements
+  const describedByElements = element.ariaDescribedByElements ?? [];
+  if (describedByElements.length > 0) {
+    return resolveJoinedAccessibleTextContent(describedByElements);
   }
 
   if (element.ariaDescription !== null) {

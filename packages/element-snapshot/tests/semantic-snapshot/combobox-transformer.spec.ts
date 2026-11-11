@@ -67,6 +67,64 @@ test("includes options from referenced listbox", async ({ page }) => {
   });
 });
 
+test("includes options from multiple referenced listboxes", async ({
+  page,
+}) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`
+      <input
+        type="text"
+        role="combobox"
+        aria-label="Combobox"
+        value="Option 1"
+        aria-controls="options-1 options-2"
+        aria-expanded="false"
+      />
+      <ul id="options-1" role="listbox">
+        <li role="option" aria-selected="true">Option 1</li>
+      </ul>
+      <ul id="options-2" role="listbox">
+        <li role="option" aria-selected="false">Option 2</li>
+      </ul>
+    `,
+  );
+
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    transformers: {
+      combobox: comboboxTransformer({ includeOptions: true }),
+    },
+  });
+});
+
+test("includes options from referenced listbox with partially missing references", async ({
+  page,
+}) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`
+      <input
+        type="text"
+        role="combobox"
+        aria-label="Combobox"
+        value="Option 1"
+        aria-controls="missing options"
+        aria-expanded="false"
+      />
+      <ul id="options" role="listbox">
+        <li role="option" aria-selected="true">Option 1</li>
+        <li role="option" aria-selected="false">Option 2</li>
+      </ul>
+    `,
+  );
+
+  await expect(bodyLocator).toMatchSemanticSnapshotFile({
+    transformers: {
+      combobox: comboboxTransformer({ includeOptions: true }),
+    },
+  });
+});
+
 test("includes options from referenced listbox with surrounding whitespace", async ({
   page,
 }) => {
