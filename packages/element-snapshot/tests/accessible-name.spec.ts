@@ -118,6 +118,27 @@ test("aria-labelledby with surrounding whitespace", async ({ page }) => {
   );
 });
 
+test("aria-labelledby with multiple references", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <p id="first">First</p>
+      <p id="second">Second</p>
+      <input type="text" aria-labelledby="second  first" />
+    `,
+  );
+});
+
+test("aria-labelledby with partially missing references", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <p id="label">Label</p>
+      <input type="text" aria-labelledby="missing label" />
+    `,
+  );
+});
+
 test("aria-labelledby referencing hidden element", async ({ page }) => {
   await matchRawElementSnapshot(
     page,

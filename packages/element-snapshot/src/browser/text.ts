@@ -43,3 +43,14 @@ export function resolveAccessibleTextContent(
   const textContent = getTextContent(children);
   return textContent.length > 0 ? textContent : undefined;
 }
+
+export function resolveJoinedAccessibleTextContent(
+  nodes: ReadonlyArray<Node>,
+  excludedNodes: Array<Node> = [],
+): string | undefined {
+  const textContents = nodes
+    .map((node) => resolveAccessibleTextContent(node, excludedNodes))
+    .filter((textContent) => textContent !== undefined);
+
+  return textContents.length > 0 ? textContents.join(" ") : undefined;
+}
