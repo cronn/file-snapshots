@@ -1,0 +1,10 @@
+[
+  {
+    "role": "textbox",
+    "name": "Label",
+    "attributes": {
+      "description": "Hidden Description"
+    },
+    "children": []
+  }
+]

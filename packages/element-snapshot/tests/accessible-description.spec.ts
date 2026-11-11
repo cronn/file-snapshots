@@ -36,6 +36,19 @@ test("aria-describedby with surrounding whitespace", async ({ page }) => {
   );
 });
 
+test("aria-describedby referencing hidden element", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <input type="text" aria-label="Label" aria-describedby="description" />
+      <p id="description" aria-hidden="true">
+        Hidden
+        <span>Description</span>
+      </p>
+    `,
+  );
+});
+
 test("aria-describedby takes precedence over aria-description", async ({
   page,
 }) => {
