@@ -88,10 +88,7 @@ const CONTEXT_DEPENDENT_ROLES: Partial<
   treeitem: isWithinTree,
 };
 
-const INPUT_ROLES: Record<
-  string,
-  ElementRoleResolver<CommonInputRole | "button">
-> = {
+const INPUT_ROLES: Record<string, CommonInputRole | "button"> = {
   button: "button",
   checkbox: "checkbox",
   email: "textbox",
@@ -102,7 +99,7 @@ const INPUT_ROLES: Record<
   reset: "button",
   search: "searchbox",
   submit: "button",
-  tel: "searchbox",
+  tel: "textbox",
   text: "textbox",
   url: "textbox",
 };
@@ -165,17 +162,7 @@ export function resolveInputRole(
     return undefined;
   }
 
-  const roleResolver = INPUT_ROLES[element.type];
-
-  if (roleResolver === undefined) {
-    return "textbox";
-  }
-
-  if (typeof roleResolver === "string") {
-    return roleResolver;
-  }
-
-  return roleResolver(element);
+  return INPUT_ROLES[element.type] ?? "textbox";
 }
 
 const DISALLOWED_BANNER_CONTAINER_ELEMENTS = [

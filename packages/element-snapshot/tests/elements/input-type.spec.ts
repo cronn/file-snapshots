@@ -24,6 +24,16 @@ test("HTML email input", async ({ page }) => {
   );
 });
 
+test("HTML tel input", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="input">Tel Input</label>
+      <input type="tel" id="input" name="input" value="+49 123 456789" />
+    `,
+  );
+});
+
 test("HTML password input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
