@@ -28,14 +28,11 @@ export function disableableAttributes(
 export function selectableAttributes(
   element: SnapshotTargetElement,
 ): SelectableAttributes {
-  const supportsHtmlAttribute = element instanceof HTMLOptionElement;
-  const selected = booleanAttribute(
-    supportsHtmlAttribute ? element.hasAttribute("selected") : false,
-  );
+  if (element instanceof HTMLOptionElement) {
+    return { selected: booleanAttribute(element.selected) };
+  }
 
-  return {
-    selected: selected ?? booleanAttribute(element.ariaSelected),
-  };
+  return { selected: booleanAttribute(element.ariaSelected) };
 }
 
 export function expandableAttributes(
