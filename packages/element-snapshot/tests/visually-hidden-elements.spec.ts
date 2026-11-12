@@ -115,3 +115,71 @@ test("element with opacity:0 class", async ({ page }) => {
     `,
   );
 });
+
+test("element with hidden attribute overridden by CSS", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <style>
+        [hidden].reveal {
+          display: block;
+        }
+      </style>
+      <p hidden class="reveal">Content</p>
+    `,
+  );
+});
+
+test("element with display:contents style", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <div style="display: contents">
+        <p>Content</p>
+      </div>
+    `,
+  );
+});
+
+test("element with content-visibility:hidden style", async ({ page }) => {
+  await matchEmptyRawElementSnapshot(
+    page,
+    html`<div style="content-visibility: hidden">Content</div>`,
+  );
+});
+
+test("content of closed details element", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <details>
+        <summary>Summary</summary>
+        <p>Content</p>
+      </details>
+    `,
+  );
+});
+
+test("text content of closed details element", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <details>
+        <summary>Summary</summary>
+        Content
+      </details>
+    `,
+  );
+});
+
+test("content of open details element", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <details open>
+        <summary>Summary</summary>
+        <p>Content</p>
+      </details>
+    `,
+  );
+});
