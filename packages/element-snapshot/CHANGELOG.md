@@ -1,5 +1,20 @@
 # @cronn/element-snapshot
 
+## 0.34.0
+
+### Minor Changes
+
+- 5e7f9eb: Support `<details>` elements, which are snapshotted as `group`
+- 5b1f283: Support lists of element references in `aria-labelledby`, `aria-describedby` and `aria-controls`
+
+### Patch Changes
+
+- c9b7eaf: Report `"checked": "mixed"` for native checkboxes in the indeterminate state
+- 22dda0b: Detect hidden elements by their computed style instead of the `hidden` attribute: Elements with a `hidden` attribute overridden by CSS are now included, while content of closed `<details>` elements and elements with `content-visibility: hidden` is now excluded
+- dc151b6: Resolve `<input type="tel">` with role `textbox` instead of `searchbox`
+- baef578: Resolve accessible names from `<label>` elements using the browser's native label association: controls with multiple labels combine their text, and labels no longer name nested controls or non-labelable elements they don't reference
+- 96658ae: Resolve selected state of `<option>` elements from the current selection instead of the `selected` attribute
+
 ## 0.33.1
 
 ### Patch Changes
