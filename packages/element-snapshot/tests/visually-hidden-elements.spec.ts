@@ -147,39 +147,3 @@ test("element with content-visibility:hidden style", async ({ page }) => {
     html`<div style="content-visibility: hidden">Content</div>`,
   );
 });
-
-test("content of closed details element", async ({ page }) => {
-  await matchRawElementSnapshot(
-    page,
-    html`
-      <details>
-        <summary>Summary</summary>
-        <p>Content</p>
-      </details>
-    `,
-  );
-});
-
-test("text content of closed details element", async ({ page }) => {
-  await matchRawElementSnapshot(
-    page,
-    html`
-      <details>
-        <summary>Summary</summary>
-        Content
-      </details>
-    `,
-  );
-});
-
-test("content of open details element", async ({ page }) => {
-  await matchRawElementSnapshot(
-    page,
-    html`
-      <details open>
-        <summary>Summary</summary>
-        <p>Content</p>
-      </details>
-    `,
-  );
-});

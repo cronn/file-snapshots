@@ -7,6 +7,7 @@ import { snapshotButton } from "./button";
 import { snapshotChildren } from "./children";
 import { snapshotCombobox, snapshotOption } from "./combobox";
 import { snapshotContainer } from "./container";
+import { isCollapsedDetailsContent } from "./details";
 import { snapshotDialogWithRole } from "./dialog";
 import { snapshotGroup, snapshotRadioGroup } from "./group";
 import { snapshotHeading } from "./heading";
@@ -158,16 +159,6 @@ function isHiddenElement(element: SnapshotTargetElement): boolean {
     cssStyles.visibility === "collapse" ||
     cssStyles.contentVisibility === "hidden"
   );
-}
-
-// the content of a closed <details> element is not rendered, except for its summary
-function isCollapsedDetailsContent(node: SnapshotTargetNode): boolean {
-  const parentElement = node.parentElement;
-  if (!(parentElement instanceof HTMLDetailsElement) || parentElement.open) {
-    return false;
-  }
-
-  return parentElement.querySelector(":scope > summary") !== node;
 }
 
 export function getNextElementSibling(

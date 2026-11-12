@@ -25,6 +25,7 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   code: "code",
   dd: "definition",
   del: "deletion",
+  details: "group",
   dl: "descriptionlist",
   dt: "term",
   em: "emphasis",
