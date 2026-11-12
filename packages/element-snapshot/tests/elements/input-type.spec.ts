@@ -1,8 +1,9 @@
 import test from "@playwright/test";
 
-import { html } from "@cronn/test-utils/playwright";
+import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
-import { matchRawElementSnapshot } from "../../src/test/fixtures";
+import { rawSnapshot } from "../../src/playwright/snapshot";
+import { expect, matchRawElementSnapshot } from "../../src/test/fixtures";
 
 test("HTML text input", async ({ page }) => {
   await matchRawElementSnapshot(
@@ -166,6 +167,36 @@ test("HTML single select", async ({ page }) => {
       </select>
     `,
   );
+});
+
+test("HTML single select without selected attribute", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="select">Single Select</label>
+      <select id="select">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+      </select>
+    `,
+  );
+});
+
+test("HTML single select with changed selection", async ({ page }) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`
+      <label for="select">Single Select</label>
+      <select id="select">
+        <option value="option1" selected>Option 1</option>
+        <option value="option2">Option 2</option>
+      </select>
+    `,
+  );
+
+  await page.getByRole("combobox").selectOption("option2");
+
+  await expect(rawSnapshot(bodyLocator)).toMatchJsonFile();
 });
 
 test("HTML multi select", async ({ page }) => {
