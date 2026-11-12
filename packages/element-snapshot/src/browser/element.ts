@@ -87,7 +87,7 @@ function snapshotNodeByType(
   node: SnapshotTargetNode,
   excludedNodes: Array<Node>,
 ): NodeSnapshot | Array<NodeSnapshot> | null {
-  if (excludedNodes.includes(node)) {
+  if (excludedNodes.includes(node) || isCollapsedDetailsContent(node)) {
     return null;
   }
 
@@ -143,22 +143,31 @@ export function hasRoleSpecificSnapshot(
 
 // inspired by https://github.com/testing-library/jest-dom?tab=readme-ov-file#tobevisible
 function isHiddenElement(element: SnapshotTargetElement): boolean {
-  if (element.hasAttribute("hidden")) {
-    return true;
-  }
-
   const ariaHidden = booleanAttribute(element.ariaHidden);
   if (ariaHidden === true) {
     return true;
   }
 
+  // check only the element itself instead of using Element.checkVisibility(), which also checks ancestors:
+  // descendants of hidden elements referenced by aria-labelledby must be resolvable, and options of a <select> have no box
   // do not treat elements with "opacity: 0" as hidden, because they are visible to screen readers
   const cssStyles = window.getComputedStyle(element);
   return (
     cssStyles.display === "none" ||
     cssStyles.visibility === "hidden" ||
-    cssStyles.visibility === "collapse"
+    cssStyles.visibility === "collapse" ||
+    cssStyles.contentVisibility === "hidden"
   );
+}
+
+// the content of a closed <details> element is not rendered, except for its summary
+function isCollapsedDetailsContent(node: SnapshotTargetNode): boolean {
+  const parentElement = node.parentElement;
+  if (!(parentElement instanceof HTMLDetailsElement) || parentElement.open) {
+    return false;
+  }
+
+  return parentElement.querySelector(":scope > summary") !== node;
 }
 
 export function getNextElementSibling(
