@@ -1,0 +1,38 @@
+[
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "checkbox",
+        "name": "Indeterminate",
+        "attributes": {
+          "checked": "mixed"
+        },
+        "children": []
+      },
+      {
+        "role": "text",
+        "name": "Indeterminate"
+      }
+    ]
+  },
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "checkbox",
+        "name": "Checked and indeterminate",
+        "attributes": {
+          "checked": "mixed"
+        },
+        "children": []
+      },
+      {
+        "role": "text",
+        "name": "Checked and indeterminate"
+      }
+    ]
+  }
+]
