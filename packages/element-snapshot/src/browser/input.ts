@@ -1,3 +1,4 @@
+import type { CheckedValue } from "../types/attributes";
 import type {
   CommonInputAttributes,
   InputSnapshot,
@@ -83,11 +84,10 @@ export function resolveInputValue(
   return stringAttribute(element.value);
 }
 
-function resolveChecked(
-  element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
-): true | undefined {
-  if (!(element instanceof HTMLInputElement)) {
-    return undefined;
+function resolveChecked(element: HTMLInputElement): CheckedValue | undefined {
+  // browsers expose indeterminate checkboxes as mixed, regardless of their checked state
+  if (element.type === "checkbox" && element.indeterminate) {
+    return "mixed";
   }
 
   return element.checked ? true : undefined;

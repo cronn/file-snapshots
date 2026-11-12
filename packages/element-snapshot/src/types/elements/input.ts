@@ -1,4 +1,5 @@
 import type {
+  CheckableAttributes,
   DisableableAttributes,
   DiscribableAttributes,
   ExpandableAttributes,
@@ -23,9 +24,8 @@ export type CommonInputRole =
   | "spinbutton"
   | "textbox";
 
-interface InputAttributes extends CommonInputAttributes {
+interface InputAttributes extends CommonInputAttributes, CheckableAttributes {
   value?: string;
-  checked?: boolean;
 }
 
 export interface CommonInputAttributes

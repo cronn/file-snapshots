@@ -109,6 +109,30 @@ test("HTML checkbox", async ({ page }) => {
   );
 });
 
+test("HTML checkbox with indeterminate state", async ({ page }) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`
+      <label>
+        <input type="checkbox" name="input" />
+        Indeterminate
+      </label>
+      <label>
+        <input type="checkbox" name="input" checked />
+        Checked and indeterminate
+      </label>
+    `,
+  );
+
+  await page.getByRole("checkbox").evaluateAll((checkboxes) => {
+    for (const checkbox of checkboxes) {
+      (checkbox as HTMLInputElement).indeterminate = true;
+    }
+  });
+
+  await expect(rawSnapshot(bodyLocator)).toMatchJsonFile();
+});
+
 test("HTML radio button", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
