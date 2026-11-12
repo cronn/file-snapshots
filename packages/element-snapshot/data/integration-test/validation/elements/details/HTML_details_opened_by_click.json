@@ -1,0 +1,22 @@
+[
+  {
+    "role": "group",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Summary"
+      },
+      {
+        "role": "paragraph",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Content"
+          }
+        ]
+      }
+    ]
+  }
+]
