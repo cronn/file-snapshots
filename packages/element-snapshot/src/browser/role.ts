@@ -2,7 +2,7 @@ import type { CommonInputRole, InputRole } from "../types/elements/input";
 import type { ElementRole } from "../types/role";
 
 import { isContainerRole } from "./container";
-import { getNextElementSibling, hasRoleSpecificSnapshot } from "./element";
+import { hasRoleSpecificSnapshot } from "./element";
 import { roleSelector, selectorList } from "./selector";
 import type { ElementTagName, SnapshotTargetElement } from "./types";
 import { getElementTagName, isWithinElement } from "./utils";
@@ -224,24 +224,24 @@ function resolveTableHeaderCellRole(
 function resolveTableHeaderCellRoleFromContext(
   element: HTMLTableCellElement,
 ): "columnheader" | "rowheader" | undefined {
-  const row: HTMLTableRowElement | null = element.closest("tr");
-  if (row === null) {
+  const row = element.parentElement;
+  if (!(row instanceof HTMLTableRowElement)) {
     return undefined;
   }
 
-  const nextElementSibling = getNextElementSibling(element);
+  const nextCell = row.cells[element.cellIndex + 1] ?? null;
+
   if (
     row.rowIndex === 0 &&
-    (nextElementSibling === null ||
-      resolveElementRole(nextElementSibling) === "columnheader")
+    (nextCell === null || resolveElementRole(nextCell) === "columnheader")
   ) {
     return "columnheader";
   }
 
   if (
     element.cellIndex === 0 &&
-    nextElementSibling !== null &&
-    resolveElementRole(nextElementSibling) === "cell"
+    nextCell !== null &&
+    resolveElementRole(nextCell) === "cell"
   ) {
     return "rowheader";
   }

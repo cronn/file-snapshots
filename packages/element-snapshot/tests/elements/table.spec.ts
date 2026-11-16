@@ -171,6 +171,27 @@ test("implicit row header", async ({ page }) => {
   );
 });
 
+test("implicit header cells ignore non-cell siblings", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <table>
+        <tr>
+          <th>Column Header 1</th>
+          <template></template>
+          <th>Column Header 2</th>
+        </tr>
+        <tr>
+          <th>Row Header</th>
+          <template></template>
+          <script></script>
+          <td>Data Cell</td>
+        </tr>
+      </table>
+    `,
+  );
+});
+
 /**
  * This test just asserts the behavior of the simplified cell scope resolver.
  * The used algorithm does not fulfill the HTML specification for complex and invalid cases.

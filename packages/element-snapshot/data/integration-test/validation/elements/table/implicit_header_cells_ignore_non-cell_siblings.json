@@ -1,0 +1,70 @@
+[
+  {
+    "role": "table",
+    "attributes": {},
+    "children": [
+      {
+        "role": "rowgroup",
+        "attributes": {},
+        "children": [
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
+              {
+                "role": "columnheader",
+                "name": "Column Header 1",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header 1"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Column Header 2",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Column Header 2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "role": "row",
+            "attributes": {},
+            "children": [
+              {
+                "role": "rowheader",
+                "name": "Row Header",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Row Header"
+                  }
+                ]
+              },
+              {
+                "role": "cell",
+                "name": "Data Cell",
+                "attributes": {},
+                "children": [
+                  {
+                    "role": "text",
+                    "name": "Data Cell"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
