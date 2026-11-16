@@ -187,13 +187,13 @@ const DISALLOWED_BANNER_CONTAINER_ROLES = [
   "navigation",
   "region",
 ] as const;
+const DISALLOWED_BANNER_CONTAINER_SELECTOR = selectorList(
+  ...DISALLOWED_BANNER_CONTAINER_ELEMENTS,
+  ...DISALLOWED_BANNER_CONTAINER_ROLES.map(roleSelector),
+);
 
 function isTopLevelBanner(element: SnapshotTargetElement): boolean {
-  const disallowedContainerSelector = selectorList(
-    ...DISALLOWED_BANNER_CONTAINER_ELEMENTS,
-    ...DISALLOWED_BANNER_CONTAINER_ROLES.map(roleSelector),
-  );
-  return !isWithinElement(element, disallowedContainerSelector);
+  return !isWithinElement(element, DISALLOWED_BANNER_CONTAINER_SELECTOR);
 }
 
 function isWithinDescriptionList(element: SnapshotTargetElement): boolean {
@@ -249,37 +249,40 @@ function resolveTableHeaderCellRoleFromContext(
   return undefined;
 }
 
+const TABLE_SELECTOR = selectorList("table", roleSelector("table"));
+const GRID_SELECTOR = roleSelector("grid");
+const ROW_SELECTOR = selectorList("tr", roleSelector("row"));
+const LIST_SELECTOR = selectorList("ul", "ol", roleSelector("list"));
+
 function isWithinTableOrGrid(element: Element): boolean {
   return isWithinTable(element) || isWithinGrid(element);
 }
 
 function isWithinTable(element: Element): boolean {
-  return isWithinElement(element, selectorList("table", roleSelector("table")));
+  return isWithinElement(element, TABLE_SELECTOR);
 }
 
 function isWithinGrid(element: Element): boolean {
-  return isWithinElement(element, roleSelector("grid"));
+  return isWithinElement(element, GRID_SELECTOR);
 }
 
 function isWithinTableRowOrGridRow(element: Element): boolean {
-  return isWithinTableRow(element) || isWithinGridRow(element);
+  const closestRow = element.closest(ROW_SELECTOR);
+  return closestRow !== null && isWithinTableOrGrid(closestRow);
 }
 
 function isWithinTableRow(element: Element): boolean {
-  const closestRow = element.closest(selectorList("tr", roleSelector("row")));
+  const closestRow = element.closest(ROW_SELECTOR);
   return closestRow !== null && isWithinTable(closestRow);
 }
 
 function isWithinGridRow(element: Element): boolean {
-  const closestRow = element.closest(selectorList("tr", roleSelector("row")));
+  const closestRow = element.closest(ROW_SELECTOR);
   return closestRow !== null && isWithinGrid(closestRow);
 }
 
 function isWithinList(element: SnapshotTargetElement): boolean {
-  return isWithinElement(
-    element,
-    selectorList("ul", "ol", roleSelector("list")),
-  );
+  return isWithinElement(element, LIST_SELECTOR);
 }
 
 function isWithinMenu(element: SnapshotTargetElement): boolean {
