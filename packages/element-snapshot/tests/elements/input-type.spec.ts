@@ -251,6 +251,25 @@ test("HTML multi select", async ({ page }) => {
   );
 });
 
+test("HTML select with option groups", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="select">Select</label>
+      <select id="select">
+        <option value="option1">Option 1</option>
+        <optgroup label="Group 1">
+          <option value="option2" selected>Option 2</option>
+          <option value="option3">Option 3</option>
+        </optgroup>
+        <optgroup label="Group 2" disabled>
+          <option value="option4">Option 4</option>
+        </optgroup>
+      </select>
+    `,
+  );
+});
+
 test("input-based combobox", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
@@ -356,6 +375,34 @@ test("role-based combobox", async ({ page }) => {
         <li role="option" aria-selected="false">Option 2</li>
         <li role="option" aria-disabled="true">Option 3</li>
       </ul>
+    `,
+  );
+});
+
+test("role-based combobox with option groups", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <div
+        role="combobox"
+        tabindex="0"
+        aria-label="Combobox"
+        aria-haspopup="listbox"
+        aria-controls="options"
+        aria-expanded="false"
+      >
+        Option 2
+      </div>
+      <div id="options" role="listbox">
+        <div role="option" aria-selected="false">Option 1</div>
+        <div role="group" aria-label="Group 1">
+          <div role="option" aria-selected="true">Option 2</div>
+          <div role="option" aria-selected="false">Option 3</div>
+        </div>
+        <div role="group" aria-label="Group 2" aria-disabled="true">
+          <div role="option" aria-selected="false">Option 4</div>
+        </div>
+      </div>
     `,
   );
 });
