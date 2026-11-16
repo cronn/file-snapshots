@@ -1,0 +1,18 @@
+[
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Browser"
+      },
+      {
+        "role": "textbox",
+        "name": "Browser",
+        "attributes": {},
+        "children": []
+      }
+    ]
+  }
+]

@@ -223,6 +223,20 @@ test("HTML single select with changed selection", async ({ page }) => {
   await expect(rawSnapshot(bodyLocator)).toMatchJsonFile();
 });
 
+test("HTML select with option labels", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="select">Select</label>
+      <select id="select">
+        <option value="option1" label="Short 1" selected>Long Option 1</option>
+        <option value="option2" label="Short 2"></option>
+        <option value="option3">Option 3</option>
+      </select>
+    `,
+  );
+});
+
 test("HTML multi select", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
@@ -256,6 +270,69 @@ test("input-based combobox", async ({ page }) => {
         <li role="option" aria-selected="false">Option 2</li>
         <li role="option" aria-disabled="true">Option 3</li>
       </ul>
+    `,
+  );
+});
+
+test("HTML input with datalist resolves to combobox", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label>
+        Email
+        <input type="email" list="emails" />
+      </label>
+      <datalist id="emails">
+        <option value="alice@example.com"></option>
+        <option value="bob@example.com"></option>
+      </datalist>
+    `,
+  );
+});
+
+test("HTML datalist with option labels", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label>
+        Browser
+        <input list="browsers" value="chrome" />
+      </label>
+      <datalist id="browsers">
+        <option value="chrome">Chrome</option>
+        <option value="firefox" label="Firefox"></option>
+        <option value="safari" label="Safari">Apple Safari</option>
+      </datalist>
+    `,
+  );
+});
+
+test("HTML input with datalist keeps role of non-text input types", async ({
+  page,
+}) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label>
+        Range
+        <input type="range" list="marks" min="0" max="100" value="50" />
+      </label>
+      <datalist id="marks">
+        <option value="0"></option>
+        <option value="100"></option>
+      </datalist>
+    `,
+  );
+});
+
+test("HTML input with list referencing missing datalist", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label>
+        Browser
+        <input type="text" list="missing" />
+      </label>
     `,
   );
 });
