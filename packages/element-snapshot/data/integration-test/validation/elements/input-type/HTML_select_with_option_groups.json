@@ -1,0 +1,68 @@
+[
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Select"
+      }
+    ]
+  },
+  {
+    "role": "combobox",
+    "name": "Select",
+    "attributes": {
+      "value": "Option 2",
+      "options": [
+        {
+          "role": "option",
+          "name": "Option 1",
+          "attributes": {},
+          "children": [
+            {
+              "role": "text",
+              "name": "Option 1"
+            }
+          ]
+        },
+        {
+          "role": "option",
+          "name": "Option 2",
+          "attributes": {
+            "selected": true
+          },
+          "children": [
+            {
+              "role": "text",
+              "name": "Option 2"
+            }
+          ]
+        },
+        {
+          "role": "option",
+          "name": "Option 3",
+          "attributes": {},
+          "children": [
+            {
+              "role": "text",
+              "name": "Option 3"
+            }
+          ]
+        },
+        {
+          "role": "option",
+          "name": "Option 4",
+          "attributes": {},
+          "children": [
+            {
+              "role": "text",
+              "name": "Option 4"
+            }
+          ]
+        }
+      ]
+    },
+    "children": []
+  }
+]
