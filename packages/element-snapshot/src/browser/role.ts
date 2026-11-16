@@ -105,6 +105,8 @@ const INPUT_ROLES: Record<string, CommonInputRole | "button"> = {
   url: "textbox",
 };
 
+const COMBOBOX_INPUT_TYPES = new Set(["email", "search", "tel", "text", "url"]);
+
 export function parseElementRole(
   element: SnapshotTargetElement,
 ): ElementRole | undefined {
@@ -161,6 +163,11 @@ export function resolveInputRole(
 ): InputRole | undefined {
   if (!(element instanceof HTMLInputElement)) {
     return undefined;
+  }
+
+  // See https://www.w3.org/TR/html-aam-1.0/#el-input-text-list
+  if (COMBOBOX_INPUT_TYPES.has(element.type) && element.list !== null) {
+    return "combobox";
   }
 
   return INPUT_ROLES[element.type] ?? "textbox";

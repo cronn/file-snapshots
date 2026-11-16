@@ -1,4 +1,5 @@
 import type { ElementRole } from "../types/role";
+import { normalizeText } from "../utils/text";
 
 import { stringAttribute } from "./attribute";
 import { parseElementRole } from "./role";
@@ -48,6 +49,7 @@ const supportsNamingFromChildContent = new Set<ElementRole>([
 const contextBasedNameResolvers: Array<ContextBasedNameResolver> = [
   resolveImageName,
   resolveLegendName,
+  resolveOptionLabelName,
   resolveTreeItemName,
 ];
 
@@ -131,6 +133,18 @@ function resolveLegendName(element: SnapshotTargetElement): string | undefined {
   }
 
   return resolveAccessibleTextContent(legendElement);
+}
+
+// the label attribute takes precedence over the text content of an <option>
+// See https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/label
+function resolveOptionLabelName(
+  element: SnapshotTargetElement,
+): string | undefined {
+  if (!(element instanceof HTMLOptionElement)) {
+    return undefined;
+  }
+
+  return stringAttribute(normalizeText(element.getAttribute("label") ?? ""));
 }
 
 function resolveImageName(

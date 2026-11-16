@@ -1,0 +1,20 @@
+[
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Range"
+      },
+      {
+        "role": "slider",
+        "name": "Range",
+        "attributes": {
+          "value": "50"
+        },
+        "children": []
+      }
+    ]
+  }
+]

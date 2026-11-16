@@ -1,0 +1,33 @@
+[
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Email"
+      },
+      {
+        "role": "combobox",
+        "name": "Email",
+        "attributes": {
+          "options": [
+            {
+              "role": "option",
+              "name": "alice@example.com",
+              "attributes": {},
+              "children": []
+            },
+            {
+              "role": "option",
+              "name": "bob@example.com",
+              "attributes": {},
+              "children": []
+            }
+          ]
+        },
+        "children": []
+      }
+    ]
+  }
+]
