@@ -7,6 +7,7 @@ import type { ImageSnapshot } from "./elements/image";
 import type {
   ComboboxSnapshot,
   InputSnapshot,
+  ListboxSnapshot,
   OptionSnapshot,
 } from "./elements/input";
 import type { LinkSnapshot } from "./elements/link";
@@ -49,6 +50,7 @@ export type ElementSnapshot =
   | ImageSnapshot
   | InputSnapshot
   | LinkSnapshot
+  | ListboxSnapshot
   | OptionSnapshot
   | ProgressbarSnapshot
   | RegionSnapshot

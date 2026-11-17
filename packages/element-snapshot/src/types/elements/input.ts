@@ -4,6 +4,7 @@ import type {
   DiscribableAttributes,
   ExpandableAttributes,
   InputStateAttributes,
+  MultiselectableAttributes,
   SelectableAttributes,
 } from "../attributes";
 import type { GenericElementSnapshot } from "../snapshot";
@@ -38,8 +39,10 @@ export interface ComboboxSnapshot extends GenericElementSnapshot<
   ComboboxAttributes
 > {}
 
-interface ComboboxAttributes
-  extends CommonInputAttributes, ExpandableAttributes {
+interface SelectionInputAttributes
+  extends CommonInputAttributes, ExpandableAttributes {}
+
+interface ComboboxAttributes extends SelectionInputAttributes {
   value?: string | Array<string>;
 }
 
@@ -50,3 +53,11 @@ export interface OptionSnapshot extends GenericElementSnapshot<
 
 interface OptionAttributes
   extends SelectableAttributes, DisableableAttributes {}
+
+export interface ListboxSnapshot extends GenericElementSnapshot<
+  "listbox",
+  ListboxAttributes
+> {}
+
+interface ListboxAttributes
+  extends SelectionInputAttributes, MultiselectableAttributes {}

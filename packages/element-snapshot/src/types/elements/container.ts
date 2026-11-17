@@ -18,7 +18,6 @@ export const CONTAINER_ROLES = new Set([
   "insertion",
   "label",
   "list",
-  "listbox",
   "listitem",
   "log",
   "main",

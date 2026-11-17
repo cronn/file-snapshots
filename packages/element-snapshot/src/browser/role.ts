@@ -56,7 +56,7 @@ const ELEMENT_ROLES: Partial<Record<ElementTagName, ElementRoleResolver>> = {
   progress: "progressbar",
   search: "search",
   section: "region",
-  select: "combobox",
+  select: resolveSelectRole,
   strong: "strong",
   sub: "subscript",
   sup: "superscript",
@@ -171,6 +171,21 @@ export function resolveInputRole(
   }
 
   return INPUT_ROLES[element.type] ?? "textbox";
+}
+
+export function resolveSelectRole(
+  element: SnapshotTargetElement,
+): "combobox" | "listbox" | undefined {
+  if (!(element instanceof HTMLSelectElement)) {
+    return undefined;
+  }
+
+  // See https://www.w3.org/TR/html-aam-1.0/#el-select-listbox
+  if (element.multiple || element.size > 1) {
+    return "listbox";
+  }
+
+  return "combobox";
 }
 
 const DISALLOWED_BANNER_CONTAINER_ELEMENTS = [

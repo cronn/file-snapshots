@@ -251,6 +251,46 @@ test("HTML multi select", async ({ page }) => {
   );
 });
 
+test("HTML multi select with input state", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="select">Multi Select</label>
+      <select id="select" multiple disabled required>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+      </select>
+    `,
+  );
+});
+
+test("HTML select with size resolves to listbox", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="select">Select</label>
+      <select id="select" size="3">
+        <option value="option1" selected>Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    `,
+  );
+});
+
+test("HTML select with size 1 resolves to combobox", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <label for="select">Select</label>
+      <select id="select" size="1">
+        <option value="option1" selected>Option 1</option>
+        <option value="option2">Option 2</option>
+      </select>
+    `,
+  );
+});
+
 test("HTML select with option groups", async ({ page }) => {
   await matchRawElementSnapshot(
     page,

@@ -15,6 +15,7 @@ export type { ImageSnapshot } from "./types/elements/image";
 export type {
   ComboboxSnapshot,
   InputSnapshot,
+  ListboxSnapshot,
   OptionSnapshot,
 } from "./types/elements/input";
 export type { LinkSnapshot } from "./types/elements/link";

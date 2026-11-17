@@ -15,6 +15,7 @@ import { snapshotImage } from "./image";
 import { snapshotInput } from "./input";
 import { snapshotLink } from "./link";
 import { snapshotMenuitem } from "./list";
+import { snapshotListbox } from "./listbox";
 import { snapshotProgressbar } from "./progressbar";
 import { snapshotRegion } from "./region";
 import { parseElementRole } from "./role";
@@ -48,6 +49,7 @@ const ROLE_SNAPSHOTS: Record<NonContainerElementRole, ElementSnapshotFn> = {
   option: snapshotOption,
   progressbar: snapshotProgressbar,
   link: snapshotLink,
+  listbox: snapshotListbox,
   radio: snapshotInput,
   radiogroup: snapshotRadioGroup,
   region: snapshotRegion,

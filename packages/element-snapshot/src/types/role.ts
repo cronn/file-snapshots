@@ -11,6 +11,7 @@ export type ElementRole =
   | "heading"
   | "img"
   | "link"
+  | "listbox"
   | "menuitem"
   | "option"
   | "progressbar"
