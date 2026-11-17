@@ -1,0 +1,45 @@
+[
+  {
+    "role": "label",
+    "attributes": {},
+    "children": [
+      {
+        "role": "text",
+        "name": "Multi Select"
+      }
+    ]
+  },
+  {
+    "role": "listbox",
+    "name": "Multi Select",
+    "attributes": {
+      "multiselectable": true,
+      "disabled": true,
+      "required": true
+    },
+    "children": [
+      {
+        "role": "option",
+        "name": "Option 1",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 1"
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Option 2",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 2"
+          }
+        ]
+      }
+    ]
+  }
+]

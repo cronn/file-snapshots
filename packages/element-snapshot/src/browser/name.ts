@@ -25,6 +25,7 @@ const prohibitsNaming = new Set<ElementRole>([
 const supportsNamingByLabel = new Set<ElementRole>([
   "checkbox",
   "combobox",
+  "listbox",
   "progressbar",
   "radio",
   "searchbox",

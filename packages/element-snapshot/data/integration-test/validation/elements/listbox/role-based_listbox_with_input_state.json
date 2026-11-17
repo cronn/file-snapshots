@@ -1,0 +1,26 @@
+[
+  {
+    "role": "listbox",
+    "name": "Listbox",
+    "attributes": {
+      "description": "Description",
+      "readonly": true,
+      "disabled": true,
+      "required": true,
+      "invalid": true
+    },
+    "children": [
+      {
+        "role": "option",
+        "name": "Option 1",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Option 1"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -3,6 +3,7 @@ import type {
   DisableableAttributes,
   ExpandableAttributes,
   InputStateAttributes,
+  MultiselectableAttributes,
   SelectableAttributes,
 } from "../types/attributes";
 
@@ -33,6 +34,16 @@ export function selectableAttributes(
   }
 
   return { selected: booleanAttribute(element.ariaSelected) };
+}
+
+export function multiselectableAttributes(
+  element: SnapshotTargetElement,
+): MultiselectableAttributes {
+  if (element instanceof HTMLSelectElement) {
+    return { multiselectable: booleanAttribute(element.multiple) };
+  }
+
+  return { multiselectable: booleanAttribute(element.ariaMultiSelectable) };
 }
 
 export function expandableAttributes(

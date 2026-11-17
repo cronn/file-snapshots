@@ -4,7 +4,7 @@ import { unwrapSingleItem } from "../utils/array";
 import { snapshotChildren } from "./children";
 import { resolveInputValue, snapshotCommonInputAttributes } from "./input";
 import { resolveAccessibleName } from "./name";
-import { resolveInputRole } from "./role";
+import { resolveInputRole, resolveSelectRole } from "./role";
 import {
   disableableAttributes,
   expandableAttributes,
@@ -33,9 +33,9 @@ export function snapshotCombobox(
 }
 
 function isCombobox(element: SnapshotTargetElement): boolean {
-  // a <select> without an explicit role has the implicit role "combobox"
-  if (element instanceof HTMLSelectElement) {
-    return element.role === null || element.role === "combobox";
+  // a <select> without an explicit role, without "multiple" attribute and with a display size of 1 has the implicit role "combobox"
+  if (element instanceof HTMLSelectElement && element.role === null) {
+    return resolveSelectRole(element) === "combobox";
   }
 
   // an <input> with an associated <datalist> without an explicit role has the implicit role "combobox"
