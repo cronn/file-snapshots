@@ -37,10 +37,6 @@ export interface SemanticSnapshotOptions {
    * value, which is written to the snapshot verbatim. The `transform` function
    * of its context applies the default transformation to untransformed
    * children.
-   *
-   * Entries override the built-in transformers for the same role.
-   *
-   * @default { combobox: comboboxTransformer() }
    */
   transformers?: RoleBasedSnapshotTransformers;
 

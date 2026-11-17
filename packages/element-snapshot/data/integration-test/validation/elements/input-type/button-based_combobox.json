@@ -3,9 +3,13 @@
     "role": "combobox",
     "name": "Combobox",
     "attributes": {
-      "value": "Button Value",
-      "options": []
+      "value": "Button Value"
     },
-    "children": []
+    "children": [
+      {
+        "role": "text",
+        "name": "Button Value"
+      }
+    ]
   }
 ]
