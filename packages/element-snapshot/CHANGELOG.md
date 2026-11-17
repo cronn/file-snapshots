@@ -1,5 +1,33 @@
 # @cronn/element-snapshot
 
+## 0.35.0
+
+### Minor Changes
+
+- 0b314a1: **Breaking change**: Options of `combobox` elements are no longer collected in the `options` attribute, but snapshotted as children. Options of a listbox referenced via `aria-controls` are part of the snapshot of the listbox itself.
+
+  Removed `comboboxTransformer`, since there are no options left to include or exclude.
+
+  To exclude the options of comboboxes as before, register a transformer omitting the children:
+
+  ```ts
+  await expect(page.getByRole("main")).toMatchSemanticSnapshotFile({
+    transformers: {
+      combobox: (snapshot, { transform }) =>
+        transform({ ...snapshot, children: [] }),
+    },
+  });
+  ```
+
+- fd34048: Resolve `<input>` elements with an associated `<datalist>` as `combobox`
+- d13f4be: Add `multiselectable` attribute to `listbox` and resolve `<select>` elements with `multiple` attribute or `size` greater than 1 as `listbox`. Listboxes now provide the same attributes as comboboxes except `value`, including `expanded`.
+- 3520771: Snapshot `<optgroup>` elements as `group`, named by their `label` attribute, instead of flattening their options into the parent `<select>`
+
+### Patch Changes
+
+- fd34048: Resolve the accessible name of `<option>` elements from the `label` attribute before their text content
+- 90c0a54: Resolve the implicit role of `<th>` elements from the cells of their parent row
+
 ## 0.34.0
 
 ### Minor Changes
