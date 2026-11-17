@@ -28,37 +28,51 @@
         ]
       },
       {
-        "role": "option",
-        "name": "Option 2",
-        "attributes": {
-          "selected": true
-        },
+        "role": "group",
+        "name": "Group 1",
+        "attributes": {},
         "children": [
           {
-            "role": "text",
-            "name": "Option 2"
+            "role": "option",
+            "name": "Option 2",
+            "attributes": {
+              "selected": true
+            },
+            "children": [
+              {
+                "role": "text",
+                "name": "Option 2"
+              }
+            ]
+          },
+          {
+            "role": "option",
+            "name": "Option 3",
+            "attributes": {},
+            "children": [
+              {
+                "role": "text",
+                "name": "Option 3"
+              }
+            ]
           }
         ]
       },
       {
-        "role": "option",
-        "name": "Option 3",
+        "role": "group",
+        "name": "Group 2",
         "attributes": {},
         "children": [
           {
-            "role": "text",
-            "name": "Option 3"
-          }
-        ]
-      },
-      {
-        "role": "option",
-        "name": "Option 4",
-        "attributes": {},
-        "children": [
-          {
-            "role": "text",
-            "name": "Option 4"
+            "role": "option",
+            "name": "Option 4",
+            "attributes": {},
+            "children": [
+              {
+                "role": "text",
+                "name": "Option 4"
+              }
+            ]
           }
         ]
       }

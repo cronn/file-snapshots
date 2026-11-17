@@ -51,6 +51,7 @@ const contextBasedNameResolvers: Array<ContextBasedNameResolver> = [
   resolveImageName,
   resolveLegendName,
   resolveOptionLabelName,
+  resolveOptgroupLabelName,
   resolveTreeItemName,
 ];
 
@@ -146,6 +147,17 @@ function resolveOptionLabelName(
   }
 
   return stringAttribute(normalizeText(element.getAttribute("label") ?? ""));
+}
+
+// See https://www.w3.org/TR/html-aam-1.0/#el-optgroup
+function resolveOptgroupLabelName(
+  element: SnapshotTargetElement,
+): string | undefined {
+  if (!(element instanceof HTMLOptGroupElement)) {
+    return undefined;
+  }
+
+  return stringAttribute(normalizeText(element.label));
 }
 
 function resolveImageName(
