@@ -25,7 +25,7 @@ export function semanticSnapshotTransformer(
   return transformElementSnapshot(snapshot, context.transform);
 }
 
-export function transformElementSnapshot(
+function transformElementSnapshot(
   snapshot: GenericElementSnapshot,
   transformRecursive: SnapshotTransformer,
 ): unknown {

@@ -45,10 +45,6 @@ export {
 
 export type { SnapshotByRole } from "./types/snapshot";
 
-export {
-  comboboxTransformer,
-  type ComboboxTransformerOptions,
-} from "./transformers/combobox-transformer";
 export type {
   DefaultSnapshotTransformer,
   RoleBasedSnapshotTransformer,

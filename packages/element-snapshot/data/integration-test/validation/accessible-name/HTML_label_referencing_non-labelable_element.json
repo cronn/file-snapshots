@@ -12,9 +12,13 @@
   {
     "role": "combobox",
     "attributes": {
-      "value": "Option",
-      "options": []
+      "value": "Option"
     },
-    "children": []
+    "children": [
+      {
+        "role": "text",
+        "name": "Option"
+      }
+    ]
   }
 ]

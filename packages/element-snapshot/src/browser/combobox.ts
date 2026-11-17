@@ -1,9 +1,6 @@
 import type { ComboboxSnapshot, OptionSnapshot } from "../types/elements/input";
 import { unwrapSingleItem } from "../utils/array";
-import { filterByRole } from "../utils/filter";
-import { normalizeText } from "../utils/text";
 
-import { stringAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveInputValue, snapshotCommonInputAttributes } from "./input";
 import { resolveAccessibleName } from "./name";
@@ -23,8 +20,6 @@ export function snapshotCombobox(
     return null;
   }
 
-  const options = snapshotOptions(element);
-
   return {
     role: "combobox",
     name: resolveAccessibleName(element),
@@ -32,9 +27,8 @@ export function snapshotCombobox(
       value: resolveValue(element),
       ...snapshotCommonInputAttributes(element),
       ...expandableAttributes(element),
-      options,
     },
-    children: [],
+    children: snapshotChildren(element),
   };
 }
 
@@ -74,62 +68,16 @@ function resolveValue(
   return unwrapSingleItem(selectedLabels);
 }
 
-function snapshotOptions(
-  element: SnapshotTargetElement,
-): Array<OptionSnapshot> {
-  return resolveOptionsContainers(element).flatMap((optionsContainer) =>
-    filterByRole("option", snapshotChildren(optionsContainer)),
-  );
-}
-
-function resolveOptionsContainers(
-  element: SnapshotTargetElement,
-): ReadonlyArray<Element> {
-  if (element instanceof HTMLSelectElement) {
-    return [element];
-  }
-
-  // See https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaControlsElements
-  const controlledElements = element.ariaControlsElements ?? [];
-  if (controlledElements.length > 0) {
-    return controlledElements;
-  }
-
-  // See https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/list
-  if (element instanceof HTMLInputElement && element.list !== null) {
-    return [element.list];
-  }
-
-  return [];
-}
-
 export function snapshotOption(
   element: SnapshotTargetElement,
 ): OptionSnapshot | null {
   return {
     role: "option",
-    name: resolveOptionName(element),
+    name: resolveAccessibleName(element),
     attributes: {
       ...selectableAttributes(element),
       ...disableableAttributes(element),
     },
     children: snapshotChildren(element),
   };
-}
-
-function resolveOptionName(element: SnapshotTargetElement): string | undefined {
-  const accessibleName = resolveAccessibleName(element);
-  if (accessibleName !== undefined) {
-    return accessibleName;
-  }
-
-  // browsers display the value of a <datalist> option without label or text content
-  if (
-    element instanceof HTMLOptionElement &&
-    element.parentElement instanceof HTMLDataListElement
-  ) {
-    return stringAttribute(normalizeText(element.value));
-  }
-
-  return undefined;
 }

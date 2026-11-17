@@ -3,7 +3,6 @@ import test from "@playwright/test";
 import { html, setupSnapshotTest } from "@cronn/test-utils/playwright";
 
 import { expect } from "../../src/test/fixtures";
-import { comboboxTransformer } from "../../src/transformers/combobox-transformer";
 import { excludeRole } from "../../src/utils/predicates";
 import { getTextContent } from "../../src/utils/text";
 
@@ -85,42 +84,6 @@ test("applies transformers after the filter", async ({ page }) => {
     transformers: {
       cell: (snapshot) => getTextContent(snapshot.children),
     },
-  });
-});
-
-test("overrides the built-in combobox transformer", async ({ page }) => {
-  const bodyLocator = await setupSnapshotTest(
-    page,
-    html`
-      <select aria-label="Select">
-        <option value="option1" selected>Option 1</option>
-        <option value="option2">Option 2</option>
-      </select>
-    `,
-  );
-
-  await expect(bodyLocator).toMatchSemanticSnapshotFile({
-    transformers: {
-      combobox: comboboxTransformer({ includeOptions: true }),
-    },
-  });
-});
-
-test("when combobox transformer is disabled, includes raw options", async ({
-  page,
-}) => {
-  const bodyLocator = await setupSnapshotTest(
-    page,
-    html`
-      <select aria-label="Select">
-        <option value="option1" selected>Option 1</option>
-        <option value="option2">Option 2</option>
-      </select>
-    `,
-  );
-
-  await expect(bodyLocator).toMatchSemanticSnapshotFile({
-    transformers: { combobox: undefined },
   });
 });
 

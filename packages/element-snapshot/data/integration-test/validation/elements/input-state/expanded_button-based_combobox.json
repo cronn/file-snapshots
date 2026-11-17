@@ -4,35 +4,14 @@
     "name": "Combobox",
     "attributes": {
       "value": "Button Value",
-      "expanded": true,
-      "options": [
-        {
-          "role": "option",
-          "name": "Option 1",
-          "attributes": {
-            "selected": true
-          },
-          "children": [
-            {
-              "role": "text",
-              "name": "Option 1"
-            }
-          ]
-        },
-        {
-          "role": "option",
-          "name": "Option 2",
-          "attributes": {},
-          "children": [
-            {
-              "role": "text",
-              "name": "Option 2"
-            }
-          ]
-        }
-      ]
+      "expanded": true
     },
-    "children": []
+    "children": [
+      {
+        "role": "text",
+        "name": "Button Value"
+      }
+    ]
   },
   {
     "role": "listbox",

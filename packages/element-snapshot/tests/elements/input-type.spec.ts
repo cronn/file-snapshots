@@ -309,23 +309,6 @@ test("HTML input with datalist resolves to combobox", async ({ page }) => {
   );
 });
 
-test("HTML datalist with option labels", async ({ page }) => {
-  await matchRawElementSnapshot(
-    page,
-    html`
-      <label>
-        Browser
-        <input list="browsers" value="chrome" />
-      </label>
-      <datalist id="browsers">
-        <option value="chrome">Chrome</option>
-        <option value="firefox" label="Firefox"></option>
-        <option value="safari" label="Safari">Apple Safari</option>
-      </datalist>
-    `,
-  );
-});
-
 test("HTML input with datalist keeps role of non-text input types", async ({
   page,
 }) => {

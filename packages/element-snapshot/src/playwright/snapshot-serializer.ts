@@ -1,4 +1,3 @@
-import { comboboxTransformer } from "../transformers/combobox-transformer";
 import { semanticSnapshotTransformer } from "../transformers/semantic-snapshot-transformer";
 import type { NodeSnapshot } from "../types/snapshot";
 import type {
@@ -26,10 +25,7 @@ export class SnapshotSerializer {
   public constructor(options: SnapshotSerializerOptions = {}) {
     this.filter = options.filter;
     this.recurseFilter = options.recurseFilter ?? false;
-    this.transformers = {
-      combobox: comboboxTransformer(),
-      ...options.transformers,
-    };
+    this.transformers = { ...options.transformers };
     this.defaultTransformer =
       options.defaultTransformer ?? semanticSnapshotTransformer;
   }

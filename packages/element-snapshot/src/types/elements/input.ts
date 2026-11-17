@@ -41,7 +41,6 @@ export interface ComboboxSnapshot extends GenericElementSnapshot<
 interface ComboboxAttributes
   extends CommonInputAttributes, ExpandableAttributes {
   value?: string | Array<string>;
-  options: Array<OptionSnapshot>;
 }
 
 export interface OptionSnapshot extends GenericElementSnapshot<

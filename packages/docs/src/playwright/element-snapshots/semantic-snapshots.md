@@ -121,20 +121,6 @@ await expect(page.getByRole("list")).toMatchSemanticSnapshotFile({
 });
 ```
 
-### Combobox Transformer
-
-Combobox options are excluded by default through the built-in `combobox` transformer. Entries in `transformers` override the built-in transformer for the same role, and an explicit `undefined` disables it.
-
-```ts
-import { comboboxTransformer } from "@cronn/element-snapshot";
-
-await expect(page.getByRole("main")).toMatchSemanticSnapshotFile({
-  transformers: {
-    combobox: comboboxTransformer({ includeOptions: true }),
-  },
-});
-```
-
 ## Default Transformer
 
 While `transformers` replace the transformation of individual roles, `defaultTransformer` replaces it for **all** roles. It receives every snapshot for which no role-based transformer is registered, so role-based transformers always take precedence.
@@ -209,7 +195,7 @@ test("applies default transformer to descendants", async ({ page }) => {
 ```
 
 > [!NOTE]
-> The `transform` function passed to a role-based transformer delegates to the default transformer as well. A custom `defaultTransformer` therefore also changes the serialization of children delegated by role-based transformers, including the built-in `combobox` transformer.
+> The `transform` function passed to a role-based transformer delegates to the default transformer as well. A custom `defaultTransformer` therefore also changes the serialization of children delegated by role-based transformers.
 
 ## Snapshot Function
 
