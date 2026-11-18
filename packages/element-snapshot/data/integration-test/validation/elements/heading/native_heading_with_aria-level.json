@@ -1,0 +1,41 @@
+[
+  {
+    "role": "heading",
+    "name": "Overridden level",
+    "attributes": {
+      "level": 3
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Overridden level"
+      }
+    ]
+  },
+  {
+    "role": "heading",
+    "name": "Invalid level",
+    "attributes": {
+      "level": 2
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Invalid level"
+      }
+    ]
+  },
+  {
+    "role": "heading",
+    "name": "Non-numeric level",
+    "attributes": {
+      "level": 2
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Non-numeric level"
+      }
+    ]
+  }
+]

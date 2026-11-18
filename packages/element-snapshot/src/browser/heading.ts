@@ -1,5 +1,6 @@
 import type { HeadingSnapshot } from "../types/elements/heading";
 
+import { integerAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import type { SnapshotTargetElement } from "./types";
@@ -22,5 +23,10 @@ export function snapshotHeading(
 }
 
 function resolveLevel(element: HTMLHeadingElement): number {
+  const ariaLevel = integerAttribute(element.ariaLevel);
+  if (ariaLevel !== undefined && ariaLevel >= 1) {
+    return ariaLevel;
+  }
+
   return Number(element.localName.slice(1));
 }
