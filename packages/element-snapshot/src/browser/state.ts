@@ -13,16 +13,10 @@ import type { SnapshotTargetElement } from "./types";
 export function disableableAttributes(
   element: SnapshotTargetElement,
 ): DisableableAttributes {
-  const supportsHtmlAttribute =
-    isNativeInputElement(element) ||
-    element instanceof HTMLButtonElement ||
-    element instanceof HTMLOptionElement;
-  const disabled = booleanAttribute(
-    supportsHtmlAttribute ? element.hasAttribute("disabled") : false,
-  );
-
   return {
-    disabled: disabled ?? booleanAttribute(element.ariaDisabled),
+    disabled:
+      booleanAttribute(element.matches(":disabled")) ??
+      booleanAttribute(element.ariaDisabled),
   };
 }
 
