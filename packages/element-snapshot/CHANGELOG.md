@@ -1,5 +1,17 @@
 # @cronn/element-snapshot
 
+## 0.35.1
+
+### Patch Changes
+
+- 024ace0: Preserve decimal `aria-valuenow` values of progressbars instead of truncating them
+- 07d0670: Resolve the `disabled` attribute using the browser's computed disabled state. Form controls disabled via `<fieldset disabled>`, `<optgroup disabled>`, a disabled `<select>` or `ElementInternals` are now snapshotted as `disabled`
+- 056e262: Resolve the name of a `<fieldset>` from its first child `<legend>` only. Legends of nested fieldsets or other descendants are no longer used as the name of the outer fieldset
+- 716e41c: Resolve the level of native headings from `aria-level` when present
+- f4e198e: Omit value of indeterminate `<progress>` elements instead of reporting `0`
+- 0f80327: Resolve the `readonly` and `required` attributes using the browser's native state. The attributes are no longer snapshotted on elements that don't support them, such as `readonly` on `<select>` or checkboxes and `required` on range inputs
+- ecb9ec2: Snapshot elements with `role="heading"` instead of dropping them together with their children
+
 ## 0.35.0
 
 ### Minor Changes
