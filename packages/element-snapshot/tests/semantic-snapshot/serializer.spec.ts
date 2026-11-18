@@ -84,6 +84,15 @@ test("when name equals children, excludes children", async ({ page }) => {
   await expect(bodyLocator).toMatchSemanticSnapshotFile();
 });
 
+test("when value equals children, excludes children", async ({ page }) => {
+  const bodyLocator = await setupSnapshotTest(
+    page,
+    html`<div role="combobox" aria-label="Combobox">Selected Value</div>`,
+  );
+
+  await expect(bodyLocator).toMatchSemanticSnapshotFile();
+});
+
 test("when element has name and children, includes children property", async ({
   page,
 }) => {
