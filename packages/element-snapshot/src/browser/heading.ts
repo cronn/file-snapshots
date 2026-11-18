@@ -1,11 +1,8 @@
 import type { HeadingSnapshot } from "../types/elements/heading";
 
-import { integerAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import type { SnapshotTargetElement } from "./types";
-
-const LEVEL_REGEXP = /^H([1-6])$/;
 
 export function snapshotHeading(
   element: SnapshotTargetElement,
@@ -24,7 +21,6 @@ export function snapshotHeading(
   };
 }
 
-function resolveLevel(element: HTMLHeadingElement): number | undefined {
-  const levelAsString = LEVEL_REGEXP.exec(element.nodeName)?.at(1) ?? null;
-  return integerAttribute(levelAsString);
+function resolveLevel(element: HTMLHeadingElement): number {
+  return Number(element.localName.slice(1));
 }
