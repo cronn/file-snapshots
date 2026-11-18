@@ -8,13 +8,22 @@ export function booleanAttribute(
   return value === true || value === "true" ? true : undefined;
 }
 
-export function numericAttribute(value: string | null): number | undefined {
+export function integerAttribute(value: string | null): number | undefined {
   if (value === null) {
     return undefined;
   }
 
   const parsedValue = parseInt(value);
   return Number.isNaN(parsedValue) ? undefined : parsedValue;
+}
+
+export function decimalAttribute(value: string | null): number | undefined {
+  if (value === null || value.trim() === "") {
+    return undefined;
+  }
+
+  const parsedValue = Number(value);
+  return Number.isFinite(parsedValue) ? parsedValue : undefined;
 }
 
 export function enumAttribute<TEnum extends string>(

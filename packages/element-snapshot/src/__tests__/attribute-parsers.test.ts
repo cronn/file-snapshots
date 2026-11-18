@@ -6,7 +6,8 @@ import {
   booleanAttribute,
   enumAttribute,
   booleanOrEnumAttribute,
-  numericAttribute,
+  decimalAttribute,
+  integerAttribute,
   stringAttribute,
 } from "../browser/attribute";
 
@@ -26,11 +27,37 @@ test("boolean attribute", () => {
   ).toMatchMarkdownTableFile();
 });
 
-test("numeric attribute", () => {
-  const inputValues = [null, "4711", "value"];
+test("integer attribute", () => {
+  const inputValues = [
+    null,
+    "",
+    " ",
+    "4711",
+    "47.11",
+    "-1",
+    "value",
+    "Infinity",
+  ];
 
   expect(
-    attributeParserTable(inputValues, numericAttribute),
+    attributeParserTable(inputValues, integerAttribute),
+  ).toMatchMarkdownTableFile();
+});
+
+test("decimal attribute", () => {
+  const inputValues = [
+    null,
+    "",
+    " ",
+    "4711",
+    "47.11",
+    "-0.5",
+    "value",
+    "Infinity",
+  ];
+
+  expect(
+    attributeParserTable(inputValues, decimalAttribute),
   ).toMatchMarkdownTableFile();
 });
 
