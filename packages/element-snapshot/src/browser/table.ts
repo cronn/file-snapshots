@@ -6,7 +6,7 @@ import type {
 } from "../types/elements/table";
 import { SORT_TYPES } from "../types/elements/table";
 
-import { enumAttribute, numericAttribute } from "./attribute";
+import { enumAttribute, integerAttribute } from "./attribute";
 import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import type { SnapshotTargetElement } from "./types";
@@ -61,7 +61,7 @@ function cellAttributes(element: SnapshotTargetElement): CellAttributes {
 
 function resolveSpan(value: string | number | null): number | undefined {
   if (typeof value === "string") {
-    value = numericAttribute(value) ?? null;
+    value = integerAttribute(value) ?? null;
   }
 
   if (value === null || value === 1) {

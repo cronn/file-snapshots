@@ -1,6 +1,6 @@
 import type { ProgressbarSnapshot } from "../types/elements/progressbar";
 
-import { numericAttribute } from "./attribute";
+import { decimalAttribute } from "./attribute";
 import { resolveAccessibleName } from "./name";
 import { snapshotPresentationalChildren } from "./text";
 import type { SnapshotTargetElement } from "./types";
@@ -24,5 +24,5 @@ function resolveValue(element: SnapshotTargetElement): number | undefined {
     return element.position === -1 ? undefined : element.value;
   }
 
-  return numericAttribute(element.ariaValueNow);
+  return decimalAttribute(element.ariaValueNow);
 }

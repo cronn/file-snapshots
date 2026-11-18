@@ -3,12 +3,12 @@
     "role": "progressbar",
     "name": "Loading…",
     "attributes": {
-      "value": 70
+      "value": 42.5
     },
     "children": [
       {
         "role": "text",
-        "name": "70%"
+        "name": "42.5%"
       }
     ]
   }

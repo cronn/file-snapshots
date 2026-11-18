@@ -18,10 +18,10 @@ test("role-based progressbar", async ({ page }) => {
       <span
         role="progressbar"
         aria-label="Loading…"
-        aria-valuenow="70"
+        aria-valuenow="42.5"
         aria-valuemax="100"
       >
-        70%
+        42.5%
       </span>
     `,
   );
