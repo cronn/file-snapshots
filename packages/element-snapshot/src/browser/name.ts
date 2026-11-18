@@ -129,7 +129,7 @@ function resolveLegendName(element: SnapshotTargetElement): string | undefined {
     return undefined;
   }
 
-  const legendElement = element.querySelector("legend");
+  const legendElement = element.querySelector(":scope > legend");
   if (legendElement === null) {
     return undefined;
   }

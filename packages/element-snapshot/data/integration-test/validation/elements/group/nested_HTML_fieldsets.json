@@ -1,0 +1,41 @@
+[
+  {
+    "role": "group",
+    "attributes": {},
+    "children": [
+      {
+        "role": "group",
+        "name": "Shipping address",
+        "attributes": {},
+        "children": [
+          {
+            "role": "label",
+            "attributes": {},
+            "children": [
+              {
+                "role": "text",
+                "name": "Shipping address"
+              }
+            ]
+          },
+          {
+            "role": "label",
+            "attributes": {},
+            "children": [
+              {
+                "role": "text",
+                "name": "Street"
+              }
+            ]
+          },
+          {
+            "role": "textbox",
+            "name": "Street",
+            "attributes": {},
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

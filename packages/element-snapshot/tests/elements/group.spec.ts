@@ -22,6 +22,21 @@ test("HTML fieldset", async ({ page }) => {
   );
 });
 
+test("nested HTML fieldsets", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <fieldset>
+        <fieldset>
+          <legend>Shipping address</legend>
+          <label for="street">Street</label>
+          <input type="text" name="street" id="street" />
+        </fieldset>
+      </fieldset>
+    `,
+  );
+});
+
 test("role-based group", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
