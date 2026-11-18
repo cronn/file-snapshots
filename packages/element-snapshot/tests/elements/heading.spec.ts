@@ -21,3 +21,14 @@ test("heading levels", async ({ page }) => {
 test("empty heading", async ({ page }) => {
   await matchRawElementSnapshot(page, html`<h1></h1>`);
 });
+
+test("native heading with aria-level", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <h2 aria-level="3">Overridden level</h2>
+      <h2 aria-level="0">Invalid level</h2>
+      <h2 aria-level="abc">Non-numeric level</h2>
+    `,
+  );
+});
