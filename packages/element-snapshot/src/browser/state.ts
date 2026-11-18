@@ -61,26 +61,46 @@ export function checkableAttributes(
 export function inputStateAttributes(
   element: SnapshotTargetElement,
 ): InputStateAttributes {
-  const supportsHtmlAttributes = isNativeInputElement(element);
-  const readonly = booleanAttribute(
-    supportsHtmlAttributes ? element.hasAttribute("readonly") : false,
-  );
-  const required = booleanAttribute(
-    supportsHtmlAttributes ? element.hasAttribute("required") : false,
-  );
-
   return {
-    readonly: readonly ?? booleanAttribute(element.ariaReadOnly),
+    readonly:
+      booleanAttribute(isReadonly(element)) ??
+      booleanAttribute(element.ariaReadOnly),
     ...disableableAttributes(element),
-    required: required ?? booleanAttribute(element.ariaRequired),
+    required:
+      booleanAttribute(element.matches(":required")) ??
+      booleanAttribute(element.ariaRequired),
     invalid: booleanAttribute(element.ariaInvalid),
   };
 }
 
-function isNativeInputElement(element: SnapshotTargetElement): boolean {
-  return (
-    element instanceof HTMLInputElement ||
-    element instanceof HTMLTextAreaElement ||
-    element instanceof HTMLSelectElement
-  );
+/**
+ * Input types supporting the `readonly` attribute
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/readonly#attribute_interactions
+ */
+const READONLY_INPUT_TYPES = new Set([
+  "text",
+  "search",
+  "url",
+  "tel",
+  "email",
+  "password",
+  "date",
+  "month",
+  "week",
+  "time",
+  "datetime-local",
+  "number",
+]);
+
+function isReadonly(element: SnapshotTargetElement): boolean {
+  if (element instanceof HTMLTextAreaElement) {
+    return element.readOnly;
+  }
+
+  if (element instanceof HTMLInputElement) {
+    return READONLY_INPUT_TYPES.has(element.type) && element.readOnly;
+  }
+
+  return false;
 }
