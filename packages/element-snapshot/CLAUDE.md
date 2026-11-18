@@ -6,3 +6,4 @@
 ## GitHub Pull Requests
 
 - When applicable, include links to relevant sources (e.g. MDN)
+- Prefer the compact semantic snapshot format over the raw format for examples
