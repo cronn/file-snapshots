@@ -1,0 +1,10 @@
+[
+  {
+    "role": "textbox",
+    "name": "Readonly Textarea",
+    "attributes": {
+      "readonly": true
+    },
+    "children": []
+  }
+]

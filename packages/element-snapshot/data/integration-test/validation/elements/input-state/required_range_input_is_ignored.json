@@ -1,0 +1,10 @@
+[
+  {
+    "role": "slider",
+    "name": "Volume",
+    "attributes": {
+      "value": "50"
+    },
+    "children": []
+  }
+]

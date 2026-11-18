@@ -11,6 +11,29 @@ test("readonly input", async ({ page }) => {
   );
 });
 
+test("readonly textarea", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<textarea aria-label="Readonly Textarea" readonly></textarea>`,
+  );
+});
+
+test("readonly select is ignored", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<select aria-label="Fruit" readonly>
+      <option>Apple</option>
+    </select>`,
+  );
+});
+
+test("readonly checkbox is ignored", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<input type="checkbox" aria-label="Accept" readonly />`,
+  );
+});
+
 test("aria-readonly input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
@@ -44,6 +67,13 @@ test("required input", async ({ page }) => {
   await matchRawElementSnapshot(
     page,
     html`<input type="text" aria-label="Required Input" required />`,
+  );
+});
+
+test("required range input is ignored", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<input type="range" aria-label="Volume" required />`,
   );
 });
 

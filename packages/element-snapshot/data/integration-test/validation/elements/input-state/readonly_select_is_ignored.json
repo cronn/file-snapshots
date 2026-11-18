@@ -1,0 +1,24 @@
+[
+  {
+    "role": "combobox",
+    "name": "Fruit",
+    "attributes": {
+      "value": "Apple"
+    },
+    "children": [
+      {
+        "role": "option",
+        "name": "Apple",
+        "attributes": {
+          "selected": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Apple"
+          }
+        ]
+      }
+    ]
+  }
+]
