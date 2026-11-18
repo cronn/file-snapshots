@@ -27,6 +27,13 @@ test("role-based progressbar", async ({ page }) => {
   );
 });
 
+test("indeterminate HTML progressbar", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`<progress aria-label="Loading"></progress>`,
+  );
+});
+
 test("empty progressbar", async ({ page }) => {
   await matchRawElementSnapshot(page, html`<div role="progressbar"></div>`);
 });
