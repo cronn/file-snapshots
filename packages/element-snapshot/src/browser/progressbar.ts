@@ -20,7 +20,8 @@ export function snapshotProgressbar(
 
 function resolveValue(element: SnapshotTargetElement): number | undefined {
   if (element instanceof HTMLProgressElement) {
-    return element.value;
+    // `position` is -1 for indeterminate progress bars
+    return element.position === -1 ? undefined : element.value;
   }
 
   return numericAttribute(element.ariaValueNow);
