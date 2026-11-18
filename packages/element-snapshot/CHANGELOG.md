@@ -1,5 +1,19 @@
 # @cronn/element-snapshot
 
+## 0.35.2
+
+### Patch Changes
+
+- 58b131b: Omit children in semantic snapshots when they are text only and equal to the `value` attribute
+
+  ```json
+  // Before
+  { "combobox": "Combobox", "value": "Selected Value", "children": "Selected Value" }
+
+  // After
+  { "combobox": "Combobox", "value": "Selected Value" }
+  ```
+
 ## 0.35.1
 
 ### Patch Changes
