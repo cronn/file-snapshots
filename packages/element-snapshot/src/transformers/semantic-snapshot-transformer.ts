@@ -63,15 +63,19 @@ function normalizeElementSnapshot(
   const normalizedName = snapshot.name ?? "";
   const transformedAttributes = transformAttributes(snapshot.attributes ?? {});
   const transformedChildren = (snapshot.children ?? []).map(transformRecursive);
-  const nameEqualsChildren =
-    transformedChildren.length === 1 &&
-    normalizedName === transformedChildren.at(0);
+  const singleChild =
+    transformedChildren.length === 1 ? transformedChildren.at(0) : undefined;
+  const nameEqualsChildren = normalizedName === singleChild;
+  const valueEqualsChildren =
+    typeof transformedAttributes.value === "string" &&
+    transformedAttributes.value === singleChild;
 
   return {
     role: snapshot.role,
     name: normalizedName,
     attributes: transformedAttributes,
-    children: nameEqualsChildren ? [] : transformedChildren,
+    children:
+      nameEqualsChildren || valueEqualsChildren ? [] : transformedChildren,
   };
 }
 
