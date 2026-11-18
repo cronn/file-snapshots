@@ -1,0 +1,54 @@
+[
+  {
+    "role": "heading",
+    "name": "With level",
+    "attributes": {
+      "level": 3
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "With level"
+      }
+    ]
+  },
+  {
+    "role": "heading",
+    "name": "Without level",
+    "attributes": {
+      "level": 2
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Without level"
+      }
+    ]
+  },
+  {
+    "role": "heading",
+    "name": "Settings Help",
+    "attributes": {
+      "level": 2
+    },
+    "children": [
+      {
+        "role": "text",
+        "name": "Settings"
+      },
+      {
+        "role": "link",
+        "name": "Help",
+        "attributes": {
+          "url": "/help"
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Help"
+          }
+        ]
+      }
+    ]
+  }
+]
