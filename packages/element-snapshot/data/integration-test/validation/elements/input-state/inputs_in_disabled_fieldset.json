@@ -1,0 +1,70 @@
+[
+  {
+    "role": "group",
+    "name": "Address",
+    "attributes": {},
+    "children": [
+      {
+        "role": "label",
+        "attributes": {},
+        "children": [
+          {
+            "role": "text",
+            "name": "Address"
+          },
+          {
+            "role": "textbox",
+            "name": "Legend Input",
+            "attributes": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "role": "textbox",
+        "name": "Street",
+        "attributes": {
+          "disabled": true
+        },
+        "children": []
+      },
+      {
+        "role": "combobox",
+        "name": "Country",
+        "attributes": {
+          "value": "Germany",
+          "disabled": true
+        },
+        "children": [
+          {
+            "role": "option",
+            "name": "Germany",
+            "attributes": {
+              "selected": true,
+              "disabled": true
+            },
+            "children": [
+              {
+                "role": "text",
+                "name": "Germany"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "button",
+        "name": "Save",
+        "attributes": {
+          "disabled": true
+        },
+        "children": [
+          {
+            "role": "text",
+            "name": "Save"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -21,7 +21,9 @@
       {
         "role": "option",
         "name": "Option 1",
-        "attributes": {},
+        "attributes": {
+          "disabled": true
+        },
         "children": [
           {
             "role": "text",
@@ -32,7 +34,9 @@
       {
         "role": "option",
         "name": "Option 2",
-        "attributes": {},
+        "attributes": {
+          "disabled": true
+        },
         "children": [
           {
             "role": "text",

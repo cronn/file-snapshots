@@ -160,3 +160,22 @@ test("expanded role-based combobox", async ({ page }) => {
     `,
   );
 });
+
+test("inputs in disabled fieldset", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <fieldset disabled>
+        <legend>
+          Address
+          <input type="text" aria-label="Legend Input" />
+        </legend>
+        <input type="text" aria-label="Street" />
+        <select aria-label="Country">
+          <option>Germany</option>
+        </select>
+        <button>Save</button>
+      </fieldset>
+    `,
+  );
+});
