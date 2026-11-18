@@ -5,13 +5,12 @@ import { snapshotChildren } from "./children";
 import { resolveAccessibleName } from "./name";
 import type { SnapshotTargetElement } from "./types";
 
+/** Implicit `aria-level` of the `heading` role */
+const DEFAULT_LEVEL = 2;
+
 export function snapshotHeading(
   element: SnapshotTargetElement,
-): HeadingSnapshot | null {
-  if (!(element instanceof HTMLHeadingElement)) {
-    return null;
-  }
-
+): HeadingSnapshot {
   return {
     role: "heading",
     name: resolveAccessibleName(element),
@@ -22,11 +21,15 @@ export function snapshotHeading(
   };
 }
 
-function resolveLevel(element: HTMLHeadingElement): number {
+function resolveLevel(element: SnapshotTargetElement): number {
   const ariaLevel = integerAttribute(element.ariaLevel);
   if (ariaLevel !== undefined && ariaLevel >= 1) {
     return ariaLevel;
   }
 
-  return Number(element.localName.slice(1));
+  if (element instanceof HTMLHeadingElement) {
+    return Number(element.localName.slice(1));
+  }
+
+  return DEFAULT_LEVEL;
 }

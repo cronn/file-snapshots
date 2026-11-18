@@ -32,3 +32,14 @@ test("native heading with aria-level", async ({ page }) => {
     `,
   );
 });
+
+test("role-based heading", async ({ page }) => {
+  await matchRawElementSnapshot(
+    page,
+    html`
+      <div role="heading" aria-level="3">With level</div>
+      <div role="heading">Without level</div>
+      <div role="heading" aria-level="2">Settings <a href="/help">Help</a></div>
+    `,
+  );
+});
