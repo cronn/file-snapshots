@@ -21,7 +21,7 @@ test("when matcher is inverted, throws error", () => {
 
 test("applies normalizer", () => {
   expect("2000-01-01").toMatchTextFile({
-    normalizers: [maskString("2000-01-01", "<TODAY>")],
+    normalizers: [maskString("2000-01-01", "[TODAY]")],
   });
 });
 

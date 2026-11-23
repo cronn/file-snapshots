@@ -17,23 +17,23 @@ describe("stringNormalizer", () => {
 });
 
 test("masks all occurrences of string", () => {
-  const maskBaseUrl = maskString("https://example.com", "<BASE_URL>");
+  const maskBaseUrl = maskString("https://example.com", "[BASE_URL]");
   expect(
     maskBaseUrl(`
       - [Home](https://example.com/home)
       - [About Us](https://example.com/about)
       - [Blog](https://example.com/blog)`),
   ).toBe(`
-      - [Home](<BASE_URL>/home)
-      - [About Us](<BASE_URL>/about)
-      - [Blog](<BASE_URL>/blog)`);
+      - [Home]([BASE_URL]/home)
+      - [About Us]([BASE_URL]/about)
+      - [Blog]([BASE_URL]/blog)`);
 });
 
 test("masks all occurrences of pattern", () => {
   const timestampRegex = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/g;
   const maskDate = maskPattern(
     timestampRegex,
-    (counter) => `<TIMESTAMP_${counter}>`,
+    (counter) => `[TIMESTAMP_${counter}]`,
   );
   expect(
     maskDate(
@@ -43,7 +43,7 @@ test("masks all occurrences of pattern", () => {
       2026-05-21T08:05:46Z Payment failed`,
     ),
   ).toBe(`
-      <TIMESTAMP_0> Application started successfully
-      <TIMESTAMP_1> User login successful
-      <TIMESTAMP_2> Payment failed`);
+      [TIMESTAMP_0] Application started successfully
+      [TIMESTAMP_1] User login successful
+      [TIMESTAMP_2] Payment failed`);
 });

@@ -6,7 +6,7 @@ import type { Normalizer } from "../types/normalizer";
  * @param searchValue The value to be masked
  * @param maskedValue The masked value to replace the `searchValue` with
  *
- * @example maskString("https://example.com", "<BASE_URL>")
+ * @example maskString("https://example.com", "[BASE_URL]")
  */
 export function maskString(
   searchValue: string,

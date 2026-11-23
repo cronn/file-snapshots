@@ -25,7 +25,7 @@ const DATED_TABLE = html`
 `;
 
 function maskDate(): Normalizer<string> {
-  return maskPattern(/\d{4}-\d{2}-\d{2}/g, (index) => `<DATE_${index}>`);
+  return maskPattern(/\d{4}-\d{2}-\d{2}/g, (index) => `[DATE_${index}]`);
 }
 
 test("HTML table", async ({ page }) => {

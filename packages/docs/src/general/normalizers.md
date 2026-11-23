@@ -15,7 +15,7 @@ test("masks base URL", async () => {
     - [About Us](https://example.com/about)
     - [Blog](https://example.com/blog)
   `).toMatchTextFile({
-    normalizers: [maskString("https://example.com", "<BASE_URL>")],
+    normalizers: [maskString("https://example.com", "[BASE_URL]")],
     fileExtension: "md",
   });
 });
@@ -24,9 +24,9 @@ test("masks base URL", async () => {
 **Output:**
 
 ```md [masks_base_URL.md]
-- [Home](<BASE_URL>/home)
-- [About Us](<BASE_URL>/about)
-- [Blog](<BASE_URL>/blog)
+- [Home]([BASE_URL]/home)
+- [About Us]([BASE_URL]/about)
+- [Blog]([BASE_URL]/blog)
 ```
 
 ## `maskPattern`
@@ -48,7 +48,7 @@ test("masks distinct timestamps", async () => {
     2026-05-21T08:05:46Z Payment failed
   `).toMatchTextFile({
     normalizers: [
-      maskPattern(TIMESTAMP_REGEX, (index) => `<TIMESTAMP_${index}>`),
+      maskPattern(TIMESTAMP_REGEX, (index) => `[TIMESTAMP_${index}]`),
     ],
   });
 });
@@ -57,9 +57,9 @@ test("masks distinct timestamps", async () => {
 **Output:**
 
 ```[masks_distinct_timestamps.txt]
-<TIMESTAMP_0> Application started successfully
-<TIMESTAMP_1> User login successful
-<TIMESTAMP_2> Payment failed
+[TIMESTAMP_0] Application started successfully
+[TIMESTAMP_1] User login successful
+[TIMESTAMP_2] Payment failed
 ```
 
 ## `stringNormalizer`
@@ -88,7 +88,7 @@ test("masks distinct timestamps in JSON", async () => {
   ]).toMatchJsonFile({
     normalizers: [
       stringNormalizer(
-        maskPattern(TIMESTAMP_REGEX, (counter) => `<TIMESTAMP_${counter}>`),
+        maskPattern(TIMESTAMP_REGEX, (counter) => `[TIMESTAMP_${counter}]`),
       ),
     ],
   });
@@ -100,15 +100,15 @@ test("masks distinct timestamps in JSON", async () => {
 ```json [masks_distinct_timestamps_in_JSON.json]
 [
   {
-    "timestamp": "<TIMESTAMP_0>",
+    "timestamp": "[TIMESTAMP_0]",
     "message": "Application started successfully"
   },
   {
-    "timestamp": "<TIMESTAMP_1>",
+    "timestamp": "[TIMESTAMP_1]",
     "message": "User login successful"
   },
   {
-    "timestamp": "<TIMESTAMP_2>",
+    "timestamp": "[TIMESTAMP_2]",
     "message": "Payment failed"
   }
 ]

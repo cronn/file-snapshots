@@ -104,7 +104,7 @@ Normalizers mask values which are not stable between test runs, e.g. timestamps 
 ```ts
 function maskDate(value: unknown): unknown {
   if (value instanceof Date) {
-    return "<DATE>";
+    return "[DATE]";
   }
 
   return value;
@@ -121,7 +121,7 @@ test("date is masked", async () => {
 
 ```json
 {
-  "date": "<DATE>"
+  "date": "[DATE]"
 }
 ```
 
