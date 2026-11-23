@@ -1,5 +1,14 @@
 # @cronn/aria-snapshot
 
+## 2.1.1
+
+### Patch Changes
+
+- 4ebba5c: Improve README documentation with essential usage
+- Updated dependencies [4ebba5c]
+- Updated dependencies [af74b59]
+  - @cronn/playwright-file-snapshots@2.4.1
+
 ## 2.1.0
 
 ### Minor Changes

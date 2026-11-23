@@ -1,5 +1,15 @@
 # @cronn/playwright-file-snapshots
 
+## 2.4.1
+
+### Patch Changes
+
+- 4ebba5c: Improve README documentation with essential usage
+- af74b59: Use `[NAME]` instead of `<NAME>` as marker for masked values in documentation examples
+- Updated dependencies [4ebba5c]
+- Updated dependencies [af74b59]
+  - @cronn/lib-file-snapshots@1.3.1
+
 ## 2.4.0
 
 ### Minor Changes
