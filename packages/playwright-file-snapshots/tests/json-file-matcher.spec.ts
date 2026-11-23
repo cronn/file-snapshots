@@ -40,7 +40,7 @@ test("when includeUndefinedObjectProperties is true, serializes undefined object
 
 test("applies normalizer", async () => {
   await expect({ date: "2000-01-01" }).toMatchJsonFile({
-    normalizers: [stringNormalizer(maskString("2000-01-01", "<TODAY>"))],
+    normalizers: [stringNormalizer(maskString("2000-01-01", "[TODAY]"))],
   });
 });
 
