@@ -1,5 +1,15 @@
 # @cronn/element-snapshot
 
+## 0.35.3
+
+### Patch Changes
+
+- 4ebba5c: Improve README documentation with essential usage
+- Updated dependencies [4ebba5c]
+- Updated dependencies [af74b59]
+  - @cronn/playwright-file-snapshots@2.4.1
+  - @cronn/lib-file-snapshots@1.3.1
+
 ## 0.35.2
 
 ### Patch Changes
