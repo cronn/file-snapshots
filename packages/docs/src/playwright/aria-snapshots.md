@@ -84,7 +84,7 @@ The `ariaSnapshot` function provides more flexibility than the `toMatchAriaSnaps
 
 ```ts
 import { ariaSnapshot } from "@cronn/aria-snapshot";
-import { defineFileSnapshotMatchers } from "@cronn/playwright-file-matchers";
+import { defineFileSnapshotMatchers } from "@cronn/playwright-file-snapshots";
 
 const expect = defineFileSnapshotMatchers();
 
