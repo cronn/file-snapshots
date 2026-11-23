@@ -6,7 +6,7 @@ import type { Normalizer } from "../types/normalizer";
  * @param searchPattern The pattern to be masked (requires global flag to find all matches)
  * @param maskValue The function returning the masked value to replace a matched value with
  *
- * @example maskPattern(/[\d{4}-\d{2}-\d{2}/g, (index) => `[DATE_${index}]`)
+ * @example maskPattern(/\d{4}-\d{2}-\d{2}/g, (index) => `[DATE_${index}]`)
  */
 export function maskPattern(
   searchPattern: RegExp,
